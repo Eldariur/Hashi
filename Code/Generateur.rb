@@ -35,28 +35,32 @@ class Generateur
 
     def creeUnegrille(nbSommet)
         self.vider()
+        tableauDeAdd = [[0,1],[0,-1],[1,0],[-1,0]]
         tableau = @grille.table
         sommetPlaces = 0
         posX = rand(0...@longeur)
         posY = rand(0...@largeur)
-        while tableau[posX][posY] != nil
+        while tableau[posX][posY].contenu != nil
             puts "pas trouve"
             posX = rand(0...@longeur)
             posY = rand(0...@largeur)
         end
-        tableau[posX][posY] = Sommet.new(posX, posY)
-        @sommets << tableau[posX][posY]
+        sommet = Sommet.new(nil, tableau[posX][posY])
+        @sommets << sommet
         sommetPlaces += 1
         loop do
             indicSommet = rand(0...tableau.length)
-            indicCote = rand(0...4)
+            lesAdds = tableauDeAdd[rand(0...tableauDeAdd.length)]
             sommetChoisi = @sommets[indicSommet]
-            if !sommetChoisi.coteUtilise(indicCote)
-                if self.placerSommet(indicCote, sommetChoisi) != nil
-
+            unless ((sommetChoisi.position.x + 2 * lesAdds[0] >= @longeur || sommetChoisi.position.x + 2 * lesAdds[0] < 0) || (sommetChoisi.position.y + 2 * lesAdds[1] >= @largeur || sommetChoisi.position.y + 2 * lesAdds[1] < 0))
+                caseChoisie = tableau[posX][posY]
+                loop do
+                    caseChoisie = tableau[caseChoisie.x + lesAdds[0]][caseChoisie.y + lesAdds[1]]
+                    resRand = rand(2)
+                    break if resRand == 0
                 end
             end
-            break if @sommets.length() == nbSommet
+            break if sommetPlaces == nbSommet
         end
     end
 end
