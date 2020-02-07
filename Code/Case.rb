@@ -1,18 +1,14 @@
 class Case
-	 #@x
-	 #@y
 
-	attr:x, false
-	attr:y, false
+    attr_accessor :x, :y, :grille
+    def initialize(x, y, grille, contenu=nil)
+        @x = x
+        @y = y
+        @grille = grille
+        @contenu = contenu
+    end
 
-
-	def initialize(x, y)
-		@x = x
-		@y = y
-	end
-
-	def Case.creer(x,y)
-		new(x,y)
-	end
-
+    def ajouterContenu(objet)
+        @contenu = objet
+    end
 end
