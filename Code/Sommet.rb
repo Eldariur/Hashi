@@ -7,5 +7,4 @@ class Sommet
         @listArete = Array.new()
         @position.ajouterContenu(self)
     end
-
 end
