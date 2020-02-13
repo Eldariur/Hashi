@@ -30,4 +30,8 @@ class Arete
             break if caseAct.contenu == @sommet2
         end
     end
+
+    def getTaille()
+        return listeCase.length()
+    end
 end
