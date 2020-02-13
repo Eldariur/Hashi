@@ -58,7 +58,6 @@ class Chrono
 
   #Permet d'arreter le chronomètre.
   def arreter()
-
     @stop = 1
   end
 
