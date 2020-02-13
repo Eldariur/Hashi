@@ -1,17 +1,35 @@
+#Cette classe represente un chronomètre.
 class Chrono
-  #@stop
-  #@total
-  #@base
+  #@stop -> Permet de stopper le chronomètre.
+  #@total -> Contient le total de secondes écoulées.
+  #@base -> Permet de sauvegarder le temps a partir du quel on chronomètre.
 
-  attr:stop, false
-  attr:total, true
-  attr:base, false
+  #Privatise le new
+	private_class_method :new
 
+	##Intialise
+  #Initialisation de la class Doc
   def initialize()
     @stop = 0
     @total = 0
     @base = 0
   end
+
+  #Creer un nouveau chronomètre.
+  def Chrono.nouveau()
+    new()
+  end
+
+
+  ##Partie Autorisation
+  #Autorise les autres classes à lire
+  attr:stop, false
+	#Autorise les autres classes à ecrire
+  attr:total, true
+  #Autorise les autres classes à lire
+  attr:base, false
+
+  ##Partie méthode
 
   #Remet à 0 le chronomètre.
   def reset()
@@ -42,6 +60,7 @@ class Chrono
   end
 
   #Transforme les secondes en un affichage de chronomètre.
+  #@return : res Une chaine de caractère qui contient l'affichage.
   def to_chrono()
     s = self.resultat()
 
@@ -56,6 +75,8 @@ class Chrono
 end
 
 #Methode de test pour arreter le chronomètre en fonction d'un temps en secondes donné.
+#@param : t Le temps pour temporiser.
+#@param : c Le chronomètre.
 def stoptemps(t,c)
   t.times do
     sleep(1)
@@ -65,6 +86,7 @@ def stoptemps(t,c)
 end
 
 #Methode de test pour arreter le chronomètre en fonction de l'appuie sur une touche.
+#@param : c Le chronomètre.
 def stopsaisie(c)
   test = nil
   while(test == nil) do
