@@ -34,4 +34,12 @@ class Arete
     def getTaille()
         return listeCase.length()
     end
+
+    def supprimer()
+        loop do
+            break if @listeCase.length == 0
+            laCase = @listeCase.shift()
+            laCase.ajouterContenu(nil)
+        end
+    end
 end
