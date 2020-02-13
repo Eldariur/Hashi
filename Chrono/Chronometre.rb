@@ -3,7 +3,7 @@ class Chrono
   #@total
   #@base
 
-  attr:quit, false
+  attr:stop, false
   attr:total, true
   attr:base, false
 
