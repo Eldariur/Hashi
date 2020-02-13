@@ -30,6 +30,10 @@ class Grille
         @sommets.push(sommet)
     end
 
+    def addArete(arete)
+        @aretes.push(arete)
+    end
+
     def to_s()
       s = ""
       ajout = false
@@ -42,7 +46,13 @@ class Grille
             end
           end
           @aretes.each do |x|
-            
+            #p x.getListeCase()
+            x.getListeCase().each do |y|
+              if(y.x == i && y.y == j)
+                s += "|"
+                ajout = true
+              end
+            end
           end
           if(ajout == false)
             s += "X"
