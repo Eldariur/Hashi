@@ -4,7 +4,7 @@ class Sommet
     def initialize(valeur, position)
         @valeur = valeur
         @position = position #la case dans lequel est le sommet
-        @listArete = Array.new()
+        @listeArete = Array.new()
         @position.ajouterContenu(self)
     end
 
@@ -13,6 +13,7 @@ class Sommet
 
     def getCase()
       return @position
+    end
 
     def setValeur(valeur)
         @valeur = valeur

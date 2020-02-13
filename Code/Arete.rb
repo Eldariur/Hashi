@@ -45,6 +45,10 @@ class Arete
         return @sommet2
     end
 
+    def getListeCase()
+      return @listeCase
+    end
+
     def supprimer()
         loop do
             break if @listeCase.length == 0

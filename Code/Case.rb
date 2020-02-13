@@ -1,6 +1,7 @@
 class Case
 
-    attr_accessor :x, :y, :grille, :contenu
+    attr_reader  :x, :y
+    attr_accessor :grille, :contenu
     def initialize(x, y)
         @x = x
         @y = y
