@@ -1,6 +1,6 @@
 load("Chronometre.rb")
 
-c = Chrono.new
+c = Chrono.nouveau()
 
 threads = []
 threads << Thread.new {c.chronometrer()}
