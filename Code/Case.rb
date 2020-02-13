@@ -15,4 +15,8 @@ class Case
     def ajouterContenu(objet)
         @contenu = objet
     end
+
+    def aSommetVoisin()
+        return @grille.table[x+1,y].is_a?(Sommet) || @grille.table[x-1,y].is_a?(Sommet) || @grille.table[x,y+1].is_a?(Sommet) || @grille.table[x,y-1].is_a?(Sommet)
+    end
 end

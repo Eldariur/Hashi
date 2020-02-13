@@ -8,7 +8,20 @@ class Sommet
         @position.ajouterContenu(self)
     end
 
+<<<<<<< HEAD
     def getCase()
       return @position
+=======
+    def setValeur(valeur)
+        @valeur = valeur
+    end
+
+    def ajouterArete(arete)
+        @listeArete << (arete)
+    end
+
+    def retirerArete(arete)
+        @listeArete.delete(arete)
+>>>>>>> ebd2b951391f90bec8d678d55164d029a11fc29a
     end
 end
