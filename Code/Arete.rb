@@ -29,10 +29,20 @@ class Arete
                 caseAct = laMatrice[caseAct.x + plusX, caseAct.y + plusY]
             break if caseAct.contenu == @sommet2
         end
+        @sommet1.ajouterArete(self)
+        @sommet2.ajouterArete(self)
     end
 
     def getTaille()
         return listeCase.length()
+    end
+
+    def getSommet1()
+        return @sommet1
+    end
+
+    def getSommet2()
+        return @sommet2
     end
 
     def supprimer()
@@ -41,5 +51,7 @@ class Arete
             laCase = @listeCase.shift()
             laCase.ajouterContenu(nil)
         end
+        @sommet1.retirerArete(self)
+        @sommet2.retirerArete(self)
     end
 end

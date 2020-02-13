@@ -9,6 +9,14 @@ class Sommet
     end
 
     def setValeur(valeur)
-        @valeur = valeur        
+        @valeur = valeur
+    end
+
+    def ajouterArete(arete)
+        @listeArete << (arete)
+    end
+
+    def retirerArete(arete)
+        @listeArete.delete(arete)
     end
 end
