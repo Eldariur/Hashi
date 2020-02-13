@@ -7,4 +7,8 @@ class Sommet
         @listArete = Array.new()
         @position.ajouterContenu(self)
     end
+
+    def setValeur(valeur)
+        @valeur = valeur        
+    end
 end
