@@ -5,7 +5,7 @@
 class Doc
 	##Partie variables d'instance
 	#Variables d'instances de la classe Doc
-	#@nom1 -> Détails rapide de la variables 
+	#@nom1 -> Détails rapide de la variables
 	#@nom2 -> Pareil
 	#@nom3 -> Défini de base dans la classe
 	def Doc.creer(param1,param2)
@@ -16,11 +16,14 @@ class Doc
 	private_class_method :new
 
 	##Intialise
-	
+
 	#Initialisation de la class Doc
-	#@param : param1 petite définition(Son nom,une date ...)
-	#@param : param2 idem
-	
+	#
+	#===Parametre
+	#
+	#* +param1+ : param1 petite définition(Son nom,une date ...)
+	#* +param2+ : param2 idem
+
 	def initialize(param1,param2)
 		@nom1 = param1
 		@nom2 = param2
@@ -46,21 +49,25 @@ class Doc
 
 	##Methode avec param mais renvoie rien
 	#Détails juste ce que réalise la méthode
-	#@param : param avec une description 
+	#===Parametre
+	#* +param+ : param avec une description
 	def test2(param)
 		puts @nom2.to_s + " " + param
 	end
 
 	##Methode avec param plus renvoie
 	#Détails juste ce que réalise la méthode
-	#@param : param avec une description 
-	#@return : param avec une description 
+	#===Parametre
+	#* +param+ : param avec une description
+	#
+	#===Return
+	#* +@nom3+ : param avec une description
 	def test3(param)
 		puts @nom2 +param
 		return @nom3
 	end
 
-	
+
 	def test4()
 		print "coucou"
 	end
@@ -68,9 +75,9 @@ class Doc
 	##Methode non commenter, pour tester rDoc -C
 
 end
-	
 
-	
+
+
 d = Doc.creer("Oui",1)
 d.test1()
 d.test2("COUCOU")
