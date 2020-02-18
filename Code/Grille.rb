@@ -1,11 +1,27 @@
 require "matrix"
 
+# Classe représentant uen grille de jeu
 class Grille
-    #@longueur
-    #@largeur
-    #@table
-    #@sommets
-    attr_accessor :table
+
+
+
+    ## Partie variables d'instances
+
+    # @longueur
+    # @largeur
+    # @table
+    # @sommets
+
+
+
+    # Partie initialize
+
+    # Initialisation de la classe Grille
+    #
+  	# === Parametre
+  	#
+  	# * +longueur+ : Longueur de la grille (nombre de case)
+  	# * +largeur+ : Largeur de la grille (nombre de case)
     def initialize(longueur, largeur)
         @longueur = longueur
         @largeur = largeur
@@ -13,6 +29,16 @@ class Grille
         @sommets = Array.new()
         @aretes = Array.new()
     end
+
+
+
+    ## Partie accesseurs
+
+    # Accesseur get sur l'attribut case
+    attr_reader :case
+
+    # Accesseur get et set sur l'attribut table
+    attr_accessor :table
 
     def completerInitialize()
         for i in 0...@longueur do
@@ -46,7 +72,6 @@ class Grille
             end
           end
           @aretes.each do |x|
-            #p x.getListeCase()
             x.getListeCase().each do |y|
               if(y.x == i && y.y == j)
                 s += "|"
