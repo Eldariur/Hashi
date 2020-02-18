@@ -1,5 +1,5 @@
 
-load "Grilles"
+load "Grille.rb"
 load "Case.rb"
 load "Sommet.rb"
 load "Arete.rb"
