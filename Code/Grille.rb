@@ -5,12 +5,13 @@ class Grille
     #@largeur
     #@table
     #@sommets
+    private_class_method :new
     attr_accessor :table
-    private_class_method :new, :completerInitialize
+
     def initialize(longueur, largeur)
         @longueur = longueur
         @largeur = largeur
-        @table = Matrix.build(@longueur, @largeur){|row, col| Case.creer(row, col)}
+        @table = Matrix.build(@longueur, @largeur){|row, col| Case.new(row, col)}
         @sommets = Array.new()
         @aretes = Array.new()
     end
@@ -26,7 +27,7 @@ class Grille
     end
 
     #Creer un objet Grille proprement
-    def creer(longueur, largeur)
+    def self.creer(longueur, largeur)
         objet = new(longueur, largeur)
         objet.completerInitialize()
         return objet
@@ -34,7 +35,7 @@ class Grille
 
     #recreer la matrice de case, puis appelle le completer initiliaze pour finir le boulot
     def vider()
-        @table = Matrix.build(@longueur, @largeur){|row, col| Case.creer(row, col)}
+        @table = Matrix.build(@longueur, @largeur){|row, col| Case.new(row, col)}
         completerInitialize()
     end
 
