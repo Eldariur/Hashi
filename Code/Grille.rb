@@ -7,6 +7,7 @@ class Grille
     #@sommets
     private_class_method :new
     attr_accessor :table
+    attr_reader :sommets, :aretes
 
     def initialize(longueur, largeur)
         @longueur = longueur
