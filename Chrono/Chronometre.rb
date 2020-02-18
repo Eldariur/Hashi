@@ -3,6 +3,7 @@ class Chrono
   #@stop -> Permet de stopper le chronomètre.
   #@total -> Contient le total de secondes écoulées.
   #@base -> Permet de sauvegarder le temps a partir du quel on chronomètre.
+  #@temp -> Permet de pouvoir relancer le chronomètre avec une valeur deja existante.
 
   #Privatise le new
 	private_class_method :new
@@ -13,6 +14,7 @@ class Chrono
     @stop = 0
     @total = 0
     @base = 0
+    @temp = 0
   end
 
   #Creer un nouveau chronomètre.
@@ -28,19 +30,24 @@ class Chrono
   attr:total, true
   #Autorise les autres classes à lire
   attr:base, false
+  #Autorise les autres classes à lire
+  attr:temp, false
 
   ##Partie méthode
 
   #Remet à 0 le chronomètre.
   def reset()
-    @total = 0
     @base = Time.now()
     @stop = 0
+    @temp = 0
   end
 
   #Lance le chronometrage et renvoie le resultat en secondes.
   def chronometrer()
     self.reset()
+    if(@total != 0) then
+      @temp = @total
+    end
     while @stop != 1 do
       @total = Time.now - @base
       puts `clear`
@@ -56,7 +63,7 @@ class Chrono
 
   #Retourne la valeur du chronomètre.
   def resultat()
-    return @total
+    return @total + @temp
   end
 
   #Transforme les secondes en un affichage de chronomètre.
@@ -66,8 +73,9 @@ class Chrono
 
     sec = s.to_i%60
     ms = (((s-sec)*1000)%1000).to_i
-    min = s.to_i/60
-    hr = min.to_i/60
+    min = (s.to_i/60)%60
+    tmin = (s.to_i/60)
+    hr = tmin.to_i/60
     res = hr.to_s + 'h ' + min.to_s + 'min ' + sec.to_s + 's ' + ms.to_s + 'ms'
 
     return res

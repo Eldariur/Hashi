@@ -9,3 +9,5 @@ threads << Thread.new {stopsaisie(c)}
 
 threads.each { |thr| thr.join }
 puts 'Resultat : '+ c.to_chrono() + ' | Total : ' + c.resultat().to_s
+
+c.chronometrer()
