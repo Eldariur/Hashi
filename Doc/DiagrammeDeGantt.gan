@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><project name="Hashiwokakero" company="GROUPE6" webLink="http://" view-date="2019-12-29" view-index="0" gantt-divider-location="300" resource-divider-location="300" version="2.8.10" locale="fr">
+    <description>
+        <![CDATA[Projet genie Logiciel2]]>
+    </description>
+    <view zooming-state="default:5" id="gantt-chart">
+        <field id="tpd3" name="Nom" width="167" order="0"/>
+        <field id="tpd4" name="Date de début" width="65" order="1"/>
+        <field id="tpd5" name="Date de fin" width="64" order="2"/>
+        <option id="color.recent">
+            <![CDATA[#ff3333]]>
+        </option>
+    </view>
+    <view id="resource-table">
+        <field id="0" name="Nom" width="210" order="0"/>
+        <field id="1" name="Rôle par défaut" width="86" order="1"/>
+    </view>
+    <!-- -->
+    <calendars>
+        <day-types>
+            <day-type id="0"/>
+            <day-type id="1"/>
+            <default-week id="1" name="default" sun="1" mon="0" tue="0" wed="0" thu="0" fri="0" sat="1"/>
+            <only-show-weekends value="false"/>
+            <overriden-day-types/>
+            <days/>
+        </day-types>
+    </calendars>
+    <tasks empty-milestones="true">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon"/>
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon"/>
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon"/>
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text"/>
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date"/>
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date"/>
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int"/>
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int"/>
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
+        </taskproperties>
+        <task id="0" name="ChoixDujeu" color="#8cb6ce" meeting="false" start="2020-01-06" duration="2" complete="100" thirdDate="2019-12-31" thirdDate-constraint="0" expand="true"/>
+        <task id="9" name="Cahier des charges" color="#8cb6ce" meeting="false" start="2020-01-08" duration="16" complete="99" thirdDate="2019-12-26" thirdDate-constraint="0" expand="true">
+            <task id="49" name="Preparation Interview" color="#8cb6ce" meeting="false" start="2020-01-08" duration="6" complete="100" thirdDate="2019-12-26" thirdDate-constraint="0" expand="true"/>
+            <task id="50" name="SousTache: Definition des tâches" color="#8cb6ce" meeting="false" start="2020-01-28" duration="1" complete="100" thirdDate="2020-01-03" thirdDate-constraint="0" expand="true"/>
+            <task id="51" name="SousTache:Definition des besoin" color="#8cb6ce" meeting="false" start="2020-01-28" duration="1" complete="98" thirdDate="2019-12-31" thirdDate-constraint="0" expand="true"/>
+            <task id="52" name="SousTache: maquette" color="#8cb6ce" meeting="false" start="2020-01-28" duration="2" complete="100" thirdDate="2020-01-01" thirdDate-constraint="0" expand="true"/>
+            <task id="53" name="SousTache : scénario" color="#8cb6ce" meeting="false" start="2020-01-28" duration="1" complete="98" thirdDate="2020-01-01" thirdDate-constraint="0" expand="true"/>
+            <task id="54" name="SousTache : Cas D'utilisation" color="#8cb6ce" meeting="false" start="2020-01-28" duration="1" complete="100" thirdDate="2020-01-28" thirdDate-constraint="0" expand="true"/>
+        </task>
+        <task id="57" name="Documentation" color="#000000" meeting="false" start="2020-01-28" duration="5" complete="100" thirdDate="2020-01-28" thirdDate-constraint="0" expand="true">
+            <task id="58" name="SousTache : Diagramme de classe" color="#8cb6ce" meeting="false" start="2020-01-28" duration="5" complete="100" thirdDate="2020-01-28" thirdDate-constraint="0" expand="true"/>
+        </task>
+        <task id="55" name="Code" color="#8cb6ce" meeting="false" start="2020-01-28" duration="25" complete="55" thirdDate="2020-01-13" thirdDate-constraint="0" expand="true">
+            <task id="62" name="Interface" color="#8cb6ce" meeting="false" start="2020-01-28" duration="24" complete="20" thirdDate="2020-01-27" thirdDate-constraint="0" expand="true"/>
+            <task id="63" name="AlgorithmeGenerationNiveau" color="#8cb6ce" meeting="false" start="2020-02-03" duration="18" complete="85" thirdDate="2020-01-10" thirdDate-constraint="0" expand="true"/>
+            <task id="64" name="Chronomètre" color="#8cb6ce" meeting="false" start="2020-02-03" duration="9" complete="100" thirdDate="2020-01-30" thirdDate-constraint="0" expand="true"/>
+            <task id="65" name="Définition des aides" color="#8cb6ce" meeting="false" start="2020-02-03" duration="21" complete="50" thirdDate="2020-01-24" thirdDate-constraint="0" expand="true"/>
+        </task>
+        <task id="66" name="DEADLINE" color="#ff3333" meeting="false" start="2020-04-10" duration="1" complete="0" thirdDate="2020-01-27" thirdDate-constraint="0" expand="true"/>
+    </tasks>
+    <resources/>
+    <allocations/>
+    <vacations/>
+    <previous/>
+    <roles roleset-name="Default"/>
+</project>
