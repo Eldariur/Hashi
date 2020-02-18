@@ -2,7 +2,7 @@ class Arete
     #@direction
     #@sommet1
     #@sommet2
-    private_class_method :new, :completerInitialize
+    private_class_method :new
     def initialize(sommet1, sommet2, estDouble=false)
         @sommet1 = sommet1
         @sommet2 = sommet2
@@ -36,7 +36,7 @@ class Arete
     end
 
     #creer une arete proprement
-    def creer(sommet1, sommet2, estDouble=false)
+    def self.creer(sommet1, sommet2, estDouble=false)
         objet = new(sommet1, sommet2, estDouble=false)
         objet.completerInitialize()
         return objet

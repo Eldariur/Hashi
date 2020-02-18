@@ -1,7 +1,7 @@
 class Sommet
     #@listArete
     attr_accessor :position
-    private_class_method :new, :completerInitialize
+    private_class_method :new
     def initialize(valeur, position)
         @valeur = valeur
         @position = position #la case dans lequel est le sommet
@@ -15,7 +15,7 @@ class Sommet
     end
 
     #creer un Sommet proprement
-    def creer(valeur, position)
+    def self.creer(valeur, position)
         objet = new(valeur, position)
         objet.completerInitialize()
         return objet

@@ -1,11 +1,11 @@
 require "matrix"
 
-# Classe représentant uen grille de jeu
+# Classe représentant une grille de jeu
 class Grille
 
 
 
-  ## Partie variables d'instances
+  ## Partie variables d'instance
 
   # @longueur
   # @largeur
@@ -13,14 +13,16 @@ class Grille
   # @sommets
 
   #Creer un objet Grille proprement
-  def creer(longueur, largeur)
-    objet = new(longueur, largeur)
-    objet.completerInitialize()
-    return objet
+  def self.creer(longueur, largeur)
+      objet = new(longueur, largeur)
+      objet.completerInitialize()
+      return objet
   end
 
   #privatise le new et completerInitialize
   private_class_method :new, :completerInitialize
+
+
 
   # Partie initialize
 
@@ -42,9 +44,6 @@ class Grille
 
   ## Partie accesseurs
 
-  # Accesseur get sur l'attribut case
-  attr_reader :case
-
   # Accesseur get et set sur l'attribut table
   attr_accessor :table
 
@@ -64,7 +63,7 @@ class Grille
 
   #recreer la matrice de case, puis appelle le completer initiliaze pour finir le boulot
   def vider()
-    @table = Matrix.build(@longueur, @largeur){|row, col| Case.creer(row, col)}
+    @table = Matrix.build(@longueur, @largeur){|row, col| Case.new(row, col)}
     completerInitialize()
   end
 
