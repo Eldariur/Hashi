@@ -195,8 +195,20 @@ class Generateur
                 boolArretViaRand = rand(0..1) == 1
                 boolOnVaTropLoin = caseUnDevant.position.x >= @longueur || caseUnDevant.position.x < 0 || caseUnDevant.position.y >= @largeur || caseUnDevant.position.y < 0
                 #Si la case juste devant la ou on veut placer est au bord du vide alors qu'on ne s'est pas arrété avant, alors c'est que la case est safe, on check juste les sommets proche
-                if boolOnVaTropLoin && !caseOuPlacer.aSommetVoisin()
+                if boolOnVaTropLoin && !(caseOuPlacer.aSommetVoisin())
                     #On place le sommet et on créer l'arete
+                    nouveauSommet = Sommet.creer(0, caseOuPlacer)
+                    @sommets.push(nouveauSommet)
+                    sommetPlaces += 1
+
+                    nouvelleArete = Arete.creer(sommetChoisi, nouveauSommet, rand(0..1)==1) #chances d'avoir des doubles a ajuster
+                elsif boolSommetDevant || boolArretViaRand
+                    #Si on s'arrete a cause du rand ou parce qu'il y a un sommet devant, c'est le meme traitement
+                    #on regarde si on peut placer a l'endroit ou on est, sinon, on recule jusqu'a pouvoir
+                    loop do
+
+                        break if !(caseOuPlacer.aSommetVoisin())
+                    end
                 end
 
             end
