@@ -1,6 +1,9 @@
 class Sommet
     #@listArete
+    #@position
+    #@valeur
     attr_accessor :position
+    attr_reader :valeur
     private_class_method :new
     def initialize(valeur, position)
         @valeur = valeur

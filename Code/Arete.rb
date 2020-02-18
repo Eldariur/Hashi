@@ -72,4 +72,20 @@ class Arete
         @sommet1.retirerArete(self)
         @sommet2.retirerArete(self)
     end
+
+    def afficher()
+      if(@sommet1.position.x==@sommet2.position.x)
+        if(@estDouble)
+          print("=")
+        else
+          print("-")
+        end
+      else
+        if(@estDouble)
+          print("‖")
+        else
+          print("|")
+        end
+      end
+    end
 end

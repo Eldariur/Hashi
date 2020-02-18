@@ -20,7 +20,7 @@ class Grille
   end
 
   #privatise le new et completerInitialize
-  private_class_method :new, :completerInitialize
+  private_class_method :new
 
 
 
@@ -35,7 +35,7 @@ class Grille
   def initialize(longueur, largeur)
     @longueur = longueur
     @largeur = largeur
-    @table = Matrix.build(@longueur, @largeur){|row, col| Case.creer(row, col)}
+    @table = Matrix.build(@longueur, @largeur){|row, col| Case.new(row, col)}
     @sommets = Array.new()
     @aretes = Array.new()
   end
@@ -50,6 +50,10 @@ class Grille
 
 
   # Partie méthodes
+
+  def getCase(x, y)
+    return @table[x, y]
+  end
 
   #Complete le initialize
   #ajoute self comme grille des cases de la matrice
@@ -80,6 +84,36 @@ class Grille
   #ajoute l'arrete a la liste d'arrete
   def addArete(arete)
     @aretes.push(arete)
+  end
+
+  def to_s()
+    s = ""
+    ajout = false
+    0.upto(@longueur - 1) do |i|
+      0.upto(@largeur - 1) do |j|
+        @sommets.each do |x|
+          if(x.position.x == i && x.position.y == j)
+             s += x.valeur.to_s()
+             ajout = true
+          end
+        end
+        @aretes.each do |x|
+          #p x.getListeCase()
+          x.getListeCase().each do |y|
+            if(y.x == i && y.y == j)
+              s += "|"
+              ajout = true
+            end
+          end
+        end
+        if(ajout == false)
+          s += "X"
+        end
+        ajout = false
+      end
+      s += "\n"
+    end
+    return s + "\n"
   end
 
   #affiche la grille, case par case
