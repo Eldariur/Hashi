@@ -12,8 +12,7 @@ require_relative 'UneCasePerso.rb'
 
 class Fenetre < Gtk::Window
 
-	# Return une instance de Fenetre 480*270 centrée, exécutant Fenetre#update
-	# au déplacement/redimensionnement
+	attr_reader :grilleTest
 	def initialize
 
 		#
@@ -43,85 +42,83 @@ class Fenetre < Gtk::Window
 		tbl = Gtk::Table.new(x,y,FALSE)
 
 		#####################################
-		grille1 = Grille.new(x, y)
-		grille1.completerInitialize()
-		sommet11 = Sommet.new(4, grille1.getCase(1, 1))
-		sommet12 = Sommet.new(2, grille1.getCase(3, 1))
-		sommet13 = Sommet.new(2, grille1.getCase(1, 4))
-		arete11 = Arete.new(sommet11, sommet13)
-		arete11.completerInitialize()
-		grille1.addSommet(sommet11)
-		grille1.addSommet(sommet12)
-		grille1.addSommet(sommet13)
-		grille1.addArete(arete11)
+		@grilleTest = Grille.creer(5, 5)
+		sommet11 = Sommet.creer(4, @grilleTest.getCase(0, 0))
+		sommet12 = Sommet.creer(2, @grilleTest.getCase(2, 0))
+		sommet13 = Sommet.creer(2, @grilleTest.getCase(0, 3))
+		arete11 = Arete.creer(sommet11, sommet13)
+		@grilleTest.addSommet(sommet11)
+		@grilleTest.addSommet(sommet12)
+		@grilleTest.addSommet(sommet13)
+		@grilleTest.addArete(arete11)
 		#####################################
 
-
-		0.upto(x) do |i|
-			0.upto(y) do |j|
-				if( i == 0 || j == 0 || i == x || j == y)
-			  	tbl.attach(UnBoutonPerso.new(nil,"UneCasePerso"),i,i+1,j,j+1)
-					#gridJeu.get_child_at(y+1,x+1).image=(dimImage("img/pont_rouge_jap.jpg"))
-				end
-				# if(grille1.getCase(i,j) != nil )
-				# 	tbl.attach(UnBoutonPerso.new("1"),i,i+1,j,j+1)
-				# end
-
-		  end
-	  end
-
-		grille1.sommets.each do |s|
-			i = s.position.x
-			j = s.position.y
-			puts "sommet trouvé : x = "+i.to_s+" y = "+j.to_s
-			tbl.attach(UnBoutonPerso.new("1"),i,i+1,j,j+1)
-		end
-
-		cptX=0
-		cptY=0
-		depX=nil
-		depY=nil
-		arrX=nil
-		arrY=nil
-		gridJeu = Gtk::Grid.new()
-
-		grille1.aretes.each do |a|
-
-
-			puts "aretes trouvée "
-			a.getListeCase().each{ |c|
-				puts "arete dans cette case x = "+c.x.to_s+" y = "+c.y.to_s
-				if(depX == nil && depY == nil)
-					depX = c.x
-					depY = c.y
-				else
-					if(depX < c.x)
-						cptX+=1 end
-					if(depX > c.x)
-						cptX-=1 end
-					if(depY < c.y)
-						cptY+=1 end
-					if(depY > c.y)
-						cptY-=1 end
-				end
-			}
-			arrX = depX+cptX
-			arrY = depY+cptY
-			puts "l'arete va de la case x = "+depX.to_s+" y = "+depY.to_s+" à la case x = "+arrX.to_s+" y = "+arrY.to_s
-
-		end
-
-		btnArete = UnBoutonPerso.new("|","UneCasePerso")
-		tbl.attach(btnArete,depX,arrX+1,depY,arrY+1,Gtk::AttachOptions::EXPAND,nil)
-
-		long = 5
-		larg = 5
-		grilleTest=Array.new(long) { Array.new(larg) {0} }
-
-		grilleTest[0][2] = UnBoutonPerso.new("test")
-		grilleTest[0][2].signal_connect('clicked'){
-			puts 'clic'
-		}
+		# ========================= Partie avec des boutons =================
+		# 0.upto(x) do |i|
+		# 	0.upto(y) do |j|
+		# 		if( i == 0 || j == 0 || i == x || j == y)
+		# 	  	tbl.attach(UnBoutonPerso.new(nil,"UneCasePerso"),i,i+1,j,j+1)
+		# 			#gridJeu.get_child_at(y+1,x+1).image=(dimImage("img/pont_rouge_jap.jpg"))
+		# 		end
+		# 		# if(grille1.getCase(i,j) != nil )
+		# 		# 	tbl.attach(UnBoutonPerso.new("1"),i,i+1,j,j+1)
+		# 		# end
+		#
+		#   end
+	  # end
+		#
+		# grille1.sommets.each do |s|
+		# 	i = s.position.x
+		# 	j = s.position.y
+		# 	puts "sommet trouvé : x = "+i.to_s+" y = "+j.to_s
+		# 	tbl.attach(UnBoutonPerso.new("1"),i,i+1,j,j+1)
+		# end
+		#
+		# cptX=0
+		# cptY=0
+		# depX=nil
+		# depY=nil
+		# arrX=nil
+		# arrY=nil
+		# gridJeu = Gtk::Grid.new()
+		#
+		# grille1.aretes.each do |a|
+		#
+		#
+		# 	puts "aretes trouvée "
+		# 	a.getListeCase().each{ |c|
+		# 		puts "arete dans cette case x = "+c.x.to_s+" y = "+c.y.to_s
+		# 		if(depX == nil && depY == nil)
+		# 			depX = c.x
+		# 			depY = c.y
+		# 		else
+		# 			if(depX < c.x)
+		# 				cptX+=1 end
+		# 			if(depX > c.x)
+		# 				cptX-=1 end
+		# 			if(depY < c.y)
+		# 				cptY+=1 end
+		# 			if(depY > c.y)
+		# 				cptY-=1 end
+		# 		end
+		# 	}
+		# 	arrX = depX+cptX
+		# 	arrY = depY+cptY
+		# 	puts "l'arete va de la case x = "+depX.to_s+" y = "+depY.to_s+" à la case x = "+arrX.to_s+" y = "+arrY.to_s
+		#
+		# end
+		#
+		# btnArete = UnBoutonPerso.new("|","UneCasePerso")
+		# tbl.attach(btnArete,depX,arrX+1,depY,arrY+1,Gtk::AttachOptions::EXPAND,nil)
+		#
+		# long = 5
+		# larg = 5
+		# grilleTest=Array.new(long) { Array.new(larg) {0} }
+		#
+		# grilleTest[0][2] = UnBoutonPerso.new("test")
+		# grilleTest[0][2].signal_connect('clicked'){
+		# 	puts 'clic'
+		# }
 
 
 
@@ -138,6 +135,8 @@ class Fenetre < Gtk::Window
 		# tbl.attach(c3,1,2,4,5)
 		# tbl.attach(c4,5,6,4,5)
 
+			# ========================= Partie avec des coordonnées =================
+
 
 			#tbl.attach(UneCasePerso.new("test"),1,2,1,2)
 
@@ -145,12 +144,11 @@ class Fenetre < Gtk::Window
 			# area = Gtk::DrawingArea.new()
 			# area.draw_point(gc, x, y)
 
+
 			@darea = Gtk::DrawingArea.new
 
 
-
 			@darea.signal_connect "draw" do
-
 					on_draw
 			end
 			# on_draw
@@ -158,9 +156,9 @@ class Fenetre < Gtk::Window
 			y=10
 
 
-			# hpaned = Gtk::HPaned.new
+			hpaned = Gtk::HPaned.new
 
-			hpaned = Gtk::Paned.new(:Horizontal)
+			# hpaned = Gtk::Paned.new(:Horizontal)
 			# hpaned.signal_connect("button-release-event") do
 			# 	x+=10
 			# 	y+=10
@@ -170,12 +168,12 @@ class Fenetre < Gtk::Window
 			# 	draw_maLigne(@cr,x,y,150,60)
 			# end
 
-
 			vbox.add(tbl)
-			hpaned.add(vbox)
-			# hpaned.add(@darea)
+			hpaned.add(@darea)
 
-	    self.add(hpaned)
+			self.signal_connect("button-press-event") { |widget, event| mouseClick(event) }
+	    #self.add(vbox)
+			self.add(hpaned)
 
 	    #self.add(img)
 
@@ -184,6 +182,10 @@ class Fenetre < Gtk::Window
 		self.show_all
 		Gtk.main
 
+	end
+
+	def mouseClick(event)
+	        puts(event.x, event.y).to_s+"=="
 	end
 
 	def changerWidget(nouveau)
@@ -207,7 +209,6 @@ class Fenetre < Gtk::Window
 	# 		@darea.signal_connect "draw" do
 	# 				on_draw
 	# 		end
-	#
 	# 		add @darea
 	# end
 
@@ -217,8 +218,10 @@ class Fenetre < Gtk::Window
 			@cr = cr
 
 			#draw_colors cr
-			draw_maLigne(@cr,50,50,150,60)
+			# draw_maLigne(@cr,50,50,150,60)
+			drawSommets(cr)
 			#cairo_line_to(cr, 10, 15)
+
 	end
 	attr_accessor :cr
 
@@ -237,6 +240,25 @@ class Fenetre < Gtk::Window
 			cr.set_source_rgb 0.4, 0.9, 0.4
 			cr.rectangle 250, 15, 90, 60
 			cr.fill
+	end
+
+	def drawSommets(cr)
+			puts "====="
+			i = 0
+			j = 0
+			taillePix = 25
+			padding = 20
+		@grilleTest.sommets.each{ |s|
+			x = s.position.x
+			y = s.position.y
+			puts "il y a un sommet à la case x = "+x.to_s+" y = "+y.to_s+" i = "+i.to_s+" j = "+j.to_s
+			cr.rectangle(i*x,j*y,i*x+taillePix,j*y+taillePix)
+			cr.fill
+
+			i+=1
+			j+=1
+
+		}
 	end
 
 	def draw_maLigne(cr,x1,y1,x2,y2)
