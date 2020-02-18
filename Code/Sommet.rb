@@ -36,7 +36,7 @@ class Sommet
         @listeArete.delete(arete)
     end
 
-    def afficheToi()
-        print("O")
+    def afficher()
+        print(@valeur)
     end
 end
