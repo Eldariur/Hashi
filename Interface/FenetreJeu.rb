@@ -12,16 +12,7 @@ class FenetreJeu < Gtk::Box
   @click = 0
   @btn
 
-  # b1 = UnBoutonPerso.new("1");
-  # b2 = UnBoutonPerso.new("2");
-  #
-
-  # b2.signal_connect('clicked'){
-  #   print "hello world 2"
-  # }
-
-  # tbl.attach(b1,0,1,0,1)
-  # tbl.attach(b2,2,3,0,1)
+  
 	0.upto(x) do |i|
 		0.upto(y) do |j|
 		  tbl.attach(@btn = UnBoutonPerso.new("1","UneCasePerso"),i,i+1,j,j+1)
