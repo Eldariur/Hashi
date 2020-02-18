@@ -1,27 +1,34 @@
-class Score
+require "active_record"
+
+class Score < ActiveRecord::Base
 	 #@pseudo
-	 #@points
+	 #@time
+   #@score
    #@malus
-   #@time
 
 	attr:pseudo, false
+	attr:scoreTotal, false
 	attr:time, false
-	attr:score, false
   attr:malus, false
 
-	def initialize(p, s, t, m)
-		@pseudo = p
-		@score = s
-    @malus = m
-    @time = t
+	#Privatise le new
+	private_class_method :new
+
+	def Score.creer()
+		new()
 	end
 
-	def Score.creer(p, s, t, m)
-		new(p, s, t, m)
+	def initialize(b)
+		super(:name => "", :points => 0)
+		@pseudo = nil
+		@score = 0
+    @malus = 0
+    @time = 0
 	end
 
-	def setName(pseudo)
-		@pseudo = pseudo
+	def setName()
+		print "Veuillez saisir un nom : "
+		@pseudo = gets.chomp
 	end
 
 	def setTime(time)
@@ -34,14 +41,19 @@ class Score
 
 	def calculScore(tMax)
 		temp = @time.to_i + @malus.to_i
-		#tMax = 100
 		if(temp > tMax) then
 			@score = 0
 		else @score = 1000000-((1000000/tMax)*(tMax-(temp+tMax))*((tMax-(temp+tMax))/tMax)) end
 	end
 
 	def to_s
-		"Score : Pseudo = #{@pseudo}, Score = #{@score}, Temps = #{@time}, Malus = #{@malus}\n"
+		"Score : Pseudo = #{@pseudo}, Points = #{@score}, Temps = #{@time}, Malus = #{@malus}\n"
+	end
+
+	def sauvegarder()
+		self.name = @pseudo
+		self.points = @score
+		return self.save()
 	end
 
 

@@ -1,4 +1,3 @@
-require 'json'
 load ("Score.rb")
 
 class Classement
