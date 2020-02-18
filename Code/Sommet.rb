@@ -1,6 +1,16 @@
 class Sommet
     #@listArete
+    #@position
+    #@valeur
     attr_accessor :position
+    attr_reader :valeur
+    #creer un Sommet proprement
+    def self.creer(valeur, position)
+        objet = new(valeur, position)
+        objet.completerInitialize()
+        return objet
+    end
+
     private_class_method :new
     def initialize(valeur, position)
         @valeur = valeur
@@ -12,13 +22,6 @@ class Sommet
     def completerInitialize()
         @position.ajouterContenu(self)
         @position.grille.addSommet(self)
-    end
-
-    #creer un Sommet proprement
-    def self.creer(valeur, position)
-        objet = new(valeur, position)
-        objet.completerInitialize()
-        return objet
     end
 
     #defini la valeur du sommet
@@ -36,7 +39,7 @@ class Sommet
         @listeArete.delete(arete)
     end
 
-    def afficheToi()
+    def afficher()
         print("O")
     end
 end
