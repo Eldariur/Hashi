@@ -1,6 +1,5 @@
 require "matrix"
 
-# Classe représentant une grille de jeu
 class Grille
 
 
@@ -65,25 +64,19 @@ class Grille
     end
   end
 
-  #recreer la matrice de case, puis appelle le completer initiliaze pour finir le boulot
-  def vider()
-    @table = Matrix.build(@longueur, @largeur){|row, col| Case.new(row, col)}
-    completerInitialize()
-  end
-
   #renvoie la case en x, y
   def getCase(x, y)
-    return @table[x, y]
+      return @table[x, y]
   end
 
   #ajoute le sommet a la liste de sommet
   def addSommet(sommet)
-    @sommets.push(sommet)
+      @sommets.push(sommet)
   end
 
   #ajoute l'arrete a la liste d'arrete
   def addArete(arete)
-    @aretes.push(arete)
+      @aretes.push(arete)
   end
 
   def to_s()
@@ -117,23 +110,23 @@ class Grille
   end
 
   #affiche la grille, case par case
-   def afficher()
-       0.upto(@largeur + 1) do
-         print("$")
-       end
-       print("\n$")
-       @table.each{|c|
-           if((c.y)+1 >= @largeur)
-               c.afficher
-               print("$\n$")
-           else
-               c.afficher
-           end
-       }
-       0.upto(@largeur - 1) do
-         print("$")
-       end
-       puts("$")
-   end
+  def afficher()
+     0.upto(@largeur + 1) do
+       print("$")
+     end
+     print("\n$")
+     @table.each{|c|
+         if((c.y)+1 >= @largeur)
+             c.afficher
+             print("$\n$")
+         else
+             c.afficher
+         end
+     }
+     0.upto(@largeur - 1) do
+       print("$")
+     end
+     puts("$")
+  end
 
 end
