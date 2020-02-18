@@ -206,8 +206,8 @@ class Generateur
                     #Si on s'arrete a cause du rand ou parce qu'il y a un sommet devant, c'est le meme traitement
                     #on regarde si on peut placer a l'endroit ou on est, sinon, on recule jusqu'a pouvoir
                     loop do
-
-                        break if !(caseOuPlacer.aSommetVoisin())
+                        break if !(caseOuPlacer.aSommetVoisin()) || ((caseOuPlacer.x == sommetChoisi.position.x) && (caseOuPlacer.x == sommetChoisi.position.y))
+                        caseOuPlacer = tableau(caseOuPlacer.x - lesAdds[0],caseOuPlacer.y - lesAdds[1])
                     end
                 end
 
