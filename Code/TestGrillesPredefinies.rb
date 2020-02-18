@@ -1,37 +1,38 @@
 
-load "Grille.rb"
+load "Grilles"
 load "Case.rb"
 load "Sommet.rb"
 load "Arete.rb"
 
 # Test de génération de grilles prédéfinies
 
-#Création d'une première grille
-grille1 = Grille.creer(5, 5)
-sommet11 = Sommet.creer(4, grille1.getCase(0, 0))
-sommet12 = Sommet.creer(2, grille1.getCase(2, 0))
-sommet13 = Sommet.creer(2, grille1.getCase(0, 3))
-arete11 = Arete.creer(sommet11, sommet13)
+grille1 = Grille.new(10, 10)
+grille1.completerInitialize()
+sommet11 = Sommet.new(4, grille1.getCase(1, 1))
+sommet12 = Sommet.new(2, grille1.getCase(3, 1))
+sommet13 = Sommet.new(2, grille1.getCase(1, 4))
+arete11 = Arete.new(sommet11, sommet13,true)
+arete11.completerInitialize()
 grille1.addSommet(sommet11)
 grille1.addSommet(sommet12)
 grille1.addSommet(sommet13)
 grille1.addArete(arete11)
 
-#Création d'une deuxième grille
-grille2 = Grille.creer(5, 5)
-sommet21 = Sommet.creer(2, grille2.getCase(2, 2))
-sommet22 = Sommet.creer(1, grille2.getCase(2, 0))
-sommet23 = Sommet.creer(1, grille2.getCase(2, 4))
-arete21 = Arete.creer(sommet21, sommet22)
-arete22 = Arete.creer(sommet21, sommet23)
+grille2 = Grille.new(7, 9)
+grille2.completerInitialize()
+sommet21 = Sommet.new(2, grille2.getCase(2, 4))
+sommet22 = Sommet.new(1, grille2.getCase(2, 2))
+sommet23 = Sommet.new(1, grille2.getCase(2, 6))
+arete21 = Arete.new(sommet21, sommet22)
+arete21.completerInitialize()
+arete22 = Arete.new(sommet21, sommet23)
+arete22.completerInitialize()
 grille2.addSommet(sommet21)
 grille2.addSommet(sommet22)
 grille2.addSommet(sommet23)
 grille2.addArete(arete21)
 grille2.addArete(arete22)
 
-#Affichage des grilles
-#print(grille1.to_s())
-#print(grille2.to_s())
 grille1.afficher()
+
 grille2.afficher()

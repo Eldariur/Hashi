@@ -1,45 +1,34 @@
 class Sommet
     #@listArete
-    #@position
-    #@valeur
-    attr_accessor :position
-    attr_reader :valeur
-    #creer un Sommet proprement
-    def self.creer(valeur, position)
-        objet = new(valeur, position)
-        objet.completerInitialize()
-        return objet
-    end
-
-    private_class_method :new
-    def initialize(valeur, position)
+    attr_accessor :position, :valeur
+    def initialize(valeur = 0, position)
         @valeur = valeur
         @position = position #la case dans lequel est le sommet
         @listeArete = Array.new()
-    end
-
-    #ajoute self comme contenu de la case a laquelle il est et a la liste de sommet de la grille
-    def completerInitialize()
         @position.ajouterContenu(self)
-        @position.grille.addSommet(self)
     end
 
-    #defini la valeur du sommet
+
+
+
+    def getCase()
+      return @position
+    end
+
     def setValeur(valeur)
         @valeur = valeur
     end
 
-    #ajoute une arrete a la liste de ses arrete
     def ajouterArete(arete)
         @listeArete << (arete)
     end
 
-    #retire une arrete de la liste de ses arrete
     def retirerArete(arete)
         @listeArete.delete(arete)
     end
 
     def afficher()
-        print("O")
+        print(@valeur)
     end
+
 end

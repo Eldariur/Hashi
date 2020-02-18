@@ -1,6 +1,7 @@
 class Case
 
-    attr_accessor :x, :y, :grille, :contenu
+    attr_reader  :x, :y
+    attr_accessor :grille, :contenu
     def initialize(x, y)
         @x = x
         @y = y
@@ -8,23 +9,16 @@ class Case
         @contenu = nil
     end
 
-    #defini la case a laquelle appartient la case
     def setGrille(grille)
         @grille = grille
     end
 
-    #ajoute un objet en contenu de la case
     def ajouterContenu(objet)
         @contenu = objet
     end
 
-    #teste si la case a des voisins
     def aSommetVoisin()
-        if(@grille != nil)
-            return @grille.table[x+1,y].is_a?(Sommet) || @grille.table[x-1,y].is_a?(Sommet) || @grille.table[x,y+1].is_a?(Sommet) || @grille.table[x,y-1].is_a?(Sommet)
-        else
-            return false
-        end
+        return @grille.table[x+1,y].is_a?(Sommet) || @grille.table[x-1,y].is_a?(Sommet) || @grille.table[x,y+1].is_a?(Sommet) || @grille.table[x,y-1].is_a?(Sommet)
     end
 
     def afficher()
@@ -34,4 +28,5 @@ class Case
             @contenu.afficher()
         end
     end
+
 end
