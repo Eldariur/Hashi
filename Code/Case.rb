@@ -27,11 +27,11 @@ class Case
         end
     end
 
-    def afficheToi()
+    def afficher()
         if(@contenu == nil)
-            print(".")
+            print(" ")
         else
-            @contenu.afficheToi()
+            @contenu.afficher()
         end
     end
 end
