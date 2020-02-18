@@ -2,6 +2,15 @@ class Arete
     #@direction
     #@sommet1
     #@sommet2
+
+    #creer une arete proprement
+    def self.creer(sommet1, sommet2, estDouble=false)
+        objet = new(sommet1, sommet2, estDouble=false)
+        objet.completerInitialize()
+        return objet
+    end
+
+
     private_class_method :new
     def initialize(sommet1, sommet2, estDouble=false)
         @sommet1 = sommet1
@@ -33,13 +42,6 @@ class Arete
         end
         @sommet1.ajouterArete(self)
         @sommet2.ajouterArete(self)
-    end
-
-    #creer une arete proprement
-    def self.creer(sommet1, sommet2, estDouble=false)
-        objet = new(sommet1, sommet2, estDouble=false)
-        objet.completerInitialize()
-        return objet
     end
 
     #recupere la taille de l'arrete (nombre de case parcourue)
