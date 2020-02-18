@@ -173,9 +173,33 @@ class Generateur
                 #test pour le hors tableau (on teste avec *2 les valeurs d'incrementations car 2 somemts ne peuvent etre collés)
                 boolLongueurTropHaute = sommetChoisi.position.x + 2*lesAdds[0] >= @longueur
                 boolLongueurTropBasse = sommetChoisi.position.x + 2*lesAdds[0] < 0
-                boolLargeurTropHaute = sommetChoisi.position.y + 2*lesAdds[0] >= @largeur
-                boolLargeurTropBasse = sommetChoisi.position.y + 2*lesAdds[0] < 0
+                boolLargeurTropHaute = sommetChoisi.position.y + 2*lesAdds[1] >= @largeur
+                boolLargeurTropBasse = sommetChoisi.position.y + 2*lesAdds[1] < 0
+            unless (boolLargeurTropBasse) && (boolLargeurTropHaute) && (boolLongueurTropBasse) && (boolLongueurTropHaute)
+                #On parcours les cases dans la direction choisie jusqu'a remplir une condition d'arret
+                #conditions d'arret :
+                # - le rand tombe sur 1 (1 chance sur 2)
+                # - on est au bord du tableau (on atteint 0 ou longeur/largeur - 1)
+                # - On est a 2 case d'un sommet droit devant
+                # - Il y a une arrete a 1 case devant
+                #       Si l'arrete fait 3 de taille ou plus, on se place sur l'arrete
+                #       Sinon, on se place devant elle
+                #La condition a tester le plus possible est la presence de sommet adjacent, car 2 sommets ne peuvent PAS etre adjacents
+                #On cree les 3 case a utiliser, la case ou on placera peut etre, la case juste devant pour tester les arrete, la case a 2 devant pour tester les sommets
+                caseOuPlacer = sommetChoisi.position
+                caseUnDevant = tableau(caseOuPlacer.x + lesAdds[0], caseOuPlacer.y + lesAdds[1])
+                caseDeuxDevant = tableau(caseUnDevant.x + lesAdds[0], caseUnDevant.y + lesAdds[1])
 
+                boolAreteDevant = caseUnDevant.contenu.class == Arete
+                boolSommetDevant = caseDeuxDevant.contenu.class == Sommet
+                boolArretViaRand = rand(0..1) == 1
+                boolOnVaTropLoin = caseUnDevant.position.x >= @longueur || caseUnDevant.position.x < 0 || caseUnDevant.position.y >= @largeur || caseUnDevant.position.y < 0
+                #Si la case juste devant la ou on veut placer est au bord du vide alors qu'on ne s'est pas arrété avant, alors c'est que la case est safe, on check juste les sommets proche
+                if boolOnVaTropLoin && !caseOuPlacer.aSommetVoisin()
+                    #On place le sommet et on créer l'arete
+                end
+
+            end
             break if sommetPlaces == nbSommet
         end
     end
