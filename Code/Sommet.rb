@@ -29,6 +29,15 @@ class Sommet
         @valeur = valeur
     end
 
+    #compte le nombre d'aretes
+    def compterArete()
+        total = 0
+        @listeArete.each{ |arete|
+            total += arete.estDouble ? 2 : 1
+        }
+        return total
+    end
+
     #ajoute une arrete a la liste de ses arrete
     def ajouterArete(arete)
         @listeArete << (arete)
