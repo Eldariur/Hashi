@@ -65,6 +65,11 @@ class Arete
       return @listeCase
     end
 
+    #renvoie si l'arete est double ou non
+    def estDouble()
+        return @estDouble
+    end
+
     #supprime proprement l'arrete
     def supprimer()
         loop do
