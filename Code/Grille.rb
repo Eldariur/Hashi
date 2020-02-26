@@ -44,7 +44,7 @@ class Grille
   ## Partie accesseurs
 
   # Accesseur get et set sur l'attribut table
-  attr_accessor :table
+  attr_accessor :table, :sommets
 
 
 
@@ -87,6 +87,13 @@ class Grille
   #retire une arrete de la liste de ses arrete
   def retirerArete(arete)
       @aretes.delete(arete)
+  end
+
+  #SUPPRIME TOUTE les aretes de la grille
+  def clearAretes()
+      @listeArete.each{ |arete|
+          arete.supprimer()
+      }
   end
 
   def to_s()
