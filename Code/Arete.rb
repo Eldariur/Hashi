@@ -72,6 +72,7 @@ class Arete
             laCase = @listeCase.shift()
             laCase.ajouterContenu(nil)
         end
+        @sommet1.position.grille.retirerArete(self)
         @sommet1.retirerArete(self)
         @sommet2.retirerArete(self)
     end
