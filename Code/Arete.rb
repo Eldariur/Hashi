@@ -5,7 +5,7 @@ class Arete
 
     #creer une arete proprement
     def self.creer(sommet1, sommet2, estDouble=false)
-        objet = new(sommet1, sommet2, estDouble=false)
+        objet = new(sommet1, sommet2, estDouble)
         objet.completerInitialize()
         return objet
     end
@@ -42,6 +42,7 @@ class Arete
         end
         @sommet1.ajouterArete(self)
         @sommet2.ajouterArete(self)
+        @sommet1.position.grille.addArete(self)
     end
 
     #recupere la taille de l'arrete (nombre de case parcourue)
