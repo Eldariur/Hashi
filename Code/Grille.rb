@@ -79,6 +79,16 @@ class Grille
       @aretes.push(arete)
   end
 
+  #retire une arrete de la liste de ses arrete
+  def retirerSommet(sommet)
+      @sommets.delete(sommet)
+  end
+
+  #retire une arrete de la liste de ses arrete
+  def retirerArete(arete)
+      @aretes.delete(arete)
+  end
+
   def to_s()
     s = ""
     ajout = false
