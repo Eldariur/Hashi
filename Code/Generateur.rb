@@ -1,20 +1,19 @@
 require "matrix"
 
 class Generateur
-    #@longeur
+    #@longueur
     #@largeur
     #@grille
     #@sommets
 
-    def initialize(longeur, largeur, densite)
-        @longeur = longeur
+    def initialize(longueur, largeur, densite)
+        @longueur = longueur
         @largeur = largeur
         @sommets = Array.new()
-        #(@longeur * @largeur) / (@sommets.length() + 1) * 100;
+        #(@longueur * @largeur) / (@sommets.length() + 1) * 100;
         @densite = densite
-        @nbSommet = (@longeur * @largeur / @densite).ceil
-        @grille = @grille.new(@longeur, @largeur)
-        @grille.completerInitialize()
+        @nbSommet = (@longueur * @largeur / @densite).ceil
+        @grille = Grille.creer(@longueur, @largeur)
     end
 
     def getCase(x, y)
@@ -22,15 +21,19 @@ class Generateur
     end
 
     def vider()
-        for i in 0...@longeur do
-            for j in 0...@largeur do
-                @grille.table[i][j] = nil
-            end
-        end
+        @grille = Grille.creer(@longueur, @largeur)
     end
 
-    def placerSommet()
+    def getGrilleSansSommet()
+        cloneGrille = Marshal.load(Marshal.dump(@grille))
+        cloneGrille.clearAretes()
+        return cloneGrille
+    end
 
+    def placerLabelSommet()
+        @sommets.each { |sommet|
+            sommet.setValeur(sommet.compterArete())
+        }
     end
 
     def creeUneGrille(nbSommet)
@@ -137,7 +140,7 @@ class Generateur
 
     def creeUneGrillev2(nbSommet)
         #On vide la grille précédente
-        vider()
+        self.vider()
         #Tableau permettant le deplacement dans la matrice sans se soucier du sens
         tableauDeAdd = [[0,1],[0,-1],[1,0],[-1,0]]
         #On recupere le tableau de la grille pour un acces plus simple
@@ -160,8 +163,10 @@ class Generateur
         sommetPlaces += 1
         #On place des sommets tant qu'on a pas atteint le nombre de sommet a placer
         loop do
+puts "tour de boucle : " + sommetPlaces.to_s + "/" + nbSommet.to_s
+
             #On choisi un sommet dans la liste des sommets dejà placés
-            indiceSommetChoisi = rand(0...@grille.sommet.length)
+            indiceSommetChoisi = rand(0...@grille.sommets.length)
             #On choisi une direction dans laquelle partir
             #basiquement, on choisi une des case du tableau des add, puis on ajoutera les case 0 et 1
             #aux coordonées x et y des sommets pour allez dans cette direction
@@ -178,8 +183,8 @@ class Generateur
             unless (boolLargeurTropBasse) && (boolLargeurTropHaute) && (boolLongueurTropBasse) && (boolLongueurTropHaute)
                 #On parcours les cases dans la direction choisie jusqu'a remplir une condition d'arret
                 #conditions d'arret :
-                # - le rand tombe sur 1 (1 chance sur 2)
-                # - on est au bord du tableau (on atteint 0 ou longeur/largeur - 1)
+                # - le rand tombe sur 1 (1 chance sur 2 a ajuster)
+                # - on est au bord du tableau (on atteint 0 ou longueur/largeur - 1)
                 # - On est a 2 case d'un sommet droit devant
                 # - Il y a une arrete a 1 case devant
                 #       Si l'arrete fait 3 de taille ou plus, on se place sur l'arrete
@@ -187,32 +192,95 @@ class Generateur
                 #La condition a tester le plus possible est la presence de sommet adjacent, car 2 sommets ne peuvent PAS etre adjacents
                 #On cree les 3 case a utiliser, la case ou on placera peut etre, la case juste devant pour tester les arrete, la case a 2 devant pour tester les sommets
                 caseOuPlacer = sommetChoisi.position
-                caseUnDevant = tableau(caseOuPlacer.x + lesAdds[0], caseOuPlacer.y + lesAdds[1])
-                caseDeuxDevant = tableau(caseUnDevant.x + lesAdds[0], caseUnDevant.y + lesAdds[1])
+                caseUnDevant = tableau[caseOuPlacer.x + lesAdds[0], caseOuPlacer.y + lesAdds[1]]
+                caseDeuxDevant = tableau[caseUnDevant.x + lesAdds[0], caseUnDevant.y + lesAdds[1]]
 
-                boolAreteDevant = caseUnDevant.contenu.class == Arete
-                boolSommetDevant = caseDeuxDevant.contenu.class == Sommet
-                boolArretViaRand = rand(0..1) == 1
-                boolOnVaTropLoin = caseUnDevant.position.x >= @longueur || caseUnDevant.position.x < 0 || caseUnDevant.position.y >= @largeur || caseUnDevant.position.y < 0
-                #Si la case juste devant la ou on veut placer est au bord du vide alors qu'on ne s'est pas arrété avant, alors c'est que la case est safe, on check juste les sommets proche
-                if boolOnVaTropLoin && !(caseOuPlacer.aSommetVoisin())
-                    #On place le sommet et on créer l'arete
-                    nouveauSommet = Sommet.creer(0, caseOuPlacer)
-                    @sommets.push(nouveauSommet)
-                    sommetPlaces += 1
 
-                    nouvelleArete = Arete.creer(sommetChoisi, nouveauSommet, rand(0..1)==1) #chances d'avoir des doubles a ajuster
-                elsif boolSommetDevant || boolArretViaRand
-                    #Si on s'arrete a cause du rand ou parce qu'il y a un sommet devant, c'est le meme traitement
-                    #on regarde si on peut placer a l'endroit ou on est, sinon, on recule jusqu'a pouvoir
-                    loop do
-                        break if !(caseOuPlacer.aSommetVoisin()) || ((caseOuPlacer.x == sommetChoisi.position.x) && (caseOuPlacer.x == sommetChoisi.position.y))
-                        caseOuPlacer = tableau(caseOuPlacer.x - lesAdds[0],caseOuPlacer.y - lesAdds[1])
+                boolSommetPlace = false #condition d'arret de loop
+                loop do #la loop pour faire avancer
+puts "On est en" + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
+                    break if boolSommetPlace
+                    caseUnDevant = tableau[caseOuPlacer.x + lesAdds[0], caseOuPlacer.y + lesAdds[1]]
+                    caseDeuxDevant = tableau[caseUnDevant.x + lesAdds[0], caseUnDevant.y + lesAdds[1]]
+
+                    boolAreteDevant = caseUnDevant.class == NilClass ? false : (caseUnDevant.contenu.class == Arete)
+                    boolSommetDevant = caseDeuxDevant.class == NilClass ? false : (caseDeuxDevant.contenu.class == Sommet)
+                    boolArretViaRand = rand(0..1) == 1
+                    boolOnVaTropLoin = caseOuPlacer.x == @longueur - 1 || caseOuPlacer.x - 1 < 0 || caseOuPlacer.x == @largeur - 1 || caseOuPlacer.y - 1 < 0
+                    #Si la case juste devant la ou on veut placer est au bord du vide alors qu'on ne s'est pas arrété avant, alors c'est que la case est safe, on check juste les sommets proche
+                    if boolOnVaTropLoin && !(caseOuPlacer.aSommetVoisin())
+                        #On place le sommet et on créer l'arete
+                        nouveauSommet = Sommet.creer(0, caseOuPlacer)
+                        @sommets.push(nouveauSommet)
+                        sommetPlaces += 1
+                        nouvelleArete = Arete.creer(sommetChoisi, nouveauSommet, rand(0..1)==1) #chances d'avoir des doubles a ajuster
+                        boolSommetPlace = true
+
+                    elsif boolSommetDevant || boolArretViaRand
+                        #Si on s'arrete a cause du rand ou parce qu'il y a un sommet devant, c'est le meme traitement pour les deux
+                        #on regarde si on peut placer a l'endroit ou on est, sinon, on recule jusqu'a pouvoir ou jusqu'a retomber sur le sommet de departn auquel cas on abandonne
+                        loop do
+                            puts "tour de boucle de recul"
+                            break if !(caseOuPlacer.aSommetVoisin()) || ((caseOuPlacer.x == sommetChoisi.position.x) && (caseOuPlacer.y == sommetChoisi.position.y))
+                            caseOuPlacer = tableau(caseOuPlacer.x - lesAdds[0],caseOuPlacer.y - lesAdds[1])
+                        end
+                        #booleen pur savoir si on peut placer un sommet (test de la condition d'arrete de la loop)
+                        bSommetPeutEtrePlace = !(caseOuPlacer.x == sommetChoisi.position.x) ? true : false
+                        #si on doit placer le sommet, on le fait
+                        if bSommetPeutEtrePlace
+                            nouveauSommet = Sommet.creer(0, caseOuPlacer)
+                            @sommets.push(nouveauSommet)
+                            sommetPlaces += 1
+                            nouvelleArete = Arete.creer(sommetChoisi, nouveauSommet, rand(0..1)==1) #chances d'avoir des doubles a ajuster
+                            boolSommetPlace = true
+                        end
+                    elsif boolAreteDevant
+                        areteTrouve = caseUnDevant.contenu()
+                        #Si il y a une arete AB devant et qu'elle fait 3 ou plus de long, alors on doit recuperer ses deux sommet, la detruire, puis reconstruire 2 aretes qui relie AS et SB ou S et le sommet actuel
+                        #Sinon, on se place devant si possible
+                        if areteTrouve.getTaille >= 3 && !(caseUnDevant.aSommetVoisin())
+                            #On recupere l'arrete et on la supprime en premier, pour liberer le contenu de la case
+                            sommet1DeArete = areteTrouve.getSommet1()
+                            sommet2DeArete = areteTrouve.getSommet2()
+                            areteTrouve.supprimer()
+
+                            #Creation du nouveau sommet
+                            nouveauSommet = Sommet.creer(0, caseUnDevant)
+                            @sommets.push(nouveauSommet)
+                            sommetPlaces += 1
+                            nouvelleArete = Arete.creer(sommetChoisi, nouveauSommet, rand(0..1)==1) #chances d'avoir des doubles a ajuster
+                            boolSommetPlace = true
+
+                            #Creation des nouvelles aretes
+                            nouvelleArete1 = Arete.creer(sommet1, nouveauSommet, rand(0..1)==1) #chances d'avoir des doubles a ajuster
+                            nouvelleArete2 = Arete.creer(nouveauSommet, sommet2, rand(0..1)==1) #chances d'avoir des doubles a ajuster
+                        else
+                            #on essaye de placer l'arete ou on s'est arreté (juste devant l'arete) ou alors on recule jusqu'a trouver
+                            loop do
+                                puts "tour de boucle de recul"
+                                break if !(caseOuPlacer.aSommetVoisin()) || ((caseOuPlacer.x == sommetChoisi.position.x) && (caseOuPlacer.y == sommetChoisi.position.y))
+                                caseOuPlacer = tableau(caseOuPlacer.x - lesAdds[0],caseOuPlacer.y - lesAdds[1])
+                            end
+                            #booleen pur savoir si on a placé un sommet
+                            bSommetPeutEtrePlace = !(caseOuPlacer.x == sommetChoisi.position.x) ? true : false
+                            #si on doit placer le sommet, on le fait
+                            if bSommetPeutEtrePlace
+                                nouveauSommet = Sommet.creer(0, caseOuPlacer)
+                                @sommets.push(nouveauSommet)
+                                sommetPlaces += 1
+                                nouvelleArete = Arete.creer(sommetChoisi, nouveauSommet, rand(0..1)==1) #chances d'avoir des doubles a ajuster
+                                boolSommetPlace = true
+                            end
+                        end
                     end
-                end
 
+                    #avancement de la boucle
+                    caseOuPlacer = caseUnDevant
+                end
             end
             break if sommetPlaces == nbSommet
         end
+        self.placerLabelSommet()
+        return self.getGrilleSansSommet()
     end
 end
