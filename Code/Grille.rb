@@ -48,11 +48,7 @@ class Grille
 
 
 
-  # Partie méthodes
-
-  def getCase(x, y)
-    return @table[x, y]
-  end
+  ## Partie méthodes
 
   #Complete le initialize
   #ajoute self comme grille des cases de la matrice
