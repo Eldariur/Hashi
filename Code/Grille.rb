@@ -44,7 +44,7 @@ class Grille
   ## Partie accesseurs
 
   # Accesseur get et set sur l'attribut table
-  attr_accessor :table, :sommets
+  attr_accessor :table, :sommets, :longueur, :largeur
 
 
 
@@ -91,6 +91,18 @@ class Grille
           arete.supprimer()
       }
   end
+
+  #Donne la case suivante par rapport a la case en respectant les valeurs addX et addY données
+#renvoie nil si la fameuse case est en dehors des lmites
+def caseSuivante(lacase, addX, addY)
+    leX = lacase.x
+    leY = lacase.y
+    if leX + addX >= @longueur|| leY + addY >= @largeur || leX + addX < 0|| leY + addY < 0
+        return nil
+    end
+    return getCase(leX + addX, leY + addY)
+
+end
 
   def to_s()
     s = ""

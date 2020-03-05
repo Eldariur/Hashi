@@ -21,17 +21,26 @@ class Case
     #teste si la case a des voisins
     def aSommetVoisin()
         if(@grille != nil)
-            return @grille.table[x+1,y].is_a?(Sommet) || @grille.table[x-1,y].is_a?(Sommet) || @grille.table[x,y+1].is_a?(Sommet) || @grille.table[x,y-1].is_a?(Sommet)
+            boolSommetGauche = y-1 >= 0 && @grille.getCase(x, y-1).contenu.is_a?(Sommet)
+            boolSommetDroit = y+1 < @grille.longueur && @grille.getCase(x, y+1).contenu.is_a?(Sommet)
+            boolSommetHaut = y-1 >= 0 && @grille.getCase(x-1, y).contenu.is_a?(Sommet)
+            boolSommetBas = x+1 < @grille.longueur && @grille.getCase(x+1, y).contenu.is_a?(Sommet)
+            return boolSommetGauche || boolSommetDroit || boolSommetHaut || boolSommetBas
         else
             return false
         end
     end
 
-    def afficher()
-        if(@contenu == nil)
-            print(".")
-        else
-            @contenu.afficher()
-        end
+    #teste si la case est vide
+    def estVide()
+      return @contenu==nil
     end
+
+    def afficher()
+       if(@contenu == nil)
+           print(".")
+       else
+           @contenu.afficher()
+       end
+   end
 end
