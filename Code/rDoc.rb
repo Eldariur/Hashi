@@ -60,7 +60,9 @@ class Doc
 
 	## Methode avec param mais renvoie rien
 	# Détails juste ce que réalise la méthode
+	#
 	# === Parametre
+	#
 	# * +param+ : param avec une description
 	def test2(param)
 		puts @nom2.to_s + " " + param
@@ -68,10 +70,13 @@ class Doc
 
 	## Methode avec param plus renvoie
 	# Détails juste ce que réalise la méthode
+	#
 	# === Parametre
+	#
 	# * +param+ : param avec une description
 	#
 	# === Return
+	#
 	# * +@nom3+ : param avec une description
 	def test3(param)
 		puts @nom2 +param

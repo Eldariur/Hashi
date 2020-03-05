@@ -48,7 +48,7 @@ class Grille
 
 
 
-  # Partie méthodes
+  ## Partie méthodes
 
   #Complete le initialize
   #ajoute self comme grille des cases de la matrice
