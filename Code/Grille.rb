@@ -50,10 +50,6 @@ class Grille
 
   # Partie méthodes
 
-  def getCase(x, y)
-    return @table[x, y]
-  end
-
   #Complete le initialize
   #ajoute self comme grille des cases de la matrice
   def completerInitialize()
