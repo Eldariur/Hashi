@@ -3,6 +3,7 @@ load "Case.rb"
 load "Sommet.rb"
 load "Arete.rb"
 load "Chronometre.rb"
+load "Sauvegarde.rb"
 
 # Test de génération de grilles prédéfinies
 
@@ -42,8 +43,13 @@ c = Chrono.nouveau()
 
 threads = []
 threads << Thread.new {c.chronometrer()}
-#threads << Thread.new {stopsaisie(c)}
-threads << Thread.new {stoptemps(2,c)}
+threads << Thread.new {stopsaisie(c)}
+#threads << Thread.new {stoptemps(2,c)}
 
 threads.each { |thr| thr.join }
 puts 'Resultat : '+ c.to_chrono() + ' | Total : ' + c.resultat().to_s
+
+save = Sauvegarde.nouvelle(grille,c,true)
+save.getSaveName()
+save.sauvegarder()
+#Sauvegarde.deleteAllSave()
