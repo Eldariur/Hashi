@@ -172,5 +172,9 @@ end
      end
      puts("$")
   end
+  
+  def afficherProportionsAretes
+    puts "Nombre d'arêtes : "+@aretes.size().to_s+". Arêtes simples : "+this.nbAreteSimple().to_s+". Arêtes simples : "+this.nbAreteDouble().to_s+"Porpotions : "+(this.nbAreteSimple()/this.nbAreteDouble()).to_s
+  end
 
 end
