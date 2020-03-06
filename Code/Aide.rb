@@ -240,7 +240,20 @@ class Aide
   ## Méthode testant si un cas 9 est présent dans la grille
   # Cas 9 : île à 5 avec trois îles voisines restante dans la grille
   #
-  # === Return
+  # === Returncompteur = 0
+    @grille.sommets.each_with_index do |x, i|
+      if x.valeur == 4 && @nb_voisins[i] == 3
+        x.getListeVoisins().each do |v|
+          if v.valeur == 1
+            compteur += 1
+          end
+        end
+        if compteur == 2
+          return true
+        end
+      end
+    end
+    return false
   #
   # true si le cas est vérifié pour un des sommets de la grille, false sinon
   def estCas9()
@@ -306,6 +319,52 @@ class Aide
           end
         end
         if compteur == 2
+          return true
+        end
+      end
+    end
+    return false
+  end
+
+  ## Méthode testant si un cas 12 est présent dans la grille
+  # Cas 12 : île à 4 avec deux des îles voisines à 1
+  #
+  # === Return
+  #
+  # true si le cas est vérifié pour un des sommets de la grille, false sinon
+  def estCas12()
+    compteur = 0
+    @grille.sommets.each_with_index do |x, i|
+      if x.valeur == 4 && @nb_voisins[i] == 3
+        x.getListeVoisins().each do |v|
+          if v.valeur == 1
+            compteur += 1
+          end
+        end
+        if compteur == 2
+          return true
+        end
+      end
+    end
+    return false
+  end
+
+  ## Méthode testant si un cas 13 est présent dans la grille
+  # Cas 13 : île à 1 avec n îles voisines dont n-1 îles à 1 restante
+  #
+  # === Return
+  #
+  # true si le cas est vérifié pour un des sommets de la grille, false sinon
+  def estCas13()
+    compteur = 0
+    @grille.sommets.each_with_index do |x, i|
+      if x.valeur == 1
+        x.getListeVoisins().each do |v|
+          if v.valeur == 1
+            compteur += 1
+          end
+        end
+        if compteur == @nb_voisins[i] - 1
           return true
         end
       end
