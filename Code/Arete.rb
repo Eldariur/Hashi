@@ -47,7 +47,7 @@ class Arete
 
     #recupere la taille de l'arrete (nombre de case parcourue)
     def getTaille()
-        return listeCase.length()
+        return @listeCase.length()
     end
 
     #renvoie le sommet1 de l'arrete
