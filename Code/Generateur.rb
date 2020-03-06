@@ -64,8 +64,8 @@ class Generateur
 
         #boucle qui place des sommets
         loop {
-            break if sommetPlaces >= nbSommet
-            puts "nbSommets : " + sommetPlaces.to_s + "/" + nbSommet.to_s
+            break if sommetPlaces >= @nbSommet
+            puts "nbSommets : " + sommetPlaces.to_s + "/" + @nbSommet.to_s
             #on commence par choisir un sommet
             indiceSommetChoisi = rand(0...@sommets.size())
             sommetChoisi = @sommets[indiceSommetChoisi]
