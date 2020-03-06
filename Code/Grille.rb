@@ -105,6 +105,24 @@ def caseSuivante(lacase, addX, addY)
 
 end
 
+#compte et renvoie le nombre d'aretes simple
+def nbAreteSimple
+    nbSimple = 0
+    @aretes.each { |x|
+        x.estDouble == false ? nbSimple += 1 : false
+    }
+    return nbSimple
+end
+
+#compte et renvoie le nombre d'arete double
+def nbAreteDouble
+    nbDouble = 0
+    @aretes.each { |x|
+        x.estDouble ? nbDouble += 1 : false
+    }
+    return nbDouble
+end
+
   def to_s()
     s = ""
     ajout = false
