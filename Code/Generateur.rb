@@ -260,10 +260,9 @@ class Generateur
                     end
                 }
             end
+            placerLabelSommet()
             @grille.afficher()
         }
-
-        placerLabelSommet()
         return getGrilleSansArete()
     end
 end
