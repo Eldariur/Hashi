@@ -76,10 +76,10 @@ class Aide
       return 9
     elsif estCas10()
       return 10
-    # elsif estCas11()
-    #   return 11
-    # elsif estCas12()
-    #   return 12
+    elsif estCas11()
+      return 11
+    elsif estCas12()
+      return 12
     # elsif estCas13()
     #   return 13
     # elsif estCas14()
@@ -262,6 +262,52 @@ class Aide
     @grille.sommets.each_with_index do |x, i|
       if x.valeur == 3 && @nb_voisins[i] == 2
         return true
+      end
+    end
+    return false
+  end
+
+  ## Méthode testant si un cas 11 est présent dans la grille
+  # Cas 11 : île à 6 avec deux des îles voisines à 1
+  #
+  # === Return
+  #
+  # true si le cas est vérifié pour un des sommets de la grille, false sinon
+  def estCas11()
+    compteur = 0
+    @grille.sommets.each_with_index do |x, i|
+      if x.valeur == 6
+        x.getListeVoisins().each do |v|
+          if v.valeur == 1
+            compteur += 1
+          end
+        end
+        if compteur == 2
+          return true
+        end
+      end
+    end
+    return false
+  end
+
+  ## Méthode testant si un cas 12 est présent dans la grille
+  # Cas 12 : île à 4 avec deux des îles voisines à 1
+  #
+  # === Return
+  #
+  # true si le cas est vérifié pour un des sommets de la grille, false sinon
+  def estCas12()
+    compteur = 0
+    @grille.sommets.each_with_index do |x, i|
+      if x.valeur == 4 && @nb_voisins[i] == 3
+        x.getListeVoisins().each do |v|
+          if v.valeur == 1
+            compteur += 1
+          end
+        end
+        if compteur == 2
+          return true
+        end
       end
     end
     return false
