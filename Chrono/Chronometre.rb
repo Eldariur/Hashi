@@ -23,6 +23,8 @@ class Chrono
 
 	# Accesseur get sur l'attribut stop.
   attr:stop, false
+  #Autorise les autres classes à ecrire
+
 	# Accesseur get et set sur l'attribut total.
   attr:total, true
 	# Accesseur get sur l'attribut base.
