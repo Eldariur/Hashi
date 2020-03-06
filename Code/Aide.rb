@@ -37,6 +37,11 @@ class Aide
 
   ## Partie méthodes
 
+  ## Méthode sans paramètres renvoyant l'id de l'aide correspondant au cas le plus simple présent dans la grille
+  #
+  # === Return
+  #
+	# * +id+ : Id de l'aide
   def afficherId()
     puts @id
   end
@@ -55,16 +60,16 @@ class Aide
       return 1
     elsif estCas2()
       return 2
-    # elsif estCas3()
-    #   return 3
+    elsif estCas3()
+      return 3
     # elsif estCas4()
     #   return 4
-    # elsif estCas5()
-    #   return 5
-    # elsif estCas6()
-    #   return 6
-    # elsif estCas7()
-    #   return 7
+    elsif estCas5()
+      return 5
+    elsif estCas6()
+      return 6
+    elsif estCas7()
+      return 7
     # elsif estCas8()
     #   return 8
     # elsif estCas9()
@@ -90,6 +95,10 @@ class Aide
 
   ## Méthode testant si un cas 1 est présent dans la grille
   # Cas 1 : île à 8 restante dans la grille
+  #
+  # === Return
+  #
+  # true si le cas est vérifié pour un des sommets de la grille, false sinon
   def estCas1()
     @grille.sommets.each do |x|
       if x.valeur == 8
@@ -99,6 +108,12 @@ class Aide
     return false
   end
 
+  ## Méthode testant si un cas 2 est présent dans la grille
+  # Cas 2 : île à 6 avec 3 îles voisines restante dans la grille
+  #
+  # === Return
+  #
+  # true si le cas est vérifié pour un des sommets de la grille, false sinon
   def estCas2()
     @grille.sommets.each_with_index do |x, i|
       if x.valeur == 6 && @nb_voisins[i] == 3
@@ -108,9 +123,92 @@ class Aide
     return false
   end
 
-  #def estCas3()
+  ## Méthode testant si un cas 3 est présent dans la grille
+  # Cas 3 : île à 4 avec 2 îles voisines restante dans la grille
   #
-  #end
+  # === Return
+  #
+  # true si le cas est vérifié pour un des sommets de la grille, false sinon
+  def estCas3()
+    @grille.sommets.each_with_index do |x, i|
+      if x.valeur == 4 && @nb_voisins[i] == 2
+        return true
+      end
+    end
+    return false
+  end
+
+  ## Méthode testant si un cas 4 est présent dans la grille
+  # Cas 4 : île avec une seule île voisine restante dans la grille
+  #
+  # === Return
+  #
+  # true si le cas est vérifié pour un des sommets de la grille, false sinon
+  def estCas4()
+    @grille.sommets.each_with_index do |x, i|
+      if @nb_voisins[i] == 1
+        return true
+      end
+    end
+    return false
+  end
+
+  ## Méthode testant si un cas 5 est présent dans la grille
+  # Cas 5 : île à 7 avec une île voisine à 1 restante dans la grille
+  #
+  # === Return
+  #
+  # true si le cas est vérifié pour un des sommets de la grille, false sinon
+  def estCas5()
+    @grille.sommets.each_with_index do |x, i|
+      if x.valeur == 7
+        x.getListeVoisins().each do |v|
+          if v.valeur == 1
+            return true
+          end
+        end
+      end
+    end
+    return false
+  end
+
+  ## Méthode testant si un cas 6 est présent dans la grille
+  # Cas 6 : île à 5 avec trois îles voisines dont une à 1 restante dans la grille
+  #
+  # === Return
+  #
+  # true si le cas est vérifié pour un des sommets de la grille, false sinon
+  def estCas6()
+    @grille.sommets.each_with_index do |x, i|
+      if x.valeur == 5 && @nb_voisins[i] == 3
+        x.getListeVoisins().each do |v|
+          if v.valeur == 1
+            return true
+          end
+        end
+      end
+    end
+    return false
+  end
+
+  ## Méthode testant si un cas 7 est présent dans la grille
+  # Cas 7 : île à 3 avec deux îles voisines dont une à 1 restante dans la grille
+  #
+  # === Return
+  #
+  # true si le cas est vérifié pour un des sommets de la grille, false sinon
+  def estCas7()
+    @grille.sommets.each_with_index do |x, i|
+      if x.valeur == 3 && @nb_voisins[i] == 2
+        x.getListeVoisins().each do |v|
+          if v.valeur == 1
+            return true
+          end
+        end
+      end
+    end
+    return false
+  end
 
 end
 
