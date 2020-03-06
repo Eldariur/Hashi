@@ -78,6 +78,6 @@ class Sommet
     end
 
     def afficher()
-        print("O")
+        print(@valeur)
     end
 end
