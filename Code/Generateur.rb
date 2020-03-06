@@ -30,8 +30,12 @@ class Generateur
         end
         @sommets = Array.new()
         #(@longueur * @largeur) / (@sommets.length() + 1) * 100;
-        @nbSommet = ((@longueur * @largeur / 100).ceil * @densite).ceil
-        puts "Dimensions : "+@longueur.to_s+"x"+@largeur.to_s+"("+(@largeur*@longueur).to_s+"cases). Nb sommets attendus "+@nbSommet.to_s+" pour une densite de "+@densite.to_s
+        #puts "longueur : " + @longueur.to_s
+        #puts "largeur : " + @largeur.to_s
+        #puts "densite : " + @densite.to_s
+        #puts "longueur*largeur.ceil : " + (((@longueur * @largeur).to_f / 100).ceil).to_s
+        @nbSommet = (((@longueur * @largeur).to_f  / 100).ceil * @densite).ceil
+        #puts "Dimensions : "+@longueur.to_s+"x"+@largeur.to_s+"("+(@largeur*@longueur).to_s+"cases). Nb sommets attendus "+@nbSommet.to_s+" pour une densite de "+@densite.to_s
         @grille = Grille.creer(@longueur, @largeur)
     end
 
