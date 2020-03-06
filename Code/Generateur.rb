@@ -12,7 +12,7 @@ class Generateur
         @sommets = Array.new()
         #(@longueur * @largeur) / (@sommets.length() + 1) * 100;
         @densite = densite
-        @nbSommet = (@longueur * @largeur / @densite).ceil
+        @nbSommet = (@longueur * @largeur / 100 * @densite).ceil
         @grille = Grille.creer(@longueur, @largeur)
     end
 
@@ -47,7 +47,10 @@ class Generateur
         return (xDuSommet + lesAdds[0] < @longueur) && (xDuSommet + lesAdds[0] >= 0) && (yDuSommet + lesAdds[1] < @largeur) && (yDuSommet + lesAdds[1] >= 0)
     end
 
-    def creeUneGrille(nbSommet)
+    def creeUneGrille(nbSommet=nil)
+        if(nbSommet != nil)
+          @nbSommet = nbSommet
+        end
         self.vider()
         tableauDeAdd = [[0,1],[0,-1],[1,0],[-1,0]]
         sommetPlaces = 0
