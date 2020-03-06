@@ -54,28 +54,27 @@ class Sommet
     #
     # * +nb_voisins+ : Nombre de voisins du sommet
     def compterVoisins()
-      nb_voisins = 0
-      voisins = [false, false, false, false]
+        nb_voisins = 0
+        voisins = [false, false, false, false]
 
-      @position.grille.sommets.each |x|
+        @position.grille.sommets.each |x|
         if @position.x > x.x && @position.y == x.y
-          voisins[0] = true
+            voisins[0] = true
         elsif @position.x < x.x && @position.y == x.y
-          voisins[1] = true
+            voisins[1] = true
         elsif @position.y > x.y && @position.x == x.x
-          voisins[2] = true
+            voisins[2] = true
         elsif @position.y < x.y && @position.x == x.x
-          voisins[3] = true
+            voisins[3] = true
         end
-      end
 
-      for bool in voisins
-        if bool
-          nb_voisins += 1
+        for bool in voisins
+            if bool
+                nb_voisins += 1
+            end
         end
-      end
 
-      return nb_voisins
+        return nb_voisins
     end
 
     def afficher()
