@@ -87,7 +87,7 @@ class Grille
 
   #SUPPRIME TOUTE les aretes de la grille
   def clearAretes()
-      @listeArete.each{ |arete|
+      @aretes.each{ |arete|
           arete.supprimer()
       }
   end

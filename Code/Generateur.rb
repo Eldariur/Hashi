@@ -24,10 +24,14 @@ class Generateur
         @grille = Grille.creer(@longueur, @largeur)
     end
 
-    def getGrilleSansSommet()
+    def getGrilleSansArete()
         cloneGrille = Marshal.load(Marshal.dump(@grille))
         cloneGrille.clearAretes()
         return cloneGrille
+    end
+
+    def getGrilleAvecArete()
+        return @grille
     end
 
     def placerLabelSommet()
@@ -83,17 +87,22 @@ class Generateur
 
             caseOuPlacer = @grille.getCase(xDuSommet + 2*lesAdds[0], yDuSommet + 2*lesAdds[1])
             puts "on part de " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
+            puts "contenu de la case de depart : " + caseOuPlacer.contenu.class.to_s
             #on garde la case juste devant (celle entre sommetChoisi.position et caseOuPlacer) pour tester histoire de pas passer par desuus quelque chose
-            caseEntreLesDeux = caseOuPlacer = @grille.getCase(xDuSommet + lesAdds[0], yDuSommet + lesAdds[1])
+            caseEntreLesDeux = @grille.getCase(xDuSommet + lesAdds[0], yDuSommet + lesAdds[1])
 
             #si la case est vide alors on commence a essayer de placer
+            puts "Case Ou Placer avant if: " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
             if caseOuPlacer.estVide() && caseEntreLesDeux.estVide()
+                puts "Case Ou Placer après if: " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
                 sommetAEtePlace = false
                 aEteCancel = false
                 loop {
                     break if sommetAEtePlace || aEteCancel
 
-                    boolArretViaRand = rand(0..1) == 1
+                    puts "Case Ou Placer : " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
+
+                    boolArretViaRand = rand(0..1) == 1 #TODO
                     boolSommetJusteDevant = estDansMatrice(caseOuPlacer, lesAdds) && @grille.caseSuivante(caseOuPlacer, lesAdds[0], lesAdds[1]).class == Sommet
                     boolAreteJusteDevant = estDansMatrice(caseOuPlacer, lesAdds) && @grille.caseSuivante(caseOuPlacer, lesAdds[0], lesAdds[1]).class == Sommet
                     boolBordDuTableau = !(estDansMatrice(caseOuPlacer, lesAdds))
@@ -233,6 +242,7 @@ class Generateur
             @grille.afficher()
         }
 
-        return @grille
+        placerLabelSommet()
+        return getGrilleSansArete()
     end
 end
