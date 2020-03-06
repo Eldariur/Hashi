@@ -26,7 +26,7 @@ class Chrono
   ##Partie Autorisation
   #Autorise les autres classes à lire
   attr:stop, false
-	#Autorise les autres classes à ecrire
+  #Autorise les autres classes à ecrire
   attr:total, true
   #Autorise les autres classes à lire
   attr:base, false
