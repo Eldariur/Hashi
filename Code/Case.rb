@@ -31,6 +31,12 @@ class Case
         end
     end
 
+    def estVoisin(caseTest)
+        difX = @x - caseTest.x
+        difY = @y - caseTest.y
+        return difX.abs() == 1 || difY.abs() == 1
+    end
+
     #teste si la case est vide
     def estVide()
       return @contenu==nil
