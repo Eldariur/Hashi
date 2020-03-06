@@ -57,16 +57,17 @@ class Sommet
         nb_voisins = 0
         voisins = [false, false, false, false]
 
-        @position.grille.sommets.each |x|
-        if @position.x > x.x && @position.y == x.y
-            voisins[0] = true
-        elsif @position.x < x.x && @position.y == x.y
-            voisins[1] = true
-        elsif @position.y > x.y && @position.x == x.x
-            voisins[2] = true
-        elsif @position.y < x.y && @position.x == x.x
-            voisins[3] = true
+      @position.grille.sommets.each do |x|
+        if @position.x > x.position.x && @position.y == x.position.y
+          voisins[0] = true
+        elsif @position.x < x.position.x && @position.y == x.position.y
+          voisins[1] = true
+        elsif @position.y > x.position.y && @position.x == x.position.x
+          voisins[2] = true
+        elsif @position.y < x.position.y && @position.x == x.position.x
+          voisins[3] = true
         end
+      end
 
         for bool in voisins
             if bool
