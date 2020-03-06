@@ -12,7 +12,7 @@ class Generateur
         @sommets = Array.new()
         #(@longueur * @largeur) / (@sommets.length() + 1) * 100;
         @densite = densite
-        @nbSommet = (@longueur * @largeur / @densite).ceil
+        @nbSommet = (@longueur * @largeur / 100 * @densite).ceil
         @grille = Grille.creer(@longueur, @largeur)
     end
 
@@ -24,10 +24,14 @@ class Generateur
         @grille = Grille.creer(@longueur, @largeur)
     end
 
-    def getGrilleSansSommet()
+    def getGrilleSansArete()
         cloneGrille = Marshal.load(Marshal.dump(@grille))
         cloneGrille.clearAretes()
         return cloneGrille
+    end
+
+    def getGrilleAvecArete()
+        return @grille
     end
 
     def placerLabelSommet()
@@ -43,7 +47,10 @@ class Generateur
         return (xDuSommet + lesAdds[0] < @longueur) && (xDuSommet + lesAdds[0] >= 0) && (yDuSommet + lesAdds[1] < @largeur) && (yDuSommet + lesAdds[1] >= 0)
     end
 
-    def creeUneGrille(nbSommet)
+    def creeUneGrille(nbSommet=nil)
+        if(nbSommet != nil)
+          @nbSommet = nbSommet
+        end
         self.vider()
         tableauDeAdd = [[0,1],[0,-1],[1,0],[-1,0]]
         sommetPlaces = 0
@@ -57,8 +64,8 @@ class Generateur
 
         #boucle qui place des sommets
         loop {
-            break if sommetPlaces >= nbSommet
-            puts "nbSommets : " + sommetPlaces.to_s + "/" + nbSommet.to_s
+            break if sommetPlaces >= @nbSommet
+            puts "nbSommets : " + sommetPlaces.to_s + "/" + @nbSommet.to_s
             #on commence par choisir un sommet
             indiceSommetChoisi = rand(0...@sommets.size())
             sommetChoisi = @sommets[indiceSommetChoisi]
@@ -83,17 +90,22 @@ class Generateur
 
             caseOuPlacer = @grille.getCase(xDuSommet + 2*lesAdds[0], yDuSommet + 2*lesAdds[1])
             puts "on part de " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
+            puts "contenu de la case de depart : " + caseOuPlacer.contenu.class.to_s
             #on garde la case juste devant (celle entre sommetChoisi.position et caseOuPlacer) pour tester histoire de pas passer par desuus quelque chose
-            caseEntreLesDeux = caseOuPlacer = @grille.getCase(xDuSommet + lesAdds[0], yDuSommet + lesAdds[1])
+            caseEntreLesDeux = @grille.getCase(xDuSommet + lesAdds[0], yDuSommet + lesAdds[1])
 
             #si la case est vide alors on commence a essayer de placer
+            puts "Case Ou Placer avant if: " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
             if caseOuPlacer.estVide() && caseEntreLesDeux.estVide()
+                puts "Case Ou Placer après if: " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
                 sommetAEtePlace = false
                 aEteCancel = false
                 loop {
                     break if sommetAEtePlace || aEteCancel
 
-                    boolArretViaRand = rand(0..1) == 1
+                    puts "Case Ou Placer : " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
+
+                    boolArretViaRand = rand(0..1) == 1 #TODO
                     boolSommetJusteDevant = estDansMatrice(caseOuPlacer, lesAdds) && @grille.caseSuivante(caseOuPlacer, lesAdds[0], lesAdds[1]).class == Sommet
                     boolAreteJusteDevant = estDansMatrice(caseOuPlacer, lesAdds) && @grille.caseSuivante(caseOuPlacer, lesAdds[0], lesAdds[1]).class == Sommet
                     boolBordDuTableau = !(estDansMatrice(caseOuPlacer, lesAdds))
@@ -233,6 +245,7 @@ class Generateur
             @grille.afficher()
         }
 
-        return @grille
+        placerLabelSommet()
+        return getGrilleSansArete()
     end
 end
