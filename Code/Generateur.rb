@@ -6,12 +6,27 @@ class Generateur
     #@grille
     #@sommets
 
-    def initialize(longueur, largeur, densite)
-        @longueur = longueur
-        @largeur = largeur
+    def initialize(difficulty, longueur=nil, largeur=nil, densite=nil)
+        case difficulty
+          when "easy"
+            @longueur = 5+rand(1..3)+rand(1..3)
+            @largeur = 5+rand(1..3)+rand(1..3)
+            @densite = 5+rand(1..3)
+          when "normal"
+            @longueur = 10+rand(0..3)+rand(0..3)+rand(0..3)
+            @largeur = 10+rand(0..3)+rand(0..3)+rand(0..3)
+            @densite = 10+rand(1..3)
+          when "hard"
+            @longueur = 10+rand(0..3)+rand(0..3)+rand(0..3)+rand(0..3)+rand(0..3)
+            @largeur = 10+rand(0..3)+rand(0..3)+rand(0..3)+rand(0..3)+rand(0..3)
+            @densite = 12+rand(1..3)
+          else
+            @longueur = longueur
+            @largeur = largeur
+            @densite = densite
+        end
         @sommets = Array.new()
         #(@longueur * @largeur) / (@sommets.length() + 1) * 100;
-        @densite = densite
         @nbSommet = (@longueur * @largeur / 100 * @densite).ceil
         @grille = Grille.creer(@longueur, @largeur)
     end
