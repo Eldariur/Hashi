@@ -33,12 +33,12 @@ class Generateur
         end
         @sommets = Array.new()
         #(@longueur * @largeur) / (@sommets.length() + 1) * 100;
-        #puts "longueur : " + @longueur.to_s
-        #puts "largeur : " + @largeur.to_s
-        #puts "densite : " + @densite.to_s
-        #puts "longueur*largeur.ceil : " + (((@longueur * @largeur).to_f / 100).ceil).to_s
+        ##puts "longueur : " + @longueur.to_s
+        ##puts "largeur : " + @largeur.to_s
+        ##puts "densite : " + @densite.to_s
+        ##puts "longueur*largeur.ceil : " + (((@longueur * @largeur).to_f / 100).ceil).to_s
         @nbSommet = (((@longueur * @largeur).to_f  / 100).ceil * @densite).ceil
-        #puts "Dimensions : "+@longueur.to_s+"x"+@largeur.to_s+"("+(@largeur*@longueur).to_s+"cases). Nb sommets attendus "+@nbSommet.to_s+" pour une densite de "+@densite.to_s
+        ##puts "Dimensions : "+@longueur.to_s+"x"+@largeur.to_s+"("+(@largeur*@longueur).to_s+"cases). Nb sommets attendus "+@nbSommet.to_s+" pour une densite de "+@densite.to_s
         @grille = Grille.creer(@longueur, @largeur)
     end
 
@@ -91,14 +91,14 @@ class Generateur
         #boucle qui place des sommets
         loop {
             break if sommetPlaces >= @nbSommet
-            puts "nbSommets : " + sommetPlaces.to_s + "/" + @nbSommet.to_s
+            #puts "nbSommets : " + sommetPlaces.to_s + "/" + @nbSommet.to_s
             #on commence par choisir un sommet
             indiceSommetChoisi = rand(0...@sommets.size())
             sommetChoisi = @sommets[indiceSommetChoisi]
             xDuSommet = sommetChoisi.position.x
             yDuSommet = sommetChoisi.position.y
 
-            puts "on part du sommet " + indiceSommetChoisi.to_s + " en " + sommetChoisi.position.x.to_s + ":" + sommetChoisi.position.y.to_s
+            #puts "on part du sommet " + indiceSommetChoisi.to_s + " en " + sommetChoisi.position.x.to_s + ":" + sommetChoisi.position.y.to_s
 
             #on choisi une direction
             #tant que la direction marche pas on continu d'en choisir une
@@ -111,26 +111,26 @@ class Generateur
                 boolYaUneCase2Devant = estDansMatrice(sommetChoisi.position, [lesAdds[0]*2, lesAdds[1]*2])
                 break if boolYaUneCaseDevant && boolYaUneCase2Devant
             }
-            puts "direction choisie : " + lesAdds.to_s
+            #puts "direction choisie : " + lesAdds.to_s
             #break
 
             caseOuPlacer = @grille.getCase(xDuSommet + 2*lesAdds[0], yDuSommet + 2*lesAdds[1])
-            puts "on part de " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
-            puts "contenu de la case de depart : " + caseOuPlacer.contenu.class.to_s
+            #puts "on part de " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
+            #puts "contenu de la case de depart : " + caseOuPlacer.contenu.class.to_s
             #on garde la case juste devant (celle entre sommetChoisi.position et caseOuPlacer) pour tester histoire de pas passer par desuus quelque chose
             caseEntreLesDeux = @grille.getCase(xDuSommet + lesAdds[0], yDuSommet + lesAdds[1])
 
             #si la case est vide alors on commence a essayer de placer
-            puts "Case Ou Placer avant if: " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
+            #puts "Case Ou Placer avant if: " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
             if caseOuPlacer.estVide() && caseEntreLesDeux.estVide()
-                puts "Case Ou Placer après if: " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
+                #puts "Case Ou Placer après if: " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
                 sommetAEtePlace = false
                 aEteCancel = false
                 loop {
                     break if sommetAEtePlace || aEteCancel
 
-                    puts "Case Ou Placer : " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
-                    puts "Contenu : " + caseOuPlacer.class.to_s
+                    #puts "Case Ou Placer : " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
+                    #puts "Contenu : " + caseOuPlacer.class.to_s
 
                     boolArretViaRand = rand(0..2) == 1 #TODO
                     boolSommetJusteDevant = estDansMatrice(caseOuPlacer, lesAdds) && @grille.caseSuivante(caseOuPlacer, lesAdds[0], lesAdds[1]).contenu.class == Sommet
@@ -142,7 +142,7 @@ class Generateur
                         #on test les bool un par un
 
                         if boolSommetJusteDevant
-                            puts "Arret via sommet devant en " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
+                            #puts "Arret via sommet devant en " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
                             #on recule jusqu'a trouver une case bien
                             while caseOuPlacer.aSommetVoisin()
                                 caseOuPlacer = @grille.getCase(caseOuPlacer.x - lesAdds[0], caseOuPlacer.y - lesAdds[1])
@@ -162,7 +162,7 @@ class Generateur
                                 sommetAEtePlace = true
                             end
                         elsif boolAreteJusteDevant
-                            puts "Arret via areteDevant en " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
+                            #puts "Arret via areteDevant en " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
                             #si on peut placer sur l'arete on le fait, sinon on recul
                             caseDArete = @grille.getCase(caseOuPlacer.x + lesAdds[0], caseOuPlacer.y + lesAdds[1])
                             if !(caseDArete.aSommetVoisin()) && caseDArete.contenu.getTaille() >= 3
@@ -201,10 +201,10 @@ class Generateur
                                 end
                             end
                         elsif boolBordDuTableau
-                            puts "Arret via bord " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
+                            #puts "Arret via bord " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
                             if !(caseOuPlacer.aSommetVoisin())
                                 nouveauSommet = Sommet.creer(0, caseOuPlacer)
-                                puts "sommet crée"
+                                #puts "sommet crée"
                                 @sommets.push(nouveauSommet)
                                 sommetPlaces += 1
 
@@ -223,7 +223,7 @@ class Generateur
                                     aEteCancel = true
                                 else
                                     nouveauSommet = Sommet.creer(0, caseOuPlacer)
-                                    puts "sommet crée après recul en " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
+                                    #puts "sommet crée après recul en " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
                                     @sommets.push(nouveauSommet)
                                     sommetPlaces += 1
 
@@ -233,7 +233,7 @@ class Generateur
                                 end
                             end
                         elsif boolArretViaRand
-                            puts "Arret via rand en " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
+                            #puts "Arret via rand en " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
                             #on verifie qu'il n'y a rien autour
                             if !(caseOuPlacer.aSommetVoisin())
                                 nouveauSommet = Sommet.creer(0, caseOuPlacer)
@@ -267,7 +267,7 @@ class Generateur
                     else
                         #si aucun arret est lancé, on avance juste
                         caseOuPlacer = @grille.caseSuivante(caseOuPlacer, lesAdds[0], lesAdds[1])
-                        puts "on a avancé"
+                        #puts "on a avancé"
                     end
                 }
             end
