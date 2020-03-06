@@ -87,9 +87,10 @@ class Grille
 
   #SUPPRIME TOUTE les aretes de la grille
   def clearAretes()
-      @aretes.each{ |arete|
-          arete.supprimer()
-      }
+      laTaille = @aretes.size()
+      for i in 0...laTaille do
+          @aretes[0].supprimer()
+      end
   end
 
   #Donne la case suivante par rapport a la case en respectant les valeurs addX et addY données
