@@ -9,17 +9,20 @@ class Generateur
     def initialize(difficulty, longueur=nil, largeur=nil, densite=nil)
         case difficulty
           when "easy"
-            @longueur = 5+rand(1..3)+rand(1..3)
-            @largeur = 5+rand(1..3)+rand(1..3)
-            @densite = 5+rand(1..3)
+            #Taille 8 à 12, densite 7 à 9
+            @longueur = 6+rand(1..3)+rand(1..3)
+            @largeur = 6+rand(1..3)+rand(1..3)
+            @densite = 6+rand(1..3)
           when "normal"
+            #Taille 10 à 19, densite 9 à 11
             @longueur = 10+rand(0..3)+rand(0..3)+rand(0..3)
             @largeur = 10+rand(0..3)+rand(0..3)+rand(0..3)
-            @densite = 10+rand(1..3)
+            @densite = 8+rand(1..3)
           when "hard"
+            #Taille 10 à 25, densite 11 à 13
             @longueur = 10+rand(0..3)+rand(0..3)+rand(0..3)+rand(0..3)+rand(0..3)
             @largeur = 10+rand(0..3)+rand(0..3)+rand(0..3)+rand(0..3)+rand(0..3)
-            @densite = 12+rand(1..3)
+            @densite = 10+rand(1..3)
           else
             @longueur = longueur
             @largeur = largeur
