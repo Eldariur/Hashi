@@ -38,7 +38,7 @@ class Arete
                 @listeCase.push(caseAct)
                 caseAct.contenu = self
                 caseAct = laMatrice[caseAct.x + plusX, caseAct.y + plusY]
-            break if caseAct.contenu == @sommet2
+            break if caseAct.class == NilClass || caseAct.contenu == @sommet2
         end
         @sommet1.ajouterArete(self)
         @sommet2.ajouterArete(self)
@@ -47,7 +47,7 @@ class Arete
 
     #recupere la taille de l'arrete (nombre de case parcourue)
     def getTaille()
-        return listeCase.length()
+        return @listeCase.length()
     end
 
     #renvoie le sommet1 de l'arrete

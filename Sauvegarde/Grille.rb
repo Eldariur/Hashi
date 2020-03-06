@@ -1,36 +1,29 @@
 require "matrix"
 
+# Cette classe represente une grille.
 class Grille
+  #@longueur -> Sa longueur.
+  #@largeur -> La largeur.
+  #@table -> la matrice.
+  #@sommets -> Sa liste de sommets.
 
-
-
-  ## Partie variables d'instance
-
-  # @longueur
-  # @largeur
-  # @table
-  # @sommets
-
-  #Creer un objet Grille proprement
+  # Creer une grille.
+  # === Parametre
+  # * +longueur+ : Longueur de la grille (nombre de case).
+  # * +largeur+ : Largeur de la grille (nombre de case).
   def self.creer(longueur, largeur)
       objet = new(longueur, largeur)
       objet.completerInitialize()
       return objet
   end
 
-  #privatise le new et completerInitialize
+  # Privatise le new.
   private_class_method :new
 
-
-
-  # Partie initialize
-
-  # Initialisation de la classe Grille
-  #
+  # Initialisation de la classe Grille.
   # === Parametre
-  #
-  # * +longueur+ : Longueur de la grille (nombre de case)
-  # * +largeur+ : Largeur de la grille (nombre de case)
+  # * +longueur+ : Longueur de la grille (nombre de case).
+  # * +largeur+ : Largeur de la grille (nombre de case).
   def initialize(longueur, largeur)
     @longueur = longueur
     @largeur = largeur
@@ -39,19 +32,10 @@ class Grille
     @aretes = Array.new()
   end
 
+  # Accesseur get et set sur l'attribut table et sommets.
+  attr_accessor :table, :sommets
 
-
-  ## Partie accesseurs
-
-  # Accesseur get et set sur l'attribut table
-  attr_accessor :table, :sommets, :longueur, :largeur
-
-
-
-  ## Partie méthodes
-
-  #Complete le initialize
-  #ajoute self comme grille des cases de la matrice
+  # Complete le initialize.
   def completerInitialize()
     for i in 0...@longueur do
       for j in 0...@largeur do
@@ -60,51 +44,67 @@ class Grille
     end
   end
 
-  #renvoie la case en x, y
+  # Renvoie la case en x, y.
+  # === Return
+  # * +case+ : case La case correspondante.
   def getCase(x, y)
       return @table[x, y]
   end
 
-  #ajoute le sommet a la liste de sommet
+  # Ajoute le sommet a la liste de sommet.
   def addSommet(sommet)
       @sommets.push(sommet)
   end
 
-  #ajoute l'arrete a la liste d'arrete
+  # Ajoute l'arrete a la liste d'arete.
   def addArete(arete)
       @aretes.push(arete)
   end
 
-  #retire une arrete de la liste de ses arrete
+  # Retire une arete de la liste de ses aretes.
   def retirerSommet(sommet)
       @sommets.delete(sommet)
   end
 
-  #retire une arrete de la liste de ses arrete
+  # Retire une arete de la liste de ses aretes.
   def retirerArete(arete)
       @aretes.delete(arete)
   end
 
-  #SUPPRIME TOUTE les aretes de la grille
+  #SUPPRIME TOUTES les aretes de la grille.
   def clearAretes()
-      laTaille = @aretes.size()
-      for i in 0...laTaille do
-          @aretes[0].supprimer()
-      end
+      @listeArete.each{ |arete|
+          arete.supprimer()
+      }
   end
 
-  #Donne la case suivante par rapport a la case en respectant les valeurs addX et addY données
-#renvoie nil si la fameuse case est en dehors des lmites
-def caseSuivante(lacase, addX, addY)
-    leX = lacase.x
-    leY = lacase.y
-    if leX + addX >= @longueur|| leY + addY >= @largeur || leX + addX < 0|| leY + addY < 0
-        return nil
+  # Renvoie le nombre de sommets dans la grille.
+  # === Return
+  # * +@sommets.count()+ : @sommets.count() Le nombre de sommets dans la grille.
+  def nbSommets()
+    return @sommets.count()
+  end
+
+  # Cette methode calcule si il y a un chemin hamiltonien dans la grille.
+  # === Return
+  # * +boolean+ : boolean Le resultat de l'evaluation.
+  def testHamilton()
+    marque = Hash.new(false)
+    stack = Array.new()
+
+    stack.push(@sommets.first)
+    while !stack.empty? do
+      temp = stack.shift
+      temp.getVoisins().each do |v|
+        if(marque[v] == false) then stack.push(v) end
+      end
+      marque[temp] = true
     end
-    return getCase(leX + addX, leY + addY)
+    if(marque.count != self.nbSommets()) then return false
+    else return true end
+  end
 
-end
-
+	# Cette methode redefini to_s pour afficher une grille.
   def to_s()
     s = ""
     ajout = false
@@ -135,7 +135,7 @@ end
     return s + "\n"
   end
 
-  #affiche la grille, case par case
+  # Affiche la grille.
   def afficher()
      0.upto(@largeur + 1) do
        print("$")
