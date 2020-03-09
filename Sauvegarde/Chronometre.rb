@@ -78,6 +78,12 @@ class Chrono
 
     return res
   end
+
+	# Cette methode redefini to_s pour afficher un chronometre.
+	def to_s()
+		self.to_chrono()
+	end
+	
 end
 
 # Methode de test pour arreter le chronomètre en fonction d'un temps en secondes donné.
