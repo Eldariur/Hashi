@@ -44,15 +44,11 @@ class Grille
   ## Partie accesseurs
 
   # Accesseur get et set sur l'attribut table
-  attr_accessor :table, :sommets, :aretes
+  attr_accessor :table, :sommets, :longueur, :largeur, :aretes
 
 
 
-  # Partie méthodes
-
-  def getCase(x, y)
-    return @table[x, y]
-  end
+  ## Partie méthodes
 
   #Complete le initialize
   #ajoute self comme grille des cases de la matrice
@@ -91,10 +87,41 @@ class Grille
 
   #SUPPRIME TOUTE les aretes de la grille
   def clearAretes()
-      @listeArete.each{ |arete|
-          arete.supprimer()
-      }
+      laTaille = @aretes.size()
+      for i in 0...laTaille do
+          @aretes[0].supprimer()
+      end
   end
+
+  #Donne la case suivante par rapport a la case en respectant les valeurs addX et addY données
+#renvoie nil si la fameuse case est en dehors des lmites
+def caseSuivante(lacase, addX, addY)
+    leX = lacase.x
+    leY = lacase.y
+    if leX + addX >= @longueur|| leY + addY >= @largeur || leX + addX < 0|| leY + addY < 0
+        return nil
+    end
+    return getCase(leX + addX, leY + addY)
+
+end
+
+#compte et renvoie le nombre d'aretes simple
+def nbAreteSimple
+    nbSimple = 0
+    @aretes.each { |x|
+        x.estDouble == false ? nbSimple += 1 : false
+    }
+    return nbSimple
+end
+
+#compte et renvoie le nombre d'arete double
+def nbAreteDouble
+    nbDouble = 0
+    @aretes.each { |x|
+        x.estDouble ? nbDouble += 1 : false
+    }
+    return nbDouble
+end
 
   def to_s()
     s = ""
@@ -144,6 +171,11 @@ class Grille
        print("$")
      end
      puts("$")
+  end
+
+
+  def afficherProportionsAretes
+    puts "Nombre d'arêtes : "+@aretes.size().to_s+".\nArêtes simples : "+self.nbAreteSimple().to_s+".\nArêtes double : "+self.nbAreteDouble().to_s+"\nPorpotions : "+(self.nbAreteSimple().to_f / (self.nbAreteSimple() + self.nbAreteDouble()) * 100).round(2).to_s+"% d'aretes simple."
   end
 
 end

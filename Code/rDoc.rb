@@ -25,7 +25,7 @@ class Doc
 
 	# Initialisation de la class Doc
 	#
-	# === Parametre
+	# === Paramètres
 	#
 	# * +param1+ : param1 petite définition(Son nom,une date ...)
 	# * +param2+ : param2 idem
@@ -60,7 +60,9 @@ class Doc
 
 	## Methode avec param mais renvoie rien
 	# Détails juste ce que réalise la méthode
-	# === Parametre
+	#
+	# === Paramètres
+	#
 	# * +param+ : param avec une description
 	def test2(param)
 		puts @nom2.to_s + " " + param
@@ -68,10 +70,13 @@ class Doc
 
 	## Methode avec param plus renvoie
 	# Détails juste ce que réalise la méthode
-	# === Parametre
+	#
+	# === Paramètres
+	#
 	# * +param+ : param avec une description
 	#
 	# === Return
+	#
 	# * +@nom3+ : param avec une description
 	def test3(param)
 		puts @nom2 +param
@@ -83,7 +88,7 @@ class Doc
 		print "coucou"
 	end
 
-	## Methode non commenter, pour tester rDoc -C
+	## Méthode non commentée, pour tester rDoc -C
 
 end
 
