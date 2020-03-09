@@ -3,7 +3,7 @@ class Sommet
     #@position
     #@valeur
     attr_accessor :position
-    attr_reader :valeur
+    attr_reader :valeur, :listeArete, :complet
     #creer un Sommet proprement
     def self.creer(valeur, position)
         objet = new(valeur, position)
@@ -16,6 +16,7 @@ class Sommet
         @valeur = valeur
         @position = position #la case dans lequel est le sommet
         @listeArete = Array.new()
+        @complet = false
     end
 
     #ajoute self comme contenu de la case a laquelle il est et a la liste de sommet de la grille
@@ -27,6 +28,11 @@ class Sommet
     #defini la valeur du sommet
     def setValeur(valeur)
         @valeur = valeur
+    end
+
+    #defini si un sommet est complet ou non
+    def setComplet(condition)
+        @complet = condition
     end
 
     #compte le nombre d'aretes

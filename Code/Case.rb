@@ -1,16 +1,23 @@
 class Case
 
     attr_accessor :x, :y, :grille, :contenu
+    attr_reader :surbrillance
     def initialize(x, y)
         @x = x
         @y = y
         @grille = nil
         @contenu = nil
+        @surbrillance = false
     end
 
     #defini la case a laquelle appartient la case
     def setGrille(grille)
         @grille = grille
+    end
+
+    #defini la case a laquelle appartient la case
+    def setSurbri(condition)
+        @surbrillance = condition
     end
 
     #ajoute un objet en contenu de la case
