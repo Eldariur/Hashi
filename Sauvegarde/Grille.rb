@@ -34,6 +34,7 @@ class Grille
 
   # Accesseur get et set sur l'attribut table et sommets.
   attr_accessor :table, :sommets
+  attr_reader :longueur, :largeur
 
   # Complete le initialize.
   def completerInitialize()

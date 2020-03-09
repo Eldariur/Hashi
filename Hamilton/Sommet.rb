@@ -1,13 +1,13 @@
 # Cette classe represente un sommet.
 class Sommet
-  #@listArete -> Sa liste d'arete.
+  #@listeArete -> Sa liste d'arete.
   #@position -> Sa position.
   #@valeur -> Sa valeur.
 
   # Accesseur get et set sur l'attribut position.
   attr_accessor :position
   # Accesseur get sur l'attribut valeur.
-  attr_reader :valeur
+  attr_reader :valeur, :listeArete
 
   # Privatise le new.
   private_class_method :new
