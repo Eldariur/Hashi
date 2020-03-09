@@ -24,13 +24,15 @@ load "Aide.rb"
 
 # Grille de test pour Aide
 grille = Grille.creer(5, 5)
-sommet8 = Sommet.creer(3, grille.getCase(2, 2))
+sommet8 = Sommet.creer(4, grille.getCase(2, 2))
 sommet2_1 = Sommet.creer(1, grille.getCase(0, 2))
 sommet2_2 = Sommet.creer(1, grille.getCase(2, 0))
-#sommet2_3 = Sommet.creer(3, grille.getCase(4, 2))
+sommet2_3 = Sommet.creer(2, grille.getCase(4, 2))
 #sommet2_4 = Sommet.creer(2, grille.getCase(2, 4))
 aide = Aide.creer(grille)
 
-#Affichage des grilles + aides
+# Affichage des grilles + aides
 grille.afficher()
 aide.afficherId()
+
+# Tester estCas13()

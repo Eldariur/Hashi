@@ -7,6 +7,7 @@ class Generateur
     #@sommets
 
     def initialize(difficulty, longueur=nil, largeur=nil, densite=nil)
+        @chanceDeDouble = 1
         case difficulty
           when "easy"
             #Taille 8 à 12, densite 7 à 9
@@ -18,11 +19,13 @@ class Generateur
             @longueur = 10+rand(0..3)+rand(0..3)+rand(0..3)
             @largeur = 10+rand(0..3)+rand(0..3)+rand(0..3)
             @densite = 8+rand(1..3)
+            @chanceDeDouble = 2
           when "hard"
             #Taille 10 à 25, densite 11 à 13
             @longueur = 10+rand(0..3)+rand(0..3)+rand(0..3)+rand(0..3)+rand(0..3)
             @largeur = 10+rand(0..3)+rand(0..3)+rand(0..3)+rand(0..3)+rand(0..3)
             @densite = 10+rand(1..3)
+            @chanceDeDouble = 3
           else
             @longueur = longueur
             @largeur = largeur
@@ -30,12 +33,12 @@ class Generateur
         end
         @sommets = Array.new()
         #(@longueur * @largeur) / (@sommets.length() + 1) * 100;
-        #puts "longueur : " + @longueur.to_s
-        #puts "largeur : " + @largeur.to_s
-        #puts "densite : " + @densite.to_s
-        #puts "longueur*largeur.ceil : " + (((@longueur * @largeur).to_f / 100).ceil).to_s
+        ##puts "longueur : " + @longueur.to_s
+        ##puts "largeur : " + @largeur.to_s
+        ##puts "densite : " + @densite.to_s
+        ##puts "longueur*largeur.ceil : " + (((@longueur * @largeur).to_f / 100).ceil).to_s
         @nbSommet = (((@longueur * @largeur).to_f  / 100).ceil * @densite).ceil
-        #puts "Dimensions : "+@longueur.to_s+"x"+@largeur.to_s+"("+(@largeur*@longueur).to_s+"cases). Nb sommets attendus "+@nbSommet.to_s+" pour une densite de "+@densite.to_s
+        ##puts "Dimensions : "+@longueur.to_s+"x"+@largeur.to_s+"("+(@largeur*@longueur).to_s+"cases). Nb sommets attendus "+@nbSommet.to_s+" pour une densite de "+@densite.to_s
         @grille = Grille.creer(@longueur, @largeur)
     end
 
@@ -88,14 +91,14 @@ class Generateur
         #boucle qui place des sommets
         loop {
             break if sommetPlaces >= @nbSommet
-            puts "nbSommets : " + sommetPlaces.to_s + "/" + @nbSommet.to_s
+            #puts "nbSommets : " + sommetPlaces.to_s + "/" + @nbSommet.to_s
             #on commence par choisir un sommet
             indiceSommetChoisi = rand(0...@sommets.size())
             sommetChoisi = @sommets[indiceSommetChoisi]
             xDuSommet = sommetChoisi.position.x
             yDuSommet = sommetChoisi.position.y
 
-            puts "on part du sommet " + indiceSommetChoisi.to_s + " en " + sommetChoisi.position.x.to_s + ":" + sommetChoisi.position.y.to_s
+            #puts "on part du sommet " + indiceSommetChoisi.to_s + " en " + sommetChoisi.position.x.to_s + ":" + sommetChoisi.position.y.to_s
 
             #on choisi une direction
             #tant que la direction marche pas on continu d'en choisir une
@@ -108,28 +111,28 @@ class Generateur
                 boolYaUneCase2Devant = estDansMatrice(sommetChoisi.position, [lesAdds[0]*2, lesAdds[1]*2])
                 break if boolYaUneCaseDevant && boolYaUneCase2Devant
             }
-            puts "direction choisie : " + lesAdds.to_s
+            #puts "direction choisie : " + lesAdds.to_s
             #break
 
             caseOuPlacer = @grille.getCase(xDuSommet + 2*lesAdds[0], yDuSommet + 2*lesAdds[1])
-            puts "on part de " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
-            puts "contenu de la case de depart : " + caseOuPlacer.contenu.class.to_s
+            #puts "on part de " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
+            #puts "contenu de la case de depart : " + caseOuPlacer.contenu.class.to_s
             #on garde la case juste devant (celle entre sommetChoisi.position et caseOuPlacer) pour tester histoire de pas passer par desuus quelque chose
             caseEntreLesDeux = @grille.getCase(xDuSommet + lesAdds[0], yDuSommet + lesAdds[1])
 
             #si la case est vide alors on commence a essayer de placer
-            puts "Case Ou Placer avant if: " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
+            #puts "Case Ou Placer avant if: " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
             if caseOuPlacer.estVide() && caseEntreLesDeux.estVide()
-                puts "Case Ou Placer après if: " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
+                #puts "Case Ou Placer après if: " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
                 sommetAEtePlace = false
                 aEteCancel = false
                 loop {
                     break if sommetAEtePlace || aEteCancel
 
-                    puts "Case Ou Placer : " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
-                    puts "Contenu : " + caseOuPlacer.class.to_s
+                    #puts "Case Ou Placer : " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
+                    #puts "Contenu : " + caseOuPlacer.class.to_s
 
-                    boolArretViaRand = rand(0..1) == 1 #TODO
+                    boolArretViaRand = rand(0..2) == 1 #TODO
                     boolSommetJusteDevant = estDansMatrice(caseOuPlacer, lesAdds) && @grille.caseSuivante(caseOuPlacer, lesAdds[0], lesAdds[1]).contenu.class == Sommet
                     boolAreteJusteDevant = estDansMatrice(caseOuPlacer, lesAdds) && @grille.caseSuivante(caseOuPlacer, lesAdds[0], lesAdds[1]).contenu.class == Arete
                     boolBordDuTableau = !(estDansMatrice(caseOuPlacer, lesAdds))
@@ -139,7 +142,7 @@ class Generateur
                         #on test les bool un par un
 
                         if boolSommetJusteDevant
-                            puts "Arret via sommet devant en " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
+                            #puts "Arret via sommet devant en " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
                             #on recule jusqu'a trouver une case bien
                             while caseOuPlacer.aSommetVoisin()
                                 caseOuPlacer = @grille.getCase(caseOuPlacer.x - lesAdds[0], caseOuPlacer.y - lesAdds[1])
@@ -154,12 +157,12 @@ class Generateur
                                 @sommets.push(nouveauSommet)
                                 sommetPlaces += 1
 
-                                nouvelleArete = Arete.creer(nouveauSommet, sommetChoisi, rand(0..1) == 1) #TODO
+                                nouvelleArete = Arete.creer(nouveauSommet, sommetChoisi, rand(0..@chanceDeDouble) == 0) #TODO
 
                                 sommetAEtePlace = true
                             end
                         elsif boolAreteJusteDevant
-                            puts "Arret via areteDevant en " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
+                            #puts "Arret via areteDevant en " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
                             #si on peut placer sur l'arete on le fait, sinon on recul
                             caseDArete = @grille.getCase(caseOuPlacer.x + lesAdds[0], caseOuPlacer.y + lesAdds[1])
                             if !(caseDArete.aSommetVoisin()) && caseDArete.contenu.getTaille() >= 3
@@ -171,12 +174,12 @@ class Generateur
                                 @sommets.push(nouveauSommet)
                                 sommetPlaces += 1
 
-                                nouvelleArete = Arete.creer(nouveauSommet, sommetChoisi, rand(0..1) == 1) #TODO
+                                nouvelleArete = Arete.creer(nouveauSommet, sommetChoisi, rand(0..@chanceDeDouble) == 0) #TODO
 
                                 sommetAEtePlace = true
 
-                                nouvelleArete1 = Arete.creer(sommet1, nouveauSommet, rand(0..1) == 1) #TODO
-                                nouvelleArete2 = Arete.creer(sommet2, nouveauSommet, rand(0..1) == 1) #TODO
+                                nouvelleArete1 = Arete.creer(sommet1, nouveauSommet, rand(0..@chanceDeDouble) == 0) #TODO
+                                nouvelleArete2 = Arete.creer(sommet2, nouveauSommet, rand(0..@chanceDeDouble) == 0) #TODO
                             else
                                 #sinon on recule jusqu'a trouver un truc bien
                                 while caseOuPlacer.aSommetVoisin()
@@ -192,20 +195,20 @@ class Generateur
                                     @sommets.push(nouveauSommet)
                                     sommetPlaces += 1
 
-                                    nouvelleArete = Arete.creer(nouveauSommet, sommetChoisi, rand(0..1) == 1) #TODO
+                                    nouvelleArete = Arete.creer(nouveauSommet, sommetChoisi, rand(0..@chanceDeDouble) == 0) #TODO
 
                                     sommetAEtePlace = true
                                 end
                             end
                         elsif boolBordDuTableau
-                            puts "Arret via bord " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
+                            #puts "Arret via bord " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
                             if !(caseOuPlacer.aSommetVoisin())
                                 nouveauSommet = Sommet.creer(0, caseOuPlacer)
-                                puts "sommet crée"
+                                #puts "sommet crée"
                                 @sommets.push(nouveauSommet)
                                 sommetPlaces += 1
 
-                                nouvelleArete = Arete.creer(nouveauSommet, sommetChoisi, rand(0..1) == 1) #TODO
+                                nouvelleArete = Arete.creer(nouveauSommet, sommetChoisi, rand(0..@chanceDeDouble) == 0) #TODO
 
                                 sommetAEtePlace = true
                             else
@@ -220,24 +223,24 @@ class Generateur
                                     aEteCancel = true
                                 else
                                     nouveauSommet = Sommet.creer(0, caseOuPlacer)
-                                    puts "sommet crée après recul en " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
+                                    #puts "sommet crée après recul en " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
                                     @sommets.push(nouveauSommet)
                                     sommetPlaces += 1
 
-                                    nouvelleArete = Arete.creer(nouveauSommet, sommetChoisi, rand(0..1) == 1) #TODO
+                                    nouvelleArete = Arete.creer(nouveauSommet, sommetChoisi, rand(0..@chanceDeDouble) == 0) #TODO
 
                                     sommetAEtePlace = true
                                 end
                             end
                         elsif boolArretViaRand
-                            puts "Arret via rand en " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
+                            #puts "Arret via rand en " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
                             #on verifie qu'il n'y a rien autour
                             if !(caseOuPlacer.aSommetVoisin())
                                 nouveauSommet = Sommet.creer(0, caseOuPlacer)
                                 @sommets.push(nouveauSommet)
                                 sommetPlaces += 1
 
-                                nouvelleArete = Arete.creer(nouveauSommet, sommetChoisi, rand(0..1) == 1) #TODO
+                                nouvelleArete = Arete.creer(nouveauSommet, sommetChoisi, rand(0..@chanceDeDouble) == 0) #TODO
 
                                 sommetAEtePlace = true
                             else
@@ -255,7 +258,7 @@ class Generateur
                                     @sommets.push(nouveauSommet)
                                     sommetPlaces += 1
 
-                                    nouvelleArete = Arete.creer(nouveauSommet, sommetChoisi, rand(0..1) == 1) #TODO
+                                    nouvelleArete = Arete.creer(nouveauSommet, sommetChoisi, rand(0..@chanceDeDouble) == 0) #TODO
 
                                     sommetAEtePlace = true
                                 end
@@ -264,7 +267,7 @@ class Generateur
                     else
                         #si aucun arret est lancé, on avance juste
                         caseOuPlacer = @grille.caseSuivante(caseOuPlacer, lesAdds[0], lesAdds[1])
-                        puts "on a avancé"
+                        #puts "on a avancé"
                     end
                 }
             end
