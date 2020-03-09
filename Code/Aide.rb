@@ -80,10 +80,10 @@ class Aide
       return 11
     elsif estCas12()
       return 12
-    # elsif estCas13()
-    #   return 13
-    # elsif estCas14()
-    #   return 14
+    elsif estCas13()
+      return 13
+    elsif estCas14()
+      return 14
     # elsif estCas15()
     #   return 15
     # elsif estCas16()
@@ -240,20 +240,7 @@ class Aide
   ## Méthode testant si un cas 9 est présent dans la grille
   # Cas 9 : île à 5 avec trois îles voisines restante dans la grille
   #
-  # === Returncompteur = 0
-    @grille.sommets.each_with_index do |x, i|
-      if x.valeur == 4 && @nb_voisins[i] == 3
-        x.getListeVoisins().each do |v|
-          if v.valeur == 1
-            compteur += 1
-          end
-        end
-        if compteur == 2
-          return true
-        end
-      end
-    end
-    return false
+  # === Return
   #
   # true si le cas est vérifié pour un des sommets de la grille, false sinon
   def estCas9()
@@ -350,7 +337,7 @@ class Aide
   end
 
   ## Méthode testant si un cas 13 est présent dans la grille
-  # Cas 13 : île à 1 avec n îles voisines dont n-1 îles à 1 restante
+  # Cas 13 : île à 1 avec n îles voisines dont n-1 îles à 1 restantes
   #
   # === Return
   #
@@ -364,12 +351,52 @@ class Aide
             compteur += 1
           end
         end
-        if compteur == @nb_voisins[i] - 1
+        if compteur == @nb_voisins[i] - 1 && compteur != 0
           return true
         end
       end
     end
     return false
+  end
+
+  ## Méthode testant si un cas 14 est présent dans la grille
+  # Cas 14 : île à 2 avec deux îles voisines dont une île à 2 restante
+  #
+  # === Return
+  #
+  # true si le cas est vérifié pour un des sommets de la grille, false sinon
+  def estCas14()
+    voisinDeux = false
+    @grille.sommets.each_with_index do |x, i|
+      if x.valeur == 2 && x.compterVoisins() == 2
+        x.getListeVoisins().each do |v|
+          if v.valeur == 2
+            voisinDeux = true
+          end
+        end
+      end
+    end
+    return voisinDeux
+  end
+
+  ## Méthode testant si un cas 15 est présent dans la grille
+  # Cas 15 : 
+  #
+  # === Return
+  #
+  # true si le cas est vérifié pour un des sommets de la grille, false sinon
+  def estCas15()
+    voisinDeux = false
+    @grille.sommets.each_with_index do |x, i|
+      if x.valeur == 2 && x.compterVoisins() == 2
+        x.getListeVoisins().each do |v|
+          if v.valeur == 2
+            voisinDeux = true
+          end
+        end
+      end
+    end
+    return voisinDeux
   end
 
 end
