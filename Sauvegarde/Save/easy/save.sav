@@ -396,5 +396,10 @@ grille: &1 !ruby/object:Grille
   - *20
   - *21
   - *22
-estHypothese: true
-chronometre: 
+estHypothese: false
+chronometre: !ruby/object:Chrono
+  stop: 1
+  total: 0.356474944
+  base: 2020-03-09 11:44:34.660144195 +01:00
+  temp: 0
+difficulte: 1
