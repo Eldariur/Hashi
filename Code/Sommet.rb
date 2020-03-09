@@ -141,4 +141,13 @@ class Sommet
     def afficher()
         print(@valeur)
     end
+
+    ## Méthode calculant le nombre d'arêtes restantes dont un sommet a besoin afin d'être complet
+    #
+    # === Return
+    #
+    # Le nombre d'arêtes restantes
+    def connectionsRestantes()
+      return @valeur - @listeArete.size()
+    end
 end
