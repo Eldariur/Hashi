@@ -44,7 +44,7 @@ class Grille
   ## Partie accesseurs
 
   # Accesseur get et set sur l'attribut table
-  attr_accessor :table, :sommets
+  attr_accessor :table, :sommets, :aretes
 
 
 

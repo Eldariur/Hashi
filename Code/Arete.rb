@@ -70,6 +70,10 @@ class Arete
         return @estDouble
     end
 
+    def setDouble(condition)
+        @estDouble = condition
+    end
+
     #supprime proprement l'arrete
     def supprimer()
         loop do
