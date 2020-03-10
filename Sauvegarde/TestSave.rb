@@ -49,7 +49,25 @@ threads << Thread.new {stopsaisie(c)}
 threads.each { |thr| thr.join }
 puts 'Resultat : '+ c.to_chrono() + ' | Total : ' + c.resultat().to_s
 
-save = Sauvegarde.nouvelle(grille,c,true)
-save.getSaveName()
-save.sauvegarder()
+save1 = Sauvegarde.nouvelle(grille,c,1)
+save2 = Sauvegarde.nouvelle(grille,c,2)
+save3 = Sauvegarde.nouvelle(grille,c,3)
+save4 = Sauvegarde.nouvelle(grille,c,3,true)
+
+puts c
+
+save1.sauvegarder()
+save2.sauvegarder()
+save3.sauvegarder()
+save4.sauvegarder()
+
+saveres = Sauvegarde.nouvelle(nil,nil,1,false).charger()
+puts saveres
+saveres = Sauvegarde.nouvelle(nil,nil,2,false).charger()
+puts saveres
+saveres = Sauvegarde.nouvelle(nil,nil,3,false).charger()
+puts saveres
+saveres = Sauvegarde.nouvelle(nil,nil,3,true).charger()
+puts saveres
+
 #Sauvegarde.deleteAllSave()

@@ -5,6 +5,7 @@ class Sauvegarde
   #@grille -> La grille sauvegardé.
   #@chronometre -> Le chronometre sauvegardé.
   #@estHypothese -> Si la sauvegarde est une hypothese ou non.
+  #@difficulte -> La difficulte de la sauvegarde.
 
   # Privatise le new.
   private_class_method :new
@@ -14,11 +15,16 @@ class Sauvegarde
   # * +grille+ : grille La grille a sauvegarder.
   # * +chrono+ : chrono Le chronometre a sauvegarder.
   # * +hypothese+ : hypothese Le choix d'une sauvegarde pour une hypothese ou non.
-  def initialize(grille, chrono, hypothese = false)
+  def initialize(grille, chrono, difficulte, hypothese = false)
     @grille = grille
     @estHypothese = hypothese
-    if(!@estHypothese) then @chronometre = chronometre
-    else @chronometre = nil end
+    if(@estHypothese == false) then
+      @chronometre = chrono
+      @difficulte = difficulte
+    else
+      @chronometre = nil
+      @difficulte = nil
+    end
   end
 
   # Creer un nouveau chronomètre.
@@ -26,8 +32,8 @@ class Sauvegarde
   # * +grille+ : grille La grille a sauvegarder.
   # * +chrono+ : chrono Le chronometre a sauvegarder.
   # * +hypothese+ : hypothese Le choix d'une sauvegarde pour une hypothese ou non.
-  def Sauvegarde.nouvelle(grille, chrono, hypothese = false)
-    new(grille, chrono, hypothese)
+  def Sauvegarde.nouvelle(grille, chrono, difficulte, hypothese = false)
+    new(grille, chrono, difficulte, hypothese)
   end
 
   # Accesseur get sur l'attribut grille.
@@ -51,30 +57,67 @@ class Sauvegarde
     return @chronometre
   end
 
-  def getSaveName()
-    res = Time.now().to_s.split(' ')
-    res.pop
-    return res.join('_')
-  end
-
   def sauvegarder()
     dump = YAML::dump(self)
     if(@estHypothese) then
-      file = File.open('Save/temp', 'w')
+      file = File.open(File.path('Save/temp.sav'), 'w')
     else
-      file = File.open(File.path('Save/'+self.getSaveName()), 'w')
+      case @difficulte
+        when 1
+          file = File.open(File.path('Save/easy/save.sav'), 'w')
+        when 2
+          file = File.open(File.path('Save/normal/save.sav'), 'w')
+        when 3
+          file = File.open(File.path('Save/hard/save.sav'), 'w')
+        end
     end
-    file.puts dump
+    file.write dump
     file.close
   end
 
   def charger()
+    if(@estHypothese) then
+      save = YAML.load(File.read('Save/temp.sav'))
+    else
+      case @difficulte
+        when 1
+          save = YAML.load(File.read('Save/easy/save.sav'))
+        when 2
+          save = YAML.load(File.read('Save/normal/save.sav'))
+        when 3
+          save = YAML.load(File.read('Save/hard/save.sav'))
+      end
+    end
     return save
   end
 
+=begin  def nouvelleHypothese(grille){
+    save = Sauvegarde.nouvelle(grille,nil,nil)
+    save.sauvegarder()
+  }
+
+  def validerHypothese()
+
+  end
+
+  def annulerHypothese(){
+
+  }
+=end
   def Sauvegarde.deleteAllSave()
-    Dir.glob('Save/*').each do |f|
-      File.delete(f)
+    Dir.glob('**/*.sav').each do |e|
+      puts "Removed : "+e.to_s
+      if(File.file?(e)) then
+        File.delete(e)
+      end
+    end
+  end
+
+  def to_s
+    if(@estHypothese) then
+      "Sauvegarde : \n-Grille :\n#{@grille}-estHypo = #{@estHypothese}\n---------------------------------------------------\n"
+    else
+      "Sauvegarde : \n-Grille :\n#{@grille}-estHypo = #{@estHypothese}\n-Chrono = #{@chronometre} \n-Difficulte = #{@difficulte}\n---------------------------------------------------\n"
     end
   end
 
