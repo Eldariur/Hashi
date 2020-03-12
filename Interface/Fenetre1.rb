@@ -41,13 +41,13 @@ class Fenetre < Gtk::Window
 		tbl = Gtk::Table.new(x,y,FALSE)
 
 		# #####################################
-		# @grilleTest = Grille.creer(5, 5)
-		# sommet11 = Sommet.creer(4, @grilleTest.getCase(0, 0))
-		# sommet12 = Sommet.creer(2, @grilleTest.getCase(2, 0))
-		# sommet13 = Sommet.creer(2, @grilleTest.getCase(0, 3))
-		# arete11 = Arete.creer(sommet11, sommet13)
-		# arete12 = Arete.creer(sommet11, sommet12,true)
-		#arete11 = Arete.creer(sommet11, sommet13)
+		# @grilleTest = Grille.@creer(5, 5)
+		# sommet11 = Sommet.@creer(4, @grilleTest.getCase(0, 0))
+		# sommet12 = Sommet.@creer(2, @grilleTest.getCase(2, 0))
+		# sommet13 = Sommet.@creer(2, @grilleTest.getCase(0, 3))
+		# arete11 = Arete.@creer(sommet11, sommet13)
+		# arete12 = Arete.@creer(sommet11, sommet12,true)
+		#arete11 = Arete.@creer(sommet11, sommet13)
 		# @grilleTest.addSommet(sommet11)
 		# @grilleTest.addSommet(sommet12)
 		# @grilleTest.addSommet(sommet13)
@@ -55,34 +55,34 @@ class Fenetre < Gtk::Window
 		# #####################################
 
 		# #####################################
-		# @grilleTest = Grille.creer(5, 5)
-		# sommet11 = Sommet.creer(2, @grilleTest.getCase(2, 0))
-		# sommet12 = Sommet.creer(2, @grilleTest.getCase(0, 2))
-		# sommet13 = Sommet.creer(8, @grilleTest.getCase(2, 2))
-		# sommet14 = Sommet.creer(2, @grilleTest.getCase(4, 2))
-		# sommet15= Sommet.creer(2, @grilleTest.getCase(2, 4))
-		# arete11 = Arete.creer(sommet11, sommet13)
-		# arete12 = Arete.creer(sommet13, sommet14,true)
+		# @grilleTest = Grille.@creer(5, 5)
+		# sommet11 = Sommet.@creer(2, @grilleTest.getCase(2, 0))
+		# sommet12 = Sommet.@creer(2, @grilleTest.getCase(0, 2))
+		# sommet13 = Sommet.@creer(8, @grilleTest.getCase(2, 2))
+		# sommet14 = Sommet.@creer(2, @grilleTest.getCase(4, 2))
+		# sommet15= Sommet.@creer(2, @grilleTest.getCase(2, 4))
+		# arete11 = Arete.@creer(sommet11, sommet13)
+		# arete12 = Arete.@creer(sommet13, sommet14,true)
 		# #####################################
 
 		#####################################
 		gene = Generateur.new(nil,10, 10, 10)
 		@grilleTest = gene.creeUneGrille()
-		# sommet11 = Sommet.creer(1, @grilleTest.getCase(0, 0))
-		# sommet12 = Sommet.creer(2, @grilleTest.getCase(2, 0))
-		# sommet13 = Sommet.creer(3, @grilleTest.getCase(4, 0))
-		# sommet14 = Sommet.creer(4, @grilleTest.getCase(0, 2))
-		# sommet15= Sommet.creer(5, @grilleTest.getCase(4, 2))
-		# sommet16= Sommet.creer(6, @grilleTest.getCase(2, 4))
-		# arete11 = Arete.creer(sommet11, sommet12)
-		# arete12 = Arete.creer(sommet12, sommet13)
+		# sommet11 = Sommet.@creer(1, @grilleTest.getCase(0, 0))
+		# sommet12 = Sommet.@creer(2, @grilleTest.getCase(2, 0))
+		# sommet13 = Sommet.@creer(3, @grilleTest.getCase(4, 0))
+		# sommet14 = Sommet.@creer(4, @grilleTest.getCase(0, 2))
+		# sommet15= Sommet.@creer(5, @grilleTest.getCase(4, 2))
+		# sommet16= Sommet.@creer(6, @grilleTest.getCase(2, 4))
+		# arete11 = Arete.@creer(sommet11, sommet12)
+		# arete12 = Arete.@creer(sommet12, sommet13)
 		#####################################
 
 		@longueur = @grilleTest.longueur
 		@largeur = @grilleTest.largeur
 
 			@darea = Gtk::DrawingArea.new
-
+			@cr = nil
 			@nbClick = 0
 
 
@@ -109,7 +109,7 @@ class Fenetre < Gtk::Window
 			# 	x+=10
 			# 	y+=10
 			# 	puts "dessine une ligne"
-			# 	@cr = @darea.window.create_cairo_context
+			# 	@cr = @darea.window.@create_cairo_context
 			#
 			# 	draw_maLigne(@cr,x,y,150,60)
 			# end
@@ -139,7 +139,7 @@ class Fenetre < Gtk::Window
 		paddingX = 50
 		paddingY = 25
 		@nbClick += 1
-		cr = @darea.window.create_cairo_context
+		#@cr = @darea.window.create_cairo_context
 	  #       puts(event.x, event.y).to_s+"=="
 		# 			if(@nbClick == 0)
 		# 				puts "test"
@@ -151,8 +151,8 @@ class Fenetre < Gtk::Window
 		# 				@@x2 = event.x
 		# 				@@y2 = event.y
 		# 				puts "trace une ligne entre deux points x="+@@x1.to_s+" y="+@@y1.to_s+" x2="+@@x2.to_s+"y2="+@@y2.to_s
-		# 				cr.set_source_rgb 0.2, 0.23, 0.9
-		# 				draw_maLigne(cr,@@x1,@@y1,@@x2,@@y2)
+		# 				@cr.set_source_rgb 0.2, 0.23, 0.9
+		# 				draw_maLigne(@cr,@@x1,@@y1,@@x2,@@y2)
 		# 				@@x1 = @@x2
 		# 				@@y1 = @@y2
 		# 			end
@@ -163,7 +163,7 @@ class Fenetre < Gtk::Window
 		if(x > paddingX && x < paddingX+tailleCase*nbCase && y > paddingY && y < paddingY+tailleCase*nbCase) #si dans la grille
 			caseX = (x - paddingX).to_i/tailleCase
 			caseY = (y -paddingY).to_i/tailleCase
-			puts "vous avez cliqué sur la case ["+caseX.to_s+"]["+caseY.to_s+"]"
+			#puts "vous avez cliqué sur la case ["+caseX.to_s+"]["+caseY.to_s+"]"
 
 			caseTest = @grilleTest.getCase(caseX,caseY)
 
@@ -172,8 +172,8 @@ class Fenetre < Gtk::Window
 			caseTest = @grilleTest.getCase(caseX,caseY)
 			caseSom = nil
 			if(estSommet?(caseTest))
-				puts "C'est un sommet"
-				afficheSurbri
+				#puts "C'est un sommet"
+				#afficheSurbri
 				videSurbri
 				@caseSom = @grilleTest.getCase(caseX,caseY)
 
@@ -183,69 +183,70 @@ class Fenetre < Gtk::Window
 					@listeInter += getlisteInterCase(caseTest,v)
 					@listeInter.push("|")
 				}
-				puts "AFFICHAGE DE LA LISTE:"
-				afficheSurbri()
+				#puts "AFFICHAGE DE LA LISTE:"
+				#afficheSurbri()
 
 				@listeInter.each { |c|
-					puts c.to_s
+					#puts c.to_s
 					if(c != "|" && c.class != Sommet) #<==== FAUX
 						c.setSurbri(true)
-						puts "\t CASE "+c.to_s+" mis en surbrillance :"+c.surbrillance.to_s
+						#puts "\t CASE "+c.to_s+" mis en surbrillance :"+c.surbrillance.to_s
 					end
 				}
 			end
 
 			if(caseTest.surbrillance && caseTest.class != Sommet) # si la case est en surbrillance
-				puts "La case est en SURBRILLANCE"
+				# puts "La case est en SURBRILLANCE"
 				if(caseTest.contenu.class == Arete)
 					s1 = caseTest.contenu.getSommet1
 					s2 = caseTest.contenu.getSommet2
 
+					# puts "s1=>"+s1.to_s
+					# puts "s2=>"+s2.to_s
+
 					if(event.button == 1)
-						puts "click gauche "+event.button.to_s
-						puts "CREATION ARETE"
-						#creation arete
-						if(!caseTest.contenu.estDouble)
-							caseTest.contenu.setDouble(true)
-						end
+						rendComplet(s1,s2,caseTest.contenu)
 					# testAffichageGrille
 
 					elsif (event.button == 3)
-						puts "click droit "+event.button.to_s
-						puts "SUPPRESSION ARETE"
+						#puts "click droit "+event.button.to_s
+						#puts "SUPPRESSION ARETE"
+						caseTest.contenu.getSommet1.setComplet(false)
+						caseTest.contenu.getSommet2.setComplet(false)
 						if(caseTest.contenu.estDouble)
 							caseTest.contenu.setDouble(false)
-							caseTest.contenu.getSommet1.setComplet(false)
-							caseTest.contenu.getSommet2.setComplet(false)
+							# caseTest.contenu.getSommet1.setComplet(false)
+							# caseTest.contenu.getSommet2.setComplet(false)
 
 						else
 							caseTest.contenu.supprimer
 						end
 					else
-						puts "click :"+event.button.to_s
+						#puts "click :"+event.button.to_s
 					end
 				else
-					puts "la case est une case vide"
+					#puts "la case est une case vide"
+
 
 					if(event.button == 1 && caseTest.contenu.class != Sommet && caseTest.contenu.class != Arete)
-						puts "la case n'est pas un sommet"
+						# puts "la case n'est pas un sommet"
 						s1 = nil
 						s2 = nil
 						trouve1 = false
 						@listeInter.each_with_index do |c,i|
-							puts "==tour de boucle 1==="
+							#puts "==tour de boucle 1==="
 							if(c == caseTest)
-								puts "\tTROUVE !!!"+i.to_s+" ici"
+								#puts "\tTROUVE !!!"+i.to_s+" ici"
 								s1 = @listeInter[0]
 								i.upto(@listeInter.length-1) do |y|
-									puts "====recherche s2 ... ===="+@listeInter[y].to_s
+									#puts "====recherche s2 ... ===="+@listeInter[y].to_s
 
 
 									if(@listeInter[y] != "|")
 										if(@listeInter[y].contenu.class == Sommet)
 
 											if(!trouve1)
-												puts "T1"
+												#puts "T1"
 												s2 = @listeInter[y]
 												trouve1 = true
 											end
@@ -254,10 +255,10 @@ class Fenetre < Gtk::Window
 									end
 								end
 								if(s1 != nil && s2 != nil)
-									puts "---"+s1.to_s
-									puts "valeur "+s1.contenu.valeur.to_s
-									puts "---"+s2.to_s
-									puts "valeur "+s2.contenu.valeur.to_s
+									#puts "---"+s1.to_s
+									#puts "valeur "+s1.contenu.valeur.to_s
+									#puts "---"+s2.to_s
+									#puts "valeur "+s2.contenu.valeur.to_s
 								end
 
 
@@ -266,72 +267,91 @@ class Fenetre < Gtk::Window
 
 							end
 						end
+
 						caseTest = @grilleTest.getCase(caseX,caseY)
-						puts "case=>"+caseTest.contenu.class.to_s
-						puts "s1=>"+s1.to_s
-						puts "s2=>"+s2.to_s
+						# puts "case=>"+caseTest.contenu.class.to_s
+						# puts "s1=>"+s1.contenu.to_s
+						# puts "s2=>"+s2.contenu.to_s
 
 						if(s1 != nil && caseTest.contenu.class != Sommet)
-							if(s1.contenu.valeur > s1.contenu.compterArete && s2.contenu.valeur > s2.contenu.compterArete)#le sommet est complet
-								puts "CREATION ARETE..."
-								newA = Arete.creer(s1.contenu,s2.contenu) #<================ a voir
-							elsif(s1.contenu.valeur == s1.contenu.compterArete)
-								puts "SOMMET S1 COMPLET !"
-								s1.contenu.setComplet(true)
-							elsif(s2.contenu.valeur == s2.contenu.compterArete)
-								puts "SOMMET S2 COMPLET !"
-								s2.contenu.setComplet(true)
-							end
-
+							# puts "je rentre dans la condition"
+							rendComplet(s1.contenu,s2.contenu,caseTest.contenu)
 						end
-					puts "FIN CREATION ARETE..."
+							#puts "je sort de la condition"
+					#puts "FIN @crEATION ARETE..."
 					end
 				end
 			else
 
-				puts "LA CASE N'EST PAS SURBRI"
+				#puts "LA CASE N'EST PAS SURBRI"
 				videSurbri
 
 			end
-			drawSurbri(cr)
-			afficheEcran(cr)
+			drawSurbri()
+			afficheEcran()
+		end
+	end
+
+	#créé une arete si les sommets ne sont pas complet
+	def rendComplet(s1,s2,caseT)
+
+		if(s1.valeur > s1.compterArete && s2.valeur > s2.compterArete)#le sommet est complet
+			# puts "CREATION ARETE..."
+			if(caseT.class == Arete && !caseT.estDouble)
+				caseT.setDouble(true);
+			elsif(caseT.class != Arete)
+				newA = Arete.creer(s1,s2) #<================ a voir
+				#puts "s1: "+s1.compterArete.to_s
+			end
+
+		end
+		if(s1.valeur == s1.compterArete)
+			#puts "SOMMET S1 COMPLET !"
+			s1.setComplet(true)
+			#puts "le sommet s1"+s1.to_s+" est complet"
+		end
+		if(s2.valeur == s2.compterArete)
+			#puts "SOMMET S2 COMPLET !"
+			s2.setComplet(true)
+			#puts "le sommet s2"+s1.to_s+" est complet"
 		end
 	end
 
 	attr_accessor :nbClick, :listeInter, :caseSom
 
-	def drawSurbri(cr)
+	def drawSurbri()
 		# exemple 5 5
 		tailleCase = 50
 		nbCase = @largeur
 		paddingX = 50
 		paddingY = 25
+		#@cr = @darea.window.create_cairo_context
 
 		x1 = nil
 		x2 = nil
 		y1 = nil
 		y2 = nil
 
-		cr.set_source_rgb 0.9, 1, 0
+		@cr.set_source_rgb 0.9, 1, 0
 
 		@listeInter.each { |c|
 			if(c == "|")
 
-				puts "\tX1 = "+x1.to_s+" Y1 = "+y1.to_s+" X2 = "+x2.to_s+" Y2 = "+y2.to_s
+				#puts "\tX1 = "+x1.to_s+" Y1 = "+y1.to_s+" X2 = "+x2.to_s+" Y2 = "+y2.to_s
 				if(x1 < x2 || caseSom.x < x1)
-					puts "1"
-					cr.rectangle x1*tailleCase+paddingX-3+tailleCase, y1*tailleCase+paddingY+13, (x2-x1)*tailleCase-tailleCase+8, (y2-y1)*tailleCase+22
+					#puts "1"
+					@cr.rectangle x1*tailleCase+paddingX-3+tailleCase, y1*tailleCase+paddingY+13, (x2-x1)*tailleCase-tailleCase+8, (y2-y1)*tailleCase+22
 				elsif(x1 > x2 || caseSom.x > x1)
-					puts "2"
-					cr.rectangle x1*tailleCase+paddingX+5, y1*tailleCase+paddingY+13, (x2-x1)*tailleCase-8+tailleCase, (y2-y1)*tailleCase+22
+					#puts "2"
+					@cr.rectangle x1*tailleCase+paddingX+5, y1*tailleCase+paddingY+13, (x2-x1)*tailleCase-8+tailleCase, (y2-y1)*tailleCase+22
 				elsif(y1 < y2 || caseSom.y < y1)
-					puts "3"
-					cr.rectangle x1*tailleCase+paddingX+15, y1*tailleCase+paddingY-5+tailleCase, (x2-x1)*tailleCase+22, (y2-y1)*tailleCase-tailleCase+8
+					#puts "3"
+					@cr.rectangle x1*tailleCase+paddingX+15, y1*tailleCase+paddingY-5+tailleCase, (x2-x1)*tailleCase+22, (y2-y1)*tailleCase-tailleCase+8
 				else
-					puts "4"
-					cr.rectangle x1*tailleCase+paddingX+15, y1*tailleCase+paddingY+5, (x2-x1)*tailleCase+22, (y2-y1)*tailleCase-8+tailleCase
+					#puts "4"
+					@cr.rectangle x1*tailleCase+paddingX+15, y1*tailleCase+paddingY+5, (x2-x1)*tailleCase+22, (y2-y1)*tailleCase-8+tailleCase
 				end
-				puts "+ ==== +"
+				#puts "+ ==== +"
 				x1 = nil
 				y1 = nil
 			else
@@ -345,8 +365,9 @@ class Fenetre < Gtk::Window
 			end
 
 		}
-		cr.fill
-		cr.set_source_rgb 0,0,0
+		@cr.fill
+		@cr.set_source_rgb 0,0,0
+		@cr.stroke_preserve
 
 	end
 
@@ -356,7 +377,7 @@ class Fenetre < Gtk::Window
 			if(c != "|")
 				print c.surbrillance.to_s
 			end
-			puts
+
 		end
 	end
 
@@ -373,7 +394,7 @@ class Fenetre < Gtk::Window
 	end
 
 	def rechercherVoisins(c)
-		puts "recherche des voisins ..."
+		#puts "recherche des voisins ..."
 		tailleCase = 50
 		nbCase = @largeur
 		paddingX = 50
@@ -382,28 +403,28 @@ class Fenetre < Gtk::Window
 		listeVoisin = []
 		selfArete = false
 		listeA = c.contenu.listeArete
-		puts c.contenu.class
-		listeA.each {|a| puts "arete ===> "+a.to_s}
+		#puts c.contenu.class
+		#listeA.each {|a| puts "arete ===> "+a.to_s}
 
 		# OUEST
 		(c.x-1).downto 0 do |i|
 			j+=1
-			puts "test de la case ["+(c.x-j).to_s+"]["+c.y.to_s+"] i = "+j.to_s
+			#puts "test de la case ["+(c.x-j).to_s+"]["+c.y.to_s+"] i = "+j.to_s
 			caseTest = @grilleTest.getCase(c.x-j,c.y)
 			if(caseTest.contenu.class == Arete)
 				listeA.each do |a|
-					puts "1111111111111111111"
+					#puts "1111111111111111111"
 					if(a == caseTest.contenu)
-						puts "1 - selfArete !!!!! "
+						#puts "1 - selfArete !!!!! "
 						selfArete = true
 					end
 				end
 				if(!selfArete)
-					puts "INTERSECTION"
+					#puts "INTERSECTION"
 					break
 				end
 			elsif(estSommet?(caseTest))
-				puts "voisin trouvé à gauche"
+				#puts "voisin trouvé à gauche"
 				listeVoisin.push(caseTest)
 				break
 			end
@@ -414,23 +435,23 @@ class Fenetre < Gtk::Window
 		# EST
 		(c.x+1).upto nbCase-1 do |i|
 			j+=1
-			puts "test de la case ["+(c.x+j).to_s+"]["+c.y.to_s+"] i = "+j.to_s
+			#puts "test de la case ["+(c.x+j).to_s+"]["+c.y.to_s+"] i = "+j.to_s
 			caseTest = @grilleTest.getCase(c.x+j,c.y)
 			if(caseTest.contenu.class == Arete)
 				listeA.each do |a|
-					puts "22222222222222"
+					#puts "22222222222222"
 					if(a == caseTest.contenu)
-						puts "2 - selfArete !!!!! "
+						#puts "2 - selfArete !!!!! "
 						selfArete = true
 					end
 				end
 				if(!selfArete)
-					puts "INTERSECTION"
+					#puts "INTERSECTION"
 					break
 
 				end
 			elsif(estSommet?(caseTest))
-				puts "voisin trouvé à droite"
+				#puts "voisin trouvé à droite"
 				listeVoisin.push(caseTest)
 				break
 			end
@@ -440,24 +461,24 @@ class Fenetre < Gtk::Window
 		# NORD
 		(c.y-1).downto 0 do |i|
 			j+=1
-			puts "test de la case ["+c.x.to_s+"]["+(c.y-j).to_s+"] i = "+j.to_s
+			#puts "test de la case ["+c.x.to_s+"]["+(c.y-j).to_s+"] i = "+j.to_s
 			caseTest = @grilleTest.getCase(c.x,c.y-j)
 			if(caseTest.contenu.class == Arete)
 				listeA.each do |a|
-					puts "3333333333333333333"
+					#puts "3333333333333333333"
 					if(a == caseTest.contenu)
-						puts "3 - selfArete !!!!! "
+						#puts "3 - selfArete !!!!! "
 						selfArete = true
 					end
 				end
 				if(!selfArete)
-					puts "INTERSECTION"
+					#puts "INTERSECTION"
 					selfArete = false
 					break
 
 				end
 			elsif(estSommet?(caseTest))
-				puts "voisin trouvé en haut"
+				#puts "voisin trouvé en haut"
 				listeVoisin.push(caseTest)
 				break
 			end
@@ -467,23 +488,23 @@ class Fenetre < Gtk::Window
 		# # SUD
 		(c.y+1).upto nbCase-1 do |i|
 			j+=1
-			puts "test de la case ["+c.x.to_s+"]["+(c.y+j).to_s+"] i = "+j.to_s
+			#puts "test de la case ["+c.x.to_s+"]["+(c.y+j).to_s+"] i = "+j.to_s
 			caseTest = @grilleTest.getCase(c.x,c.y+j)
 			if(caseTest.contenu.class == Arete)
 				listeA.each do |a|
-					puts "4444444444444444444444"
+					#puts "4444444444444444444444"
 					if(a == caseTest.contenu)
-						puts "4 - selfArete !!!!! "
+						#puts "4 - selfArete !!!!! "
 						selfArete = true
 					end
 				end
 				if(!selfArete)
-					puts "INTERSECTION"
+					#puts "INTERSECTION"
 					break
 
 				end
 			elsif(estSommet?(caseTest))
-				puts "voisin trouvé en bas"
+				#puts "voisin trouvé en bas"
 				listeVoisin.push(caseTest)
 				break
 			end
@@ -501,53 +522,53 @@ class Fenetre < Gtk::Window
 		y2 = s2.y
 		listeDeCase = []
 		listeDeCase.push(s1)
-		testAffichageCoord(s1)
-		testAffichageCoord(s2)
+		# testAffichageCoord(s1)
+		# testAffichageCoord(s2)
 		ecart = 0
 		if(x1 < x2)
-			puts "x1<x2"
+			#puts "x1<x2"
 			ecart = x2-(x1)
-			puts ecart.to_s
+			#puts ecart.to_s
 			(x1+1).upto(x2-1) {|i|
 				listeDeCase.push(@grilleTest.getCase(i,y1))
 			}
 		elsif(x2 < x1)
-			puts "x1>x2"
+			#puts "x1>x2"
 			(x1-1).downto(x2+1) {|i|
 				listeDeCase.push(@grilleTest.getCase(i,y1))
 			}
 		elsif( y1 < y2)
-			puts "y1<y2"
+			#puts "y1<y2"
 			(y1+1).upto(y2-1) {|i|
 				listeDeCase.push(@grilleTest.getCase(x1,i))
 			}
 		else
 
-			puts "y1>y2"
+			#puts "y1>y2"
 			(y1-1).downto(y2+1) {|i|
 				listeDeCase.push(@grilleTest.getCase(x1,i))
 			}
 		end
 
-		puts "la liste des cases en surbrillance est"
-		listeDeCase.each {|c| puts c.x.to_s + " "+c.y.to_s}
-		puts "======"
+		#puts "la liste des cases en surbrillance est"
+		#listeDeCase.each {|c| #puts c.x.to_s + " "+c.y.to_s}
+		#puts "======"
 		listeDeCase.push(s2)
 		return listeDeCase
 	end
 
 	def videSurbri
-		afficheSurbri
+		#afficheSurbri
 		@listeInter.each {|c|
-			print "Une case=>"
+			#print "Une case=>"
 			if(c.class == Case)
 				c.setSurbri(false)
-				puts "\t CASE "+c.to_s+" mis en desurbrillance :"+c.surbrillance.to_s+"==="
+				#puts "\t CASE "+c.to_s+" mis en desurbrillance :"+c.surbrillance.to_s+"==="
 			end
 			#@listeInter.delete_at(@listeInter.index(c))
 		}
 		@listeInter = []
-		puts "===FINTER====="
+		#puts "===FINTER====="
 	end
 
 
@@ -566,15 +587,15 @@ class Fenetre < Gtk::Window
 		nbCase = @largeur
 		paddingX = 50
 		paddingY = 25
-		cr = @darea.window.create_cairo_context
+		#@cr = @darea.window.@create_cairo_context
 
 
 
 		0.upto nbCase do |i|
-			draw_maLigne(cr,i*tailleCase+paddingX,paddingY,i*tailleCase+paddingX,nbCase*tailleCase+paddingY)
+			draw_maLigne(i*tailleCase+paddingX,paddingY,i*tailleCase+paddingX,nbCase*tailleCase+paddingY)
 		end
 		0.upto nbCase do |i|
-			draw_maLigne(cr,paddingX,i*tailleCase+paddingY,nbCase*tailleCase+paddingX,i*tailleCase+paddingY)
+			draw_maLigne(paddingX,i*tailleCase+paddingY,nbCase*tailleCase+paddingX,i*tailleCase+paddingY)
 		end
 
 
@@ -605,46 +626,39 @@ class Fenetre < Gtk::Window
 	# end
 
 	def on_draw
-
-			cr = @darea.window.create_cairo_context
-			@cr = cr
-
-			#draw_colors cr
-			# draw_maLigne(@cr,50,50,150,60)
-			drawSommets(cr)
-			drawAretes(cr)
-			#cairo_line_to(cr, 10, 15)
-
+			@cr = @darea.window.create_cairo_context
+			afficheEcran()
 	end
+
 	attr_accessor :cr
 
-	def draw_colors cr
+	def draw_colors
 
-			cr.set_source_rgb 0.2, 0.23, 0.9
-			cr.move_to 10, 10
-			cr.line_to 150, 15
-			cr.move_to 150, 30
-			cr.stroke
+			@cr.set_source_rgb 0.2, 0.23, 0.9
+			@cr.move_to 10, 10
+			@cr.line_to 150, 15
+			@cr.move_to 150, 30
+			@cr.stroke
 
-			cr.set_source_rgb 0.9, 0.1, 0.1
-			cr.rectangle 130, 15, 90, 60
-			cr.fill
+			@cr.set_source_rgb 0.9, 0.1, 0.1
+			@cr.rectangle 130, 15, 90, 60
+			@cr.fill
 
-			cr.set_source_rgb 0.4, 0.9, 0.4
-			cr.rectangle 250, 15, 90, 60
-			cr.fill
+			@cr.set_source_rgb 0.4, 0.9, 0.4
+			@cr.rectangle 250, 15, 90, 60
+			@cr.fill
 	end
 
-	def drawSommets(cr)
+	def drawSommets()
 		# copie de tracerGrille
 		tailleCase = 50
 		nbCase = @largeur
 		paddingX = 50+17
 		paddingY = 25+35
+		#@cr = @darea.window.create_cairo_context
 
-			cr.set_font_size(25)
-			cr.set_source_rgb 0,0,0
-
+			@cr.set_font_size(25)
+			@cr.set_source_rgb 0,0,0
 			i = 0
 			j = 0
 			taillePix = 25
@@ -653,13 +667,14 @@ class Fenetre < Gtk::Window
 			x = s.position.x
 			y = s.position.y
 			if(s.complet)
-				draw_maLigne(cr,x*tailleCase+paddingX ,y*tailleCase+paddingY,x*tailleCase+paddingX+15 ,y*tailleCase+paddingY-25)
+				draw_maLigne(x*tailleCase+paddingX ,y*tailleCase+paddingY,x*tailleCase+paddingX+15 ,y*tailleCase+paddingY-25)
 			end
-			cr.move_to x*tailleCase+paddingX+30 ,y*tailleCase+paddingY-10
-			cr.arc x*tailleCase+paddingX+9,y*tailleCase+paddingY-10,20,0,2*Math::PI
+			@cr.move_to x*tailleCase+paddingX+30 ,y*tailleCase+paddingY-10
+			@cr.arc x*tailleCase+paddingX+9,y*tailleCase+paddingY-10,20,0,2*Math::PI
+			@cr.move_to x*tailleCase+paddingX ,y*tailleCase+paddingY
+			@cr.show_text(s.valeur.to_s)
 
-			cr.move_to x*tailleCase+paddingX ,y*tailleCase+paddingY
-			cr.show_text(s.valeur.to_s)
+			@cr.stroke_preserve
 
 
 
@@ -669,7 +684,7 @@ class Fenetre < Gtk::Window
 		}
 	end
 
-	def drawAretes(cr)
+	def drawAretes()
 		# copie de tracerGrille
 		tailleCase = 50
 		nbCase = @largeur
@@ -681,10 +696,11 @@ class Fenetre < Gtk::Window
 		varY = 0
 		minX = 0
 		minY = 0
+		#@cr = @darea.window.create_cairo_context
 
-		cr.set_source_rgb 0,0,0
+		@cr.set_source_rgb 0,0,0
 
-			puts "====="
+			#puts "====="
 			i = 0
 			j = 0
 			taillePix = 25
@@ -720,28 +736,28 @@ class Fenetre < Gtk::Window
 			end
 
 			if(!a.estDouble)# || 1)
-				cr.move_to x1*tailleCase+paddingX+varX, y1*tailleCase+paddingY+varY
-				cr.line_to x2*tailleCase+paddingX+varX-minX, y2*tailleCase+paddingY+varY-minY
-				cr.stroke_preserve
+				@cr.move_to x1*tailleCase+paddingX+varX, y1*tailleCase+paddingY+varY
+				@cr.line_to x2*tailleCase+paddingX+varX-minX, y2*tailleCase+paddingY+varY-minY
+				@cr.stroke_preserve
 			else
 					case verti
 					when true
-						puts "verticale"
-						cr.move_to x1*tailleCase+paddingX-5+varX, y1*tailleCase+paddingY+varY
-						cr.line_to x2*tailleCase+paddingX-5+varX-minX, y2*tailleCase+paddingY+varY-minY
-						cr.stroke_preserve
-						cr.move_to x1*tailleCase+paddingX+5+varX, y1*tailleCase+paddingY+varY
-						cr.line_to x2*tailleCase+paddingX+5+varX-minX, y2*tailleCase+paddingY+varY-minY
-						cr.stroke_preserve
+						#puts "verticale"
+						@cr.move_to x1*tailleCase+paddingX-5+varX, y1*tailleCase+paddingY+varY
+						@cr.line_to x2*tailleCase+paddingX-5+varX-minX, y2*tailleCase+paddingY+varY-minY
+						@cr.stroke_preserve
+						@cr.move_to x1*tailleCase+paddingX+5+varX, y1*tailleCase+paddingY+varY
+						@cr.line_to x2*tailleCase+paddingX+5+varX-minX, y2*tailleCase+paddingY+varY-minY
+						@cr.stroke_preserve
 
 					when false
-						puts "horizontale"
-						cr.move_to x1*tailleCase+paddingX+varX, y1*tailleCase+paddingY-5+varY
-						cr.line_to x2*tailleCase+paddingX+varX-minX, y2*tailleCase+paddingY-5+varY-minY
-						cr.stroke_preserve
-						cr.move_to x1*tailleCase+paddingX+varX, y1*tailleCase+paddingY+5+varY
-						cr.line_to x2*tailleCase+paddingX+varX-minX, y2*tailleCase+paddingY+5+varY-minY
-						cr.stroke_preserve
+						#puts "horizontale"
+						@cr.move_to x1*tailleCase+paddingX+varX, y1*tailleCase+paddingY-5+varY
+						@cr.line_to x2*tailleCase+paddingX+varX-minX, y2*tailleCase+paddingY-5+varY-minY
+						@cr.stroke_preserve
+						@cr.move_to x1*tailleCase+paddingX+varX, y1*tailleCase+paddingY+5+varY
+						@cr.line_to x2*tailleCase+paddingX+varX-minX, y2*tailleCase+paddingY+5+varY-minY
+						@cr.stroke_preserve
 					end
 
 
@@ -756,11 +772,10 @@ class Fenetre < Gtk::Window
 		}
 	end
 
-	def draw_maLigne(cr,x1,y1,x2,y2)
-		cr.move_to x1, y1
-		cr.line_to x2,y2
-		cr.stroke_preserve
-
+	def draw_maLigne(x1,y1,x2,y2)
+		@cr.move_to x1, y1
+		@cr.line_to x2,y2
+		@cr.stroke_preserve
 	end
 
 	def testAffichageGrille
@@ -782,18 +797,19 @@ class Fenetre < Gtk::Window
 
 	end
 
-	def clearEcran(cr)
-		cr.set_source_rgb 0.96, 0.96, 0.96
-		cr.rectangle 0, 0, 700, 700
-		cr.fill
-		cr.set_source_rgb 0, 0, 0
+	def clearEcran()
+		@cr = @darea.window.create_cairo_context
+		@cr.set_source_rgb 0.96, 0.96, 0.96
+		@cr.rectangle 0, 0, 700, 700 #<== Changer aux dimensions de la fenentre
+		@cr.fill
+		@cr.set_source_rgb 0, 0, 0
 	end
 
-	def afficheEcran(cr)
-		clearEcran(cr)
-		drawSurbri(cr)
-		drawSommets(cr)
-		drawAretes(cr)
+	def afficheEcran()
+		clearEcran()
+		drawSurbri()
+		drawSommets()
+		drawAretes()
 	end
 
 end
