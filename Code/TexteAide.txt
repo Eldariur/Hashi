@@ -1,0 +1,11 @@
+1:île à 8 restante dans la grille
+2:île à 6 avec 3 îles voisines restante dans la grille
+3:île à 4 avec 2 îles voisines restante dans la grille
+4:île avec une seule île voisine restante dans la grille
+5:île à 7 avec une île voisine à 1 restante dans la grille
+6:île à 5 avec trois îles voisines dont une à 1 restante dans la grille
+7:île à 3 avec deux îles voisines dont une à 1 restante dans la grille
+8:île à 7 restante dans la grille
+9:île à 5 avec trois îles voisines restante dans la grille
+10:île à 3 avec trois îles voisines restante dans la grille
+11:île à 6 avec deux des îles voisines à 1
