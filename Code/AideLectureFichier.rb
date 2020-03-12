@@ -277,14 +277,9 @@ class AideLectureFichier
 			affiche = false
 
 		elsif x == @id.to_s
-			affiche = true	
-		
+			affiche = true
+
 		end
 	end
   end
 end
-
-
-
-
-
