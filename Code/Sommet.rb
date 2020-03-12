@@ -156,4 +156,22 @@ class Sommet
     def connectionsRestantes()
       return @valeur - @listeArete.size()
     end
+
+    ## Méthode permettant de vérifier si un sommet possède au moins une arête commune avec chacun de ses voisins
+    #
+    # === Return
+    #
+    # Retourne vrai si un sommet possède au moins une arête avec chacun de ses voisins, faux sinon
+    def areteAvecChaqueVoisin()
+      voisinsAreteCommune = Array.new()
+
+      @listeArete.each_with_index do |x|
+        if(self != x.sommet1)
+          voisinsAreteCommune.push(x.sommet1)
+        else
+          voisinsAreteCommune.push(x.sommet2)
+        end
+      end
+      return voisinsAreteCommune.uniq().size() == self.compterVoisins()
+    end
 end

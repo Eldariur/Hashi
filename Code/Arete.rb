@@ -26,6 +26,15 @@ class Arete
         end
     end
 
+
+
+    ## Partie accesseurs
+
+    # Accesseur get et set sur l'attribut table
+    attr_reader :sommet1, :sommet2
+
+
+
     #termine la creation d'un arrete en creant son tableau de case parcouru et en se placant dans les tableau necessaire
     #(contenu des cases parcourue et tableau d'arrete des sommets)
     def completerInitialize()
