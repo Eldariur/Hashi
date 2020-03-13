@@ -52,7 +52,7 @@ class Aide
   #
   # L'aide textuelle correspondant à l'id de l'aide appelante
   def getMessageAide()
-   	file_data = File.read("TexteAide.txt").split("\n").join(":").split(":")
+   	file_data = File.read("../Code/TexteAide.txt").split("\n").join(":").split(":")
   	#puts file_data
   	affiche = false
   	file_data.each do |x|
