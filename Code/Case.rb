@@ -1,7 +1,25 @@
+#Classe permettant de définir une case
 class Case
 
-    attr_accessor :x, :y, :grille, :contenu
-    attr_reader :surbrillance
+	## Partie variables d'instance
+
+	# @x -> Coordonée X de la case
+	# @y -> Coordonée Y de la case
+	# @grille -> La grille dans laquelle la case se trouve
+	# @contenu -> Le contenu de la case
+	# @surbrillance -> Booleen qui defini si la case est en surbrillance ou non
+
+    attr_accessor :surbrillace, :grille, :contenu
+    attr_reader :x, :y
+    
+    ## Partie initialize
+
+	# Initialisation de la class Case
+	#
+	# === Paramètres
+	#
+	# * +x+ : Coordonée X de la case
+	# * +y+ : Coordonée Y de la case
     def initialize(x, y)
         @x = x
         @y = y
@@ -10,22 +28,11 @@ class Case
         @surbrillance = false
     end
 
-    #defini la case a laquelle appartient la case
-    def setGrille(grille)
-        @grille = grille
-    end
-
-    #defini la case a laquelle appartient la case
-    def setSurbri(condition)
-        @surbrillance = condition
-    end
-
-    #ajoute un objet en contenu de la case
-    def ajouterContenu(objet)
-        @contenu = objet
-    end
-
-    #teste si la case a des voisins
+    ##Teste si la case a des voisins
+    #
+    # === Return
+    #
+    # True si a la case a au moins 1 voisin, false sinon
     def aSommetVoisin()
         if(@grille != nil)
             #puts "dimension de la grille : " + @grille.longueur.to_s + ":" + @grille.largeur.to_s
@@ -43,17 +50,32 @@ class Case
         end
     end
 
+	##Teste si la case est une case voisine
+	#
+	# === Paramètre
+	#
+	# * +caseTest+ : la case a tester
+	#
+	# === Return
+	#
+	# True si la case est un voisin, false sinon
     def estVoisin(caseTest)
         difX = @x - caseTest.x
         difY = @y - caseTest.y
         return difX.abs() == 1 || difY.abs() == 1
     end
 
-    #teste si la case est vide
+    ##Teste si la case est vide
+    #Teste si la case a un contenu
+    #
+    # === Return
+    #
+    # True si la case n'a pas de contenu, false sinon
     def estVide()
       return @contenu==nil
     end
 
+	##Affiche la case dans le terminal
     def afficher()
        if(@contenu == nil)
            print("·")

@@ -84,7 +84,7 @@ class Arete
         loop do
             break if @listeCase.length == 0
             laCase = @listeCase.shift()
-            laCase.ajouterContenu(nil)
+            laCase.contenu = nil
         end
         @sommet1.position.grille.retirerArete(self)
         @sommet1.retirerArete(self)
