@@ -62,7 +62,7 @@ class Generateur
 
     def placerLabelSommet()
         @sommets.each { |sommet|
-            sommet.setValeur(sommet.compterArete())
+            sommet.valeur = sommet.compterArete()
         }
     end
 

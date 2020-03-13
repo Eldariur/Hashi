@@ -1,15 +1,15 @@
 require "matrix"
 
+#Classe permettant de définir une Grille
 class Grille
-
-
 
   ## Partie variables d'instance
 
-  # @longueur
-  # @largeur
-  # @table
-  # @sommets
+  #@longueur	-> Longueur de la grille (0->X)
+  #@largeur		-> Largeur de la grille (0vY)
+  #@table		-> La matrice des Case de la grille
+  #@sommets		-> Le Tableau des sommets de la grille
+  #@aretes		-> Le Tableau des aretes de la grille
 
   #Creer un objet Grille proprement
   def self.creer(longueur, largeur)
@@ -18,10 +18,8 @@ class Grille
       return objet
   end
 
-  #privatise le new et completerInitialize
+  #privatise le new
   private_class_method :new
-
-
 
   # Partie initialize
 
@@ -39,14 +37,10 @@ class Grille
     @aretes = Array.new()
   end
 
-
-
   ## Partie accesseurs
 
   # Accesseur get et set sur l'attribut table
   attr_accessor :table, :sommets, :longueur, :largeur, :aretes
-
-
 
   ## Partie méthodes
 
@@ -55,37 +49,63 @@ class Grille
   def completerInitialize()
     for i in 0...@longueur do
       for j in 0...@largeur do
-        @table[i, j].setGrille(self)
+        @table[i, j].grille = self
       end
     end
   end
 
-  #renvoie la case en x, y
+  ##Donne la case en x, y
+  #
+  # === Paramètre
+  #
+  # * +x+ : Le x de la case a obtenir
+  # * +y+ : Le y de la case a obtenir
+  #
+  # === Return
+  #
+  # La case en (x, y)
   def getCase(x, y)
       return @table[x, y]
   end
 
-  #ajoute le sommet a la liste de sommet
+  ##Ajoute un sommet a la liste des sommets
+  #
+  # === Parametre
+  #
+  # * +sommet+ : Le sommet a ajouter
   def addSommet(sommet)
       @sommets.push(sommet)
   end
 
-  #ajoute l'arrete a la liste d'arrete
+  ##Ajoute une arete a la liste des sommets
+  #
+  # === Parametre
+  #
+  # * +arete+ : L'arete a ajouter
   def addArete(arete)
       @aretes.push(arete)
   end
 
-  #retire une arrete de la liste de ses arrete
+  ##Retire un sommet a la liste des sommets
+  #
+  # === Parametre
+  #
+  # * +sommet+ : Le sommet a retirer
   def retirerSommet(sommet)
       @sommets.delete(sommet)
   end
 
-  #retire une arrete de la liste de ses arrete
+  ##Retire une arete a la liste des sommets
+  #
+  # === Parametre
+  #
+  # * +sommet+ : L'arete a retirer
   def retirerArete(arete)
       @aretes.delete(arete)
   end
 
-  #SUPPRIME TOUTE les aretes de la grille
+  ##Supprime toute les arete de la grille
+  #Appele la methode supprimer() de chaque arete
   def clearAretes()
       laTaille = @aretes.size()
       for i in 0...laTaille do
@@ -93,36 +113,58 @@ class Grille
       end
   end
 
-  #Donne la case suivante par rapport a la case en respectant les valeurs addX et addY données
-#renvoie nil si la fameuse case est en dehors des lmites
-def caseSuivante(lacase, addX, addY)
-    leX = lacase.x
-    leY = lacase.y
-    if leX + addX >= @longueur|| leY + addY >= @largeur || leX + addX < 0|| leY + addY < 0
-        return nil
-    end
-    return getCase(leX + addX, leY + addY)
+	#Donne la case suivante dans la direction donné
+	#
+	# === Paramètres
+	#
+	# * +lacase+ : La case d'ou partir
+	# * +addX+ : la valeur a ajouter aux X
+	# * +addY+ : la valeur a ajouter aux Y
+	#
+	# === Return
+	#
+	# La case suivante en partant de la case donné dans la direction donné
+	def caseSuivante(lacase, addX, addY)
+		leX = lacase.x
+		leY = lacase.y
+		if leX + addX >= @longueur|| leY + addY >= @largeur || leX + addX < 0|| leY + addY < 0
+		    return nil
+		end
+		return getCase(leX + addX, leY + addY)
 
-end
+	end
 
-#compte et renvoie le nombre d'aretes simple
-def nbAreteSimple
-    nbSimple = 0
-    @aretes.each { |x|
-        x.estDouble == false ? nbSimple += 1 : false
-    }
-    return nbSimple
-end
+	##Compte le nombre d'arete simple
+	#
+	# === Return
+	#
+	# * +nbSimple+ : Le nombre d'arete simple
+	def nbAreteSimple
+		nbSimple = 0
+		@aretes.each { |x|
+		    x.estDouble == false ? nbSimple += 1 : false
+		}
+		return nbSimple
+	end
 
-#compte et renvoie le nombre d'arete double
-def nbAreteDouble
-    nbDouble = 0
-    @aretes.each { |x|
-        x.estDouble ? nbDouble += 1 : false
-    }
-    return nbDouble
-end
+	##Compte le nombre d'arete double
+	#
+	# === Return
+	#
+	# * +nbSimple+ : Le nombre d'arete double
+	def nbAreteDouble
+		nbDouble = 0
+		@aretes.each { |x|
+		    x.estDouble ? nbDouble += 1 : false
+		}
+		return nbDouble
+	end
 
+	##Converti la Grille en chaine de charactere
+	#
+	# === Return
+	#
+	# * +s+ : La chaine de charactere correspondant a la grille
   def to_s()
     s = ""
     ajout = false
@@ -153,7 +195,7 @@ end
     return s + "\n"
   end
 
-  #affiche la grille, case par case
+  ##Affiche la grille, case par case
   def afficher()
      0.upto(@largeur + 1) do
        print("$")
@@ -173,7 +215,7 @@ end
      puts("$")
   end
 
-
+	##Affiche la proportion d'arete simple et double par rapport au nombre d'arete
   def afficherProportionsAretes
     puts "Nombre d'arêtes : "+@aretes.size().to_s+".\nArêtes simples : "+self.nbAreteSimple().to_s+".\nArêtes double : "+self.nbAreteDouble().to_s+"\nPorpotions : "+(self.nbAreteSimple().to_f / (self.nbAreteSimple() + self.nbAreteDouble()) * 100).round(2).to_s+"% d'aretes simple."
   end
