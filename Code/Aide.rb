@@ -128,6 +128,7 @@ class Aide
     return false
   end
 
+
   ## Méthode testant si un cas 1 bis est présent dans la grille
   # Cas 1 bis : île avec une seule île voisine restante dans la grille
   #
