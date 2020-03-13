@@ -140,8 +140,8 @@ class Sommet
   	def getVoisins()
   	  res = Array.new()
   	  self.getAretes.each do |a|
-  	    if(a.getSommet1() != self) then res.push(a.getSommet1()) end
-  	    if(a.getSommet2() != self) then res.push(a.getSommet2()) end
+  	    if(a.sommet1 != self) then res.push(a.sommet1) end
+  	    if(a.sommet2 != self) then res.push(a.sommet2) end
   	end
   	  return res
   	end
