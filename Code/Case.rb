@@ -56,7 +56,7 @@ class Case
 
     def afficher()
        if(@contenu == nil)
-           print(".")
+           print("·")
        else
            @contenu.afficher()
        end
