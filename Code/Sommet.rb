@@ -75,21 +75,21 @@ class Sommet
         end
       end
 
-        for bool in voisins
-            if bool
-                nb_voisins += 1
-            end
+      for bool in voisins
+        if bool
+          nb_voisins += 1
         end
+      end
 
-        return nb_voisins
+      return nb_voisins
     end
 
-    ## Méthode testant si une case possède un sommet
+    ## Méthode retournant le nombre de voisins non complets d'un sommet
     #
     # === Return
     #
-    # Une Array contenant la liste des voisins du sommet
-    def getListeVoisins()
+    # * +nb_voisins+ : Nombre de voisins non complets du sommet
+    def compterVoisinsNonComplets()
       voisins = Array.new()
 
       (@position.x - 1).downto(-1) do |i|
@@ -124,6 +124,64 @@ class Sommet
         end
       end
 
+
+
+      compteur = 0
+
+      voisins.each do |x|
+        if x.connexionsRestantes != 0
+          compteur += 1
+        end
+      end
+
+      return compteur
+    end
+
+    ## Méthode testant si une case possède un sommet
+    #
+    # === Return
+    #
+    # Une Array contenant la liste des voisins du sommet
+    def getListeVoisins()
+      puts "APPEL"
+      voisins = Array.new()
+
+      (@position.x - 1).downto(-1) do |i|
+        caseCourante = @position.grille.getCase(i, @position.y)
+        if(hasSommet(caseCourante))
+          voisins.push(caseCourante.contenu)
+          break
+        end
+      end
+
+      (@position.y - 1).downto(-1) do |i|
+        caseCourante = @position.grille.getCase(@position.x, i)
+        if(hasSommet(caseCourante))
+          voisins.push(caseCourante.contenu)
+          break
+        end
+      end
+
+      (@position.x + 1).upto(@position.grille.longueur) do |i|
+        caseCourante = @position.grille.getCase(i, @position.y)
+        if(hasSommet(caseCourante))
+          voisins.push(caseCourante.contenu)
+          break
+        end
+      end
+
+      (@position.y + 1).upto(@position.grille.largeur) do |i|
+        caseCourante = @position.grille.getCase(@position.x, i)
+        if(hasSommet(caseCourante))
+          voisins.push(caseCourante.contenu)
+          break
+        end
+      end
+
+      voisins.each do |x|
+        puts x.valeur
+      end
+
       return voisins
     end
 
@@ -153,7 +211,7 @@ class Sommet
     # === Return
     #
     # Le nombre d'arêtes restantes
-    def connectionsRestantes()
+    def connexionsRestantes()
       return @valeur - @listeArete.size()
     end
 
