@@ -19,6 +19,7 @@
 
 }
 
+
 #UnBoutonPerso:hover{
 	/* border-radius: 5px; */
 	background-color: rgba(128, 128, 128, 0.7);
@@ -26,6 +27,13 @@
 
 #UnBoutonPerso:active{
 	background-color: purple;
+}
+
+
+#BoutonGrille{
+	border-radius: 5px;
+	border-width: 2px;
+	background-color: yellow;
 }
 /* ========== */
 #UnSommetPerso {

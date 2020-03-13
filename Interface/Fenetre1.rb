@@ -1,5 +1,6 @@
 require 'gtk3'
 require_relative '../Code/Grille.rb'
+require_relative '../Code/Aide.rb'
 require_relative '../Code/Case.rb'
 require_relative '../Code/Sommet.rb'
 require_relative '../Code/Arete.rb'
@@ -18,7 +19,7 @@ class Fenetre < Gtk::Window
 
 		super()
 		self.name="mainWindow2"
-		self.set_default_size(1000,800)
+		self.set_default_size(1500,800)
 		vbox = Gtk::Box.new(:VERTICAL)
 		self.window_position=Gtk::WindowPosition::CENTER
 		css=Gtk::CssProvider.new
@@ -106,19 +107,77 @@ class Fenetre < Gtk::Window
 
 			hpaned = Gtk::HPaned.new
 
+			btnHypo = UnBoutonPerso.new('Hypothèse')
+			btnAide = UnBoutonPerso.new('?')
+				btnAideTxt = UnBoutonPerso.new('Aide Textuelle')
+					messageLabel = nil
+				btnAideVisu = UnBoutonPerso.new('Aide Visuelle')
+			btnAnnul = UnBoutonPerso.new('Annuler')
+			btnRecom = UnBoutonPerso.new('Recommencer')
 
-			# hpaned = Gtk::Paned.new(:Horizontal)
-			# hpaned.signal_connect("button-release-event") do
-			# 	x+=10
-			# 	y+=10
-			# 	puts "dessine une ligne"
-			# 	@cr = @darea.window.@create_cairo_context
-			#
-			# 	draw_maLigne(@cr,x,y,150,60)
-			# end
+			
+			btnHypo.signal_connect('clicked') {
+				puts "appuie bouton Hypothèse"
+			}
 
-			vbox.add(tbl)
+			btnAide.signal_connect('clicked') {
+				if(messageLabel != nil)
+					vbox.remove(messageLabel)
+				end
+				
+				vbox.remove(btnAideVisu)
+				vbox.add(btnAideTxt)
+				vbox.add(btnAideVisu)
+				tbl.attach(vbox,0,1,2,10)
+				self.show_all
+				
+				
+			}
+			
+			btnAnnul.signal_connect('clicked') {
+				puts "appuie bouton Annuler"
+			}
+
+			btnRecom.signal_connect('clicked') {
+				puts "appuie bouton Recommencer"
+			}
+
+			
+			btnAideTxt.signal_connect('clicked') {
+				aide = Aide.creer(@grilleTest)
+				#aide.afficherId()
+				message = aide.getMessageAide()
+				puts message
+				vbox.remove(btnAideTxt)
+				vbox.remove(btnAideVisu)
+				messageLabel = UnLabelPerso.new(message)
+				vbox.add(messageLabel)
+				vbox.add(btnAideVisu)
+				
+				self.show_all
+					
+			}
+
+			btnAideVisu.signal_connect('clicked') {
+				puts "appuie bouton visuelle"			
+			}
+
 			hpaned.add(@darea)
+			hbox = Gtk::Box.new(:HORIZONTAL)
+			hbox.add(btnHypo)
+			hbox.add(btnAide)
+			hbox.add(btnAnnul)
+			hbox.add(btnRecom)
+
+			#vbox.add(hbox)
+
+
+			tbl.attach(hbox,0,4,0,2)
+			tbl.attach(hpaned,2,10,0,10)
+
+			
+
+			add(tbl)
 
 
 
@@ -202,8 +261,8 @@ class Fenetre < Gtk::Window
 				if(caseTest.surbrillance && caseTest.class != Sommet) # si la case est en surbrillance
 					# puts "La case est en SURBRILLANCE"
 					if(caseTest.contenu.class == Arete)
-						s1 = caseTest.contenu.getSommet1
-						s2 = caseTest.contenu.getSommet2
+						s1 = caseTest.contenu.sommet1
+						s2 = caseTest.contenu.sommet2
 
 						# puts "s1=>"+s1.to_s
 						# puts "s2=>"+s2.to_s
@@ -215,10 +274,10 @@ class Fenetre < Gtk::Window
 						elsif (event.button == 3)
 							#puts "click droit "+event.button.to_s
 							#puts "SUPPRESSION ARETE"
-							caseTest.contenu.getSommet1.setComplet(false)
-							caseTest.contenu.getSommet2.setComplet(false)
+							caseTest.contenu.sommet1.setComplet(false)
+							caseTest.contenu.sommet2.setComplet(false)
 							if(caseTest.contenu.estDouble)
-								caseTest.contenu.setDouble(false)
+								caseTest.contenu.estDouble = false
 								# caseTest.contenu.getSommet1.setComplet(false)
 								# caseTest.contenu.getSommet2.setComplet(false)
 
@@ -308,7 +367,7 @@ class Fenetre < Gtk::Window
 		if(s1.valeur > s1.compterArete && s2.valeur > s2.compterArete)#le sommet est complet
 			# puts "CREATION ARETE..."
 			if(caseT.class == Arete && !caseT.estDouble)
-				caseT.setDouble(true);
+				caseT.estDouble = true;
 			elsif(caseT.class != Arete)
 				newA = Arete.creer(s1,s2) #<================ a voir
 				#puts "s1: "+s1.compterArete.to_s
@@ -732,10 +791,10 @@ class Fenetre < Gtk::Window
 		@grilleTest.aretes.each{ |a|
 			paddingX = 50+15
 			paddingY = 25+35
-			x1 = a.getSommet1.position.x
-			y1 = a.getSommet1.position.y
-			x2 = a.getSommet2.position.x
-			y2 = a.getSommet2.position.y
+			x1 = a.sommet1.position.x
+			y1 = a.sommet1.position.y
+			x2 = a.sommet2.position.x
+			y2 = a.sommet2.position.y
 			if(x1 == x2)
 				hori = false
 				verti = true
@@ -836,7 +895,7 @@ class Fenetre < Gtk::Window
 		drawSurbri()
 		drawSommets()
 		drawAretes()
-		tracerGrille() #<== AIDE VISUEL TEMPO
+		tracerGrille(true) #<== AIDE VISUEL TEMPO
 	end
 
 end
