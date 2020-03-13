@@ -299,9 +299,9 @@ class Fenetre < Gtk::Window
 
 			end
 		end
-		if(grilleGagnante)
-			puts "VOUS AVEZ GAGNÉ !!!!"
-		end
+		# if(grilleGagnante)
+		# 	puts "VOUS AVEZ GAGNÉ !!!!"
+		# end
 
 	end
 
@@ -327,6 +327,9 @@ class Fenetre < Gtk::Window
 			#puts "SOMMET S2 COMPLET !"
 			s2.setComplet(true)
 			#puts "le sommet s2"+s1.to_s+" est complet"
+		end
+		if(grilleGagnante)
+			puts "VOUS AVEZ GAGNÉ !!!!"
 		end
 	end
 
