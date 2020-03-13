@@ -74,95 +74,116 @@ class Aide
       @nb_voisins[i] = x.compterVoisins()
     end
 
-    @grille.sommets.each_with_index do |x, i|
-      if x.compterArete() != x.valeur
-        if estCas1(x)
-          return 1
-        elsif estCas2(x, i)
-          return 2
-        elsif estCas3(x, i)
-          return 3
-        elsif estCas4(i)
-          return 4
-        elsif estCas5(x)
-          return 5
-        elsif estCas6(x, i)
-          return 6
-        elsif estCas7(x, i)
-          return 7
-        elsif estCas8(x)
-          return 8
-        elsif estCas9(x, i)
-          return 9
-        elsif estCas10(x, i)
-          return 10
-        elsif estCas11(x)
-          return 11
-        elsif estCas12(x, i)
-          return 12
-        elsif estCas13(x, i)
-          return 13
-        elsif estCas14(x)
-          return 14
-        # elsif estCas15(x.valeur)
-        #   return 15
-        # elsif estCas16(x.valeur)
-        #   return 16
-        else
-          return 0
-        end
-      end
+    if estCas1()
+      return 1
+    elsif estCas1Bis()
+      return 111
+    elsif estCas2()
+      return 2
+    elsif estCas3()
+      return 3
+    elsif estCas4()
+      return 4
+    elsif estCas5()
+      return 5
+    elsif estCas6()
+      return 6
+    elsif estCas7()
+      return 7
+    elsif estCas8()
+      return 8
+    elsif estCas9()
+      return 9
+    elsif estCas10()
+      return 10
+    elsif estCas11()
+      return 11
+    elsif estCas12()
+      return 12
+    elsif estCas13()
+      return 13
+    elsif estCas14()
+      return 14
+    # elsif estCas15()
+    #   return 15
+    # elsif estCas16()
+    #   return 16
+    else
+      return 0
     end
   end
 
   ## Méthode testant si un cas 1 est présent dans la grille
-  # Cas 1 : île à 8 restante dans la grille
+  # Cas 1 : île avec une seule île voisine restante dans la grille
   #
   # === Return
   #
   # true si le cas est vérifié pour un des sommets de la grille, false sinon
-  def estCas1(x)
-    if x.valeur == 8
-      return true
+  def estCas1()
+    @grille.sommets.each_with_index do |x, i|
+      if @nb_voisins[i] == 1 && x.compterArete() != x.valeur
+        return true
+      end
+    end
+    return false
+  end
+
+  ## Méthode testant si un cas 1 bis est présent dans la grille
+  # Cas 1 bis : île avec une seule île voisine restante dans la grille
+  #
+  # === Return
+  #
+  # true si le cas est vérifié pour un des sommets de la grille, false sinon
+  def estCas1Bis()
+    @grille.sommets.each_with_index do |x, i|
+      if x.compterVoisinsNonComplets() == 1 && x.compterArete() != x.valeur
+        return true
+      end
     end
     return false
   end
 
   ## Méthode testant si un cas 2 est présent dans la grille
-  # Cas 2 : île à 6 avec 3 îles voisines restante dans la grille
+  # Cas 2 : île à 8 restante dans la grille
   #
   # === Return
   #
   # true si le cas est vérifié pour un des sommets de la grille, false sinon
-  def estCas2(x, i)
-    if x.valeur == 6 && @nb_voisins[i] == 3
-      return true
+  def estCas2()
+    @grille.sommets.each_with_index do |x, i|
+      if x.valeur == 8 && x.compterArete() != x.valeur
+        return true
+      end
     end
     return false
   end
 
   ## Méthode testant si un cas 3 est présent dans la grille
-  # Cas 3 : île à 4 avec 2 îles voisines restante dans la grille
+  # Cas 3 : île à 6 avec 3 îles voisines restante dans la grille
   #
   # === Return
   #
   # true si le cas est vérifié pour un des sommets de la grille, false sinon
-  def estCas3(x, i)
-    if x.valeur == 4 && @nb_voisins[i] == 2
-      return true
+  def estCas3()
+    @grille.sommets.each_with_index do |x, i|
+      if x.valeur == 6 && @nb_voisins[i] == 3 && x.compterArete() != x.valeur
+        return true
+      end
     end
     return false
   end
 
   ## Méthode testant si un cas 4 est présent dans la grille
-  # Cas 4 : île avec une seule île voisine restante dans la grille
+  # Cas 4 : île à 4 avec 2 îles voisines restante dans la grille
   #
   # === Return
   #
   # true si le cas est vérifié pour un des sommets de la grille, false sinon
-  def estCas4(i)
-    if @nb_voisins[i] == 1
-      return true
+  def estCas4()
+    @grille.sommets.each_with_index do |x, i|
+      if x.valeur == 4 && @nb_voisins[i] == 2 && x.compterArete() != x.valeur
+        return true
+      end
     end
     return false
   end
@@ -173,16 +194,18 @@ class Aide
   # === Return
   #
   # true si le cas est vérifié pour un des sommets de la grille, false sinon
-  def estCas5(x)
+  def estCas5()
     compteur = 0
-    if x.valeur == 7
-      x.getListeVoisins().each do |v|
-        if v.valeur == 1
-          compteur += 1
+    @grille.sommets.each_with_index do |x, i|
+      if x.valeur == 7 && x.compterArete() != x.valeur
+        x.getListeVoisins().each do |v|
+          if v.valeur == 1 && v.connexionsRestantes != 0
+            compteur += 1
+          end
         end
-      end
-      if compteur == 1
-        return true
+        if compteur == 1
+          return true
+        end
       end
     end
     return false
@@ -194,16 +217,18 @@ class Aide
   # === Return
   #
   # true si le cas est vérifié pour un des sommets de la grille, false sinon
-  def estCas6(x, i)
+  def estCas6()
     compteur = 0
-    if x.valeur == 5 && @nb_voisins[i] == 3
-      x.getListeVoisins().each do |v|
-        if v.valeur == 1
-          compteur += 1
+    @grille.sommets.each_with_index do |x, i|
+      if x.valeur == 5 && @nb_voisins[i] == 3 && x.compterArete() != x.valeur
+        x.getListeVoisins().each do |v|
+          if v.valeur == 1 && v.connexionsRestantes != 0
+            compteur += 1
+          end
         end
-      end
-      if compteur == 1
-        return true
+        if compteur == 1
+          return true
+        end
       end
     end
     return false
@@ -215,16 +240,18 @@ class Aide
   # === Return
   #
   # true si le cas est vérifié pour un des sommets de la grille, false sinon
-  def estCas7(x, i)
+  def estCas7()
     compteur = 0
-    if x.valeur == 3 && @nb_voisins[i] == 2
-      x.getListeVoisins().each do |v|
-        if v.valeur == 1
-          compteur += 1
+    @grille.sommets.each_with_index do |x, i|
+      if x.valeur == 3 && @nb_voisins[i] == 2 && x.compterArete() != x.valeur
+        x.getListeVoisins().each do |v|
+          if v.valeur == 1 && v.connexionsRestantes != 0
+            compteur += 1
+          end
         end
-      end
-      if compteur == 1
-        return true
+        if compteur == 1
+          return true
+        end
       end
     end
     return false
@@ -236,9 +263,11 @@ class Aide
   # === Return
   #
   # true si le cas est vérifié pour un des sommets de la grille, false sinon
-  def estCas8(x)
-    if x.valeur == 7
-      return true
+  def estCas8()
+    @grille.sommets.each_with_index do |x, i|
+      if x.valeur == 7 && !x.areteAvecChaqueVoisin()
+        return true
+      end
     end
     return false
   end
@@ -249,9 +278,11 @@ class Aide
   # === Return
   #
   # true si le cas est vérifié pour un des sommets de la grille, false sinon
-  def estCas9(x, i)
-    if x.valeur == 5 && @nb_voisins[i] == 3
-      return true
+  def estCas9()
+    @grille.sommets.each_with_index do |x, i|
+      if x.valeur == 5 && @nb_voisins[i] == 3 && !x.areteAvecChaqueVoisin()
+        return true
+      end
     end
     return false
   end
@@ -262,9 +293,11 @@ class Aide
   # === Return
   #
   # true si le cas est vérifié pour un des sommets de la grille, false sinon
-  def estCas10(x, i)
-    if x.valeur == 3 && @nb_voisins[i] == 2
-      return true
+  def estCas10()
+    @grille.sommets.each_with_index do |x, i|
+      if x.valeur == 3 && @nb_voisins[i] == 2 && !x.areteAvecChaqueVoisin()
+        return true
+      end
     end
     return false
   end
@@ -275,16 +308,18 @@ class Aide
   # === Return
   #
   # true si le cas est vérifié pour un des sommets de la grille, false sinon
-  def estCas11(x)
+  def estCas11()
     compteur = 0
-    if x.valeur == 6
-      x.getListeVoisins().each do |v|
-        if v.valeur == 1
-          compteur += 1
+    @grille.sommets.each_with_index do |x, i|
+      if x.valeur == 6 &&  x.compterArete() != x.valeur
+        x.getListeVoisins().each do |v|
+          if v.valeur == 1
+            compteur += 1
+          end
         end
-      end
-      if compteur == 2
-        return true
+        if compteur == 2
+          return true
+        end
       end
     end
     return false
@@ -296,37 +331,41 @@ class Aide
   # === Return
   #
   # true si le cas est vérifié pour un des sommets de la grille, false sinon
-  def estCas12(x, i)
+  def estCas12()
     compteur = 0
-    if x.valeur == 4 && @nb_voisins[i] == 3
-      x.getListeVoisins().each do |v|
-        if v.valeur == 1
-          compteur += 1
+    @grille.sommets.each_with_index do |x, i|
+      if x.valeur == 4 && @nb_voisins[i] == 3 && x.compterArete() != x.valeur
+        x.getListeVoisins().each do |v|
+          if v.valeur == 1
+            compteur += 1
+          end
         end
-      end
-      if compteur == 2
-        return true
+        if compteur == 2
+          return true
+        end
       end
     end
     return false
   end
 
   ## Méthode testant si un cas 13 est présent dans la grille
-  # Cas 13 : île à 1 avec n îles voisines dont n-1 îles à 1 restantes
+  # Cas 13 : île à 1 avec n îles voisines dont n-1 îles à 1 restante
   #
   # === Return
   #
   # true si le cas est vérifié pour un des sommets de la grille, false sinon
-  def estCas13(x, i)
+  def estCas13()
     compteur = 0
-    if x.connectionsRestantes == 1
-      x.getListeVoisins().each do |v|
-        if v.valeur == 1
-          compteur += 1
+    @grille.sommets.each_with_index do |x, i|
+      if x.valeur == 1 && x.compterArete() != x.valeur
+        x.getListeVoisins().each do |v|
+          if v.valeur == 1
+            compteur += 1
+          end
         end
-      end
-      if compteur == @nb_voisins[i] - 1 && compteur != 0
-        return true
+        if compteur == @nb_voisins[i] - 1 && compteur != 0
+          return true
+        end
       end
     end
     return false
@@ -338,12 +377,14 @@ class Aide
   # === Return
   #
   # true si le cas est vérifié pour un des sommets de la grille, false sinon
-  def estCas14(x)
+  def estCas14()
     voisinDeux = false
-    if x.connectionsRestantes() == 2 && x.compterVoisins() == 2
-      x.getListeVoisins().each do |v|
-        if v.valeur == 2
-          voisinDeux = true
+    @grille.sommets.each_with_index do |x, i|
+      if x.valeur == 2 && @nb_voisins[i] == 2 && x.compterArete() == 0
+        x.getListeVoisins().each do |v|
+          if v.valeur == 2
+            voisinDeux = true
+          end
         end
       end
     end
@@ -356,7 +397,7 @@ class Aide
   # === Return
   #
   # true si le cas est vérifié pour un des sommets de la grille, false sinon
-  def estCas15(x)
+  def estCas15()
 
   end
 
