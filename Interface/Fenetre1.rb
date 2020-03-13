@@ -7,10 +7,7 @@ require_relative 'UnBoutonPerso.rb'
 require_relative 'UnLabelPerso.rb'
 require_relative 'UneCasePerso.rb'
 require_relative '../Code/Generateur.rb'
-require_relative '../Hamilton/Grille.rb'
-require_relative '../Hamilton/Sommet.rb'
-require_relative '../Hamilton/Arete.rb'
-require_relative '../Hamilton/Case.rb'
+
 
 
 class Fenetre < Gtk::Window
@@ -69,20 +66,20 @@ class Fenetre < Gtk::Window
 		# #####################################
 
 		#####################################
-		# gene = Generateur.new(nil,15, 10, 10)
-		# @grilleTest = gene.creeUneGrille()
+		gene = Generateur.new(nil,15, 10, 10)
+		@grilleTest = gene.creeUneGrille()
 		#####################################
 
 		#####################################
-		@grilleTest = Grille.creer(5, 5)
-		sommet11 = Sommet.creer(3, @grilleTest.getCase(0, 0))
-		sommet12 = Sommet.creer(3, @grilleTest.getCase(2, 0))
-		sommet13 = Sommet.creer(2, @grilleTest.getCase(4, 0))
-		sommet14 = Sommet.creer(2, @grilleTest.getCase(0, 2))
-		sommet15= Sommet.creer(1, @grilleTest.getCase(4, 2))
-		sommet16= Sommet.creer(1, @grilleTest.getCase(2, 4))
-		arete11 = Arete.creer(sommet11, sommet12)
-		arete12 = Arete.creer(sommet12, sommet13)
+		#@grilleTest = Grille.creer(5, 5)
+		#sommet11 = Sommet.creer(3, @grilleTest.getCase(0, 0))
+		#sommet12 = Sommet.creer(3, @grilleTest.getCase(2, 0))
+		#sommet13 = Sommet.creer(2, @grilleTest.getCase(4, 0))
+		#sommet14 = Sommet.creer(2, @grilleTest.getCase(0, 2))
+		#sommet15= Sommet.creer(1, @grilleTest.getCase(4, 2))
+		#sommet16= Sommet.creer(1, @grilleTest.getCase(2, 4))
+		#arete11 = Arete.creer(sommet11, sommet12)
+		#arete12 = Arete.creer(sommet12, sommet13)
 		#####################################
 
 		@longueur = @grilleTest.longueur
@@ -839,7 +836,7 @@ class Fenetre < Gtk::Window
 		drawSurbri()
 		drawSommets()
 		drawAretes()
-		tracerGrille(true) #<== AIDE VISUEL TEMPO
+		tracerGrille() #<== AIDE VISUEL TEMPO
 	end
 
 end
