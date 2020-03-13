@@ -52,9 +52,16 @@ class Sauvegarde
 
   # Renvoie le chronometre de la sauvegarde.
   # === Return
-  # * +@chronometre+ : @chronometr Le chronometre de la sauvegarde.
+  # * +@chronometre+ : @chronometre Le chronometre de la sauvegarde.
   def getChrono()
     return @chronometre
+  end
+
+  # Renvoie la grille de la sauvegarde.
+  # === Return
+  # * +@grille+ : @grille La grille de la sauvegarde.
+  def getGrille()
+    return @grille
   end
 
   def sauvegarder()
@@ -91,19 +98,23 @@ class Sauvegarde
     return save
   end
 
-=begin  def nouvelleHypothese(grille){
-    save = Sauvegarde.nouvelle(grille,nil,nil)
+  def Sauvegarde.nouvelleHypothese(grille)
+    save = Sauvegarde.nouvelle(grille,nil,nil,true)
     save.sauvegarder()
-  }
-
-  def validerHypothese()
-
   end
 
-  def annulerHypothese(){
+  def Sauvegarde.validerHypothese()
+    File.delete('Save/temp.sav')
+  end
 
-  }
-=end
+  def Sauvegarde.annulerHypothese(mode = true)
+    save = Sauvegarde.nouvelle(nil,nil,nil,true).charger()
+    if(mode) then
+      File.delete('Save/temp.sav')
+    end
+    return save.getGrille()
+  end
+
   def Sauvegarde.deleteAllSave()
     Dir.glob('**/*.sav').each do |e|
       puts "Removed : "+e.to_s
