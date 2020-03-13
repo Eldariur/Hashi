@@ -10,20 +10,20 @@ class Generateur
         @chanceDeDouble = 38+rand(0..6)
         case difficulty
           when "easy"
-            #Taille 8 à 12, densite 7 à 9
-            @longueur = 6+rand(1..3)+rand(1..3)
-            @largeur = 6+rand(1..3)+rand(1..3)
+            #Taille 7 à 14, densite 35 à 41
+            @longueur = 7+rand(0..3)
+            @largeur = 10+rand(0..4)
             @densite = 35+rand(0..6)
           when "normal"
-            #Taille 10 à 19, densite 9 à 11
-            @longueur = 10+rand(0..3)+rand(0..3)+rand(0..3)
-            @largeur = 10+rand(0..3)+rand(0..3)+rand(0..3)
+            #Taille 8 à 14, densite 32 à 39
+            @longueur = 8+rand(0..2)
+            @largeur = 11+rand(0..3)
             @densite = 32+rand(0..7)
             @chanceDeDouble = 25+rand(0..9)
           when "hard"
-            #Taille 10 à 25, densite 11 à 13
-            @longueur = 10+rand(0..3)+rand(0..3)+rand(0..3)+rand(0..3)+rand(0..3)
-            @largeur = 10+rand(0..3)+rand(0..3)+rand(0..3)+rand(0..3)+rand(0..3)
+            #Taille 9 à 14, densite 32 à 38
+            @longueur = 9+rand(0..1)
+            @largeur = 13+rand(0..1)
             @densite = 32+rand(0..6)
             @chanceDeDouble = 26+rand(0..2)
           else
@@ -37,7 +37,7 @@ class Generateur
         ##puts "largeur : " + @largeur.to_s
         ##puts "densite : " + @densite.to_s
         ##puts "longueur*largeur.ceil : " + (((@longueur * @largeur).to_f / 100).ceil).to_s
-        @nbSommet = (((@longueur * @largeur).to_f  / 100).ceil * @densite).ceil
+        @nbSommet = (((@longueur * @largeur).to_f  / 100) * @densite).ceil
         ##puts "Dimensions : "+@longueur.to_s+"x"+@largeur.to_s+"("+(@largeur*@longueur).to_s+"cases). Nb sommets attendus "+@nbSommet.to_s+" pour une densite de "+@densite.to_s
         @grille = Grille.creer(@longueur, @largeur)
     end
@@ -89,10 +89,14 @@ class Generateur
         @grille.afficher()
 
         #boucle qui place des sommets
+        nbCancel = 0
         loop {
-            break if sommetPlaces >= @nbSommet
+            break if sommetPlaces >= @nbSommet || nbCancel > sommetPlaces
+            puts "nbCancel : " + nbCancel.to_s() + "\nsommetsPlaces : " + sommetPlaces.to_s() + "\nnbSommets : " + @nbSommet.to_s()
             #puts "nbSommets : " + sommetPlaces.to_s + "/" + @nbSommet.to_s
             #on commence par choisir un sommet
+            sommetAEtePlace = false
+       		aEteCancel = false
             indiceSommetChoisi = rand(0...@sommets.size())
             sommetChoisi = @sommets[indiceSommetChoisi]
             xDuSommet = sommetChoisi.position.x
@@ -132,7 +136,7 @@ class Generateur
                     #puts "Case Ou Placer : " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
                     #puts "Contenu : " + caseOuPlacer.class.to_s
 
-                    boolArretViaRand = rand(0..2) == 1
+                    boolArretViaRand = rand(0..3) <= 2
                     boolSommetJusteDevant = estDansMatrice(caseOuPlacer, lesAdds) && @grille.caseSuivante(caseOuPlacer, lesAdds[0], lesAdds[1]).contenu.class == Sommet
                     boolAreteJusteDevant = estDansMatrice(caseOuPlacer, lesAdds) && @grille.caseSuivante(caseOuPlacer, lesAdds[0], lesAdds[1]).contenu.class == Arete
                     boolBordDuTableau = !(estDansMatrice(caseOuPlacer, lesAdds))
@@ -166,8 +170,8 @@ class Generateur
                             #si on peut placer sur l'arete on le fait, sinon on recul
                             caseDArete = @grille.getCase(caseOuPlacer.x + lesAdds[0], caseOuPlacer.y + lesAdds[1])
                             if !(caseDArete.aSommetVoisin()) && caseDArete.contenu.getTaille() >= 3
-                                sommet1 = caseDArete.contenu.getSommet1()
-                                sommet2 = caseDArete.contenu.getSommet2()
+                                sommet1 = caseDArete.contenu.sommet1
+                                sommet2 = caseDArete.contenu.sommet2
                                 caseDArete.contenu.supprimer()
 
                                 nouveauSommet = Sommet.creer(0, caseDArete)
@@ -270,7 +274,12 @@ class Generateur
                         #puts "on a avancé"
                     end
                 }
-            end
+              	if sommetAEtePlace
+              		nbCancel = 0
+              	else
+              		nbCancel +=1
+              	end
+            end 
             placerLabelSommet()
             @grille.afficher()
         }

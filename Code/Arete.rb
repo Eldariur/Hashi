@@ -42,7 +42,7 @@ class Arete
     ## Partie accesseurs
 
     # Accesseur get sur les sommet, la liste des case
-    attr_reader :sommet1, :sommet2, :listeCase, :estDouble
+    attr_reader :sommet1, :sommet2, :listeCase
 
     # Accesseur get et set sur le booleen de l'arete
     attr_accessor :estDouble
