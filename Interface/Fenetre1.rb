@@ -18,7 +18,7 @@ class Fenetre < Gtk::Window
 
 		super()
 		self.name="mainWindow2"
-		self.set_default_size(600,600)
+		self.set_default_size(1000,800)
 		vbox = Gtk::Box.new(:VERTICAL)
 		self.window_position=Gtk::WindowPosition::CENTER
 		css=Gtk::CssProvider.new
@@ -66,7 +66,7 @@ class Fenetre < Gtk::Window
 		# #####################################
 
 		#####################################
-		gene = Generateur.new(nil,10, 10, 10)
+		gene = Generateur.new(nil,15, 10, 10)
 		@grilleTest = gene.creeUneGrille()
 		# sommet11 = Sommet.@creer(1, @grilleTest.getCase(0, 0))
 		# sommet12 = Sommet.@creer(2, @grilleTest.getCase(2, 0))
@@ -88,7 +88,6 @@ class Fenetre < Gtk::Window
 
 			@darea.signal_connect "draw" do
 					on_draw
-					#tracerGrille(@grilleTest)  #<================AIDE VISUEL TEMPO
 			end
 
 			# on_draw
@@ -124,7 +123,8 @@ class Fenetre < Gtk::Window
 			self.add(hpaned)
 
 	    #self.add(img)
-
+			size[2] = self.default_size
+			@size = size
 
 		#self.add(HudAccueil.new(self))
 		self.show_all
@@ -135,7 +135,6 @@ class Fenetre < Gtk::Window
 	def mouseClick(event)
 		# copie tracerGrille
 		tailleCase = 50
-		nbCase = @largeur
 		paddingX = 50
 		paddingY = 25
 		@nbClick += 1
@@ -160,7 +159,7 @@ class Fenetre < Gtk::Window
 		x = event.x
 		y = event.y
 
-		if(x > paddingX && x < paddingX+tailleCase*nbCase && y > paddingY && y < paddingY+tailleCase*nbCase) #si dans la grille
+		if(x > paddingX && x < paddingX+tailleCase*@longueur && y > paddingY && y < paddingY+tailleCase*@largeur) #si dans la grille
 			caseX = (x - paddingX).to_i/tailleCase
 			caseY = (y -paddingY).to_i/tailleCase
 			#puts "vous avez cliqué sur la case ["+caseX.to_s+"]["+caseY.to_s+"]"
@@ -322,7 +321,6 @@ class Fenetre < Gtk::Window
 	def drawSurbri()
 		# exemple 5 5
 		tailleCase = 50
-		nbCase = @largeur
 		paddingX = 50
 		paddingY = 25
 		#@cr = @darea.window.create_cairo_context
@@ -396,7 +394,6 @@ class Fenetre < Gtk::Window
 	def rechercherVoisins(c)
 		#puts "recherche des voisins ..."
 		tailleCase = 50
-		nbCase = @largeur
 		paddingX = 50
 		paddingY = 25
 		j = 0
@@ -433,7 +430,7 @@ class Fenetre < Gtk::Window
 		selfArete = false
 
 		# EST
-		(c.x+1).upto nbCase-1 do |i|
+		(c.x+1).upto @longueur-1 do |i|
 			j+=1
 			#puts "test de la case ["+(c.x+j).to_s+"]["+c.y.to_s+"] i = "+j.to_s
 			caseTest = @grilleTest.getCase(c.x+j,c.y)
@@ -486,7 +483,7 @@ class Fenetre < Gtk::Window
 		j = 0
 		selfArete = false
 		# # SUD
-		(c.y+1).upto nbCase-1 do |i|
+		(c.y+1).upto @largeur-1 do |i|
 			j+=1
 			#puts "test de la case ["+c.x.to_s+"]["+(c.y+j).to_s+"] i = "+j.to_s
 			caseTest = @grilleTest.getCase(c.x,c.y+j)
@@ -581,22 +578,23 @@ class Fenetre < Gtk::Window
 		return false
 	end
 
-	def tracerGrille(grille)
+	def tracerGrille(tracer=false)
 		# exemple 5 5
 		tailleCase = 50
-		nbCase = @largeur
 		paddingX = 50
 		paddingY = 25
 		#@cr = @darea.window.@create_cairo_context
 
+		if(tracer)
+			0.upto @longueur do |i|
+				draw_maLigne(i*tailleCase+paddingX,paddingY,i*tailleCase+paddingX,@largeur*tailleCase+paddingY)
+			end
+			0.upto @largeur do |i|
+				draw_maLigne(paddingX,i*tailleCase+paddingY,@longueur*tailleCase+paddingX,i*tailleCase+paddingY)
+			end
+		end
 
 
-		0.upto nbCase do |i|
-			draw_maLigne(i*tailleCase+paddingX,paddingY,i*tailleCase+paddingX,nbCase*tailleCase+paddingY)
-		end
-		0.upto nbCase do |i|
-			draw_maLigne(paddingX,i*tailleCase+paddingY,nbCase*tailleCase+paddingX,i*tailleCase+paddingY)
-		end
 
 
 	end
@@ -652,7 +650,6 @@ class Fenetre < Gtk::Window
 	def drawSommets()
 		# copie de tracerGrille
 		tailleCase = 50
-		nbCase = @largeur
 		paddingX = 50+17
 		paddingY = 25+35
 		#@cr = @darea.window.create_cairo_context
@@ -687,7 +684,6 @@ class Fenetre < Gtk::Window
 	def drawAretes()
 		# copie de tracerGrille
 		tailleCase = 50
-		nbCase = @largeur
 		paddingX = 50+15
 		paddingY = 25+35
 		verti = false
@@ -800,7 +796,7 @@ class Fenetre < Gtk::Window
 	def clearEcran()
 		@cr = @darea.window.create_cairo_context
 		@cr.set_source_rgb 0.96, 0.96, 0.96
-		@cr.rectangle 0, 0, 700, 700 #<== Changer aux dimensions de la fenentre
+		@cr.rectangle 0, 0, @size[0], @size[1] #<== Changer aux dimensions de la fenentre
 		@cr.fill
 		@cr.set_source_rgb 0, 0, 0
 	end
@@ -810,6 +806,7 @@ class Fenetre < Gtk::Window
 		drawSurbri()
 		drawSommets()
 		drawAretes()
+		tracerGrille(true) #<== AIDE VISUEL TEMPO
 	end
 
 end
