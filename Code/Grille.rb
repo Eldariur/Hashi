@@ -178,4 +178,29 @@ end
     puts "Nombre d'arêtes : "+@aretes.size().to_s+".\nArêtes simples : "+self.nbAreteSimple().to_s+".\nArêtes double : "+self.nbAreteDouble().to_s+"\nPorpotions : "+(self.nbAreteSimple().to_f / (self.nbAreteSimple() + self.nbAreteDouble()) * 100).round(2).to_s+"% d'aretes simple."
   end
 
+  # Cette methode calcule si il y a un chemin hamiltonien dans la grille.
+  # === Return
+  # * +boolean+ : boolean Le resultat de l'evaluation.
+  def testHamilton()
+    marque = Hash.new(false)
+    stack = Array.new()
+
+    stack.push(@sommets.first)
+    while !stack.empty? do
+      temp = stack.shift
+      temp.getVoisins().each do |v|
+        if(marque[v] == false) then stack.push(v) end
+      end
+      marque[temp] = true
+    end
+    if(marque.count != self.nbSommets()) then return false
+    else return true end
+  end
+
+ # Renvoie le nombre de sommets dans la grille.
+  # === Return
+  # * +@sommets.count()+ : @sommets.count() Le nombre de sommets dans la grille.
+  def nbSommets()
+    return @sommets.count()
+  end
 end

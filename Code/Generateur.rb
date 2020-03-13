@@ -7,25 +7,25 @@ class Generateur
     #@sommets
 
     def initialize(difficulty, longueur=nil, largeur=nil, densite=nil)
-        @chanceDeDouble = 1
+        @chanceDeDouble = 38+rand(0..6)
         case difficulty
           when "easy"
             #Taille 8 à 12, densite 7 à 9
             @longueur = 6+rand(1..3)+rand(1..3)
             @largeur = 6+rand(1..3)+rand(1..3)
-            @densite = 6+rand(1..3)
+            @densite = 35+rand(0..6)
           when "normal"
             #Taille 10 à 19, densite 9 à 11
             @longueur = 10+rand(0..3)+rand(0..3)+rand(0..3)
             @largeur = 10+rand(0..3)+rand(0..3)+rand(0..3)
-            @densite = 8+rand(1..3)
-            @chanceDeDouble = 2
+            @densite = 32+rand(0..7)
+            @chanceDeDouble = 25+rand(0..9)
           when "hard"
             #Taille 10 à 25, densite 11 à 13
             @longueur = 10+rand(0..3)+rand(0..3)+rand(0..3)+rand(0..3)+rand(0..3)
             @largeur = 10+rand(0..3)+rand(0..3)+rand(0..3)+rand(0..3)+rand(0..3)
-            @densite = 10+rand(1..3)
-            @chanceDeDouble = 3
+            @densite = 32+rand(0..6)
+            @chanceDeDouble = 26+rand(0..2)
           else
             @longueur = longueur
             @largeur = largeur
@@ -132,7 +132,7 @@ class Generateur
                     #puts "Case Ou Placer : " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
                     #puts "Contenu : " + caseOuPlacer.class.to_s
 
-                    boolArretViaRand = rand(0..2) == 1 #TODO
+                    boolArretViaRand = rand(0..2) == 1
                     boolSommetJusteDevant = estDansMatrice(caseOuPlacer, lesAdds) && @grille.caseSuivante(caseOuPlacer, lesAdds[0], lesAdds[1]).contenu.class == Sommet
                     boolAreteJusteDevant = estDansMatrice(caseOuPlacer, lesAdds) && @grille.caseSuivante(caseOuPlacer, lesAdds[0], lesAdds[1]).contenu.class == Arete
                     boolBordDuTableau = !(estDansMatrice(caseOuPlacer, lesAdds))
@@ -157,7 +157,7 @@ class Generateur
                                 @sommets.push(nouveauSommet)
                                 sommetPlaces += 1
 
-                                nouvelleArete = Arete.creer(nouveauSommet, sommetChoisi, rand(0..@chanceDeDouble) == 0) #TODO
+                                nouvelleArete = Arete.creer(nouveauSommet, sommetChoisi, rand(1..100) < @chanceDeDouble)
 
                                 sommetAEtePlace = true
                             end
@@ -174,12 +174,12 @@ class Generateur
                                 @sommets.push(nouveauSommet)
                                 sommetPlaces += 1
 
-                                nouvelleArete = Arete.creer(nouveauSommet, sommetChoisi, rand(0..@chanceDeDouble) == 0) #TODO
+                                nouvelleArete = Arete.creer(nouveauSommet, sommetChoisi, rand(1..100) < @chanceDeDouble)
 
                                 sommetAEtePlace = true
 
-                                nouvelleArete1 = Arete.creer(sommet1, nouveauSommet, rand(0..@chanceDeDouble) == 0) #TODO
-                                nouvelleArete2 = Arete.creer(sommet2, nouveauSommet, rand(0..@chanceDeDouble) == 0) #TODO
+                                nouvelleArete1 = Arete.creer(sommet1, nouveauSommet, rand(1..100) < @chanceDeDouble)
+                                nouvelleArete2 = Arete.creer(sommet2, nouveauSommet, rand(1..100) < @chanceDeDouble)
                             else
                                 #sinon on recule jusqu'a trouver un truc bien
                                 while caseOuPlacer.aSommetVoisin()
@@ -195,7 +195,7 @@ class Generateur
                                     @sommets.push(nouveauSommet)
                                     sommetPlaces += 1
 
-                                    nouvelleArete = Arete.creer(nouveauSommet, sommetChoisi, rand(0..@chanceDeDouble) == 0) #TODO
+                                    nouvelleArete = Arete.creer(nouveauSommet, sommetChoisi, rand(1..100) < @chanceDeDouble)
 
                                     sommetAEtePlace = true
                                 end
@@ -208,7 +208,7 @@ class Generateur
                                 @sommets.push(nouveauSommet)
                                 sommetPlaces += 1
 
-                                nouvelleArete = Arete.creer(nouveauSommet, sommetChoisi, rand(0..@chanceDeDouble) == 0) #TODO
+                                nouvelleArete = Arete.creer(nouveauSommet, sommetChoisi, rand(1..100) < @chanceDeDouble)
 
                                 sommetAEtePlace = true
                             else
@@ -227,7 +227,7 @@ class Generateur
                                     @sommets.push(nouveauSommet)
                                     sommetPlaces += 1
 
-                                    nouvelleArete = Arete.creer(nouveauSommet, sommetChoisi, rand(0..@chanceDeDouble) == 0) #TODO
+                                    nouvelleArete = Arete.creer(nouveauSommet, sommetChoisi, rand(1..100) < @chanceDeDouble)
 
                                     sommetAEtePlace = true
                                 end
@@ -240,7 +240,7 @@ class Generateur
                                 @sommets.push(nouveauSommet)
                                 sommetPlaces += 1
 
-                                nouvelleArete = Arete.creer(nouveauSommet, sommetChoisi, rand(0..@chanceDeDouble) == 0) #TODO
+                                nouvelleArete = Arete.creer(nouveauSommet, sommetChoisi, rand(1..100) < @chanceDeDouble)
 
                                 sommetAEtePlace = true
                             else
@@ -258,7 +258,7 @@ class Generateur
                                     @sommets.push(nouveauSommet)
                                     sommetPlaces += 1
 
-                                    nouvelleArete = Arete.creer(nouveauSommet, sommetChoisi, rand(0..@chanceDeDouble) == 0) #TODO
+                                    nouvelleArete = Arete.creer(nouveauSommet, sommetChoisi, rand(1..100) < @chanceDeDouble)
 
                                     sommetAEtePlace = true
                                 end

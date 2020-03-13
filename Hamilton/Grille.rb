@@ -72,11 +72,12 @@ class Grille
       @aretes.delete(arete)
   end
 
-  #SUPPRIME TOUTES les aretes de la grille.
+  #SUPPRIME TOUTE les aretes de la grille
   def clearAretes()
-      @listeArete.each{ |arete|
-          arete.supprimer()
-      }
+      laTaille = @aretes.size()
+      for i in 0...laTaille do
+          @aretes[0].supprimer()
+      end
   end
 
   # Renvoie le nombre de sommets dans la grille.

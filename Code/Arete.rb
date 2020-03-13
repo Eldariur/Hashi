@@ -1,17 +1,30 @@
+#Classe représentant une Arete
 class Arete
-    #@direction
-    #@sommet1
-    #@sommet2
 
-    #creer une arete proprement
+    ## Partie variables d'instance
+
+    # @sommet1 -> Sommet d'ou part l'arete
+    # @sommet2 -> Sommet ou arrive l'arete
+    # @estDouble -> Booleen définissant si une arete est double ou non
+    # @listeCase -> Liste des case par lesquelles passe l'arete
+
     def self.creer(sommet1, sommet2, estDouble=false)
         objet = new(sommet1, sommet2, estDouble)
         objet.completerInitialize()
         return objet
     end
 
-
     private_class_method :new
+
+    ## Partie initialize
+
+	# Initialisation de la classe Arete
+	#
+	# === Paramètres
+	#
+	# * +sommet1+ : Sommet d'ou part l'arete
+	# * +sommet2+ : Sommet ou s'arrete l'arete
+    # * +estDouble+ : Booleen qui definie si l'arete est double (de base a false)
     def initialize(sommet1, sommet2, estDouble=false)
         @sommet1 = sommet1
         @sommet2 = sommet2
@@ -26,17 +39,18 @@ class Arete
         end
     end
 
-
-
     ## Partie accesseurs
 
-    # Accesseur get et set sur l'attribut table
-    attr_reader :sommet1, :sommet2
+    # Accesseur get sur les sommet, la liste des case
+    attr_reader :sommet1, :sommet2, :listeCase, :estDouble
 
+    # Accesseur get et set sur le booleen de l'arete
+    attr_accessor :estDouble
 
+    ## Partie méthodes
 
-    #termine la creation d'un arrete en creant son tableau de case parcouru et en se placant dans les tableau necessaire
-    #(contenu des cases parcourue et tableau d'arrete des sommets)
+    ##Methode qui termine la creation d'une arete
+    # complete son tableau de case et s'ajoute aux sommet, a la grille, et aux case par lesquelles elle passe
     def completerInitialize()
         plusX = @sommet1.position.x - @sommet2.position.x == 0 ? 0 : 1
         plusY = @sommet1.position.y - @sommet2.position.y == 0 ? 0 : 1
@@ -54,36 +68,18 @@ class Arete
         @sommet1.position.grille.addArete(self)
     end
 
-    #recupere la taille de l'arrete (nombre de case parcourue)
+    ##Donne la taille de l'arete
+    #Donne la longueur du tableau de case
+    #
+    # === Return
+    #
+    # retourne la taille de la liste des cases
     def getTaille()
         return @listeCase.length()
     end
 
-    #renvoie le sommet1 de l'arrete
-    def getSommet1()
-        return @sommet1
-    end
-
-    #renvoie le sommet2 de l'arrete
-    def getSommet2()
-        return @sommet2
-    end
-
-    #donne la liste de case de l'arrete
-    def getListeCase()
-      return @listeCase
-    end
-
-    #renvoie si l'arete est double ou non
-    def estDouble()
-        return @estDouble
-    end
-
-    def setDouble(condition)
-        @estDouble = condition
-    end
-
-    #supprime proprement l'arrete
+    ##Supprime l'arete
+    #Retire toute les references a l'arette dans les sommets, la grille et les case par lesquelles elle passe
     def supprimer()
         loop do
             break if @listeCase.length == 0
@@ -95,6 +91,7 @@ class Arete
         @sommet2.retirerArete(self)
     end
 
+    ##Affiche l'arete dans le terminal
     def afficher()
       if(@sommet1.position.x==@sommet2.position.x)
         if(@estDouble)

@@ -23,10 +23,10 @@ sommet10 = Sommet.creer(5, grille.getCase(6, 3))
 sommet11 = Sommet.creer(4, grille.getCase(6, 6))
 
 arete1 = Arete.creer(sommet1, sommet2, true)
-arete2 = Arete.creer(sommet2, sommet3)
+#arete2 = Arete.creer(sommet2, sommet3)
 arete3 = Arete.creer(sommet1, sommet5)
 arete4 = Arete.creer(sommet2, sommet10, true)
-arete5 = Arete.creer(sommet3, sommet11, true)
+#arete5 = Arete.creer(sommet3, sommet11, true)
 arete6 = Arete.creer(sommet4, sommet7, true)
 arete7 = Arete.creer(sommet6, sommet7)
 arete8 = Arete.creer(sommet7, sommet8)
@@ -39,6 +39,29 @@ grille.afficher()
 
 while(gets == nil) do end
 
+puts "Debut hypothese"
+Sauvegarde.nouvelleHypothese(grille)
+arete2 = Arete.creer(sommet2, sommet3)
+arete5 = Arete.creer(sommet3, sommet11, true)
+puts "Ajout 2 aretes sur sommet coin haut droite"
+grille.afficher()
+puts "Annulation hypothese"
+grille = Sauvegarde.annulerHypothese()
+grille.afficher()
+
+while(gets == nil) do end
+
+puts "Debut hypothese"
+Sauvegarde.nouvelleHypothese(grille)
+arete2 = Arete.creer(grille.getCase(0,3).contenu, grille.getCase(0,6).contenu)
+arete5 = Arete.creer(grille.getCase(0,6).contenu, grille.getCase(6,6).contenu, true)
+puts "Ajout 2 aretes sur sommet coin haut droite"
+grille.afficher()
+puts "Validation hypothese"
+Sauvegarde.validerHypothese()
+grille.afficher()
+
+=begin
 c = Chrono.nouveau()
 
 threads = []
@@ -48,6 +71,7 @@ threads << Thread.new {stopsaisie(c)}
 
 threads.each { |thr| thr.join }
 puts 'Resultat : '+ c.to_chrono() + ' | Total : ' + c.resultat().to_s
+
 
 save1 = Sauvegarde.nouvelle(grille,c,1)
 save2 = Sauvegarde.nouvelle(grille,c,2)
@@ -69,5 +93,7 @@ saveres = Sauvegarde.nouvelle(nil,nil,3,false).charger()
 puts saveres
 saveres = Sauvegarde.nouvelle(nil,nil,3,true).charger()
 puts saveres
+=end
+
 
 #Sauvegarde.deleteAllSave()

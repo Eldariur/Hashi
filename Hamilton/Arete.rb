@@ -68,7 +68,7 @@ class Arete
   # === Return
   # * +listeCase.length()+ : listeCase.length() La taille de l'arete.
   def getTaille()
-      return listeCase.length()
+      return @listeCase.length()
   end
 
   # Renvoie le sommet1 de l'arete.
