@@ -733,6 +733,8 @@ class Fenetre < Gtk::Window
 			taillePix = 25
 			padding = 20
 		@grilleTest.aretes.each{ |a|
+			paddingX = 50+15
+			paddingY = 25+35
 			x1 = a.getSommet1.position.x
 			y1 = a.getSommet1.position.y
 			x2 = a.getSommet2.position.x
