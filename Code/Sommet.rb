@@ -1,9 +1,13 @@
+#Class représentant un Sommet
 class Sommet
-    #@listArete
-    #@position
-    #@valeur
-    attr_accessor :position
-    attr_reader :valeur, :listeArete, :complet
+
+	## Partie variables d'instance
+
+    #@listeArete	-> Liste des Aretes du Sommet
+    #@position		-> Case dans laquelle le sommet est placé
+    #@valeur		-> Entier représentant la valeur du Sommet (nombre d'arete total)
+    #@complet		-> Booleen qui défini si un sommet est complet ou non (toutes les aretes occupées)
+    
     #creer un Sommet proprement
     def self.creer(valeur, position)
         objet = new(valeur, position)
@@ -12,30 +16,44 @@ class Sommet
     end
 
     private_class_method :new
+    
+    ## Partie initialize
+
+	# Initialisation de la classe Sommet
+	#
+	# === Paramètres
+	#
+	# * +valeur+ : Valeur du sommet (en général initialisé a 0)
+	# * +position+ : Case ou est placé le sommet
     def initialize(valeur, position)
         @valeur = valeur
         @position = position #la case dans lequel est le sommet
         @listeArete = Array.new()
         @complet = false
     end
+    
+    ## Partie accesseurs
 
-    #ajoute self comme contenu de la case a laquelle il est et a la liste de sommet de la grille
+	#Accesseur en get et en set sur la position, le booleen complet et la valeur
+	attr_accessor :position, :complet, :valeur
+	#Accesseur en get sur la liste d'arete
+    attr_reader :listeArete
+
+	## Partie méthodes
+
+	##Complete le initialize
+    #s'ajoute comme contenu de la case dans laquelle il est et a la liste de sommet de la grille
     def completerInitialize()
-        @position.ajouterContenu(self)
+        @position.contenu = self
         @position.grille.addSommet(self)
     end
 
-    #defini la valeur du sommet
-    def setValeur(valeur)
-        @valeur = valeur
-    end
-
-    #defini si un sommet est complet ou non
-    def setComplet(condition)
-        @complet = condition
-    end
-
-    #compte le nombre d'aretes
+    ##Compte le nombre d'arete
+    #parcours toute les arete pour compter le nombre d'arete
+    #
+    # === Return
+    #
+    # * +total+ : Le nombre total d'arete liés au Sommet
     def compterArete()
         total = 0
         @listeArete.each{ |arete|
@@ -44,12 +62,12 @@ class Sommet
         return total
     end
 
-    #ajoute une arrete a la liste de ses arrete
+    ##ajoute une arrete a la liste de ses arrete
     def ajouterArete(arete)
         @listeArete << (arete)
     end
 
-    #retire une arrete de la liste de ses arrete
+    ##retire une arrete de la liste de ses arrete
     def retirerArete(arete)
         @listeArete.delete(arete)
     end
@@ -126,13 +144,6 @@ class Sommet
 
       return voisins
     end
-
- 	# Retourne les aretes associes au sommet.
- 	# === Return
- 	# * +@listeArete+ : @listeArete Les aretes.
- 	def getAretes()
- 	     return @listeArete
- 	end
 
   	# Retourne les sommets adjacents au sommet.
   	# === Return
