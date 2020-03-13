@@ -7,7 +7,10 @@ require_relative 'UnBoutonPerso.rb'
 require_relative 'UnLabelPerso.rb'
 require_relative 'UneCasePerso.rb'
 require_relative '../Code/Generateur.rb'
-
+require_relative '../Hamilton/Grille.rb'
+require_relative '../Hamilton/Sommet.rb'
+require_relative '../Hamilton/Arete.rb'
+require_relative '../Hamilton/Case.rb'
 
 
 class Fenetre < Gtk::Window
@@ -66,16 +69,20 @@ class Fenetre < Gtk::Window
 		# #####################################
 
 		#####################################
-		gene = Generateur.new(nil,15, 10, 10)
-		@grilleTest = gene.creeUneGrille()
-		# sommet11 = Sommet.@creer(1, @grilleTest.getCase(0, 0))
-		# sommet12 = Sommet.@creer(2, @grilleTest.getCase(2, 0))
-		# sommet13 = Sommet.@creer(3, @grilleTest.getCase(4, 0))
-		# sommet14 = Sommet.@creer(4, @grilleTest.getCase(0, 2))
-		# sommet15= Sommet.@creer(5, @grilleTest.getCase(4, 2))
-		# sommet16= Sommet.@creer(6, @grilleTest.getCase(2, 4))
-		# arete11 = Arete.@creer(sommet11, sommet12)
-		# arete12 = Arete.@creer(sommet12, sommet13)
+		# gene = Generateur.new(nil,15, 10, 10)
+		# @grilleTest = gene.creeUneGrille()
+		#####################################
+
+		#####################################
+		@grilleTest = Grille.creer(5, 5)
+		sommet11 = Sommet.creer(3, @grilleTest.getCase(0, 0))
+		sommet12 = Sommet.creer(3, @grilleTest.getCase(2, 0))
+		sommet13 = Sommet.creer(2, @grilleTest.getCase(4, 0))
+		sommet14 = Sommet.creer(2, @grilleTest.getCase(0, 2))
+		sommet15= Sommet.creer(1, @grilleTest.getCase(4, 2))
+		sommet16= Sommet.creer(1, @grilleTest.getCase(2, 4))
+		arete11 = Arete.creer(sommet11, sommet12)
+		arete12 = Arete.creer(sommet12, sommet13)
 		#####################################
 
 		@longueur = @grilleTest.longueur
@@ -159,136 +166,143 @@ class Fenetre < Gtk::Window
 		x = event.x
 		y = event.y
 
-		if(x > paddingX && x < paddingX+tailleCase*@longueur && y > paddingY && y < paddingY+tailleCase*@largeur) #si dans la grille
-			caseX = (x - paddingX).to_i/tailleCase
-			caseY = (y -paddingY).to_i/tailleCase
-			#puts "vous avez cliqué sur la case ["+caseX.to_s+"]["+caseY.to_s+"]"
+		if(!grilleGagnante)
+			if(x > paddingX && x < paddingX+tailleCase*@longueur && y > paddingY && y < paddingY+tailleCase*@largeur) #si dans la grille
+				caseX = (x - paddingX).to_i/tailleCase
+				caseY = (y -paddingY).to_i/tailleCase
+				#puts "vous avez cliqué sur la case ["+caseX.to_s+"]["+caseY.to_s+"]"
 
-			caseTest = @grilleTest.getCase(caseX,caseY)
+				caseTest = @grilleTest.getCase(caseX,caseY)
 
 
-			# sensé regarder le contenu de la case mais PROBLEME car toutes les cases sont des sommets !
-			caseTest = @grilleTest.getCase(caseX,caseY)
-			caseSom = nil
-			if(estSommet?(caseTest))
-				#puts "C'est un sommet"
-				#afficheSurbri
-				videSurbri
-				@caseSom = @grilleTest.getCase(caseX,caseY)
+				# sensé regarder le contenu de la case mais PROBLEME car toutes les cases sont des sommets !
+				caseTest = @grilleTest.getCase(caseX,caseY)
+				caseSom = nil
+				if(estSommet?(caseTest))
+					#puts "C'est un sommet"
+					#afficheSurbri
+					videSurbri
+					@caseSom = @grilleTest.getCase(caseX,caseY)
 
-				listV = rechercherVoisins(caseTest)
-				listV.each { |v|
+					listV = rechercherVoisins(caseTest)
+					listV.each { |v|
 
-					@listeInter += getlisteInterCase(caseTest,v)
-					@listeInter.push("|")
-				}
-				#puts "AFFICHAGE DE LA LISTE:"
-				#afficheSurbri()
+						@listeInter += getlisteInterCase(caseTest,v)
+						@listeInter.push("|")
+					}
+					#puts "AFFICHAGE DE LA LISTE:"
+					#afficheSurbri()
 
-				@listeInter.each { |c|
-					#puts c.to_s
-					if(c != "|" && c.class != Sommet) #<==== FAUX
-						c.setSurbri(true)
-						#puts "\t CASE "+c.to_s+" mis en surbrillance :"+c.surbrillance.to_s
-					end
-				}
-			end
+					@listeInter.each { |c|
+						#puts c.to_s
+						if(c != "|" && c.class != Sommet) #<==== FAUX
+							c.setSurbri(true)
+							#puts "\t CASE "+c.to_s+" mis en surbrillance :"+c.surbrillance.to_s
+						end
+					}
+				end
 
-			if(caseTest.surbrillance && caseTest.class != Sommet) # si la case est en surbrillance
-				# puts "La case est en SURBRILLANCE"
-				if(caseTest.contenu.class == Arete)
-					s1 = caseTest.contenu.getSommet1
-					s2 = caseTest.contenu.getSommet2
+				if(caseTest.surbrillance && caseTest.class != Sommet) # si la case est en surbrillance
+					# puts "La case est en SURBRILLANCE"
+					if(caseTest.contenu.class == Arete)
+						s1 = caseTest.contenu.getSommet1
+						s2 = caseTest.contenu.getSommet2
 
-					# puts "s1=>"+s1.to_s
-					# puts "s2=>"+s2.to_s
+						# puts "s1=>"+s1.to_s
+						# puts "s2=>"+s2.to_s
 
-					if(event.button == 1)
-						rendComplet(s1,s2,caseTest.contenu)
-					# testAffichageGrille
+						if(event.button == 1)
+							rendComplet(s1,s2,caseTest.contenu)
+						# testAffichageGrille
 
-					elsif (event.button == 3)
-						#puts "click droit "+event.button.to_s
-						#puts "SUPPRESSION ARETE"
-						caseTest.contenu.getSommet1.setComplet(false)
-						caseTest.contenu.getSommet2.setComplet(false)
-						if(caseTest.contenu.estDouble)
-							caseTest.contenu.setDouble(false)
-							# caseTest.contenu.getSommet1.setComplet(false)
-							# caseTest.contenu.getSommet2.setComplet(false)
+						elsif (event.button == 3)
+							#puts "click droit "+event.button.to_s
+							#puts "SUPPRESSION ARETE"
+							caseTest.contenu.getSommet1.setComplet(false)
+							caseTest.contenu.getSommet2.setComplet(false)
+							if(caseTest.contenu.estDouble)
+								caseTest.contenu.setDouble(false)
+								# caseTest.contenu.getSommet1.setComplet(false)
+								# caseTest.contenu.getSommet2.setComplet(false)
 
+							else
+								caseTest.contenu.supprimer
+							end
 						else
-							caseTest.contenu.supprimer
+							#puts "click :"+event.button.to_s
 						end
 					else
-						#puts "click :"+event.button.to_s
-					end
-				else
-					#puts "la case est une case vide"
+						#puts "la case est une case vide"
 
 
-					if(event.button == 1 && caseTest.contenu.class != Sommet && caseTest.contenu.class != Arete)
-						# puts "la case n'est pas un sommet"
-						s1 = nil
-						s2 = nil
-						trouve1 = false
-						@listeInter.each_with_index do |c,i|
-							#puts "==tour de boucle 1==="
-							if(c == caseTest)
-								#puts "\tTROUVE !!!"+i.to_s+" ici"
-								s1 = @listeInter[0]
-								i.upto(@listeInter.length-1) do |y|
-									#puts "====recherche s2 ... ===="+@listeInter[y].to_s
+						if(event.button == 1 && caseTest.contenu.class != Sommet && caseTest.contenu.class != Arete)
+							# puts "la case n'est pas un sommet"
+							s1 = nil
+							s2 = nil
+							trouve1 = false
+							@listeInter.each_with_index do |c,i|
+								#puts "==tour de boucle 1==="
+								if(c == caseTest)
+									#puts "\tTROUVE !!!"+i.to_s+" ici"
+									s1 = @listeInter[0]
+									i.upto(@listeInter.length-1) do |y|
+										#puts "====recherche s2 ... ===="+@listeInter[y].to_s
 
 
-									if(@listeInter[y] != "|")
-										if(@listeInter[y].contenu.class == Sommet)
+										if(@listeInter[y] != "|")
+											if(@listeInter[y].contenu.class == Sommet)
 
-											if(!trouve1)
-												#puts "T1"
-												s2 = @listeInter[y]
-												trouve1 = true
+												if(!trouve1)
+													#puts "T1"
+													s2 = @listeInter[y]
+													trouve1 = true
+												end
+
 											end
-
 										end
 									end
+									if(s1 != nil && s2 != nil)
+										#puts "---"+s1.to_s
+										#puts "valeur "+s1.contenu.valeur.to_s
+										#puts "---"+s2.to_s
+										#puts "valeur "+s2.contenu.valeur.to_s
+									end
+
+
+
+
+
 								end
-								if(s1 != nil && s2 != nil)
-									#puts "---"+s1.to_s
-									#puts "valeur "+s1.contenu.valeur.to_s
-									#puts "---"+s2.to_s
-									#puts "valeur "+s2.contenu.valeur.to_s
-								end
-
-
-
-
-
 							end
-						end
 
-						caseTest = @grilleTest.getCase(caseX,caseY)
-						# puts "case=>"+caseTest.contenu.class.to_s
-						# puts "s1=>"+s1.contenu.to_s
-						# puts "s2=>"+s2.contenu.to_s
+							caseTest = @grilleTest.getCase(caseX,caseY)
+							# puts "case=>"+caseTest.contenu.class.to_s
+							# puts "s1=>"+s1.contenu.to_s
+							# puts "s2=>"+s2.contenu.to_s
 
-						if(s1 != nil && caseTest.contenu.class != Sommet)
-							# puts "je rentre dans la condition"
-							rendComplet(s1.contenu,s2.contenu,caseTest.contenu)
+							if(s1 != nil && caseTest.contenu.class != Sommet)
+								# puts "je rentre dans la condition"
+								rendComplet(s1.contenu,s2.contenu,caseTest.contenu)
+							end
+								#puts "je sort de la condition"
+						#puts "FIN @crEATION ARETE..."
 						end
-							#puts "je sort de la condition"
-					#puts "FIN @crEATION ARETE..."
 					end
-				end
-			else
+				else
 
-				#puts "LA CASE N'EST PAS SURBRI"
-				videSurbri
+					#puts "LA CASE N'EST PAS SURBRI"
+					videSurbri
+
+				end
+				drawSurbri()
+				afficheEcran()
 
 			end
-			drawSurbri()
-			afficheEcran()
 		end
+		if(grilleGagnante)
+			puts "VOUS AVEZ GAGNÉ !!!!"
+		end
+
 	end
 
 	#créé une arete si les sommets ne sont pas complet
@@ -566,6 +580,20 @@ class Fenetre < Gtk::Window
 		}
 		@listeInter = []
 		#puts "===FINTER====="
+	end
+
+	def grilleGagnante
+		complet = true
+		if(@grilleTest.testHamilton)
+			@grilleTest.sommets.each do |s|
+				if(!s.complet)
+					complet = false
+				end
+			end
+		else
+			complet = false
+		end
+		return complet
 	end
 
 
