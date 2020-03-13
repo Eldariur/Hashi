@@ -90,42 +90,7 @@ class Sommet
     #
     # * +nb_voisins+ : Nombre de voisins non complets du sommet
     def compterVoisinsNonComplets()
-      voisins = Array.new()
-
-      (@position.x - 1).downto(-1) do |i|
-        caseCourante = @position.grille.getCase(i, @position.y)
-        if(hasSommet(caseCourante))
-          voisins.push(caseCourante.contenu)
-          break
-        end
-      end
-
-      (@position.y - 1).downto(-1) do |i|
-        caseCourante = @position.grille.getCase(@position.x, i)
-        if(hasSommet(caseCourante))
-          voisins.push(caseCourante.contenu)
-          break
-        end
-      end
-
-      (@position.x + 1).upto(@position.grille.longueur) do |i|
-        caseCourante = @position.grille.getCase(i, @position.y)
-        if(hasSommet(caseCourante))
-          voisins.push(caseCourante.contenu)
-          break
-        end
-      end
-
-      (@position.y + 1).upto(@position.grille.largeur) do |i|
-        caseCourante = @position.grille.getCase(@position.x, i)
-        if(hasSommet(caseCourante))
-          voisins.push(caseCourante.contenu)
-          break
-        end
-      end
-
-
-
+      voisins = self.getListeVoisins()
       compteur = 0
 
       voisins.each do |x|
@@ -143,10 +108,10 @@ class Sommet
     #
     # Une Array contenant la liste des voisins du sommet
     def getListeVoisins()
-      puts "APPEL"
+      #puts "valeur = " + @valeur.to_s()
       voisins = Array.new()
 
-      (@position.x - 1).downto(-1) do |i|
+      (@position.x - 1).downto(0) do |i|
         caseCourante = @position.grille.getCase(i, @position.y)
         if(hasSommet(caseCourante))
           voisins.push(caseCourante.contenu)
@@ -154,7 +119,7 @@ class Sommet
         end
       end
 
-      (@position.y - 1).downto(-1) do |i|
+      (@position.y - 1).downto(0) do |i|
         caseCourante = @position.grille.getCase(@position.x, i)
         if(hasSommet(caseCourante))
           voisins.push(caseCourante.contenu)
@@ -178,9 +143,11 @@ class Sommet
         end
       end
 
-      voisins.each do |x|
-        puts x.valeur
-      end
+      #puts "Nouveau sommet : "
+      #puts "valeur : " + self.valeur.to_s()
+      #voisins.each do |x|
+      #  puts "voisin : " + x.valeur.to_s()
+      #end
 
       return voisins
     end

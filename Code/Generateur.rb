@@ -166,8 +166,8 @@ class Generateur
                             #si on peut placer sur l'arete on le fait, sinon on recul
                             caseDArete = @grille.getCase(caseOuPlacer.x + lesAdds[0], caseOuPlacer.y + lesAdds[1])
                             if !(caseDArete.aSommetVoisin()) && caseDArete.contenu.getTaille() >= 3
-                                sommet1 = caseDArete.contenu.getSommet1()
-                                sommet2 = caseDArete.contenu.getSommet2()
+                                sommet1 = caseDArete.contenu.sommet1
+                                sommet2 = caseDArete.contenu.sommet2
                                 caseDArete.contenu.supprimer()
 
                                 nouveauSommet = Sommet.creer(0, caseDArete)
