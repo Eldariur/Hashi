@@ -117,6 +117,7 @@ class Fenetre < Gtk::Window
 			# end
 
 			button = Gtk::Button.new('Demander aide')
+
 			button.signal_connect('clicked') {
 				aide = Aide.creer(@grilleTest)
 				#aide.afficherId()
@@ -201,21 +202,21 @@ class Fenetre < Gtk::Window
 
 			if(caseTest.surbrillance && caseTest.class != Sommet) # si la case est en surbrillance
 				if(caseTest.contenu.class == Arete)
-					s1 = caseTest.contenu.getSommet1
-					s2 = caseTest.contenu.getSommet2
+					s1 = caseTest.contenu.sommet1
+					s2 = caseTest.contenu.sommet2
 
 					if(event.button == 1)
 						#creation arete
 						if(!caseTest.contenu.estDouble)
-							caseTest.contenu.setDouble(true)
+							caseTest.contenu.estDouble = true
 						end
 					# testAffichageGrille
 
 					elsif (event.button == 3)
 						if(caseTest.contenu.estDouble)
-							caseTest.contenu.setDouble(false)
-							caseTest.contenu.getSommet1.setComplet(false)
-							caseTest.contenu.getSommet2.setComplet(false)
+							caseTest.contenu.estDouble = false
+							caseTest.contenu.sommet1.setComplet(false)
+							caseTest.contenu.sommet2.setComplet(false)
 
 						else
 							caseTest.contenu.supprimer
@@ -626,10 +627,10 @@ class Fenetre < Gtk::Window
 			taillePix = 25
 			padding = 20
 		@grilleTest.aretes.each{ |a|
-			x1 = a.getSommet1.position.x
-			y1 = a.getSommet1.position.y
-			x2 = a.getSommet2.position.x
-			y2 = a.getSommet2.position.y
+			x1 = a.sommet1.position.x
+			y1 = a.sommet1.position.y
+			x2 = a.sommet2.position.x
+			y2 = a.sommet2.position.y
 			if(x1 == x2)
 				hori = false
 				verti = true

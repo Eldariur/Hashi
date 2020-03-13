@@ -93,13 +93,31 @@ class Sommet
         end
       end
 
-        for bool in voisins
-            if bool
-                nb_voisins += 1
-            end
+      for bool in voisins
+        if bool
+          nb_voisins += 1
         end
+      end
 
-        return nb_voisins
+      return nb_voisins
+    end
+
+    ## Méthode retournant le nombre de voisins non complets d'un sommet
+    #
+    # === Return
+    #
+    # * +nb_voisins+ : Nombre de voisins non complets du sommet
+    def compterVoisinsNonComplets()
+      voisins = self.getListeVoisins()
+      compteur = 0
+
+      voisins.each do |x|
+        if x.connexionsRestantes != 0
+          compteur += 1
+        end
+      end
+
+      return compteur
     end
 
     ## Méthode testant si une case possède un sommet
@@ -108,9 +126,10 @@ class Sommet
     #
     # Une Array contenant la liste des voisins du sommet
     def getListeVoisins()
+      #puts "valeur = " + @valeur.to_s()
       voisins = Array.new()
 
-      (@position.x - 1).downto(-1) do |i|
+      (@position.x - 1).downto(0) do |i|
         caseCourante = @position.grille.getCase(i, @position.y)
         if(hasSommet(caseCourante))
           voisins.push(caseCourante.contenu)
@@ -118,7 +137,7 @@ class Sommet
         end
       end
 
-      (@position.y - 1).downto(-1) do |i|
+      (@position.y - 1).downto(0) do |i|
         caseCourante = @position.grille.getCase(@position.x, i)
         if(hasSommet(caseCourante))
           voisins.push(caseCourante.contenu)
@@ -141,6 +160,12 @@ class Sommet
           break
         end
       end
+
+      #puts "Nouveau sommet : "
+      #puts "valeur : " + self.valeur.to_s()
+      #voisins.each do |x|
+      #  puts "voisin : " + x.valeur.to_s()
+      #end
 
       return voisins
     end
@@ -184,7 +209,7 @@ class Sommet
     # === Return
     #
     # Le nombre d'arêtes restantes
-    def connectionsRestantes()
+    def connexionsRestantes()
       return @valeur - @listeArete.size()
     end
 
