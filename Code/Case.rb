@@ -78,7 +78,7 @@ class Case
 	##Affiche la case dans le terminal
     def afficher()
        if(@contenu == nil)
-           print(".")
+           print("·")
        else
            @contenu.afficher()
        end
