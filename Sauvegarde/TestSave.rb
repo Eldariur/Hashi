@@ -93,7 +93,8 @@ saveres = Sauvegarde.nouvelle(nil,nil,3,false).charger()
 puts saveres
 saveres = Sauvegarde.nouvelle(nil,nil,3,true).charger()
 puts saveres
+
+
+
+Sauvegarde.deleteAllSave()
 =end
-
-
-#Sauvegarde.deleteAllSave()
