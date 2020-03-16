@@ -1,11 +1,27 @@
 require "matrix"
 
+#Classe permttant la manipulation d'un Generateur de grille
 class Generateur
-    #@longueur
-    #@largeur
-    #@grille
-    #@sommets
 
+    ## Partie cariable d'instance
+
+    #@difficulty    -> Une chaine de charactere contenant le preset de difficulté a utiliser
+    #@longueur      -> La longueur de la grille a générer (initialisé a nil de base)
+    #@largeur       -> La largeur de la grille a générer (initialisé a nil de base)
+    #densite        -> La densité de sommet par rapport a la taille de la grille
+    #@sommets       -> Liste des sommets générés
+    #@nbSommet      -> Nombre de sommet a placer dans la grille
+    #@grille        -> Grille crée
+
+    ## Partie initialize
+    #Initialisation du generateur
+    #
+    # === Paramètres
+    #
+    # * +difficulty+ : La difficulté de la grille a générer
+    # * +longueur+ : La longueur de la grille a générer (initialisé a nil)
+    # * +largeur+ : La largeur de la grille a générer (initialisé a nil)
+    # * +densite+ : La densite de la grille a générer (initialisé a nil)
     def initialize(difficulty, longueur=nil, largeur=nil, densite=nil)
         @chanceDeDouble = 38+rand(0..6)
         case difficulty
@@ -42,37 +58,81 @@ class Generateur
         @grille = Grille.creer(@longueur, @largeur)
     end
 
+    ##Partie méthodes
+
+    ##Methode qui récupère la case demandé de la grille générée
+    #
+    # === Paramètres
+    #
+    # * +x+ : la coordoné x de la case
+    # * +y+ : la coordoné y de la case
+    #
+    # === Return
+    #
+    # La case x, y de la case
     def getCase(x, y)
         return @grille[x][y]
     end
 
+    ##Vide la grille générée
+    #Recrée une grille vide pour remplacer la grille actuelle
     def vider()
         @grille = Grille.creer(@longueur, @largeur)
     end
 
+    ##Récupère une copie de la grille générée sans les aretes
+    #
+    # === Return
+    #
+    # Une copie de la grille sans arete
     def getGrilleSansArete()
         cloneGrille = Marshal.load(Marshal.dump(@grille))
         cloneGrille.clearAretes()
         return cloneGrille
     end
 
+    ##Récupère la grille générée avec les aretes
+    #
+    # === Return
+    #
+    # La grille générée
     def getGrilleAvecArete()
         return @grille
     end
 
+    ##Place les labels des sommets de la grille
     def placerLabelSommet()
         @sommets.each { |sommet|
             sommet.valeur = sommet.compterArete()
         }
     end
 
-    #renvoie si la case passée en parametre + les coordonées du tableau passé en parametre sont dans la matrice
+    ##Vérifie si la case passé en parametre plus les ajouts passé en paramètres sont dans la grille
+    #
+    #
+    # === Paramètres
+    #
+    # * +caseDeDepart+ : la case d'ou partir
+    # * +lesAdds+ : tableau de 2 case contenant la valeur a ajouter aux x et y de la caseDeDepart
+    #
+    # === Return
+    #
+    # True si la case obtenue est dans la grille, false sinon
     def estDansMatrice(caseDeDepart, lesAdds)
         xDuSommet = caseDeDepart.x
         yDuSommet = caseDeDepart.y
         return (xDuSommet + lesAdds[0] < @longueur) && (xDuSommet + lesAdds[0] >= 0) && (yDuSommet + lesAdds[1] < @largeur) && (yDuSommet + lesAdds[1] >= 0)
     end
 
+    ##Génère une grille du nombre de sommet calculé ou passé en paramètre
+    #
+    # === Paramètres
+    #
+    # * +nbSommet+ : le nombre de sommet a placer (initialisé a nil)
+    #
+    # === Return
+    #
+    # La grille générée sans les aretes
     def creeUneGrille(nbSommet=nil)
         if(nbSommet != nil)
           @nbSommet = nbSommet
@@ -279,7 +339,7 @@ class Generateur
               	else
               		nbCancel +=1
               	end
-            end 
+            end
             placerLabelSommet()
             @grille.afficher()
         }
