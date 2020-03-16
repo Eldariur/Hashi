@@ -9,9 +9,9 @@ class Case
 	# @contenu -> Le contenu de la case
 	# @surbrillance -> Booleen qui defini si la case est en surbrillance ou non
 
-    attr_accessor :surbrillace, :grille, :contenu
+    attr_accessor :surbrillance, :grille, :contenu
     attr_reader :x, :y
-    
+
     ## Partie initialize
 
 	# Initialisation de la class Case
