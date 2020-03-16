@@ -35,6 +35,11 @@
 	border-width: 2px;
 	background-color: yellow;
 }
+
+#BoutonRecommencer{
+	/* background-image: url("../img/restart_icon.png"); */
+	border: none;
+}
 /* ========== */
 #UnSommetPerso {
 	border-radius: 5px;

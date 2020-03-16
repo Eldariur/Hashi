@@ -107,13 +107,15 @@ class Fenetre < Gtk::Window
 
 			hpaned = Gtk::HPaned.new
 
-			btnHypo = UnBoutonPerso.new('Hypothèse')
+			btnHypo = UnBoutonPerso.new('H')
 			btnAide = UnBoutonPerso.new('?')
 				btnAideTxt = UnBoutonPerso.new('Aide Textuelle')
 					messageLabel = nil
 				btnAideVisu = UnBoutonPerso.new('Aide Visuelle')
-			btnAnnul = UnBoutonPerso.new('Annuler')
-			btnRecom = UnBoutonPerso.new('Recommencer')
+			btnAnnul = UnBoutonPerso.new('','BoutonRecommencer')
+			ajouterImage(btnAnnul,"img/undo_icon2.png")
+			btnRecom = UnBoutonPerso.new('Recommencer','BoutonRecommencer')
+			ajouterImage(btnRecom,"img/restart_icon.png")
 
 
 			btnHypo.signal_connect('clicked') {
@@ -140,6 +142,8 @@ class Fenetre < Gtk::Window
 
 			btnRecom.signal_connect('clicked') {
 				puts "appuie bouton Recommencer"
+				# img = dimImage("img/restart_icon.png")
+
 			}
 
 
@@ -280,8 +284,6 @@ class Fenetre < Gtk::Window
 							caseTest.contenu.sommet2.complet = false
 							if(caseTest.contenu.estDouble)
 								caseTest.contenu.estDouble = false
-								# caseTest.contenu.getSommet1.setComplet(false)
-								# caseTest.contenu.getSommet2.setComplet(false)
 
 							else
 								caseTest.contenu.supprimer
@@ -375,6 +377,11 @@ class Fenetre < Gtk::Window
 
 	def ajouterContenu(box,contenu)
 		box.add(contenu)
+	end
+
+	def ajouterImage(contenu,image)
+		image = dimImage(image)
+		contenu.image=(image)
 	end
 
 	#créé une arete si les sommets ne sont pas complet
