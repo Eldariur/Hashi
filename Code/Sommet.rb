@@ -175,7 +175,8 @@ class Sommet
   	# * +res+ : res la liste des sommets adjacents au sommet.
   	def getVoisins()
   	  res = Array.new()
-  	  self.getAretes.each do |a|
+
+  	  @listeArete.each do |a|
   	    if(a.sommet1 != self) then res.push(a.sommet1) end
   	    if(a.sommet2 != self) then res.push(a.sommet2) end
   	end
