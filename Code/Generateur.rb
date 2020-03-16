@@ -138,6 +138,56 @@ class Generateur
         return (xDuSommet + lesAdds[0] < @longueur) && (xDuSommet + lesAdds[0] >= 0) && (yDuSommet + lesAdds[1] < @largeur) && (yDuSommet + lesAdds[1] >= 0)
     end
 
+    ##Vérifie si la grille passée en parametre correspond a la grille générée (artes exclues)
+    #
+    # === Paramètres
+    #
+    # * +grille+ : la grille a vérifier
+    #
+    # === Return
+    #
+    # True si la grille est identique, false sinon
+    def grilleIdentique(grille)
+        if @estGenere
+            if @sommets.size() == grille.sommets.size()
+                for i in 0...@sommets.size()
+                    if !(@sommets[i].position.x == grille.sommets[i].position.x || @sommets[i].position.y == grille.sommets[i].position.y)
+                        return false
+                    end
+                end
+                return true
+            else
+                return false
+            end
+        end
+        return false
+    end
+
+    ##Vérifie si la grille passée en parametre possède des erreurs par rapport a la grille générée
+    #
+    # === Paramètres
+    #
+    # * +grille+ : la grille a vérifier
+    def trouverErreurs(grille)
+        if @estGenere && grilleIdentique(grille)
+            for i in 0...@sommets.size()
+                if grille.sommets[i].connexionsRestantes == 0
+                    grille.sommets[i].listeArete.each do |arete|
+                        #on récupere l'autre sommet de l'arete
+                        autreSommet = sommets[i].autreSommet(arete)
+                        #on recupere son index dans la liste des sommets de la grille
+                        index = grille.sommets.find_index(autreSommet)
+                        #on regarde si cette arete existe dans le grille originale
+                        if !(@sommets[i].possedeAreteAvec(@sommets[index]))
+                            grille.sommets[i].estErreur = true
+                            arete.estErreur = true
+                        end
+                    end
+                end
+            end
+        end
+    end
+
     ##Génère une grille du nombre de sommet calculé ou passé en paramètre
     #
     # === Paramètres
