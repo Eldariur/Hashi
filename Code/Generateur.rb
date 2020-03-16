@@ -12,6 +12,7 @@ class Generateur
     #@sommets       -> Liste des sommets générés
     #@nbSommet      -> Nombre de sommet a placer dans la grille
     #@grille        -> Grille crée
+    #@estGenere     -> Booleen qui défini si la grille a été générée ou non (bloque des methodes nécessitant une grille généré)
 
     ## Partie initialize
     #Initialisation du generateur
@@ -23,6 +24,7 @@ class Generateur
     # * +largeur+ : La largeur de la grille a générer (initialisé a nil)
     # * +densite+ : La densite de la grille a générer (initialisé a nil)
     def initialize(difficulty, longueur=nil, largeur=nil, densite=nil)
+        @estGenere = false
         @chanceDeDouble = 38+rand(0..6)
         case difficulty
           when "easy"
@@ -71,13 +73,17 @@ class Generateur
     #
     # La case x, y de la case
     def getCase(x, y)
-        return @grille[x][y]
+        if @estGenere
+            return @grille[x][y]
+        end
+        return nil
     end
 
     ##Vide la grille générée
     #Recrée une grille vide pour remplacer la grille actuelle
     def vider()
         @grille = Grille.creer(@longueur, @largeur)
+        @estGenere = false
     end
 
     ##Récupère une copie de la grille générée sans les aretes
@@ -86,9 +92,12 @@ class Generateur
     #
     # Une copie de la grille sans arete
     def getGrilleSansArete()
-        cloneGrille = Marshal.load(Marshal.dump(@grille))
-        cloneGrille.clearAretes()
-        return cloneGrille
+        if @estGenere
+            cloneGrille = Marshal.load(Marshal.dump(@grille))
+            cloneGrille.clearAretes()
+            return cloneGrille
+        end
+        return nil
     end
 
     ##Récupère la grille générée avec les aretes
@@ -97,14 +106,19 @@ class Generateur
     #
     # La grille générée
     def getGrilleAvecArete()
-        return @grille
+        if @estGenere
+            return @grille
+        end
+        return nil
     end
 
     ##Place les labels des sommets de la grille
     def placerLabelSommet()
-        @sommets.each { |sommet|
-            sommet.valeur = sommet.compterArete()
-        }
+        if @estGenere
+            @sommets.each { |sommet|
+                sommet.valeur = sommet.compterArete()
+            }
+        end
     end
 
     ##Vérifie si la case passé en parametre plus les ajouts passé en paramètres sont dans la grille
@@ -340,9 +354,10 @@ class Generateur
               		nbCancel +=1
               	end
             end
-            placerLabelSommet()
             @grille.afficher()
         }
+        @estGenere = true
+        placerLabelSommet()
         return getGrilleSansArete()
     end
 end
