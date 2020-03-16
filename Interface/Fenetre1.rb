@@ -115,7 +115,7 @@ class Fenetre < Gtk::Window
 			btnAnnul = UnBoutonPerso.new('Annuler')
 			btnRecom = UnBoutonPerso.new('Recommencer')
 
-			
+
 			btnHypo.signal_connect('clicked') {
 				puts "appuie bouton Hypothèse"
 			}
@@ -124,16 +124,16 @@ class Fenetre < Gtk::Window
 				if(messageLabel != nil)
 					vbox.remove(messageLabel)
 				end
-				
+
 				vbox.remove(btnAideVisu)
 				vbox.add(btnAideTxt)
 				vbox.add(btnAideVisu)
 				tbl.attach(vbox,0,1,2,10)
 				self.show_all
-				
-				
+
+
 			}
-			
+
 			btnAnnul.signal_connect('clicked') {
 				puts "appuie bouton Annuler"
 			}
@@ -142,24 +142,26 @@ class Fenetre < Gtk::Window
 				puts "appuie bouton Recommencer"
 			}
 
-			
+
 			btnAideTxt.signal_connect('clicked') {
 				aide = Aide.creer(@grilleTest)
-				#aide.afficherId()
-				message = aide.getMessageAide()
-				puts message
-				vbox.remove(btnAideTxt)
-				vbox.remove(btnAideVisu)
-				messageLabel = UnLabelPerso.new(message)
-				vbox.add(messageLabel)
-				vbox.add(btnAideVisu)
-				
+
+				# message = aide.getMessageAide()
+				# puts message
+				retirerContenu(vbox,btnAideTxt)
+				retirerContenu(vbox,btnAideVisu)
+
+				# messageLabel = UnLabelPerso.new(message)
+				# vbox.add(messageLabel)
+				# vbox.add(btnAideVisu)
+				ajouterMessage(vbox,aide.getMessageAide())
+				ajouterContenu(vbox,btnAideVisu)
 				self.show_all
-					
+
 			}
 
 			btnAideVisu.signal_connect('clicked') {
-				puts "appuie bouton visuelle"			
+				puts "appuie bouton visuelle"
 			}
 
 			hpaned.add(@darea)
@@ -175,7 +177,7 @@ class Fenetre < Gtk::Window
 			tbl.attach(hbox,0,4,0,2)
 			tbl.attach(hpaned,2,10,0,10)
 
-			
+
 
 			add(tbl)
 
@@ -252,7 +254,7 @@ class Fenetre < Gtk::Window
 					@listeInter.each { |c|
 						#puts c.to_s
 						if(c != "|" && c.class != Sommet) #<==== FAUX
-							c.setSurbri(true)
+							c.surbrillance = true
 							#puts "\t CASE "+c.to_s+" mis en surbrillance :"+c.surbrillance.to_s
 						end
 					}
@@ -274,8 +276,8 @@ class Fenetre < Gtk::Window
 						elsif (event.button == 3)
 							#puts "click droit "+event.button.to_s
 							#puts "SUPPRESSION ARETE"
-							caseTest.contenu.sommet1.setComplet(false)
-							caseTest.contenu.sommet2.setComplet(false)
+							caseTest.contenu.sommet1.complet = false
+							caseTest.contenu.sommet2.complet = false
 							if(caseTest.contenu.estDouble)
 								caseTest.contenu.estDouble = false
 								# caseTest.contenu.getSommet1.setComplet(false)
@@ -361,6 +363,20 @@ class Fenetre < Gtk::Window
 
 	end
 
+	def ajouterMessage(box, message)
+		puts message
+		messageLabel = UnLabelPerso.new(message)
+		box.add(messageLabel)
+	end
+
+	def retirerContenu(box,contenu)
+		box.remove(contenu)
+	end
+
+	def ajouterContenu(box,contenu)
+		box.add(contenu)
+	end
+
 	#créé une arete si les sommets ne sont pas complet
 	def rendComplet(s1,s2,caseT)
 
@@ -376,12 +392,12 @@ class Fenetre < Gtk::Window
 		end
 		if(s1.valeur == s1.compterArete)
 			#puts "SOMMET S1 COMPLET !"
-			s1.setComplet(true)
+			s1.complet = true
 			#puts "le sommet s1"+s1.to_s+" est complet"
 		end
 		if(s2.valeur == s2.compterArete)
 			#puts "SOMMET S2 COMPLET !"
-			s2.setComplet(true)
+			s2.complet = true
 			#puts "le sommet s2"+s1.to_s+" est complet"
 		end
 		if(grilleGagnante)
@@ -632,7 +648,7 @@ class Fenetre < Gtk::Window
 		@listeInter.each {|c|
 			#print "Une case=>"
 			if(c.class == Case)
-				c.setSurbri(false)
+				c.surbrillance = false
 				#puts "\t CASE "+c.to_s+" mis en desurbrillance :"+c.surbrillance.to_s+"==="
 			end
 			#@listeInter.delete_at(@listeInter.index(c))
