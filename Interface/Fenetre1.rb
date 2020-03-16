@@ -8,6 +8,7 @@ require_relative 'UnBoutonPerso.rb'
 require_relative 'UnLabelPerso.rb'
 require_relative 'UneCasePerso.rb'
 require_relative '../Code/Generateur.rb'
+require_relative '../Code/Undo.rb'
 
 
 
@@ -36,6 +37,7 @@ class Fenetre < Gtk::Window
 		   Gtk.main_quit
 		}
 
+		@pileHypo = Undo.creer()
 		@listeInter = []
 		x = 5
 		y = 5
@@ -67,7 +69,7 @@ class Fenetre < Gtk::Window
 		# #####################################
 
 		#####################################
-		gene = Generateur.new(nil,15, 10, 10)
+		gene = Generateur.new(nil,10, 10, 10)
 		@grilleTest = gene.creeUneGrille()
 		#####################################
 
@@ -107,19 +109,22 @@ class Fenetre < Gtk::Window
 
 			hpaned = Gtk::HPaned.new
 
-			btnHypo = UnBoutonPerso.new('H')
-			btnAide = UnBoutonPerso.new('?')
+			btnHypo = UnBoutonPerso.new('H','BoutonEnJeu')
+			ajouterImage(btnHypo,"img/cloud_icon.png")
+			btnAide = UnBoutonPerso.new('?','BoutonEnJeu')
 				btnAideTxt = UnBoutonPerso.new('Aide Textuelle')
 					messageLabel = nil
 				btnAideVisu = UnBoutonPerso.new('Aide Visuelle')
-			btnAnnul = UnBoutonPerso.new('','BoutonRecommencer')
+			btnAnnul = UnBoutonPerso.new('','BoutonEnJeu')
 			ajouterImage(btnAnnul,"img/undo_icon2.png")
-			btnRecom = UnBoutonPerso.new('Recommencer','BoutonRecommencer')
+			btnRecom = UnBoutonPerso.new('Recommencer','BoutonEnJeu')
 			ajouterImage(btnRecom,"img/restart_icon.png")
 
 
 			btnHypo.signal_connect('clicked') {
 				puts "appuie bouton Hypothèse"
+
+
 			}
 
 			btnAide.signal_connect('clicked') {
@@ -391,9 +396,10 @@ class Fenetre < Gtk::Window
 			# puts "CREATION ARETE..."
 			if(caseT.class == Arete && !caseT.estDouble)
 				caseT.estDouble = true;
+				@pileHypo.empile(caseT)
 			elsif(caseT.class != Arete)
 				newA = Arete.creer(s1,s2) #<================ a voir
-				#puts "s1: "+s1.compterArete.to_s
+				@pileHypo.empile(newA)
 			end
 
 		end
@@ -406,6 +412,11 @@ class Fenetre < Gtk::Window
 			#puts "SOMMET S2 COMPLET !"
 			s2.complet = true
 			#puts "le sommet s2"+s1.to_s+" est complet"
+		end
+
+		puts "Affichage Hypo"
+		@pileHypo.tabAction.each do |a|
+			puts a.to_s
 		end
 		if(grilleGagnante)
 			puts "VOUS AVEZ GAGNÉ !!!!"
@@ -718,7 +729,7 @@ class Fenetre < Gtk::Window
 
 	def dimImage(str)
 		image = Gtk::Image.new(str)
-		image.pixbuf = image.pixbuf.scale(28,28) if image.pixbuf!=nil
+		image.pixbuf = image.pixbuf.scale(35,35) if image.pixbuf!=nil
 		return image
 	end
 

@@ -7,7 +7,7 @@ class Sommet
     #@position		-> Case dans laquelle le sommet est placé
     #@valeur		-> Entier représentant la valeur du Sommet (nombre d'arete total)
     #@complet		-> Booleen qui défini si un sommet est complet ou non (toutes les aretes occupées)
-    
+
     #creer un Sommet proprement
     def self.creer(valeur, position)
         objet = new(valeur, position)
@@ -16,7 +16,7 @@ class Sommet
     end
 
     private_class_method :new
-    
+
     ## Partie initialize
 
 	# Initialisation de la classe Sommet
@@ -31,7 +31,7 @@ class Sommet
         @listeArete = Array.new()
         @complet = false
     end
-    
+
     ## Partie accesseurs
 
 	#Accesseur en get et en set sur la position, le booleen complet et la valeur
@@ -175,8 +175,7 @@ class Sommet
   	# * +res+ : res la liste des sommets adjacents au sommet.
   	def getVoisins()
   	  res = Array.new()
-
-  	  @listeArete.each do |a|
+  	  self.listeArete.each do |a|
   	    if(a.sommet1 != self) then res.push(a.sommet1) end
   	    if(a.sommet2 != self) then res.push(a.sommet2) end
   	end
