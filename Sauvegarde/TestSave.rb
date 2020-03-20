@@ -36,8 +36,9 @@ arete11 = Arete.creer(sommet10, sommet11)
 
 #Affichage des grilles
 grille.afficher()
-#
+
 =begin
+
 Sauvegarde.genenerDossier();
 
 while(gets == nil) do end
