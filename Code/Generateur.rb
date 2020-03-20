@@ -216,7 +216,7 @@ class Generateur
         nbCancel = 0
         loop {
             break if sommetPlaces >= @nbSommet || nbCancel > sommetPlaces
-            puts "nbCancel : " + nbCancel.to_s() + "\nsommetsPlaces : " + sommetPlaces.to_s() + "\nnbSommets : " + @nbSommet.to_s()
+            puts "nbCancel :           " + nbCancel.to_s() + "\nsommetsPlaces :         " + sommetPlaces.to_s() + "\nnbSommets :                " + @nbSommet.to_s()
             #puts "nbSommets : " + sommetPlaces.to_s + "/" + @nbSommet.to_s
             #on commence par choisir un sommet
             sommetAEtePlace = false
