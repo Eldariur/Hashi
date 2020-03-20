@@ -1,8 +1,8 @@
-load "Grille.rb"
-load "Case.rb"
-load "Sommet.rb"
-load "Arete.rb"
-load "Chronometre.rb"
+load "../Code/Grille.rb"
+load "../Code/Case.rb"
+load "../Code/Sommet.rb"
+load "../Code/Arete.rb"
+load "../Chrono/Chronometre.rb"
 load "Sauvegarde.rb"
 
 # Test de génération de grilles prédéfinies
@@ -37,7 +37,9 @@ arete11 = Arete.creer(sommet10, sommet11)
 #Affichage des grilles
 grille.afficher()
 
-=begin
+#Sauvegarde.genenerDossier();
+
+
 while(gets == nil) do end
 
 puts "Debut hypothese"
@@ -95,6 +97,6 @@ puts saveres
 saveres = Sauvegarde.nouvelle(nil,nil,3,true).charger()
 puts saveres
 
-=end
+
 
 #Sauvegarde.deleteAllSave()

@@ -210,13 +210,14 @@ class Generateur
         sommetDeDepart = Sommet.creer(0, @grille.getCase(coordXPremierSommet, coordYPremierSommet))
         @sommets.push(sommetDeDepart)
         sommetPlaces += 1
-        @grille.afficher()
+        #@grille.afficher()
 
         #boucle qui place des sommets
         nbCancel = 0
+        tourneEnBoucle = 0
         loop {
-            break if sommetPlaces >= @nbSommet || nbCancel > sommetPlaces
-            puts "nbCancel : " + nbCancel.to_s() + "\nsommetsPlaces : " + sommetPlaces.to_s() + "\nnbSommets : " + @nbSommet.to_s()
+            break if sommetPlaces >= @nbSommet || nbCancel > sommetPlaces || tourneEnBoucle > @nbSommet * 2
+            #puts "nbCancel : " + nbCancel.to_s() + "\ntourneEnBoucle : " + tourneEnBoucle.to_s() + "\nsommetsPlaces : " + sommetPlaces.to_s() + "\nnbSommets : " + @nbSommet.to_s()
             #puts "nbSommets : " + sommetPlaces.to_s + "/" + @nbSommet.to_s
             #on commence par choisir un sommet
             sommetAEtePlace = false
@@ -254,6 +255,7 @@ class Generateur
                 #puts "Case Ou Placer après if: " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
                 sommetAEtePlace = false
                 aEteCancel = false
+                tourneEnBoucle = 0
                 loop {
                     break if sommetAEtePlace || aEteCancel
 
@@ -400,11 +402,15 @@ class Generateur
                 }
               	if sommetAEtePlace
               		nbCancel = 0
+                    #puts "on reset"
               	else
               		nbCancel +=1
+                    #puts "on ajoute"
               	end
+            else
+                tourneEnBoucle += 1
             end
-            @grille.afficher()
+            #@grille.afficher()
         }
         @estGenere = true
         placerLabelSommet()

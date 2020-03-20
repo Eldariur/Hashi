@@ -70,8 +70,7 @@ class Fenetre < Gtk::Window
 		# #####################################
 
 		#####################################
-		gene = Generateur.new("hard")
-
+		gene = Generateur.new(nil,10, 10, 10)
 		@grilleTest = gene.creeUneGrille()
 		#####################################
 
@@ -126,9 +125,8 @@ class Fenetre < Gtk::Window
 			btnHypo.signal_connect('clicked') {
 				puts "appuie bouton Hypothèse"
 
-				Sauvegarde.nouvelleHypothese(@grilleTest)
-				@grilleTest.afficher
-
+				#Sauvegarde.nouvelleHypothese(@grilleTest)
+				#@grilleTest = Sauvegarde.annulerHypothese()
 
 			}
 
@@ -153,9 +151,6 @@ class Fenetre < Gtk::Window
 
 			btnRecom.signal_connect('clicked') {
 				puts "appuie bouton Recommencer"
-				@grilleTest = Sauvegarde.annulerHypothese()
-				afficheEcran
-				self.show_all
 				# img = dimImage("img/restart_icon.png")
 
 			}

@@ -115,6 +115,13 @@ class Sauvegarde
     return save.getGrille()
   end
 
+  def Sauvegarde.genenerDossier()
+    Dir::mkdir("Save", 0777)
+    Dir::mkdir("Save/easy", 0777)
+    Dir::mkdir("Save/normal", 0777)
+    Dir::mkdir("Save/hard", 0777)
+  end
+
   def Sauvegarde.deleteAllSave()
     Dir.glob('**/*.sav').each do |e|
       puts "Removed : "+e.to_s

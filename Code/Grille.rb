@@ -10,6 +10,7 @@ class Grille
   #@table		-> La matrice des Case de la grille
   #@sommets		-> Le Tableau des sommets de la grille
   #@aretes		-> Le Tableau des aretes de la grille
+  #@undo -> Pile de mouvement.
 
   #Creer un objet Grille proprement
   def self.creer(longueur, largeur)
@@ -40,7 +41,7 @@ class Grille
   ## Partie accesseurs
 
   # Accesseur get et set sur l'attribut table
-  attr_accessor :table, :sommets, :longueur, :largeur, :aretes
+  attr_accessor :table, :sommets, :longueur, :largeur, :aretes, :undo
 
   ## Partie méthodes
 
