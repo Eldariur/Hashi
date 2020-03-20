@@ -410,7 +410,7 @@ class Generateur
             else
                 tourneEnBoucle += 1
             end
-            @grille.afficher()
+            #@grille.afficher()
         }
         @estGenere = true
         placerLabelSommet()
