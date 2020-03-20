@@ -67,15 +67,15 @@ class Sauvegarde
   def sauvegarder()
     dump = YAML::dump(self)
     if(@estHypothese) then
-      file = File.open(File.path('Save/temp.sav'), 'w')
+      file = File.open(File.path('../Sauvegarde/Save/temp.sav'), 'w')
     else
       case @difficulte
         when 1
-          file = File.open(File.path('Save/easy/save.sav'), 'w')
+          file = File.open(File.path('../Sauvegarde/Save/easy/save.sav'), 'w')
         when 2
-          file = File.open(File.path('Save/normal/save.sav'), 'w')
+          file = File.open(File.path('../Sauvegarde/Save/normal/save.sav'), 'w')
         when 3
-          file = File.open(File.path('Save/hard/save.sav'), 'w')
+          file = File.open(File.path('../Sauvegarde/Save/hard/save.sav'), 'w')
         end
     end
     file.write dump
@@ -84,15 +84,15 @@ class Sauvegarde
 
   def charger()
     if(@estHypothese) then
-      save = YAML.load(File.read('Save/temp.sav'))
+      save = YAML.load(File.read('../Sauvegarde/Save/temp.sav'))
     else
       case @difficulte
         when 1
-          save = YAML.load(File.read('Save/easy/save.sav'))
+          save = YAML.load(File.read('../Sauvegarde/Save/easy/save.sav'))
         when 2
-          save = YAML.load(File.read('Save/normal/save.sav'))
+          save = YAML.load(File.read('../Sauvegarde/Save/normal/save.sav'))
         when 3
-          save = YAML.load(File.read('Save/hard/save.sav'))
+          save = YAML.load(File.read('../Sauvegarde/Save/hard/save.sav'))
       end
     end
     return save
@@ -104,13 +104,13 @@ class Sauvegarde
   end
 
   def Sauvegarde.validerHypothese()
-    File.delete('Save/temp.sav')
+    File.delete('../Sauvegarde/Save/temp.sav')
   end
 
   def Sauvegarde.annulerHypothese(mode = true)
     save = Sauvegarde.nouvelle(nil,nil,nil,true).charger()
     if(mode) then
-      File.delete('Save/temp.sav')
+      File.delete('../Sauvegarde/Save/temp.sav')
     end
     return save.getGrille()
   end
