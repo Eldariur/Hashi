@@ -80,6 +80,13 @@ class Arete
         return @listeCase.length()
     end
 
+    # Donne la liste de case de l'arete.
+    # === Return
+    # * +@listeCase+ : @listeCase La liste de case.
+    def getListeCase()
+      return @listeCase
+    end
+
     ##Supprime l'arete
     #Retire toute les references a l'arette dans les sommets, la grille et les case par lesquelles elle passe
     def supprimer()
