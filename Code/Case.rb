@@ -75,6 +75,30 @@ class Case
       return @contenu==nil
     end
 
+    ##Teste si la case contient une arete
+    #
+    # === Return
+    #
+    # True si la case contient une arete, false dans tout les autres cas
+    def aArete()
+        if !estVide()
+            return contenu.class == Arete
+        end
+        return false
+    end
+
+    ##Teste si la case contient un sommet
+    #
+    # === Return
+    #
+    # True si la case contient un sommet, false dans tout les autres cas
+    def aSommet()
+        if !estVide()
+            return contenu.class == Sommet
+        end
+        return false
+    end
+
 	##Affiche la case dans le terminal
     def afficher()
        if(@contenu == nil)

@@ -37,7 +37,7 @@ class Sommet
     ## Partie accesseurs
 
 	#Accesseur en get et en set sur la position, le booleen complet et la valeur
-	attr_accessor :position, :complet, :valeur
+	attr_accessor :position, :complet, :valeur, :estErreur
 	#Accesseur en get sur la liste d'arete
     attr_reader :listeArete
 
@@ -133,7 +133,7 @@ class Sommet
 
       (@position.x - 1).downto(0) do |i|
         caseCourante = @position.grille.getCase(i, @position.y)
-        if(hasSommet(caseCourante))
+        if(caseCourante.aSommet())
           voisins.push(caseCourante.contenu)
           break
         end
@@ -141,7 +141,7 @@ class Sommet
 
       (@position.y - 1).downto(0) do |i|
         caseCourante = @position.grille.getCase(@position.x, i)
-        if(hasSommet(caseCourante))
+        if(caseCourante.aSommet())
           voisins.push(caseCourante.contenu)
           break
         end
@@ -149,7 +149,7 @@ class Sommet
 
       (@position.x + 1).upto(@position.grille.longueur) do |i|
         caseCourante = @position.grille.getCase(i, @position.y)
-        if(hasSommet(caseCourante))
+        if(caseCourante.aSommet())
           voisins.push(caseCourante.contenu)
           break
         end
@@ -157,7 +157,7 @@ class Sommet
 
       (@position.y + 1).upto(@position.grille.largeur) do |i|
         caseCourante = @position.grille.getCase(@position.x, i)
-        if(hasSommet(caseCourante))
+        if(caseCourante.aSommet())
           voisins.push(caseCourante.contenu)
           break
         end
