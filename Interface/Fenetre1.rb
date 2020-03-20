@@ -70,7 +70,7 @@ class Fenetre < Gtk::Window
 		# #####################################
 
 		#####################################
-		gene = Generateur.new(nil,10, 10, 10)
+		gene = Generateur.new("hard")
 		@grilleTest = gene.creeUneGrille()
 		#####################################
 
