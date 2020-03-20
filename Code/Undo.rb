@@ -9,6 +9,8 @@ class Undo
 		new()
 	end
 
+	attr_reader :tabAction
+
 	#Privatise le new
 	private_class_method :new
 	
@@ -23,7 +25,7 @@ class Undo
 	#
 	# ===Paramètres
 	# * +arete+ : Ajout de la dernière arete jouer par le joueur
-	def empile(Arete arete)
+	def empile(arete)
 		@tabAction.push(arete)
 	end
 

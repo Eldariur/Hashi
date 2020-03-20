@@ -1,3 +1,5 @@
+require 'gtk'
+
 class FenetreTest < Gtk::Box
 
   def initialize(window)
