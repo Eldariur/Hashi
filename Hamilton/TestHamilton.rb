@@ -1,7 +1,7 @@
-load "Grille.rb"
-load "Case.rb"
-load "Sommet.rb"
-load "Arete.rb"
+load "../Code/Grille.rb"
+load "../Code/Case.rb"
+load "../Code/Sommet.rb"
+load "../Code/Arete.rb"
 
 # Test de génération de grilles prédéfinies
 
