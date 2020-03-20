@@ -37,7 +37,7 @@ class Sommet
     ## Partie accesseurs
 
 	#Accesseur en get et en set sur la position, le booleen complet et la valeur
-	attr_accessor :position, :complet, :valeur, :estErreur
+	attr_accessor :position, :complet, :valeur
 	#Accesseur en get sur la liste d'arete
     attr_reader :listeArete
 
