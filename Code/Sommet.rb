@@ -133,7 +133,7 @@ class Sommet
 
       (@position.x - 1).downto(0) do |i|
         caseCourante = @position.grille.getCase(i, @position.y)
-        if(hasSommet(caseCourante))
+        if(caseCourante.estSommet())
           voisins.push(caseCourante.contenu)
           break
         end
@@ -141,7 +141,7 @@ class Sommet
 
       (@position.y - 1).downto(0) do |i|
         caseCourante = @position.grille.getCase(@position.x, i)
-        if(hasSommet(caseCourante))
+        if(caseCourante.estSommet())
           voisins.push(caseCourante.contenu)
           break
         end
@@ -149,7 +149,7 @@ class Sommet
 
       (@position.x + 1).upto(@position.grille.longueur) do |i|
         caseCourante = @position.grille.getCase(i, @position.y)
-        if(hasSommet(caseCourante))
+        if(caseCourante.estSommet())
           voisins.push(caseCourante.contenu)
           break
         end
@@ -157,7 +157,7 @@ class Sommet
 
       (@position.y + 1).upto(@position.grille.largeur) do |i|
         caseCourante = @position.grille.getCase(@position.x, i)
-        if(hasSommet(caseCourante))
+        if(caseCourante.estSommet())
           voisins.push(caseCourante.contenu)
           break
         end
