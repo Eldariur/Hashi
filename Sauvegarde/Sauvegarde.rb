@@ -14,6 +14,7 @@ class Sauvegarde
   # === Parametre
   # * +grille+ : grille La grille a sauvegarder.
   # * +chrono+ : chrono Le chronometre a sauvegarder.
+  # * +difficulte+ : difficulte La difficulte de la grille.
   # * +hypothese+ : hypothese Le choix d'une sauvegarde pour une hypothese ou non.
   def initialize(grille, chrono, difficulte, hypothese = false)
     @grille = grille
@@ -31,6 +32,7 @@ class Sauvegarde
   # === Parametre
   # * +grille+ : grille La grille a sauvegarder.
   # * +chrono+ : chrono Le chronometre a sauvegarder.
+  # * +difficulte+ : difficulte La difficulte de la grille.
   # * +hypothese+ : hypothese Le choix d'une sauvegarde pour une hypothese ou non.
   def Sauvegarde.nouvelle(grille, chrono, difficulte, hypothese = false)
     new(grille, chrono, difficulte, hypothese)
@@ -42,6 +44,8 @@ class Sauvegarde
   attr:chronometre, true
   # Accesseur get sur l'attribut estHypothese.
   attr:estHypothese, false
+  # Accesseur get sur l'attribut estHypothese.
+  attr:difficulte, false
 
   # Renvoie la grille de la sauvegarde.
   # === Return
@@ -64,6 +68,7 @@ class Sauvegarde
     return @grille
   end
 
+  # Effectue les opération de sauvegarde sur une sauvegarde
   def sauvegarder()
     dump = YAML::dump(self)
     if(@estHypothese) then
@@ -78,6 +83,13 @@ class Sauvegarde
           file = File.open(File.path('../Sauvegarde/Save/hard/save.sav'), 'w')
         end
     end
+    file.write dump
+    file.close
+  end
+
+  def sauvegarderAvecNom(nom)
+    dump = YAML::dump(self)
+    file = File.open(File.path(nom), 'w')
     file.write dump
     file.close
   end
@@ -116,10 +128,18 @@ class Sauvegarde
   end
 
   def Sauvegarde.genenerDossier()
-    Dir::mkdir("Save", 0777)
-    Dir::mkdir("Save/easy", 0777)
-    Dir::mkdir("Save/normal", 0777)
-    Dir::mkdir("Save/hard", 0777)
+    if(!Dir.exist?('Save')) then
+      Dir::mkdir("Save", 0777)
+    end
+    if(!Dir.exist?('Save/easy')) then
+      Dir::mkdir("Save/easy", 0777)
+    end
+    if(!Dir.exist?('Save/normal')) then
+      Dir::mkdir("Save/normal", 0777)
+    end
+    if(!Dir.exist?('Save/ruby')) then
+      Dir::mkdir("Save/ruby", 0777)
+    end
   end
 
   def Sauvegarde.deleteAllSave()

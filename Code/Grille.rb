@@ -36,6 +36,7 @@ class Grille
     @table = Matrix.build(@longueur, @largeur){|row, col| Case.new(row, col)}
     @sommets = Array.new()
     @aretes = Array.new()
+    @undo = Undo.creer()
   end
 
   ## Partie accesseurs
