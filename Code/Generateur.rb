@@ -216,8 +216,13 @@ class Generateur
         nbCancel = 0
         tourneEnBoucle = 0
         loop {
+<<<<<<< HEAD
             break if sommetPlaces >= @nbSommet || nbCancel > sommetPlaces || tourneEnBoucle > @nbSommet * 2
             puts "nbCancel : " + nbCancel.to_s() + "\ntourneEnBoucle : " + tourneEnBoucle.to_s() + "\nsommetsPlaces : " + sommetPlaces.to_s() + "\nnbSommets : " + @nbSommet.to_s()
+=======
+            break if sommetPlaces >= @nbSommet || nbCancel > sommetPlaces
+            puts "nbCancel :           " + nbCancel.to_s() + "\nsommetsPlaces :         " + sommetPlaces.to_s() + "\nnbSommets :                " + @nbSommet.to_s()
+>>>>>>> a80b46355a7a34cffef72b4d6a502f3f040bd764
             #puts "nbSommets : " + sommetPlaces.to_s + "/" + @nbSommet.to_s
             #on commence par choisir un sommet
             sommetAEtePlace = false
