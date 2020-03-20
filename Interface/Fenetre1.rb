@@ -38,7 +38,6 @@ class Fenetre < Gtk::Window
 		   Gtk.main_quit
 		}
 
-		@pileUndo = Undo.creer()
 		@listeInter = []
 		x = 5
 		y = 5
@@ -112,6 +111,8 @@ class Fenetre < Gtk::Window
 			hpaned = Gtk::HPaned.new
 
 			btnHypo = UnBoutonPerso.new('H','BoutonEnJeu')
+				btnAnnulHypo = UnBoutonPerso.new('Annuler Hypothèse')
+				btnValidHypo = UnBoutonPerso.new('Valider Hypothèse')
 			ajouterImage(btnHypo,"img/cloud_icon.png")
 			btnAide = UnBoutonPerso.new('?','BoutonEnJeu')
 				btnAideTxt = UnBoutonPerso.new('Aide Textuelle')
@@ -127,24 +128,63 @@ class Fenetre < Gtk::Window
 				puts "appuie bouton Hypothèse"
 
 				Sauvegarde.nouvelleHypothese(@grilleTest)
-				@grilleTest.afficher
+				ajouterContenu(vbox,btnAnnulHypo)
+				ajouterContenu(vbox,btnValidHypo)
 
-
+				tbl.attach(vbox,0,1,2,10)
+				self.show_all
 			}
 
-			btnAide.signal_connect('clicked') {
-				if(messageLabel != nil)
-					vbox.remove(messageLabel)
-				end
+			btnAnnulHypo.signal_connect('clicked') {
+				@grilleTest = Sauvegarde.annulerHypothese()
 
-				vbox.remove(btnAideVisu)
-				vbox.add(btnAideTxt)
-				vbox.add(btnAideVisu)
+				retirerContenu(vbox,btnAnnulHypo)
+				retirerContenu(vbox,btnValidHypo)
+
+				afficheEcran
+				self.show_all
+			}
+
+			btnValidHypo.signal_connect('clicked') {
+				Sauvegarde.validerHypothese()
+				retirerContenu(vbox,btnAnnulHypo)
+				retirerContenu(vbox,btnValidHypo)
+			}
+
+
+
+			btnAide.signal_connect('clicked') {
+
+				retirerContenu(vbox,messageLabel)
+				retirerContenu(vbox,btnAideVisu)
+				ajouterContenu(vbox,btnAideTxt)
+				ajouterContenu(vbox,btnAideVisu)
 				tbl.attach(vbox,0,1,2,10)
 				self.show_all
 
 
 			}
+
+				btnAideTxt.signal_connect('clicked') {
+					aide = Aide.creer(@grilleTest)
+
+					message = aide.getMessageAide()
+					# puts message
+
+					ajouterMessage(vbox,aide.getMessageAide())
+					retirerContenu(vbox,btnAideTxt)
+					retirerContenu(vbox,btnAideVisu)
+					ajouterContenu(vbox,btnAideVisu)
+					self.show_all
+
+				}
+
+				btnAideVisu.signal_connect('clicked') {
+					puts "appuie bouton visuelle"
+
+					retirerContenu(vbox,btnAideTxt)
+					retirerContenu(vbox,btnAideVisu)
+				}
 
 			btnAnnul.signal_connect('clicked') {
 				# puts "appuie bouton Annuler"
@@ -153,34 +193,10 @@ class Fenetre < Gtk::Window
 
 			btnRecom.signal_connect('clicked') {
 				puts "appuie bouton Recommencer"
-				@grilleTest = Sauvegarde.annulerHypothese()
-				afficheEcran
-				self.show_all
 				# img = dimImage("img/restart_icon.png")
 
 			}
 
-
-			btnAideTxt.signal_connect('clicked') {
-				aide = Aide.creer(@grilleTest)
-
-				# message = aide.getMessageAide()
-				# puts message
-				retirerContenu(vbox,btnAideTxt)
-				retirerContenu(vbox,btnAideVisu)
-
-				# messageLabel = UnLabelPerso.new(message)
-				# vbox.add(messageLabel)
-				# vbox.add(btnAideVisu)
-				ajouterMessage(vbox,aide.getMessageAide())
-				ajouterContenu(vbox,btnAideVisu)
-				self.show_all
-
-			}
-
-			btnAideVisu.signal_connect('clicked') {
-				puts "appuie bouton visuelle"
-			}
 
 			hpaned.add(@darea)
 			hbox = Gtk::Box.new(:HORIZONTAL)
@@ -363,7 +379,9 @@ class Fenetre < Gtk::Window
 	end
 
 	def retirerContenu(box,contenu)
-		box.remove(contenu)
+		if(contenu != nil)
+			box.remove(contenu)
+		end
 	end
 
 	def ajouterContenu(box,contenu)
@@ -383,8 +401,8 @@ class Fenetre < Gtk::Window
 			if(caseT.class == Arete && !caseT.estDouble)
 				if(!actionAnnule)
 					caseT.estDouble = true;
-					@pileUndo.empile(caseT)
-					@pileUndo.empile("CREATION")
+					@grilleTest.undo.empile(caseT)
+					@grilleTest.undo.empile("CREATION")
 				else
 					trouve = false
 					@grilleTest.aretes.each do |a|
@@ -396,15 +414,15 @@ class Fenetre < Gtk::Window
 						caseT.estDouble = true;
 					else
 						newA = Arete.creer(s1,s2) #<================ a voir
-						@pileUndo.empile(newA)
-						@pileUndo.empile("CREATION")
+						@grilleTest.undo.empile(newA)
+						@grilleTest.undo.empile("CREATION")
 					end
 				end
 			elsif(caseT.class != Arete)
 				newA = Arete.creer(s1,s2) #<================ a voir
 				if(!actionAnnule)
-					@pileUndo.empile(newA)
-					@pileUndo.empile("CREATION")
+					@grilleTest.undo.empile(newA)
+					@grilleTest.undo.empile("CREATION")
 				end
 			end
 		end
@@ -431,8 +449,8 @@ class Fenetre < Gtk::Window
 
 	def suppressionArete(arete, actionAnnule = false)
 		if(!actionAnnule)
-			@pileUndo.empile(arete)
-			@pileUndo.empile("SUPPRESSION")
+			@grilleTest.undo.empile(arete)
+			@grilleTest.undo.empile("SUPPRESSION")
 		end
 		arete.sommet1.complet = false
 		arete.sommet2.complet = false
@@ -743,8 +761,8 @@ class Fenetre < Gtk::Window
 
 	def annulerAction()
 
-		action = @pileUndo.depile
-		arete = @pileUndo.depile
+		action = @grilleTest.undo.depile
+		arete = @grilleTest.undo.depile
 		if(action != nil)
 			s1 = arete.sommet1
 			s2 = arete.sommet2
