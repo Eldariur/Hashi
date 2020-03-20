@@ -75,11 +75,11 @@ class Case
       return @contenu==nil
     end
 
-    def estArete()
+    def aArete()
         return contenu.class == Arete
     end
 
-    def estSommet()
+    def aSommet()
         return contenu.class == Sommet
     end
 

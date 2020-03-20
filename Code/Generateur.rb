@@ -163,12 +163,17 @@ class Generateur
         return false
     end
 
-    ##Vérifie si la grille passée en parametre possède des erreurs par rapport a la grille générée
+    ##Vérifie si la grille passée en parametre possède des erreurs par rapport a la grille générée et compte les erreurs
     #
     # === Paramètres
     #
     # * +grille+ : la grille a vérifier
+    #
+    # === Return
+    #
+    # * +nbErreur+ : le nombre d'erreur
     def trouverErreurs(grille)
+        nbErreur = 0
         if @estGenere && grilleIdentique(grille)
             for i in 0...@sommets.size()
                 if grille.sommets[i].connexionsRestantes == 0
@@ -181,11 +186,13 @@ class Generateur
                         if !(@sommets[i].possedeAreteAvec(@sommets[index]))
                             grille.sommets[i].estErreur = true
                             arete.estErreur = true
+                            nbErreur += 1
                         end
                     end
                 end
             end
         end
+        return nbErreur
     end
 
     ##Génère une grille du nombre de sommet calculé ou passé en paramètre
