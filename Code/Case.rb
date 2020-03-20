@@ -75,6 +75,14 @@ class Case
       return @contenu==nil
     end
 
+    def estArete()
+        return contenu.class == Arete
+    end
+
+    def estSommet()
+        return contenu.class == Sommet
+    end
+
 	##Affiche la case dans le terminal
     def afficher()
        if(@contenu == nil)
