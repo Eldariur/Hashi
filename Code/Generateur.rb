@@ -179,7 +179,7 @@ class Generateur
                 if grille.sommets[i].connexionsRestantes == 0
                     grille.sommets[i].listeArete.each do |arete|
                         #on récupere l'autre sommet de l'arete
-                        autreSommet = sommets[i].autreSommet(arete)
+                        autreSommet = @sommets[i].autreSommet(arete)
                         #on recupere son index dans la liste des sommets de la grille
                         index = grille.sommets.find_index(autreSommet)
                         #on regarde si cette arete existe dans le grille originale
