@@ -76,11 +76,15 @@ class Case
     end
 
     def aArete()
-        return contenu.class == Arete
+        if !estVide()
+            return contenu.class == Arete
+        end
     end
 
     def aSommet()
-        return contenu.class == Sommet
+        if !estVide()
+            return contenu.class == Sommet
+        end
     end
 
 	##Affiche la case dans le terminal
