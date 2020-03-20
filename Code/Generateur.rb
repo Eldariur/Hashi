@@ -210,7 +210,7 @@ class Generateur
         sommetDeDepart = Sommet.creer(0, @grille.getCase(coordXPremierSommet, coordYPremierSommet))
         @sommets.push(sommetDeDepart)
         sommetPlaces += 1
-        @grille.afficher()
+        #@grille.afficher()
 
         #boucle qui place des sommets
         nbCancel = 0
