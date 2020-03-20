@@ -137,12 +137,18 @@ class Sommet
           voisins.push(caseCourante.contenu)
           break
         end
+        if(hasArete(caseCourante))
+          break
+        end
       end
 
       (@position.y - 1).downto(0) do |i|
         caseCourante = @position.grille.getCase(@position.x, i)
         if(hasSommet(caseCourante))
           voisins.push(caseCourante.contenu)
+          break
+        end
+        if(hasArete(caseCourante))
           break
         end
       end
@@ -153,12 +159,18 @@ class Sommet
           voisins.push(caseCourante.contenu)
           break
         end
+        if(hasArete(caseCourante))
+          break
+        end
       end
 
       (@position.y + 1).upto(@position.grille.largeur) do |i|
         caseCourante = @position.grille.getCase(@position.x, i)
         if(hasSommet(caseCourante))
           voisins.push(caseCourante.contenu)
+          break
+        end
+        if(hasArete(caseCourante))
           break
         end
       end
@@ -180,7 +192,7 @@ class Sommet
   	  self.listeArete.each do |a|
   	    if(a.sommet1 != self) then res.push(a.sommet1) end
   	    if(a.sommet2 != self) then res.push(a.sommet2) end
-  	end
+  	  end
   	  return res
   	end
 
