@@ -182,7 +182,7 @@ class Generateur
                         autreSommet = @sommets[i].autreSommet(arete)
                         #on recupere son index dans la liste des sommets de la grille
                         index = grille.sommets.find_index(autreSommet)
-                        puts "\n Class de index :" + index.class.to_s + "\n"
+                        index = index == nil ? 0 : index
                         #on regarde si cette arete existe dans le grille originale
                         if !(@sommets[i].possedeAreteAvec(@sommets[index]))
                             grille.sommets[i].estErreur = true
