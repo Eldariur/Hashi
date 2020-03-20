@@ -7,6 +7,7 @@ class Arete
     # @sommet2 -> Sommet ou arrive l'arete
     # @estDouble -> Booleen définissant si une arete est double ou non
     # @listeCase -> Liste des case par lesquelles passe l'arete
+    # @estErreur -> Booleen définissant si l'arete est une erreur ou non
 
     def self.creer(sommet1, sommet2, estDouble=false)
         objet = new(sommet1, sommet2, estDouble)
@@ -30,6 +31,7 @@ class Arete
         @sommet2 = sommet2
         @estDouble = estDouble
         @listeCase = Array.new()
+        @estErreur = false
 
         #vérifie si le sommet1 est bien le plus en haut/a gauche, si c'est pas le cas, on échange les sommet1 et 2
         if(sommet1.position.x > sommet2.position.x || sommet1.position.y > sommet2.position.y)
@@ -45,7 +47,7 @@ class Arete
     attr_reader :sommet1, :sommet2, :listeCase
 
     # Accesseur get et set sur le booleen de l'arete
-    attr_accessor :estDouble
+    attr_accessor :estDouble, :estErreur
 
     ## Partie méthodes
 

@@ -9,6 +9,7 @@ require_relative 'UnLabelPerso.rb'
 require_relative 'UneCasePerso.rb'
 require_relative '../Code/Generateur.rb'
 require_relative '../Code/Undo.rb'
+require_relative '../Sauvegarde/Sauvegarde.rb'
 
 
 
@@ -37,7 +38,7 @@ class Fenetre < Gtk::Window
 		   Gtk.main_quit
 		}
 
-		@pileHypo = Undo.creer()
+		@pileUndo = Undo.creer()
 		@listeInter = []
 		x = 5
 		y = 5
@@ -124,6 +125,8 @@ class Fenetre < Gtk::Window
 			btnHypo.signal_connect('clicked') {
 				puts "appuie bouton Hypothèse"
 
+				#Sauvegarde.nouvelleHypothese(@grilleTest)
+				#@grilleTest = Sauvegarde.annulerHypothese()
 
 			}
 
@@ -142,7 +145,8 @@ class Fenetre < Gtk::Window
 			}
 
 			btnAnnul.signal_connect('clicked') {
-				puts "appuie bouton Annuler"
+				# puts "appuie bouton Annuler"
+				annulerAction()
 			}
 
 			btnRecom.signal_connect('clicked') {
@@ -192,7 +196,7 @@ class Fenetre < Gtk::Window
 
 
 
-			self.signal_connect("button-press-event") { |widget, event| mouseClick(event) }
+			hpaned.signal_connect("button-press-event") { |widget, event| mouseClick(event) }
 	    #self.add(vbox)
 			self.add(hpaned)
 
@@ -212,24 +216,7 @@ class Fenetre < Gtk::Window
 		paddingX = 50
 		paddingY = 25
 		@nbClick += 1
-		#@cr = @darea.window.create_cairo_context
-	  #       puts(event.x, event.y).to_s+"=="
-		# 			if(@nbClick == 0)
-		# 				puts "test"
-		# 				@@x1 = event.x
-		# 				@@y1 = event.y
-		# 				@nbClick += 1
-		# 			else
-		# 				puts @@x1
-		# 				@@x2 = event.x
-		# 				@@y2 = event.y
-		# 				puts "trace une ligne entre deux points x="+@@x1.to_s+" y="+@@y1.to_s+" x2="+@@x2.to_s+"y2="+@@y2.to_s
-		# 				@cr.set_source_rgb 0.2, 0.23, 0.9
-		# 				draw_maLigne(@cr,@@x1,@@y1,@@x2,@@y2)
-		# 				@@x1 = @@x2
-		# 				@@y1 = @@y2
-		# 			end
-		# 			self.show_all
+
 		x = event.x
 		y = event.y
 
@@ -279,20 +266,14 @@ class Fenetre < Gtk::Window
 						# puts "s2=>"+s2.to_s
 
 						if(event.button == 1)
-							rendComplet(s1,s2,caseTest.contenu)
+							creationArete(s1,s2,caseTest.contenu)
 						# testAffichageGrille
 
 						elsif (event.button == 3)
 							#puts "click droit "+event.button.to_s
 							#puts "SUPPRESSION ARETE"
-							caseTest.contenu.sommet1.complet = false
-							caseTest.contenu.sommet2.complet = false
-							if(caseTest.contenu.estDouble)
-								caseTest.contenu.estDouble = false
+							suppressionArete(caseTest.contenu)
 
-							else
-								caseTest.contenu.supprimer
-							end
 						else
 							#puts "click :"+event.button.to_s
 						end
@@ -347,7 +328,7 @@ class Fenetre < Gtk::Window
 
 							if(s1 != nil && caseTest.contenu.class != Sommet)
 								# puts "je rentre dans la condition"
-								rendComplet(s1.contenu,s2.contenu,caseTest.contenu)
+								creationArete(s1.contenu,s2.contenu,caseTest.contenu)
 							end
 								#puts "je sort de la condition"
 						#puts "FIN @crEATION ARETE..."
@@ -390,18 +371,37 @@ class Fenetre < Gtk::Window
 	end
 
 	#créé une arete si les sommets ne sont pas complet
-	def rendComplet(s1,s2,caseT)
+	def creationArete(s1,s2,caseT, actionAnnule = false)
 
 		if(s1.valeur > s1.compterArete && s2.valeur > s2.compterArete)#le sommet est complet
-			# puts "CREATION ARETE..."
+
 			if(caseT.class == Arete && !caseT.estDouble)
-				caseT.estDouble = true;
-				@pileHypo.empile(caseT)
+				if(!actionAnnule)
+					caseT.estDouble = true;
+					@pileUndo.empile(caseT)
+					@pileUndo.empile("CREATION")
+				else
+					trouve = false
+					@grilleTest.aretes.each do |a|
+						if(a == caseT)
+							trouve = true
+						end
+					end
+					if(trouve)
+						caseT.estDouble = true;
+					else
+						newA = Arete.creer(s1,s2) #<================ a voir
+						@pileUndo.empile(newA)
+						@pileUndo.empile("CREATION")
+					end
+				end
 			elsif(caseT.class != Arete)
 				newA = Arete.creer(s1,s2) #<================ a voir
-				@pileHypo.empile(newA)
+				if(!actionAnnule)
+					@pileUndo.empile(newA)
+					@pileUndo.empile("CREATION")
+				end
 			end
-
 		end
 		if(s1.valeur == s1.compterArete)
 			#puts "SOMMET S1 COMPLET !"
@@ -414,12 +414,28 @@ class Fenetre < Gtk::Window
 			#puts "le sommet s2"+s1.to_s+" est complet"
 		end
 
-		puts "Affichage Hypo"
-		@pileHypo.tabAction.each do |a|
-			puts a.to_s
-		end
+		# puts "Affichage Hypo"
+		# @pileUndo.tabAction.each do |a|
+		# 	puts a.to_s
+		# end
+		# puts "===="
 		if(grilleGagnante)
 			puts "VOUS AVEZ GAGNÉ !!!!"
+		end
+	end
+
+	def suppressionArete(arete, actionAnnule = false)
+		if(!actionAnnule)
+			@pileUndo.empile(arete)
+			@pileUndo.empile("SUPPRESSION")
+		end
+		arete.sommet1.complet = false
+		arete.sommet2.complet = false
+		if(arete.estDouble)
+			arete.estDouble = false
+
+		else
+			arete.supprimer
 		end
 	end
 
@@ -718,6 +734,24 @@ class Fenetre < Gtk::Window
 
 
 
+	end
+
+	def annulerAction()
+
+		action = @pileUndo.depile
+		arete = @pileUndo.depile
+		if(action != nil)
+			s1 = arete.sommet1
+			s2 = arete.sommet2
+
+			case(action)
+			when "SUPPRESSION"
+				creationArete(s1,s2,arete,true)
+			when "CREATION"
+				suppressionArete(arete,true)
+			end
+			afficheEcran()
+		end
 	end
 
 	def changerWidget(nouveau)

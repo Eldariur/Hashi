@@ -7,6 +7,7 @@ class Sommet
     #@position		-> Case dans laquelle le sommet est placé
     #@valeur		-> Entier représentant la valeur du Sommet (nombre d'arete total)
     #@complet		-> Booleen qui défini si un sommet est complet ou non (toutes les aretes occupées)
+    #@estErreur     -> Booleen définissant si le sommet est une erreur ou non
 
     #creer un Sommet proprement
     def self.creer(valeur, position)
@@ -30,6 +31,7 @@ class Sommet
         @position = position #la case dans lequel est le sommet
         @listeArete = Array.new()
         @complet = false
+        @estErreur = false
     end
 
     ## Partie accesseurs
@@ -229,5 +231,43 @@ class Sommet
         end
       end
       return voisinsAreteCommune.uniq().size() == self.compterVoisins()
+    end
+
+    ## Méthode vérifiant si le sommet possède une arete vers tel autre sommet
+    #
+    # === Paramètres
+    #
+    # * +sommet+ : les sommet de destination de l'arete
+    #
+    # === Return
+    #
+    # True si le sommet a une arete vers le sommet, false sinon
+    def possedeAreteAvec(sommet)
+        aArete = false
+        @listeArete.each do |arete|
+            if arete.sommet1 == sommet || arete.sommet2 == sommet
+                aArete = true
+            end
+        end
+        return aArete
+    end
+
+    ## Méthode permettant de récupérer le sommet de l'autre coté d'une arete
+    #
+    # === Paramètres
+    #
+    # * +arete+ : l'arete dont on doit trouver l'autre sommet
+    #
+    # === Return
+    #
+    # L'autre sommet relié par l'arete
+    def autreSommet(arete)
+        if @listeArete.include?(arete)
+            if arete.sommet1 == self
+                return arete.sommet2
+            else
+                return arete.sommet1
+            end
+        end
     end
 end
