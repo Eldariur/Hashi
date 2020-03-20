@@ -133,46 +133,46 @@ class Sommet
 
       (@position.x - 1).downto(0) do |i|
         caseCourante = @position.grille.getCase(i, @position.y)
-        if(caseCourante.estSommet())
+        if(caseCourante.aSommet())
           voisins.push(caseCourante.contenu)
           break
         end
-        if(hasArete(caseCourante))
-          break
-        end
+        #if(caseCourante.aArete())
+        #  break
+        #end
       end
 
       (@position.y - 1).downto(0) do |i|
         caseCourante = @position.grille.getCase(@position.x, i)
-        if(caseCourante.estSommet())
+        if(caseCourante.aSommet())
           voisins.push(caseCourante.contenu)
           break
         end
-        if(hasArete(caseCourante))
-          break
-        end
+        #if(caseCourante.aArete())
+        #  break
+        #end
       end
 
       (@position.x + 1).upto(@position.grille.longueur) do |i|
         caseCourante = @position.grille.getCase(i, @position.y)
-        if(caseCourante.estSommet())
+        if(caseCourante.aSommet())
           voisins.push(caseCourante.contenu)
           break
         end
-        if(hasArete(caseCourante))
-          break
-        end
+        #if(caseCourante.aArete())
+        #  break
+        #end
       end
 
       (@position.y + 1).upto(@position.grille.largeur) do |i|
         caseCourante = @position.grille.getCase(@position.x, i)
-        if(caseCourante.estSommet())
+        if(caseCourante.aSommet())
           voisins.push(caseCourante.contenu)
           break
         end
-        if(hasArete(caseCourante))
-          break
-        end
+        #if(caseCourante.aArete())
+        #  break
+        #end
       end
 
       #puts "Nouveau sommet : "
