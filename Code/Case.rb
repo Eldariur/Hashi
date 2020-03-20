@@ -79,12 +79,14 @@ class Case
         if !estVide()
             return contenu.class == Arete
         end
+        return false
     end
 
     def aSommet()
         if !estVide()
             return contenu.class == Sommet
         end
+        return false
     end
 
 	##Affiche la case dans le terminal

@@ -70,7 +70,7 @@ class Fenetre < Gtk::Window
 		# #####################################
 
 		#####################################
-		gene = Generateur.new("hard")
+		gene = Generateur.new("easy")
 		@grilleTest = gene.creeUneGrille()
 		#####################################
 
@@ -237,6 +237,7 @@ class Fenetre < Gtk::Window
 				caseTest = @grilleTest.getCase(caseX,caseY)
 				caseSom = nil
 				if(estSommet?(caseTest))
+					puts "nb voisins du sommet : " + caseTest.contenu.compterVoisins().to_s()
 					#puts "C'est un sommet"
 					#afficheSurbri
 					videSurbri

@@ -80,28 +80,9 @@ class Sommet
     #
     # * +nb_voisins+ : Nombre de voisins du sommet
     def compterVoisins()
-      nb_voisins = 0
-      voisins = [false, false, false, false]
+      voisins = self.getListeVoisins()
 
-      @position.grille.sommets.each do |x|
-        if @position.x > x.position.x && @position.y == x.position.y
-          voisins[0] = true
-        elsif @position.x < x.position.x && @position.y == x.position.y
-          voisins[1] = true
-        elsif @position.y > x.position.y && @position.x == x.position.x
-          voisins[2] = true
-        elsif @position.y < x.position.y && @position.x == x.position.x
-          voisins[3] = true
-        end
-      end
-
-      for bool in voisins
-        if bool
-          nb_voisins += 1
-        end
-      end
-
-      return nb_voisins
+      return voisins.size()
     end
 
     ## Méthode retournant le nombre de voisins non complets d'un sommet
@@ -133,46 +114,54 @@ class Sommet
 
       (@position.x - 1).downto(0) do |i|
         caseCourante = @position.grille.getCase(i, @position.y)
-        if(caseCourante.aSommet())
+        if(hasSommet(caseCourante))
           voisins.push(caseCourante.contenu)
           break
         end
-        #if(caseCourante.aArete())
-        #  break
-        #end
+        if(hasArete(caseCourante))
+          if(caseCourante.contenu.sommet1 != self && caseCourante.contenu.sommet2 != self)
+            break
+          end
+        end
       end
 
       (@position.y - 1).downto(0) do |i|
         caseCourante = @position.grille.getCase(@position.x, i)
-        if(caseCourante.aSommet())
+        if(hasSommet(caseCourante))
           voisins.push(caseCourante.contenu)
           break
         end
-        #if(caseCourante.aArete())
-        #  break
-        #end
+        if(hasArete(caseCourante))
+          if(caseCourante.contenu.sommet1 != self && caseCourante.contenu.sommet2 != self)
+            break
+          end
+        end
       end
 
       (@position.x + 1).upto(@position.grille.longueur) do |i|
         caseCourante = @position.grille.getCase(i, @position.y)
-        if(caseCourante.aSommet())
+        if(hasSommet(caseCourante))
           voisins.push(caseCourante.contenu)
           break
         end
-        #if(caseCourante.aArete())
-        #  break
-        #end
+        if(hasArete(caseCourante))
+          if(caseCourante.contenu.sommet1 != self && caseCourante.contenu.sommet2 != self)
+            break
+          end
+        end
       end
 
       (@position.y + 1).upto(@position.grille.largeur) do |i|
         caseCourante = @position.grille.getCase(@position.x, i)
-        if(caseCourante.aSommet())
+        if(hasSommet(caseCourante))
           voisins.push(caseCourante.contenu)
           break
         end
-        #if(caseCourante.aArete())
-        #  break
-        #end
+        if(hasArete(caseCourante))
+          if(caseCourante.contenu.sommet1 != self && caseCourante.contenu.sommet2 != self)
+            break
+          end
+        end
       end
 
       #puts "Nouveau sommet : "
@@ -196,7 +185,6 @@ class Sommet
   	  return res
   	end
 
-
     ## Méthode testant si une case possède un sommet
     #
     # === Paramètres
@@ -209,6 +197,23 @@ class Sommet
     def hasSommet(uneCase)
       if(uneCase != nil)
         return uneCase.contenu.class == Sommet
+      else
+        return false
+      end
+    end
+
+    ## Méthode testant si une case possède une arête
+    #
+    # === Paramètres
+    #
+    # * +uneCase+ : Case à tester
+    #
+    # === Return
+    #
+    # true si la case possède une arête, false sinon
+    def hasArete(uneCase)
+      if(uneCase != nil)
+        return uneCase.contenu.class == Arete
       else
         return false
       end

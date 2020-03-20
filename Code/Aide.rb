@@ -122,6 +122,7 @@ class Aide
   def estCas1()
     @grille.sommets.each_with_index do |x, i|
       if @nb_voisins[i] == 1 && x.compterArete() != x.valeur
+        puts "coords : " + x.position.x.to_s() + ", " + x.position.y.to_s()
         return true
       end
     end
@@ -138,6 +139,7 @@ class Aide
   def estCas1Bis()
     @grille.sommets.each_with_index do |x, i|
       if x.compterVoisinsNonComplets() == 1 && x.compterArete() != x.valeur
+        puts "coords : " + x.position.x.to_s() + ", " + x.position.y.to_s()
         return true
       end
     end
@@ -153,6 +155,7 @@ class Aide
   def estCas2()
     @grille.sommets.each_with_index do |x, i|
       if x.valeur == 8 && x.compterArete() != x.valeur
+        puts "coords : " + x.position.x.to_s() + ", " + x.position.y.to_s()
         return true
       end
     end
@@ -168,6 +171,7 @@ class Aide
   def estCas3()
     @grille.sommets.each_with_index do |x, i|
       if x.valeur == 6 && @nb_voisins[i] == 3 && x.compterArete() != x.valeur
+        puts "coords : " + x.position.x.to_s() + ", " + x.position.y.to_s()
         return true
       end
     end
@@ -183,6 +187,7 @@ class Aide
   def estCas4()
     @grille.sommets.each_with_index do |x, i|
       if x.valeur == 4 && @nb_voisins[i] == 2 && x.compterArete() != x.valeur
+        puts "coords : " + x.position.x.to_s() + ", " + x.position.y.to_s()
         return true
       end
     end
@@ -205,6 +210,7 @@ class Aide
           end
         end
         if compteur == 1
+          puts "coords : " + x.position.x.to_s() + ", " + x.position.y.to_s()
           return true
         end
       end
@@ -228,6 +234,7 @@ class Aide
           end
         end
         if compteur == 1
+          puts "coords : " + x.position.x.to_s() + ", " + x.position.y.to_s()
           return true
         end
       end
@@ -251,6 +258,7 @@ class Aide
           end
         end
         if compteur == 1
+          puts "coords : " + x.position.x.to_s() + ", " + x.position.y.to_s()
           return true
         end
       end
@@ -267,6 +275,7 @@ class Aide
   def estCas8()
     @grille.sommets.each_with_index do |x, i|
       if x.valeur == 7 && !x.areteAvecChaqueVoisin()
+        puts "coords : " + x.position.x.to_s() + ", " + x.position.y.to_s()
         return true
       end
     end
@@ -282,6 +291,7 @@ class Aide
   def estCas9()
     @grille.sommets.each_with_index do |x, i|
       if x.valeur == 5 && @nb_voisins[i] == 3 && !x.areteAvecChaqueVoisin()
+        puts "coords : " + x.position.x.to_s() + ", " + x.position.y.to_s()
         return true
       end
     end
@@ -297,6 +307,7 @@ class Aide
   def estCas10()
     @grille.sommets.each_with_index do |x, i|
       if x.valeur == 3 && @nb_voisins[i] == 2 && !x.areteAvecChaqueVoisin()
+        puts "coords : " + x.position.x.to_s() + ", " + x.position.y.to_s()
         return true
       end
     end
@@ -319,6 +330,7 @@ class Aide
           end
         end
         if compteur == 2
+          puts "coords : " + x.position.x.to_s() + ", " + x.position.y.to_s()
           return true
         end
       end
@@ -342,6 +354,7 @@ class Aide
           end
         end
         if compteur == 2
+          puts "coords : " + x.position.x.to_s() + ", " + x.position.y.to_s()
           return true
         end
       end
@@ -365,6 +378,7 @@ class Aide
           end
         end
         if compteur == @nb_voisins[i] - 1 && compteur != 0
+          puts "coords : " + x.position.x.to_s() + ", " + x.position.y.to_s()
           return true
         end
       end
@@ -384,6 +398,7 @@ class Aide
       if x.valeur == 2 && @nb_voisins[i] == 2 && x.compterArete() == 0
         x.getListeVoisins().each do |v|
           if v.valeur == 2
+            puts "coords : " + x.position.x.to_s() + ", " + x.position.y.to_s()
             voisinDeux = true
           end
         end
