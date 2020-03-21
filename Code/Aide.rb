@@ -1,5 +1,5 @@
 
-# Classe représentant une Aide
+# Classe représentant une aide
 class Aide
 
 
@@ -10,6 +10,7 @@ class Aide
   # @grille     -> Grille dans laquelle l'aide est utile
   # @penalite   -> Penalité engendrée par l'aide en secondes
   # @nb_voisins -> Nombre de voisins de chaque sommet de la grille
+  # @position   -> Case concernée par l'aide
 
   def Aide.creer(grille)
     new(grille)
@@ -22,7 +23,7 @@ class Aide
 
   ## Partie initialize
 
-	# Initialisation de la class Aide
+	# Initialisation de la classe Aide
 	#
 	# === Parametre
 	#
@@ -62,6 +63,15 @@ class Aide
   			affiche = true
   		end
     end
+  end
+
+  ## Méthode permettant
+  #
+  # === Return
+  #
+  # L'aide visuelle correspondant à l'id de l'aide appelante
+  def getCaseAide()
+   	return @position
   end
 
   ## Méthode sans paramètres renvoyant l'id de l'aide correspondant au cas le plus simple présent dans la grille
@@ -104,10 +114,6 @@ class Aide
       return 13
     elsif estCas14()
       return 14
-    # elsif estCas15()
-    #   return 15
-    # elsif estCas16()
-    #   return 16
     else
       return 0
     end
@@ -123,6 +129,7 @@ class Aide
     @grille.sommets.each_with_index do |x, i|
       if @nb_voisins[i] == 1 && x.compterArete() != x.valeur
         puts "coords : " + x.position.x.to_s() + ", " + x.position.y.to_s()
+        @position = @grille.getCase(x.position.x, x.position.y)
         return true
       end
     end
@@ -140,6 +147,7 @@ class Aide
     @grille.sommets.each_with_index do |x, i|
       if x.compterVoisinsNonComplets() == 1 && x.compterArete() != x.valeur
         puts "coords : " + x.position.x.to_s() + ", " + x.position.y.to_s()
+        @position = @grille.getCase(x.position.x, x.position.y)
         return true
       end
     end
@@ -156,6 +164,7 @@ class Aide
     @grille.sommets.each_with_index do |x, i|
       if x.valeur == 8 && x.compterArete() != x.valeur
         puts "coords : " + x.position.x.to_s() + ", " + x.position.y.to_s()
+        @position = @grille.getCase(x.position.x, x.position.y)
         return true
       end
     end
@@ -172,6 +181,7 @@ class Aide
     @grille.sommets.each_with_index do |x, i|
       if x.valeur == 6 && @nb_voisins[i] == 3 && x.compterArete() != x.valeur
         puts "coords : " + x.position.x.to_s() + ", " + x.position.y.to_s()
+        @position = @grille.getCase(x.position.x, x.position.y)
         return true
       end
     end
@@ -188,6 +198,7 @@ class Aide
     @grille.sommets.each_with_index do |x, i|
       if x.valeur == 4 && @nb_voisins[i] == 2 && x.compterArete() != x.valeur
         puts "coords : " + x.position.x.to_s() + ", " + x.position.y.to_s()
+        @position = @grille.getCase(x.position.x, x.position.y)
         return true
       end
     end
@@ -211,6 +222,7 @@ class Aide
         end
         if compteur == 1
           puts "coords : " + x.position.x.to_s() + ", " + x.position.y.to_s()
+          @position = @grille.getCase(x.position.x, x.position.y)
           return true
         end
       end
@@ -235,6 +247,7 @@ class Aide
         end
         if compteur == 1
           puts "coords : " + x.position.x.to_s() + ", " + x.position.y.to_s()
+          @position = @grille.getCase(x.position.x, x.position.y)
           return true
         end
       end
@@ -259,6 +272,7 @@ class Aide
         end
         if compteur == 1
           puts "coords : " + x.position.x.to_s() + ", " + x.position.y.to_s()
+          @position = @grille.getCase(x.position.x, x.position.y)
           return true
         end
       end
@@ -276,6 +290,7 @@ class Aide
     @grille.sommets.each_with_index do |x, i|
       if x.valeur == 7 && !x.areteAvecChaqueVoisin()
         puts "coords : " + x.position.x.to_s() + ", " + x.position.y.to_s()
+        @position = @grille.getCase(x.position.x, x.position.y)
         return true
       end
     end
@@ -292,6 +307,7 @@ class Aide
     @grille.sommets.each_with_index do |x, i|
       if x.valeur == 5 && @nb_voisins[i] == 3 && !x.areteAvecChaqueVoisin()
         puts "coords : " + x.position.x.to_s() + ", " + x.position.y.to_s()
+        @position = @grille.getCase(x.position.x, x.position.y)
         return true
       end
     end
@@ -308,6 +324,7 @@ class Aide
     @grille.sommets.each_with_index do |x, i|
       if x.valeur == 3 && @nb_voisins[i] == 2 && !x.areteAvecChaqueVoisin()
         puts "coords : " + x.position.x.to_s() + ", " + x.position.y.to_s()
+        @position = @grille.getCase(x.position.x, x.position.y)
         return true
       end
     end
@@ -331,6 +348,7 @@ class Aide
         end
         if compteur == 2
           puts "coords : " + x.position.x.to_s() + ", " + x.position.y.to_s()
+          @position = @grille.getCase(x.position.x, x.position.y)
           return true
         end
       end
@@ -355,6 +373,7 @@ class Aide
         end
         if compteur == 2
           puts "coords : " + x.position.x.to_s() + ", " + x.position.y.to_s()
+          @position = @grille.getCase(x.position.x, x.position.y)
           return true
         end
       end
@@ -379,6 +398,7 @@ class Aide
         end
         if compteur == @nb_voisins[i] - 1 && compteur != 0
           puts "coords : " + x.position.x.to_s() + ", " + x.position.y.to_s()
+          @position = @grille.getCase(x.position.x, x.position.y)
           return true
         end
       end
@@ -399,6 +419,7 @@ class Aide
         x.getListeVoisins().each do |v|
           if v.valeur == 2
             puts "coords : " + x.position.x.to_s() + ", " + x.position.y.to_s()
+            @position = @grille.getCase(x.position.x, x.position.y)
             voisinDeux = true
           end
         end
@@ -406,18 +427,6 @@ class Aide
     end
     return voisinDeux
   end
-
-  ## Méthode testant si un cas 15 est présent dans la grille
-  # Cas 15 :
-  #
-  # === Return
-  #
-  # true si le cas est vérifié pour un des sommets de la grille, false sinon
-  def estCas15()
-
-  end
-
-
 
 end
 
