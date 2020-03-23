@@ -32,6 +32,7 @@ class Arete
         @estDouble = estDouble
         @listeCase = Array.new()
         @estErreur = false
+        @hypothese = false
 
         #vérifie si le sommet1 est bien le plus en haut/a gauche, si c'est pas le cas, on échange les sommet1 et 2
         if(sommet1.position.x > sommet2.position.x || sommet1.position.y > sommet2.position.y)
@@ -47,7 +48,7 @@ class Arete
     attr_reader :sommet1, :sommet2, :listeCase
 
     # Accesseur get et set sur le booleen de l'arete
-    attr_accessor :estDouble, :estErreur
+    attr_accessor :estDouble, :estErreur, :hypothese
 
     ## Partie méthodes
 

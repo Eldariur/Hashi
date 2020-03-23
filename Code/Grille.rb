@@ -115,6 +115,13 @@ class Grille
       end
   end
 
+  ##Réinistialise tous les sommets de la grille
+  def clearSommets()
+    @sommets.each do |s|
+      s.complet = false
+    end
+  end
+
 	#Donne la case suivante dans la direction donné
 	#
 	# === Paramètres
@@ -247,4 +254,17 @@ class Grille
   def nbSommets()
     return @sommets.count()
   end
+
+  # Cette methode calcule si deux sommets sont une arete de la grille.
+  # === Return
+  # * +boolean+ : boolean Le resultat de l'evaluation.
+  def estArete(s1,s2)
+    @aretes.each do |a|
+      if((a.sommet1 == s1 && a.sommet2 == s2) || (a.sommet1 == s2 && a.sommet2 == s1))
+        return true
+      end
+    end
+    return false
+  end
+
 end

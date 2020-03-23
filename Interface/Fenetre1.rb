@@ -28,6 +28,7 @@ class Fenetre < Gtk::Window
 		css.load(path: "./css/style.css")
 		Gtk::StyleContext::add_provider_for_screen(Gdk::Screen.default,css,Gtk::StyleProvider::PRIORITY_APPLICATION)
 
+		@hypothese = false
 		#self.updateData
 		self.signal_connect('configure-event') {
 			#self.updateData
@@ -71,6 +72,7 @@ class Fenetre < Gtk::Window
 		#####################################
 		gene = Generateur.new("easy")
 		@grilleTest = gene.creeUneGrille()
+		grilleDepart = @grilleTest
 		#####################################
 
 		#####################################
@@ -125,6 +127,7 @@ class Fenetre < Gtk::Window
 
 			btnHypo.signal_connect('clicked') {
 				puts "appuie bouton Hypothèse"
+				@hypothese = true
 
 				Sauvegarde.nouvelleHypothese(@grilleTest)
 				ajouterContenu(vbox,btnAnnulHypo)
@@ -136,6 +139,7 @@ class Fenetre < Gtk::Window
 
 			btnAnnulHypo.signal_connect('clicked') {
 				@grilleTest = Sauvegarde.annulerHypothese()
+				@hypothese = false
 
 				retirerContenu(vbox,btnAnnulHypo)
 				retirerContenu(vbox,btnValidHypo)
@@ -146,6 +150,10 @@ class Fenetre < Gtk::Window
 
 			btnValidHypo.signal_connect('clicked') {
 				Sauvegarde.validerHypothese()
+				@hypothese = false
+				@grilleTest.aretes.each do |a|
+					a.hypothese = @hypothese
+				end
 				retirerContenu(vbox,btnAnnulHypo)
 				retirerContenu(vbox,btnValidHypo)
 			}
@@ -191,9 +199,12 @@ class Fenetre < Gtk::Window
 			}
 
 			btnRecom.signal_connect('clicked') {
-				puts "appuie bouton Recommencer"
-				# img = dimImage("img/restart_icon.png")
-
+				# puts "appuie bouton Recommencer"
+				#@grilleTest = grilleDepart
+				@grilleTest.clearAretes
+				@grilleTest.clearSommets
+				@listeInter = []
+				afficheEcran
 			}
 
 
@@ -261,10 +272,17 @@ class Fenetre < Gtk::Window
 
 					listV = rechercherVoisins(caseTest)
 					listV.each { |v|
-
-						@listeInter += getlisteInterCase(caseTest,v)
-						@listeInter.push("|")
+						if(@grilleTest.estArete(caseTest.contenu, v.contenu))
+							@listeInter += getlisteInterCase(caseTest,v)
+							@listeInter.push("|")
+						end
+						if(!caseTest.contenu.complet && !v.contenu.complet)
+							@listeInter += getlisteInterCase(caseTest,v)
+							@listeInter.push("|")
+						end
 					}
+					# @listeInter += getlisteInterCase(caseTest,v)
+					# @listeInter.push("|")
 					#puts "AFFICHAGE DE LA LISTE:"
 					#afficheSurbri()
 
@@ -361,7 +379,7 @@ class Fenetre < Gtk::Window
 					videSurbri
 
 				end
-				drawSurbri()
+
 				afficheEcran()
 
 			end
@@ -401,6 +419,7 @@ class Fenetre < Gtk::Window
 			if(caseT.class == Arete && !caseT.estDouble)
 				if(!actionAnnule)
 					caseT.estDouble = true;
+					caseT.hypothese = @hypothese
 					@grilleTest.undo.empile(caseT)
 					@grilleTest.undo.empile("CREATION")
 				else
@@ -414,12 +433,14 @@ class Fenetre < Gtk::Window
 						caseT.estDouble = true;
 					else
 						newA = Arete.creer(s1,s2) #<================ a voir
+						newA.hypothese = @hypothese
 						@grilleTest.undo.empile(newA)
 						@grilleTest.undo.empile("CREATION")
 					end
 				end
 			elsif(caseT.class != Arete)
 				newA = Arete.creer(s1,s2) #<================ a voir
+				newA.hypothese = @hypothese
 				if(!actionAnnule)
 					@grilleTest.undo.empile(newA)
 					@grilleTest.undo.empile("CREATION")
@@ -743,7 +764,6 @@ class Fenetre < Gtk::Window
 		tailleCase = 50
 		paddingX = 50
 		paddingY = 25
-		#@cr = @darea.window.@create_cairo_context
 
 		if(tracer)
 			0.upto @longueur do |i|
@@ -753,10 +773,6 @@ class Fenetre < Gtk::Window
 				draw_maLigne(paddingX,i*tailleCase+paddingY,@longueur*tailleCase+paddingX,i*tailleCase+paddingY)
 			end
 		end
-
-
-
-
 	end
 
 	def annulerAction()
@@ -911,7 +927,10 @@ class Fenetre < Gtk::Window
 				paddingX = 50+15
 			end
 
+			activeHypo(a.hypothese)
+
 			if(!a.estDouble)# || 1)
+				activeHypo()
 				@cr.move_to x1*tailleCase+paddingX+varX, y1*tailleCase+paddingY+varY
 				@cr.line_to x2*tailleCase+paddingX+varX-minX, y2*tailleCase+paddingY+varY-minY
 				@cr.stroke_preserve
@@ -954,6 +973,14 @@ class Fenetre < Gtk::Window
 		@cr.stroke_preserve
 	end
 
+	def activeHypo(condition = false)
+		if(condition)
+			@cr.set_dash(5, 15)
+		else
+			@cr.set_line_join(0)
+		end
+	end
+
 	def testAffichageGrille
 		puts "=====TEST====="
 		@grilleTest.aretes.each {|a|
@@ -984,9 +1011,10 @@ class Fenetre < Gtk::Window
 	def afficheEcran()
 		clearEcran()
 		drawSurbri()
+		tracerGrille(true) #<== AIDE VISUEL TEMPO
 		drawSommets()
 		drawAretes()
-		tracerGrille(true) #<== AIDE VISUEL TEMPO
+
 	end
 
 end
