@@ -11,6 +11,12 @@ class UnBoutonPerso < Gtk::Button
     # }
   end
 
+	def verrouiller()
+		self.set_sensitive(false)
+	end
 
+	def deverrouiller()
+		self.set_sensitive(true)
+	end
 
 end
