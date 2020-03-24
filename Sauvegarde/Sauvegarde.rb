@@ -68,7 +68,7 @@ class Sauvegarde
     return @grille
   end
 
-  # Effectue les opération de sauvegarde sur une sauvegarde
+  # Effectue les opération de sauvegarde sur une sauvegarde.
   def sauvegarder()
     dump = YAML::dump(self)
     if(@estHypothese) then
@@ -87,6 +87,7 @@ class Sauvegarde
     file.close
   end
 
+  # Permet de sauvegarder avec un nom spécifique.
   def sauvegarderAvecNom(nom)
     dump = YAML::dump(self)
     file = File.open(File.path(nom), 'w')
@@ -94,6 +95,9 @@ class Sauvegarde
     file.close
   end
 
+  # Charge une sauvegarde depuis un fichier en fonction du type de sauvegarde.
+  # === Return
+  # * +save+ : save La sauvegarde chargée.
   def charger()
     if(@estHypothese) then
       save = YAML.load(File.read('../Sauvegarde/Save/temp.sav'))
@@ -110,15 +114,20 @@ class Sauvegarde
     return save
   end
 
+  # Permet de créer une hypothese.
   def Sauvegarde.nouvelleHypothese(grille)
     save = Sauvegarde.nouvelle(grille,nil,nil,true)
     save.sauvegarder()
   end
 
+  # Permet de valider une hypothese.
   def Sauvegarde.validerHypothese()
     File.delete('../Sauvegarde/Save/temp.sav')
   end
 
+  # Annule une hypothese en cours et retourne l'ancienne grille pre-hypothese.
+  # === Return
+  # * +save.getGrille()+ : save.getGrille() La grille de la sauvegarde.
   def Sauvegarde.annulerHypothese(mode = true)
     save = Sauvegarde.nouvelle(nil,nil,nil,true).charger()
     if(mode) then
@@ -127,6 +136,7 @@ class Sauvegarde
     return save.getGrille()
   end
 
+  # Genere les dossiers necessaire au fonctionnement des sauvegardes.
   def Sauvegarde.genenerDossier()
     if(!Dir.exist?('Save')) then
       Dir::mkdir("Save", 0777)
@@ -142,6 +152,7 @@ class Sauvegarde
     end
   end
 
+  # Permet de supprimer toutes les sauvegardes.
   def Sauvegarde.deleteAllSave()
     Dir.glob('**/*.sav').each do |e|
       puts "Removed : "+e.to_s

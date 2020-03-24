@@ -97,6 +97,8 @@ grille: &1 !ruby/object:Grille
   - *6
   - *7
   aretes: []
+  undo: !ruby/object:Undo
+    tabAction: []
 estHypothese: false
 chronometre: 
 difficulte: 0
