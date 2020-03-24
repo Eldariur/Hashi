@@ -32,6 +32,7 @@ class Aide
     @grille = grille
     @nb_voisins = Array.new(@grille.sommets.size())
     @id = definirCas()
+    @penalite = 0
   end
 
 
@@ -63,6 +64,7 @@ class Aide
   			affiche = true
   		end
     end
+    @penalite = 10
   end
 
   ## Méthode permettant
@@ -72,6 +74,7 @@ class Aide
   # L'aide visuelle correspondant à l'id de l'aide appelante
   def getCaseAide()
    	return @position
+    @penalite = 20
   end
 
   ## Méthode sans paramètres renvoyant l'id de l'aide correspondant au cas le plus simple présent dans la grille

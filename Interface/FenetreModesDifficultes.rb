@@ -9,6 +9,18 @@ class FenetreModesDifficultes < Gtk::Box
     bouton3 = UnBoutonPerso.new("Difficile")
     bouton4 = UnBoutonPerso.new("Custom")
 
+    bouton1.signal_connect('clicked') {
+      @@fenetre.changerWidget(FenetreJeu.new(@@fenetre, "easy"))
+    }
+
+    bouton2.signal_connect('clicked') {
+      @@fenetre.changerWidget(FenetreJeu.new(@@fenetre, "normal"))
+    }
+
+    bouton3.signal_connect('clicked') {
+      @@fenetre.changerWidget(FenetreJeu.new(@@fenetre, "hard"))
+    }
+
     bouton4.signal_connect('clicked') {
       @@fenetre.changerWidget(FenetreParametres.new(@@fenetre))
     }
