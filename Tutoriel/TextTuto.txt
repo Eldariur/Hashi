@@ -1,0 +1,19 @@
+D1: Le but du Hashi est de relier des sommets avec des arêtes. Pour jouer, cliquez sur un sommet, une zone colorée apparaît, cliquez sur celle-ci afin d'y placer une arête.
+D2: Chaque sommet possède une numérotation, elle correspond au nombre d'arêtes qui y sont liées. Pour atteindre le bon nombre de sommets, il est possible de créer des arêtes doubles. Afin de créer une arête double, cliquez sur un sommet dont part déjà une arête, puis cliquez sur la zone colorée correspondant à cette arête. Pour annuler votre dernière action, vous pouvez appuyer sur le bouton annuler, en haut de l'écran.
+D3: Pour gagner la partie, aucun groupe de sommets liés ne peut être séparé des autres sommets. Si vous vous trouvez en difficulté, vous pouver appuyer sur le bouton d'aide, en haut de l'écran, afin de recevoir un indice pour votre partie.
+D4: Hypothése + map lambda
+D5: DEBUT DES STRAGEGIE + 3 dans un coins
+D6: Le 8 :
+D7: Le 6 sur le bord
+D8: Le 4 Dans un coins
+D9: A SENS UNIQUE
+D10: 5 Dans un coins
+D11: 7 Au millieu
+
+AVANCED :
+A1: 4 avec  2 1 autours
+A2: 6 pas sur
+A3: Anti isolation 1/1 2/2
+A4: Isolation 2/2 + 3
+A5: BLOQUE
+A6:
