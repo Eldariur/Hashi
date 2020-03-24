@@ -4,29 +4,34 @@ grille: &1 !ruby/object:Grille
   largeur: 3
   table: !ruby/object:Matrix
     rows:
-    - - !ruby/object:Case
+    - - &2 !ruby/object:Case
         x: 0
         y: 0
         grille: *1
-        contenu: 
-        surbrillance: false
-      - !ruby/object:Case
-        x: 0
-        y: 1
-        grille: *1
-        contenu: 
-        surbrillance: false
-      - &2 !ruby/object:Case
-        x: 0
-        y: 2
-        grille: *1
         contenu: &5 !ruby/object:Sommet
-          valeur: 1
+          valeur: 2
           position: *2
           listeArete: []
           complet: false
           estErreur: false
         surbrillance: false
+      - !ruby/object:Case
+        x: 0
+        y: 1
+        grille: *1
+        contenu: 
+        surbrillance: false
+      - &3 !ruby/object:Case
+        x: 0
+        y: 2
+        grille: *1
+        contenu: &7 !ruby/object:Sommet
+          valeur: 4
+          position: *3
+          listeArete: []
+          complet: false
+          estErreur: false
+        surbrillance: false
     - - !ruby/object:Case
         x: 1
         y: 0
@@ -45,16 +50,11 @@ grille: &1 !ruby/object:Grille
         grille: *1
         contenu: 
         surbrillance: false
-    - - &3 !ruby/object:Case
+    - - !ruby/object:Case
         x: 2
         y: 0
         grille: *1
-        contenu: &6 !ruby/object:Sommet
-          valeur: 2
-          position: *3
-          listeArete: []
-          complet: false
-          estErreur: false
+        contenu: 
         surbrillance: false
       - !ruby/object:Case
         x: 2
@@ -66,8 +66,8 @@ grille: &1 !ruby/object:Grille
         x: 2
         y: 2
         grille: *1
-        contenu: &7 !ruby/object:Sommet
-          valeur: 3
+        contenu: &6 !ruby/object:Sommet
+          valeur: 2
           position: *4
           listeArete: []
           complet: false

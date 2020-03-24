@@ -361,6 +361,8 @@ grille: &1 !ruby/object:Grille
   - *20
   - *21
   aretes: []
+  undo: !ruby/object:Undo
+    tabAction: []
 estHypothese: false
 chronometre: 
 difficulte: 0
