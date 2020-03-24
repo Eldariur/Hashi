@@ -15,7 +15,7 @@ S7: Si un sommet est situé dans le centre de la grille et a une valeur de 7, il
 
 AVANCED :
 A1: Si un sommet dont la valeur est 4 ne possède que 3 voisins, alors il sera lié à deux d'entre eux par une arête simple, tandis qu'il sera lié au dernier par une arête double.
-A2: 6 pas sur
+A2: Dans le cas où un sommet de valeur 6 qui ne se trouve pas sur un bord est voisin d'un sommet d'une valeur de 1, il y a deux possibilités, soit le 6 et le 1 sont liés, auquel cas les 3 autres voisins du 6 y sont liés par au moins une arête simple, soit le 6 et le 1 ne sont pas liés, et dans ce cas, le 6 est lié à ses autres voisins par des doubles arêtes.
 A3: Lorsque deux sommets ont pour valeur 1 et 1, il ne faut pas les lier, sinon on les isolerait du reste des sommets, de même pour les sommets dont les valeurs sont 2, il ne faut pas les lier par une double arête.
 A4: Quand on est présenté avec des sommets aux valeur 1, 3, et 2, il faut veiller à ne pas les isoler en connectant le 2 au 3 avec une double arête ainsi que le 1 au 3.
-A5: BLOQUE
+A5: Lorsque vous jouez, veillez à ne pas bloquer vos possibilités de liaison avec une arête qui couperait tout chemin possible, ou isolerait une portion de la grille.
