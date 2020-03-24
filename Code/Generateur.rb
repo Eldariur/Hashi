@@ -173,7 +173,7 @@ class Generateur
     #
     # * +nbErreur+ : le nombre d'erreur
     def trouverErreurs(grille)
-        nbErreur = 0
+        objErreurs = []
         if @estGenere && grilleIdentique(grille)
             for i in 0...@sommets.size()
                 if grille.sommets[i].connexionsRestantes == 0
@@ -187,13 +187,13 @@ class Generateur
                         if !(@sommets[i].possedeAreteAvec(@sommets[index]))
                             grille.sommets[i].estErreur = true
                             arete.estErreur = true
-                            nbErreur += 1
+                            objErreurs.push(grille.sommets[i])
                         end
                     end
                 end
             end
         end
-        return nbErreur
+        return objErreurs
     end
 
     ##Génère une grille du nombre de sommet calculé ou passé en paramètre
