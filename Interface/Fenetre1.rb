@@ -27,7 +27,8 @@ class Fenetre < Gtk::Window
 		css=Gtk::CssProvider.new
 		css.load(path: "./css/style.css")
 		Gtk::StyleContext::add_provider_for_screen(Gdk::Screen.default,css,Gtk::StyleProvider::PRIORITY_APPLICATION)
-
+		
+		@presser = false
 		@hypothese = false
 		#self.updateData
 		self.signal_connect('configure-event') {
@@ -126,20 +127,47 @@ class Fenetre < Gtk::Window
 
 
 			btnHypo.signal_connect('clicked') {
-				puts "appuie bouton Hypothèse"
-				@hypothese = true
+				##Changement des boutons
+				if(@presser)
+					@presser = false
+					btnAide.deverrouiller()
+					btnRecom.deverrouiller()
+					btnAnnul.deverrouiller()
 
-				Sauvegarde.nouvelleHypothese(@grilleTest)
-				ajouterContenu(vbox,btnAnnulHypo)
-				ajouterContenu(vbox,btnValidHypo)
+					@grilleTest = Sauvegarde.annulerHypothese()
+					@hypothese = false
 
-				tbl.attach(vbox,0,1,2,10)
-				self.show_all
+					retirerContenu(vbox,btnAnnulHypo)
+					retirerContenu(vbox,btnValidHypo)
+
+
+				else
+					btnAide.verrouiller()
+					btnRecom.verrouiller()
+					btnAnnul.verrouiller()
+
+					@presser = true
+					puts "appuie bouton Hypothèse"
+					@hypothese = true
+
+					Sauvegarde.nouvelleHypothese(@grilleTest)
+					ajouterContenu(vbox,btnAnnulHypo)
+					ajouterContenu(vbox,btnValidHypo)
+
+					tbl.attach(vbox,0,1,2,10)
+					self.show_all
+				end
 			}
 
 			btnAnnulHypo.signal_connect('clicked') {
+				@presser = false
+
 				@grilleTest = Sauvegarde.annulerHypothese()
 				@hypothese = false
+
+				btnAide.deverrouiller()
+				btnRecom.deverrouiller()
+				btnAnnul.deverrouiller()
 
 				retirerContenu(vbox,btnAnnulHypo)
 				retirerContenu(vbox,btnValidHypo)
@@ -149,11 +177,18 @@ class Fenetre < Gtk::Window
 			}
 
 			btnValidHypo.signal_connect('clicked') {
+				@presser = false
+
 				Sauvegarde.validerHypothese()
 				@hypothese = false
 				@grilleTest.aretes.each do |a|
 					a.hypothese = @hypothese
 				end
+				btnAide.deverrouiller()
+				btnRecom.deverrouiller()
+				btnAnnul.deverrouiller()
+
+
 				retirerContenu(vbox,btnAnnulHypo)
 				retirerContenu(vbox,btnValidHypo)
 			}
@@ -162,16 +197,31 @@ class Fenetre < Gtk::Window
 			@caseAide = nil
 
 			btnAide.signal_connect('clicked') {
+				if(@presser)
+					@presser = false
+					btnHypo.deverrouiller()
+					btnRecom.deverrouiller()
+					btnAnnul.deverrouiller()
+					retirerContenu(vbox,messageLabel)
+					retirerContenu(vbox,btnAideTxt)
+					retirerContenu(vbox,btnAideVisu)
 
+				else
+					@presser = true
+					@aide = Aide.creer(@grilleTest)
 
-				@aide = Aide.creer(@grilleTest)
-				retirerContenu(vbox,messageLabel)
-				retirerContenu(vbox,btnAideVisu)
-				ajouterContenu(vbox,btnAideTxt)
-				ajouterContenu(vbox,btnAideVisu)
-				tbl.attach(vbox,0,1,2,10)
-				self.show_all
+					btnHypo.verrouiller()
+					btnRecom.verrouiller()
+					btnAnnul.verrouiller()
 
+					retirerContenu(vbox,messageLabel)
+					retirerContenu(vbox,btnAideVisu)
+
+					ajouterContenu(vbox,btnAideTxt)
+					ajouterContenu(vbox,btnAideVisu)
+					tbl.attach(vbox,0,1,2,10)
+					self.show_all
+				end
 
 			}
 
@@ -180,10 +230,10 @@ class Fenetre < Gtk::Window
 				btnAideTxt.signal_connect('clicked') {
 					@caseA = nil
 
-					message = @aide.getMessageAide()
+					messageLabel = UnLabelPerso.new(@aide.getMessageAide())
 					# puts message
 
-					ajouterMessage(vbox,@aide.getMessageAide())
+					ajouterMessage(vbox,messageLabel)
 					retirerContenu(vbox,btnAideTxt)
 					retirerContenu(vbox,btnAideVisu)
 					ajouterContenu(vbox,btnAideVisu)
@@ -398,9 +448,7 @@ class Fenetre < Gtk::Window
 
 	end
 
-	def ajouterMessage(box, message)
-		puts message
-		messageLabel = UnLabelPerso.new(message)
+	def ajouterMessage(box, messageLabel)
 		box.add(messageLabel)
 	end
 
@@ -418,6 +466,7 @@ class Fenetre < Gtk::Window
 		image = dimImage(image)
 		contenu.image=(image)
 	end
+
 
 	#créé une arete si les sommets ne sont pas complet
 	def creationArete(s1,s2,caseT, actionAnnule = false)
