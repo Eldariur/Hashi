@@ -159,8 +159,11 @@ class Fenetre < Gtk::Window
 			}
 
 			@aide = nil
+			@caseAide = nil
 
 			btnAide.signal_connect('clicked') {
+
+
 				@aide = Aide.creer(@grilleTest)
 				retirerContenu(vbox,messageLabel)
 				retirerContenu(vbox,btnAideVisu)
@@ -175,7 +178,7 @@ class Fenetre < Gtk::Window
 
 
 				btnAideTxt.signal_connect('clicked') {
-
+					@caseA = nil
 
 					message = @aide.getMessageAide()
 					# puts message
@@ -193,8 +196,7 @@ class Fenetre < Gtk::Window
 
 					retirerContenu(vbox,btnAideTxt)
 					retirerContenu(vbox,btnAideVisu)
-					caseA = @aide.getCaseAide
-					puts caseA.to_s
+					@caseAide = @aide.getCaseAide
 					afficheEcran
 
 				}
@@ -866,14 +868,15 @@ class Fenetre < Gtk::Window
 			if(s.complet)
 				draw_maLigne(x*tailleCase+paddingX ,y*tailleCase+paddingY,x*tailleCase+paddingX+15 ,y*tailleCase+paddingY-25)
 			end
-			@cr.move_to x*tailleCase+paddingX+30 ,y*tailleCase+paddingY-10
-			@cr.arc x*tailleCase+paddingX+9,y*tailleCase+paddingY-10,20,0,2*Math::PI
-			@cr.move_to x*tailleCase+paddingX ,y*tailleCase+paddingY
-			if(@aide != nil && s.position == @aide.getCaseAide)
+			if(@caseAide != nil && s.position == @aide.getCaseAide)
 				@cr.set_source_rgb 0,1,0
 			else
 				@cr.set_source_rgb 0,0,0
 			end
+			@cr.move_to x*tailleCase+paddingX+30 ,y*tailleCase+paddingY-10
+			@cr.arc x*tailleCase+paddingX+9,y*tailleCase+paddingY-10,20,0,2*Math::PI
+			@cr.move_to x*tailleCase+paddingX ,y*tailleCase+paddingY
+
 
 			@cr.show_text(s.valeur.to_s)
 
