@@ -4,7 +4,7 @@ class FenetreVictoire < Gtk::Box
     @@fenetre = window
     super(Gtk::Orientation::VERTICAL)
 
-    texteVict = UnLabelPerso.new("Félicitation vous avez terminé cette frille en {temps} !")
+    texteVict = UnLabelPerso.new("Félicitations, vous avez terminé cette grille en {temps} !")
     texteEnt = UnLabelPerso.new("Saisissez votre pseudonyme :")
     ent = Gtk::Entry.new()
     ent.set_placeholder_text("Votre Pseudo ici")

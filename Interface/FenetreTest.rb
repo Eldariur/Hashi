@@ -1,4 +1,3 @@
-require 'gtk'
 
 class FenetreTest < Gtk::Box
 

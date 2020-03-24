@@ -1,6 +1,6 @@
 load "Classement.rb"
 load "../Chrono/Chronometre.rb"
-require "ConnectSqlite3.rb"
+require "./ConnectSqlite3.rb"
 
 
 
