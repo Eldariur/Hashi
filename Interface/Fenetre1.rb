@@ -158,10 +158,10 @@ class Fenetre < Gtk::Window
 				retirerContenu(vbox,btnValidHypo)
 			}
 
-
+			@aide = nil
 
 			btnAide.signal_connect('clicked') {
-
+				@aide = Aide.creer(@grilleTest)
 				retirerContenu(vbox,messageLabel)
 				retirerContenu(vbox,btnAideVisu)
 				ajouterContenu(vbox,btnAideTxt)
@@ -172,13 +172,15 @@ class Fenetre < Gtk::Window
 
 			}
 
-				btnAideTxt.signal_connect('clicked') {
-					aide = Aide.creer(@grilleTest)
 
-					message = aide.getMessageAide()
+
+				btnAideTxt.signal_connect('clicked') {
+
+
+					message = @aide.getMessageAide()
 					# puts message
 
-					ajouterMessage(vbox,aide.getMessageAide())
+					ajouterMessage(vbox,@aide.getMessageAide())
 					retirerContenu(vbox,btnAideTxt)
 					retirerContenu(vbox,btnAideVisu)
 					ajouterContenu(vbox,btnAideVisu)
@@ -191,6 +193,10 @@ class Fenetre < Gtk::Window
 
 					retirerContenu(vbox,btnAideTxt)
 					retirerContenu(vbox,btnAideVisu)
+					caseA = @aide.getCaseAide
+					puts caseA.to_s
+					afficheEcran
+
 				}
 
 			btnAnnul.signal_connect('clicked') {
@@ -863,6 +869,12 @@ class Fenetre < Gtk::Window
 			@cr.move_to x*tailleCase+paddingX+30 ,y*tailleCase+paddingY-10
 			@cr.arc x*tailleCase+paddingX+9,y*tailleCase+paddingY-10,20,0,2*Math::PI
 			@cr.move_to x*tailleCase+paddingX ,y*tailleCase+paddingY
+			if(@aide != nil && s.position == @aide.getCaseAide)
+				@cr.set_source_rgb 0,1,0
+			else
+				@cr.set_source_rgb 0,0,0
+			end
+
 			@cr.show_text(s.valeur.to_s)
 
 			@cr.stroke_preserve
