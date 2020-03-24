@@ -118,6 +118,7 @@ class Fenetre < Gtk::Window
 			btnAide = UnBoutonPerso.new('?','BoutonEnJeu')
 				btnAideTxt = UnBoutonPerso.new('Aide Textuelle')
 					messageLabel = nil
+				btnErreurVisu = UnBoutonPerso.new('Montrer les erreurs ?')
 				btnAideVisu = UnBoutonPerso.new('Aide Visuelle')
 			btnAnnul = UnBoutonPerso.new('','BoutonEnJeu')
 			ajouterImage(btnAnnul,"img/undo_icon2.png")
@@ -160,18 +161,40 @@ class Fenetre < Gtk::Window
 
 			@aide = nil
 			@caseAide = nil
+			@erreurs = nil
+			@afficherErreur = false
 
 			btnAide.signal_connect('clicked') {
-
-
-				@aide = Aide.creer(@grilleTest)
+				@erreurs = nil
+				@afficherErreur = false
+				@erreurs = gene.trouverErreurs(@grilleTest)
 				retirerContenu(vbox,messageLabel)
 				retirerContenu(vbox,btnAideVisu)
-				ajouterContenu(vbox,btnAideTxt)
-				ajouterContenu(vbox,btnAideVisu)
+
+				if(@erreurs != nil && @erreurs.size != 0)
+					ajouterMessage(vbox,"Vous avez "+@erreurs.size().to_s+" erreur(s)")
+					ajouterContenu(vbox,btnErreurVisu)
+				else
+					@afficherErreur = false
+
+					ajouterContenu(vbox,btnAideTxt)
+					ajouterContenu(vbox,btnAideVisu)
+				end
+				@aide = Aide.creer(@grilleTest)
+
 				tbl.attach(vbox,0,1,2,10)
 				self.show_all
 
+
+			}
+
+			btnErreurVisu.signal_connect('clicked') {
+				puts "appuie bouton Erreur Visu"
+				@afficherErreur = true
+				@erreurs = gene.trouverErreurs(@grilleTest)
+				retirerContenu(vbox,btnErreurVisu)
+				retirerContenu(vbox,messageLabel)
+				afficheEcran
 
 			}
 
@@ -187,6 +210,7 @@ class Fenetre < Gtk::Window
 					retirerContenu(vbox,btnAideTxt)
 					retirerContenu(vbox,btnAideVisu)
 					ajouterContenu(vbox,btnAideVisu)
+					afficheEcran()
 					self.show_all
 
 				}
@@ -868,10 +892,14 @@ class Fenetre < Gtk::Window
 			if(s.complet)
 				draw_maLigne(x*tailleCase+paddingX ,y*tailleCase+paddingY,x*tailleCase+paddingX+15 ,y*tailleCase+paddingY-25)
 			end
-			if(@caseAide != nil && s.position == @aide.getCaseAide)
+			if(@afficherErreur)
+				@erreurs.each do |e|
+					if(e == s)
+						@cr.set_source_rgb 1,0,0
+					end
+				end
+			elsif(@caseAide != nil && s.position == @aide.getCaseAide)
 				@cr.set_source_rgb 0,1,0
-			else
-				@cr.set_source_rgb 0,0,0
 			end
 			@cr.move_to x*tailleCase+paddingX+30 ,y*tailleCase+paddingY-10
 			@cr.arc x*tailleCase+paddingX+9,y*tailleCase+paddingY-10,20,0,2*Math::PI
@@ -881,7 +909,7 @@ class Fenetre < Gtk::Window
 			@cr.show_text(s.valeur.to_s)
 
 			@cr.stroke_preserve
-
+			@cr.set_source_rgb 0,0,0
 
 
 			i+=1
