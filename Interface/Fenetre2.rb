@@ -29,8 +29,12 @@ class FenEx < Gtk::Window
 
     css=Gtk::CssProvider.new
     css.load(path: "./css/style.css")
-    Gtk::StyleContext::add_provider_for_screen(Gdk::Screen.default,css,
-                                    Gtk::StyleProvider::PRIORITY_APPLICATION)
+    Gtk::StyleContext::add_provider_for_screen(Gdk::Screen.default,css,Gtk::StyleProvider::PRIORITY_APPLICATION)
+
+    self.signal_connect('configure-event') {
+			#self.updateData
+			false # exécute le handler par défaut
+		}
 
     self.signal_connect('destroy') {
        Gtk.main_quit

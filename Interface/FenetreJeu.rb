@@ -13,40 +13,23 @@ require_relative '../Sauvegarde/Sauvegarde.rb'
 
 
 
-class FenetreJeu < Gtk::Window
+class FenetreJeu < Gtk::Box
 
   #@@fenetre
 
   #@difficulte
 
 	attr_reader :grilleTest, :longueur, :largeur
+
 	def initialize(window, difficulte)
-
-
-		super()
-		self.name="mainWindow2"
-		self.set_default_size(1500,800)
-		vbox = Gtk::Box.new(:VERTICAL)
-		self.window_position=Gtk::WindowPosition::CENTER
-		css=Gtk::CssProvider.new
-		css.load(path: "./css/style.css")
-		Gtk::StyleContext::add_provider_for_screen(Gdk::Screen.default,css,Gtk::StyleProvider::PRIORITY_APPLICATION)
-
+		vbox = self
+		
     @@fenetre = window
 
     @difficulte = difficulte
 
 		@hypothese = false
 		#self.updateData
-		self.signal_connect('configure-event') {
-			#self.updateData
-			false # exécute le handler par défaut
-		}
-
-		self.signal_connect('destroy') {
-		   Gtk.main_quit
-		}
-
 		@listeInter = []
 		x = 5
 		y = 5
@@ -142,7 +125,7 @@ class FenetreJeu < Gtk::Window
 				ajouterContenu(vbox,btnValidHypo)
 
 				tbl.attach(vbox,0,1,2,10)
-				self.show_all
+				@@fenetre.show_all
 			}
 
 			btnAnnulHypo.signal_connect('clicked') {
@@ -153,7 +136,7 @@ class FenetreJeu < Gtk::Window
 				retirerContenu(vbox,btnValidHypo)
 
 				afficheEcran
-				self.show_all
+				@@fenetre.show_all
 			}
 
 			btnValidHypo.signal_connect('clicked') {
@@ -178,7 +161,7 @@ class FenetreJeu < Gtk::Window
 				ajouterContenu(vbox,btnAideTxt)
 				ajouterContenu(vbox,btnAideVisu)
 				tbl.attach(vbox,0,1,2,10)
-				self.show_all
+				@@fenetre.show_all
 
 
 			}
@@ -195,7 +178,7 @@ class FenetreJeu < Gtk::Window
 					retirerContenu(vbox,btnAideTxt)
 					retirerContenu(vbox,btnAideVisu)
 					ajouterContenu(vbox,btnAideVisu)
-					self.show_all
+					@@fenetre.show_all
 
 				}
 
@@ -239,20 +222,20 @@ class FenetreJeu < Gtk::Window
 
 
 
-			add(tbl)
+			@@fenetre.add(tbl)
 
 
 
 			hpaned.signal_connect("button-press-event") { |widget, event| mouseClick(event) }
 	    #self.add(vbox)
-			self.add(hpaned)
+			@@fenetre.add(hpaned)
 
 	    #self.add(img)
-			size[2] = self.default_size
-			@size = size
+			#size[2] = @@fenetre.default_size
+			#@size = size
 
 		#self.add(HudAccueil.new(self))
-		self.show_all
+		@@fenetre.show_all
 		Gtk.main
 
 	end
@@ -810,13 +793,6 @@ class FenetreJeu < Gtk::Window
 		end
 	end
 
-	def changerWidget(nouveau)
-		self.remove(self.child).add(nouveau)
-		self.show_all
-		self
-	end
-
-
 	def dimImage(str)
 		image = Gtk::Image.new(str)
 		image.pixbuf = image.pixbuf.scale(35,35) if image.pixbuf!=nil
@@ -1027,7 +1003,7 @@ class FenetreJeu < Gtk::Window
 	def clearEcran()
 		@cr = @darea.window.create_cairo_context
 		@cr.set_source_rgb 0.96, 0.96, 0.96
-		@cr.rectangle 0, 0, @size[0], @size[1] #<== Changer aux dimensions de la fenentre
+		@cr.rectangle 0, 0, 1000, 1000 #<== Changer aux dimensions de la fenentre
 		@cr.fill
 		@cr.set_source_rgb 0, 0, 0
 	end
