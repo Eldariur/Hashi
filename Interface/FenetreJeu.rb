@@ -110,6 +110,7 @@ class FenetreJeu < Gtk::Box
 			btnAide = UnBoutonPerso.new('?','BoutonEnJeu')
 				btnAideTxt = UnBoutonPerso.new('Aide Textuelle')
 					messageLabel = nil
+				btnErreurVisu = UnBoutonPerso.new('Montrer les erreurs ?')
 				btnAideVisu = UnBoutonPerso.new('Aide Visuelle')
 			btnAnnul = UnBoutonPerso.new('','BoutonEnJeu')
 			ajouterImage(btnAnnul,"img/undo_icon2.png")
@@ -229,7 +230,15 @@ class FenetreJeu < Gtk::Box
 
 			}
 
+			btnErreurVisu.signal_connect('clicked') {
+				puts "appuie bouton Erreur Visu"
+				@afficherErreur = true
+				@erreurs = gene.trouverErreurs(@grilleTest)
+				retirerContenu(vbox,btnErreurVisu)
+				retirerContenu(vbox,messageLabel)
+				afficheEcran
 
+			}
 
 			btnAideTxt.signal_connect('clicked') {
 				@caseA = nil
@@ -907,10 +916,14 @@ class FenetreJeu < Gtk::Box
 			if(s.complet)
 				draw_maLigne(x*tailleCase+paddingX ,y*tailleCase+paddingY,x*tailleCase+paddingX+15 ,y*tailleCase+paddingY-25)
 			end
-			if(@caseAide != nil && s.position == @aide.getCaseAide)
+			if(@afficherErreur)
+				@erreurs.each do |e|
+					if(e == s)
+						@cr.set_source_rgb 1,0,0
+					end
+				end
+			elsif(@caseAide != nil && s.position == @aide.getCaseAide)
 				@cr.set_source_rgb 0,1,0
-			else
-				@cr.set_source_rgb 0,0,0
 			end
 			@cr.move_to x*tailleCase+paddingX+30 ,y*tailleCase+paddingY-10
 			@cr.arc x*tailleCase+paddingX+9,y*tailleCase+paddingY-10,20,0,2*Math::PI
@@ -920,7 +933,7 @@ class FenetreJeu < Gtk::Box
 			@cr.show_text(s.valeur.to_s)
 
 			@cr.stroke_preserve
-
+			@cr.set_source_rgb 0,0,0
 
 
 			i+=1
