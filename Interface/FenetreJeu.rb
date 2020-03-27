@@ -22,12 +22,13 @@ class FenetreJeu < Gtk::Box
 	attr_reader :grilleTest, :longueur, :largeur
 
 	def initialize(window, difficulte)
-		vbox = self
+		vbox = Gtk::Box.new(:VERTICAL)
 
     @@fenetre = window
 
     @difficulte = difficulte
 
+		@presse = false
 		@hypothese = false
 		#self.updateData
 		@listeInter = []
@@ -117,20 +118,47 @@ class FenetreJeu < Gtk::Box
 
 
 			btnHypo.signal_connect('clicked') {
-				puts "appuie bouton Hypothèse"
-				@hypothese = true
+				##Changement des boutons
+				if(@presse)
+					@presse = false
+					btnAide.deverrouiller()
+					btnRecom.deverrouiller()
+					btnAnnul.deverrouiller()
 
-				Sauvegarde.nouvelleHypothese(@grilleTest)
-				ajouterContenu(vbox,btnAnnulHypo)
-				ajouterContenu(vbox,btnValidHypo)
+					@grilleTest = Sauvegarde.annulerHypothese()
+					@hypothese = false
 
-				tbl.attach(vbox,0,1,2,10)
-				@@fenetre.show_all
+					retirerContenu(vbox,btnAnnulHypo)
+					retirerContenu(vbox,btnValidHypo)
+
+
+				else
+					btnAide.verrouiller()
+					btnRecom.verrouiller()
+					btnAnnul.verrouiller()
+
+					@presse = true
+					puts "appuie bouton Hypothèse"
+					@hypothese = true
+
+					Sauvegarde.nouvelleHypothese(@grilleTest)
+					ajouterContenu(vbox,btnAnnulHypo)
+					ajouterContenu(vbox,btnValidHypo)
+
+					tbl.attach(vbox,0,1,2,10)
+					@@fenetre.show_all
+				end
 			}
 
 			btnAnnulHypo.signal_connect('clicked') {
+				@presse = false
+
 				@grilleTest = Sauvegarde.annulerHypothese()
 				@hypothese = false
+
+				btnAide.deverrouiller()
+				btnRecom.deverrouiller()
+				btnAnnul.deverrouiller()
 
 				retirerContenu(vbox,btnAnnulHypo)
 				retirerContenu(vbox,btnValidHypo)
@@ -140,11 +168,18 @@ class FenetreJeu < Gtk::Box
 			}
 
 			btnValidHypo.signal_connect('clicked') {
+				@presse = false
+
 				Sauvegarde.validerHypothese()
 				@hypothese = false
 				@grilleTest.aretes.each do |a|
 					a.hypothese = @hypothese
 				end
+				btnAide.deverrouiller()
+				btnRecom.deverrouiller()
+				btnAnnul.deverrouiller()
+
+
 				retirerContenu(vbox,btnAnnulHypo)
 				retirerContenu(vbox,btnValidHypo)
 			}
@@ -153,44 +188,73 @@ class FenetreJeu < Gtk::Box
 			@caseAide = nil
 
 			btnAide.signal_connect('clicked') {
+				@erreurs = nil
+				@afficherErreur = false
+				@erreurs = gene.trouverErreurs(@grilleTest)
 
-
-				@aide = Aide.creer(@grilleTest)
-				retirerContenu(vbox,messageLabel)
 				retirerContenu(vbox,btnAideVisu)
-				ajouterContenu(vbox,btnAideTxt)
-				ajouterContenu(vbox,btnAideVisu)
-				tbl.attach(vbox,0,1,2,10)
-				@@fenetre.show_all
 
+				if(@erreurs != nil && @erreurs.size != 0)
+					messageLabel = UnLabelPerso.new("Vous avez "+@erreurs.size().to_s+" erreur(s)")
+					ajouterContenu(vbox,messageLabel)
+					ajouterContenu(vbox,btnErreurVisu)
+				else
+					@afficherErreur = false
+
+					ajouterContenu(vbox,btnAideTxt)
+					ajouterContenu(vbox,btnAideVisu)
+				end
+				@aide = Aide.creer(@grilleTest)
+
+
+				if(@presse)
+					@presse = false
+					btnHypo.deverrouiller()
+					btnRecom.deverrouiller()
+					btnAnnul.deverrouiller()
+					retirerContenu(vbox,messageLabel)
+					retirerContenu(vbox,btnAideTxt)
+					retirerContenu(vbox,btnAideVisu)
+
+				else
+					@presse = true
+					@aide = Aide.creer(@grilleTest)
+
+					btnHypo.verrouiller()
+					btnRecom.verrouiller()
+					btnAnnul.verrouiller()
+					tbl.attach(vbox,0,1,2,10)
+					@@fenetre.show_all
+				end
 
 			}
 
 
 
-				btnAideTxt.signal_connect('clicked') {
-					@caseA = nil
+			btnAideTxt.signal_connect('clicked') {
+				@caseA = nil
 
-					message = @aide.getMessageAide()
-					# puts message
+				messageLabel = UnLabelPerso.new(@aide.getMessageAide())
+				# puts message
 
-					ajouterMessage(vbox,@aide.getMessageAide())
-					retirerContenu(vbox,btnAideTxt)
-					retirerContenu(vbox,btnAideVisu)
-					ajouterContenu(vbox,btnAideVisu)
-					@@fenetre.show_all
+				ajouterContenu(vbox,messageLabel)
+				retirerContenu(vbox,btnAideTxt)
+				retirerContenu(vbox,btnAideVisu)
+				ajouterContenu(vbox,btnAideVisu)
+				afficheEcran()
+				@@fenetre.show_all
 
-				}
+			}
 
-				btnAideVisu.signal_connect('clicked') {
-					puts "appuie bouton visuelle"
+			btnAideVisu.signal_connect('clicked') {
+				puts "appuie bouton visuelle"
 
-					retirerContenu(vbox,btnAideTxt)
-					retirerContenu(vbox,btnAideVisu)
-					@caseAide = @aide.getCaseAide
-					afficheEcran
+				retirerContenu(vbox,btnAideTxt)
+				retirerContenu(vbox,btnAideVisu)
+				@caseAide = @aide.getCaseAide
+				afficheEcran
 
-				}
+			}
 
 			btnAnnul.signal_connect('clicked') {
 				# puts "appuie bouton Annuler"
@@ -220,11 +284,7 @@ class FenetreJeu < Gtk::Box
 			tbl.attach(hbox,0,4,0,2)
 			tbl.attach(hpaned,2,10,0,10)
 
-
-
 			@@fenetre.changerWidget(tbl)
-
-
 
 			hpaned.signal_connect("button-press-event") { |widget, event| mouseClick(event) }
 	    #self.add(vbox)
@@ -387,12 +447,6 @@ class FenetreJeu < Gtk::Box
 		# 	puts "VOUS AVEZ GAGNÉ !!!!"
 		# end
 
-	end
-
-	def ajouterMessage(box, message)
-		puts message
-		messageLabel = UnLabelPerso.new(message)
-		box.add(messageLabel)
 	end
 
 	def retirerContenu(box,contenu)
