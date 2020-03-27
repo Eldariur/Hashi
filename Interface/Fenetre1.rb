@@ -11,6 +11,8 @@ require_relative '../Code/Generateur.rb'
 require_relative '../Code/Undo.rb'
 require_relative '../Sauvegarde/Sauvegarde.rb'
 
+require_relative "../Chrono/Chronometre.rb"
+
 
 
 class Fenetre < Gtk::Window
@@ -278,9 +280,31 @@ class Fenetre < Gtk::Window
 
 				}
 
+				@chrono = true
+				hbox = Gtk::Box.new(:HORIZONTAL)
+
 			btnAnnul.signal_connect('clicked') {
 				# puts "appuie bouton Annuler"
-				annulerAction()
+				# annulerAction()
+				if(@chrono)
+
+					i = 0
+					chronoHbox = Gtk::Box.new(:HORIZONTAL)
+					tbl.attach(chronoHbox,1,3,2,4)
+					 Thread.new {
+						 while(true)
+
+							 chronoLabel = UnLabelPerso.new(to_chrono2(i+=1))
+							 ajouterContenu(chronoHbox,chronoLabel)
+
+							 self.show_all
+							 sleep(1)
+							 retirerContenu(chronoHbox,chronoLabel)
+
+						 end
+					 }
+				end
+
 			}
 
 			btnRecom.signal_connect('clicked') {
@@ -294,7 +318,7 @@ class Fenetre < Gtk::Window
 
 
 			hpaned.add(@darea)
-			hbox = Gtk::Box.new(:HORIZONTAL)
+
 			hbox.add(btnHypo)
 			hbox.add(btnAide)
 			hbox.add(btnAnnul)
@@ -324,6 +348,20 @@ class Fenetre < Gtk::Window
 		self.show_all
 		Gtk.main
 
+	end
+
+	#copie de to_chrono (ou presque)
+	def to_chrono2(s)
+		# s = self.resultat()
+
+		sec = s.to_i%60
+		#ms = (((s-sec)*1000)%1000).to_i
+		min = (s.to_i/60)%60
+		tmin = (s.to_i/60)
+		hr = tmin.to_i/60
+		res = hr.to_s + ' : ' + min.to_s + " : " + sec.to_s
+
+		return res
 	end
 
 	def mouseClick(event)
