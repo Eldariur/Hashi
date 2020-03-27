@@ -23,7 +23,7 @@ class FenetreJeu < Gtk::Box
 
 	def initialize(window, difficulte)
 		vbox = self
-		
+
     @@fenetre = window
 
     @difficulte = difficulte
@@ -222,13 +222,13 @@ class FenetreJeu < Gtk::Box
 
 
 
-			@@fenetre.add(tbl)
+			@@fenetre.changerWidget(tbl)
 
 
 
 			hpaned.signal_connect("button-press-event") { |widget, event| mouseClick(event) }
 	    #self.add(vbox)
-			@@fenetre.add(hpaned)
+			#@@fenetre.add(hpaned)
 
 	    #self.add(img)
 			#size[2] = @@fenetre.default_size
