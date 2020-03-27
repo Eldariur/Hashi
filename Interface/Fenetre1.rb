@@ -290,15 +290,17 @@ class Fenetre < Gtk::Window
 
 					i = 0
 					chronoHbox = Gtk::Box.new(:HORIZONTAL)
+					chr = Chrono.nouveau()
 					tbl.attach(chronoHbox,1,3,2,4)
-					 Thread.new {
+					Thread.new {chr.chronometrer()}
+					Thread.new {
 						 while(true)
 
-							 chronoLabel = UnLabelPerso.new(to_chrono2(i+=1))
+							 chronoLabel = UnLabelPerso.new(chr.to_chrono())
 							 ajouterContenu(chronoHbox,chronoLabel)
 
 							 self.show_all
-							 sleep(1)
+							 sleep(0.01)
 							 retirerContenu(chronoHbox,chronoLabel)
 
 						 end
