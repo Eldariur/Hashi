@@ -1,4 +1,5 @@
 require 'gtk3'
+
 require_relative 'FenetreMenu.rb'
 require_relative 'FenetreMenuJouer.rb'
 require_relative 'FenetreParametres.rb'
@@ -10,8 +11,6 @@ require_relative 'FenetreVictoire.rb'
 require_relative 'FenetreClassement.rb'
 require_relative 'FenetreRegle.rb'
 require_relative 'FenetreJeu.rb'
-
-
 require_relative 'FenetreTest.rb'
 
 
@@ -29,12 +28,8 @@ class FenEx < Gtk::Window
 
     css=Gtk::CssProvider.new
     css.load(path: "./css/style.css")
-    Gtk::StyleContext::add_provider_for_screen(Gdk::Screen.default,css,Gtk::StyleProvider::PRIORITY_APPLICATION)
-
-    self.signal_connect('configure-event') {
-			#self.updateData
-			false # exécute le handler par défaut
-		}
+    Gtk::StyleContext::add_provider_for_screen(Gdk::Screen.default,css,
+                                    Gtk::StyleProvider::PRIORITY_APPLICATION)
 
     self.signal_connect('destroy') {
        Gtk.main_quit
