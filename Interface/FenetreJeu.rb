@@ -452,9 +452,10 @@ class FenetreJeu < Gtk::Box
 
 			end
 		end
-		# if(grilleGagnante)
-		# 	puts "VOUS AVEZ GAGNÉ !!!!"
-		# end
+		if(grilleGagnante && !@hypothese)
+			puts "VOUS AVEZ GAGNÉ !!!!"
+			@@fenetre.changerWidget(FenetreVictoire.new(@@fenetre))
+		end
 
 	end
 
@@ -525,10 +526,12 @@ class FenetreJeu < Gtk::Box
 		# 	puts a.to_s
 		# end
 		# puts "===="
-		if(grilleGagnante)
-      puts "vous avez gagné"
-			@@fenetre.changerWidget(FenetreVictoire.new(@@fenetre))
-		end
+
+		# if(grilleGagnante && !@hypothese)
+    #   puts "vous avez gagné"
+		# 	@@fenetre.changerWidget(FenetreVictoire.new(@@fenetre))
+		# end
+
 	end
 
 	def suppressionArete(arete, actionAnnule = false)
@@ -540,7 +543,9 @@ class FenetreJeu < Gtk::Box
 		arete.sommet2.complet = false
 		if(arete.estDouble)
 			arete.estDouble = false
-
+			if(@hypothese)
+				arete.hypothese = true
+			end
 		else
 			arete.supprimer
 		end
@@ -911,6 +916,7 @@ class FenetreJeu < Gtk::Box
 			taillePix = 25
 			padding = 20
 		@grilleTest.sommets.each{ |s|
+			@cr.save()
 			x = s.position.x
 			y = s.position.y
 			if(s.complet)
@@ -963,6 +969,8 @@ class FenetreJeu < Gtk::Box
 			taillePix = 25
 			padding = 20
 		@grilleTest.aretes.each{ |a|
+			activeHypo(a.hypothese)
+
 			paddingX = 50+15
 			paddingY = 25+35
 			x1 = a.sommet1.position.x
@@ -976,7 +984,7 @@ class FenetreJeu < Gtk::Box
 				verti = false
 				hori = true
 			end
-			#puts "tracer l'arete entre x1 = "+x1.to_s+" y1 = "+y1.to_s+" x2 = "+x2.to_s+" y2 = "+y2.to_s+" vertical = "+verti.to_s
+
 			if(verti==true)
 				varX = 0
 				varY = 15
@@ -994,39 +1002,31 @@ class FenetreJeu < Gtk::Box
 				paddingX = 50+15
 			end
 
-			activeHypo(a.hypothese)
-
 			if(!a.estDouble)# || 1)
-				activeHypo()
 				@cr.move_to x1*tailleCase+paddingX+varX, y1*tailleCase+paddingY+varY
 				@cr.line_to x2*tailleCase+paddingX+varX-minX, y2*tailleCase+paddingY+varY-minY
-				@cr.stroke_preserve
+				@cr.stroke
 			else
 					case verti
 					when true
-						#puts "verticale"
 						@cr.move_to x1*tailleCase+paddingX-5+varX, y1*tailleCase+paddingY+varY
 						@cr.line_to x2*tailleCase+paddingX-5+varX-minX, y2*tailleCase+paddingY+varY-minY
-						@cr.stroke_preserve
+						@cr.stroke
 						@cr.move_to x1*tailleCase+paddingX+5+varX, y1*tailleCase+paddingY+varY
 						@cr.line_to x2*tailleCase+paddingX+5+varX-minX, y2*tailleCase+paddingY+varY-minY
-						@cr.stroke_preserve
+						@cr.stroke
 
 					when false
 						#puts "horizontale"
 						@cr.move_to x1*tailleCase+paddingX+varX, y1*tailleCase+paddingY-5+varY
 						@cr.line_to x2*tailleCase+paddingX+varX-minX, y2*tailleCase+paddingY-5+varY-minY
-						@cr.stroke_preserve
+						@cr.stroke
 						@cr.move_to x1*tailleCase+paddingX+varX, y1*tailleCase+paddingY+5+varY
 						@cr.line_to x2*tailleCase+paddingX+varX-minX, y2*tailleCase+paddingY+5+varY-minY
-						@cr.stroke_preserve
+						@cr.stroke
 					end
 
-
 			end
-
-
-
 
 			i+=1
 			j+=1
@@ -1043,8 +1043,9 @@ class FenetreJeu < Gtk::Box
 	def activeHypo(condition = false)
 		if(condition)
 			@cr.set_dash(5, 15)
+			#@cr.set_source_rgb 1,0,0
 		else
-			@cr.set_line_join(0)
+			@cr.restore()
 		end
 	end
 
