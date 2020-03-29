@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="Hashiwokakero" company="GROUPE6" webLink="http://" view-date="2020-02-23" view-index="0" gantt-divider-location="300" resource-divider-location="300" version="2.8.10" locale="fr">
+<?xml version="1.0" encoding="UTF-8"?><project name="Hashiwokakero" company="GROUPE6" webLink="http://" view-date="2020-01-26" view-index="0" gantt-divider-location="300" resource-divider-location="300" version="2.8.10" locale="fr">
     <description>
         <![CDATA[Projet genie Logiciel2]]>
     </description>
-    <view zooming-state="default:5" id="gantt-chart">
-        <field id="tpd3" name="Nom" width="167" order="0"/>
-        <field id="tpd4" name="Date de début" width="65" order="1"/>
-        <field id="tpd5" name="Date de fin" width="64" order="2"/>
+    <view zooming-state="default:6" id="gantt-chart">
+        <field id="tpd3" name="Nom" width="158" order="0"/>
+        <field id="tpd4" name="Date de début" width="62" order="1"/>
+        <field id="tpd5" name="Date de fin" width="61" order="2"/>
         <option id="color.recent">
             <![CDATA[#ff3333]]>
         </option>
@@ -39,24 +39,68 @@
             <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
         </taskproperties>
         <task id="0" name="ChoixDujeu" color="#8cb6ce" meeting="false" start="2020-01-06" duration="2" complete="100" thirdDate="2019-12-31" thirdDate-constraint="0" expand="true">
+            <depend id="49" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="49" name="Preparation Interview" color="#8cb6ce" meeting="false" start="2020-01-08" duration="13" complete="100" thirdDate="2019-12-26" thirdDate-constraint="0" expand="true">
+            <depend id="50" type="2" difference="0" hardness="Strong"/>
+            <depend id="51" type="2" difference="0" hardness="Strong"/>
+            <depend id="52" type="2" difference="0" hardness="Strong"/>
+            <depend id="53" type="2" difference="0" hardness="Strong"/>
+            <depend id="54" type="2" difference="0" hardness="Strong"/>
+            <depend id="85" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="85" name="Interview" color="#8cb6ce" meeting="false" start="2020-01-27" duration="2" complete="100" thirdDate="2020-01-24" thirdDate-constraint="0" expand="true">
             <depend id="9" type="2" difference="0" hardness="Strong"/>
         </task>
-        <task id="9" name="Cahier des charges" color="#8cb6ce" meeting="false" start="2020-01-08" duration="16" complete="99" thirdDate="2019-12-26" thirdDate-constraint="0" expand="true">
-            <task id="49" name="Preparation Interview" color="#8cb6ce" meeting="false" start="2020-01-08" duration="6" complete="100" thirdDate="2019-12-26" thirdDate-constraint="0" expand="true"/>
-            <task id="50" name="SousTache: Definition des tâches" color="#8cb6ce" meeting="false" start="2020-01-28" duration="1" complete="100" thirdDate="2020-01-03" thirdDate-constraint="0" expand="true"/>
-            <task id="51" name="SousTache:Definition des besoin" color="#8cb6ce" meeting="false" start="2020-01-28" duration="1" complete="98" thirdDate="2019-12-31" thirdDate-constraint="0" expand="true"/>
-            <task id="52" name="SousTache: maquette" color="#8cb6ce" meeting="false" start="2020-01-28" duration="2" complete="100" thirdDate="2020-01-01" thirdDate-constraint="0" expand="true"/>
-            <task id="53" name="SousTache : scénario" color="#8cb6ce" meeting="false" start="2020-01-28" duration="1" complete="98" thirdDate="2020-01-01" thirdDate-constraint="0" expand="true"/>
-            <task id="54" name="SousTache : Cas D'utilisation" color="#8cb6ce" meeting="false" start="2020-01-28" duration="1" complete="100" thirdDate="2020-01-28" thirdDate-constraint="0" expand="true"/>
+        <task id="9" name="Cahier des charges" color="#8cb6ce" meeting="false" start="2020-01-29" duration="2" complete="99" thirdDate="2019-12-26" thirdDate-constraint="0" expand="true">
+            <task id="50" name="SousTache: Definition des tâches" color="#8cb6ce" meeting="false" start="2020-01-29" duration="1" complete="100" thirdDate="2020-01-03" thirdDate-constraint="0" expand="true"/>
+            <task id="51" name="SousTache:Definition des besoin" color="#8cb6ce" meeting="false" start="2020-01-29" duration="1" complete="98" thirdDate="2019-12-31" thirdDate-constraint="0" expand="true"/>
+            <task id="52" name="SousTache: maquette" color="#8cb6ce" meeting="false" start="2020-01-29" duration="2" complete="100" thirdDate="2020-01-01" thirdDate-constraint="0" expand="true"/>
+            <task id="53" name="SousTache : scénario" color="#8cb6ce" meeting="false" start="2020-01-29" duration="1" complete="98" thirdDate="2020-01-01" thirdDate-constraint="0" expand="true"/>
+            <task id="54" name="SousTache : Cas D'utilisation" color="#8cb6ce" meeting="false" start="2020-01-29" duration="1" complete="100" thirdDate="2020-01-28" thirdDate-constraint="0" expand="true"/>
         </task>
-        <task id="57" name="Documentation" color="#000000" meeting="false" start="2020-01-28" duration="5" complete="100" thirdDate="2020-01-28" thirdDate-constraint="0" expand="true">
+        <task id="55" name="Code" color="#8cb6ce" meeting="false" start="2020-02-03" duration="45" complete="92" thirdDate="2020-01-13" thirdDate-constraint="0" expand="true">
+            <task id="81" name="Case" color="#8cb6ce" meeting="false" start="2020-02-03" duration="1" complete="100" thirdDate="2020-01-13" thirdDate-constraint="0" expand="true">
+                <depend id="74" type="2" difference="0" hardness="Strong"/>
+                <depend id="83" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="82" name="Sommet" color="#8cb6ce" meeting="false" start="2020-02-03" duration="1" complete="100" thirdDate="2020-01-13" thirdDate-constraint="0" expand="true">
+                <depend id="63" type="2" difference="0" hardness="Strong"/>
+                <depend id="74" type="2" difference="0" hardness="Strong"/>
+                <depend id="79" type="2" difference="0" hardness="Strong"/>
+                <depend id="83" type="2" difference="0" hardness="Strong"/>
+                <depend id="101" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="74" name="Grille" color="#8cb6ce" meeting="false" start="2020-02-04" duration="1" complete="100" thirdDate="2020-01-13" thirdDate-constraint="0" expand="true">
+                <depend id="63" type="2" difference="0" hardness="Strong"/>
+                <depend id="79" type="2" difference="0" hardness="Strong"/>
+                <depend id="83" type="2" difference="0" hardness="Strong"/>
+                <depend id="101" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="83" name="Aide" color="#8cb6ce" meeting="false" start="2020-02-05" duration="39" complete="100" thirdDate="2020-01-13" thirdDate-constraint="0" expand="true"/>
+            <task id="63" name="AlgorithmeGenerationNiveau" color="#8cb6ce" meeting="false" start="2020-02-05" duration="31" complete="100" thirdDate="2020-01-10" thirdDate-constraint="0" expand="true">
+                <depend id="79" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="79" name="Erreur" color="#8cb6ce" meeting="false" start="2020-03-19" duration="5" complete="100" thirdDate="2020-01-13" thirdDate-constraint="0" expand="true"/>
+            <task id="115" name="Hypothèse" color="#8cb6ce" meeting="false" start="2020-02-18" duration="22" complete="100" thirdDate="2020-01-27" thirdDate-constraint="0" expand="true"/>
+            <task id="62" name="Interface" color="#8cb6ce" meeting="false" start="2020-02-03" duration="45" complete="75" thirdDate="2020-01-27" thirdDate-constraint="0" expand="true"/>
+            <task id="76" name="Sauvegarde" color="#8cb6ce" meeting="false" start="2020-03-09" duration="10" complete="96" thirdDate="2020-01-13" thirdDate-constraint="0" expand="true">
+                <depend id="101" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="101" name="Tuto" color="#8cb6ce" meeting="false" start="2020-03-23" duration="3" complete="95" thirdDate="2020-01-27" thirdDate-constraint="0" expand="true"/>
+            <task id="64" name="Chronomètre" color="#8cb6ce" meeting="false" start="2020-02-03" duration="9" complete="100" thirdDate="2020-01-30" thirdDate-constraint="0" expand="true">
+                <depend id="125" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="125" name="Score" color="#8cb6ce" meeting="false" start="2020-02-14" duration="4" complete="100" thirdDate="2020-01-27" thirdDate-constraint="0" expand="true">
+                <depend id="122" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="122" name="Classement" color="#8cb6ce" meeting="false" start="2020-02-20" duration="28" complete="90" thirdDate="2020-01-27" thirdDate-constraint="0" priority="0" expand="true"/>
+        </task>
+        <task id="57" name="Documentation" color="#000000" meeting="false" start="2020-01-28" duration="54" complete="4" thirdDate="2020-01-28" thirdDate-constraint="0" expand="true">
             <task id="58" name="SousTache : Diagramme de classe" color="#8cb6ce" meeting="false" start="2020-01-28" duration="5" complete="100" thirdDate="2020-01-28" thirdDate-constraint="0" expand="true"/>
-        </task>
-        <task id="55" name="Code" color="#8cb6ce" meeting="false" start="2020-01-28" duration="25" complete="58" thirdDate="2020-01-13" thirdDate-constraint="0" expand="true">
-            <task id="62" name="Interface" color="#8cb6ce" meeting="false" start="2020-01-28" duration="24" complete="31" thirdDate="2020-01-27" thirdDate-constraint="0" expand="true"/>
-            <task id="63" name="AlgorithmeGenerationNiveau" color="#8cb6ce" meeting="false" start="2020-02-03" duration="18" complete="85" thirdDate="2020-01-10" thirdDate-constraint="0" expand="true"/>
-            <task id="64" name="Chronomètre" color="#8cb6ce" meeting="false" start="2020-02-03" duration="9" complete="100" thirdDate="2020-01-30" thirdDate-constraint="0" expand="true"/>
-            <task id="65" name="Définition des aides" color="#8cb6ce" meeting="false" start="2020-02-03" duration="21" complete="50" thirdDate="2020-01-24" thirdDate-constraint="0" expand="true"/>
+            <task id="111" name="Mise au propre" meeting="false" start="2020-02-03" duration="46" complete="0" expand="true"/>
+            <task id="112" name="Documentation code" color="#8cb6ce" meeting="false" start="2020-02-03" duration="47" complete="0" thirdDate="2020-01-20" thirdDate-constraint="0" expand="true"/>
+            <task id="116" name="DossierDeConception" color="#8cb6ce" meeting="false" start="2020-03-27" duration="11" complete="0" thirdDate="2020-01-27" thirdDate-constraint="0" expand="true"/>
         </task>
         <task id="66" name="DEADLINE" color="#ff3333" meeting="false" start="2020-04-10" duration="1" complete="0" thirdDate="2020-01-27" thirdDate-constraint="0" expand="true"/>
     </tasks>

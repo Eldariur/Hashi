@@ -192,22 +192,7 @@ class FenetreJeu < Gtk::Box
 				@erreurs = nil
 				@afficherErreur = false
 				@erreurs = gene.trouverErreurs(@grilleTest)
-
-				retirerContenu(vbox,btnAideVisu)
-
-				if(@erreurs != nil && @erreurs.size != 0)
-					messageLabel = UnLabelPerso.new("Vous avez "+@erreurs.size().to_s+" erreur(s)")
-					ajouterContenu(vbox,messageLabel)
-					ajouterContenu(vbox,btnErreurVisu)
-				else
-					@afficherErreur = false
-
-					ajouterContenu(vbox,btnAideTxt)
-					ajouterContenu(vbox,btnAideVisu)
-				end
-				@aide = Aide.creer(@grilleTest)
-
-
+				
 				if(@presse)
 					@presse = false
 					btnHypo.deverrouiller()
@@ -216,10 +201,23 @@ class FenetreJeu < Gtk::Box
 					retirerContenu(vbox,messageLabel)
 					retirerContenu(vbox,btnAideTxt)
 					retirerContenu(vbox,btnAideVisu)
-
+					retirerContenu(vbox,btnErreurVisu)
+					@caseAide = nil
+				retirerContenu(vbox,btnAideVisu)
 				else
 					@presse = true
-					@aide = Aide.creer(@grilleTest)
+
+					if(@erreurs != nil && @erreurs.size != 0)
+						messageLabel = UnLabelPerso.new("Vous avez "+@erreurs.size().to_s+" erreur(s)")
+						ajouterContenu(vbox,messageLabel)
+						ajouterContenu(vbox,btnErreurVisu)
+					else
+						@afficherErreur = false
+
+						ajouterContenu(vbox,btnAideTxt)
+						ajouterContenu(vbox,btnAideVisu)
+						@aide = Aide.creer(@grilleTest)
+					end
 
 					btnHypo.verrouiller()
 					btnRecom.verrouiller()
@@ -234,8 +232,8 @@ class FenetreJeu < Gtk::Box
 				puts "appuie bouton Erreur Visu"
 				@afficherErreur = true
 				@erreurs = gene.trouverErreurs(@grilleTest)
-				retirerContenu(vbox,btnErreurVisu)
-				retirerContenu(vbox,messageLabel)
+				#retirerContenu(vbox,btnErreurVisu)
+				#retirerContenu(vbox,messageLabel)
 				afficheEcran
 
 			}
