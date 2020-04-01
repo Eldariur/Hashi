@@ -21,7 +21,7 @@ class FenEx < Gtk::Window
   def initialize
     super()
 		self.name="WindowPrincipale"
-		self.set_default_size(1500,800)
+		self.set_default_size(1200,800)
     self.set_resizable(false)
     self.set_title("Jeu Hashi")
 		self.window_position=Gtk::WindowPosition::CENTER
@@ -44,7 +44,7 @@ class FenEx < Gtk::Window
 
   def changerWidget(nouveau)
 		self.remove(self.child).add(nouveau)
-		#self.show_all
+		self.show_all
 		self
 	end
 
