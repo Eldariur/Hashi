@@ -21,6 +21,7 @@ class FenetreMenuJouer < Gtk::Box
     self.add(bouton2)
     self.add(bouton3)
 
+    self.show_all
 
   end
 

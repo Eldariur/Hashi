@@ -31,6 +31,8 @@ class FenetreModesDifficultes < Gtk::Box
     self.add(bouton3)
     self.add(bouton4)
 
+    self.show_all
+
   end
 
 end

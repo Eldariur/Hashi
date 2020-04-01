@@ -36,6 +36,7 @@ class FenetreMenu < Gtk::Box
     # self.add(vBox)
 
     #@@fenetre.add(self)
+
   end
 
   def lancementFenPre

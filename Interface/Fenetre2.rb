@@ -44,7 +44,7 @@ class FenEx < Gtk::Window
 
   def changerWidget(nouveau)
 		self.remove(self.child).add(nouveau)
-		self.show_all
+		#self.show_all
 		self
 	end
 
