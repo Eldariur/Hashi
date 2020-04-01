@@ -1,21 +1,22 @@
 require "active_record"
+load ("Highscore.rb")
 
 # Cette classe represente un score.
-class Score < ActiveRecord::Base
+class Score
 	 #@pseudo -> Le pseudo associé au score.
-	 #@time -> Le temps associé au score.
-   #@score -> La valeur du score.
+	 #@temps -> Le temps associé au score.
+   #@points -> La valeur du score.
    #@malus -> Le malus en secondes du score.
 
   # Creer un nouveau score.
-	 def Score.creer()
-		 new()
+	 def Score.creer(nom, time)
+		 new(nom, time)
 	 end
 
  	# Accesseur get sur l'attribut pseudo.
 	attr:pseudo, false
 	# Accesseur get sur l'attribut score.
-	attr:score, false
+	attr:points, false
 	# Accesseur get sur l'attribut time.
 	attr:time, false
 	# Accesseur get sur l'attribut malus.
@@ -27,25 +28,17 @@ class Score < ActiveRecord::Base
 	# Initialisation de la class Score.
 	# === Parametre
 	# * +b+ : b Utilisé pour ActiveRecord.
-	def initialize(b)
-		super(:name => "", :points => 0)
-		@pseudo = nil
-		@score = 0
+	def initialize(nom, time)
+		@pseudo = nom
+		@points = 0
+		@temps = time
     @malus = 0
-    @time = 0
 	end
 
 	# Cette methode demande à l'utilisateur de saisir un nom.
-	def setName()
+	def Score.askName()
 		print "Veuillez saisir un nom : "
-		@pseudo = gets.chomp
-	end
-
-	# Cette methode change le temps dans un score.
-	# === Parametre
-	# * +time+ : time La nouvelle valeur de temps.
-	def setTime(time)
-		@time = time
+		return gets.chomp
 	end
 
 	# Cette methode ajoute du malus dans un score.
@@ -61,20 +54,19 @@ class Score < ActiveRecord::Base
 	def calculScore(tMax)
 		temp = @time.to_i + @malus.to_i
 		if(temp > tMax) then
-			@score = 0
-		else @score = 1000000-((1000000/tMax)*(tMax-(temp+tMax))*((tMax-(temp+tMax))/tMax)) end
+			@points = 0
+		else @points = 1000000-((1000000/tMax)*(tMax-(temp+tMax))*((tMax-(temp+tMax))/tMax)) end
 	end
 
 	# Cette methode sauvegarde un score dans la base de donnees.
 	def sauvegarder()
-		self.name = @pseudo
-		self.points = @score
-		return self.save()
+		temp = Highscore.creer()
+		temp.sauvegarder(@pseudo, @points)
 	end
 
 	# Cette methode redefini to_s pour afficher un score.
 	def to_s
-		"Score : Pseudo = #{@pseudo}, Points = #{@score}, Temps = #{@time}, Malus = #{@malus}\n"
+		"Score : Pseudo = #{@pseudo}, Points = #{@points}, Temps = #{@temps}, Malus = #{@malus}\n"
 	end
 
 end

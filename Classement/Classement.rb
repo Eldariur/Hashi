@@ -1,8 +1,8 @@
 load ("Score.rb")
+#load ("Highscore.rb")
 
 class Classement
-
-  attr:liste, true
+  attr:liste, false
 
   # Creer un nouveau score.
 	 def Classement.creer()
@@ -30,11 +30,17 @@ class Classement
   end
 
   def recupererDonnees()
-    @liste = Score.take(20)
+    Highscore.order(:score)
+    @liste = Highscore.take(20)
+    @liste = @liste.sort{ |a,b| a.score.to_i <=> b.score.to_i }.reverse
   end
 
   def to_s
-    return @liste.to_s
+    res = ""
+    @liste.each do |e|
+      res = res.to_s + "Highscore -> Pseudo : #{e.name}, points : #{e.score}, id : #{e.id}\n"
+    end
+    return res
   end
 
 end

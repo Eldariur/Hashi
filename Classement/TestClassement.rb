@@ -4,26 +4,27 @@ require "./ConnectSqlite3.rb"
 
 c = Chrono.nouveau()
 
+
 threads = []
 threads << Thread.new {c.chronometrer()}
 threads << Thread.new {stopsaisie(c)}
 
 threads.each { |thr| thr.join }
 
-s = Score.creer()
-s.setTime(c.resultat())
-s.setName()
+s = Score.creer(Score.askName, c.resultat)
 
-for i in 0..rand(2)
+for i in 0..rand(5)
   s.addMalus(rand(20))
 end
 
 s.calculScore(100)
 
+puts "Nouveau : #{s}"
+puts s.inspect()
+
+s.sauvegarder()
+
 c = Classement.creer()
 
 c.recupererDonnees()
-puts c
-
-s.sauvegarder()
-puts s
+puts c.to_s
