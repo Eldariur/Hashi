@@ -22,8 +22,8 @@ class Fenetre < Gtk::Window
 
 
 		super()
-		self.name="mainWindow2"
-		self.set_default_size(1500,800)
+		self.name="WindowPrincipale"
+		self.set_default_size(1500,900)
 		vbox = Gtk::Box.new(:VERTICAL)
 		self.window_position=Gtk::WindowPosition::CENTER
 		css=Gtk::CssProvider.new
@@ -45,50 +45,15 @@ class Fenetre < Gtk::Window
 		@listeInter = []
 		x = 5
 		y = 5
-		tbl = Gtk::Table.new(x,y,FALSE)
+		tbl2 = Gtk::Table.new(x,y,FALSE)
 
-		# #####################################
-		# @grilleTest = Grille.@creer(5, 5)
-		# sommet11 = Sommet.@creer(4, @grilleTest.getCase(0, 0))
-		# sommet12 = Sommet.@creer(2, @grilleTest.getCase(2, 0))
-		# sommet13 = Sommet.@creer(2, @grilleTest.getCase(0, 3))
-		# arete11 = Arete.@creer(sommet11, sommet13)
-		# arete12 = Arete.@creer(sommet11, sommet12,true)
-		#arete11 = Arete.@creer(sommet11, sommet13)
-		# @grilleTest.addSommet(sommet11)
-		# @grilleTest.addSommet(sommet12)
-		# @grilleTest.addSommet(sommet13)
-		# @grilleTest.addArete(arete11)
-		# #####################################
-
-		# #####################################
-		# @grilleTest = Grille.@creer(5, 5)
-		# sommet11 = Sommet.@creer(2, @grilleTest.getCase(2, 0))
-		# sommet12 = Sommet.@creer(2, @grilleTest.getCase(0, 2))
-		# sommet13 = Sommet.@creer(8, @grilleTest.getCase(2, 2))
-		# sommet14 = Sommet.@creer(2, @grilleTest.getCase(4, 2))
-		# sommet15= Sommet.@creer(2, @grilleTest.getCase(2, 4))
-		# arete11 = Arete.@creer(sommet11, sommet13)
-		# arete12 = Arete.@creer(sommet13, sommet14,true)
-		# #####################################
 
 		#####################################
-		gene = Generateur.new("easy")
-		@grilleTest = gene.creeUneGrille()
+		@gene = Generateur.new("easy")
+		@grilleTest = @gene.creeUneGrille()
 		grilleDepart = @grilleTest
 		#####################################
 
-		#####################################
-		#@grilleTest = Grille.creer(5, 5)
-		#sommet11 = Sommet.creer(3, @grilleTest.getCase(0, 0))
-		#sommet12 = Sommet.creer(3, @grilleTest.getCase(2, 0))
-		#sommet13 = Sommet.creer(2, @grilleTest.getCase(4, 0))
-		#sommet14 = Sommet.creer(2, @grilleTest.getCase(0, 2))
-		#sommet15= Sommet.creer(1, @grilleTest.getCase(4, 2))
-		#sommet16= Sommet.creer(1, @grilleTest.getCase(2, 4))
-		#arete11 = Arete.creer(sommet11, sommet12)
-		#arete12 = Arete.creer(sommet12, sommet13)
-		#####################################
 
 		@longueur = @grilleTest.longueur
 		@largeur = @grilleTest.largeur
@@ -111,236 +76,150 @@ class Fenetre < Gtk::Window
 			@@x2=0
 			@@y2=0
 
-
-			hpaned = Gtk::HPaned.new
-
-			btnHypo = UnBoutonPerso.new('H','BoutonEnJeu')
-				btnAnnulHypo = UnBoutonPerso.new('Annuler Hypothèse')
-				btnValidHypo = UnBoutonPerso.new('Valider Hypothèse')
-			ajouterImage(btnHypo,"img/cloud_icon.png")
-			btnAide = UnBoutonPerso.new('?','BoutonEnJeu')
-				btnAideTxt = UnBoutonPerso.new('Aide Textuelle')
-					messageLabel = nil
-				btnErreurVisu = UnBoutonPerso.new('Montrer les erreurs ?')
-				btnAideVisu = UnBoutonPerso.new('Aide Visuelle')
-			btnAnnul = UnBoutonPerso.new('','BoutonEnJeu')
-			ajouterImage(btnAnnul,"img/undo_icon2.png")
-			btnRecom = UnBoutonPerso.new('Recommencer','BoutonEnJeu')
-			ajouterImage(btnRecom,"img/restart_icon.png")
+			@chrono = false
 
 
-			btnHypo.signal_connect('clicked') {
-				##Changement des boutons
-				if(@presser)
-					@presser = false
-					btnAide.deverrouiller()
-					btnRecom.deverrouiller()
-					btnAnnul.deverrouiller()
 
-					@grilleTest = Sauvegarde.annulerHypothese()
-					@hypothese = false
+#=====================
+# hpaned = Gtk::HPaned.new
+			# btnHypo = UnBoutonPerso.new('H','BoutonEnJeu')
+			# 	btnAnnulHypo = UnBoutonPerso.new('Annuler Hypothèse')
+			# 	btnValidHypo = UnBoutonPerso.new('Valider Hypothèse')
+			# ajouterImage(btnHypo,"img/cloud_icon.png")
+			# btnAide = UnBoutonPerso.new('?','BoutonEnJeu')
+			# 	btnAideTxt = UnBoutonPerso.new('Aide Textuelle')
+			# 		messageLabel = nil
+			# 	btnErreurVisu = UnBoutonPerso.new('Montrer les erreurs ?')
+			# 	btnAideVisu = UnBoutonPerso.new('Aide Visuelle')
+			# btnAnnul = UnBoutonPerso.new('','BoutonEnJeu')
+			# ajouterImage(btnAnnul,"img/undo_icon2.png")
+			# btnRecom = UnBoutonPerso.new('Recommencer','BoutonEnJeu')
+			# ajouterImage(btnRecom,"img/restart_icon.png")
+#=====================
 
-					retirerContenu(vbox,btnAnnulHypo)
-					retirerContenu(vbox,btnValidHypo)
+			initBoutonRetour
+	    initBoutonHypo
+			initBoutonAnnulHypo
+			initBoutonValidHypo
+	    initBoutonAide
+			initLabelMessage
+			initBoutonErreurVisu
+			initBoutonAideTxt
+			initBoutonAideVisu
+	    initBoutonAnnul
+	    initBoutonRecom
+	    initChrono
+	    initBoxJeu
+
+	    hboxBoutonRetour = Gtk::Box.new(Gtk::Orientation::HORIZONTAL)
+				hboxBoutonRetour.halign = Gtk::Align::START
+				#hboxBoutonRetour.homogeneous = true
+	        hboxBoutonRetour.add(@boutonRetour)
+
+	    hboxBoutonJeu = Gtk::Box.new(Gtk::Orientation::HORIZONTAL)
+	  		hboxBoutonJeu.halign = Gtk::Align::FILL
+	  		hboxBoutonJeu.homogeneous = true
+	        hboxBoutonJeu.add(@boutonHypo)
+	        hboxBoutonJeu.add(@boutonAide)
+	        hboxBoutonJeu.add(@boutonAnnul)
+	        hboxBoutonJeu.add(@boutonRecom)
+
+			vboxBoutonJeu = Gtk::Box.new(Gtk::Orientation::VERTICAL)
+				vboxBoutonJeu.valign = Gtk::Align::START
+				#vboxGauche.homogeneous = true
+	        vboxBoutonJeu.add(@boutonAnnulHypo)
+					vboxBoutonJeu.add(@boutonValidHypo)
+					vboxBoutonJeu.add(@boxMessage)
+					vboxBoutonJeu.add(@boutonErreur)
+	        vboxBoutonJeu.add(@boutonAideTxt)
+					vboxBoutonJeu.add(@boutonAideVisu)
+
+	    vboxGauche = Gtk::Box.new(Gtk::Orientation::VERTICAL)
+				vboxGauche.valign = Gtk::Align::START
+				#vboxGauche.homogeneous = true
+	        vboxGauche.add(hboxBoutonRetour)
+	        vboxGauche.add(hboxBoutonJeu)
+					vboxGauche.add(vboxBoutonJeu)
+
+	    hboxChrono = Gtk::Box.new(Gtk::Orientation::HORIZONTAL)
+				hboxChrono.halign = Gtk::Align::CENTER
+				#hboxChrono.homogeneous = true
+	        hboxChrono.add(@boxChrono)
+
+	    hpaned = Gtk::Paned.new(Gtk::Orientation::HORIZONTAL)
+	    hboxJeu = Gtk::Box.new(Gtk::Orientation::HORIZONTAL)
+				hboxJeu.halign = Gtk::Align::CENTER
+				#hboxJeu.homogeneous = true
+	        # hboxJeu.add(@boxJeu) #<=======
+	        hpaned.add(@darea) #<=======
+	        hpaned.signal_connect("button-press-event") { |widget, event| mouseClick(event) }
+	        #hboxJeu.add(hpaned)
 
 
-				else
-					btnAide.verrouiller()
-					btnRecom.verrouiller()
-					btnAnnul.verrouiller()
+	    # vboxDroite = Gtk::Box.new(Gtk::Orientation::VERTICAL)
+			# 	vboxDroite.valign = Gtk::Align::FILL
+			# 	#vboxDroite.homogeneous = true
+	    #     vboxDroite.add(hboxChrono)
 
-					@presser = true
-					puts "appuie bouton Hypothèse"
-					@hypothese = true
+	    hboxPrincipale = Gtk::Box.new(Gtk::Orientation::HORIZONTAL)
+				hboxPrincipale.halign = Gtk::Align::START
+				hboxPrincipale.homogeneous = true
+	    # @boutonRetour.width_request = 150
+	        # hboxPrincipale.add(vboxGauche)
+	        # hboxPrincipale.add(vboxDroite)
+					boxVide = Gtk::Box.new(Gtk::Orientation::VERTICAL)
+						boxVide.valign = Gtk::Align::START
+						boxVide.homogeneous = true
 
-					Sauvegarde.nouvelleHypothese(@grilleTest)
-					ajouterContenu(vbox,btnAnnulHypo)
-					ajouterContenu(vbox,btnValidHypo)
+						puts @longueur.to_s
 
-					tbl.attach(vbox,0,1,2,10)
-					self.show_all
-				end
-			}
-
-			btnAnnulHypo.signal_connect('clicked') {
-				@presser = false
-
-				@grilleTest = Sauvegarde.annulerHypothese()
-				@hypothese = false
-
-				btnAide.deverrouiller()
-				btnRecom.deverrouiller()
-				btnAnnul.deverrouiller()
-
-				retirerContenu(vbox,btnAnnulHypo)
-				retirerContenu(vbox,btnValidHypo)
-
-				afficheEcran
-				self.show_all
-			}
-
-			btnValidHypo.signal_connect('clicked') {
-				@presser = false
-
-				Sauvegarde.validerHypothese()
-				@hypothese = false
-				@grilleTest.aretes.each do |a|
-					a.hypothese = @hypothese
-				end
-				btnAide.deverrouiller()
-				btnRecom.deverrouiller()
-				btnAnnul.deverrouiller()
+	    tbl = Gtk::Table.new(1,3)
+	    tbl.attach(vboxGauche,0,4,0,1)
+			tbl.attach(hboxChrono,4,@longueur,0,1)
+	    tbl.attach(hpaned,4,@longueur,1,@largeur+6)
+			tbl.attach(boxVide,@longueur,@longueur+2,1,20)
 
 
-				retirerContenu(vbox,btnAnnulHypo)
-				retirerContenu(vbox,btnValidHypo)
-			}
+	    self.add(tbl)
+
+
+	    # self.show_all
+	    # Gtk.main
+
+
 
 			@aide = nil
 			@caseAide = nil
 			@erreurs = nil
 			@afficherErreur = false
 
-			btnAide.signal_connect('clicked') {
-				@erreurs = nil
-				@afficherErreur = false
-				@erreurs = gene.trouverErreurs(@grilleTest)
-
-				retirerContenu(vbox,btnAideVisu)
-
-				if(@erreurs != nil && @erreurs.size != 0)
-					messageLabel = UnLabelPerso.new("Vous avez "+@erreurs.size().to_s+" erreur(s)")
-					ajouterMessage(vbox,messageLabel)
-					ajouterContenu(vbox,btnErreurVisu)
-				else
-					@afficherErreur = false
-
-					ajouterContenu(vbox,btnAideTxt)
-					ajouterContenu(vbox,btnAideVisu)
-				end
-				@aide = Aide.creer(@grilleTest)
 
 
-				if(@presser)
-					@presser = false
-					btnHypo.deverrouiller()
-					btnRecom.deverrouiller()
-					btnAnnul.deverrouiller()
-					retirerContenu(vbox,messageLabel)
-					retirerContenu(vbox,btnAideTxt)
-					retirerContenu(vbox,btnAideVisu)
-
-				else
-					@presser = true
-					@aide = Aide.creer(@grilleTest)
-
-					btnHypo.verrouiller()
-					btnRecom.verrouiller()
-					btnAnnul.verrouiller()
-					tbl.attach(vbox,0,1,2,10)
-					self.show_all
-				end
-
-			}
-
-			btnErreurVisu.signal_connect('clicked') {
-				puts "appuie bouton Erreur Visu"
-				@afficherErreur = true
-				@erreurs = gene.trouverErreurs(@grilleTest)
-				retirerContenu(vbox,btnErreurVisu)
-				retirerContenu(vbox,messageLabel)
-				afficheEcran
-
-			}
+			# hbox = Gtk::Box.new(:HORIZONTAL)
+			#
+			#
+			# hpaned.add(@darea)
+			#
+			# hbox.add(btnHypo)
+			# hbox.add(btnAide)
+			# hbox.add(btnAnnul)
+			# hbox.add(btnRecom)
+			#
+			# #vbox.add(hbox)
+			#
+			#
+			# tbl.attach(hbox,0,4,0,2)
+			# tbl.attach(hpaned,2,10,0,10)
+			#
+			#
+			#
+			# add(tbl)
 
 
 
-				btnAideTxt.signal_connect('clicked') {
-					@caseA = nil
-
-					messageLabel = UnLabelPerso.new(@aide.getMessageAide())
-					# puts message
-
-					ajouterMessage(vbox,messageLabel)
-					retirerContenu(vbox,btnAideTxt)
-					retirerContenu(vbox,btnAideVisu)
-					ajouterContenu(vbox,btnAideVisu)
-					afficheEcran()
-					self.show_all
-
-				}
-
-				btnAideVisu.signal_connect('clicked') {
-					puts "appuie bouton visuelle"
-
-					retirerContenu(vbox,btnAideTxt)
-					retirerContenu(vbox,btnAideVisu)
-					@caseAide = @aide.getCaseAide
-					afficheEcran
-
-				}
-
-				@chrono = true
-				hbox = Gtk::Box.new(:HORIZONTAL)
-
-			btnAnnul.signal_connect('clicked') {
-				# puts "appuie bouton Annuler"
-				# annulerAction()
-				if(@chrono)
-
-					i = 0
-					chronoHbox = Gtk::Box.new(:HORIZONTAL)
-					chr = Chrono.nouveau()
-					tbl.attach(chronoHbox,1,3,2,4)
-					Thread.new {chr.chronometrer()}
-					Thread.new {
-						 while(true)
-
-							 chronoLabel = UnLabelPerso.new(chr.to_chrono())
-							 ajouterContenu(chronoHbox,chronoLabel)
-
-							 self.show_all
-							 sleep(0.01)
-							 retirerContenu(chronoHbox,chronoLabel)
-
-						 end
-					 }
-				end
-
-			}
-
-			btnRecom.signal_connect('clicked') {
-				# puts "appuie bouton Recommencer"
-				#@grilleTest = grilleDepart
-				@grilleTest.clearAretes
-				@grilleTest.clearSommets
-				@listeInter = []
-				afficheEcran
-			}
-
-
-			hpaned.add(@darea)
-
-			hbox.add(btnHypo)
-			hbox.add(btnAide)
-			hbox.add(btnAnnul)
-			hbox.add(btnRecom)
-
-			#vbox.add(hbox)
-
-
-			tbl.attach(hbox,0,4,0,2)
-			tbl.attach(hpaned,2,10,0,10)
-
-
-
-			add(tbl)
-
-
-
-			hpaned.signal_connect("button-press-event") { |widget, event| mouseClick(event) }
+			# hpaned.signal_connect("button-press-event") { |widget, event| mouseClick(event) }
 	    #self.add(vbox)
-			self.add(hpaned)
+			#self.add(hpaned)
 
 	    #self.add(img)
 			size[2] = self.default_size
@@ -348,6 +227,7 @@ class Fenetre < Gtk::Window
 
 		#self.add(HudAccueil.new(self))
 		self.show_all
+		masquerBouton
 		Gtk.main
 
 	end
@@ -509,9 +389,11 @@ class Fenetre < Gtk::Window
 
 			end
 		end
-		# if(grilleGagnante)
-		# 	puts "VOUS AVEZ GAGNÉ !!!!"
-		# end
+		if(grilleGagnante && !@hypothese)
+			puts "VOUS AVEZ GAGNÉ !!!!"
+			@chr.arreter
+			#@@fenetre.changerWidget(FenetreVictoire.new(@@fenetre))
+		end
 
 	end
 
@@ -1016,7 +898,6 @@ class Fenetre < Gtk::Window
 	end
 
 	def drawAretes()
-		puts "tracer les aretes de grille"
 		# copie de tracerGrille
 		tailleCase = 50
 		paddingX = 50+15
@@ -1101,7 +982,6 @@ class Fenetre < Gtk::Window
 			j+=1
 
 		}
-		puts " ==== "
 	end
 
 	def draw_maLigne(x1,y1,x2,y2)
@@ -1112,15 +992,10 @@ class Fenetre < Gtk::Window
 
 	def activeHypo(condition = false)
 		if(condition)
-			puts "MODE POINTILLÉ ---"
 			@cr.set_dash(5, 15)
-			@cr.set_source_rgb 1,0,0
-			puts "---"
+			#@cr.set_source_rgb 1,0,0
 		else
-			puts "MODE LIGNE ____"
 			@cr.restore()
-			@cr.set_source_rgb 0,0,0
-			puts "___"
 		end
 	end
 
@@ -1152,6 +1027,7 @@ class Fenetre < Gtk::Window
 	end
 
 	def afficheEcran()
+		@cr.set_source_rgb 0,0,0
 		clearEcran()
 		drawSurbri()
 		tracerGrille(true) #<== AIDE VISUEL TEMPO
@@ -1159,6 +1035,283 @@ class Fenetre < Gtk::Window
 		drawAretes()
 
 	end
+
+	def initBoutonRetour
+    @boutonRetour = UnBoutonPerso.new("Retour")do
+      puts "j'ai cliqué sur le bouton retour"
+    end
+  end
+
+  def initBoutonHypo
+    @boutonHypo = UnBoutonPerso.new("H")do
+      puts "j'ai cliqué sur le bouton Hypo"
+			if(@presser)
+				@presser = false
+				@boutonAide.deverrouiller()
+				@boutonRecom.deverrouiller()
+				@boutonAnnul.deverrouiller()
+
+				@grilleTest = Sauvegarde.annulerHypothese()
+				@hypothese = false
+
+				masquerBouton
+			else
+				@boutonAide.verrouiller()
+				@boutonRecom.verrouiller()
+				@boutonAnnul.verrouiller()
+
+				@presser = true
+				puts "appuie bouton Hypothèse"
+				@hypothese = true
+
+				@boutonValidHypo.show
+
+				Sauvegarde.nouvelleHypothese(@grilleTest)
+				# ajouterContenu(vbox,@boutonAnnulHypo)
+				# ajouterContenu(vbox,@boutonValidHypo)
+
+				# tbl.attach(vbox,0,1,2,10)
+				#self.show_all
+				@boutonAnnulHypo.show
+				@boutonValidHypo.show
+			end
+    end
+		ajouterImage(@boutonHypo,"img/cloud_icon.png")
+  end
+
+	def initBoutonAnnulHypo
+    @boutonAnnulHypo = UnBoutonPerso.new("Annuler Hypothèse")do
+			@presser = false
+
+			@grilleTest = Sauvegarde.annulerHypothese()
+			@hypothese = false
+
+			@boutonAide.deverrouiller()
+			@boutonRecom.deverrouiller()
+			@boutonAnnul.deverrouiller()
+
+			# retirerContenu(vbox,@boutonAnnulHypo)
+			# retirerContenu(vbox,@boutonValidHypo)
+
+			afficheEcran
+			masquerBouton
+			# self.show_all
+    end
+  end
+
+	def initBoutonValidHypo
+    @boutonValidHypo= UnBoutonPerso.new("Valider Hypothèse")do
+			@presser = false
+
+			Sauvegarde.validerHypothese()
+			@hypothese = false
+			@grilleTest.aretes.each do |a|
+				a.hypothese = @hypothese
+			end
+			@boutonAide.deverrouiller()
+			@boutonRecom.deverrouiller()
+			@boutonAnnul.deverrouiller()
+
+
+			# retirerContenu(vbox,@boutonAnnulHypo)
+			# retirerContenu(vbox,@boutonValidHypo)
+			masquerBouton
+    end
+			@boutonValidHypo.hide
+  end
+
+
+
+  def initBoutonAide
+		@boxMessage = Gtk::Box.new(Gtk::Orientation::HORIZONTAL)
+    @boutonAide = UnBoutonPerso.new("?")do
+			@erreurs = nil
+			@afficherErreur = false
+			@erreurs = @gene.trouverErreurs(@grilleTest)
+
+			# retirerContenu(vbox,@boutonAideVisu)
+
+
+
+			if(@presser)
+
+				# if(@erreurs != nil && @erreurs.size != 0)
+				# 	@labelMessage = UnLabelPerso.new("Vous avez "+@erreurs.size().to_s+" erreur(s)")
+				#
+				# 	masquerBouton()
+				# 	@labelMessage.show
+				# 	# ajouterMessage(vbox,messageLabel)
+				# 	# ajouterContenu(vbox,btnErreurVisu)
+				# else
+				#
+				# 	@afficherErreur = false
+				#
+				# 	# ajouterContenu(vbox,@boutonAideTxt)
+				# 	# ajouterContenu(vbox,@boutonAideVisu)
+				# end
+
+				# @aide = Aide.creer(@grilleTest)
+
+
+				@presser = false
+				@boutonHypo.deverrouiller()
+				@boutonRecom.deverrouiller()
+				@boutonAnnul.deverrouiller()
+				masquerBouton
+				# retirerContenu(vbox,messageLabel)
+				# retirerContenu(vbox,@boutonAideTxt)
+				# retirerContenu(vbox,@boutonAideVisu)
+
+			else
+
+				puts "je viens d'appuyer sur le bouton"
+				@presser = true
+				if(@aide == nil)
+					@aide = Aide.creer(@grilleTest)
+				end
+				@boutonHypo.verrouiller()
+				@boutonRecom.verrouiller()
+				@boutonAnnul.verrouiller()
+				# tbl.attach(vbox,0,1,2,10)
+				# self.show_all
+				if(@erreurs != nil && @erreurs.size != 0)
+					puts "il y a 1 erreur"
+					@labelMessage = UnLabelPerso.new("Vous avez "+@erreurs.size().to_s+" erreur(s)")
+					@boxMessage.add(@labelMessage)
+					masquerBouton()
+					@labelMessage.show
+					@boutonErreur.show
+					# ajouterMessage(vbox,messageLabel)
+					# ajouterContenu(vbox,btnErreurVisu)
+				else
+
+					@afficherErreur = false
+
+					@boutonAideTxt.show
+					@boutonAideVisu.show
+
+					# ajouterContenu(vbox,@boutonAideTxt)
+					# ajouterContenu(vbox,@boutonAideVisu)
+				end
+
+			end
+    end
+  end
+
+
+	def initLabelMessage
+    @labelMessage = UnLabelPerso.new("test blanc", "UnLabelBlanc")
+  end
+
+
+	def initBoutonErreurVisu
+    @boutonErreur = UnBoutonPerso.new("Montrer les erreurs ?")do
+			puts "appuie bouton Erreur Visu"
+			@afficherErreur = true
+			@erreurs = @gene.trouverErreurs(@grilleTest)
+			# retirerContenu(vbox,@boutonErreur)
+			# retirerContenu(vbox,messageLabel)
+			afficheEcran
+			masquerBouton
+		end
+  end
+
+	def initBoutonAideTxt
+
+    @boutonAideTxt = UnBoutonPerso.new("Aide Textuelle")do
+			@caseA = nil
+			@aideTxt = Aide.creer(@grilleTest)
+
+			retirerContenu(@boxMessage,@labelMessage)
+			@labelMessage = UnLabelPerso.new(@aideTxt.getMessageAide())
+			puts @aideTxt.getMessageAide()
+
+			@boxMessage.add(@labelMessage)
+			# retirerContenu(vbox,@boutonAideTxt)
+			# retirerContenu(vbox,@boutonAideVisu)
+			# ajouterContenu(vbox,@boutonAideVisu)
+			afficheEcran()
+			# self.show_all
+			masquerBouton
+			@labelMessage.show
+		end
+  end
+
+	def initBoutonAideVisu
+    @boutonAideVisu = UnBoutonPerso.new("Aide Visuelle")do
+			puts "appuie bouton visuelle"
+			@aide = Aide.creer(@grilleTest)
+
+			# retirerContenu(vbox,@boutonAideTxt)
+			# retirerContenu(vbox,@boutonAideVisu)
+			@caseAide = @aide.getCaseAide
+			afficheEcran
+			masquerBouton
+    end
+  end
+
+  def initBoutonAnnul
+    @boutonAnnul = UnBoutonPerso.new("U")do
+			# puts "appuie bouton Annuler"
+			annulerAction()
+
+    end
+		ajouterImage(@boutonAnnul,"img/undo_icon2.png")
+  end
+
+  def initBoutonRecom
+    @boutonRecom = UnBoutonPerso.new("R")do
+			# puts "appuie bouton Recommencer"
+			# @grilleTest = grilleDepart
+			@grilleTest.clearAretes
+			@grilleTest.clearSommets
+			@listeInter = []
+			afficheEcran
+    end
+		ajouterImage(@boutonRecom,"img/restart_icon.png")
+  end
+
+  def initChrono
+		@boxChrono = Gtk::Box.new(Gtk::Orientation::HORIZONTAL)
+
+		if(@chrono)
+			puts "TTTESSSSST"
+			i = 0
+			@chr = Chrono.nouveau()
+			# tbl.attach(chronoHbox,1,3,2,4)
+			Thread.new {@chr.chronometrer()}
+			Thread.new {
+				 while(true)
+
+					 retirerContenu(@boxChrono,@labelChrono)
+					 @labelChrono = UnLabelPerso.new(@chr.to_chrono())
+					 ajouterContenu(@boxChrono,@labelChrono)
+					 # @boxChrono.add(@labelChrono)
+					 # self.show_all
+					 @labelChrono.show
+					 sleep(0.01)
+
+				 end
+			 }
+    end
+		#@labelChrono = UnLabelPerso.new("")
+  end
+
+  def initBoxJeu
+    @boxJeu = UnBoutonPerso.new("ceci est ma grille de Jeu")do
+      @boxJeu.set_sensitive(false)
+    end
+  end
+
+	def masquerBouton
+		@boutonAnnulHypo.hide
+		@boutonValidHypo.hide
+		@labelMessage.hide
+		@boutonErreur.hide
+		@boutonAideTxt.hide
+		@boutonAideVisu.hide
+	end
+
 
 end
 

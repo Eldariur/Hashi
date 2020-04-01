@@ -6,9 +6,11 @@ class UnBoutonPerso < Gtk::Button
     self.add(UnLabelPerso.new(str))
     self.set_name(nom)
 
-    # self.signal_connect("enter"){
-    #   print "c'est un bouton perso\n"
-    # }
+	if block_given?
+		signal_connect("clicked") {
+			yield
+		}
+	end
   end
 
 	def verrouiller()
