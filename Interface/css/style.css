@@ -11,11 +11,21 @@
 	margin: 5px;
 } */
 
+#Chrono {
+	border-radius: 20px;
+	border-width: 2px;
+	background-color: white;
+	/* margin: 20px; */
+
+}
+
 #UnBoutonPerso {
 	border-radius: 5px;
 	border-width: 2px;
 	background-color: red;
-	/* margin: 20px; */
+	margin-right: 25px;
+	margin-top: 20px;
+	margin-left: 25px;
 
 }
 
@@ -118,6 +128,14 @@ button {
 	/* background-color: rgba(10,10,10,0.90); */
 	border-radius: 5px;
 	color: black;
+	font-weight: bold;
+	margin:3px;
+}
+
+#UnLabelBlanc {
+	background-color: rgba(10,10,10,0.90);
+	border-radius: 5px;
+	color: white;
 	font-weight: bold;
 	margin:3px;
 }
