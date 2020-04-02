@@ -40,6 +40,8 @@ class FenetreJeu < Gtk::Box
 		x = 5
 		y = 5
 
+		puts "taille de ma fenetre = "+@@fenetre.default_size.to_s
+
 
 
 		#####################################
@@ -47,6 +49,8 @@ class FenetreJeu < Gtk::Box
 		@grilleTest = @gene.creeUneGrille()
 		grilleDepart = @grilleTest
 		#####################################
+
+		initTailleCase
 
 
 		@longueur = @grilleTest.longueur
@@ -70,7 +74,7 @@ class FenetreJeu < Gtk::Box
 			@@x2=0
 			@@y2=0
 
-			@chrono = true
+			@chrono = false
 
 			@aide = nil
 			@caseAide = nil
@@ -199,7 +203,6 @@ class FenetreJeu < Gtk::Box
 
 	def mouseClick(event)
 		# copie tracerGrille
-		tailleCase = 50
 		paddingX = 50
 		paddingY = 25
 		@nbClick += 1
@@ -208,9 +211,9 @@ class FenetreJeu < Gtk::Box
 		y = event.y
 
 		if(!grilleGagnante)
-			if(x > paddingX && x < paddingX+tailleCase*@longueur && y > paddingY && y < paddingY+tailleCase*@largeur) #si dans la grille
-				caseX = (x - paddingX).to_i/tailleCase
-				caseY = (y -paddingY).to_i/tailleCase
+			if(x > paddingX && x < paddingX+@tailleCase*@longueur && y > paddingY && y < paddingY+@tailleCase*@largeur) #si dans la grille
+				caseX = (x - paddingX).to_i/@tailleCase
+				caseY = (y -paddingY).to_i/@tailleCase
 				#puts "vous avez cliqué sur la case ["+caseX.to_s+"]["+caseY.to_s+"]"
 
 				caseTest = @grilleTest.getCase(caseX,caseY)
@@ -444,7 +447,6 @@ class FenetreJeu < Gtk::Box
 
 	def drawSurbri()
 		# exemple 5 5
-		tailleCase = 50
 		paddingX = 50
 		paddingY = 25
 		#@cr = @darea.window.create_cairo_context
@@ -461,17 +463,46 @@ class FenetreJeu < Gtk::Box
 
 				#puts "\tX1 = "+x1.to_s+" Y1 = "+y1.to_s+" X2 = "+x2.to_s+" Y2 = "+y2.to_s
 				if(x1 < x2 || caseSom.x < x1)
-					#puts "1"
-					@cr.rectangle x1*tailleCase+paddingX-3+tailleCase, y1*tailleCase+paddingY+13, (x2-x1)*tailleCase-tailleCase+8, (y2-y1)*tailleCase+22
+					case @difficulte
+						when "easy"
+							@cr.rectangle x1*@tailleCase+paddingX-3+@tailleCase, y1*@tailleCase+paddingY+13, (x2-x1)*@tailleCase-@tailleCase+8, (y2-y1)*@tailleCase+22
+						when "normal"
+							@cr.rectangle x1*@tailleCase+paddingX-3+@tailleCase, y1*@tailleCase+paddingY+11, (x2-x1)*@tailleCase-@tailleCase+8, (y2-y1)*@tailleCase+22
+						when "hard"
+							@cr.rectangle x1*@tailleCase+paddingX-3+@tailleCase, y1*@tailleCase+paddingY+8, (x2-x1)*@tailleCase-@tailleCase+8, (y2-y1)*@tailleCase+22
+						else
+					end
+
 				elsif(x1 > x2 || caseSom.x > x1)
-					#puts "2"
-					@cr.rectangle x1*tailleCase+paddingX+5, y1*tailleCase+paddingY+13, (x2-x1)*tailleCase-8+tailleCase, (y2-y1)*tailleCase+22
+					case @difficulte
+						when "easy"
+							@cr.rectangle x1*@tailleCase+paddingX+5, y1*@tailleCase+paddingY+13, (x2-x1)*@tailleCase-8+@tailleCase, (y2-y1)*@tailleCase+22
+						when "normal"
+							@cr.rectangle x1*@tailleCase+paddingX+5, y1*@tailleCase+paddingY+11, (x2-x1)*@tailleCase-8+@tailleCase, (y2-y1)*@tailleCase+22
+						when "hard"
+							@cr.rectangle x1*@tailleCase+paddingX+5, y1*@tailleCase+paddingY+8, (x2-x1)*@tailleCase-8+@tailleCase, (y2-y1)*@tailleCase+22
+						else
+					end
 				elsif(y1 < y2 || caseSom.y < y1)
-					#puts "3"
-					@cr.rectangle x1*tailleCase+paddingX+15, y1*tailleCase+paddingY-5+tailleCase, (x2-x1)*tailleCase+22, (y2-y1)*tailleCase-tailleCase+8
+					case @difficulte
+						when "easy"
+							@cr.rectangle x1*@tailleCase+paddingX+15, y1*@tailleCase+paddingY-5+@tailleCase, (x2-x1)*@tailleCase+22, (y2-y1)*@tailleCase-@tailleCase+8
+						when "normal"
+							@cr.rectangle x1*@tailleCase+paddingX+11, y1*@tailleCase+paddingY-5+@tailleCase, (x2-x1)*@tailleCase+22, (y2-y1)*@tailleCase-@tailleCase+8
+						when "hard"
+							@cr.rectangle x1*@tailleCase+paddingX+9, y1*@tailleCase+paddingY-5+@tailleCase, (x2-x1)*@tailleCase+22, (y2-y1)*@tailleCase-@tailleCase+8
+						else
+					end
 				else
-					#puts "4"
-					@cr.rectangle x1*tailleCase+paddingX+15, y1*tailleCase+paddingY+5, (x2-x1)*tailleCase+22, (y2-y1)*tailleCase-8+tailleCase
+					case @difficulte
+						when "easy"
+							@cr.rectangle x1*@tailleCase+paddingX+15, y1*@tailleCase+paddingY+5, (x2-x1)*@tailleCase+22, (y2-y1)*@tailleCase-8+@tailleCase
+						when "normal"
+							@cr.rectangle x1*@tailleCase+paddingX+11, y1*@tailleCase+paddingY+5, (x2-x1)*@tailleCase+22, (y2-y1)*@tailleCase-8+@tailleCase
+						when "hard"
+							@cr.rectangle x1*@tailleCase+paddingX+9, y1*@tailleCase+paddingY+5, (x2-x1)*@tailleCase+22, (y2-y1)*@tailleCase-8+@tailleCase
+						else
+					end
 				end
 				#puts "+ ==== +"
 				x1 = nil
@@ -517,7 +548,6 @@ class FenetreJeu < Gtk::Box
 
 	def rechercherVoisins(c)
 		#puts "recherche des voisins ..."
-		tailleCase = 50
 		paddingX = 50
 		paddingY = 25
 		j = 0
@@ -718,16 +748,15 @@ class FenetreJeu < Gtk::Box
 
 	def tracerGrille(tracer=false)
 		# exemple 5 5
-		tailleCase = 50
 		paddingX = 50
 		paddingY = 25
 
 		if(tracer)
 			0.upto @longueur do |i|
-				draw_maLigne(i*tailleCase+paddingX,paddingY,i*tailleCase+paddingX,@largeur*tailleCase+paddingY)
+				draw_maLigne(i*@tailleCase+paddingX,paddingY,i*@tailleCase+paddingX,@largeur*@tailleCase+paddingY)
 			end
 			0.upto @largeur do |i|
-				draw_maLigne(paddingX,i*tailleCase+paddingY,@longueur*tailleCase+paddingX,i*tailleCase+paddingY)
+				draw_maLigne(paddingX,i*@tailleCase+paddingY,@longueur*@tailleCase+paddingX,i*@tailleCase+paddingY)
 			end
 		end
 	end
@@ -793,12 +822,12 @@ class FenetreJeu < Gtk::Box
 
 	def drawSommets()
 		# copie de tracerGrille
-		tailleCase = 50
+
 		paddingX = 50+17
 		paddingY = 25+35
 		#@cr = @darea.window.create_cairo_context
 
-			@cr.set_font_size(25)
+			@cr.set_font_size(@fontSize)
 			@cr.set_source_rgb 0,0,0
 			i = 0
 			j = 0
@@ -809,7 +838,16 @@ class FenetreJeu < Gtk::Box
 			x = s.position.x
 			y = s.position.y
 			if(s.complet)
-				draw_maLigne(x*tailleCase+paddingX ,y*tailleCase+paddingY,x*tailleCase+paddingX+15 ,y*tailleCase+paddingY-25)
+				case @difficulte
+					when "easy"
+						draw_maLigne(x*@tailleCase+paddingX-6 ,y*@tailleCase+paddingY+2,x*@tailleCase+paddingX+20 ,y*@tailleCase+paddingY-25)
+					when "normal"
+						draw_maLigne(x*@tailleCase+paddingX-7 ,y*@tailleCase+paddingY-2,x*@tailleCase+paddingX+16 ,y*@tailleCase+paddingY-27)
+					when "hard"
+						draw_maLigne(x*@tailleCase+paddingX-8 ,y*@tailleCase+paddingY-5,x*@tailleCase+paddingX+15 ,y*@tailleCase+paddingY-25)
+					else
+
+				end
 			end
 			if(@afficherErreur)
 				@erreurs.each do |e|
@@ -820,9 +858,27 @@ class FenetreJeu < Gtk::Box
 			elsif(@caseAide != nil && s.position == @aide.getCaseAide)
 				@cr.set_source_rgb 0,1,0
 			end
-			@cr.move_to x*tailleCase+paddingX+30 ,y*tailleCase+paddingY-10
-			@cr.arc x*tailleCase+paddingX+9,y*tailleCase+paddingY-10,20,0,2*Math::PI
-			@cr.move_to x*tailleCase+paddingX ,y*tailleCase+paddingY
+			# @cr.move_to x*@tailleCase+paddingX+30 ,y*@tailleCase+paddingY-10
+			# @cr.arc x*@tailleCase+paddingX+9,y*@tailleCase+paddingY-10,@tailleCercle,0,2*Math::PI
+			# @cr.move_to x*@tailleCase+paddingX ,y*@tailleCase+paddingY
+			case @difficulte
+				when "easy"
+					@cr.move_to x*@tailleCase+paddingX+30 ,y*@tailleCase+paddingY-10
+					@cr.arc x*@tailleCase+paddingX+9,y*@tailleCase+paddingY-10,@tailleCercle,0,2*Math::PI
+					@cr.move_to x*@tailleCase+paddingX ,y*@tailleCase+paddingY
+				when "normal"
+					@cr.move_to x*@tailleCase+paddingX+21 ,y*@tailleCase+paddingY-13
+					@cr.arc x*@tailleCase+paddingX+5,y*@tailleCase+paddingY-13,@tailleCercle,0,2*Math::PI
+					@cr.move_to x*@tailleCase+paddingX-3 ,y*@tailleCase+paddingY-5
+				when "hard"
+					@cr.move_to x*@tailleCase+paddingX+18 ,y*@tailleCase+paddingY-15
+					@cr.arc x*@tailleCase+paddingX+3,y*@tailleCase+paddingY-15,@tailleCercle,0,2*Math::PI
+					@cr.move_to x*@tailleCase+paddingX-3 ,y*@tailleCase+paddingY-8
+				else
+			# 		@cr.move_to x*@tailleCase+paddingX+25 ,y*@tailleCase+paddingY-10
+			# 		@cr.arc x*@tailleCase+paddingX+5,y*@tailleCase+paddingY-10,@tailleCercle,0,2*Math::PI
+			# 		@cr.move_to x*@tailleCase+paddingX ,y*@tailleCase+paddingY
+			end
 
 
 			@cr.show_text(s.valeur.to_s)
@@ -839,7 +895,6 @@ class FenetreJeu < Gtk::Box
 
 	def drawAretes()
 		# copie de tracerGrille
-		tailleCase = 50
 		paddingX = 50+15
 		paddingY = 25+35
 		verti = false
@@ -875,44 +930,66 @@ class FenetreJeu < Gtk::Box
 			end
 
 			if(verti==true)
-				varX = 0
-				varY = 15
+
+				case @difficulte
+					when "easy"
+						varX = 0
+						varY = 15
+					when "normal"
+						varX = -3
+						varY = 10
+					when "hard"
+						varX = -5
+						varY = 5
+					else
+				end
 				minX = 0
-				minY = tailleCase
+				minY = @tailleCase
 				paddingX += 10
 				paddingY = 25+35
 
 			else
-				varX = 35
-				varY = 0
-				minX = tailleCase
+
+				case @difficulte
+					when "easy"
+						varX = 35
+						varY = 0
+					when "normal"
+						varX = 30
+						varY = -3
+					when "hard"
+						varX = 25
+						varY = -6
+					else
+				end
+				minX = @tailleCase
 				minY = 0
 				paddingY -= 10
 				paddingX = 50+15
 			end
 
 			if(!a.estDouble)# || 1)
-				@cr.move_to x1*tailleCase+paddingX+varX, y1*tailleCase+paddingY+varY
-				@cr.line_to x2*tailleCase+paddingX+varX-minX, y2*tailleCase+paddingY+varY-minY
-				@cr.stroke
+						@cr.move_to x1*@tailleCase+paddingX+varX, y1*@tailleCase+paddingY+varY
+						@cr.line_to x2*@tailleCase+paddingX+varX-minX, y2*@tailleCase+paddingY+varY-minY
+						@cr.stroke
 			else
 					case verti
 					when true
-						@cr.move_to x1*tailleCase+paddingX-5+varX, y1*tailleCase+paddingY+varY
-						@cr.line_to x2*tailleCase+paddingX-5+varX-minX, y2*tailleCase+paddingY+varY-minY
-						@cr.stroke
-						@cr.move_to x1*tailleCase+paddingX+5+varX, y1*tailleCase+paddingY+varY
-						@cr.line_to x2*tailleCase+paddingX+5+varX-minX, y2*tailleCase+paddingY+varY-minY
-						@cr.stroke
-
+								@cr.move_to x1*@tailleCase+paddingX-5+varX, y1*@tailleCase+paddingY+varY
+								@cr.line_to x2*@tailleCase+paddingX-5+varX-minX, y2*@tailleCase+paddingY+varY-minY
+								@cr.stroke
+								@cr.move_to x1*@tailleCase+paddingX+5+varX, y1*@tailleCase+paddingY+varY
+								@cr.line_to x2*@tailleCase+paddingX+5+varX-minX, y2*@tailleCase+paddingY+varY-minY
+								@cr.stroke
 					when false
+								@cr.move_to x1*@tailleCase+paddingX+varX, y1*@tailleCase+paddingY-5+varY
+								@cr.line_to x2*@tailleCase+paddingX+varX-minX, y2*@tailleCase+paddingY-5+varY-minY
+								@cr.stroke
+								@cr.move_to x1*@tailleCase+paddingX+varX, y1*@tailleCase+paddingY+5+varY
+								@cr.line_to x2*@tailleCase+paddingX+varX-minX, y2*@tailleCase+paddingY+5+varY-minY
+								@cr.stroke
 						#puts "horizontale"
-						@cr.move_to x1*tailleCase+paddingX+varX, y1*tailleCase+paddingY-5+varY
-						@cr.line_to x2*tailleCase+paddingX+varX-minX, y2*tailleCase+paddingY-5+varY-minY
-						@cr.stroke
-						@cr.move_to x1*tailleCase+paddingX+varX, y1*tailleCase+paddingY+5+varY
-						@cr.line_to x2*tailleCase+paddingX+varX-minX, y2*tailleCase+paddingY+5+varY-minY
-						@cr.stroke
+
 					end
 
 			end
@@ -1247,6 +1324,28 @@ class FenetreJeu < Gtk::Box
 		@boutonErreur.hide
 		@boutonAideTxt.hide
 		@boutonAideVisu.hide
+	end
+
+	def initTailleCase
+		puts @difficulte.to_s
+		case @difficulte
+			when "easy"
+				@tailleCase = 50
+				@fontSize = 25
+				@tailleCercle = 20
+			when "normal"
+				@tailleCase = 45
+				@fontSize = 22
+				@tailleCercle = 18
+			when "hard"
+				@tailleCase = 40
+				@fontSize = 18
+				@tailleCercle = 15
+			else
+				@tailleCase = 60
+				@fontSize = 30
+				@tailleCercle = 20
+		end
 	end
 
 
