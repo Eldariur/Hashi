@@ -74,7 +74,7 @@ class FenetreJeu < Gtk::Box
 			@@x2=0
 			@@y2=0
 
-			@chrono = false
+			@chrono = true
 
 			@aide = nil
 			@caseAide = nil
@@ -1288,6 +1288,9 @@ class FenetreJeu < Gtk::Box
 
   def initChrono
 		@boxChrono = Gtk::Box.new(Gtk::Orientation::HORIZONTAL)
+		@boutonSablier = UnBoutonPerso.new("","Chrono")
+		@boutonSablier.verrouiller()
+		@boxChrono.add(@boutonSablier)
 
 		if(@chrono)
 			i = 0
@@ -1303,12 +1306,14 @@ class FenetreJeu < Gtk::Box
 					 # @boxChrono.add(@labelChrono)
 					 # self.show_all
 					 @labelChrono.show
+					 @boutonSablier.show
 					 sleep(0.01)
 
 				 end
 			 }
     end
-		#@labelChrono = UnLabelPerso.new("")
+		ajouterImage(@boutonSablier,"img/hourglass_icon.png")
+
   end
 
   def initBoxJeu
@@ -1324,6 +1329,7 @@ class FenetreJeu < Gtk::Box
 		@boutonErreur.hide
 		@boutonAideTxt.hide
 		@boutonAideVisu.hide
+		@boutonSablier.hide
 	end
 
 	def initTailleCase

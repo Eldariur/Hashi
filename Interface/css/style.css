@@ -12,9 +12,8 @@
 } */
 
 #Chrono {
-	border-radius: 20px;
-	border-width: 2px;
-	background-color: white;
+	border:none;
+	background: none;
 	/* margin: 20px; */
 
 }
