@@ -13,6 +13,7 @@ require_relative 'FenetreRegle.rb'
 require_relative 'FenetreJeu.rb'
 require_relative 'FenetreTest.rb'
 
+# require_relative 'Fenetre1.rb'
 
 
 
@@ -21,6 +22,7 @@ class FenEx < Gtk::Window
   def initialize
     super()
 		self.name="WindowPrincipale"
+    self.move((Gdk::Screen::width)/2,0)
 		self.set_default_size(1200,800)
     self.set_resizable(false)
     self.set_title("Jeu Hashi")
