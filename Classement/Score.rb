@@ -54,7 +54,7 @@ class Score
 
 	# Cette methode calcul un score.
 	# === Parametre
-	# * +tMax+ : tMax La valeur en secondes maximal pour resoudre un puzzle.
+	# * +tMax+ : tMax La valeur en secondes maximal pour résoudre un puzzle.
 	def calculScore(tMax)
 		temp = @time.to_i + @malus.to_i
 		if(temp > tMax) then
