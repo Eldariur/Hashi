@@ -167,6 +167,7 @@ class Sauvegarde
     end
   end
 
+  # Cette methode redefini to_s pour afficher une sauvegarde.
   def to_s
     if(@estHypothese) then
       "Sauvegarde : \n-Grille :\n#{@grille}-estHypo = #{@estHypothese}\n---------------------------------------------------\n"

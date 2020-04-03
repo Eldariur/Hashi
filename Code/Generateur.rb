@@ -28,18 +28,18 @@ class Generateur
         @chanceDeDouble = 38+rand(0..6)
         case difficulty
           when "easy"
-            #Taille 7 à 14, densite 35 à 41
-            @longueur = 7+rand(0..3)
-            @largeur = 10+rand(0..4)
+            #Taille 6x6 à 9x10, densite 35 à 41
+            @longueur = 6+rand(0..3)
+            @largeur = 6+rand(0..4)
             @densite = 35+rand(0..6)
           when "normal"
-            #Taille 8 à 14, densite 32 à 39
-            @longueur = 8+rand(0..2)
-            @largeur = 11+rand(0..3)
+            #Taille 7x9 à 9x12, densite 32 à 39
+            @longueur = 7+rand(0..2)
+            @largeur = 9+rand(0..3)
             @densite = 32+rand(0..7)
             @chanceDeDouble = 25+rand(0..9)
           when "hard"
-            #Taille 9 à 14, densite 32 à 38
+            #Taille 9x13 à 10x14, densite 32 à 38
             @longueur = 9+rand(0..1)
             @largeur = 13+rand(0..1)
             @densite = 32+rand(0..6)
@@ -176,17 +176,25 @@ class Generateur
         objErreurs = []
         if @estGenere && grilleIdentique(grille)
             for i in 0...@sommets.size()
-                if grille.sommets[i].connexionsRestantes == 0
-                    grille.sommets[i].listeArete.each do |arete|
+                if grille.sommets[i].nbArete >= 1
+                    grille.sommets[i].listeArete.each do |areteJeu|
                         #on récupere l'autre sommet de l'arete
-                        autreSommet = grille.sommets[i].autreSommet(arete)
+                        autreSommet = grille.sommets[i].autreSommet(areteJeu)
                         #on recupere son index dans la liste des sommets de la grille
                         index = grille.sommets.find_index(autreSommet)
                         index = index == nil ? 0 : index
+                        areteGene = @sommets[i].donneAreteAvec(@sommets[index])
+                        if (areteGene != nil)
+                            if (areteJeu.estDouble && !areteGene.estDouble)
+                                grille.sommets[i].estErreur = true
+                                areteJeu.estErreur = true
+                                objErreurs.push(grille.sommets[i])
+                            end
+                        end
                         #on regarde si cette arete existe dans le grille originale
                         if !(@sommets[i].possedeAreteAvec(@sommets[index]))
                             grille.sommets[i].estErreur = true
-                            arete.estErreur = true
+                            areteJeu.estErreur = true
                             objErreurs.push(grille.sommets[i])
                         end
                     end
