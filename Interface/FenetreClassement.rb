@@ -1,3 +1,6 @@
+require_relative "../Classement/Classement.rb"
+require_relative "../Classement/ConnectSqlite3.rb"
+
 class FenetreClassement < Gtk::Box
 
   def initialize(window)
@@ -40,7 +43,7 @@ class FenetreClassement < Gtk::Box
       # self.add(@tbl)
       btn = UnBoutonPerso.new("test")
       btn.signal_connect('clicked'){
-        ajouterLig("Jaco","10000")
+        afficherBdd()
       }
       self.add(@boxBoutonRetour)
       self.add(btn)
@@ -93,7 +96,13 @@ class FenetreClassement < Gtk::Box
     bouton.verrouiller()
   end
 
-
+  def afficherBdd()
+    c = Classement.creer()
+    c.recupererDonnees()
+    c.liste.each do |s|
+      self.ajouterLig(s.getNom, s.getScore)
+    end
+  end
 
 
 

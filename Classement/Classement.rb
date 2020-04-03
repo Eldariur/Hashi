@@ -1,8 +1,9 @@
-load ("Score.rb")
+require_relative "./Score.rb"
+require_relative "./Highscore.rb"
 
 # Cette classe represente un classement.
 class Classement
-  attr:liste, false
+  attr:liste, true
 
    # Creer un nouveau classement.
 	 def Classement.creer()
@@ -15,6 +16,7 @@ class Classement
    # Initialisation de la class Classement.
    def initialize()
      @liste = Array.new
+     self.recupererDonnees()
    end
 
   # Cette methode verifie si un nouveau socre doit être enregistrer.
