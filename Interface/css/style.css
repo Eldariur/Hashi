@@ -39,10 +39,10 @@
 }
 
 
-#BoutonGrille{
+#BoutonClassement{
 	border-radius: 5px;
 	border-width: 2px;
-	background-color: yellow;
+	margin-top: 50px;
 }
 
 #BoutonEnJeu{
@@ -87,6 +87,7 @@
   background-position: center;
   background-size: cover;
 }
+
 /*
 button {
 	background: black;
@@ -137,6 +138,13 @@ button {
 	color: white;
 	font-weight: bold;
 	margin:3px;
+}
+
+#UnLabelClassement {
+	background-color: rgba(256,256,256,0.90);
+	/* border-radius: 5px; */
+	/* color: white; */
+	font-weight: bold;
 }
 
 

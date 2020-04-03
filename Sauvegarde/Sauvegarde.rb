@@ -3,6 +3,7 @@ require 'yaml'
 # Cette classe represente un sauvegarde.
 class Sauvegarde
   #@grille -> La grille sauvegardé.
+  #@grilleDepart -> La grille de départ de la grille sauvegardé
   #@chronometre -> Le chronometre sauvegardé.
   #@estHypothese -> Si la sauvegarde est une hypothese ou non.
   #@difficulte -> La difficulte de la sauvegarde.
@@ -13,11 +14,13 @@ class Sauvegarde
   # Initialisation de la class Sauvegarde.
   # === Parametre
   # * +grille+ : grille La grille a sauvegarder.
+  # * +grilleDepart+ : grilleDepart La grille de départ de la grille a sauvegarder.
   # * +chrono+ : chrono Le chronometre a sauvegarder.
   # * +difficulte+ : difficulte La difficulte de la grille.
   # * +hypothese+ : hypothese Le choix d'une sauvegarde pour une hypothese ou non.
-  def initialize(grille, chrono, difficulte, hypothese = false)
+  def initialize(grille, grilleDepart, chrono, difficulte, hypothese = false)
     @grille = grille
+    @grilleDepart = grilleDepart
     @estHypothese = hypothese
     if(@estHypothese == false) then
       @chronometre = chrono
@@ -40,6 +43,8 @@ class Sauvegarde
 
   # Accesseur get sur l'attribut grille.
   attr:grille, false
+  # Accesseur get sur l'attribut grilleDepart.
+  attr:grilleDepart, false
   # Accesseur get et set sur l'attribut chronometre.
   attr:chronometre, true
   # Accesseur get sur l'attribut estHypothese.
@@ -75,11 +80,11 @@ class Sauvegarde
       file = File.open(File.path('../Sauvegarde/Save/temp.sav'), 'w')
     else
       case @difficulte
-        when 1
+      when "easy"
           file = File.open(File.path('../Sauvegarde/Save/easy/save.sav'), 'w')
-        when 2
+        when "normal"
           file = File.open(File.path('../Sauvegarde/Save/normal/save.sav'), 'w')
-        when 3
+        when "hard"
           file = File.open(File.path('../Sauvegarde/Save/hard/save.sav'), 'w')
         end
     end
@@ -103,11 +108,11 @@ class Sauvegarde
       save = YAML.load(File.read('../Sauvegarde/Save/temp.sav'))
     else
       case @difficulte
-        when 1
+      when "easy"
           save = YAML.load(File.read('../Sauvegarde/Save/easy/save.sav'))
-        when 2
+        when "normal"
           save = YAML.load(File.read('../Sauvegarde/Save/normal/save.sav'))
-        when 3
+        when "hard"
           save = YAML.load(File.read('../Sauvegarde/Save/hard/save.sav'))
       end
     end
@@ -167,7 +172,7 @@ class Sauvegarde
     if(@estHypothese) then
       "Sauvegarde : \n-Grille :\n#{@grille}-estHypo = #{@estHypothese}\n---------------------------------------------------\n"
     else
-      "Sauvegarde : \n-Grille :\n#{@grille}-estHypo = #{@estHypothese}\n-Chrono = #{@chronometre} \n-Difficulte = #{@difficulte}\n---------------------------------------------------\n"
+      "Sauvegarde : \n-Grille :\n#{@grille}-Grille de depart :\n#{@grilleDepart}-estHypo = #{@estHypothese}\n-Chrono = #{@chronometre} \n-Difficulte = #{@difficulte}\n---------------------------------------------------\n"
     end
   end
 

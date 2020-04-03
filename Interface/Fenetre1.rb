@@ -1038,8 +1038,39 @@ class Fenetre < Gtk::Window
 
 	def initBoutonRetour
     @boutonRetour = UnBoutonPerso.new("Retour")do
-      puts "j'ai cliqué sur le bouton retour"
-    end
+      popup = Gtk::MessageDialog.new(self, :modal, :question, :none, "Souhaitez-vous sauvegarder la partie ? La sauvegarde précédente sera écrasée.")
+			popup.add_buttons(["Sauvegarder", :yes], ["Quitter", :no], [Gtk::Stock::CANCEL, :reject])
+			puts "test"
+			# popup.run() do |response|
+			# 	puts "run"
+			# 	case response
+			# 		when :yes
+			# 			puts "yes"
+			# 			save = Sauvegarde.nouvelle(@grilleTest, nil, @difficulte)
+			# 			save.sauvegarder()
+			# 			@@fenetre.changerWidget(@@fenetre)
+			# 		when :no
+			# 			puts "no"
+			# 			@@fenetre.changerWidget(@@fenetre)
+			# 		else
+			# 			puts "annuler"
+      # 			do_nothing_since_dialog_was_cancelled()
+			# 	end
+    	# end
+			# popup.destroy()
+
+			response = popup.run()
+
+			if(response == :yes)
+				save = Sauvegarde.nouvelle(@grilleTest, nil, @difficulte)
+				save.sauvegarder()
+				@@fenetre.changerWidget(@@fenetre)
+			elsif(response == :no)
+				@@fenetre.changerWidget(@@fenetre)
+			end
+
+			popup.destroy()
+		end
   end
 
   def initBoutonHypo

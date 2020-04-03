@@ -11,14 +11,14 @@ class Highscore < ActiveRecord::Base
 	#Privatise le new.
 	private_class_method :new
 
-	# Initialisation de la class Highscore.
+	# Initialisation de la classe Highscore.
 	# === Parametre
 	# * +b+ : b Utilisé pour ActiveRecord.
 	def initialize(b)
 		super(:name => "", :score => 0)
 	end
 
-	# Cette methode sauvegarde un highscore dans la base de donnees.
+	# Cette methode sauvegarde un highscore dans la base de données.
 	# === Parametre
 	# * +pseudo+ : pseudo Le pseudo associé au highscore.
 	# * +points+ : points Les points associés au highscore.

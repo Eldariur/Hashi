@@ -1,4 +1,4 @@
-0:aucune aide disponible
+0:Utilisez des hypothèses pour avancer dans la grille
 1:île avec une seule île voisine restante dans la grille
 111:île avec une seule possibilité de connexion restante
 2:île à 8 restante dans la grille
