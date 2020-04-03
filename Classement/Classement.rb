@@ -4,7 +4,7 @@ load ("Score.rb")
 class Classement
   attr:liste, false
 
-   # Creer un nouveau score.
+   # Creer un nouveau classement.
 	 def Classement.creer()
 		 new()
 	 end
