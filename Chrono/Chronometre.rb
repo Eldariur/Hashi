@@ -45,8 +45,8 @@ class Chrono
     end
     while @stop != 1 do
       @total = Time.now - @base
-      puts `clear`
-      puts self.to_chrono()
+      #puts `clear`
+      #puts self.to_chrono()
       sleep(0.01)
     end
   end
