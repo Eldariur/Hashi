@@ -28,18 +28,18 @@ class Generateur
         @chanceDeDouble = 38+rand(0..6)
         case difficulty
           when "easy"
-            #Taille 6 à 10, densite 35 à 41
+            #Taille 6x6 à 9x10, densite 35 à 41
             @longueur = 6+rand(0..3)
             @largeur = 6+rand(0..4)
             @densite = 35+rand(0..6)
           when "normal"
-            #Taille 7 à 12, densite 32 à 39
+            #Taille 7x9 à 9x12, densite 32 à 39
             @longueur = 7+rand(0..2)
             @largeur = 9+rand(0..3)
             @densite = 32+rand(0..7)
             @chanceDeDouble = 25+rand(0..9)
           when "hard"
-            #Taille 9 à 14, densite 32 à 38
+            #Taille 9x13 à 10x14, densite 32 à 38
             @longueur = 9+rand(0..1)
             @largeur = 13+rand(0..1)
             @densite = 32+rand(0..6)
