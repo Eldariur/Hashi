@@ -9,6 +9,9 @@ class Score
    #@malus -> Le malus en secondes du score.
 
   # Creer un nouveau score.
+	# === Parametre
+	# * +nom+ : nom Le pseudo associé au highscore.
+	# * +time+ : time Le temps associé au highscore.
 	 def Score.creer(nom, time)
 		 new(nom, time)
 	 end
@@ -27,7 +30,8 @@ class Score
 
 	# Initialisation de la class Score.
 	# === Parametre
-	# * +b+ : b Utilisé pour ActiveRecord.
+	# * +nom+ : nom Le pseudo associé au highscore.
+	# * +time+ : time Le temps associé au highscore.
 	def initialize(nom, time)
 		@pseudo = nom
 		@points = 0
@@ -67,6 +71,11 @@ class Score
 	# Cette methode redefini to_s pour afficher un score.
 	def to_s
 		"Score : Pseudo = #{@pseudo}, Points = #{@points}, Temps = #{@temps}, Malus = #{@malus}\n"
+	end
+
+	# Cette methode redefini to_i pour les scores.
+	def to_i
+		return @points
 	end
 
 end

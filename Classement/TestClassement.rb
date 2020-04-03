@@ -20,11 +20,11 @@ end
 s.calculScore(100)
 
 puts "Nouveau : #{s}"
-puts s.inspect()
-
-s.sauvegarder()
 
 c = Classement.creer()
 
-c.recupererDonnees()
-puts c.to_s
+puts "BDD avant :\n#{c.to_s}"
+
+if c.isHighScore(s) then s.sauvegarder() end
+
+puts "BDD apres :\n#{c.to_s}"
