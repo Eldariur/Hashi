@@ -269,6 +269,25 @@ class Sommet
         return aArete
     end
 
+    ## Méthode qui permet de récupérer l'arete avec un tel autre sommet si elle existe
+    #
+    # === Paramètres
+    #
+    # * +sommet+ : les sommet de destination de l'arete
+    #
+    # === Return
+    #
+    # L'arete entre ces sommets si elle existe, nil sinon
+    def donneAreteAvec(sommet)
+        if(possedeAreteAvec(sommet))
+            @listeArete.each do |arete|
+                if arete.sommet1 == sommet || arete.sommet2 == sommet
+                    return arete
+                end
+            end
+        end
+    end
+
     ## Méthode permettant de récupérer le sommet de l'autre coté d'une arete
     #
     # === Paramètres
@@ -286,5 +305,14 @@ class Sommet
                 return arete.sommet1
             end
         end
+    end
+
+    ## Méthode permettant de connaitre le nombre d'arete que posède le sommet
+    #
+    # === Return
+    #
+    # La taille du tableau d'arete
+    def nbArete()
+        return @listeArete.length()
     end
 end

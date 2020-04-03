@@ -176,17 +176,25 @@ class Generateur
         objErreurs = []
         if @estGenere && grilleIdentique(grille)
             for i in 0...@sommets.size()
-                if grille.sommets[i].connexionsRestantes == 0
-                    grille.sommets[i].listeArete.each do |arete|
+                if grille.sommets[i].nbArete >= 1
+                    grille.sommets[i].listeArete.each do |areteJeu|
                         #on récupere l'autre sommet de l'arete
-                        autreSommet = grille.sommets[i].autreSommet(arete)
+                        autreSommet = grille.sommets[i].autreSommet(areteJeu)
                         #on recupere son index dans la liste des sommets de la grille
                         index = grille.sommets.find_index(autreSommet)
                         index = index == nil ? 0 : index
+                        areteGene = @sommets[i].donneAreteAvec(@sommets[index])
+                        if (areteGene != nil)
+                            if (areteJeu.estDouble && !areteGene.estDouble)
+                                grille.sommets[i].estErreur = true
+                                areteJeu.estErreur = true
+                                objErreurs.push(grille.sommets[i])
+                            end
+                        end
                         #on regarde si cette arete existe dans le grille originale
                         if !(@sommets[i].possedeAreteAvec(@sommets[index]))
                             grille.sommets[i].estErreur = true
-                            arete.estErreur = true
+                            areteJeu.estErreur = true
                             objErreurs.push(grille.sommets[i])
                         end
                     end
