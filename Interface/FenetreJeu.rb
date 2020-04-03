@@ -23,7 +23,7 @@ class FenetreJeu < Gtk::Box
 
 	attr_reader :grilleTest, :longueur, :largeur
 
-	def initialize(window, difficulte)
+	def initialize(window, difficulte, save = nil)
 		#vbox = Gtk::Box.new(:VERTICAL)
 
 
@@ -45,9 +45,14 @@ class FenetreJeu < Gtk::Box
 
 
 		#####################################
-		@gene = Generateur.new(@difficulte)
-		@grilleTest = @gene.creeUneGrille()
-		grilleDepart = @grilleTest
+		if(save == nil)
+			@gene = Generateur.new(@difficulte)
+			@grilleTest = @gene.creeUneGrille()
+			@grilleDepart = @grilleTest
+		else
+			@gene = save.grilleDepart
+			@grilleTest = save.grille
+		end
 		#####################################
 
 		initTailleCase
@@ -1053,7 +1058,20 @@ class FenetreJeu < Gtk::Box
 
 	def initBoutonRetour
     @boutonRetour = UnBoutonPerso.new("Retour")do
-      puts "j'ai cliqué sur le bouton retour"
+			popup = Gtk::MessageDialog.new(@@fenetre, :modal, :question, :none, "Souhaitez-vous sauvegarder la partie ? La sauvegarde précédente sera écrasée.")
+			popup.add_buttons(["Sauvegarder", :yes], ["Quitter", :no], [Gtk::Stock::CANCEL, :reject])
+
+			response = popup.run()
+
+			if(response == :yes)
+				save = Sauvegarde.nouvelle(@grilleTest, @grilleDepart, nil, @difficulte)
+				save.sauvegarder()
+				@@fenetre.changerWidget(FenetreMenu.new(@@fenetre))
+			elsif(response == :no)
+				@@fenetre.changerWidget(FenetreMenu.new(@@fenetre))
+			end
+
+			popup.destroy()
     end
   end
 
@@ -1277,7 +1295,7 @@ class FenetreJeu < Gtk::Box
   def initBoutonRecom
     @boutonRecom = UnBoutonPerso.new("R")do
 			# puts "appuie bouton Recommencer"
-			# @grilleTest = grilleDepart
+			# @grilleTest = @grilleDepart
 			@grilleTest.clearAretes
 			@grilleTest.clearSommets
 			@listeInter = []
