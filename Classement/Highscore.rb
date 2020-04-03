@@ -28,6 +28,20 @@ class Highscore < ActiveRecord::Base
 		return self.save()
 	end
 
+	# Cette methode retourne le nom d'un highscore.
+	# === Return
+	# * +self.name.to_s+ : self.name.to_s Le pseudo associé au highscore.
+	def getNom()
+		return self.name.to_s
+	end
+
+	# Cette methode retourne le score d'un highscore.
+	# === Return
+	# * +self.score.to_s+ : self.score.to_s Le score associé au highscore.
+	def getScore()
+		return self.score.to_s
+	end
+
 	# Cette methode redefini to_s pour afficher un highscore.
 	def to_s
 		"Highscore : Pseudo = #{self.name}, Points = #{self.score}\n"
