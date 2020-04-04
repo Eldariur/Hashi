@@ -37,8 +37,8 @@ class Sauvegarde
   # * +chrono+ : chrono Le chronometre a sauvegarder.
   # * +difficulte+ : difficulte La difficulte de la grille.
   # * +hypothese+ : hypothese Le choix d'une sauvegarde pour une hypothese ou non.
-  def Sauvegarde.nouvelle(grille, chrono, difficulte, hypothese = false)
-    new(grille, chrono, difficulte, hypothese)
+  def Sauvegarde.nouvelle(grille, grilleDep, chrono, difficulte, hypothese = false)
+    new(grille, grilleDep, chrono, difficulte, hypothese)
   end
 
   # Accesseur get sur l'attribut grille.
@@ -76,7 +76,9 @@ class Sauvegarde
   # Effectue les opération de sauvegarde sur une sauvegarde.
   def sauvegarder()
     dump = YAML::dump(self)
+    puts @estHypothese
     if(@estHypothese) then
+      puts "yolo0"
       file = File.open(File.path('../Sauvegarde/Save/temp.sav'), 'w')
     else
       case @difficulte
@@ -88,6 +90,7 @@ class Sauvegarde
           file = File.open(File.path('../Sauvegarde/Save/hard/save.sav'), 'w')
         end
     end
+    puts "yolo #{file}"
     file.write dump
     file.close
   end
@@ -121,7 +124,7 @@ class Sauvegarde
 
   # Permet de créer une hypothese.
   def Sauvegarde.nouvelleHypothese(grille)
-    save = Sauvegarde.nouvelle(grille,nil,nil,true)
+    save = Sauvegarde.nouvelle(grille,nil,nil,nil,true)
     save.sauvegarder()
   end
 
@@ -134,7 +137,7 @@ class Sauvegarde
   # === Return
   # * +save.getGrille()+ : save.getGrille() La grille de la sauvegarde.
   def Sauvegarde.annulerHypothese(mode = true)
-    save = Sauvegarde.nouvelle(nil,nil,nil,true).charger()
+    save = Sauvegarde.nouvelle(nil,nil,nil,nil,true).charger()
     if(mode) then
       File.delete('../Sauvegarde/Save/temp.sav')
     end
@@ -152,8 +155,8 @@ class Sauvegarde
     if(!Dir.exist?('Save/normal')) then
       Dir::mkdir("Save/normal", 0777)
     end
-    if(!Dir.exist?('Save/ruby')) then
-      Dir::mkdir("Save/ruby", 0777)
+    if(!Dir.exist?('Save/hard')) then
+      Dir::mkdir("Save/hard", 0777)
     end
   end
 

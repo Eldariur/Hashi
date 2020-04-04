@@ -4,6 +4,7 @@ load "../Code/Sommet.rb"
 load "../Code/Arete.rb"
 load "../Chrono/Chronometre.rb"
 load "Sauvegarde.rb"
+load "../Code/Undo.rb"
 
 # Test de génération de grilles prédéfinies
 
