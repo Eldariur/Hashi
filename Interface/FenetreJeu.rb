@@ -850,16 +850,22 @@ class FenetreJeu < Gtk::Box
 			x = s.position.x
 			y = s.position.y
 			if(s.complet)
-				case @difficulte
-					when "easy"
-						draw_maLigne(x*@tailleCase+paddingX-6 ,y*@tailleCase+paddingY+2,x*@tailleCase+paddingX+20 ,y*@tailleCase+paddingY-25)
-					when "normal"
-						draw_maLigne(x*@tailleCase+paddingX-7 ,y*@tailleCase+paddingY-2,x*@tailleCase+paddingX+16 ,y*@tailleCase+paddingY-27)
-					when "hard"
-						draw_maLigne(x*@tailleCase+paddingX-8 ,y*@tailleCase+paddingY-5,x*@tailleCase+paddingX+15 ,y*@tailleCase+paddingY-25)
-					else
+				# case @difficulte
+				# 	when "easy"
+				# 		draw_maLigne(x*@tailleCase+paddingX-6 ,y*@tailleCase+paddingY+2,x*@tailleCase+paddingX+20 ,y*@tailleCase+paddingY-25)
+				# 	when "normal"
+				# 		draw_maLigne(x*@tailleCase+paddingX-7 ,y*@tailleCase+paddingY-2,x*@tailleCase+paddingX+16 ,y*@tailleCase+paddingY-27)
+				# 	when "hard"
+				# 		draw_maLigne(x*@tailleCase+paddingX-8 ,y*@tailleCase+paddingY-5,x*@tailleCase+paddingX+15 ,y*@tailleCase+paddingY-25)
+				# 	else
+				#
+				# end
+				draw_maLigne((x * @tailleCase + paddingX) + @tailleCercle * Math::cos(3 * Math::PI / 4),
+										 (y * @tailleCase + paddingY) + @tailleCercle * Math::sin(3 * Math::PI / 4),
+										 (x * @tailleCase + paddingX) + @tailleCercle * Math::cos(7 * Math::PI / 4),
+										 (y * @tailleCase + paddingY) + @tailleCercle * Math::sin(7 * Math::PI / 4))
+				Math::PI
 
-				end
 			end
 			if(@afficherErreur)
 				@erreurs.each do |e|
@@ -870,27 +876,6 @@ class FenetreJeu < Gtk::Box
 			elsif(@caseAide != nil && s.position == @aide.getCaseAide)
 				@cr.set_source_rgb 0,1,0
 			end
-			# @cr.move_to x*@tailleCase+paddingX+30 ,y*@tailleCase+paddingY-10
-			# @cr.arc x*@tailleCase+paddingX+9,y*@tailleCase+paddingY-10,@tailleCercle,0,2*Math::PI
-			# @cr.move_to x*@tailleCase+paddingX ,y*@tailleCase+paddingY
-			# case @difficulte
-			# 	when "easy"
-			# 		@cr.move_to x*@tailleCase+paddingX+30 ,y*@tailleCase+paddingY-10
-			# 		@cr.arc x*@tailleCase+paddingX+9,y*@tailleCase+paddingY-10,@tailleCercle,0,2*Math::PI
-			# 		@cr.move_to x*@tailleCase+paddingX ,y*@tailleCase+paddingY
-			# 	when "normal"
-			# 		@cr.move_to x*@tailleCase+paddingX+21 ,y*@tailleCase+paddingY-13
-			# 		@cr.arc x*@tailleCase+paddingX+5,y*@tailleCase+paddingY-13,@tailleCercle,0,2*Math::PI
-			# 		@cr.move_to x*@tailleCase+paddingX-3 ,y*@tailleCase+paddingY-5
-			# 	when "hard"
-			# 		@cr.move_to x*@tailleCase+paddingX+18 ,y*@tailleCase+paddingY-15
-			# 		@cr.arc x*@tailleCase+paddingX+3,y*@tailleCase+paddingY-15,@tailleCercle,0,2*Math::PI
-			# 		@cr.move_to x*@tailleCase+paddingX-3 ,y*@tailleCase+paddingY-8
-			# 	else
-			# # 		@cr.move_to x*@tailleCase+paddingX+25 ,y*@tailleCase+paddingY-10
-			# # 		@cr.arc x*@tailleCase+paddingX+5,y*@tailleCase+paddingY-10,@tailleCercle,0,2*Math::PI
-			# # 		@cr.move_to x*@tailleCase+paddingX ,y*@tailleCase+paddingY
-			# end
 
 			@cr.move_to(x * @tailleCase + paddingX + @tailleCercle, y * @tailleCase + paddingY)
 			@cr.arc(x * @tailleCase + paddingX, y * @tailleCase + paddingY, @tailleCercle, 0, 2 * Math::PI)
@@ -909,108 +894,86 @@ class FenetreJeu < Gtk::Box
 
 	def drawAretes()
 		# copie de tracerGrille
-		paddingX = 50+15
-		paddingY = 25+35
+		paddingX = 25
+		paddingY = 25
 		verti = false
-		hori = false
-		varX = 0
-		varY = 0
-		minX = 0
-		minY = 0
+		decalageDoubleArete = 3
 		#@cr = @darea.window.create_cairo_context
 
 		@cr.set_source_rgb 0,0,0
 
-			#puts "====="
-			i = 0
-			j = 0
-			taillePix = 25
-			padding = 20
 		@grilleTest.aretes.each{ |a|
 			activeHypo(a.hypothese)
 
-			paddingX = 50+15
-			paddingY = 25+35
 			x1 = a.sommet1.position.x
 			y1 = a.sommet1.position.y
 			x2 = a.sommet2.position.x
 			y2 = a.sommet2.position.y
 			if(x1 == x2)
-				hori = false
 				verti = true
 			else
 				verti = false
-				hori = true
-			end
-
-			if(verti==true)
-
-				case @difficulte
-					when "easy"
-						varX = 0
-						varY = 15
-					when "normal"
-						varX = -3
-						varY = 10
-					when "hard"
-						varX = -5
-						varY = 5
-					else
-				end
-				minX = 0
-				minY = @tailleCase
-				paddingX += 10
-				paddingY = 25+35
-
-			else
-
-				case @difficulte
-					when "easy"
-						varX = 35
-						varY = 0
-					when "normal"
-						varX = 30
-						varY = -3
-					when "hard"
-						varX = 25
-						varY = -6
-					else
-				end
-				minX = @tailleCase
-				minY = 0
-				paddingY -= 10
-				paddingX = 50+15
 			end
 
 			if(!a.estDouble)# || 1)
-						@cr.move_to x1*@tailleCase+paddingX+varX, y1*@tailleCase+paddingY+varY
-						@cr.line_to x2*@tailleCase+paddingX+varX-minX, y2*@tailleCase+paddingY+varY-minY
-						@cr.stroke
-			else
-					case verti
-					when true
-								@cr.move_to x1*@tailleCase+paddingX-5+varX, y1*@tailleCase+paddingY+varY
-								@cr.line_to x2*@tailleCase+paddingX-5+varX-minX, y2*@tailleCase+paddingY+varY-minY
-								@cr.stroke
-								@cr.move_to x1*@tailleCase+paddingX+5+varX, y1*@tailleCase+paddingY+varY
-								@cr.line_to x2*@tailleCase+paddingX+5+varX-minX, y2*@tailleCase+paddingY+varY-minY
-								@cr.stroke
-					when false
-								@cr.move_to x1*@tailleCase+paddingX+varX, y1*@tailleCase+paddingY-5+varY
-								@cr.line_to x2*@tailleCase+paddingX+varX-minX, y2*@tailleCase+paddingY-5+varY-minY
-								@cr.stroke
-								@cr.move_to x1*@tailleCase+paddingX+varX, y1*@tailleCase+paddingY+5+varY
-								@cr.line_to x2*@tailleCase+paddingX+varX-minX, y2*@tailleCase+paddingY+5+varY-minY
-								@cr.stroke
-						#puts "horizontale"
-
+				case verti
+				when true
+					if(y1 < y2)
+						@cr.move_to(x1 * @tailleCase + paddingX + @tailleCase / 2, y1 * @tailleCase + paddingY + @tailleCase)
+						@cr.line_to(x2 * @tailleCase + paddingX + @tailleCase / 2, y2 * @tailleCase + paddingY)
+						@cr.stroke()
+					else
+						@cr.move_to(x1 * @tailleCase + paddingX + @tailleCase / 2, y1 * @tailleCase + paddingY)
+						@cr.line_to(x2 * @tailleCase + paddingX + @tailleCase / 2, y2 * @tailleCase + paddingY + @tailleCase)
+						@cr.stroke()
 					end
-
+				when false
+					if(x1 < x2)
+						@cr.move_to(x1 * @tailleCase + paddingX + @tailleCase, y1 * @tailleCase + paddingY + @tailleCase / 2)
+						@cr.line_to(x2 * @tailleCase + paddingX, y2 * @tailleCase + paddingY + @tailleCase / 2)
+						@cr.stroke()
+					else
+						@cr.move_to(x1 * @tailleCase + paddingX, y1 * @tailleCase + paddingY + @tailleCase / 2)
+						@cr.line_to(x2 * @tailleCase + paddingX + @tailleCase, y2 * @tailleCase + paddingY + @tailleCase / 2)
+						@cr.stroke()
+					end
+				end
+			else
+				case verti
+				when true
+					if(y1 < y2)
+						@cr.move_to(x1 * @tailleCase + paddingX + @tailleCase / 2 - decalageDoubleArete, y1 * @tailleCase + paddingY + @tailleCase)
+						@cr.line_to(x2 * @tailleCase + paddingX + @tailleCase / 2 - decalageDoubleArete, y2 * @tailleCase + paddingY)
+						@cr.stroke()
+						@cr.move_to(x1 * @tailleCase + paddingX + @tailleCase / 2 + decalageDoubleArete, y1 * @tailleCase + paddingY + @tailleCase)
+						@cr.line_to(x2 * @tailleCase + paddingX + @tailleCase / 2 + decalageDoubleArete, y2 * @tailleCase + paddingY)
+						@cr.stroke()
+					else
+						@cr.move_to(x1 * @tailleCase + paddingX + @tailleCase / 2 - decalageDoubleArete, y1 * @tailleCase + paddingY)
+						@cr.line_to(x2 * @tailleCase + paddingX + @tailleCase / 2 - decalageDoubleArete, y2 * @tailleCase + paddingY + @tailleCase)
+						@cr.stroke()
+						@cr.move_to(x1 * @tailleCase + paddingX + @tailleCase / 2 + decalageDoubleArete, y1 * @tailleCase + paddingY)
+						@cr.line_to(x2 * @tailleCase + paddingX + @tailleCase / 2 + decalageDoubleArete, y2 * @tailleCase + paddingY + @tailleCase)
+						@cr.stroke()
+					end
+				when false
+					if(x1 < x2)
+						@cr.move_to(x1 * @tailleCase + paddingX + @tailleCase, y1 * @tailleCase + paddingY + @tailleCase / 2 - decalageDoubleArete)
+						@cr.line_to(x2 * @tailleCase + paddingX, y2 * @tailleCase + paddingY + @tailleCase / 2- decalageDoubleArete)
+						@cr.stroke()
+						@cr.move_to(x1 * @tailleCase + paddingX + @tailleCase, y1 * @tailleCase + paddingY + @tailleCase / 2 + decalageDoubleArete)
+						@cr.line_to(x2 * @tailleCase + paddingX, y2 * @tailleCase + paddingY + @tailleCase / 2 + decalageDoubleArete)
+						@cr.stroke()
+					else
+						@cr.move_to(x1 * @tailleCase + paddingX, y1 * @tailleCase + paddingY + @tailleCase / 2 - decalageDoubleArete)
+						@cr.line_to(x2 * @tailleCase + paddingX + @tailleCase, y2 * @tailleCase + paddingY + @tailleCase / 2 - decalageDoubleArete)
+						@cr.stroke()
+						@cr.move_to(x1 * @tailleCase + paddingX, y1 * @tailleCase + paddingY + @tailleCase / 2 + decalageDoubleArete)
+						@cr.line_to(x2 * @tailleCase + paddingX + @tailleCase, y2 * @tailleCase + paddingY + @tailleCase / 2 + decalageDoubleArete)
+						@cr.stroke()
+					end
+				end
 			end
-
-			i+=1
-			j+=1
-
 		}
 	end
 
