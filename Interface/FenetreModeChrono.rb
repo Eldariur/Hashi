@@ -1,8 +1,12 @@
 class FenetreModeChrono < Gtk::Box
 
+  #@classe
+
   def initialize(window)
     @@fenetre = window
     super(Gtk::Orientation::VERTICAL)
+
+    @classe = true
 
     bouton1 = UnBoutonPerso.new("Facile")
     bouton2 = UnBoutonPerso.new("Normal")
@@ -50,10 +54,10 @@ class FenetreModeChrono < Gtk::Box
       save = Sauvegarde.nouvelle(nil, nil, nil, difficulte)
       partie = save.charger()
       popup.destroy()
-      @@fenetre.changerWidget(FenetreJeu.new(@@fenetre, difficulte, partie))
+      @@fenetre.changerWidget(FenetreJeu.new(@@fenetre, difficulte, @classe, partie))
     elsif(response == :no)
       popup.destroy()
-      @@fenetre.changerWidget(FenetreJeu.new(@@fenetre, difficulte))
+      @@fenetre.changerWidget(FenetreJeu.new(@@fenetre, difficulte, @classe))
     end
 
     popup.destroy()
