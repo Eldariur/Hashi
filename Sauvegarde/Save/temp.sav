@@ -492,10 +492,6 @@ grille: &1 !ruby/object:Grille
   undo: !ruby/object:Undo
     tabAction: []
 grilleDepart: 
-estHypothese: false
-chronometre: !ruby/object:Chrono
-  stop: 1
-  total: 0.215206074
-  base: 2020-04-04 19:23:21.983960908 +02:00
-  temp: 0
-difficulte: easy
+estHypothese: true
+chronometre: 
+difficulte: 
