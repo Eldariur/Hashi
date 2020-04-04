@@ -17,12 +17,11 @@ require_relative "../Chrono/Chronometre.rb"
 
 class FenetreJeu < Gtk::Box
 
-	TAILLE_AREA = 720
-
   #@@fenetre
 
   #@difficulte
 	#@classe
+	#@tailleArea
 	#@largeurSurbri
 
 	attr_reader :grilleTest, :longueur, :largeur
@@ -34,6 +33,8 @@ class FenetreJeu < Gtk::Box
 		super(Gtk::Orientation::VERTICAL)
 
     @@fenetre = window
+
+		@tailleArea = @@fenetre.default_size[1] / 4 * 3
 
     @difficulte = difficulte
 		@classe = classe
@@ -478,7 +479,7 @@ class FenetreJeu < Gtk::Box
 					# 		@cr.rectangle x1*@tailleCase+paddingX-3+@tailleCase, y1*@tailleCase+paddingY+8, (x2-x1)*@tailleCase-@tailleCase+8, (y2-y1)*@tailleCase+22
 					# 	else
 					# end
-					@cr.rectangle(x1 * @tailleCase + paddingX + @tailleCase, y1 * @tailleCase + paddingY + (@tailleCase / 2) - @largeurSurbri / 2, (x2 - x1) * @tailleCase - @tailleCase, (y2 - y1) * @tailleCase +  @largeurSurbri)
+					@cr.rectangle(x1 * @tailleCase + paddingX + @tailleCase, y1 * @tailleCase + paddingY + (@tailleCase / 2) - @largeurSurbri / 2, (x2 - x1) * @tailleCase - @tailleCase, (y2 - y1) * @tailleCase + @largeurSurbri)
 
 				elsif(x1 > x2 || caseSom.x > x1)
 					# case @difficulte
@@ -490,7 +491,7 @@ class FenetreJeu < Gtk::Box
 					# 		@cr.rectangle x1*@tailleCase+paddingX+5, y1*@tailleCase+paddingY+8, (x2-x1)*@tailleCase-8+@tailleCase, (y2-y1)*@tailleCase+22
 					# 	else
 					# end
-					@cr.rectangle(x1 * @tailleCase + paddingX, y1 * @tailleCase + paddingY, (x2 - x1) * @tailleCase + @tailleCase, (y2 - y1) * @tailleCase)
+					@cr.rectangle(x1 * @tailleCase + paddingX, y1 * @tailleCase + paddingY + (@tailleCase / 2) - @largeurSurbri / 2, (x2 - x1) * @tailleCase + @tailleCase, (y2 - y1) * @tailleCase + @largeurSurbri)
 				elsif(y1 < y2 || caseSom.y < y1)
 					# case @difficulte
 					# 	when "easy"
@@ -501,7 +502,7 @@ class FenetreJeu < Gtk::Box
 					# 		@cr.rectangle x1*@tailleCase+paddingX+9, y1*@tailleCase+paddingY-5+@tailleCase, (x2-x1)*@tailleCase+22, (y2-y1)*@tailleCase-@tailleCase+8
 					# 	else
 					# end
-					@cr.rectangle(x1 * @tailleCase + paddingX, y1 * @tailleCase + paddingY + @tailleCase, (x2 - x1) * @tailleCase, (y2 - y1) * @tailleCase - @tailleCase)
+					@cr.rectangle(x1 * @tailleCase + paddingX + (@tailleCase / 2) - @largeurSurbri / 2, y1 * @tailleCase + paddingY + @tailleCase, (x2 - x1) * @tailleCase + @largeurSurbri, (y2 - y1) * @tailleCase - @tailleCase)
 				else
 					# case @difficulte
 					# 	when "easy"
@@ -512,7 +513,7 @@ class FenetreJeu < Gtk::Box
 					# 		@cr.rectangle x1*@tailleCase+paddingX+9, y1*@tailleCase+paddingY+5, (x2-x1)*@tailleCase+22, (y2-y1)*@tailleCase-8+@tailleCase
 					# 	else
 					# end
-					@cr.rectangle(x1 * @tailleCase + paddingX, y1 * @tailleCase + paddingY, (x2 - x1) * @tailleCase, (y2 - y1) * @tailleCase + @tailleCase)
+					@cr.rectangle(x1 * @tailleCase + paddingX + (@tailleCase / 2) - @largeurSurbri / 2, y1 * @tailleCase + paddingY, (x2 - x1) * @tailleCase + @largeurSurbri, (y2 - y1) * @tailleCase + @tailleCase)
 				end
 				#puts "+ ==== +"
 				x1 = nil
@@ -1052,9 +1053,9 @@ class FenetreJeu < Gtk::Box
 		@cr.set_source_rgb 0.96, 0.96, 0.96
 		###@@fenetre.default_size == [x,y]
 		if(@longueur > @largeur)
-			@cr.rectangle 0, 0, TAILLE_AREA, (TAILLE_AREA / @longueur) * @largeur #<== Changer aux dimensions de la fenentre
+			@cr.rectangle 0, 0, @tailleArea, (@tailleArea / @longueur) * @largeur #<== Changer aux dimensions de la fenentre
 		else
-			@cr.rectangle 0, 0, (TAILLE_AREA / @largeur) * @longueur, TAILLE_AREA #<== Changer aux dimensions de la fenentre
+			@cr.rectangle 0, 0, (@tailleArea / @largeur) * @longueur, @tailleArea #<== Changer aux dimensions de la fenentre
 		end
 		@cr.fill
 		@cr.set_source_rgb 0, 0, 0
@@ -1399,7 +1400,7 @@ class FenetreJeu < Gtk::Box
 		# 		@fontSize = 30
 		# 		@tailleCercle = 20
 		# end
-		@tailleCase = (TAILLE_AREA - 50) / (@longueur > @largeur ? @longueur : @largeur)
+		@tailleCase = (@tailleArea - 50) / (@longueur > @largeur ? @longueur : @largeur)
 		@fontSize = @tailleCase / 2
 		@tailleCercle = @tailleCase / 5 * 2
 		@largeurSurbri = @tailleCase / 4
