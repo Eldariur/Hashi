@@ -8,6 +8,9 @@ class FenetreMenuJouer < Gtk::Box
     bouton2 = UnBoutonPerso.new("Normal")
     bouton3 = UnBoutonPerso.new("Contre-la-montre")
 
+    bouton1.signal_connect('clicked') {
+      @@fenetre.changerWidget(FenetreTuto.new(@@fenetre))
+    }
 
     bouton2.signal_connect('clicked') {
       @@fenetre.changerWidget(FenetreModesDifficultes.new(@@fenetre))
