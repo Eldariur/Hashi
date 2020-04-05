@@ -1,6 +1,6 @@
 
 # Classe représentant une aide
-class Aide
+class Aide < Gtk::Label
 
 
 
@@ -33,6 +33,7 @@ class Aide
     @nb_voisins = Array.new(@grille.sommets.size())
     @id = definirCas()
     @penalite = 0
+	super(self.getMessageAide())
   end
 
 

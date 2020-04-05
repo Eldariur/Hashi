@@ -1145,7 +1145,7 @@ class FenetreJeu < Gtk::Box
 
   def initBoutonAide
 		@boxMessage = Gtk::Box.new(Gtk::Orientation::HORIZONTAL)
-    @boutonAide = UnBoutonPerso.new("?")do
+    		@boutonAide = UnBoutonPerso.new("?")do
 			@erreurs = nil
 			@afficherErreur = false
 			@erreurs = @gene.trouverErreurs(@grilleTest)
@@ -1238,23 +1238,18 @@ class FenetreJeu < Gtk::Box
   end
 
 	def initBoutonAideTxt
-
-    @boutonAideTxt = UnBoutonPerso.new("Aide Textuelle")do
+			@boutonAideTxt = UnBoutonPerso.new("Aide Textuelle")do
 			@caseA = nil
 			@aideTxt = Aide.creer(@grilleTest)
-
-			retirerContenu(@boxMessage,@labelMessage)
-			@labelMessage = UnLabelPerso.new(@aideTxt.getMessageAide(),"UnLabelBlanc")
-			puts @aideTxt.getMessageAide()
-
-			@boxMessage.add(@labelMessage)
+			retirerContenu(@boxMessage,@aideTxt)
+			@boxMessage.add(@aideTxt)
 			# retirerContenu(vbox,@boutonAideTxt)
 			# retirerContenu(vbox,@boutonAideVisu)
 			# ajouterContenu(vbox,@boutonAideVisu)
 			afficheEcran()
 			# self.show_all
 			masquerBouton
-			@labelMessage.show
+			@aideTxt.show
 		end
   end
 
