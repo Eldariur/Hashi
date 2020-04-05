@@ -51,7 +51,7 @@ class FenetreTest < Gtk::Box
         @@fenetre.changerWidget(FenetreParametres.new(@@fenetre))
       }
       b8.signal_connect('clicked') {
-        @@fenetre.changerWidget(FenetreRegle.new(@@fenetre))
+        @@fenetre.changerWidget(FenetreTuto.new(@@fenetre))
       }
       b9.signal_connect('clicked') {
         @@fenetre.changerWidget(FenetreVictoire.new(@@fenetre))

@@ -48,6 +48,15 @@
 #BoutonEnJeu{
 	border: none;
 }
+
+#BoutonTuto{
+	border-radius: 20px;
+	border-width: 2px;
+	/* background-color: red; */
+	margin :10px;
+	min-width: 100px;
+	/* padding: 10px; */
+}
 /* ========== */
 #UnSommetPerso {
 	border-radius: 5px;
@@ -145,6 +154,25 @@ button {
 	/* border-radius: 5px; */
 	/* color: white; */
 	font-weight: bold;
+}
+
+#LabelTitre{
+	background-color: rgba(10,10,10,0.90);
+	border-radius: 5px;
+	color: white;
+	font-weight: bold;
+	font-size: 50px;
+	margin:30px;
+	margin-bottom: 150px;
+}
+
+#LabelTitre2{
+	background-color: rgba(10,10,10,0.90);
+	border-radius: 5px;
+	color: white;
+	font-weight: bold;
+	font-size: 30px;
+	margin:30px;
 }
 
 

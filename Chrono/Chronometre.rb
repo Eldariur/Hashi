@@ -1,5 +1,5 @@
 # Cette classe represente un chronomètre.
-class Chrono
+class Chrono < Gtk::Label
   #@stop -> Permet de stopper le chronomètre.
   #@total -> Contient le total de secondes écoulées.
   #@base -> Permet de sauvegarder le temps a partir du quel on chronomètre.
@@ -14,6 +14,7 @@ class Chrono
     @total = 0
     @base = 0
     @temp = 0
+	super(self.to_s)
   end
 
   # Creer un nouveau chronomètre.
@@ -48,6 +49,7 @@ class Chrono
       #puts `clear`
       #puts self.to_chrono()
       sleep(0.01)
+	self.text = self.to_s()
     end
   end
 

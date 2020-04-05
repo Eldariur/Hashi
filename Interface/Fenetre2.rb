@@ -8,10 +8,13 @@ require_relative 'UnLabelPerso.rb'
 require_relative 'UnBoutonPerso.rb'
 require_relative 'FenetreModeChrono.rb'
 require_relative 'FenetreVictoire.rb'
-require_relative 'FenetreClassement.rb'
-require_relative 'FenetreRegle.rb'
+# require_relative 'FenetreClassement.rb'
+require_relative 'FenetreTuto.rb'
 require_relative 'FenetreJeu.rb'
+require_relative 'FenetreJeuTuto.rb'
 require_relative 'FenetreTest.rb'
+
+require_relative 'BoutonTuto.rb'
 
 # require_relative 'Fenetre1.rb'
 
