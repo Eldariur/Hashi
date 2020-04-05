@@ -7,6 +7,8 @@ class FenetreModesDifficultes < FenetreModeChrono
     @@fenetre = window
     super(@@fenetre)
 
+    @classe = false
+
     bouton4 = UnBoutonPerso.new("Personnalisé")
 
     bouton4.signal_connect('clicked') {
