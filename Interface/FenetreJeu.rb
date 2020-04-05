@@ -1309,9 +1309,10 @@ class FenetreJeu < Gtk::Box
 			# tbl.attach(chronoHbox,1,3,2,4)
 			@boutonSablier.show
 			@boxChrono.show
+			@chr.set_name("LabelChrono")
 			@chr.show
 			 ajouterContenu(@boxChrono,@chr)
-			
+
 			Thread.new {@chr.chronometrer()}
 
 #			Thread.new {
