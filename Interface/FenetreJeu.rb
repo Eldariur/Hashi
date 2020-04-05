@@ -1180,7 +1180,7 @@ class FenetreJeu < Gtk::Box
 				@boutonAnnul.deverrouiller()
 				masquerBouton
 				# retirerContenu(vbox,messageLabel)
-				# retirerContenu(vbox,@boutonAideTxt)
+				#retirerContenu(@boxMessage,@aideTxt)
 				# retirerContenu(vbox,@boutonAideVisu)
 
 			else
@@ -1319,6 +1319,9 @@ class FenetreJeu < Gtk::Box
 		@boutonAnnulHypo.hide
 		@boutonValidHypo.hide
 		@labelMessage.hide
+		if @aideTxt != nil
+			@aideTxt.hide
+		end
 		@boutonErreur.hide
 		@boutonAideTxt.hide
 		@boutonAideVisu.hide
