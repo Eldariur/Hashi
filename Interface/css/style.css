@@ -25,7 +25,7 @@
 	margin-right: 25px;
 	margin-top: 20px;
 	margin-left: 25px;
-	/*min-width: 300px*/
+	/*min-width: 300px;*/
 }
 
 
@@ -38,6 +38,15 @@
 	background-color: purple;
 }
 
+#BoutonMenu {
+	border-radius: 5px;
+	border-width: 2px;
+	background-color: red;
+	margin-right: 25px;
+	margin-top: 20px;
+	margin-left: 25px;
+	min-width: 300px;
+}
 
 #BoutonClassement{
 	border-radius: 5px;

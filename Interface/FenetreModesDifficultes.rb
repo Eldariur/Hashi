@@ -11,10 +11,12 @@ class FenetreModesDifficultes < Gtk::Box
 
     @classe = false
 
-    bouton1 = UnBoutonPerso.new("Facile")
-    bouton2 = UnBoutonPerso.new("Normal")
-    bouton3 = UnBoutonPerso.new("Difficile")
-    bouton4 = UnBoutonPerso.new("Personnalisé")
+    tbl = Gtk::Table.new(1,1)
+    vBox = Gtk::Box.new(Gtk::Orientation::VERTICAL)
+    bouton1 = UnBoutonPerso.new("Facile", "BoutonMenu")
+    bouton2 = UnBoutonPerso.new("Normal", "BoutonMenu")
+    bouton3 = UnBoutonPerso.new("Difficile", "BoutonMenu")
+    bouton4 = UnBoutonPerso.new("Personnalisé", "BoutonMenu")
 
     bouton1.signal_connect('clicked') {
       affichePopup("easy")
@@ -32,10 +34,12 @@ class FenetreModesDifficultes < Gtk::Box
       @@fenetre.changerWidget(FenetreParametres.new(@@fenetre))
     }
 
-    self.add(bouton1)
-    self.add(bouton2)
-    self.add(bouton3)
-    self.add(bouton4)
+    vBox.add(bouton1)
+    vBox.add(bouton2)
+    vBox.add(bouton3)
+    vBox.add(bouton4)
+    tbl.attach(vBox,0,1,0,1, Gtk::EXPAND)
+    self.add(tbl)
 
     self.show_all
 

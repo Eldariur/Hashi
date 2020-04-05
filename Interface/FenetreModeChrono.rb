@@ -8,9 +8,11 @@ class FenetreModeChrono < Gtk::Box
 
     @classe = true
 
-    bouton1 = UnBoutonPerso.new("Facile")
-    bouton2 = UnBoutonPerso.new("Normal")
-    bouton3 = UnBoutonPerso.new("Difficile")
+    tbl = Gtk::Table.new(1,1)
+    vBox = Gtk::Box.new(Gtk::Orientation::VERTICAL)
+    bouton1 = UnBoutonPerso.new("Facile", "BoutonMenu")
+    bouton2 = UnBoutonPerso.new("Normal", "BoutonMenu")
+    bouton3 = UnBoutonPerso.new("Difficile", "BoutonMenu")
 
     bouton1.signal_connect('clicked') {
       @@fenetre.changerWidget(FenetreJeu.new(@@fenetre, "easy", @classe))
@@ -24,9 +26,11 @@ class FenetreModeChrono < Gtk::Box
       @@fenetre.changerWidget(FenetreJeu.new(@@fenetre, "hard", @classe))
     }
 
-    self.add(bouton1)
-    self.add(bouton2)
-    self.add(bouton3)
+    vBox.add(bouton1)
+    vBox.add(bouton2)
+    vBox.add(bouton3)
+    tbl.attach(vBox,0,1,0,1, Gtk::EXPAND)
+    self.add(tbl)
 
     self.show_all
 

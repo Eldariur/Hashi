@@ -6,9 +6,9 @@ class FenetreMenu < Gtk::Box
     @@fenPre = nil
     tbl = Gtk::Table.new(1,1)
     vBox = Gtk::Box.new(Gtk::Orientation::VERTICAL)
-    bouton1 = UnBoutonPerso.new("Jouer")
-    bouton2 = UnBoutonPerso.new("Classement")
-    bouton3 = UnBoutonPerso.new("Quitter")
+    bouton1 = UnBoutonPerso.new("Jouer", "BoutonMenu")
+    bouton2 = UnBoutonPerso.new("Classement", "BoutonMenu")
+    bouton3 = UnBoutonPerso.new("Quitter", "BoutonMenu")
 
     #image = Gtk::Image.new("img/schema_projet.JPG")
     bouton1.signal_connect('clicked') {
