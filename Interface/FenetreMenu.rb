@@ -26,7 +26,7 @@ class FenetreMenu < Gtk::Box
     vBox.add(bouton1)
     vBox.add(bouton2)
     vBox.add(bouton3)
-    tbl.attach(vBox,0,1,0,1, Gtk::EXPAND)
+    tbl.attach(vBox,0,1,0,1, Gtk::AttachOptions::EXPAND)
     self.add(tbl)
 
     #@@fenetre.add(self)
