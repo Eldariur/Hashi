@@ -23,7 +23,7 @@ class FenetreJeu < Gtk::Box
 
 	attr_reader :grilleTest, :longueur, :largeur
 
-	def initialize(window, difficulte, save = nil)
+	def initialize(window, difficulte, save = nil, long=nil, larg=nil, dens=nil)
 		#vbox = Gtk::Box.new(:VERTICAL)
 
 
@@ -32,6 +32,9 @@ class FenetreJeu < Gtk::Box
     @@fenetre = window
 
     @difficulte = difficulte
+		@long = long
+		@larg = larg
+		@dens = dens
 
 		@presse = false
 		@hypothese = false
@@ -46,7 +49,7 @@ class FenetreJeu < Gtk::Box
 
 		#####################################
 		if(save == nil)
-			@gene = Generateur.new(@difficulte)
+			@gene = Generateur.new(@difficulte, @long, @larg, @dens)
 			@grilleTest = @gene.creeUneGrille()
 			@grilleDepart = @grilleTest
 		else
