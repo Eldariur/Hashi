@@ -210,7 +210,7 @@ class FenetreJeu < Gtk::Box
 
 	def mouseClick(event)
 		# copie tracerGrille
-		paddingX = 50
+		paddingX = 25
 		paddingY = 25
 		@nbClick += 1
 
@@ -1301,29 +1301,28 @@ class FenetreJeu < Gtk::Box
   def initChrono
 		@boxChrono = Gtk::Box.new(Gtk::Orientation::HORIZONTAL)
 		@boutonSablier = UnBoutonPerso.new("","Chrono")
-		@boutonSablier.verrouiller()
 		@boxChrono.add(@boutonSablier)
+		@boutonSablier.verrouiller()
 
 		if(@classe)
-			i = 0
 			@chr = Chrono.nouveau()
 			# tbl.attach(chronoHbox,1,3,2,4)
+			@boutonSablier.show
+			@boxChrono.show
+			@chr.show
+			 ajouterContenu(@boxChrono,@chr)
+			
 			Thread.new {@chr.chronometrer()}
-			Thread.new {
-				 while(true)
 
-					 retirerContenu(@boxChrono,@labelChrono)
-					 @labelChrono = UnLabelPerso.new(@chr.to_chrono())
-					 ajouterContenu(@boxChrono,@labelChrono)
+#			Thread.new {
 					 # @boxChrono.add(@labelChrono)
 					 # self.show_all
-					 @labelChrono.show
-					 @boutonSablier.show
-					 sleep(0.01)
-
-				 end
-			 }
-    end
+#					while(true)
+#						@labelChrono.text = @chr.to_chrono()
+#						puts(@labelChrono.str)
+#					end
+#			 }
+		end
 		ajouterImage(@boutonSablier,"img/hourglass_icon.png")
 
   end
