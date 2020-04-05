@@ -1314,14 +1314,6 @@ class FenetreJeu < Gtk::Box
 			
 			Thread.new {@chr.chronometrer()}
 
-#			Thread.new {
-					 # @boxChrono.add(@labelChrono)
-					 # self.show_all
-#					while(true)
-#						@labelChrono.text = @chr.to_chrono()
-#						puts(@labelChrono.str)
-#					end
-#			 }
 		end
 		ajouterImage(@boutonSablier,"img/hourglass_icon.png")
 
