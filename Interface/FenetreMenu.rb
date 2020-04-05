@@ -4,16 +4,16 @@ class FenetreMenu < Gtk::Box
     super(Gtk::Orientation::VERTICAL)
     @@fenetre = window
     @@fenPre = nil
-    bouton1 = UnBoutonPerso.new("Jouer")
-    bouton2 = UnBoutonPerso.new("Classement")
-    bouton3 = UnBoutonPerso.new("Quitter")
-    bouton4 = UnBoutonPerso.new("/!\\Tester les fenetres")
+    tbl = Gtk::Table.new(1,1)
+    vBox = Gtk::Box.new(Gtk::Orientation::VERTICAL)
+    bouton1 = UnBoutonPerso.new("Jouer", "BoutonMenu")
+    bouton2 = UnBoutonPerso.new("Classement", "BoutonMenu")
+    bouton3 = UnBoutonPerso.new("Quitter", "BoutonMenu")
 
     #image = Gtk::Image.new("img/schema_projet.JPG")
     bouton1.signal_connect('clicked') {
       @@fenetre.changerWidget(FenetreMenuJouer.new(@@fenetre))
     }
-    #vBox = Gtk::Box.new(Gtk::Orientation::VERTICAL)
 
     bouton2.signal_connect('clicked') {
       @@fenetre.changerWidget(FenetreClassement.new(@@fenetre))
@@ -23,17 +23,11 @@ class FenetreMenu < Gtk::Box
       Gtk.main_quit
     }
 
-    bouton4.signal_connect('clicked') {
-      @@fenetre.changerWidget(FenetreTest.new(@@fenetre))
-    }
-
-
-    self.add(bouton1)
-    self.add(bouton2)
-    self.add(bouton3)
-    self.add(bouton4)
-
-    # self.add(vBox)
+    vBox.add(bouton1)
+    vBox.add(bouton2)
+    vBox.add(bouton3)
+    tbl.attach(vBox,0,1,0,1, Gtk::AttachOptions::EXPAND)
+    self.add(tbl)
 
     #@@fenetre.add(self)
 

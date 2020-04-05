@@ -4,6 +4,7 @@ load "../Code/Sommet.rb"
 load "../Code/Arete.rb"
 load "../Chrono/Chronometre.rb"
 load "Sauvegarde.rb"
+load "../Code/Undo.rb"
 
 # Test de génération de grilles prédéfinies
 
@@ -76,10 +77,10 @@ threads.each { |thr| thr.join }
 puts 'Resultat : '+ c.to_chrono() + ' | Total : ' + c.resultat().to_s
 
 
-save1 = Sauvegarde.nouvelle(grille,c,1)
-save2 = Sauvegarde.nouvelle(grille,c,2)
-save3 = Sauvegarde.nouvelle(grille,c,3)
-save4 = Sauvegarde.nouvelle(grille,c,3,true)
+save1 = Sauvegarde.nouvelle(grille,nil,c,"easy")
+save2 = Sauvegarde.nouvelle(grille,nil,c,"normal")
+save3 = Sauvegarde.nouvelle(grille,nil,c,"hard")
+save4 = Sauvegarde.nouvelle(grille,nil,c,"hard",true)
 
 puts c
 
@@ -88,13 +89,13 @@ save2.sauvegarder()
 save3.sauvegarder()
 save4.sauvegarder()
 
-saveres = Sauvegarde.nouvelle(nil,nil,1,false).charger()
+saveres = Sauvegarde.nouvelle(nil,nil,nil,1,false).charger()
 puts saveres
-saveres = Sauvegarde.nouvelle(nil,nil,2,false).charger()
+saveres = Sauvegarde.nouvelle(nil,nil,nil,2,false).charger()
 puts saveres
-saveres = Sauvegarde.nouvelle(nil,nil,3,false).charger()
+saveres = Sauvegarde.nouvelle(nil,nil,nil,3,false).charger()
 puts saveres
-saveres = Sauvegarde.nouvelle(nil,nil,3,true).charger()
+saveres = Sauvegarde.nouvelle(nil,nil,nil,3,true).charger()
 puts saveres
 
 

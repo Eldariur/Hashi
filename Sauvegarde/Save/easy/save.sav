@@ -96,6 +96,7 @@ grille: &1 !ruby/object:Grille
                                   contenu: *12
                                   surbrillance: false
                                 estErreur: false
+                                hypothese: false
                               - *13
                               - &15 !ruby/object:Arete
                                 sommet1: *10
@@ -120,6 +121,7 @@ grille: &1 !ruby/object:Grille
                                   contenu: *15
                                   surbrillance: false
                                 estErreur: false
+                                hypothese: false
                               complet: false
                               estErreur: false
                             estDouble: false
@@ -131,6 +133,7 @@ grille: &1 !ruby/object:Grille
                               contenu: *13
                               surbrillance: false
                             estErreur: false
+                            hypothese: false
                           - *16
                           complet: false
                           estErreur: false
@@ -150,6 +153,7 @@ grille: &1 !ruby/object:Grille
                           contenu: *16
                           surbrillance: false
                         estErreur: false
+                        hypothese: false
                       - *17
                       complet: false
                       estErreur: false
@@ -169,6 +173,7 @@ grille: &1 !ruby/object:Grille
                       contenu: *17
                       surbrillance: false
                     estErreur: false
+                    hypothese: false
                   - &19 !ruby/object:Arete
                     sommet1: *6
                     sommet2: &18 !ruby/object:Sommet
@@ -209,6 +214,7 @@ grille: &1 !ruby/object:Grille
                               contenu: *21
                               surbrillance: false
                             estErreur: false
+                            hypothese: false
                           - *22
                           complet: false
                           estErreur: false
@@ -246,6 +252,7 @@ grille: &1 !ruby/object:Grille
                           contenu: *22
                           surbrillance: false
                         estErreur: false
+                        hypothese: false
                       complet: false
                       estErreur: false
                     estDouble: false
@@ -263,6 +270,7 @@ grille: &1 !ruby/object:Grille
                       contenu: *19
                       surbrillance: false
                     estErreur: false
+                    hypothese: false
                   complet: false
                   estErreur: false
                 estDouble: true
@@ -298,6 +306,7 @@ grille: &1 !ruby/object:Grille
                   contenu: *7
                   surbrillance: false
                 estErreur: false
+                hypothese: false
               - *21
               complet: false
               estErreur: false
@@ -310,6 +319,7 @@ grille: &1 !ruby/object:Grille
               contenu: *5
               surbrillance: false
             estErreur: false
+            hypothese: false
           - &24 !ruby/object:Arete
             sommet1: *3
             sommet2: &23 !ruby/object:Sommet
@@ -333,6 +343,7 @@ grille: &1 !ruby/object:Grille
               contenu: *24
               surbrillance: false
             estErreur: false
+            hypothese: false
           complet: false
           estErreur: false
         surbrillance: false
@@ -478,10 +489,13 @@ grille: &1 !ruby/object:Grille
   - *19
   - *21
   - *22
+  undo: !ruby/object:Undo
+    tabAction: []
+grilleDepart: 
 estHypothese: false
 chronometre: !ruby/object:Chrono
   stop: 1
-  total: 0.563024277
-  base: 2020-03-20 09:51:12.098430339 +01:00
+  total: 0.215206074
+  base: 2020-04-04 19:23:21.983960908 +02:00
   temp: 0
-difficulte: 1
+difficulte: easy

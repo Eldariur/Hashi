@@ -1,5 +1,5 @@
 require "active_record"
-load ("Highscore.rb")
+require_relative "./Highscore.rb"
 
 # Cette classe represente un score.
 class Score

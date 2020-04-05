@@ -4,10 +4,15 @@ class FenetreMenuJouer < Gtk::Box
     super(Gtk::Orientation::VERTICAL)
     @@fenetre = window
     #@@fenPre = self
-    bouton1 = UnBoutonPerso.new("Tutoriel")
-    bouton2 = UnBoutonPerso.new("Normal")
-    bouton3 = UnBoutonPerso.new("Contre-la-montre")
+    tbl = Gtk::Table.new(1,1)
+    vBox = Gtk::Box.new(Gtk::Orientation::VERTICAL)
+    bouton1 = UnBoutonPerso.new("Tutoriel", "BoutonMenu")
+    bouton2 = UnBoutonPerso.new("Normal", "BoutonMenu")
+    bouton3 = UnBoutonPerso.new("Contre-la-montre", "BoutonMenu")
 
+    bouton1.signal_connect('clicked') {
+      @@fenetre.changerWidget(FenetreTuto.new(@@fenetre))
+    }
 
     bouton2.signal_connect('clicked') {
       @@fenetre.changerWidget(FenetreModesDifficultes.new(@@fenetre))
@@ -17,9 +22,11 @@ class FenetreMenuJouer < Gtk::Box
       @@fenetre.changerWidget(FenetreModeChrono.new(@@fenetre))
     }
 
-    self.add(bouton1)
-    self.add(bouton2)
-    self.add(bouton3)
+    vBox.add(bouton1)
+    vBox.add(bouton2)
+    vBox.add(bouton3)
+    tbl.attach(vBox,0,1,0,1, Gtk::EXPAND)
+    self.add(tbl)
 
     self.show_all
 
