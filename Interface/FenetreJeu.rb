@@ -195,14 +195,9 @@ class FenetreJeu < Gtk::Box
 
 			@@fenetre.show_all
 
-
-
-
-		#self.show_all
 		self.show_all
 		@@fenetre.show_all
 		masquerBouton
-
 
 		Gtk.main
 
@@ -1016,9 +1011,9 @@ class FenetreJeu < Gtk::Box
 		@cr.set_source_rgb 0.96, 0.96, 0.96
 		###@@fenetre.default_size == [x,y]
 		if(@longueur > @largeur)
-			@cr.rectangle 0, 0, @tailleArea, (@tailleArea / @longueur) * @largeur #<== Changer aux dimensions de la fenentre
+			@cr.rectangle 0, 0, @tailleArea, (((@tailleArea - 50) / @longueur) * @largeur) + 50 #<== Changer aux dimensions de la fenentre
 		else
-			@cr.rectangle 0, 0, (@tailleArea / @largeur) * @longueur, @tailleArea #<== Changer aux dimensions de la fenentre
+			@cr.rectangle 0, 0, (((@tailleArea - 50) / @largeur) * @longueur) + 50, @tailleArea #<== Changer aux dimensions de la fenentre
 		end
 		@cr.fill
 		@cr.set_source_rgb 0, 0, 0
@@ -1058,13 +1053,12 @@ class FenetreJeu < Gtk::Box
 				response = popup.run()
 
 				if(response == :no)
-					@@fenetre.changerWidget(FenetreMenu.new(@@fenetre))
 					popup.destroy()
+					@@fenetre.changerWidget(FenetreMenu.new(@@fenetre))
 				else
 					popup.destroy()
+					@chr.chronometrer()
 				end
-
-				@chr.chronometrer()
 			end
     end
   end
@@ -1309,9 +1303,10 @@ class FenetreJeu < Gtk::Box
 			# tbl.attach(chronoHbox,1,3,2,4)
 			@boutonSablier.show
 			@boxChrono.show
+			@chr.set_name("LabelChrono")
 			@chr.show
 			 ajouterContenu(@boxChrono,@chr)
-			
+
 			Thread.new {@chr.chronometrer()}
 
 		end

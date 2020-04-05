@@ -11,20 +11,20 @@
 	margin: 5px;
 } */
 
-#Chrono {
-	border:none;
-	background: none;
-	/* margin: 20px; */
-
-}
 
 #UnBoutonPerso {
 	border-radius: 5px;
 	border-width: 2px;
-	background-color: red;
 	margin-right: 25px;
 	margin-top: 20px;
 	margin-left: 25px;
+	/*min-width: 300px;*/
+}
+
+#LabelChrono{
+		color: black;
+		font-weight: bold;
+		font-size: 30px;
 
 }
 
@@ -38,6 +38,15 @@
 	background-color: purple;
 }
 
+#BoutonMenu {
+	border-radius: 5px;
+	border-width: 2px;
+	background-color: red;
+	margin-right: 25px;
+	margin-top: 20px;
+	margin-left: 25px;
+	min-width: 300px;
+}
 
 #BoutonClassement{
 	border-radius: 5px;
