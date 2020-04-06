@@ -58,7 +58,7 @@ class FenetreJeu < Gtk::Box
 			@grilleTest = @gene.creeUneGrille()
 			@grilleDepart = @grilleTest
 		else
-			@gene = save.grilleDepart
+			@grilleDepart = save.grilleDepart
 			@grilleTest = save.grille
 		end
 		#####################################
@@ -1151,7 +1151,7 @@ class FenetreJeu < Gtk::Box
     		@boutonAide = UnBoutonPerso.new("?")do
 			@erreurs = nil
 			@afficherErreur = false
-			@erreurs = @gene.trouverErreurs(@grilleTest)
+			@erreurs = @grilleTest.trouverErreurs()
 
 			# retirerContenu(vbox,@boutonAideVisu)
 
@@ -1232,7 +1232,7 @@ class FenetreJeu < Gtk::Box
     @boutonErreur = UnBoutonPerso.new("Montrer les erreurs ?")do
 			puts "appuie bouton Erreur Visu"
 			@afficherErreur = true
-			@erreurs = @gene.trouverErreurs(@grilleTest)
+			@erreurs = @grilleTest.trouverErreurs()
 			# retirerContenu(vbox,@boutonErreur)
 			# retirerContenu(vbox,messageLabel)
 			afficheEcran

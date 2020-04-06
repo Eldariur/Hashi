@@ -267,4 +267,45 @@ class Grille
     return false
   end
 
+  ##Vérifie si la grille passée en parametre possède des erreurs par rapport a la grille générée et compte les erreurs
+  #
+  # === Paramètres
+  #
+  # * +grille+ : la grille a vérifier
+  #
+  # === Return
+  #
+  # * +nbErreur+ : le nombre d'erreur
+  def trouverErreurs()
+      objErreurs = []
+      # if @estGenere && grilleIdentique(grille)
+          for i in 0...@sommets.size()
+              if self.sommets[i].nbArete >= 1
+                  self.sommets[i].listeArete.each do |areteJeu|
+                      #on récupere l'autre sommet de l'arete
+                      autreSommet = self.sommets[i].autreSommet(areteJeu)
+                      #on recupere son index dans la liste des sommets de la grille
+                      index = self.sommets.find_index(autreSommet)
+                      index = index == nil ? 0 : index
+                      areteGene = @sommets[i].donneAreteAvec(@sommets[index])
+                      if (areteGene != nil)
+                          if (areteJeu.estDouble && !areteGene.estDouble)
+                              self.sommets[i].estErreur = true
+                              areteJeu.estErreur = true
+                              objErreurs.push(self.sommets[i])
+                          end
+                      end
+                      #on regarde si cette arete existe dans le grille originale
+                      if !(@sommets[i].possedeAreteAvec(@sommets[index]))
+                          self.sommets[i].estErreur = true
+                          areteJeu.estErreur = true
+                          objErreurs.push(self.sommets[i])
+                      end
+                  end
+              end
+          end
+      # end
+      return objErreurs
+  end
+
 end
