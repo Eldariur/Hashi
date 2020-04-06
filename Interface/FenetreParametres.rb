@@ -66,8 +66,8 @@ class FenetreParametres < Gtk::Box
     }
 
     boutonRes.signal_connect('clicked') {
-      lengthScale.setValue(5);
-      heightScale.setValue(5);
+      lengthScale.setValue(7);
+      heightScale.setValue(7);
       densScale.setValue(19);
     }
 
@@ -81,9 +81,9 @@ class UneScaleTaille < Gtk::Scale
   def initialize(orient=:HORIZONTAL,str="UneScaleTaille")
 		super(orient)
     self.set_name(str)
-    @cur_value = 5
+    @cur_value = 7
 
-    self.set_range 5, 15
+    self.set_range 7, 15
     self.set_digits 0
     self.set_size_request 500, 100
     self.set_value @cur_value
