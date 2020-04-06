@@ -29,7 +29,6 @@ class FenetreJeu < Gtk::Box
 	def initialize(window, difficulte, classe, save = nil)
 		#vbox = Gtk::Box.new(:VERTICAL)
 
-
 		super(Gtk::Orientation::VERTICAL)
 
     @@fenetre = window
