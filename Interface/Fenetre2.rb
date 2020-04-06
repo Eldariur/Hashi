@@ -13,6 +13,7 @@ require_relative 'FenetreTuto.rb'
 require_relative 'FenetreJeu.rb'
 require_relative 'FenetreJeuTuto.rb'
 require_relative 'FenetreTest.rb'
+require_relative '../Tutoriel/Tutoriel.rb'
 
 require_relative 'BoutonTuto.rb'
 

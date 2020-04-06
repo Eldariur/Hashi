@@ -47,7 +47,7 @@ class FenetreJeu < Gtk::Box
 
 		#####################################
 		if(save == nil && tuto == nil )
-			@gene = Generateur.new(@difficulte, @long, @larg, @dens)
+			@gene = Generateur.new(@difficulte, long, larg, dens)
 			@grilleTest = @gene.creeUneGrille()
 			@grilleDepart = @grilleTest
 		elsif(tuto != nil)
