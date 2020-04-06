@@ -1,9 +1,8 @@
 class	 FenetreMenuJouer < Gtk::Box
 
-  def initialize(window,widgAnte)
+  def initialize(window,fenPre)
     super(Gtk::Orientation::VERTICAL)
     @@fenetre = window
-    @@fenPre = widgAnte
     tbl = Gtk::Table.new(1,1)
     vBox = Gtk::Box.new(Gtk::Orientation::VERTICAL)
     bouton1 = UnBoutonPerso.new("Tutoriel", "BoutonMenu")
@@ -23,7 +22,7 @@ class	 FenetreMenuJouer < Gtk::Box
     }
 
 	boutonRetour.signal_connect('clicked'){
-		@@fenetre.changerWidget(@@fenPre);
+		@@fenetre.changerWidget(fenPre);
 	}
 
     vBox.add(bouton1)
