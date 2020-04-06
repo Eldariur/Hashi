@@ -81,9 +81,9 @@ class UneScaleTaille < Gtk::Scale
   def initialize(orient=:HORIZONTAL,str="UneScaleTaille")
 		super(orient)
     self.set_name(str)
-    @cur_value = 7
+    @cur_value = 5
 
-    self.set_range 7, 15
+    self.set_range 5, 15
     self.set_digits 0
     self.set_size_request 500, 100
     self.set_value @cur_value
