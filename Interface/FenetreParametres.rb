@@ -8,13 +8,15 @@ class FenetreParametres < Gtk::Box
     lbl2 = UnLabelPerso.new("Largeur de la grille: ")
     lbl3 = UnLabelPerso.new("Difficulté: ")
 
-    boutonEZ = UnBoutonPerso.new("EASY")
-    boutonNO = UnBoutonPerso.new("NORMAL")
-    boutonHA = UnBoutonPerso.new("HARD")
+    boutonEZ = UnBoutonPerso.new("EASY", "BoutonMenu")
+    boutonNO = UnBoutonPerso.new("NORMAL", "BoutonMenu")
+    boutonHA = UnBoutonPerso.new("HARD", "BoutonMenu")
 
-    boutonVal = UnBoutonPerso.new("VALIDER")
-    boutonRes = UnBoutonPerso.new("REINITIALISER")
+    boutonVal = UnBoutonPerso.new("VALIDER", "BoutonMenu")
+    boutonRes = UnBoutonPerso.new("REINITIALISER", "BoutonMenu")
 
+    tbl = Gtk::Table.new(1,1)
+    vb = Gtk::Box.new(Gtk::Orientation::VERTICAL)
     hb = Gtk::Box.new(:HORIZONTAL)
     hb.set_name("maBoxScale")
 
@@ -29,12 +31,14 @@ class FenetreParametres < Gtk::Box
     self.add(lbl3)
     self.add(densScale)
 
-    self.add(boutonEZ)
-    self.add(boutonNO)
-    self.add(boutonHA)
+    vb.add(boutonEZ)
+    vb.add(boutonNO)
+    vb.add(boutonHA)
 
-    self.add(boutonVal)
-    self.add(boutonRes)
+    vb.add(boutonVal)
+    vb.add(boutonRes)
+    tbl.attach(vb,0,1,0,1, Gtk::AttachOptions::EXPAND)
+    self.add(tbl)
 
     boutonEZ.signal_connect('clicked') {
       lengthScale.setValue(6+rand(0..3));
