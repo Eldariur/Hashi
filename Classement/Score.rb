@@ -7,13 +7,15 @@ class Score
 	 #@temps -> Le temps associé au score.
    #@points -> La valeur du score.
    #@malus -> Le malus en secondes du score.
+	 #@difficulte -> La difficulte liée au score.
 
   # Creer un nouveau score.
 	# === Parametre
 	# * +nom+ : nom Le pseudo associé au highscore.
 	# * +time+ : time Le temps associé au highscore.
-	 def Score.creer(nom, time)
-		 new(nom, time)
+	# * +difficulte+ : difficulte La difficulte associée au score.
+	 def Score.creer(nom, time, difficulte)
+		 new(nom, time, difficulte)
 	 end
 
  	# Accesseur get sur l'attribut pseudo.
@@ -24,6 +26,9 @@ class Score
 	attr:time, false
 	# Accesseur get sur l'attribut malus.
   attr:malus, false
+	# Accesseur get sur l'attribut difficulte.
+	attr:difficulte, false
+
 
 	#Privatise le new.
 	private_class_method :new
@@ -32,11 +37,13 @@ class Score
 	# === Parametre
 	# * +nom+ : nom Le pseudo associé au highscore.
 	# * +time+ : time Le temps associé au highscore.
-	def initialize(nom, time)
+	# * +difficulte+ : difficulte La difficulte associée au score.
+	def initialize(nom, time, difficulte)
 		@pseudo = nom
 		@points = 0
 		@temps = time
     @malus = 0
+		@difficulte = difficulte
 	end
 
 	# Cette methode demande à l'utilisateur de saisir un nom.
@@ -65,12 +72,12 @@ class Score
 	# Cette methode sauvegarde un score dans la base de donnees.
 	def sauvegarder()
 		temp = Highscore.creer()
-		temp.sauvegarder(@pseudo, @points)
+		temp.sauvegarder(@pseudo, @points, @difficulte)
 	end
 
 	# Cette methode redefini to_s pour afficher un score.
 	def to_s
-		"Score : Pseudo = #{@pseudo}, Points = #{@points}, Temps = #{@temps}, Malus = #{@malus}\n"
+		"Score : Pseudo = #{@pseudo}, Points = #{@points}, Temps = #{@temps}, Malus = #{@malus}, Difficulte = #{@difficulte}\n"
 	end
 
 	# Cette methode redefini to_i pour les scores.

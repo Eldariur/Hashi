@@ -5,9 +5,9 @@ class FenetreModesDifficultes < Gtk::Box
 
   #@classe
 
-  def initialize(window)
+  def initialize(window,fenetrePre)
     @@fenetre = window
-    super(Gtk::Orientation::VERTICAL)
+	    super(Gtk::Orientation::VERTICAL)
 
     @classe = false
 
@@ -17,7 +17,7 @@ class FenetreModesDifficultes < Gtk::Box
     bouton2 = UnBoutonPerso.new("Normal", "BoutonMenu")
     bouton3 = UnBoutonPerso.new("Difficile", "BoutonMenu")
     bouton4 = UnBoutonPerso.new("Personnalisé", "BoutonMenu")
-
+    boutonRetour = UnBoutonPerso.new("<----","BoutonMenu")
     bouton1.signal_connect('clicked') {
       affichePopup("easy")
     }
@@ -34,10 +34,14 @@ class FenetreModesDifficultes < Gtk::Box
       affichePopup("custom")
     }
 
+   boutonRetour.signal_connect('clicked'){
+	@@fenetre.changerWidget(fenetrePre)
+   }
     vBox.add(bouton1)
     vBox.add(bouton2)
     vBox.add(bouton3)
     vBox.add(bouton4)
+    vBox.add(boutonRetour)
     tbl.attach(vBox,0,1,0,1, Gtk::AttachOptions::EXPAND, Gtk::AttachOptions::EXPAND, 0, @@fenetre.default_size[1] / 3)
     self.add(tbl)
 

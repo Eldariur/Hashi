@@ -4,14 +4,13 @@ require "./ConnectSqlite3.rb"
 
 c = Chrono.nouveau()
 
-
 threads = []
 threads << Thread.new {c.chronometrer()}
 threads << Thread.new {stopsaisie(c)}
 
 threads.each { |thr| thr.join }
 
-s = Score.creer(Score.askName, c.resultat)
+s = Score.creer(Score.askName, c.resultat,"easy")
 
 for i in 0..rand(5)
   s.addMalus(rand(20))
@@ -21,7 +20,7 @@ s.calculScore(100)
 
 puts "Nouveau : #{s}"
 
-c = Classement.creer()
+c = Classement.creer(s.difficulte)
 
 puts "BDD avant :\n#{c.to_s}"
 

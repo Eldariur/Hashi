@@ -15,16 +15,17 @@ class Highscore < ActiveRecord::Base
 	# === Parametre
 	# * +b+ : b Utilisé pour ActiveRecord.
 	def initialize(b)
-		super(:name => "", :score => 0)
+		super(:name => "", :score => 0, :difficulty => "")
 	end
 
 	# Cette methode sauvegarde un highscore dans la base de données.
 	# === Parametre
 	# * +pseudo+ : pseudo Le pseudo associé au highscore.
 	# * +points+ : points Les points associés au highscore.
-	def sauvegarder(pseudo, points)
+	def sauvegarder(pseudo, points, difficulte)
 		self.name = pseudo
 		self.score = points
+		self.difficulty = difficulte
 		return self.save()
 	end
 
@@ -44,6 +45,6 @@ class Highscore < ActiveRecord::Base
 
 	# Cette methode redefini to_s pour afficher un highscore.
 	def to_s
-		"Highscore : Pseudo = #{self.name}, Points = #{self.score}\n"
+		"Highscore : Pseudo = #{self.name}, Points = #{self.score}, Difficulte = #{self.difficulty}\n"
 	end
 end

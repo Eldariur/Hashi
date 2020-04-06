@@ -12,11 +12,11 @@ class FenetreMenu < Gtk::Box
 
     #image = Gtk::Image.new("img/schema_projet.JPG")
     bouton1.signal_connect('clicked') {
-      @@fenetre.changerWidget(FenetreMenuJouer.new(@@fenetre))
+      @@fenetre.changerWidget(FenetreMenuJouer.new(@@fenetre,self))
     }
 
     bouton2.signal_connect('clicked') {
-      @@fenetre.changerWidget(FenetreClassement.new(@@fenetre))
+      @@fenetre.changerWidget(FenetreClassement.new(@@fenetre,self))
     }
 
     bouton3.signal_connect('clicked') {

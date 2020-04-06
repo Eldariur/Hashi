@@ -46,13 +46,17 @@ class FenetreJeu < Gtk::Box
 		y = 5
 
 		#####################################
-		if(save == nil)
-			@gene = Generateur.new(@difficulte, long, larg, dens)
+		if(save == nil && tuto == nil )
+			@gene = Generateur.new(@difficulte, @long, @larg, @dens)
 			@grilleTest = @gene.creeUneGrille()
-			@grilleComplete = @gene.grille
+			@grilleDepart = @grilleTest
+		elsif(tuto != nil)
+			@grilleTest = tuto.lancerTuto.grille
+			# @longueur = @grilleTest.longueur
+			# @largeur = @grilleTest.largeur
 		else
-			@grilleComplete = save.grilleComplete
-			@grilleTest = save.grille
+			# @grilleDepart = save.grilleDepart
+			# @grilleTest = save.grille
 		end
 		#####################################
 
@@ -193,6 +197,14 @@ class FenetreJeu < Gtk::Box
 		self.show_all
 		@@fenetre.show_all
 		masquerBouton
+		if(tuto != nil)
+			masquerAllBouton
+			@labelMessage = UnLabelPerso.new(tuto.getMessageTuto,"UnLabelBlanc")
+			retirerContenu(@boxMessage,@labelMessage)
+			ajouterContenu(@boxMessage,@labelMessage)
+			@labelMessage.show
+			@boxMessage.show
+		end
 
 		Gtk.main
 
@@ -342,8 +354,13 @@ class FenetreJeu < Gtk::Box
 		end
 		if(grilleGagnante && !@hypothese)
 			puts "VOUS AVEZ GAGNÉ !!!!"
-			@chr.arreter
-			@@fenetre.changerWidget(FenetreVictoire.new(@@fenetre,@chr.to_chrono))
+			if(@chr != nil)
+				@chr.arreter()
+				@@fenetre.changerWidget(FenetreVictoire.new(@@fenetre,@chr.to_chrono))
+			else
+				@@fenetre.changerWidget(FenetreVictoire.new(@@fenetre,nil))
+			end
+
 		end
 
 	end
@@ -1297,9 +1314,9 @@ class FenetreJeu < Gtk::Box
 			@boxChrono.show
 			@chr.set_name("LabelChrono")
 			@chr.show
-			 ajouterContenu(@boxChrono,@chr)
+			ajouterContenu(@boxChrono,@chr)
 
-			Thread.new {@chr.chronometrer()}
+			@chr.chronometrer()
 
 		end
 		ajouterImage(@boutonSablier,"img/hourglass_icon.png")
@@ -1348,6 +1365,13 @@ class FenetreJeu < Gtk::Box
 		@fontSize = @tailleCase / 2
 		@tailleCercle = @tailleCase / 5 * 2
 		@largeurSurbri = @tailleCase / 4
+	end
+
+	def masquerAllBouton
+		@boutonHypo.hide
+		@boutonAide.hide
+		@boutonAnnul.hide
+		@boutonRecom.hide
 	end
 
 

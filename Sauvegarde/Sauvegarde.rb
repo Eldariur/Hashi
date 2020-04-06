@@ -43,21 +43,21 @@ class Sauvegarde
 
   # Accesseur get sur l'attribut grille.
   attr:grille, false
+<<<<<<< HEAD
   # Accesseur get sur l'attribut grilleComplete.
   attr:grilleComplete, false
   # Accesseur get et set sur l'attribut chronometre.
   attr:chronometre, true
+=======
+  # Accesseur get sur l'attribut grilleDepart.
+  attr:grilleDepart, false
+  # Accesseur get sur l'attribut chronometre.
+  attr:chronometre, false
+>>>>>>> 7b9d161eee768204ccf59026c930c46279478522
   # Accesseur get sur l'attribut estHypothese.
   attr:estHypothese, false
   # Accesseur get sur l'attribut estHypothese.
   attr:difficulte, false
-
-  # Renvoie la grille de la sauvegarde.
-  # === Return
-  # * +@grille+ : @grille La grille de la sauvegarde.
-  def getGrille()
-    return @grille
-  end
 
   # Renvoie le chronometre de la sauvegarde.
   # === Return
@@ -66,19 +66,10 @@ class Sauvegarde
     return @chronometre
   end
 
-  # Renvoie la grille de la sauvegarde.
-  # === Return
-  # * +@grille+ : @grille La grille de la sauvegarde.
-  def getGrille()
-    return @grille
-  end
-
   # Effectue les opération de sauvegarde sur une sauvegarde.
   def sauvegarder()
     dump = YAML::dump(self)
-    puts @estHypothese
     if(@estHypothese) then
-      puts "yolo0"
       file = File.open(File.path('../Sauvegarde/Save/temp.sav'), 'w')
     else
       case @difficulte
@@ -92,7 +83,6 @@ class Sauvegarde
         file = File.open(File.path('../Sauvegarde/Save/custom/save.sav'), 'w')
       end
     end
-    puts "yolo #{file}"
     file.write dump
     file.close
   end
@@ -139,13 +129,13 @@ class Sauvegarde
 
   # Annule une hypothese en cours et retourne l'ancienne grille pre-hypothese.
   # === Return
-  # * +save.getGrille()+ : save.getGrille() La grille de la sauvegarde.
+  # * +save.grille+ : save.grille La grille de la sauvegarde.
   def Sauvegarde.annulerHypothese(mode = true)
     save = Sauvegarde.nouvelle(nil,nil,nil,nil,true).charger()
     if(mode) then
       File.delete('../Sauvegarde/Save/temp.sav')
     end
-    return save.getGrille()
+    return save.grille
   end
 
   # Genere les dossiers necessaire au fonctionnement des sauvegardes.
