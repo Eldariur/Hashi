@@ -33,7 +33,7 @@ class FenetreJeu < Gtk::Box
 
     @@fenetre = window
 
-		@tailleArea = @@fenetre.default_size[1] / 4 * 3
+		@tailleArea = @@fenetre.default_size[1] / 20 * 13
 
     @difficulte = difficulte
 		@classe = classe
