@@ -156,13 +156,13 @@ class FenetreJeu < Gtk::Box
 
 	    hboxPrincipale = Gtk::Box.new(Gtk::Orientation::HORIZONTAL)
 				hboxPrincipale.halign = Gtk::Align::START
-				hboxPrincipale.homogeneous = true
+				hboxPrincipale.homogeneous = false
 	    # @boutonRetour.width_request = 150
 	        # hboxPrincipale.add(vboxGauche)
 	        # hboxPrincipale.add(vboxDroite)
 					boxVide = Gtk::Box.new(Gtk::Orientation::VERTICAL)
 						boxVide.valign = Gtk::Align::START
-						boxVide.homogeneous = true
+						boxVide.homogeneous = false
 
 						puts @longueur.to_s
 
