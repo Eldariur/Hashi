@@ -14,6 +14,9 @@ class Generateur
     #@grille        -> Grille crée
     #@estGenere     -> Booleen qui défini si la grille a été générée ou non (bloque des methodes nécessitant une grille généré)
 
+    #Accesseur get
+    attr_reader :grille
+
     ## Partie initialize
     #Initialisation du generateur
     #

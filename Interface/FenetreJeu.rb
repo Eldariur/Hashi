@@ -26,7 +26,7 @@ class FenetreJeu < Gtk::Box
 
 	attr_reader :grilleTest, :longueur, :largeur
 
-	def initialize(window, difficulte, classe, save = nil, long=nil, larg=nil, dens=nil)
+	def initialize(window, difficulte, classe, save = nil, long=nil, larg=nil, dens=nil, tuto = nil)
 		#vbox = Gtk::Box.new(:VERTICAL)
 
 		super(Gtk::Orientation::VERTICAL)
@@ -37,9 +37,6 @@ class FenetreJeu < Gtk::Box
 
     @difficulte = difficulte
 		@classe = classe
-		@long = long
-		@larg = larg
-		@dens = dens
 
 		@presse = false
 		@hypothese = false
@@ -54,11 +51,11 @@ class FenetreJeu < Gtk::Box
 
 		#####################################
 		if(save == nil)
-			@gene = Generateur.new(@difficulte, @long, @larg, @dens)
+			@gene = Generateur.new(@difficulte, long, larg, dens)
 			@grilleTest = @gene.creeUneGrille()
-			@grilleDepart = @grilleTest
+			@grilleComplete = @gene.grille
 		else
-			@grilleDepart = save.grilleDepart
+			@grilleComplete = save.grilleComplete
 			@grilleTest = save.grille
 		end
 		#####################################
@@ -1044,7 +1041,7 @@ class FenetreJeu < Gtk::Box
 				response = popup.run()
 
 				if(response == :yes)
-					save = Sauvegarde.nouvelle(@grilleTest, @grilleDepart, nil, @difficulte)
+					save = Sauvegarde.nouvelle(@grilleTest, @grilleComplete, nil, @difficulte)
 					save.sauvegarder()
 					@@fenetre.changerWidget(FenetreMenu.new(@@fenetre))
 				elsif(response == :no)
@@ -1156,7 +1153,7 @@ class FenetreJeu < Gtk::Box
     		@boutonAide = UnBoutonPerso.new("?")do
 			@erreurs = nil
 			@afficherErreur = false
-			@erreurs = @grilleTest.trouverErreurs()
+			@erreurs = @grilleTest.trouverErreurs(@grilleComplete)
 
 			# retirerContenu(vbox,@boutonAideVisu)
 
@@ -1237,7 +1234,7 @@ class FenetreJeu < Gtk::Box
     @boutonErreur = UnBoutonPerso.new("Montrer les erreurs ?")do
 			puts "appuie bouton Erreur Visu"
 			@afficherErreur = true
-			@erreurs = @grilleTest.trouverErreurs()
+			@erreurs = @grilleTest.trouverErreurs(@grilleComplete)
 			# retirerContenu(vbox,@boutonErreur)
 			# retirerContenu(vbox,messageLabel)
 			afficheEcran
@@ -1287,7 +1284,7 @@ class FenetreJeu < Gtk::Box
   def initBoutonRecom
     @boutonRecom = UnBoutonPerso.new("R")do
 			# puts "appuie bouton Recommencer"
-			# @grilleTest = @grilleDepart
+			# @grilleTest = @grilleComplete
 			@grilleTest.clearAretes
 			@grilleTest.clearSommets
 			@listeInter = []

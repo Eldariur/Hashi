@@ -276,30 +276,30 @@ class Grille
   # === Return
   #
   # * +nbErreur+ : le nombre d'erreur
-  def trouverErreurs()
+  def trouverErreurs(grille)
       objErreurs = []
       # if @estGenere && grilleIdentique(grille)
-          for i in 0...@sommets.size()
-              if self.sommets[i].nbArete >= 1
-                  self.sommets[i].listeArete.each do |areteJeu|
+          for i in 0...grille.sommets.size()
+              if @sommets[i].nbArete >= 1
+                  @sommets[i].listeArete.each do |areteJeu|
                       #on récupere l'autre sommet de l'arete
-                      autreSommet = self.sommets[i].autreSommet(areteJeu)
+                      autreSommet = @sommets[i].autreSommet(areteJeu)
                       #on recupere son index dans la liste des sommets de la grille
-                      index = self.sommets.find_index(autreSommet)
+                      index = @sommets.find_index(autreSommet)
                       index = index == nil ? 0 : index
-                      areteGene = @sommets[i].donneAreteAvec(@sommets[index])
+                      areteGene = grille.sommets[i].donneAreteAvec(grille.sommets[index])
                       if (areteGene != nil)
                           if (areteJeu.estDouble && !areteGene.estDouble)
-                              self.sommets[i].estErreur = true
+                              @sommets[i].estErreur = true
                               areteJeu.estErreur = true
-                              objErreurs.push(self.sommets[i])
+                              objErreurs.push(@sommets[i])
                           end
                       end
                       #on regarde si cette arete existe dans le grille originale
-                      if !(@sommets[i].possedeAreteAvec(@sommets[index]))
-                          self.sommets[i].estErreur = true
+                      if !(grille.sommets[i].possedeAreteAvec(grille.sommets[index]))
+                          @sommets[i].estErreur = true
                           areteJeu.estErreur = true
-                          objErreurs.push(self.sommets[i])
+                          objErreurs.push(@sommets[i])
                       end
                   end
               end
