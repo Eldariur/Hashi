@@ -352,7 +352,7 @@ class FenetreJeu < Gtk::Box
 			else
 				@@fenetre.changerWidget(FenetreVictoire.new(@@fenetre,nil))
 			end
-			
+
 		end
 
 	end
@@ -1306,9 +1306,9 @@ class FenetreJeu < Gtk::Box
 			@boxChrono.show
 			@chr.set_name("LabelChrono")
 			@chr.show
-			 ajouterContenu(@boxChrono,@chr)
+			ajouterContenu(@boxChrono,@chr)
 
-			Thread.new {@chr.chronometrer()}
+			@chr.chronometrer()
 
 		end
 		ajouterImage(@boutonSablier,"img/hourglass_icon.png")

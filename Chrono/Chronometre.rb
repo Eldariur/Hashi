@@ -42,17 +42,19 @@ class Chrono < Gtk::Label
 
   # Lance le chronometrage.
   def chronometrer()
-    self.reset()
-    if(@total != 0) then
-      @temp = @total
-    end
-    while @stop != 1 do
-      @total = Time.now - @base
-      puts `clear`
-      puts self.to_chrono()
-      sleep(0.01)
-	self.text = self.to_s()
-    end
+		Thread.new {
+	    self.reset()
+	    if(@total != 0) then
+	      @temp = @total
+	    end
+	    while @stop != 1 do
+	      @total = Time.now - @base
+	      puts `clear`
+	      puts self.to_chrono()
+	      sleep(0.01)
+				self.text = self.to_s()
+	    end
+		}
   end
 
   # Permet d'arreter le chronomètre.
