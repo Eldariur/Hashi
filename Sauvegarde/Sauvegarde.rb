@@ -43,17 +43,10 @@ class Sauvegarde
 
   # Accesseur get sur l'attribut grille.
   attr:grille, false
-<<<<<<< HEAD
   # Accesseur get sur l'attribut grilleComplete.
   attr:grilleComplete, false
   # Accesseur get et set sur l'attribut chronometre.
   attr:chronometre, true
-=======
-  # Accesseur get sur l'attribut grilleDepart.
-  attr:grilleDepart, false
-  # Accesseur get sur l'attribut chronometre.
-  attr:chronometre, false
->>>>>>> 7b9d161eee768204ccf59026c930c46279478522
   # Accesseur get sur l'attribut estHypothese.
   attr:estHypothese, false
   # Accesseur get sur l'attribut estHypothese.
