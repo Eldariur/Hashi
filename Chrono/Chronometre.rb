@@ -1,3 +1,5 @@
+require 'gtk3'
+
 # Cette classe represente un chronomètre.
 class Chrono < Gtk::Label
   #@stop -> Permet de stopper le chronomètre.
@@ -24,8 +26,8 @@ class Chrono < Gtk::Label
 
 	# Accesseur get sur l'attribut stop.
   attr:stop, false
-	# Accesseur get et set sur l'attribut total.
-  attr:total, true
+	# Accesseur get sur l'attribut total.
+  attr:total, false
 	# Accesseur get sur l'attribut base.
   attr:base, false
 	# Accesseur get sur l'attribut temp.
@@ -46,8 +48,8 @@ class Chrono < Gtk::Label
     end
     while @stop != 1 do
       @total = Time.now - @base
-      #puts `clear`
-      #puts self.to_chrono()
+      puts `clear`
+      puts self.to_chrono()
       sleep(0.01)
 	self.text = self.to_s()
     end
