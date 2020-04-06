@@ -45,10 +45,6 @@ class FenetreJeu < Gtk::Box
 		x = 5
 		y = 5
 
-		puts "taille de ma fenetre = "+@@fenetre.default_size.to_s
-
-
-
 		#####################################
 		if(save == nil)
 			@gene = Generateur.new(@difficulte, long, larg, dens)
@@ -108,8 +104,8 @@ class FenetreJeu < Gtk::Box
 	        hboxBoutonRetour.add(@boutonRetour)
 
 	    hboxBoutonJeu = Gtk::Box.new(Gtk::Orientation::HORIZONTAL)
-	  		hboxBoutonJeu.halign = Gtk::Align::FILL
-	  		hboxBoutonJeu.homogeneous = true
+	  		hboxBoutonJeu.halign = Gtk::Align::START
+	  		hboxBoutonJeu.homogeneous = false
 	        hboxBoutonJeu.add(@boutonHypo)
 	        hboxBoutonJeu.add(@boutonAide)
 	        hboxBoutonJeu.add(@boutonAnnul)
@@ -139,7 +135,7 @@ class FenetreJeu < Gtk::Box
 
 	    hpaned = Gtk::Paned.new(Gtk::Orientation::HORIZONTAL)
 	    hboxJeu = Gtk::Box.new(Gtk::Orientation::HORIZONTAL)
-				hboxJeu.halign = Gtk::Align::CENTER
+				hboxJeu.halign = Gtk::Align::FILL
 				#hboxJeu.homogeneous = true
 	        # hboxJeu.add(@boxJeu) #<=======
 
@@ -166,12 +162,12 @@ class FenetreJeu < Gtk::Box
 
 						puts @longueur.to_s
 
-	    tbl = Gtk::Table.new(1,6)
-	    tbl.attach(vboxGauche,0,3,0,3)
-			tbl.attach(vboxBoutonJeu,0,3,3,6)
-			tbl.attach(hboxChrono,4,@longueur,0,1)
-	    tbl.attach(hpaned,4,@longueur+2,1,@largeur+10)
-			tbl.attach(boxVide,@longueur,@longueur+2,0,20)
+	    tbl = Gtk::Table.new(20, 20)
+	    tbl.attach(vboxGauche, 0, 5, 0, 5, Gtk::AttachOptions::SHRINK)
+			tbl.attach(vboxBoutonJeu, 0, 5, 6, 20, Gtk::AttachOptions::EXPAND)
+			tbl.attach(hboxChrono, 6, 20, 0, 1, Gtk::AttachOptions::SHRINK)
+	    tbl.attach(hpaned, 6, 20, 1, 20)
+			#tbl.attach(boxVide,@longueur,@longueur+2,0,20)
 
 			# @@fenetre.remove(@@fenetre.child)
 			# @@fenetre.add(tbl)
@@ -1028,7 +1024,7 @@ class FenetreJeu < Gtk::Box
 	end
 
 	def initBoutonRetour
-    @boutonRetour = UnBoutonPerso.new("Retour")do
+    @boutonRetour = UnBoutonPerso.new("Retour", "BoutonEnJeu")do
 			if(!@classe)
 				popup = Gtk::MessageDialog.new(@@fenetre, :modal, :question, :none, "Souhaitez-vous sauvegarder la partie ? La sauvegarde précédente sera écrasée.")
 				popup.add_buttons(["Sauvegarder", :yes], ["Quitter", :no], [Gtk::Stock::CANCEL, :reject])
@@ -1063,7 +1059,7 @@ class FenetreJeu < Gtk::Box
   end
 
   def initBoutonHypo
-    @boutonHypo = UnBoutonPerso.new("H")do
+    @boutonHypo = UnBoutonPerso.new("H", "BoutonEnJeu")do
       puts "j'ai cliqué sur le bouton Hypo"
 			if(@presser)
 				@presser = false
@@ -1100,7 +1096,7 @@ class FenetreJeu < Gtk::Box
   end
 
 	def initBoutonAnnulHypo
-    @boutonAnnulHypo = UnBoutonPerso.new("Annuler Hypothèse")do
+    @boutonAnnulHypo = UnBoutonPerso.new("Annuler Hypothèse", "BoutonEnJeuGros")do
 			@presser = false
 
 			@grilleTest = Sauvegarde.annulerHypothese()
@@ -1120,7 +1116,7 @@ class FenetreJeu < Gtk::Box
   end
 
 	def initBoutonValidHypo
-    @boutonValidHypo= UnBoutonPerso.new("Valider Hypothèse")do
+    @boutonValidHypo= UnBoutonPerso.new("Valider Hypothèse", "BoutonEnJeuGros")do
 			@presser = false
 
 			Sauvegarde.validerHypothese()
@@ -1145,7 +1141,7 @@ class FenetreJeu < Gtk::Box
   def initBoutonAide
 		@boxMessage = Gtk::Box.new(Gtk::Orientation::HORIZONTAL)
 		@boxMessage.halign = Gtk::Align::CENTER
-    		@boutonAide = UnBoutonPerso.new("?")do
+    		@boutonAide = UnBoutonPerso.new("?", "BoutonEnJeu")do
 			@erreurs = nil
 			@afficherErreur = false
 			@erreurs = @grilleTest.trouverErreurs(@grilleComplete)
@@ -1226,7 +1222,7 @@ class FenetreJeu < Gtk::Box
 
 
 	def initBoutonErreurVisu
-    @boutonErreur = UnBoutonPerso.new("Montrer les erreurs ?")do
+    @boutonErreur = UnBoutonPerso.new("Montrer les erreurs ?", "BoutonEnJeuGros")do
 			puts "appuie bouton Erreur Visu"
 			@afficherErreur = true
 			@erreurs = @grilleTest.trouverErreurs(@grilleComplete)
@@ -1238,7 +1234,7 @@ class FenetreJeu < Gtk::Box
   end
 
 	def initBoutonAideTxt
-			@boutonAideTxt = UnBoutonPerso.new("Aide Textuelle")do
+			@boutonAideTxt = UnBoutonPerso.new("Aide Textuelle", "BoutonEnJeuGros")do
 			@caseA = nil
 			@aideTxt = Aide.creer(@grilleTest)
 			@aideTxt.set_name("UnLabelBlanc")
@@ -1255,7 +1251,7 @@ class FenetreJeu < Gtk::Box
   end
 
 	def initBoutonAideVisu
-    @boutonAideVisu = UnBoutonPerso.new("Aide Visuelle")do
+    @boutonAideVisu = UnBoutonPerso.new("Aide Visuelle", "BoutonEnJeuGros")do
 			puts "appuie bouton visuelle"
 			@aide = Aide.creer(@grilleTest)
 
@@ -1268,7 +1264,7 @@ class FenetreJeu < Gtk::Box
   end
 
   def initBoutonAnnul
-    @boutonAnnul = UnBoutonPerso.new("U")do
+    @boutonAnnul = UnBoutonPerso.new("U", "BoutonEnJeu")do
 			# puts "appuie bouton Annuler"
 			annulerAction()
 
@@ -1277,7 +1273,7 @@ class FenetreJeu < Gtk::Box
   end
 
   def initBoutonRecom
-    @boutonRecom = UnBoutonPerso.new("R")do
+    @boutonRecom = UnBoutonPerso.new("R", "BoutonEnJeu")do
 			# puts "appuie bouton Recommencer"
 			# @grilleTest = @grilleComplete
 			@grilleTest.clearAretes

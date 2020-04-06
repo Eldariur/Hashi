@@ -3,7 +3,7 @@ require 'yaml'
 # Cette classe represente un sauvegarde.
 class Sauvegarde
   #@grille -> La grille sauvegardé.
-  #@grilleDepart -> La grille de départ de la grille sauvegardé
+  #@grilleComplete -> La grille de départ de la grille sauvegardé
   #@chronometre -> Le chronometre sauvegardé.
   #@estHypothese -> Si la sauvegarde est une hypothese ou non.
   #@difficulte -> La difficulte de la sauvegarde.
@@ -14,13 +14,13 @@ class Sauvegarde
   # Initialisation de la class Sauvegarde.
   # === Parametre
   # * +grille+ : grille La grille a sauvegarder.
-  # * +grilleDepart+ : grilleDepart La grille de départ de la grille a sauvegarder.
+  # * +grilleComplete+ : grilleComplete La grille de départ de la grille a sauvegarder.
   # * +chrono+ : chrono Le chronometre a sauvegarder.
   # * +difficulte+ : difficulte La difficulte de la grille.
   # * +hypothese+ : hypothese Le choix d'une sauvegarde pour une hypothese ou non.
-  def initialize(grille, grilleDepart, chrono, difficulte, hypothese = false)
+  def initialize(grille, grilleComplete, chrono, difficulte, hypothese = false)
     @grille = grille
-    @grilleDepart = grilleDepart
+    @grilleComplete = grilleComplete
     @estHypothese = hypothese
     if(@estHypothese == false) then
       @chronometre = chrono
@@ -43,8 +43,8 @@ class Sauvegarde
 
   # Accesseur get sur l'attribut grille.
   attr:grille, false
-  # Accesseur get sur l'attribut grilleDepart.
-  attr:grilleDepart, false
+  # Accesseur get sur l'attribut grilleComplete.
+  attr:grilleComplete, false
   # Accesseur get et set sur l'attribut chronometre.
   attr:chronometre, true
   # Accesseur get sur l'attribut estHypothese.
@@ -83,12 +83,14 @@ class Sauvegarde
     else
       case @difficulte
       when "easy"
-          file = File.open(File.path('../Sauvegarde/Save/easy/save.sav'), 'w')
-        when "normal"
-          file = File.open(File.path('../Sauvegarde/Save/normal/save.sav'), 'w')
-        when "hard"
-          file = File.open(File.path('../Sauvegarde/Save/hard/save.sav'), 'w')
-        end
+        file = File.open(File.path('../Sauvegarde/Save/easy/save.sav'), 'w')
+      when "normal"
+        file = File.open(File.path('../Sauvegarde/Save/normal/save.sav'), 'w')
+      when "hard"
+        file = File.open(File.path('../Sauvegarde/Save/hard/save.sav'), 'w')
+      when "custom"
+        file = File.open(File.path('../Sauvegarde/Save/custom/save.sav'), 'w')
+      end
     end
     puts "yolo #{file}"
     file.write dump
@@ -117,6 +119,8 @@ class Sauvegarde
           save = YAML.load(File.read('../Sauvegarde/Save/normal/save.sav'))
         when "hard"
           save = YAML.load(File.read('../Sauvegarde/Save/hard/save.sav'))
+        when "custom"
+          save = YAML.load(File.read('../Sauvegarde/Save/custom/save.sav'))
       end
     end
     return save
@@ -158,6 +162,9 @@ class Sauvegarde
     if(!Dir.exist?('Save/hard')) then
       Dir::mkdir("Save/hard", 0777)
     end
+    if(!Dir.exist?('Save/custom')) then
+      Dir::mkdir("Save/custom", 0777)
+    end
   end
 
   # Permet de supprimer toutes les sauvegardes.
@@ -175,7 +182,7 @@ class Sauvegarde
     if(@estHypothese) then
       "Sauvegarde : \n-Grille :\n#{@grille}-estHypo = #{@estHypothese}\n---------------------------------------------------\n"
     else
-      "Sauvegarde : \n-Grille :\n#{@grille}-Grille de depart :\n#{@grilleDepart}-estHypo = #{@estHypothese}\n-Chrono = #{@chronometre} \n-Difficulte = #{@difficulte}\n---------------------------------------------------\n"
+      "Sauvegarde : \n-Grille :\n#{@grille}-Grille de depart :\n#{@grilleComplete}-estHypo = #{@estHypothese}\n-Chrono = #{@chronometre} \n-Difficulte = #{@difficulte}\n---------------------------------------------------\n"
     end
   end
 

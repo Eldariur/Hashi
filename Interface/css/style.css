@@ -55,7 +55,23 @@
 }
 
 #BoutonEnJeu{
-	border: none;
+	border-radius: 5px;
+	border-width: 2px;
+	margin-right: 25px;
+	margin-top: 20px;
+	margin-left: 25px;
+	min-width: 120px;
+	min-height: 30px;
+}
+
+#BoutonEnJeuGros{
+	border-radius: 5px;
+	border-width: 2px;
+	margin-right: 25px;
+	margin-top: 20px;
+	margin-left: 25px;
+	min-width: 180px;
+	min-height: 45px;
 }
 
 #BoutonTuto{

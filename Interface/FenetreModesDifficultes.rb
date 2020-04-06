@@ -31,7 +31,7 @@ class FenetreModesDifficultes < Gtk::Box
     }
 
     bouton4.signal_connect('clicked') {
-      @@fenetre.changerWidget(FenetreParametres.new(@@fenetre))
+      affichePopup("custom")
     }
 
     vBox.add(bouton1)
@@ -58,19 +58,31 @@ class FenetreModesDifficultes < Gtk::Box
         popup = Gtk::MessageDialog.new(@@fenetre, :modal, :question, :none, "Souhaitez-vous charger la dernière sauvegarde normale ?")
       when "hard"
         popup = Gtk::MessageDialog.new(@@fenetre, :modal, :question, :none, "Souhaitez-vous charger la dernière sauvegarde difficile ?")
+      when "custom"
+        popup = Gtk::MessageDialog.new(@@fenetre, :modal, :question, :none, "Souhaitez-vous charger la dernière sauvegarde personnalisée ?")
     end
     popup.add_buttons(["Charger la sauvegarde", :yes], ["Nouvelle Partie", :no], [Gtk::Stock::CANCEL, :reject])
 
     response = popup.run()
 
-    if(response == :yes)
-      save = Sauvegarde.nouvelle(nil, nil, nil, difficulte)
-      partie = save.charger()
-      popup.destroy()
-      @@fenetre.changerWidget(FenetreJeu.new(@@fenetre, difficulte, @classe, partie))
-    elsif(response == :no)
-      popup.destroy()
-      @@fenetre.changerWidget(FenetreJeu.new(@@fenetre, difficulte, @classe))
+    if(difficulte == "custom")
+      if(response == :yes)
+        save = Sauvegarde.nouvelle(nil, nil, nil, difficulte)
+        partie = save.charger()
+        @@fenetre.changerWidget(FenetreJeu.new(@@fenetre, difficulte, @classe, partie))
+      elsif(response == :no)
+        @@fenetre.changerWidget(FenetreParametres.new(@@fenetre))
+      end
+    else
+      if(response == :yes)
+        save = Sauvegarde.nouvelle(nil, nil, nil, difficulte)
+        partie = save.charger()
+        popup.destroy()
+        @@fenetre.changerWidget(FenetreJeu.new(@@fenetre, difficulte, @classe, partie))
+      elsif(response == :no)
+        popup.destroy()
+        @@fenetre.changerWidget(FenetreJeu.new(@@fenetre, difficulte, @classe))
+      end
     end
 
     popup.destroy()
