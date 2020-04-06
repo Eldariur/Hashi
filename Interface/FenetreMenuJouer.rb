@@ -25,7 +25,7 @@ class FenetreMenuJouer < Gtk::Box
     vBox.add(bouton1)
     vBox.add(bouton2)
     vBox.add(bouton3)
-    tbl.attach(vBox,0,1,0,1, Gtk::AttachOptions::EXPAND)
+    tbl.attach(vBox,0,1,0,1, Gtk::AttachOptions::EXPAND, Gtk::AttachOptions::EXPAND, 0, @@fenetre.default_size[1] / 3)
     self.add(tbl)
 
     self.show_all
