@@ -1,0 +1,44 @@
+--- !ruby/object:Sauvegarde
+grille: &1 !ruby/object:Grille
+  longueur: 1
+  largeur: 3
+  table: !ruby/object:Matrix
+    rows:
+    - - &2 !ruby/object:Case
+        x: 0
+        y: 0
+        grille: *1
+        contenu: &4 !ruby/object:Sommet
+          valeur: 1
+          position: *2
+          listeArete: []
+          complet: false
+          estErreur: false
+        surbrillance: false
+      - !ruby/object:Case
+        x: 0
+        y: 1
+        grille: *1
+        contenu: 
+        surbrillance: false
+      - &3 !ruby/object:Case
+        x: 0
+        y: 2
+        grille: *1
+        contenu: &5 !ruby/object:Sommet
+          valeur: 1
+          position: *3
+          listeArete: []
+          complet: false
+          estErreur: false
+        surbrillance: false
+    column_count: 3
+  sommets:
+  - *4
+  - *5
+  aretes: []
+  undo: !ruby/object:Undo
+    tabAction: []
+estHypothese: false
+chronometre: 
+difficulte: 0
