@@ -11,7 +11,7 @@ class FenetreModesDifficultes < Gtk::Box
 
     @classe = false
 
-    tbl = Gtk::Table.new(3,3, true)
+    tbl = Gtk::Table.new(1,1)
     vBox = Gtk::Box.new(Gtk::Orientation::VERTICAL)
     bouton1 = UnBoutonPerso.new("Facile", "BoutonMenu")
     bouton2 = UnBoutonPerso.new("Normal", "BoutonMenu")
@@ -38,7 +38,7 @@ class FenetreModesDifficultes < Gtk::Box
     vBox.add(bouton2)
     vBox.add(bouton3)
     vBox.add(bouton4)
-    tbl.attach(vBox,1,2,1,2, Gtk::EXPAND, Gtk::EXPAND, 0, 30)
+    tbl.attach(vBox,0,1,0,1, Gtk::AttachOptions::EXPAND)
     self.add(tbl)
 
     self.show_all

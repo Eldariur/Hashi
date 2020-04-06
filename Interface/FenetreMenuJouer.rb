@@ -4,7 +4,7 @@ class FenetreMenuJouer < Gtk::Box
     super(Gtk::Orientation::VERTICAL)
     @@fenetre = window
     #@@fenPre = self
-    tbl = Gtk::Table.new(5,5, true)
+    tbl = Gtk::Table.new(1,1)
     vBox = Gtk::Box.new(Gtk::Orientation::VERTICAL)
     bouton1 = UnBoutonPerso.new("Tutoriel", "BoutonMenu")
     bouton2 = UnBoutonPerso.new("Normal", "BoutonMenu")
@@ -25,7 +25,7 @@ class FenetreMenuJouer < Gtk::Box
     vBox.add(bouton1)
     vBox.add(bouton2)
     vBox.add(bouton3)
-    tbl.attach(vBox,2,3,2,3)
+    tbl.attach(vBox,0,1,0,1, Gtk::AttachOptions::EXPAND)
     self.add(tbl)
 
     self.show_all
