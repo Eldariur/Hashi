@@ -15,15 +15,15 @@ class FenetreModeChrono < Gtk::Box
     bouton3 = UnBoutonPerso.new("Difficile", "BoutonMenu")
 	boutonRetour = UnBoutonPerso.new("<--","BoutonMenu")
     bouton1.signal_connect('clicked') {
-      @@fenetre.changerWidget(FenetreJeu.new(@@fenetre, "easy", @classe))
+      @@fenetre.changerWidget(FenetreJeu.new(@@fenetre,fenetrePre ,"easy", @classe))
     }
 
     bouton2.signal_connect('clicked') {
-      @@fenetre.changerWidget(FenetreJeu.new(@@fenetre, "normal", @classe))
+      @@fenetre.changerWidget(FenetreJeu.new(@@fenetre,fenetrePre ,"normal", @classe))
     }
 
     bouton3.signal_connect('clicked') {
-      @@fenetre.changerWidget(FenetreJeu.new(@@fenetre, "hard", @classe))
+      @@fenetre.changerWidget(FenetreJeu.new(@@fenetre,fenetrePre ,"hard", @classe))
     }
 
 	boutonRetour.signal_connect('clicked'){

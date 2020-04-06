@@ -26,15 +26,15 @@ class FenetreJeu < Gtk::Box
 
 	attr_reader :grilleTest, :longueur, :largeur
 
-	def initialize(window, difficulte, classe, save = nil, long=nil, larg=nil, dens=nil, tuto = nil)
+	def initialize(window,fenPre ,difficulte, classe, save = nil, long=nil, larg=nil, dens=nil, tuto = nil)
 		#vbox = Gtk::Box.new(:VERTICAL)
 
 		super(Gtk::Orientation::VERTICAL)
 
     @@fenetre = window
-
+	@fenPre = fenPre;
 		@tailleArea = @@fenetre.default_size[1] / 20 * 13
-
+		@tuto = tuto
     @difficulte = difficulte
 		@classe = classe
 
@@ -1042,7 +1042,9 @@ class FenetreJeu < Gtk::Box
 
 	def initBoutonRetour
     @boutonRetour = UnBoutonPerso.new("Retour", "BoutonEnJeu")do
-			if(!@classe)
+			if(@tuto)
+					@@fenetre.changerWidget(@fenPre)
+			elsif(!@classe)
 				popup = Gtk::MessageDialog.new(@@fenetre, :modal, :question, :none, "Souhaitez-vous sauvegarder la partie ? La sauvegarde précédente sera écrasée.")
 				popup.add_buttons(["Sauvegarder", :yes], ["Quitter", :no], [Gtk::Stock::CANCEL, :reject])
 
@@ -1051,9 +1053,9 @@ class FenetreJeu < Gtk::Box
 				if(response == :yes)
 					save = Sauvegarde.nouvelle(@grilleTest, @grilleComplete, nil, @difficulte)
 					save.sauvegarder()
-					@@fenetre.changerWidget(FenetreMenu.new(@@fenetre))
+					@@fenetre.changerWidget(@fenPre)
 				elsif(response == :no)
-					@@fenetre.changerWidget(FenetreMenu.new(@@fenetre))
+					@@fenetre.changerWidget(@fenPre)
 				end
 
 				popup.destroy()
@@ -1066,7 +1068,7 @@ class FenetreJeu < Gtk::Box
 
 				if(response == :no)
 					popup.destroy()
-					@@fenetre.changerWidget(FenetreMenu.new(@@fenetre))
+					@@fenetre.changerWidget(@fenPre)
 				else
 					popup.destroy()
 					@chr.chronometrer()

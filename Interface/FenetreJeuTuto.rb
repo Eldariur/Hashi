@@ -1,8 +1,8 @@
 class FenetreJeuTuto < FenetreJeu
 
-  def initialize(window,diff,tuto)
+  def initialize(window,fenPre,diff,tuto)
     @@fenetre = window
-    super(window,"easy",nil,tuto)
+    super(window,fenPre,"easy",nil,tuto)
 
 
     # labelDidact = UnLabelPerso.new("Didacticiels","LabelTitre")

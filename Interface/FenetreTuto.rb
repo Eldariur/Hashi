@@ -1,6 +1,6 @@
 class FenetreTuto < Gtk::Box
 
-  def initialize(window, fenPre)
+  def initialize(window,fenPre)
     @@fenetre = window
     puts window.to_s
     super(Gtk::Orientation::VERTICAL)
@@ -35,11 +35,10 @@ class FenetreTuto < Gtk::Box
 
     labelBasique = UnLabelPerso.new("Débutant","LabelTitre2")
 
-    boutonTutoB1 = BoutonTuto.new(@@fenetre,"1","D1")
-
-    boutonTutoB2 = BoutonTuto.new(@@fenetre,"2","D2")
-    boutonTutoB3 = BoutonTuto.new(@@fenetre,"3","D3")
-    boutonTutoB4 = BoutonTuto.new(@@fenetre,"4","D4")
+    boutonTutoB1 = BoutonTuto.new(@@fenetre,self,"1","D1")
+    boutonTutoB2 = BoutonTuto.new(@@fenetre,self,"2","D2")
+    boutonTutoB3 = BoutonTuto.new(@@fenetre,self,"3","D3")
+    boutonTutoB4 = BoutonTuto.new(@@fenetre,self,"4","D4")
 
     boxBoutonTutoB = Gtk::Box.new(Gtk::Orientation::HORIZONTAL)
     boxBoutonTutoB.add(boutonTutoB1)
@@ -58,18 +57,18 @@ class FenetreTuto < Gtk::Box
 
     labelAvance = UnLabelPerso.new("Avancé","LabelTitre2")
 
-    boutonTutoA1 = BoutonTuto.new(@@fenetre,"1","A1")
-    boutonTutoA2 = BoutonTuto.new(@@fenetre,"2","A2")
-    boutonTutoA3 = BoutonTuto.new(@@fenetre,"3","A3")
-    boutonTutoA4 = BoutonTuto.new(@@fenetre,"4","A4")
-    boutonTutoA5 = BoutonTuto.new(@@fenetre,"5","A5")
-    boutonTutoA6 = BoutonTuto.new(@@fenetre,"6","A6")
-    boutonTutoA7 = BoutonTuto.new(@@fenetre,"7","A7")
-    boutonTutoA8 = BoutonTuto.new(@@fenetre,"8","A8")
-    boutonTutoA9 = BoutonTuto.new(@@fenetre,"9","A9")
-    boutonTutoA10 = BoutonTuto.new(@@fenetre,"10","A10")
-    boutonTutoA11 = BoutonTuto.new(@@fenetre,"11","A11")
-    boutonTutoA12 = BoutonTuto.new(@@fenetre,"12","A12")
+    boutonTutoA1 = BoutonTuto.new(@@fenetre,self,"1","A1")
+    boutonTutoA2 = BoutonTuto.new(@@fenetre,self,"2","A2")
+    boutonTutoA3 = BoutonTuto.new(@@fenetre,self,"3","A3")
+    boutonTutoA4 = BoutonTuto.new(@@fenetre,self,"4","A4")
+    boutonTutoA5 = BoutonTuto.new(@@fenetre,self,"5","A5")
+    boutonTutoA6 = BoutonTuto.new(@@fenetre,self,"6","A6")
+    boutonTutoA7 = BoutonTuto.new(@@fenetre,self,"7","A7")
+    boutonTutoA8 = BoutonTuto.new(@@fenetre,self,"8","A8")
+    boutonTutoA9 = BoutonTuto.new(@@fenetre,self,"9","A9")
+    boutonTutoA10 = BoutonTuto.new(@@fenetre,self,"10","A10")
+    boutonTutoA11 = BoutonTuto.new(@@fenetre,self,"11","A11")
+    boutonTutoA12 = BoutonTuto.new(@@fenetre,self,"12","A12")
 
 
     boxBoutonTutoAL1 = Gtk::Box.new(Gtk::Orientation::HORIZONTAL)

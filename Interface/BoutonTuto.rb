@@ -1,6 +1,6 @@
 class BoutonTuto < Gtk::Button
 
-  def initialize(window, str="", niveau = nil, labelNom="UnLabelPerso")
+  def initialize(window,fenPre,str="", niveau = nil, labelNom="UnLabelPerso")
 		super()
 
 
@@ -15,7 +15,7 @@ class BoutonTuto < Gtk::Button
       #tuto.lancerTuto()
 
       # (window, difficulte, classe, save = nil, long=nil, larg=nil, dens=nil, tuto = nil)
-      @@fenetre.changerWidget(FenetreJeu.new(@@fenetre, 'easy', false, nil, nil, nil, nil, tuto))
+      @@fenetre.changerWidget(FenetreJeu.new(@@fenetre,fenPre,'easy', false, nil, nil, nil, nil, tuto))
 
 		}
   end

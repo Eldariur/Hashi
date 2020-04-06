@@ -1,7 +1,7 @@
 
 class FenetreParametres < Gtk::Box
 
-  def initialize(window)
+  def initialize(window,fenPre)
     @@fenetre = window
     super(Gtk::Orientation::VERTICAL)
     lbl1 = UnLabelPerso.new("Longueur de la grille: ")
@@ -14,6 +14,8 @@ class FenetreParametres < Gtk::Box
 
     boutonVal = UnBoutonPerso.new("VALIDER", "BoutonMenu")
     boutonRes = UnBoutonPerso.new("REINITIALISER", "BoutonMenu")
+	boutonRetour = UnBoutonPerso.new("<--","BoutonMenu")
+
 
     tbl = Gtk::Table.new(1,1)
     vb = Gtk::Box.new(Gtk::Orientation::VERTICAL)
@@ -37,6 +39,8 @@ class FenetreParametres < Gtk::Box
 
     vb.add(boutonVal)
     vb.add(boutonRes)
+	vb.add(boutonRetour)
+
     tbl.attach(vb,0,1,0,1, Gtk::AttachOptions::EXPAND)
     self.add(tbl)
 
@@ -58,11 +62,16 @@ class FenetreParametres < Gtk::Box
       densScale.setValue(32+rand(0..6));
     }
 
+	boutonRetour.signal_connect('clicked'){
+		@@fenetre.changerWidget(fenPre)
+	}
+
+
     boutonVal.signal_connect('clicked') {
       puts "longueur " + lengthScale.getValue().to_s()
       puts "largeur  " + heightScale.getValue().to_s()
       puts "densite  " + densScale.getValue().to_s()
-      @@fenetre.changerWidget(FenetreJeu.new(@@fenetre, nil, false, nil, lengthScale.getValue().round(), heightScale.getValue().round(), densScale.getValue().round()))
+      @@fenetre.changerWidget(FenetreJeu.new(@@fenetre,fenPre ,nil, false, nil, lengthScale.getValue().round(), heightScale.getValue().round(), densScale.getValue().round()))
     }
 
     boutonRes.signal_connect('clicked') {
