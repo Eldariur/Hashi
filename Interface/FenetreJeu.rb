@@ -52,6 +52,7 @@ class FenetreJeu < Gtk::Box
 			@grilleComplete = @grilleTest
 		elsif(tuto != nil)
 			@grilleTest = tuto.lancerTuto.grille
+
 			# @longueur = @grilleTest.longueur
 			# @largeur = @grilleTest.largeur
 		else
@@ -881,7 +882,7 @@ class FenetreJeu < Gtk::Box
 						@cr.set_source_rgb 1,0,0
 					end
 				end
-			elsif(@caseAide != nil && s.position == @aide.getCaseAide)
+			elsif(@caseAide != nil && s.position == @aide.getCaseAide && @afficheAide)
 				@cr.set_source_rgb 0,1,0
 			end
 
@@ -1163,6 +1164,7 @@ class FenetreJeu < Gtk::Box
 		@boxMessage.halign = Gtk::Align::CENTER
     		@boutonAide = UnBoutonPerso.new("?", "BoutonEnJeu")do
 			@erreurs = nil
+			@afficheAide = false
 			@afficherErreur = false
 			@erreurs = @grilleTest.trouverErreurs(@grilleComplete)
 
@@ -1171,6 +1173,8 @@ class FenetreJeu < Gtk::Box
 
 
 			if(@presser)
+				puts "le bouton n'est plus pressé !"
+				@afficheAide = false
 
 				# if(@erreurs != nil && @erreurs.size != 0)
 				# 	@labelMessage = UnLabelPerso.new("Vous avez "+@erreurs.size().to_s+" erreur(s)")
@@ -1195,13 +1199,14 @@ class FenetreJeu < Gtk::Box
 				@boutonRecom.deverrouiller()
 				@boutonAnnul.deverrouiller()
 				masquerBouton
+				afficheEcran
 				# retirerContenu(vbox,messageLabel)
 				#retirerContenu(@boxMessage,@aideTxt)
 				# retirerContenu(vbox,@boutonAideVisu)
 
 			else
 
-				puts "je viens d'appuyer sur le bouton"
+
 				@presser = true
 				if(@aide == nil)
 					@aide = Aide.creer(@grilleTest)
@@ -1274,6 +1279,7 @@ class FenetreJeu < Gtk::Box
     @boutonAideVisu = UnBoutonPerso.new("Aide Visuelle", "BoutonEnJeuGros")do
 			puts "appuie bouton visuelle"
 			@aide = Aide.creer(@grilleTest)
+			@afficheAide = true
 
 			# retirerContenu(vbox,@boutonAideTxt)
 			# retirerContenu(vbox,@boutonAideVisu)
