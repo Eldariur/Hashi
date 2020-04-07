@@ -207,6 +207,7 @@ grille: &1 !ruby/object:Grille
   - *6
   undo: !ruby/object:Undo
     tabAction: []
+grilleComplete: 
 estHypothese: false
 chronometre: 
 difficulte: 0

@@ -229,6 +229,7 @@ grille: &1 !ruby/object:Grille
   - *11
   undo: !ruby/object:Undo
     tabAction: []
+grilleComplete: 
 estHypothese: false
 chronometre: 
 difficulte: 0

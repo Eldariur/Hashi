@@ -5,9 +5,8 @@ load "../Code/Arete.rb"
 load "../Sauvegarde/Sauvegarde.rb"
 load "../Code/Undo.rb"
 
-if(!Dir.exist?('Basique') && !Dir.exist?('Avancée')) then
-  Dir::mkdir("Basique", 0777)
-  Dir::mkdir("Avancée", 0777)
+if(!Dir.exist?('Niveaux')) then
+  Dir::mkdir("Niveaux", 0777)
 end
 
 count = 0
@@ -27,7 +26,7 @@ grille.afficher
 
 while(gets == nil) do end
 
-save = Sauvegarde.nouvelle(grille,nil,0)
+save = Sauvegarde.nouvelle(grille,nil,nil,0)
 save.sauvegarderAvecNom("Niveaux/D1.sav")
 #
 
@@ -43,7 +42,7 @@ grille.afficher
 
 while(gets == nil) do end
 
-save = Sauvegarde.nouvelle(grille,nil,0)
+save = Sauvegarde.nouvelle(grille,nil,nil,0)
 save.sauvegarderAvecNom("Niveaux/D2.sav")
 #
 
@@ -63,7 +62,7 @@ grille.afficher
 
 while(gets == nil) do end
 
-save = Sauvegarde.nouvelle(grille,nil,0)
+save = Sauvegarde.nouvelle(grille,nil,nil,0)
 save.sauvegarderAvecNom("Niveaux/D3.sav")
 #
 
@@ -86,7 +85,7 @@ grille.afficher
 
 while(gets == nil) do end
 
-save = Sauvegarde.nouvelle(grille,nil,0)
+save = Sauvegarde.nouvelle(grille,nil,nil,0)
 save.sauvegarderAvecNom("Niveaux/D4.sav")
 #
 
@@ -107,7 +106,7 @@ grille.afficher
 
 while(gets == nil) do end
 
-save = Sauvegarde.nouvelle(grille,nil,0)
+save = Sauvegarde.nouvelle(grille,nil,nil,0)
 save.sauvegarderAvecNom("Niveaux/A1.sav")
 #
 
@@ -125,7 +124,7 @@ grille.afficher
 
 while(gets == nil) do end
 
-save = Sauvegarde.nouvelle(grille,nil,0)
+save = Sauvegarde.nouvelle(grille,nil,nil,0)
 save.sauvegarderAvecNom("Niveaux/A2.sav")
 #
 
@@ -142,7 +141,7 @@ grille.afficher
 
 while(gets == nil) do end
 
-save = Sauvegarde.nouvelle(grille,nil,0)
+save = Sauvegarde.nouvelle(grille,nil,nil,0)
 save.sauvegarderAvecNom("Niveaux/A3.sav")
 #
 
@@ -158,7 +157,7 @@ grille.afficher
 
 while(gets == nil) do end
 
-save = Sauvegarde.nouvelle(grille,nil,0)
+save = Sauvegarde.nouvelle(grille,nil,nil,0)
 save.sauvegarderAvecNom("Niveaux/A4.sav")
 #
 
@@ -178,7 +177,7 @@ grille.afficher
 
 while(gets == nil) do end
 
-save = Sauvegarde.nouvelle(grille,nil,0)
+save = Sauvegarde.nouvelle(grille,nil,nil,0)
 save.sauvegarderAvecNom("Niveaux/A5.sav")
 #
 
@@ -200,7 +199,7 @@ grille.afficher
 
 while(gets == nil) do end
 
-save = Sauvegarde.nouvelle(grille,nil,0)
+save = Sauvegarde.nouvelle(grille,nil,nil,0)
 save.sauvegarderAvecNom("Niveaux/A6.sav")
 #
 
@@ -220,7 +219,7 @@ grille.afficher
 
 while(gets == nil) do end
 
-save = Sauvegarde.nouvelle(grille,nil,0)
+save = Sauvegarde.nouvelle(grille,nil,nil,0)
 save.sauvegarderAvecNom("Niveaux/A7.sav")
 #
 
@@ -242,7 +241,7 @@ grille.afficher
 
 while(gets == nil) do end
 
-save = Sauvegarde.nouvelle(grille,nil,0)
+save = Sauvegarde.nouvelle(grille,nil,nil,0)
 save.sauvegarderAvecNom("Niveaux/A8.sav")
 #
 
@@ -267,7 +266,7 @@ grille.afficher
 
 while(gets == nil) do end
 
-save = Sauvegarde.nouvelle(grille,nil,0)
+save = Sauvegarde.nouvelle(grille,nil,nil,0)
 save.sauvegarderAvecNom("Niveaux/A9.sav")
 #
 
@@ -288,7 +287,7 @@ grille.afficher
 
 while(gets == nil) do end
 
-save = Sauvegarde.nouvelle(grille,nil,0)
+save = Sauvegarde.nouvelle(grille,nil,nil,0)
 save.sauvegarderAvecNom("Niveaux/A10.sav")
 #
 
@@ -311,7 +310,7 @@ grille.afficher
 
 while(gets == nil) do end
 
-save = Sauvegarde.nouvelle(grille,nil,0)
+save = Sauvegarde.nouvelle(grille,nil,nil,0)
 save.sauvegarderAvecNom("Niveaux/A11.sav")
 #
 
@@ -336,6 +335,6 @@ grille.afficher
 
 while(gets == nil) do end
 
-save = Sauvegarde.nouvelle(grille,nil,0)
+save = Sauvegarde.nouvelle(grille,nil,nil,0)
 save.sauvegarderAvecNom("Niveaux/A12.sav")
 #

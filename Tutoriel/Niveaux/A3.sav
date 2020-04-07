@@ -123,6 +123,7 @@ grille: &1 !ruby/object:Grille
   aretes: []
   undo: !ruby/object:Undo
     tabAction: []
+grilleComplete: 
 estHypothese: false
 chronometre: 
 difficulte: 0
