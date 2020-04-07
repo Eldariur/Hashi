@@ -1,11 +1,11 @@
 require 'yaml'
 
-# Cette classe represente un sauvegarde.
+# Cette classe représente une sauvegarde.
 class Sauvegarde
   #@grille -> La grille sauvegardé.
   #@grilleComplete -> La grille de départ de la grille sauvegardé
-  #@chronometre -> Le chronometre sauvegardé.
-  #@estHypothese -> Si la sauvegarde est une hypothese ou non.
+  #@chronometre -> Le chronomètre sauvegardé.
+  #@estHypothese -> Si la sauvegarde est une hypothèse ou non.
   #@difficulte -> La difficulte de la sauvegarde.
 
   # Privatise le new.
@@ -13,11 +13,11 @@ class Sauvegarde
 
   # Initialisation de la class Sauvegarde.
   # === Parametre
-  # * +grille+ : grille La grille a sauvegarder.
-  # * +grilleComplete+ : grilleComplete La grille de départ de la grille a sauvegarder.
-  # * +chrono+ : chrono Le chronometre a sauvegarder.
+  # * +grille+ : grille La grille à sauvegarder.
+  # * +grilleComplete+ : grilleComplete La grille de départ de la grille à sauvegarder.
+  # * +chrono+ : chrono Le chronomètre à sauvegarder.
   # * +difficulte+ : difficulte La difficulte de la grille.
-  # * +hypothese+ : hypothese Le choix d'une sauvegarde pour une hypothese ou non.
+  # * +hypothese+ : hypothese Le choix d'une sauvegarde pour une hypothèse ou non.
   def initialize(grille, grilleComplete, chrono, difficulte, hypothese = false)
     @grille = grille
     @grilleComplete = grilleComplete
@@ -31,14 +31,15 @@ class Sauvegarde
     end
   end
 
-  # Creer un nouveau chronomètre.
+  # Créer un nouveau chronomètre.
   # === Parametre
-  # * +grille+ : grille La grille a sauvegarder.
-  # * +chrono+ : chrono Le chronometre a sauvegarder.
+  # * +grille+ : grille La grille à sauvegarder.
+  # * +grilleComplete+ : grilleComplete La grille de départ de la grille à sauvegarder.
+  # * +chrono+ : chrono Le chronomètre à sauvegarder.
   # * +difficulte+ : difficulte La difficulte de la grille.
-  # * +hypothese+ : hypothese Le choix d'une sauvegarde pour une hypothese ou non.
-  def Sauvegarde.nouvelle(grille, grilleDep, chrono, difficulte, hypothese = false)
-    new(grille, grilleDep, chrono, difficulte, hypothese)
+  # * +hypothese+ : hypothese Le choix d'une sauvegarde pour une hypothèse ou non.
+  def Sauvegarde.nouvelle(grille, grilleComplete, chrono, difficulte, hypothese = false)
+    new(grille, grilleComplete, chrono, difficulte, hypothese)
   end
 
   # Accesseur get sur l'attribut grille.
@@ -52,14 +53,14 @@ class Sauvegarde
   # Accesseur get sur l'attribut estHypothese.
   attr:difficulte, false
 
-  # Renvoie le chronometre de la sauvegarde.
+  # Renvoie le chronomètre de la sauvegarde.
   # === Return
-  # * +@chronometre+ : @chronometre Le chronometre de la sauvegarde.
+  # * +@chronometre+ : @chronometre Le chronomètre de la sauvegarde.
   def getChrono()
     return @chronometre
   end
 
-  # Effectue les opération de sauvegarde sur une sauvegarde.
+  # Effectue les opérations de sauvegarde sur une sauvegarde.
   def sauvegarder()
     dump = YAML::dump(self)
     if(@estHypothese) then
@@ -109,18 +110,18 @@ class Sauvegarde
     return save
   end
 
-  # Permet de créer une hypothese.
+  # Permet de créer une hypothèse.
   def Sauvegarde.nouvelleHypothese(grille)
     save = Sauvegarde.nouvelle(grille,nil,nil,nil,true)
     save.sauvegarder()
   end
 
-  # Permet de valider une hypothese.
+  # Permet de valider une hypothèse.
   def Sauvegarde.validerHypothese()
     File.delete('../Sauvegarde/Save/temp.sav')
   end
 
-  # Annule une hypothese en cours et retourne l'ancienne grille pre-hypothese.
+  # Annule une hypothèse en cours et retourne l'ancienne grille pre-hypothèse.
   # === Return
   # * +save.grille+ : save.grille La grille de la sauvegarde.
   def Sauvegarde.annulerHypothese(mode = true)
@@ -131,7 +132,7 @@ class Sauvegarde
     return save.grille
   end
 
-  # Genere les dossiers necessaire au fonctionnement des sauvegardes.
+  # Génére les dossiers nécessaires au fonctionnement des sauvegardes.
   def Sauvegarde.genenerDossier()
     if(!Dir.exist?('Save')) then
       Dir::mkdir("Save", 0777)
@@ -160,7 +161,7 @@ class Sauvegarde
     end
   end
 
-  # Cette methode redefini to_s pour afficher une sauvegarde.
+  # Cette méthode redefini to_s pour afficher une sauvegarde.
   def to_s
     if(@estHypothese) then
       "Sauvegarde : \n-Grille :\n#{@grille}-estHypo = #{@estHypothese}\n---------------------------------------------------\n"

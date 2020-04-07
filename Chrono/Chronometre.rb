@@ -4,8 +4,8 @@ require 'gtk3'
 class Chrono < Gtk::Label
   #@stop -> Permet de stopper le chronomètre.
   #@total -> Contient le total de secondes écoulées.
-  #@base -> Permet de sauvegarder le temps a partir du quel on chronomètre.
-  #@temp -> Permet de pouvoir relancer le chronomètre avec une valeur deja existante.
+  #@base -> Permet de sauvegarder le temps à partir du quel on chronomètre.
+  #@temp -> Permet de pouvoir relancer le chronomètre avec une valeur déjà existante.
 
   # Privatise le new.
 	private_class_method :new
@@ -19,7 +19,7 @@ class Chrono < Gtk::Label
 	super(self.to_s)
   end
 
-  # Creer un nouveau chronomètre.
+  # Créer un nouveau chronomètre.
   def Chrono.nouveau()
     new()
   end
@@ -40,7 +40,7 @@ class Chrono < Gtk::Label
     @temp = 0
   end
 
-  # Lance le chronometrage.
+  # Lance le chronométrage.
   def chronometrer()
 		Thread.new {
 	    self.reset()
@@ -57,7 +57,7 @@ class Chrono < Gtk::Label
 		}
   end
 
-  # Permet d'arreter le chronomètre.
+  # Permet d'arrêter le chronomètre.
   def arreter()
     @stop = 1
   end
@@ -93,14 +93,14 @@ class Chrono < Gtk::Label
     return res
   end
 
-	# Cette methode redefini to_s pour afficher un chronometre.
+	# Cette méthode redéfini to_s pour afficher un chronometre.
 	def to_s()
 		self.to_chrono()
 	end
 
 end
 
-# Methode de test pour arreter le chronomètre en fonction d'un temps en secondes donné.
+# Méthode de test pour arrêter le chronomètre en fonction d'un temps en secondes donné.
 # === Parametre
 # * +t+ : t Le temps pour temporiser.
 # * +c+ : c Le chronomètre.
@@ -112,7 +112,7 @@ def stoptemps(t,c)
   c.arreter()
 end
 
-# Methode de test pour arreter le chronomètre en fonction de l'appuie sur une touche.
+# Méthode de test pour arrêter le chronomètre en fonction de l'appuie sur une touche.
 # === Parametre
 # * +c+ : c Le chronomètre.
 def stopsaisie(c)
