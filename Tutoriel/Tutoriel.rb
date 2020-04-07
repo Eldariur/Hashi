@@ -1,6 +1,5 @@
 class Tutoriel
-
-attr_reader :txtTuto
+attr_reader :txtTuto, :niveau
 
 def initialize(numeroNiveau)
 	@niveau = numeroNiveau
@@ -14,6 +13,7 @@ end
 	def getMessageTuto()
 		file_data = File.read("../Tutoriel/TextTuto.txt").split("/").join(":").split(":")
 		@txtTuto = file_data
+		#self.set_text(@txtTuto)
 		#puts file_data
 		affiche = false
 
