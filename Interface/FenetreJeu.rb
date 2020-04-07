@@ -1335,7 +1335,9 @@ class FenetreJeu < Gtk::Box
 	def masquerBouton
 		@boutonAnnulHypo.hide
 		@boutonValidHypo.hide
-		@labelMessage.hide
+		if @tuto == nil
+			@labelMessage.hide
+		end
 		if @aideTxt != nil
 			@aideTxt.hide
 		end
