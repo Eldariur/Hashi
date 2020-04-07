@@ -25,7 +25,8 @@ class Tutoriel
 		affiche = false
 
 		file_data.each do |x|
-    	if( affiche )	return x
+    	if( affiche )
+				return x
 			elsif( x == "\n"+@niveau.to_s)
 				affiche = true
 			end
