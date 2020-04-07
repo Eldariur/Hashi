@@ -199,6 +199,7 @@ class FenetreJeu < Gtk::Box
 		masquerBouton
 		if(tuto != nil)
 			masquerAllBouton
+			initBoutonTuto(tuto.niveau)
 			@labelMessage = UnLabelPerso.new(tuto.getMessageTuto,"UnLabelBlanc")
 			retirerContenu(@boxMessage,@labelMessage)
 			ajouterContenu(@boxMessage,@labelMessage)
@@ -352,7 +353,7 @@ class FenetreJeu < Gtk::Box
 
 			end
 		end
-		if(grilleGagnante && !@hypothese)
+		if(grilleGagnante && !@hypothese && @tuto == nil)
 			puts "VOUS AVEZ GAGNÉ !!!!"
 			if(@chr != nil)
 				@chr.arreter()
@@ -1375,6 +1376,25 @@ class FenetreJeu < Gtk::Box
 		@boutonAnnul.hide
 		@boutonRecom.hide
 	end
+
+	def initBoutonTuto(numNiveau)
+		case(numNiveau)
+		when "D1"
+
+		when "D2"
+			@boutonAnnul.show
+		when "D3"
+			@boutonAnnul.show
+			@boutonAide.show
+			@boutonRecom.show
+		else
+			@boutonAnnul.show
+			@boutonAide.show
+			@boutonRecom.show
+			@boutonHypo.show
+		end
+	end
+
 
 
 end
