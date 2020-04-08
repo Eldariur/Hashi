@@ -30,11 +30,7 @@ class FenEx < Gtk::Window
 
 		self.fullscreen()
 
-<<<<<<< HEAD
-		self.set_default_size(Gdk::Screen::width,Gdk::Screen::height)
-=======
 		self.set_default_size(Gdk::Screen::width < 3000 ? Gdk::Screen::width : Gdk::Screen::width/2,Gdk::Screen::height)
->>>>>>> 11828080500a919c33b018cd8e1027ccc51ba766
     self.set_resizable(false)
     self.set_title("Jeu Hashi")
 		self.window_position=Gtk::WindowPosition::CENTER
