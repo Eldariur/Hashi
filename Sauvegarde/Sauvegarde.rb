@@ -62,6 +62,7 @@ class Sauvegarde
 
   # Effectue les opérations de sauvegarde sur une sauvegarde.
   def sauvegarder()
+    Sauvegarde.genenerDossier();
     dump = YAML::dump(self)
     if(@estHypothese) then
       file = File.open(File.path('../Sauvegarde/Save/temp.sav'), 'w')
