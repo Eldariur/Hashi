@@ -113,6 +113,16 @@ class Sauvegarde
     return save
   end
 
+  # Charge une sauvegarde depuis un fichier en fonction du nom passé en parametre.
+  # === Parametre
+  # * +nom+ : nom Le nom de la sauvegarde.
+  # === Return
+  # * +save+ : save La sauvegarde chargée.
+  def chargerAvecNom(nom)
+    save = YAML.load(File.read(nom))
+    return save
+  end
+
   # Permet de créer une hypothèse.
   def Sauvegarde.nouvelleHypothese(grille)
     save = Sauvegarde.nouvelle(grille,nil,nil,nil,true)
