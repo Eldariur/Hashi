@@ -100,7 +100,7 @@ class Sauvegarde
       save = YAML.load(File.read('../Sauvegarde/Save/temp.sav'))
     else
       case @difficulte
-      when "easy"
+        when "easy"
           save = YAML.load(File.read('../Sauvegarde/Save/easy/save.sav'))
         when "normal"
           save = YAML.load(File.read('../Sauvegarde/Save/normal/save.sav'))

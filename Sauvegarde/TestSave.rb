@@ -1,10 +1,10 @@
-load "../Code/Grille.rb"
-load "../Code/Case.rb"
-load "../Code/Sommet.rb"
-load "../Code/Arete.rb"
-load "../Chrono/Chronometre.rb"
-load "Sauvegarde.rb"
-load "../Code/Undo.rb"
+require_relative "../Code/Grille.rb"
+require_relative "../Code/Case.rb"
+require_relative "../Code/Sommet.rb"
+require_relative "../Code/Arete.rb"
+require_relative "../Chrono/Chronometre.rb"
+require_relative "../Sauvegarde/Sauvegarde.rb"
+require_relative "../Code/Undo.rb"
 
 # Test de génération de grilles prédéfinies
 

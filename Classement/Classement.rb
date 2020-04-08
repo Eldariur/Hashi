@@ -1,5 +1,5 @@
-require_relative "./Score.rb"
-require_relative "./Highscore.rb"
+require_relative "../Classement/Score.rb"
+require_relative "../Classement/Highscore.rb"
 
 # Cette classe represente un classement.
 class Classement
