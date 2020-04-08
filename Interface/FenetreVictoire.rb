@@ -38,7 +38,11 @@ class FenetreVictoire < Gtk::Box
     }
 
     boutonRejouer.signal_connect('clicked') {
-      @@fenetre.changerWidget(FenetreMenuJouer.new(@@fenetre, FenetreMenu.new(@@fenetre)))
+        if(temps != nil && temps != "00:00")
+            @@fenetre.changerWidget(FenetreModeChrono.new(@@fenetre, FenetreMenuJouer.new(@@fenetre, FenetreMenu.new(@@fenetre))))
+        else
+            @@fenetre.changerWidget(FenetreModesDifficultes.new(@@fenetre, FenetreMenuJouer.new(@@fenetre, FenetreMenu.new(@@fenetre))))
+        end
     }
 
     boutonQuitter.signal_connect('clicked') {
