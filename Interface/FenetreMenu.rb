@@ -20,6 +20,8 @@ class FenetreMenu < Gtk::Box
     }
 
     bouton3.signal_connect('clicked') {
+	puts"J ai été push"
+	@@fenetre.destroy()
       Gtk.main_quit
     }
 
