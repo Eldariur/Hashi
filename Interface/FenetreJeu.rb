@@ -28,7 +28,6 @@ class FenetreJeu < Gtk::Box
 
 	def initialize(window,fenPre ,difficulte, classe, save = nil, long=nil, larg=nil, dens=nil, tuto = nil)
 		#vbox = Gtk::Box.new(:VERTICAL)
-
 		super(Gtk::Orientation::VERTICAL)
 
     @@fenetre = window
@@ -358,9 +357,10 @@ class FenetreJeu < Gtk::Box
 			puts "VOUS AVEZ GAGNÉ !!!!"
 			if(@chr != nil)
 				@chr.arreter()
+				@chr.kill
 				@@fenetre.changerWidget(FenetreVictoire.new(@@fenetre,@difficulte,@chr.to_chrono))
 			else
-				@@fenetre.changerWidget(FenetreVictoire.new(@@fenetre,@difficulte,nil))
+				@@fenetre.changerWidget(FenetreVictoire.new(@@fenetre,@difficulte))
 			end
 
 		end
@@ -1069,9 +1069,11 @@ class FenetreJeu < Gtk::Box
 				response = popup.run()
 
 				if(response == :no)
+					@chr.fin
 					popup.destroy()
 					@@fenetre.changerWidget(@fenPre)
 				else
+
 					popup.destroy()
 					@chr.chronometrer()
 				end
