@@ -74,16 +74,17 @@ class FenetreModesDifficultes < Gtk::Box
         save = Sauvegarde.nouvelle(nil, nil, nil, difficulte)
         partie = save.charger()
         popup.destroy()
-        @@fenetre.changerWidget(FenetreJeu.new(@@fenetre, self ,difficulte, @classe, partie))
+        @@fenetre.changerWidget(FenetreJeu.new(@@fenetre, self, difficulte, @classe, partie))
       elsif(response == :no)
         @@fenetre.changerWidget(FenetreParametres.new(@@fenetre, self))
       end
     else
       if(response == :yes)
+        puts "je suis ici"
         save = Sauvegarde.nouvelle(nil, nil, nil, difficulte)
         partie = save.charger()
         popup.destroy()
-        @@fenetre.changerWidget(FenetreJeu.new(@@fenetre,self,difficulte, @classe, partie))
+        @@fenetre.changerWidget(FenetreJeu.new(@@fenetre, self, difficulte, @classe, partie))
       elsif(response == :no)
         popup.destroy()
         @@fenetre.changerWidget(FenetreJeu.new(@@fenetre,self, difficulte, @classe))

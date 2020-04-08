@@ -28,6 +28,7 @@ class FenetreJeu < Gtk::Box
 
 	def initialize(window,fenPre ,difficulte, classe, save = nil, long=nil, larg=nil, dens=nil, tuto = nil)
 		#vbox = Gtk::Box.new(:VERTICAL)
+
 		super(Gtk::Orientation::VERTICAL)
 
     @@fenetre = window
@@ -48,10 +49,9 @@ class FenetreJeu < Gtk::Box
 		if(save == nil && tuto == nil )
 			@gene = Generateur.new(@difficulte, long, larg, dens)
 			@grilleTest = @gene.creeUneGrille()
-			@grilleComplete = @gene.getGrilleAvecArete()
+			@grilleComplete = @grilleTest
 		elsif(tuto != nil)
 			@grilleTest = tuto.lancerTuto.grille
-			@grilleComplete = tuto.lancerTuto.grilleComplete
 
 			# @longueur = @grilleTest.longueur
 			# @largeur = @grilleTest.largeur
@@ -358,10 +358,9 @@ class FenetreJeu < Gtk::Box
 			puts "VOUS AVEZ GAGNÉ !!!!"
 			if(@chr != nil)
 				@chr.arreter()
-				@chr.fin
 				@@fenetre.changerWidget(FenetreVictoire.new(@@fenetre,@difficulte,@chr.to_chrono))
 			else
-				@@fenetre.changerWidget(FenetreVictoire.new(@@fenetre,@difficulte))
+				@@fenetre.changerWidget(FenetreVictoire.new(@@fenetre,@difficulte,nil))
 			end
 
 		end
@@ -1063,18 +1062,16 @@ class FenetreJeu < Gtk::Box
 
 				popup.destroy()
 			else
-				popup = Gtk::MessageDialog.new(@@fenetre, :modal, :question, :none, "Voulez vous quitter la partie classé ? Vous ne pouvez pas sauvegarder une partie classée")
+				popup = Gtk::MessageDialog.new(@@fenetre, :modal, :question, :none, "Voulez vous quitter la partie classée ? Vous ne pouvez pas sauvegarder une partie classée")
 				popup.add_buttons(["Continuer", :yes], ["Quitter", :no])
 
 				@chr.arreter()
 				response = popup.run()
 
 				if(response == :no)
-					@chr.fin
 					popup.destroy()
 					@@fenetre.changerWidget(@fenPre)
 				else
-
 					popup.destroy()
 					@chr.chronometrer()
 				end
@@ -1177,7 +1174,6 @@ class FenetreJeu < Gtk::Box
 
 			if(@presser)
 				@afficheAide = false
-				@afficherErreur = false
 
 				# if(@erreurs != nil && @erreurs.size != 0)
 				# 	@labelMessage = UnLabelPerso.new("Vous avez "+@erreurs.size().to_s+" erreur(s)")
@@ -1211,6 +1207,9 @@ class FenetreJeu < Gtk::Box
 
 
 				@presser = true
+				# if(@aide == nil)
+				# 	@aide = Aide.creer(@grilleTest)
+				# end
 				@boutonHypo.verrouiller()
 				@boutonRecom.verrouiller()
 				@boutonAnnul.verrouiller()
@@ -1226,7 +1225,6 @@ class FenetreJeu < Gtk::Box
 					# ajouterMessage(vbox,messageLabel)
 					# ajouterContenu(vbox,btnErreurVisu)
 				else
-					@aide = Aide.creer(@grilleTest)
 
 					@afficherErreur = false
 
@@ -1278,7 +1276,6 @@ class FenetreJeu < Gtk::Box
 
 	def initBoutonAideVisu
     @boutonAideVisu = UnBoutonPerso.new("Aide Visuelle", "BoutonEnJeuGros")do
-			puts "appuie bouton visuelle"
 			@aide = Aide.creer(@grilleTest)
 			@afficheAide = true
 
