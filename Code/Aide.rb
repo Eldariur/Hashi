@@ -33,7 +33,8 @@ class Aide < Gtk::Label
     @nb_voisins = Array.new(@grille.sommets.size())
     @id = definirCas()
     @penalite = 0
-	super(self.getMessageAide())
+    puts @id.to_s
+    super(self.getMessageAide())
   end
 
 
@@ -55,13 +56,13 @@ class Aide < Gtk::Label
   #
   # L'aide textuelle correspondant à l'id de l'aide appelante
   def getMessageAide()
-   	file_data = File.read("../Code/TexteAide.txt").split("\n").join(":").split(":")
+   	file_data = File.read("../Code/TexteAide.txt").split("/").join(":").split(":")
   	#puts file_data
   	affiche = false
   	file_data.each do |x|
   		if affiche
   			return x
-  		elsif x == @id.to_s()
+  		elsif x == "\n" + @id.to_s()
   			affiche = true
   		end
     end
@@ -118,6 +119,10 @@ class Aide < Gtk::Label
       return 13
     elsif estCas14()
       return 14
+    elsif estCas15()
+      return 15
+    elsif estCas16()
+      return 16
     else
       return 0
     end
@@ -132,7 +137,6 @@ class Aide < Gtk::Label
   def estCas1()
     @grille.sommets.each_with_index do |x, i|
       if @nb_voisins[i] == 1 && x.compterArete() != x.valeur
-        puts "coords : " + x.position.x.to_s() + ", " + x.position.y.to_s()
         @position = @grille.getCase(x.position.x, x.position.y)
         return true
       end
@@ -150,7 +154,6 @@ class Aide < Gtk::Label
   def estCas1Bis()
     @grille.sommets.each_with_index do |x, i|
       if x.compterVoisinsNonComplets() == 1 && x.compterArete() != x.valeur
-        puts "coords : " + x.position.x.to_s() + ", " + x.position.y.to_s()
         @position = @grille.getCase(x.position.x, x.position.y)
         return true
       end
@@ -167,7 +170,6 @@ class Aide < Gtk::Label
   def estCas2()
     @grille.sommets.each_with_index do |x, i|
       if x.valeur == 8 && x.compterArete() != x.valeur
-        puts "coords : " + x.position.x.to_s() + ", " + x.position.y.to_s()
         @position = @grille.getCase(x.position.x, x.position.y)
         return true
       end
@@ -184,7 +186,6 @@ class Aide < Gtk::Label
   def estCas3()
     @grille.sommets.each_with_index do |x, i|
       if x.valeur == 6 && @nb_voisins[i] == 3 && x.compterArete() != x.valeur
-        puts "coords : " + x.position.x.to_s() + ", " + x.position.y.to_s()
         @position = @grille.getCase(x.position.x, x.position.y)
         return true
       end
@@ -201,7 +202,6 @@ class Aide < Gtk::Label
   def estCas4()
     @grille.sommets.each_with_index do |x, i|
       if x.valeur == 4 && @nb_voisins[i] == 2 && x.compterArete() != x.valeur
-        puts "coords : " + x.position.x.to_s() + ", " + x.position.y.to_s()
         @position = @grille.getCase(x.position.x, x.position.y)
         return true
       end
@@ -225,7 +225,6 @@ class Aide < Gtk::Label
           end
         end
         if compteur == 1
-          puts "coords : " + x.position.x.to_s() + ", " + x.position.y.to_s()
           @position = @grille.getCase(x.position.x, x.position.y)
           return true
         end
@@ -244,13 +243,13 @@ class Aide < Gtk::Label
     compteur = 0
     @grille.sommets.each_with_index do |x, i|
       if x.valeur == 5 && @nb_voisins[i] == 3 && x.compterArete() != x.valeur
+        puts "test"
         x.getListeVoisins().each do |v|
-          if v.valeur == 1 && v.connexionsRestantes != 0
+          if v.valeur == 1
             compteur += 1
           end
         end
         if compteur == 1
-          puts "coords : " + x.position.x.to_s() + ", " + x.position.y.to_s()
           @position = @grille.getCase(x.position.x, x.position.y)
           return true
         end
@@ -275,7 +274,6 @@ class Aide < Gtk::Label
           end
         end
         if compteur == 1
-          puts "coords : " + x.position.x.to_s() + ", " + x.position.y.to_s()
           @position = @grille.getCase(x.position.x, x.position.y)
           return true
         end
@@ -293,7 +291,6 @@ class Aide < Gtk::Label
   def estCas8()
     @grille.sommets.each_with_index do |x, i|
       if x.valeur == 7 && !x.areteAvecChaqueVoisin()
-        puts "coords : " + x.position.x.to_s() + ", " + x.position.y.to_s()
         @position = @grille.getCase(x.position.x, x.position.y)
         return true
       end
@@ -310,7 +307,6 @@ class Aide < Gtk::Label
   def estCas9()
     @grille.sommets.each_with_index do |x, i|
       if x.valeur == 5 && @nb_voisins[i] == 3 && !x.areteAvecChaqueVoisin()
-        puts "coords : " + x.position.x.to_s() + ", " + x.position.y.to_s()
         @position = @grille.getCase(x.position.x, x.position.y)
         return true
       end
@@ -327,7 +323,6 @@ class Aide < Gtk::Label
   def estCas10()
     @grille.sommets.each_with_index do |x, i|
       if x.valeur == 3 && @nb_voisins[i] == 2 && !x.areteAvecChaqueVoisin()
-        puts "coords : " + x.position.x.to_s() + ", " + x.position.y.to_s()
         @position = @grille.getCase(x.position.x, x.position.y)
         return true
       end
@@ -346,12 +341,12 @@ class Aide < Gtk::Label
     @grille.sommets.each_with_index do |x, i|
       if x.valeur == 6 &&  x.compterArete() != x.valeur
         x.getListeVoisins().each do |v|
+          compteur = 0
           if v.valeur == 1
             compteur += 1
           end
         end
         if compteur == 2
-          puts "coords : " + x.position.x.to_s() + ", " + x.position.y.to_s()
           @position = @grille.getCase(x.position.x, x.position.y)
           return true
         end
@@ -371,12 +366,12 @@ class Aide < Gtk::Label
     @grille.sommets.each_with_index do |x, i|
       if x.valeur == 4 && @nb_voisins[i] == 3 && x.compterArete() != x.valeur
         x.getListeVoisins().each do |v|
+          compteur = 0
           if v.valeur == 1
             compteur += 1
           end
         end
         if compteur == 2
-          puts "coords : " + x.position.x.to_s() + ", " + x.position.y.to_s()
           @position = @grille.getCase(x.position.x, x.position.y)
           return true
         end
@@ -395,13 +390,12 @@ class Aide < Gtk::Label
     compteur = 0
     @grille.sommets.each_with_index do |x, i|
       if x.valeur == 1 && x.compterArete() != x.valeur
-        x.getListeVoisins().each do |v|
+        x.getListeVoisins().each do |v, j|
           if v.valeur == 1
             compteur += 1
           end
         end
         if compteur == @nb_voisins[i] - 1 && compteur != 0
-          puts "coords : " + x.position.x.to_s() + ", " + x.position.y.to_s()
           @position = @grille.getCase(x.position.x, x.position.y)
           return true
         end
@@ -422,7 +416,6 @@ class Aide < Gtk::Label
       if x.valeur == 2 && @nb_voisins[i] == 2 && x.compterArete() == 0
         x.getListeVoisins().each do |v|
           if v.valeur == 2
-            puts "coords : " + x.position.x.to_s() + ", " + x.position.y.to_s()
             @position = @grille.getCase(x.position.x, x.position.y)
             voisinDeux = true
           end
@@ -430,6 +423,47 @@ class Aide < Gtk::Label
       end
     end
     return voisinDeux
+  end
+
+  ## Méthode testant si un cas 15 est présent dans la grille
+  # Cas 15 : île à 2 avec deux îles voisines dont une île à 1 restante
+  #
+  # === Return
+  #
+  # true si le cas est vérifié pour un des sommets de la grille, false sinon
+  def estCas15()
+    voisinUn = false
+    @grille.sommets.each_with_index do |x, i|
+      if x.valeur == 2 && @nb_voisins[i] == 2 && x.compterArete() == 0
+        x.getListeVoisins().each do |v|
+          if v.valeur == 1
+            @position = @grille.getCase(x.position.x, x.position.y)
+            voisinUn = true
+          end
+        end
+      end
+    end
+    return voisinUn
+  end
+
+  ## Méthode testant si un cas 16 est présent dans la grille
+  # Cas 16 : île avec suffisamment de connexion restantes pour être connextée avec toutes ses voisines restante dans la grille
+  #
+  # === Return
+  #
+  # true si le cas est vérifié pour un des sommets de la grille, false sinon
+  def estCas16()
+    @grille.sommets.each_with_index do |x, i|
+      if (x.compterVoisinsNonComplets() * 2) - 1 <= x.connexionsRestantes() && x.connexionsRestantes() > 0
+        print "SOMMET : "
+        puts x.connexionsRestantes().to_s
+        if !x.areteAvecChaqueVoisin()
+          @position = @grille.getCase(x.position.x, x.position.y)
+          return true
+        end
+      end
+    end
+    return false
   end
 
 end

@@ -229,7 +229,15 @@ class Sommet
     #
     # Le nombre d'arêtes restantes
     def connexionsRestantes()
-      return @valeur - @listeArete.size()
+      compteur = 0
+      self.listeArete.each do |a|
+        if(a.estDouble)
+          compteur += 2
+        else
+          compteur += 1
+        end
+      end
+      return @valeur - compteur
     end
 
     ## Méthode permettant de vérifier si un sommet possède au moins une arête commune avec chacun de ses voisins

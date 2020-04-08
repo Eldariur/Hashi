@@ -1062,7 +1062,7 @@ class FenetreJeu < Gtk::Box
 
 				popup.destroy()
 			else
-				popup = Gtk::MessageDialog.new(@@fenetre, :modal, :question, :none, "Voulez vous quitter la partie classé ? Vous ne pouvez pas sauvegarder une partie classée")
+				popup = Gtk::MessageDialog.new(@@fenetre, :modal, :question, :none, "Voulez vous quitter la partie classée ? Vous ne pouvez pas sauvegarder une partie classée")
 				popup.add_buttons(["Continuer", :yes], ["Quitter", :no])
 
 				@chr.arreter()
@@ -1173,7 +1173,6 @@ class FenetreJeu < Gtk::Box
 
 
 			if(@presser)
-				puts "le bouton n'est plus pressé !"
 				@afficheAide = false
 
 				# if(@erreurs != nil && @erreurs.size != 0)
@@ -1208,9 +1207,9 @@ class FenetreJeu < Gtk::Box
 
 
 				@presser = true
-				if(@aide == nil)
-					@aide = Aide.creer(@grilleTest)
-				end
+				# if(@aide == nil)
+				# 	@aide = Aide.creer(@grilleTest)
+				# end
 				@boutonHypo.verrouiller()
 				@boutonRecom.verrouiller()
 				@boutonAnnul.verrouiller()
@@ -1277,7 +1276,6 @@ class FenetreJeu < Gtk::Box
 
 	def initBoutonAideVisu
     @boutonAideVisu = UnBoutonPerso.new("Aide Visuelle", "BoutonEnJeuGros")do
-			puts "appuie bouton visuelle"
 			@aide = Aide.creer(@grilleTest)
 			@afficheAide = true
 
