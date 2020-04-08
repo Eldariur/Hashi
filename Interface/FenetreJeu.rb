@@ -51,6 +51,7 @@ class FenetreJeu < Gtk::Box
 			@grilleComplete = @gene.getGrilleAvecArete()
 		elsif(tuto != nil)
 			@grilleTest = tuto.lancerTuto.grille
+			@grilleComplete = tuto.lancerTuto.grilleComplete
 
 			# @longueur = @grilleTest.longueur
 			# @largeur = @grilleTest.largeur

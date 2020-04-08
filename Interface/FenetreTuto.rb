@@ -19,13 +19,20 @@ class FenetreTuto < Gtk::Box
 
     initBoxTutoBasique
     initBoxTutoAvance
-
+    tbl = Gtk::Table.new(20, 20)
+    boutonRetour = UnBoutonPerso.new("Retour","btnQuit")
+    boutonRetour.signal_connect('clicked'){
+      @@fenetre.changerWidget(fenPre);
+    }
+    hboxBoutonRetour = Gtk::Box.new(Gtk::Orientation::HORIZONTAL)
+    hboxBoutonRetour.halign = Gtk::Align::START
+    hboxBoutonRetour.add(boutonRetour)
     hboxPrincipale.add(@boxTutoBasique)
     hboxPrincipale.add(hboxVide)
     hboxPrincipale.add(@boxTutoAvance)
-
-    self.add(hboxPrincipale)
-
+    tbl.attach(hboxBoutonRetour, 0, 1, 0, 1, Gtk::AttachOptions::SHRINK)
+    tbl.attach(hboxPrincipale,0,20,2,20,Gtk::AttachOptions::EXPAND)
+    self.add(tbl)
 
   end
 
