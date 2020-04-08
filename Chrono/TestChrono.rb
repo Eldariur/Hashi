@@ -1,4 +1,4 @@
-load("Chronometre.rb")
+require_relative "../Chrono/Chronometre.rb"
 
 c = Chrono.nouveau()
 

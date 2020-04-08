@@ -1,6 +1,6 @@
-load "Classement.rb"
-load "../Chrono/Chronometre.rb"
-require "./ConnectSqlite3.rb"
+require_relative "../Classement/Classement.rb"
+require_relative "../Chrono/Chronometre.rb"
+require_relative "../Classement/ConnectSqlite3.rb"
 
 c = Chrono.nouveau()
 
