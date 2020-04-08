@@ -137,20 +137,20 @@ class Sauvegarde
 
   # Génére les dossiers nécessaires au fonctionnement des sauvegardes.
   def Sauvegarde.genenerDossier()
-    if(!Dir.exist?('Save')) then
-      Dir::mkdir("Save", 0777)
+    if(!Dir.exist?('../Sauvegarde/Save')) then
+      Dir::mkdir("../Sauvegarde/Save", 0777)
     end
-    if(!Dir.exist?('Save/easy')) then
-      Dir::mkdir("Save/easy", 0777)
+    if(!Dir.exist?('../Sauvegarde/Save/easy')) then
+      Dir::mkdir("../Sauvegarde/Save/easy", 0777)
     end
-    if(!Dir.exist?('Save/normal')) then
-      Dir::mkdir("Save/normal", 0777)
+    if(!Dir.exist?('../Sauvegarde/Save/normal')) then
+      Dir::mkdir("../Sauvegarde/Save/normal", 0777)
     end
-    if(!Dir.exist?('Save/hard')) then
-      Dir::mkdir("Save/hard", 0777)
+    if(!Dir.exist?('../Sauvegarde/Save/hard')) then
+      Dir::mkdir("../Sauvegarde/Save/hard", 0777)
     end
-    if(!Dir.exist?('Save/custom')) then
-      Dir::mkdir("Save/custom", 0777)
+    if(!Dir.exist?('../Sauvegarde/Save/custom')) then
+      Dir::mkdir("../Sauvegarde/Save/custom", 0777)
     end
   end
 
