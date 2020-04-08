@@ -121,6 +121,13 @@
 
 }
 
+#UneScalePerso{
+	font-weight: bold;
+	background-color: rgba(10,10,10,0.90);
+	border-radius: 40px;
+	color: white;
+}
+
 /*
 button {
 	background: black;

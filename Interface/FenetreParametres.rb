@@ -4,17 +4,17 @@ class FenetreParametres < Gtk::Box
   def initialize(window,fenPre)
     @@fenetre = window
     super(Gtk::Orientation::VERTICAL)
-    lbl1 = UnLabelPerso.new("Longueur de la grille: ")
-    lbl2 = UnLabelPerso.new("Largeur de la grille: ")
-    lbl3 = UnLabelPerso.new("Difficulté: ")
+    lbl1 = UnLabelPerso.new("Longueur de la grille: ", "UnLabelBlanc")
+    lbl2 = UnLabelPerso.new("Largeur de la grille: ", "UnLabelBlanc")
+    lbl3 = UnLabelPerso.new("Difficulté: ", "UnLabelBlanc")
 
-    boutonEZ = UnBoutonPerso.new("EASY", "BoutonMenu")
-    boutonNO = UnBoutonPerso.new("NORMAL", "BoutonMenu")
-    boutonHA = UnBoutonPerso.new("HARD", "BoutonMenu")
+    boutonEZ = UnBoutonPerso.new("Easy", "BoutonMenu")
+    boutonNO = UnBoutonPerso.new("Normal", "BoutonMenu")
+    boutonHA = UnBoutonPerso.new("Hard", "BoutonMenu")
 
-    boutonVal = UnBoutonPerso.new("VALIDER", "BoutonMenu")
-    boutonRes = UnBoutonPerso.new("REINITIALISER", "BoutonMenu")
-    boutonRetour = UnBoutonPerso.new("<--","BoutonMenu")
+    boutonVal = UnBoutonPerso.new("Valider", "BoutonMenu")
+    boutonRes = UnBoutonPerso.new("Réinitialiser", "BoutonMenu")
+    boutonRetour = UnBoutonPerso.new("Retour","BoutonMenu")
 
 
     tbl = Gtk::Table.new(1,1)
@@ -49,6 +49,8 @@ class FenetreParametres < Gtk::Box
       heightScale.setValue(6+rand(0..4));
       densScale.setValue(35+rand(0..6));
       actualise([lengthScale,heightScale,densScale])
+      lengthScale.layout.font_description.absolute_size=(50)
+      # puts var.to_s
     }
 
     boutonNO.signal_connect('clicked') {
@@ -96,7 +98,7 @@ end
 
 class UneScaleTaille < Gtk::Scale
 
-  def initialize(orient=:HORIZONTAL,str="UneScaleTaille")
+  def initialize(orient=:HORIZONTAL,str="UneScalePerso")
 		super(orient)
     self.set_name(str)
     @cur_value = 5
@@ -128,7 +130,7 @@ end
 
 class UneScaleDensite < Gtk::Scale
 
-  def initialize(orient=:HORIZONTAL,str="UneScaleDensite")
+  def initialize(orient=:HORIZONTAL,str="UneScalePerso")
 		super(orient)
     self.set_name(str)
     @cur_value = 19
