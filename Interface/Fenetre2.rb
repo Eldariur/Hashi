@@ -7,7 +7,7 @@ require_relative 'FenetreModesDifficultes.rb'
 require_relative 'UnLabelPerso.rb'
 require_relative 'UnBoutonPerso.rb'
 require_relative 'FenetreModeChrono.rb'
-#require_relative 'FenetreVictoire.rb'
+require_relative 'FenetreVictoire.rb'
 #require_relative 'FenetreClassement.rb'
 require_relative 'FenetreTuto.rb'
 require_relative 'FenetreJeu.rb'
@@ -28,8 +28,8 @@ class FenEx < Gtk::Window
 		self.name="WindowPrincipale"
     self.move((0)/2,0)
 
-		self.fullscreen()		
-		
+		self.fullscreen()
+
 		self.set_default_size(Gdk::Screen::width,Gdk::Screen::height)
     self.set_resizable(false)
     self.set_title("Jeu Hashi")
