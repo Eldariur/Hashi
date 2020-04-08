@@ -1173,8 +1173,8 @@ class FenetreJeu < Gtk::Box
 
 
 			if(@presser)
-				puts "le bouton n'est plus pressé !"
 				@afficheAide = false
+				@afficherErreur = false
 
 				# if(@erreurs != nil && @erreurs.size != 0)
 				# 	@labelMessage = UnLabelPerso.new("Vous avez "+@erreurs.size().to_s+" erreur(s)")
