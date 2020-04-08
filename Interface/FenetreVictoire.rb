@@ -7,10 +7,13 @@ class FenetreVictoire < Gtk::Box
     size = @@fenetre.default_size()
     super(Gtk::Orientation::VERTICAL)
 
-    texteVict = UnLabelPerso.new("Félicitations, vous avez terminé cette grille en "+temps, "lblRegles")
+    if(temps != nil && temps != "00:00")
+        texteVict = UnLabelPerso.new("Félicitations, vous avez terminé cette grille en "+temps.to_s, "lblRegles")
+    else
+        texteVict = UnLabelPerso.new("Félicitations, vous avez terminé cette grille", "lblRegles")
+    end
     texteEnt = UnLabelPerso.new("Saisissez votre pseudonyme :", "lblRegles")
 
-    fixedBoutons = Gtk::Fixed.new()
     tbl = Gtk::Table.new(1,1)
 
     ent = Gtk::Entry.new()
@@ -45,14 +48,14 @@ class FenetreVictoire < Gtk::Box
     vbox = Gtk::Box.new(Gtk::Orientation::VERTICAL, 5)
     vbox2 = Gtk::Box.new(Gtk::Orientation::VERTICAL, 0)
     vbox2.add(texteVict)
-    vbox2.add(texteEnt)
+    if(temps != nil && temps != "00:00")
+        vbox2.add(texteEnt)
+    end
     vbox.add(vbox2)
-    #fixedBoutons.put(ent, (size[0] / 2) - (size[0] / 5)/2, 5)
-    #fixedBoutons.put(boutonValider, (size[0] / 2) - (size[0] / 5)/2, 20)
-    #fixedBoutons.put(boutonRejouer, (size[0] / 2) - (size[0] / 5)/2, 60)
-    #fixedBoutons.put(boutonQuitter, (size[0] / 2) - (size[0] / 5)/2, 100)
-    vbox.add(ent)
-    vbox.add(boutonValider)
+    if(temps != nil && temps != "00:00")
+        vbox.add(ent)
+        vbox.add(boutonValider)
+    end
     vbox.add(boutonRejouer)
     vbox.add(boutonQuitter)
     tbl.attach(vbox,0,1,0,1, Gtk::AttachOptions::EXPAND, Gtk::AttachOptions::EXPAND, 0, @@fenetre.default_size[1] / 3)
