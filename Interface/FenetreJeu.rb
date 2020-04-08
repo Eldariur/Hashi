@@ -49,7 +49,7 @@ class FenetreJeu < Gtk::Box
 		if(save == nil && tuto == nil )
 			@gene = Generateur.new(@difficulte, long, larg, dens)
 			@grilleTest = @gene.creeUneGrille()
-			@grilleComplete = @grilleTest
+			@grilleComplete = @gene.getGrilleAvecArete()
 		elsif(tuto != nil)
 			@grilleTest = tuto.lancerTuto.grille
 
@@ -1208,9 +1208,6 @@ class FenetreJeu < Gtk::Box
 
 
 				@presser = true
-				if(@aide == nil)
-					@aide = Aide.creer(@grilleTest)
-				end
 				@boutonHypo.verrouiller()
 				@boutonRecom.verrouiller()
 				@boutonAnnul.verrouiller()
@@ -1226,6 +1223,7 @@ class FenetreJeu < Gtk::Box
 					# ajouterMessage(vbox,messageLabel)
 					# ajouterContenu(vbox,btnErreurVisu)
 				else
+					@aide = Aide.creer(@grilleTest)
 
 					@afficherErreur = false
 
