@@ -42,7 +42,8 @@ class Chrono < Gtk::Label
 
   # Lance le chronométrage.
   def chronometrer()
-		Thread.new {
+		@th = Thread.new {
+		#puts("JE TOURNE TOUJOURS");
 	    self.reset()
 	    if(@total != 0) then
 	      @temp = @total
@@ -98,6 +99,15 @@ class Chrono < Gtk::Label
 		self.to_chrono()
 	end
 
+def fin()
+	@th.join
+	@th.kill	
+end
+
+def vivant?()
+	return @th.alive?()
+end
+
 end
 
 # Méthode de test pour arrêter le chronomètre en fonction d'un temps en secondes donné.
@@ -122,3 +132,5 @@ def stopsaisie(c)
   end
   c.arreter()
 end
+
+
