@@ -14,7 +14,7 @@ class FenetreParametres < Gtk::Box
 
     boutonVal = UnBoutonPerso.new("VALIDER", "BoutonMenu")
     boutonRes = UnBoutonPerso.new("REINITIALISER", "BoutonMenu")
-	boutonRetour = UnBoutonPerso.new("<--","BoutonMenu")
+    boutonRetour = UnBoutonPerso.new("<--","BoutonMenu")
 
 
     tbl = Gtk::Table.new(1,1)
@@ -26,12 +26,12 @@ class FenetreParametres < Gtk::Box
     heightScale = UneScaleTaille.new()
     densScale = UneScaleDensite.new()
 
-    self.add(lbl1)
-    self.add(lengthScale)
-    self.add(lbl2)
-    self.add(heightScale)
-    self.add(lbl3)
-    self.add(densScale)
+    vb.add(lbl1)
+    vb.add(lengthScale)
+    vb.add(lbl2)
+    vb.add(heightScale)
+    vb.add(lbl3)
+    vb.add(densScale)
 
     vb.add(boutonEZ)
     vb.add(boutonNO)
@@ -39,7 +39,7 @@ class FenetreParametres < Gtk::Box
 
     vb.add(boutonVal)
     vb.add(boutonRes)
-	vb.add(boutonRetour)
+    vb.add(boutonRetour)
 
     tbl.attach(vb,0,1,0,1, Gtk::AttachOptions::EXPAND)
     self.add(tbl)
