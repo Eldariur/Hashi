@@ -48,18 +48,21 @@ class FenetreParametres < Gtk::Box
       lengthScale.setValue(6+rand(0..3));
       heightScale.setValue(6+rand(0..4));
       densScale.setValue(35+rand(0..6));
+      actualise([lengthScale,heightScale,densScale])
     }
 
     boutonNO.signal_connect('clicked') {
       lengthScale.setValue(7+rand(0..2));
       heightScale.setValue(9+rand(0..3));
       densScale.setValue(32+rand(0..7));
+      actualise([lengthScale,heightScale,densScale])
     }
 
     boutonHA.signal_connect('clicked') {
       lengthScale.setValue(9+rand(0..1));
       heightScale.setValue(13+rand(0..1));
       densScale.setValue(32+rand(0..6));
+      actualise([lengthScale,heightScale,densScale])
     }
 
 	boutonRetour.signal_connect('clicked'){
@@ -80,6 +83,12 @@ class FenetreParametres < Gtk::Box
       densScale.setValue(19);
     }
 
+  end
+
+  def actualise(scale)
+    scale.each do|s|
+      s.adjustment=(Gtk::Adjustment.new(s.getValue(), s.adjustment.lower, s.adjustment.upper, 1, 1, 1))
+    end
   end
 
 

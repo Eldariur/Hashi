@@ -229,7 +229,236 @@ grille: &1 !ruby/object:Grille
   - *11
   undo: !ruby/object:Undo
     tabAction: []
-grilleComplete: 
+grilleComplete: &20 !ruby/object:Grille
+  longueur: 5
+  largeur: 5
+  table: !ruby/object:Matrix
+    rows:
+    - - !ruby/object:Case
+        x: 0
+        y: 0
+        grille: *20
+        contenu: 
+        surbrillance: false
+      - !ruby/object:Case
+        x: 0
+        y: 1
+        grille: *20
+        contenu: 
+        surbrillance: false
+      - &21 !ruby/object:Case
+        x: 0
+        y: 2
+        grille: *20
+        contenu: &22 !ruby/object:Sommet
+          valeur: 2
+          position: *21
+          listeArete:
+          - &24 !ruby/object:Arete
+            sommet1: *22
+            sommet2: &23 !ruby/object:Sommet
+              valeur: 7
+              position: &34 !ruby/object:Case
+                x: 2
+                y: 2
+                grille: *20
+                contenu: *23
+                surbrillance: false
+              listeArete:
+              - *24
+              - &26 !ruby/object:Arete
+                sommet1: &25 !ruby/object:Sommet
+                  valeur: 2
+                  position: &32 !ruby/object:Case
+                    x: 2
+                    y: 0
+                    grille: *20
+                    contenu: *25
+                    surbrillance: false
+                  listeArete:
+                  - *26
+                  complet: false
+                  estErreur: false
+                sommet2: *23
+                estDouble: true
+                listeCase:
+                - &33 !ruby/object:Case
+                  x: 2
+                  y: 1
+                  grille: *20
+                  contenu: *26
+                  surbrillance: false
+                estErreur: false
+                hypothese: false
+              - &28 !ruby/object:Arete
+                sommet1: *23
+                sommet2: &27 !ruby/object:Sommet
+                  valeur: 2
+                  position: &36 !ruby/object:Case
+                    x: 2
+                    y: 4
+                    grille: *20
+                    contenu: *27
+                    surbrillance: false
+                  listeArete:
+                  - *28
+                  complet: false
+                  estErreur: false
+                estDouble: true
+                listeCase:
+                - &35 !ruby/object:Case
+                  x: 2
+                  y: 3
+                  grille: *20
+                  contenu: *28
+                  surbrillance: false
+                estErreur: false
+                hypothese: false
+              - &30 !ruby/object:Arete
+                sommet1: *23
+                sommet2: &29 !ruby/object:Sommet
+                  valeur: 1
+                  position: &38 !ruby/object:Case
+                    x: 4
+                    y: 2
+                    grille: *20
+                    contenu: *29
+                    surbrillance: false
+                  listeArete:
+                  - *30
+                  complet: false
+                  estErreur: false
+                estDouble: false
+                listeCase:
+                - &37 !ruby/object:Case
+                  x: 3
+                  y: 2
+                  grille: *20
+                  contenu: *30
+                  surbrillance: false
+                estErreur: false
+                hypothese: false
+              complet: false
+              estErreur: false
+            estDouble: true
+            listeCase:
+            - &31 !ruby/object:Case
+              x: 1
+              y: 2
+              grille: *20
+              contenu: *24
+              surbrillance: false
+            estErreur: false
+            hypothese: false
+          complet: false
+          estErreur: false
+        surbrillance: false
+      - !ruby/object:Case
+        x: 0
+        y: 3
+        grille: *20
+        contenu: 
+        surbrillance: false
+      - !ruby/object:Case
+        x: 0
+        y: 4
+        grille: *20
+        contenu: 
+        surbrillance: false
+    - - !ruby/object:Case
+        x: 1
+        y: 0
+        grille: *20
+        contenu: 
+        surbrillance: false
+      - !ruby/object:Case
+        x: 1
+        y: 1
+        grille: *20
+        contenu: 
+        surbrillance: false
+      - *31
+      - !ruby/object:Case
+        x: 1
+        y: 3
+        grille: *20
+        contenu: 
+        surbrillance: false
+      - !ruby/object:Case
+        x: 1
+        y: 4
+        grille: *20
+        contenu: 
+        surbrillance: false
+    - - *32
+      - *33
+      - *34
+      - *35
+      - *36
+    - - !ruby/object:Case
+        x: 3
+        y: 0
+        grille: *20
+        contenu: 
+        surbrillance: false
+      - !ruby/object:Case
+        x: 3
+        y: 1
+        grille: *20
+        contenu: 
+        surbrillance: false
+      - *37
+      - !ruby/object:Case
+        x: 3
+        y: 3
+        grille: *20
+        contenu: 
+        surbrillance: false
+      - !ruby/object:Case
+        x: 3
+        y: 4
+        grille: *20
+        contenu: 
+        surbrillance: false
+    - - !ruby/object:Case
+        x: 4
+        y: 0
+        grille: *20
+        contenu: 
+        surbrillance: false
+      - !ruby/object:Case
+        x: 4
+        y: 1
+        grille: *20
+        contenu: 
+        surbrillance: false
+      - *38
+      - !ruby/object:Case
+        x: 4
+        y: 3
+        grille: *20
+        contenu: 
+        surbrillance: false
+      - !ruby/object:Case
+        x: 4
+        y: 4
+        grille: *20
+        contenu: 
+        surbrillance: false
+    column_count: 5
+  sommets:
+  - *22
+  - *25
+  - *23
+  - *27
+  - *29
+  aretes:
+  - *24
+  - *26
+  - *28
+  - *30
+  undo: !ruby/object:Undo
+    tabAction: []
 estHypothese: false
 chronometre: 
 difficulte: 0
