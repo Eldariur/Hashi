@@ -4,17 +4,17 @@ class FenetreParametres < Gtk::Box
   def initialize(window,fenPre)
     @@fenetre = window
     super(Gtk::Orientation::VERTICAL)
-    lbl1 = UnLabelPerso.new("Longueur de la grille: ")
-    lbl2 = UnLabelPerso.new("Largeur de la grille: ")
-    lbl3 = UnLabelPerso.new("Difficulté: ")
+    lbl1 = UnLabelPerso.new("Longueur de la grille: ", "UnLabelBlanc")
+    lbl2 = UnLabelPerso.new("Largeur de la grille: ", "UnLabelBlanc")
+    lbl3 = UnLabelPerso.new("Difficulté: ", "UnLabelBlanc")
 
-    boutonEZ = UnBoutonPerso.new("EASY", "BoutonMenu")
-    boutonNO = UnBoutonPerso.new("NORMAL", "BoutonMenu")
-    boutonHA = UnBoutonPerso.new("HARD", "BoutonMenu")
+    boutonEZ = UnBoutonPerso.new("Easy", "BoutonMenu")
+    boutonNO = UnBoutonPerso.new("Normal", "BoutonMenu")
+    boutonHA = UnBoutonPerso.new("Hard", "BoutonMenu")
 
-    boutonVal = UnBoutonPerso.new("VALIDER", "BoutonMenu")
-    boutonRes = UnBoutonPerso.new("REINITIALISER", "BoutonMenu")
-    boutonRetour = UnBoutonPerso.new("<--","BoutonMenu")
+    boutonVal = UnBoutonPerso.new("Valider", "BoutonMenu")
+    boutonRes = UnBoutonPerso.new("Réinitialiser", "BoutonMenu")
+    boutonRetour = UnBoutonPerso.new("Retour","BoutonMenu")
 
 
     tbl = Gtk::Table.new(1,1)
@@ -48,18 +48,23 @@ class FenetreParametres < Gtk::Box
       lengthScale.setValue(6+rand(0..3));
       heightScale.setValue(6+rand(0..4));
       densScale.setValue(35+rand(0..6));
+      actualise([lengthScale,heightScale,densScale])
+      lengthScale.layout.font_description.absolute_size=(50)
+      # puts var.to_s
     }
 
     boutonNO.signal_connect('clicked') {
       lengthScale.setValue(7+rand(0..2));
       heightScale.setValue(9+rand(0..3));
       densScale.setValue(32+rand(0..7));
+      actualise([lengthScale,heightScale,densScale])
     }
 
     boutonHA.signal_connect('clicked') {
       lengthScale.setValue(9+rand(0..1));
       heightScale.setValue(13+rand(0..1));
       densScale.setValue(32+rand(0..6));
+      actualise([lengthScale,heightScale,densScale])
     }
 
 	boutonRetour.signal_connect('clicked'){
@@ -82,12 +87,18 @@ class FenetreParametres < Gtk::Box
 
   end
 
+  def actualise(scale)
+    scale.each do|s|
+      s.adjustment=(Gtk::Adjustment.new(s.getValue(), s.adjustment.lower, s.adjustment.upper, 1, 1, 1))
+    end
+  end
+
 
 end
 
 class UneScaleTaille < Gtk::Scale
 
-  def initialize(orient=:HORIZONTAL,str="UneScaleTaille")
+  def initialize(orient=:HORIZONTAL,str="UneScalePerso")
 		super(orient)
     self.set_name(str)
     @cur_value = 5
@@ -119,7 +130,7 @@ end
 
 class UneScaleDensite < Gtk::Scale
 
-  def initialize(orient=:HORIZONTAL,str="UneScaleDensite")
+  def initialize(orient=:HORIZONTAL,str="UneScalePerso")
 		super(orient)
     self.set_name(str)
     @cur_value = 19

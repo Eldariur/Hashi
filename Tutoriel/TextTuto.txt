@@ -5,6 +5,7 @@ Chaque sommet possède une numérotation, elle correspond au nombre d'arêtes qu
 D2: Pour atteindre le bon nombre de sommets, il est possible de créer des arêtes doubles.
 Afin de créer une arête double, cliquez sur un sommet dont part déjà une arête,
 puis cliquez sur la zone colorée correspondant à cette arête.
+Si vous faites un clic droit, vous retirez l'arête à la place.
 Pour annuler votre dernière action, vous pouvez appuyer sur le bouton annuler, en haut de l'écran./
 D3: Pour gagner la partie, aucun groupe de sommets liés ne peut être séparé des autres sommets.
 Si vous vous trouvez en difficulté, vous pouvez appuyer sur le bouton d'aide, en haut de l'écran,

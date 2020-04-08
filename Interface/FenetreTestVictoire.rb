@@ -21,24 +21,21 @@ require_relative 'BoutonTuto.rb'
 
 
 
-class FenEx < Gtk::Window
+class FenetreTest2 < Gtk::Window
 
   def initialize
     super()
 		self.name="WindowPrincipale"
-    self.move(0,0)
+    self.move((0)/2,0)
 
-		self.fullscreen()
-
-		self.set_default_size(Gdk::Screen::width < 3000 ? Gdk::Screen::width : Gdk::Screen::width/2,Gdk::Screen::height)
+		self.set_default_size( Gdk::Screen::width < 3000 ? Gdk::Screen::width : Gdk::Screen::width/2 ,Gdk::Screen::height);
+		self.set_default_size(default_width,default_height)
     self.set_resizable(false)
     self.set_title("Jeu Hashi")
 		self.window_position=Gtk::WindowPosition::CENTER
 
     css=Gtk::CssProvider.new
     css.load(path: "./css/style.css")
-    #inversez les commentaires pour
-    #css.load(path: "/home/hashiwokakero/Hashi/Interface/css/style.css")
     Gtk::StyleContext::add_provider_for_screen(Gdk::Screen.default,css,
                                     Gtk::StyleProvider::PRIORITY_APPLICATION)
 
@@ -46,7 +43,7 @@ class FenEx < Gtk::Window
        Gtk.main_quit
     }
 
-    self.add(FenetreMenu.new(self))
+    self.add(FenetreVictoire.new(self, nil))
 
 
     self.show_all
@@ -64,4 +61,4 @@ end
 
 
 
-fenex = FenEx.new
+fenex = FenetreTest2.new
