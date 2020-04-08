@@ -358,7 +358,7 @@ class FenetreJeu < Gtk::Box
 			puts "VOUS AVEZ GAGNÉ !!!!"
 			if(@chr != nil)
 				@chr.arreter()
-				@chr.kill
+				@chr.fin
 				@@fenetre.changerWidget(FenetreVictoire.new(@@fenetre,@difficulte,@chr.to_chrono))
 			else
 				@@fenetre.changerWidget(FenetreVictoire.new(@@fenetre,@difficulte))
