@@ -7,44 +7,56 @@ class FenetreVictoire < Gtk::Box
     size = @@fenetre.default_size()
     super(Gtk::Orientation::VERTICAL)
 
-    texteVict = UnLabelPerso.new("Félicitations, vous avez terminé cette grille en "+temps)
-    texteEnt = UnLabelPerso.new("Saisissez votre pseudonyme :")
+    texteVict = UnLabelPerso.new("Félicitations, vous avez terminé cette grille en "+temps, "lblRegles")
+    texteEnt = UnLabelPerso.new("Saisissez votre pseudonyme :", "lblRegles")
 
     fixedBoutons = Gtk::Fixed.new()
+    tbl = Gtk::Table.new(1,1)
 
     ent = Gtk::Entry.new()
     ent.set_placeholder_text("Votre Pseudo ici")
-    ent.set_size_request(200, -1)
+    ent.set_size_request(size[0] / 5, -1)
 
     boutonValider = UnBoutonPerso.new("Valider")
     boutonRejouer = UnBoutonPerso.new("Rejouer")
-    boutonQuitter = UnBoutonPerso.new("Quitter")
+    boutonQuitter = UnBoutonPerso.new("Menu")
 
-    boutonValider.set_size_request(200, -1)
-    boutonRejouer.set_size_request(200, -1)
-    boutonQuitter.set_size_request(200, -1)
+    boutonValider.set_size_request(size[0] / 5, -1)
+    boutonRejouer.set_size_request(size[0] / 5, -1)
+    boutonQuitter.set_size_request(size[0] / 5, -1)
 
     boutonValider.signal_connect('clicked'){
-        Score.new(ent.get_text(), temps)
-        boutonValider.set_sensitive(false);
+        if(ent.text() != nil && ent.text().strip != "")
+            score = Score.creer(ent.text(), temps, difficulte)
+            score.sauvegarder()
+            boutonValider.set_sensitive(false)
+            boutonValider.label = "Score enregistré"
+        end
     }
 
     boutonRejouer.signal_connect('clicked') {
-      @@fenetre.changerWidget(FenetreMenuJouer.new(@@fenetre))
+      @@fenetre.changerWidget(FenetreMenuJouer.new(@@fenetre, FenetreMenu.new(@@fenetre)))
     }
 
     boutonQuitter.signal_connect('clicked') {
       @@fenetre.changerWidget(FenetreMenu.new(@@fenetre))
     }
 
-
-    self.add(texteVict)
-    self.add(texteEnt)
-    fixedBoutons.put(ent, (size[0] / 2) - 100, 5)
-    fixedBoutons.put(boutonValider, 50, 5)
-    fixedBoutons.put(boutonRejouer, 50, 45)
-    fixedBoutons.put(boutonQuitter, 50, 85)
-    self.add(fixedBoutons)
+    vbox = Gtk::Box.new(Gtk::Orientation::VERTICAL, 5)
+    vbox2 = Gtk::Box.new(Gtk::Orientation::VERTICAL, 0)
+    vbox2.add(texteVict)
+    vbox2.add(texteEnt)
+    vbox.add(vbox2)
+    #fixedBoutons.put(ent, (size[0] / 2) - (size[0] / 5)/2, 5)
+    #fixedBoutons.put(boutonValider, (size[0] / 2) - (size[0] / 5)/2, 20)
+    #fixedBoutons.put(boutonRejouer, (size[0] / 2) - (size[0] / 5)/2, 60)
+    #fixedBoutons.put(boutonQuitter, (size[0] / 2) - (size[0] / 5)/2, 100)
+    vbox.add(ent)
+    vbox.add(boutonValider)
+    vbox.add(boutonRejouer)
+    vbox.add(boutonQuitter)
+    tbl.attach(vbox,0,1,0,1, Gtk::AttachOptions::EXPAND, Gtk::AttachOptions::EXPAND, 0, @@fenetre.default_size[1] / 3)
+    self.add(tbl)
 
   end
 
