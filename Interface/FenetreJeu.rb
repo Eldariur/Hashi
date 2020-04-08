@@ -56,8 +56,8 @@ class FenetreJeu < Gtk::Box
 			# @longueur = @grilleTest.longueur
 			# @largeur = @grilleTest.largeur
 		else
-			# @grilleComplete = save.grilleComplete
-			# @grilleTest = save.grille
+			@grilleComplete = save.grilleComplete
+			@grilleTest = save.grille
 		end
 		#####################################
 

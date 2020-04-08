@@ -71,7 +71,7 @@ class FenetreParametres < Gtk::Box
       puts "longueur " + lengthScale.getValue().to_s()
       puts "largeur  " + heightScale.getValue().to_s()
       puts "densite  " + densScale.getValue().to_s()
-      @@fenetre.changerWidget(FenetreJeu.new(@@fenetre,fenPre ,nil, false, nil, lengthScale.getValue().round(), heightScale.getValue().round(), densScale.getValue().round()))
+      @@fenetre.changerWidget(FenetreJeu.new(@@fenetre, fenPre, "custom", false, nil, lengthScale.getValue().round(), heightScale.getValue().round(), densScale.getValue().round()))
     }
 
     boutonRes.signal_connect('clicked') {
