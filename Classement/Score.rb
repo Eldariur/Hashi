@@ -5,7 +5,6 @@ class Score
 	 #@pseudo -> Le pseudo associé au score.
 	 #@temps -> Le temps associé au score.
    #@points -> La valeur du score.
-   #@malus -> Le malus en secondes du score.
 	 #@difficulte -> La difficulte liée au score.
 
   # Creer un nouveau score.
@@ -23,8 +22,6 @@ class Score
 	attr:points, false
 	# Accesseur get sur l'attribut time.
 	attr:time, false
-	# Accesseur get sur l'attribut malus.
-  attr:malus, false
 	# Accesseur get sur l'attribut difficulte.
 	attr:difficulte, false
 
@@ -41,7 +38,6 @@ class Score
 		@pseudo = nom
 		@points = 0
 		@temps = time
-    @malus = 0
 		@difficulte = difficulte
 	end
 
@@ -51,21 +47,13 @@ class Score
 		return gets.chomp
 	end
 
-	# Cette methode ajoute du malus dans un score.
-	# === Parametre
-	# * +val+ : val La valeur de malus.
-	def addMalus(val)
-		@malus += val
-	end
-
 	# Cette methode calcul un score.
 	# === Parametre
 	# * +tMax+ : tMax La valeur en secondes maximal pour résoudre un puzzle.
 	def calculScore(tMax)
-		temp = @time.to_i + @malus.to_i
-		if(temp > tMax) then
-			@points = 0
-		else @points = 1000000-((1000000/tMax)*(tMax-(temp+tMax))*((tMax-(temp+tMax))/tMax)) end
+		temp = (tMax / @temps) *100
+		if(temp < 0) then temp = 0 end
+		@points = (temp*temp)%1000000
 	end
 
 	# Cette methode sauvegarde un score dans la base de donnees.
@@ -76,7 +64,7 @@ class Score
 
 	# Cette methode redefini to_s pour afficher un score.
 	def to_s
-		"Score : Pseudo = #{@pseudo}, Points = #{@points}, Temps = #{@temps}, Malus = #{@malus}, Difficulte = #{@difficulte}\n"
+		"Score : Pseudo = #{@pseudo}, Points = #{@points}, Temps = #{@temps}, Difficulte = #{@difficulte}\n"
 	end
 
 	# Cette methode redefini to_i pour les scores.

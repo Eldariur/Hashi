@@ -83,6 +83,11 @@ class Chrono < Gtk::Label
 		@malus += val
 	end
 
+	# Cette methode remet à zéro le  malus dans un chrono.
+	def resetMalus()
+		@malus = 0
+	end
+
   # Transforme les secondes en un affichage de chronomètre.
 	# === Return
 	# * +res+ : res Une chaine de caractère qui contient l'affichage.

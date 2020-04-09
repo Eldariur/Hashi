@@ -10,20 +10,40 @@ threads << Thread.new {stopsaisie(c)}
 
 threads.each { |thr| thr.join }
 
-s = Score.creer(Score.askName, c.resultat,"easy")
+20.times do
 
-for i in 0..rand(5)
-  s.addMalus(rand(20))
+  temp = (0...3).map { (65 + rand(26)).chr }.join
+  temp2 = (0...3).map { (65 + rand(26)).chr }.join
+  temp3 = (0...3).map { (65 + rand(26)).chr }.join
+
+  for i in 0..rand(3)
+    c.addMalus(rand(15))
+  end
+
+  c.addMalus(30)
+
+  s = Score.creer(temp, c.resultat,"easy")
+  s2 = Score.creer(temp2, c.resultat,"normal")
+  s3 = Score.creer(temp3, c.resultat,"hard")
+
+  s.calculScore(60)
+  s2.calculScore(90)
+  s3.calculScore(120)
+
+  puts "Nouveau : #{s}"
+  puts "Nouveau : #{s2}"
+  puts "Nouveau : #{s3}"
+
+  s.sauvegarder
+  s2.sauvegarder
+  s3.sauvegarder
+
+  c.resetMalus()
 end
-
-s.calculScore(100)
-
-puts "Nouveau : #{s}"
-
-c = Classement.creer(s.difficulte)
-
+=begin
 puts "BDD avant :\n#{c.to_s}"
 
 if c.isHighScore(s) then s.sauvegarder() end
 
 puts "BDD apres :\n#{c.to_s}"
+=end
