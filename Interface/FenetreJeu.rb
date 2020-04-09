@@ -203,10 +203,10 @@ class FenetreJeu < Gtk::Box
 		if(tuto != nil)
 			masquerAllBouton
 			initBoutonTuto(tuto.niveau)
-			@labelMessage = UnLabelPerso.new(tuto.getMessageTuto,"UnLabelBlanc")
-			retirerContenu(@boxMessage,@labelMessage)
-			ajouterContenu(@boxMessage,@labelMessage)
-			@labelMessage.show
+			@labelMessageTuto = UnLabelPerso.new(tuto.getMessageTuto,"UnLabelBlanc")
+			retirerContenu(@boxMessage,@labelMessageTuto)
+			ajouterContenu(@boxMessage,@labelMessageTuto)
+			@labelMessageTuto.show
 			@boxMessage.show
 		end
 
@@ -1164,8 +1164,8 @@ class FenetreJeu < Gtk::Box
 
 
   def initBoutonAide
-		@boxMessage = Gtk::Box.new(Gtk::Orientation::HORIZONTAL)
-		@boxMessage.halign = Gtk::Align::CENTER
+		@boxMessage = Gtk::Box.new(Gtk::Orientation::VERTICAL)
+		@boxMessage.valign = Gtk::Align::CENTER
     		@boutonAide = UnBoutonPerso.new("?", "BoutonEnJeu")do
 			@erreurs = nil
 			@afficheAide = false
@@ -1222,6 +1222,7 @@ class FenetreJeu < Gtk::Box
 				if(@erreurs != nil && @erreurs.size != 0)
 					puts "il y a 1 erreur"
 					@labelMessage = UnLabelPerso.new("Vous avez "+@erreurs.size().to_s+" erreur(s)","UnLabelBlanc")
+					retirerContenu(@boxMessage,@labelMessage)
 					@boxMessage.add(@labelMessage)
 					masquerBouton()
 					@labelMessage.show
@@ -1245,7 +1246,7 @@ class FenetreJeu < Gtk::Box
 
 
 	def initLabelMessage
-    @labelMessage = UnLabelPerso.new("test blanc", "UnLabelBlanc")
+    @labelMessage = UnLabelPerso.new("", "UnLabelBlanc")
   end
 
 
@@ -1348,6 +1349,9 @@ class FenetreJeu < Gtk::Box
 		end
 		if @aideTxt != nil
 			@aideTxt.hide
+		end
+		if @labelMessage != nil
+			@labelMessage.hide
 		end
 		@boutonErreur.hide
 		@boutonAideTxt.hide
