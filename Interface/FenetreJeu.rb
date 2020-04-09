@@ -1231,6 +1231,7 @@ class FenetreJeu < Gtk::Box
 
 			end
     end
+		ajouterImage(@boutonAide,"#{$cheminRacineHashi}/Interface/img/help_icon.png")
   end
 
 
