@@ -203,10 +203,10 @@ class FenetreJeu < Gtk::Box
 		if(tuto != nil)
 			masquerAllBouton
 			initBoutonTuto(tuto.niveau)
-			@labelMessage = UnLabelPerso.new(tuto.getMessageTuto,"UnLabelBlanc")
-			retirerContenu(@boxMessage,@labelMessage)
-			ajouterContenu(@boxMessage,@labelMessage)
-			@labelMessage.show
+			@labelMessageTuto = UnLabelPerso.new(tuto.getMessageTuto,"UnLabelBlanc")
+			retirerContenu(@boxMessage,@labelMessageTuto)
+			ajouterContenu(@boxMessage,@labelMessageTuto)
+			@labelMessageTuto.show
 			@boxMessage.show
 		end
 
@@ -356,17 +356,7 @@ class FenetreJeu < Gtk::Box
 
 			end
 		end
-		if(grilleGagnante && !@hypothese && @tuto == nil)
-			puts "VOUS AVEZ GAGNÉ !!!!"
-			if(@chr != nil)
-				@chr.arreter()
-				@chr.fin()
-				@@fenetre.changerWidget(FenetreVictoire.new(@@fenetre,@difficulte,@chr.to_chrono))
-			else
-				@@fenetre.changerWidget(FenetreVictoire.new(@@fenetre,@difficulte,nil))
-			end
-
-		end
+		conditionGagnante()
 
 	end
 
@@ -1117,7 +1107,7 @@ class FenetreJeu < Gtk::Box
 				@boutonValidHypo.show
 			end
     end
-		ajouterImage(@boutonHypo,"img/cloud_icon.png")
+		ajouterImage(@boutonHypo,"#{$cheminRacineHashi}/Interface/img/cloud_icon.png")
   end
 
 	def initBoutonAnnulHypo
@@ -1152,11 +1142,10 @@ class FenetreJeu < Gtk::Box
 			@boutonAide.deverrouiller()
 			@boutonRecom.deverrouiller()
 			@boutonAnnul.deverrouiller()
-
-
-			# retirerContenu(vbox,@boutonAnnulHypo)
-			# retirerContenu(vbox,@boutonValidHypo)
 			masquerBouton
+
+			puts "il a gagné ?"
+			conditionGagnante
     end
 			@boutonValidHypo.hide
   end
@@ -1164,8 +1153,8 @@ class FenetreJeu < Gtk::Box
 
 
   def initBoutonAide
-		@boxMessage = Gtk::Box.new(Gtk::Orientation::HORIZONTAL)
-		@boxMessage.halign = Gtk::Align::CENTER
+		@boxMessage = Gtk::Box.new(Gtk::Orientation::VERTICAL)
+		@boxMessage.valign = Gtk::Align::CENTER
     		@boutonAide = UnBoutonPerso.new("?", "BoutonEnJeu")do
 			@erreurs = nil
 			@afficheAide = false
@@ -1222,6 +1211,7 @@ class FenetreJeu < Gtk::Box
 				if(@erreurs != nil && @erreurs.size != 0)
 					puts "il y a 1 erreur"
 					@labelMessage = UnLabelPerso.new("Vous avez "+@erreurs.size().to_s+" erreur(s)","UnLabelBlanc")
+					retirerContenu(@boxMessage,@labelMessage)
 					@boxMessage.add(@labelMessage)
 					masquerBouton()
 					@labelMessage.show
@@ -1241,11 +1231,12 @@ class FenetreJeu < Gtk::Box
 
 			end
     end
+		ajouterImage(@boutonAide,"#{$cheminRacineHashi}/Interface/img/help_icon.png")
   end
 
 
 	def initLabelMessage
-    @labelMessage = UnLabelPerso.new("test blanc", "UnLabelBlanc")
+    @labelMessage = UnLabelPerso.new("", "UnLabelBlanc")
   end
 
 
@@ -1297,7 +1288,7 @@ class FenetreJeu < Gtk::Box
 			annulerAction()
 
     end
-		ajouterImage(@boutonAnnul,"img/undo_icon2.png")
+		ajouterImage(@boutonAnnul,"#{$cheminRacineHashi}/Interface/img/undo_icon2.png")
   end
 
   def initBoutonRecom
@@ -1309,13 +1300,12 @@ class FenetreJeu < Gtk::Box
 			@listeInter = []
 			afficheEcran
     end
-		ajouterImage(@boutonRecom,"img/restart_icon.png")
+		ajouterImage(@boutonRecom,"#{$cheminRacineHashi}/Interface/img/restart_icon.png")
   end
 
   def initChrono
 		@boxChrono = Gtk::Box.new(Gtk::Orientation::HORIZONTAL)
-		@boutonSablier = UnBoutonPerso.new("","Chrono")
-		@boxChrono.add(@boutonSablier)
+		@boutonSablier = UnBoutonPerso.new("test","Chrono")
 		@boutonSablier.verrouiller()
 
 		if(@classe)
@@ -1325,12 +1315,13 @@ class FenetreJeu < Gtk::Box
 			@boxChrono.show
 			@chr.set_name("LabelChrono")
 			@chr.show
+			ajouterContenu(@boxChrono,@boutonSablier)
 			ajouterContenu(@boxChrono,@chr)
 
 			@chr.chronometrer()
 
 		end
-		ajouterImage(@boutonSablier,"img/hourglass_icon.png")
+		ajouterImage(@boutonSablier,"#{$cheminRacineHashi}/Interface/img/hourglass_icon.png")
 
   end
 
@@ -1349,10 +1340,12 @@ class FenetreJeu < Gtk::Box
 		if @aideTxt != nil
 			@aideTxt.hide
 		end
+		if @labelMessage != nil
+			@labelMessage.hide
+		end
 		@boutonErreur.hide
 		@boutonAideTxt.hide
 		@boutonAideVisu.hide
-		@boutonSablier.hide
 	end
 
 	def initTailleCase
@@ -1402,6 +1395,20 @@ class FenetreJeu < Gtk::Box
 			@boutonAide.show
 			@boutonRecom.show
 			@boutonHypo.show
+		end
+	end
+
+	def conditionGagnante()
+		if(grilleGagnante && !@hypothese && @tuto == nil)
+			puts "VOUS AVEZ GAGNÉ !!!!"
+			if(@chr != nil)
+				@chr.arreter()
+				@chr.fin()
+				@@fenetre.changerWidget(FenetreVictoire.new(@@fenetre,@difficulte,@chr.to_chrono))
+			else
+				@@fenetre.changerWidget(FenetreVictoire.new(@@fenetre,@difficulte,nil))
+			end
+
 		end
 	end
 

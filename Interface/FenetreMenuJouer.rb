@@ -8,7 +8,7 @@ class	 FenetreMenuJouer < Gtk::Box
     bouton1 = UnBoutonPerso.new("Tutoriel", "BoutonMenu")
     bouton2 = UnBoutonPerso.new("Normal", "BoutonMenu")
     bouton3 = UnBoutonPerso.new("Contre-la-montre", "BoutonMenu")
-	boutonRetour = UnBoutonPerso.new("<--","BoutonMenu")
+	boutonRetour = UnBoutonPerso.new("Retour","BoutonMenu")
     bouton1.signal_connect('clicked') {
       @@fenetre.changerWidget(FenetreTuto.new(@@fenetre,self))
     }

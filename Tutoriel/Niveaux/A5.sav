@@ -72,7 +72,7 @@ grille: &1 !ruby/object:Grille
                     surbrillance: false
                   listeArete:
                   - *9
-                  complet: false
+                  complet: true
                   estErreur: false
                 estDouble: false
                 listeCase:
@@ -226,7 +226,7 @@ grilleComplete: &16 !ruby/object:Grille
                     surbrillance: false
                   listeArete:
                   - *24
-                  complet: false
+                  complet: true
                   estErreur: false
                 estDouble: false
                 listeCase:

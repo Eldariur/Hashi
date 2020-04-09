@@ -56,7 +56,7 @@ class Aide < Gtk::Label
   #
   # L'aide textuelle correspondant à l'id de l'aide appelante
   def getMessageAide()
-   	file_data = File.read("../Code/TexteAide.txt").split("/").join(":").split(":")
+   	file_data = File.read("#{$cheminRacineHashi}/Code/TexteAide.txt").split("/").join(":").split(":")
   	#puts file_data
   	affiche = false
   	file_data.each do |x|

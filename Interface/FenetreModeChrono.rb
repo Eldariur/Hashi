@@ -13,7 +13,7 @@ class FenetreModeChrono < Gtk::Box
     bouton1 = UnBoutonPerso.new("Facile", "BoutonMenu")
     bouton2 = UnBoutonPerso.new("Normal", "BoutonMenu")
     bouton3 = UnBoutonPerso.new("Difficile", "BoutonMenu")
-	boutonRetour = UnBoutonPerso.new("<--","BoutonMenu")
+	boutonRetour = UnBoutonPerso.new("Retour","BoutonMenu")
     bouton1.signal_connect('clicked') {
       @@fenetre.changerWidget(FenetreJeu.new(@@fenetre,fenetrePre ,"easy", @classe))
     }

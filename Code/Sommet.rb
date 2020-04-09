@@ -10,8 +10,8 @@ class Sommet
     #@estErreur     -> Booleen définissant si le sommet est une erreur ou non
 
     #creer un Sommet proprement
-    def self.creer(valeur, position)
-        objet = new(valeur, position)
+    def self.creer(valeur, position, complet = false)
+        objet = new(valeur, position, complet)
         objet.completerInitialize()
         return objet
     end
@@ -26,11 +26,11 @@ class Sommet
 	#
 	# * +valeur+ : Valeur du sommet (en général initialisé a 0)
 	# * +position+ : Case ou est placé le sommet
-    def initialize(valeur, position)
+    def initialize(valeur, position, complet)
         @valeur = valeur
         @position = position #la case dans lequel est le sommet
         @listeArete = Array.new()
-        @complet = false
+        @complet = complet
         @estErreur = false
     end
 
