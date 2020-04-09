@@ -2,7 +2,7 @@ require_relative "../Classement/Score.rb"
 
 class FenetreVictoire < Gtk::Box
 
-  def initialize(window, difficulte, temps="00:00", malus=0, nbAide=0)
+  def initialize(window, difficulte, temps="00:00", malus=0)
     @@fenetre = window
     size = @@fenetre.default_size()
     super(Gtk::Orientation::VERTICAL)
@@ -12,7 +12,7 @@ class FenetreVictoire < Gtk::Box
     else
         texteVict = UnLabelPerso.new("Félicitations, vous avez terminé cette grille", "lblRegles")
     end
-    texteNbAide = UnLabelPerso.new("Vous avez utilisé #{nbAide} aides", "lblRegles")
+    texteMalus = UnLabelPerso.new("Vous avez un malus de #{malus} points", "lblRegles")
     scoreHolder = Score.creer("placeholder", temps, difficulte)
     texteScore = UnLabelPerso.new("Votre score est de #{scoreHolder.points}", "lblRegles")
     texteEnt = UnLabelPerso.new("Saisissez votre pseudonyme :", "lblRegles")
@@ -55,8 +55,8 @@ class FenetreVictoire < Gtk::Box
     vbox = Gtk::Box.new(Gtk::Orientation::VERTICAL, 5)
     vbox2 = Gtk::Box.new(Gtk::Orientation::VERTICAL, 0)
     vbox2.add(texteVict)
-    vbox2.add(texteNbAide)
     if(temps != nil && temps != "00:00")
+        vbox2.add(texteMalus)
         vbox2.add(texteScore)
         vbox2.add(texteEnt)
     end
