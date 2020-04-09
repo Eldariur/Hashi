@@ -15,6 +15,7 @@
 12:île à 4 avec deux des îles voisines à 1/
 13:île à 1 avec n îles voisines dont n-1 îles à 1 restante/
 14:île à 2 avec deux îles voisines dont une île à 2 restante/
-15:île à 2 avec deux îles voisines dont une île à 1 restante/
+15:île avec deux connexions restantes et deux îles voisines non reliées dont une île à 1 restante dans la grille/
 16:île avec suffisamment de connexion restantes pour être connectée
 avec toutes ses voisines restante dans la grille/
+17:île avec autant de connexions restantes que de connexions possibles restante dans la grille/

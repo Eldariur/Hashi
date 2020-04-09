@@ -123,6 +123,8 @@ class Aide < Gtk::Label
       return 15
     elsif estCas16()
       return 16
+    elsif estCas17()
+      return 17
     else
       return 0
     end
@@ -405,6 +407,31 @@ class Aide < Gtk::Label
     return false
   end
 
+
+
+  ## Version isolation
+
+  # def estCas13()
+  #   array = Array.new()
+  #   @grille.sommets.each_with_index do |x, i|
+  #     if x.connexionsRestantes() == 1
+  #       x.getListeVoisinsNonComplets().each do |v|
+  #         if v.connexionsRestantes() == 1
+  #           x.getListeVoisinsComplets().each do |c|
+  #             array.push(c)
+  #           end
+  #           v.getListeVoisinsComplets().each do |c|
+  #             array.push(c)
+  #           end
+  #         end
+  #       end
+  #     end
+  #   end
+  #   return false
+  # end
+
+
+
   ## Méthode testant si un cas 14 est présent dans la grille
   # Cas 14 : île à 2 avec deux îles voisines dont une île à 2 restante
   #
@@ -428,6 +455,7 @@ class Aide < Gtk::Label
 
   ## Méthode testant si un cas 15 est présent dans la grille
   # Cas 15 : île à 2 avec deux îles voisines dont une île à 1 restante
+  # Cas 15 : île avec deux connexions restantes et deux îles voisines non reliées dont une île à 1 restante dans la grille
   #
   # === Return
   #
@@ -435,7 +463,7 @@ class Aide < Gtk::Label
   def estCas15()
     voisinUn = false
     @grille.sommets.each_with_index do |x, i|
-      if x.valeur == 2 && @nb_voisins[i] == 2 && x.compterArete() == 0
+      if x.connexionsRestantes == 2 && x.compterVoisinsNonRelies() == 2 && x.compterVoisinsComplets() + x.compterVoisinsNonRelies() == x.compterVoisins() && (x.getListeVoisinsComplets() - x.getVoisins()).empty?()
         x.getListeVoisins().each do |v|
           if v.valeur == 1
             @position = @grille.getCase(x.position.x, x.position.y)
@@ -448,7 +476,7 @@ class Aide < Gtk::Label
   end
 
   ## Méthode testant si un cas 16 est présent dans la grille
-  # Cas 16 : île avec suffisamment de connexion restantes pour être connextée avec toutes ses voisines restante dans la grille
+  # Cas 16 : île avec suffisamment de connexion restantes pour être connectée avec toutes ses voisines restante dans la grille
   #
   # === Return
   #
@@ -456,9 +484,37 @@ class Aide < Gtk::Label
   def estCas16()
     @grille.sommets.each_with_index do |x, i|
       if (x.compterVoisinsNonComplets() * 2) - 1 <= x.connexionsRestantes() && x.connexionsRestantes() > 0
-        print "SOMMET : "
-        puts x.connexionsRestantes().to_s
         if !x.areteAvecChaqueVoisin()
+          @position = @grille.getCase(x.position.x, x.position.y)
+          return true
+        end
+      end
+    end
+    return false
+  end
+
+  ## Méthode testant si un cas 17 est présent dans la grille
+  # Cas 17 : île avec autant de connexions restantes que de connexions possibles restante dans la grille
+  #
+  # === Return
+  #
+  # true si le cas est vérifié pour un des sommets de la grille, false sinon
+  def estCas17()
+    @grille.sommets.each_with_index do |x, i|
+      compteur = 0
+      if x.connexionsRestantes() > 0
+        x.getListeVoisinsNonComplets().each do |v|
+          if x.possedeAreteAvec(v)
+            if(x.donneAreteAvec(x).estDouble)
+              compteur += 0
+            else
+              compteur += 1
+            end
+          else
+            compteur += 2
+          end
+        end
+        if compteur == x.connexionsRestantes()
           @position = @grille.getCase(x.position.x, x.position.y)
           return true
         end

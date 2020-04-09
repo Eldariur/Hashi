@@ -85,25 +85,36 @@ class Sommet
       return voisins.size()
     end
 
+    ## Méthode retournant le nombre de voisins d'un sommet auquel il n'est pas relié
+    #
+    # === Return
+    #
+    # * +nb_voisins+ : Nombre de voisins du sommet auquel il n'est pas relié
+    def compterVoisinsNonRelies()
+      voisins = self.getVoisinsNonRelies()
+
+      return voisins.size()
+    end
+
     ## Méthode retournant le nombre de voisins non complets d'un sommet
     #
     # === Return
     #
     # * +nb_voisins+ : Nombre de voisins non complets du sommet
     def compterVoisinsNonComplets()
-      voisins = self.getListeVoisins()
-      compteur = 0
-
-      voisins.each do |x|
-        if x.connexionsRestantes != 0
-          compteur += 1
-        end
-      end
-
-      return compteur
+      return self.getListeVoisinsNonComplets.size()
     end
 
-    ## Méthode testant si une case possède un sommet
+    ## Méthode retournant le nombre de voisins complets d'un sommet
+    #
+    # === Return
+    #
+    # * +nb_voisins+ : Nombre de voisins complets du sommet
+    def compterVoisinsComplets()
+      return self.getListeVoisinsComplets.size()
+    end
+
+    ## Méthode retournant la liste des voisins d'un sommet
     #
     # === Return
     #
@@ -164,6 +175,42 @@ class Sommet
         end
       end
 
+      ## Méthode retournant la liste des voisins non complets d'un sommet
+      #
+      # === Return
+      #
+      # Une Array contenant la liste des voisins non complets du sommet
+      def getListeVoisinsNonComplets()
+        voisins = self.getListeVoisins()
+        array = Array.new()
+
+        voisins.each do |x|
+          if x.connexionsRestantes != 0
+            array.push(x)
+          end
+        end
+
+        return array
+      end
+
+      ## Méthode retournant la liste des voisins complets d'un sommet
+      #
+      # === Return
+      #
+      # Une Array contenant la liste des voisins complets du sommet
+      def getListeVoisinsComplets()
+        voisins = self.getListeVoisins()
+        array = Array.new()
+
+        voisins.each do |x|
+          if x.connexionsRestantes == 0
+            array.push(x)
+          end
+        end
+
+        return array
+      end
+
       #puts "Nouveau sommet : "
       #puts "valeur : " + self.valeur.to_s()
       #voisins.each do |x|
@@ -173,9 +220,9 @@ class Sommet
       return voisins
     end
 
-  	# Retourne les sommets adjacents au sommet.
+  	# Retourne les sommets reliés au sommet.
   	# === Return
-  	# * +res+ : res la liste des sommets adjacents au sommet.
+  	# * +res+ : res la liste des sommets reliés au sommet.
   	def getVoisins()
   	  res = Array.new()
   	  self.listeArete.each do |a|
@@ -183,6 +230,15 @@ class Sommet
   	    if(a.sommet2 != self) then res.push(a.sommet2) end
   	  end
   	  return res
+  	end
+
+    # Retourne les sommets non reliés au sommet.
+  	# === Return
+  	# * +res+ : res la liste des sommets non reliés au sommet.
+  	def getVoisinsNonRelies()
+  	  voisins = self.getListeVoisins()
+      relies = self.getVoisins()
+  	  return voisins - relies
   	end
 
     ## Méthode testant si une case possède un sommet
