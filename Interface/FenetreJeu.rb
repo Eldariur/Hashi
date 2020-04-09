@@ -356,17 +356,7 @@ class FenetreJeu < Gtk::Box
 
 			end
 		end
-		if(grilleGagnante && !@hypothese && @tuto == nil)
-			puts "VOUS AVEZ GAGNÉ !!!!"
-			if(@chr != nil)
-				@chr.arreter()
-				@chr.fin()
-				@@fenetre.changerWidget(FenetreVictoire.new(@@fenetre,@difficulte,@chr.to_chrono))
-			else
-				@@fenetre.changerWidget(FenetreVictoire.new(@@fenetre,@difficulte,nil))
-			end
-
-		end
+		conditionGagnante()
 
 	end
 
@@ -1152,11 +1142,10 @@ class FenetreJeu < Gtk::Box
 			@boutonAide.deverrouiller()
 			@boutonRecom.deverrouiller()
 			@boutonAnnul.deverrouiller()
-
-
-			# retirerContenu(vbox,@boutonAnnulHypo)
-			# retirerContenu(vbox,@boutonValidHypo)
 			masquerBouton
+
+			puts "il a gagné ?"
+			conditionGagnante
     end
 			@boutonValidHypo.hide
   end
@@ -1406,6 +1395,20 @@ class FenetreJeu < Gtk::Box
 			@boutonAide.show
 			@boutonRecom.show
 			@boutonHypo.show
+		end
+	end
+
+	def conditionGagnante()
+		if(grilleGagnante && !@hypothese && @tuto == nil)
+			puts "VOUS AVEZ GAGNÉ !!!!"
+			if(@chr != nil)
+				@chr.arreter()
+				@chr.fin()
+				@@fenetre.changerWidget(FenetreVictoire.new(@@fenetre,@difficulte,@chr.to_chrono))
+			else
+				@@fenetre.changerWidget(FenetreVictoire.new(@@fenetre,@difficulte,nil))
+			end
+
 		end
 	end
 
