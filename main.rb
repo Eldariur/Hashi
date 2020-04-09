@@ -63,4 +63,4 @@ class Main < Gtk::Window
 end
 
 puts $cheminRacineHashi
-fenex = Main.new
+Main.new
