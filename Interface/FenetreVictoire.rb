@@ -2,16 +2,19 @@ require_relative "../Classement/Score.rb"
 
 class FenetreVictoire < Gtk::Box
 
-  def initialize(window,difficulte,temps="00:00")
+  def initialize(window, difficulte, temps="00:00", malus=0, nbAide=0)
     @@fenetre = window
     size = @@fenetre.default_size()
     super(Gtk::Orientation::VERTICAL)
 
     if(temps != nil && temps != "00:00")
-        texteVict = UnLabelPerso.new("Félicitations, vous avez terminé cette grille en "+temps.to_s, "lblRegles")
+        texteVict = UnLabelPerso.new("Félicitations, vous avez terminé cette grille en #{temps}", "lblRegles")
     else
         texteVict = UnLabelPerso.new("Félicitations, vous avez terminé cette grille", "lblRegles")
     end
+    texteNbAide = UnLabelPerso.new("Vous avez utilisé #{nbAide} aides", "lblRegles")
+    scoreHolder = Score.creer("placeholder", temps, difficulte)
+    texteScore = UnLabelPerso.new("Votre score est de #{scoreHolder.points}", "lblRegles")
     texteEnt = UnLabelPerso.new("Saisissez votre pseudonyme :", "lblRegles")
 
     tbl = Gtk::Table.new(1,1)
@@ -20,7 +23,7 @@ class FenetreVictoire < Gtk::Box
     ent.set_placeholder_text("Votre Pseudo ici")
     ent.set_size_request(size[0] / 5, -1)
 
-    boutonValider = UnBoutonPerso.new("Valider")
+    boutonValider = UnBoutonPerso.new("Enregistrer le score")
     boutonRejouer = UnBoutonPerso.new("Rejouer")
     boutonQuitter = UnBoutonPerso.new("Menu")
 
@@ -32,7 +35,7 @@ class FenetreVictoire < Gtk::Box
         if(ent.text() != nil && ent.text().strip != "")
             score = Score.creer(ent.text(), temps, difficulte)
             score.sauvegarder()
-            boutonValider.set_sensitive(false)
+            boutonValider.verrouiller()
             boutonValider.label = "Score enregistré"
         end
     }
@@ -52,8 +55,10 @@ class FenetreVictoire < Gtk::Box
     vbox = Gtk::Box.new(Gtk::Orientation::VERTICAL, 5)
     vbox2 = Gtk::Box.new(Gtk::Orientation::VERTICAL, 0)
     vbox2.add(texteVict)
+    vbox2.add(texteNbAide)
     if(temps != nil && temps != "00:00")
         vbox2.add(texteEnt)
+        vbox2.add(texteScore)
     end
     vbox.add(vbox2)
     if(temps != nil && temps != "00:00")
