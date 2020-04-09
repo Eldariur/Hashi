@@ -1,4 +1,4 @@
-
+Retour
 require_relative 'FenetreModeChrono.rb'
 
 class FenetreModesDifficultes < Gtk::Box
@@ -17,7 +17,7 @@ class FenetreModesDifficultes < Gtk::Box
     bouton2 = UnBoutonPerso.new("Normal", "BoutonMenu")
     bouton3 = UnBoutonPerso.new("Difficile", "BoutonMenu")
     bouton4 = UnBoutonPerso.new("Personnalisé", "BoutonMenu")
-    boutonRetour = UnBoutonPerso.new("<----","BoutonMenu")
+    boutonRetour = UnBoutonPerso.new("Retour","BoutonMenu")
     bouton1.signal_connect('clicked') {
       affichePopup("easy")
     }
