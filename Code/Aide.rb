@@ -57,6 +57,7 @@ class Aide < Gtk::Label
   #
   # L'aide textuelle correspondant à l'id de l'aide appelante
   def getMessageAide()
+    @penalite = 10
    	file_data = File.read("#{$cheminRacineHashi}/Code/TexteAide.txt").split("/").join(":").split(":")
   	#puts file_data
   	affiche = false
@@ -67,7 +68,6 @@ class Aide < Gtk::Label
   			affiche = true
   		end
     end
-    @penalite = 10
   end
 
   ## Méthode permettant
@@ -76,8 +76,8 @@ class Aide < Gtk::Label
   #
   # L'aide visuelle correspondant à l'id de l'aide appelante
   def getCaseAide()
-   	return @position
     @penalite = 20
+   	return @position
   end
 
   ## Méthode sans paramètres renvoyant l'id de l'aide correspondant au cas le plus simple présent dans la grille
@@ -383,7 +383,7 @@ class Aide < Gtk::Label
     return false
   end
 
-  ## Méthode testant si un cas 13 est présent dans la grille
+  # Méthode testant si un cas 13 est présent dans la grille
   # Cas 13 : île à 1 avec n îles voisines dont n-1 îles à 1 restante
   #
   # === Return
@@ -413,18 +413,49 @@ class Aide < Gtk::Label
   ## Version isolation
 
   # def estCas13()
-  #   array = Array.new()
+  #   nb_reliable = 0
+  #   traitement = Array.new()
+  #   traites = Array.new()
   #   @grille.sommets.each_with_index do |x, i|
   #     if x.connexionsRestantes() == 1
   #       x.getListeVoisinsNonComplets().each do |v|
-  #         if v.connexionsRestantes() == 1
-  #           x.getListeVoisinsComplets().each do |c|
-  #             array.push(c)
-  #           end
-  #           v.getListeVoisinsComplets().each do |c|
-  #             array.push(c)
+  #         reliable = false
+  #         if v.connexionsRestantes > 1
+  #           nb_reliable += 1
+  #           if nb_reliable > 1
+  #             return false
   #           end
   #         end
+  #         if v.connexionsRestantes() == 1
+  #           x.getListeVoisins().each do |c|
+  #             if(!traites.include?())
+  #               traitement.push(c)
+  #             end
+  #           end
+  #           v.getListeVoisins().each do |c|
+  #             if(!traites.include?())
+  #               traitement.push(c)
+  #             end
+  #           end
+  #           traitement.each do |s|
+  #             if s.complet
+  #               traitement.remove(s)
+  #               traites.push(s)
+  #             else
+  #               reliable = true
+  #             end
+  #           end
+  #         end
+  #         if reliable
+  #           nb_reliable += 1
+  #           if nb_reliable > 1
+  #             return false
+  #           end
+  #         end
+  #       end
+  #       if(nb_reliable = 1)
+  #         @position = @grille.getCase(x.position.x, x.position.y)
+  #         return true
   #       end
   #     end
   #   end
@@ -464,9 +495,9 @@ class Aide < Gtk::Label
   def estCas15()
     voisinUn = false
     @grille.sommets.each_with_index do |x, i|
-      if x.connexionsRestantes == 2 && x.compterVoisinsNonRelies() == 2 && x.compterVoisinsComplets() + x.compterVoisinsNonRelies() == x.compterVoisins() && (x.getListeVoisinsComplets() - x.getVoisins()).empty?()
+      if x.connexionsRestantes == 2 && x.compterVoisinsNonRelies() == 2 && x.compterVoisinsComplets() + x.compterVoisinsNonRelies() == x.compterVoisins()
         x.getListeVoisins().each do |v|
-          if v.valeur == 1
+          if v.valeur == 1 && !(v.possedeAreteAvec(x))
             @position = @grille.getCase(x.position.x, x.position.y)
             voisinUn = true
           end
