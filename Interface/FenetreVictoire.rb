@@ -57,8 +57,8 @@ class FenetreVictoire < Gtk::Box
     vbox2.add(texteVict)
     vbox2.add(texteNbAide)
     if(temps != nil && temps != "00:00")
-        vbox2.add(texteEnt)
         vbox2.add(texteScore)
+        vbox2.add(texteEnt)
     end
     vbox.add(vbox2)
     if(temps != nil && temps != "00:00")
