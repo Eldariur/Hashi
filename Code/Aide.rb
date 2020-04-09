@@ -19,7 +19,8 @@ class Aide < Gtk::Label
   # privatise le new
   private_class_method :new
 
-
+	#Autorise les autres classe a lire la variable penalite
+	attr_reader :penalite
 
   ## Partie initialize
 
