@@ -1107,7 +1107,7 @@ class FenetreJeu < Gtk::Box
 				@boutonValidHypo.show
 			end
     end
-		ajouterImage(@boutonHypo,"img/cloud_icon.png")
+		ajouterImage(@boutonHypo,"#{$cheminRacineHashi}/Interface/img/cloud_icon.png")
   end
 
 	def initBoutonAnnulHypo
@@ -1287,7 +1287,7 @@ class FenetreJeu < Gtk::Box
 			annulerAction()
 
     end
-		ajouterImage(@boutonAnnul,"img/undo_icon2.png")
+		ajouterImage(@boutonAnnul,"#{$cheminRacineHashi}/Interface/img/undo_icon2.png")
   end
 
   def initBoutonRecom
@@ -1299,7 +1299,7 @@ class FenetreJeu < Gtk::Box
 			@listeInter = []
 			afficheEcran
     end
-		ajouterImage(@boutonRecom,"img/restart_icon.png")
+		ajouterImage(@boutonRecom,"#{$cheminRacineHashi}/Interface/img/restart_icon.png")
   end
 
   def initChrono
@@ -1320,7 +1320,7 @@ class FenetreJeu < Gtk::Box
 			@chr.chronometrer()
 
 		end
-		ajouterImage(@boutonSablier,"img/hourglass_icon.png")
+		ajouterImage(@boutonSablier,"#{$cheminRacineHashi}/Interface/img/hourglass_icon.png")
 
   end
 

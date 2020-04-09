@@ -22,46 +22,47 @@ require_relative 'BoutonTuto.rb'
 
 
 class FenEx < Gtk::Window
+    $cheminRacineHashi = __dir__
+    $cheminRacineHashi.slice! "/Interface"
+    def initialize
+        super()
+        self.name="WindowPrincipale"
+        self.move(0,0)
 
-  def initialize
-    super()
-		self.name="WindowPrincipale"
-    self.move(0,0)
+        self.fullscreen()
 
-		self.fullscreen()
+        self.set_default_size(Gdk::Screen::width < 3000 ? Gdk::Screen::width : Gdk::Screen::width/2,Gdk::Screen::height)
+        self.set_resizable(false)
+        self.set_title("Jeu Hashi")
+        self.window_position=Gtk::WindowPosition::CENTER
 
-		self.set_default_size(Gdk::Screen::width < 3000 ? Gdk::Screen::width : Gdk::Screen::width/2,Gdk::Screen::height)
-    self.set_resizable(false)
-    self.set_title("Jeu Hashi")
-		self.window_position=Gtk::WindowPosition::CENTER
+        css=Gtk::CssProvider.new
+        css.load(path: "#{$cheminRacineHashi}/Interface/css/style.css")
+        #inversez les commentaires pour
+        #css.load(path: "/home/hashiwokakero/Hashi/Interface/css/style.css")
+        Gtk::StyleContext::add_provider_for_screen(Gdk::Screen.default,css,
+            Gtk::StyleProvider::PRIORITY_APPLICATION)
 
-    css=Gtk::CssProvider.new
-    css.load(path: "./css/style.css")
-    #inversez les commentaires pour
-    #css.load(path: "/home/hashiwokakero/Hashi/Interface/css/style.css")
-    Gtk::StyleContext::add_provider_for_screen(Gdk::Screen.default,css,
-                                    Gtk::StyleProvider::PRIORITY_APPLICATION)
+        self.signal_connect('destroy') {
+            Gtk.main_quit
+        }
 
-    self.signal_connect('destroy') {
-       Gtk.main_quit
-    }
-
-    self.add(FenetreMenu.new(self))
+        self.add(FenetreMenu.new(self))
 
 
-    self.show_all
-    Gtk.main
-  end
+        self.show_all
+        Gtk.main
+    end
 
-  def changerWidget(nouveau)
-		self.remove(self.child).add(nouveau)
-		self.show_all
-		self
-	end
+    def changerWidget(nouveau)
+        self.remove(self.child).add(nouveau)
+        self.show_all
+        self
+    end
 
 
 end
 
 
 
-fenex = FenEx.new
+    fenex = FenEx.new

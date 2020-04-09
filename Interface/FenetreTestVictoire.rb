@@ -35,7 +35,7 @@ class FenetreTest2 < Gtk::Window
 		self.window_position=Gtk::WindowPosition::CENTER
 
     css=Gtk::CssProvider.new
-    css.load(path: "./css/style.css")
+    css.load(path: "#{$cheminRacineHashi}/Interface/css/style.css")
     Gtk::StyleContext::add_provider_for_screen(Gdk::Screen.default,css,
                                     Gtk::StyleProvider::PRIORITY_APPLICATION)
 

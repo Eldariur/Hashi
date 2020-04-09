@@ -27,7 +27,7 @@ class Fenetre < Gtk::Window
 		vbox = Gtk::Box.new(:VERTICAL)
 		self.window_position=Gtk::WindowPosition::CENTER
 		css=Gtk::CssProvider.new
-		css.load(path: "./css/style.css")
+		css.load(path: "#{$cheminRacineHashi}/Interface/css/style.css")
 		Gtk::StyleContext::add_provider_for_screen(Gdk::Screen.default,css,Gtk::StyleProvider::PRIORITY_APPLICATION)
 
 		@presser = false
@@ -1107,7 +1107,7 @@ class Fenetre < Gtk::Window
 				@boutonValidHypo.show
 			end
     end
-		ajouterImage(@boutonHypo,"img/cloud_icon.png")
+		ajouterImage(@boutonHypo,"#{$cheminRacineHashi}/Interface/img/cloud_icon.png")
   end
 
 	def initBoutonAnnulHypo
@@ -1287,7 +1287,7 @@ class Fenetre < Gtk::Window
 			annulerAction()
 
     end
-		ajouterImage(@boutonAnnul,"img/undo_icon2.png")
+		ajouterImage(@boutonAnnul,"#{$cheminRacineHashi}/Interface/img/undo_icon2.png")
   end
 
   def initBoutonRecom
@@ -1299,7 +1299,7 @@ class Fenetre < Gtk::Window
 			@listeInter = []
 			afficheEcran
     end
-		ajouterImage(@boutonRecom,"img/restart_icon.png")
+		ajouterImage(@boutonRecom,"#{$cheminRacineHashi}/Interface/img/restart_icon.png")
   end
 
   def initChrono
