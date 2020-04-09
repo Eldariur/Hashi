@@ -10,6 +10,7 @@ Pour annuler votre dernière action, vous pouvez appuyer sur le bouton annuler, 
 D3: Pour gagner la partie, aucun groupe de sommets liés ne peut être séparé des autres sommets.
 Si vous vous trouvez en difficulté, vous pouvez appuyer sur le bouton d'aide, en haut de l'écran,
  afin de recevoir un indice pour votre partie.
+ En mode Contre-la-montre l'utilisation d'aide influe sur votre score en fin de partie.
 Si vous souhaitez supprimer toute votre progression actuelle,
  vous pouvez cliquer sur le bouton Retour à Zéro, en haut de l'écran./
 D4: Si vous hésitez entre deux possibilités lors de votre partie,
