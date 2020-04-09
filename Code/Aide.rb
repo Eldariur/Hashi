@@ -383,11 +383,11 @@ class Aide < Gtk::Label
   end
 
   # Méthode testant si un cas 13 est présent dans la grille
-  Cas 13 : île à 1 avec n îles voisines dont n-1 îles à 1 restante
-
-  === Return
-
-  true si le cas est vérifié pour un des sommets de la grille, false sinon
+  # Cas 13 : île à 1 avec n îles voisines dont n-1 îles à 1 restante
+  #
+  # === Return
+  #
+  # true si le cas est vérifié pour un des sommets de la grille, false sinon
   def estCas13()
     compteur = 0
     @grille.sommets.each_with_index do |x, i|
