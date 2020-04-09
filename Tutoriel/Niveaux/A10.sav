@@ -24,7 +24,7 @@ grille: &1 !ruby/object:Grille
                 surbrillance: false
               listeArete:
               - *5
-              complet: false
+              complet: true
               estErreur: false
             estDouble: true
             listeCase:
@@ -36,7 +36,7 @@ grille: &1 !ruby/object:Grille
               surbrillance: false
             estErreur: false
             hypothese: false
-          complet: false
+          complet: true
           estErreur: false
         surbrillance: false
       - !ruby/object:Case
@@ -65,7 +65,7 @@ grille: &1 !ruby/object:Grille
                 surbrillance: false
               listeArete:
               - *9
-              complet: false
+              complet: true
               estErreur: false
             estDouble: false
             listeCase:
@@ -77,7 +77,7 @@ grille: &1 !ruby/object:Grille
               surbrillance: false
             estErreur: false
             hypothese: false
-          complet: false
+          complet: true
           estErreur: false
         surbrillance: false
     - - *10
@@ -132,7 +132,7 @@ grilleComplete: &14 !ruby/object:Grille
                 surbrillance: false
               listeArete:
               - *18
-              complet: false
+              complet: true
               estErreur: false
             estDouble: false
             listeCase:
@@ -168,7 +168,7 @@ grilleComplete: &14 !ruby/object:Grille
                     surbrillance: false
                   listeArete:
                   - *22
-                  complet: false
+                  complet: true
                   estErreur: false
                 estDouble: false
                 listeCase:
@@ -180,7 +180,7 @@ grilleComplete: &14 !ruby/object:Grille
                   surbrillance: false
                 estErreur: false
                 hypothese: false
-              complet: false
+              complet: true
               estErreur: false
             estDouble: false
             listeCase:
@@ -192,7 +192,7 @@ grilleComplete: &14 !ruby/object:Grille
               surbrillance: false
             estErreur: false
             hypothese: false
-          complet: false
+          complet: true
           estErreur: false
         surbrillance: false
       - *23

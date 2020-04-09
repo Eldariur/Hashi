@@ -80,10 +80,10 @@ puts '#'+count.to_s
 grille = Grille.creer(5, 5)
 
 Sommet.creer(2, grille.getCase(0, 0))
-Sommet.creer(1, grille.getCase(0, 2))
+Sommet.creer(1, grille.getCase(0, 2), true)
 Sommet.creer(2, grille.getCase(2, 0))
 Sommet.creer(2, grille.getCase(2, 4))
-Sommet.creer(1, grille.getCase(4, 2))
+Sommet.creer(1, grille.getCase(4, 2), true)
 Sommet.creer(2, grille.getCase(4, 4))
 
 Arete.creer(grille.getCase(0,2).contenu, grille.getCase(4,2).contenu)
@@ -272,7 +272,7 @@ grille = Grille.creer(5, 3)
 
 Sommet.creer(2, grille.getCase(0, 2))
 Sommet.creer(2, grille.getCase(2, 0))
-Sommet.creer(1, grille.getCase(4, 2))
+Sommet.creer(1, grille.getCase(4, 2),true)
 Sommet.creer(5, grille.getCase(2, 2))
 
 Arete.creer(grille.getCase(0,2).contenu, grille.getCase(2,2).contenu)
@@ -309,7 +309,7 @@ Sommet.creer(2, grille.getCase(0, 2))
 Sommet.creer(2, grille.getCase(2, 0))
 Sommet.creer(7, grille.getCase(2, 2))
 Sommet.creer(2, grille.getCase(2, 4))
-Sommet.creer(1, grille.getCase(4, 2))
+Sommet.creer(1, grille.getCase(4, 2), true)
 
 Arete.creer(grille.getCase(0,2).contenu, grille.getCase(2,2).contenu)
 Arete.creer(grille.getCase(2,0).contenu, grille.getCase(2,2).contenu)
@@ -343,8 +343,8 @@ count += 1
 puts '#'+count.to_s
 grille = Grille.creer(3, 5)
 
-Sommet.creer(1, grille.getCase(0, 0))
-Sommet.creer(1, grille.getCase(0, 4))
+Sommet.creer(1, grille.getCase(0, 0), true)
+Sommet.creer(1, grille.getCase(0, 4), true)
 Sommet.creer(2, grille.getCase(2, 2))
 Sommet.creer(4, grille.getCase(0, 2))
 
@@ -379,8 +379,8 @@ puts '#'+count.to_s
 grille = Grille.creer(4, 5)
 
 Sommet.creer(1, grille.getCase(0, 2))
-Sommet.creer(1, grille.getCase(1, 0))
-Sommet.creer(1, grille.getCase(1, 4))
+Sommet.creer(1, grille.getCase(1, 0), true)
+Sommet.creer(1, grille.getCase(1, 4) ,true)
 Sommet.creer(2, grille.getCase(3, 0))
 Sommet.creer(3, grille.getCase(3, 2))
 Sommet.creer(2, grille.getCase(3, 4))
@@ -457,10 +457,10 @@ count += 1
 puts '#'+count.to_s
 grille = Grille.creer(3, 3)
 
-Sommet.creer(2, grille.getCase(0, 0))
-Sommet.creer(1, grille.getCase(0, 2))
-Sommet.creer(2, grille.getCase(2, 0))
-Sommet.creer(1, grille.getCase(2, 2))
+Sommet.creer(2, grille.getCase(0, 0), true)
+Sommet.creer(1, grille.getCase(0, 2), true)
+Sommet.creer(2, grille.getCase(2, 0), true)
+Sommet.creer(1, grille.getCase(2, 2), true)
 
 Arete.creer(grille.getCase(0,0).contenu, grille.getCase(2,0).contenu,true)
 Arete.creer(grille.getCase(2,2).contenu, grille.getCase(0,2).contenu)
@@ -494,9 +494,9 @@ grille = Grille.creer(5, 3)
 
 Sommet.creer(2, grille.getCase(0, 0))
 Sommet.creer(3, grille.getCase(2, 0))
-Sommet.creer(2, grille.getCase(2, 2))
-Sommet.creer(1, grille.getCase(4, 0))
-Sommet.creer(2, grille.getCase(4, 2))
+Sommet.creer(2, grille.getCase(2, 2), true)
+Sommet.creer(1, grille.getCase(4, 0), true)
+Sommet.creer(2, grille.getCase(4, 2), true)
 
 Arete.creer(grille.getCase(0,0).contenu, grille.getCase(2,0).contenu)
 Arete.creer(grille.getCase(2,0).contenu, grille.getCase(4,0).contenu)
@@ -534,9 +534,9 @@ Sommet.creer(2, grille.getCase(0, 2))
 Sommet.creer(2, grille.getCase(0, 4))
 Sommet.creer(2, grille.getCase(2, 2))
 Sommet.creer(4, grille.getCase(2, 4))
-Sommet.creer(2, grille.getCase(4, 0))
-Sommet.creer(3, grille.getCase(4, 2))
-Sommet.creer(3, grille.getCase(4, 4))
+Sommet.creer(2, grille.getCase(4, 0), true)
+Sommet.creer(3, grille.getCase(4, 2), true)
+Sommet.creer(3, grille.getCase(4, 4), true)
 
 Arete.creer(grille.getCase(4,0).contenu, grille.getCase(4,2).contenu,true)
 Arete.creer(grille.getCase(4,2).contenu, grille.getCase(4,4).contenu)

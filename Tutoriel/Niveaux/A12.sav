@@ -143,7 +143,7 @@ grille: &1 !ruby/object:Grille
                         surbrillance: false
                       listeArete:
                       - *10
-                      complet: false
+                      complet: true
                       estErreur: false
                     sommet2: *8
                     estDouble: true
@@ -157,7 +157,7 @@ grille: &1 !ruby/object:Grille
                     estErreur: false
                     hypothese: false
                   - *11
-                  complet: false
+                  complet: true
                   estErreur: false
                 sommet2: *7
                 estDouble: false
@@ -171,7 +171,7 @@ grille: &1 !ruby/object:Grille
                 estErreur: false
                 hypothese: false
               - *12
-              complet: false
+              complet: true
               estErreur: false
             estDouble: true
             listeCase:
@@ -311,7 +311,7 @@ grilleComplete: &22 !ruby/object:Grille
                                 surbrillance: false
                               listeArete:
                               - *31
-                              complet: false
+                              complet: true
                               estErreur: false
                             sommet2: *29
                             estDouble: true
@@ -325,7 +325,7 @@ grilleComplete: &22 !ruby/object:Grille
                             estErreur: false
                             hypothese: false
                           - *32
-                          complet: false
+                          complet: true
                           estErreur: false
                         sommet2: *28
                         estDouble: false
@@ -339,7 +339,7 @@ grilleComplete: &22 !ruby/object:Grille
                         estErreur: false
                         hypothese: false
                       - *33
-                      complet: false
+                      complet: true
                       estErreur: false
                     estDouble: true
                     listeCase:
