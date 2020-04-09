@@ -463,9 +463,9 @@ class Aide < Gtk::Label
   def estCas15()
     voisinUn = false
     @grille.sommets.each_with_index do |x, i|
-      if x.connexionsRestantes == 2 && x.compterVoisinsNonRelies() == 2 && x.compterVoisinsComplets() + x.compterVoisinsNonRelies() == x.compterVoisins() && (x.getListeVoisinsComplets() - x.getVoisins()).empty?()
+      if x.connexionsRestantes == 2 && x.compterVoisinsNonRelies() == 2 && x.compterVoisinsComplets() + x.compterVoisinsNonRelies() == x.compterVoisins()
         x.getListeVoisins().each do |v|
-          if v.valeur == 1
+          if v.valeur == 1 && !(v.possedeAreteAvec(x))
             @position = @grille.getCase(x.position.x, x.position.y)
             voisinUn = true
           end
