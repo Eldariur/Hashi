@@ -1,4 +1,3 @@
-Retour
 require_relative 'FenetreModeChrono.rb'
 
 class FenetreModesDifficultes < Gtk::Box
