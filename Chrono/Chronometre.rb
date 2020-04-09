@@ -6,6 +6,8 @@ class Chrono < Gtk::Label
   #@total -> Contient le total de secondes écoulées.
   #@base -> Permet de sauvegarder le temps à partir du quel on chronomètre.
   #@temp -> Permet de pouvoir relancer le chronomètre avec une valeur déjà existante.
+  #@malus -> Le malus en secondes du chronomètre.
+  #@th -> Le Thread du chronomètre.
 
   # Privatise le new.
 	private_class_method :new
@@ -16,7 +18,8 @@ class Chrono < Gtk::Label
     @total = 0
     @base = 0
     @temp = 0
-	super(self.to_s)
+		@malus = 0
+		super(self.to_s)
   end
 
   # Créer un nouveau chronomètre.
@@ -32,6 +35,10 @@ class Chrono < Gtk::Label
   attr:base, false
 	# Accesseur get sur l'attribut temp.
   attr:temp, false
+	# Accesseur get sur l'attribut malus.
+  attr:malus, false
+	# Accesseur get sur l'attribut th.
+	attr:th, false
 
   # Remet à 0 le chronomètre.
   def reset()
@@ -43,7 +50,6 @@ class Chrono < Gtk::Label
   # Lance le chronométrage.
   def chronometrer()
 		@th = Thread.new {
-		#puts("JE TOURNE TOUJOURS");
 	    self.reset()
 	    if(@total != 0) then
 	      @temp = @total
@@ -67,8 +73,15 @@ class Chrono < Gtk::Label
 	# === Return
 	# * +resultat+ : resultat La valeur calculée du chronomètre.
   def resultat()
-    return @total + @temp
+    return @total + @temp + @malus
   end
+
+	# Cette methode ajoute du malus dans un chrono.
+	# === Parametre
+	# * +val+ : val La valeur de malus.
+	def addMalus(val)
+		@malus += val
+	end
 
   # Transforme les secondes en un affichage de chronomètre.
 	# === Return
@@ -99,14 +112,18 @@ class Chrono < Gtk::Label
 		self.to_chrono()
 	end
 
-def fin()
-	@th.join
-	@th.kill	
-end
+	# Cette méthode termine le thread du chronomètre.
+	def fin()
+		@th.join
+		@th.kill
+	end
 
-def vivant?()
-	return @th.alive?()
-end
+	# Cette méthode retourne si le thread du chronomètre est en cours d'éxécution.
+	# === return
+	# * +@th.alive?+ : @th.alive?() Un boolean représentant le résultat.
+	def vivant?()
+		return @th.alive?()
+	end
 
 end
 
@@ -118,7 +135,7 @@ def stoptemps(t,c)
   t.times do
     sleep(1)
   end
-  puts 'STOP'
+	#c.addMalus(10)
   c.arreter()
 end
 
@@ -130,7 +147,6 @@ def stopsaisie(c)
   while(test == nil) do
     test = gets
   end
+	#c.addMalus(10)
   c.arreter()
 end
-
-
