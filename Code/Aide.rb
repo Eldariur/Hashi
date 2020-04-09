@@ -390,6 +390,7 @@ class Aide < Gtk::Label
     compteur = 0
     @grille.sommets.each_with_index do |x, i|
       if x.valeur == 1 && x.compterArete() != x.valeur
+        compteur = 0
         x.getListeVoisins().each do |v, j|
           if v.valeur == 1
             compteur += 1
