@@ -65,19 +65,19 @@ class Sauvegarde
     Sauvegarde.genenerDossier();
     dump = YAML::dump(self)
     if(@estHypothese) then
-      file = File.open(File.path('../Sauvegarde/Save/temp.sav'), 'w')
+      file = File.open(File.path("#{$cheminRacineHashi}/Sauvegarde/Save/temp.sav"), 'w')
     else
       case @difficulte
       when "easy"
         puts "test easy"
-        file = File.open(File.path('../Sauvegarde/Save/easy/save.sav'), 'w')
+        file = File.open(File.path("#{$cheminRacineHashi}/Sauvegarde/Save/easy/save.sav"), 'w')
       when "normal"
-        file = File.open(File.path('../Sauvegarde/Save/normal/save.sav'), 'w')
+        file = File.open(File.path("#{$cheminRacineHashi}/Sauvegarde/Save/normal/save.sav"), 'w')
       when "hard"
-        file = File.open(File.path('../Sauvegarde/Save/hard/save.sav'), 'w')
+        file = File.open(File.path("#{$cheminRacineHashi}/Sauvegarde/Save/hard/save.sav"), 'w')
       when "custom"
         puts "test"
-        file = File.open(File.path('../Sauvegarde/Save/custom/save.sav'), 'w')
+        file = File.open(File.path("#{$cheminRacineHashi}/Sauvegarde/Save/custom/save.sav"), 'w')
       end
     end
     file.write dump
@@ -97,17 +97,17 @@ class Sauvegarde
   # * +save+ : save La sauvegarde chargée.
   def charger()
     if(@estHypothese) then
-      save = YAML.load(File.read('../Sauvegarde/Save/temp.sav'))
+      save = YAML.load(File.read("#{$cheminRacineHashi}/Sauvegarde/Save/temp.sav"))
     else
       case @difficulte
         when "easy"
-          save = YAML.load(File.read('../Sauvegarde/Save/easy/save.sav'))
+          save = YAML.load(File.read("#{$cheminRacineHashi}/Sauvegarde/Save/easy/save.sav"))
         when "normal"
-          save = YAML.load(File.read('../Sauvegarde/Save/normal/save.sav'))
+          save = YAML.load(File.read("#{$cheminRacineHashi}/Sauvegarde/Save/normal/save.sav"))
         when "hard"
-          save = YAML.load(File.read('../Sauvegarde/Save/hard/save.sav'))
+          save = YAML.load(File.read("#{$cheminRacineHashi}/Sauvegarde/Save/hard/save.sav"))
         when "custom"
-          save = YAML.load(File.read('../Sauvegarde/Save/custom/save.sav'))
+          save = YAML.load(File.read("#{$cheminRacineHashi}/Sauvegarde/Save/custom/save.sav"))
       end
     end
     return save
@@ -131,7 +131,7 @@ class Sauvegarde
 
   # Permet de valider une hypothèse.
   def Sauvegarde.validerHypothese()
-    File.delete('../Sauvegarde/Save/temp.sav')
+    File.delete("#{$cheminRacineHashi}/Sauvegarde/Save/temp.sav")
   end
 
   # Annule une hypothèse en cours et retourne l'ancienne grille pre-hypothèse.
@@ -140,27 +140,27 @@ class Sauvegarde
   def Sauvegarde.annulerHypothese(mode = true)
     save = Sauvegarde.nouvelle(nil,nil,nil,nil,true).charger()
     if(mode) then
-      File.delete('../Sauvegarde/Save/temp.sav')
+      File.delete("#{$cheminRacineHashi}/Sauvegarde/Save/temp.sav")
     end
     return save.grille
   end
 
   # Génére les dossiers nécessaires au fonctionnement des sauvegardes.
   def Sauvegarde.genenerDossier()
-    if(!Dir.exist?('../Sauvegarde/Save')) then
-      Dir::mkdir("../Sauvegarde/Save", 0777)
+    if(!Dir.exist?("#{$cheminRacineHashi}/Sauvegarde/Save")) then
+      Dir::mkdir("#{$cheminRacineHashi}/Sauvegarde/Save", 0777)
     end
-    if(!Dir.exist?('../Sauvegarde/Save/easy')) then
-      Dir::mkdir("../Sauvegarde/Save/easy", 0777)
+    if(!Dir.exist?("#{$cheminRacineHashi}/Sauvegarde/Save/easy")) then
+      Dir::mkdir("#{$cheminRacineHashi}/Sauvegarde/Save/easy", 0777)
     end
-    if(!Dir.exist?('../Sauvegarde/Save/normal')) then
-      Dir::mkdir("../Sauvegarde/Save/normal", 0777)
+    if(!Dir.exist?("#{$cheminRacineHashi}/Sauvegarde/Save/normal")) then
+      Dir::mkdir("#{$cheminRacineHashi}/Sauvegarde/Save/normal", 0777)
     end
-    if(!Dir.exist?('../Sauvegarde/Save/hard')) then
-      Dir::mkdir("../Sauvegarde/Save/hard", 0777)
+    if(!Dir.exist?("#{$cheminRacineHashi}/Sauvegarde/Save/hard")) then
+      Dir::mkdir("#{$cheminRacineHashi}/Sauvegarde/Save/hard", 0777)
     end
-    if(!Dir.exist?('../Sauvegarde/Save/custom')) then
-      Dir::mkdir("../Sauvegarde/Save/custom", 0777)
+    if(!Dir.exist?("#{$cheminRacineHashi}/Sauvegarde/Save/custom")) then
+      Dir::mkdir("#{$cheminRacineHashi}/Sauvegarde/Save/custom", 0777)
     end
   end
 
