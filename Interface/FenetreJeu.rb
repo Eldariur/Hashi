@@ -49,9 +49,11 @@ class FenetreJeu < Gtk::Box
 		if(save == nil && tuto == nil )
 			@gene = Generateur.new(@difficulte, long, larg, dens)
 			@grilleTest = @gene.creeUneGrille()
-			@grilleComplete = @grilleTest
+			#@grilleComplete = @grilleTest
+			@grilleComplete = @gene.getGrilleAvecArete()
 		elsif(tuto != nil)
 			@grilleTest = tuto.lancerTuto.grille
+			@grilleComplete = tuto.lancerTuto.grilleComplete
 
 			# @longueur = @grilleTest.longueur
 			# @largeur = @grilleTest.largeur
@@ -358,6 +360,7 @@ class FenetreJeu < Gtk::Box
 			puts "VOUS AVEZ GAGNÉ !!!!"
 			if(@chr != nil)
 				@chr.arreter()
+				@chr.fin()
 				@@fenetre.changerWidget(FenetreVictoire.new(@@fenetre,@difficulte,@chr.to_chrono))
 			else
 				@@fenetre.changerWidget(FenetreVictoire.new(@@fenetre,@difficulte,nil))
@@ -1069,6 +1072,7 @@ class FenetreJeu < Gtk::Box
 				response = popup.run()
 
 				if(response == :no)
+					@chr.fin()
 					popup.destroy()
 					@@fenetre.changerWidget(@fenPre)
 				else
