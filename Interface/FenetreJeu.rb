@@ -1304,8 +1304,7 @@ class FenetreJeu < Gtk::Box
 
   def initChrono
 		@boxChrono = Gtk::Box.new(Gtk::Orientation::HORIZONTAL)
-		@boutonSablier = UnBoutonPerso.new("","Chrono")
-		@boxChrono.add(@boutonSablier)
+		@boutonSablier = UnBoutonPerso.new("test","Chrono")
 		@boutonSablier.verrouiller()
 
 		if(@classe)
@@ -1315,6 +1314,7 @@ class FenetreJeu < Gtk::Box
 			@boxChrono.show
 			@chr.set_name("LabelChrono")
 			@chr.show
+			ajouterContenu(@boxChrono,@boutonSablier)
 			ajouterContenu(@boxChrono,@chr)
 
 			@chr.chronometrer()
@@ -1345,7 +1345,6 @@ class FenetreJeu < Gtk::Box
 		@boutonErreur.hide
 		@boutonAideTxt.hide
 		@boutonAideVisu.hide
-		@boutonSablier.hide
 	end
 
 	def initTailleCase
