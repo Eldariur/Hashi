@@ -459,7 +459,7 @@ class Aide < Gtk::Label
         compteur = 0
         x.getListeVoisinsNonComplets().each do |v|
           if x.possedeAreteAvec(v)
-            if(x.donneAreteAvec(x).estDouble)
+            if(x.donneAreteAvec(v).estDouble)
               compteur += 0
             else
               if v.connexionsRestantes() > 0

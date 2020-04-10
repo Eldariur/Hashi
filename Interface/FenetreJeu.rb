@@ -23,6 +23,7 @@ class FenetreJeu < Gtk::Box
 	#@classe
 	#@tailleArea
 	#@largeurSurbri
+	#@style
 
 	attr_reader :grilleTest, :longueur, :largeur
 
@@ -31,7 +32,7 @@ class FenetreJeu < Gtk::Box
 		super(Gtk::Orientation::VERTICAL)
 
     @@fenetre = window
-	@fenPre = fenPre;
+		@fenPre = fenPre;
 		@tailleArea = @@fenetre.default_size[1] / 20 * 13
 		@tuto = tuto
     @difficulte = difficulte
@@ -43,6 +44,12 @@ class FenetreJeu < Gtk::Box
 		@listeInter = []
 		x = 5
 		y = 5
+
+		if @@fenetre.default_size[0] > 1500
+			@style = "BoutonEnJeu"
+		else
+			@style = "BoutonEnJeu2"
+		end
 
 		#####################################
 		if(save == nil && tuto == nil )
@@ -872,7 +879,7 @@ class FenetreJeu < Gtk::Box
 		@cr.set_source_rgb 0,0,0
 
 		@grilleTest.aretes.each{ |a|
-			activeHypo(a.hypothese)
+
 
 			x1 = a.sommet1.position.x
 			y1 = a.sommet1.position.y
@@ -890,21 +897,17 @@ class FenetreJeu < Gtk::Box
 					if(y1 < y2)
 						@cr.move_to(x1 * @tailleCase + paddingX + @tailleCase / 2, y1 * @tailleCase + paddingY + @tailleCase)
 						@cr.line_to(x2 * @tailleCase + paddingX + @tailleCase / 2, y2 * @tailleCase + paddingY)
-						@cr.stroke()
 					else
 						@cr.move_to(x1 * @tailleCase + paddingX + @tailleCase / 2, y1 * @tailleCase + paddingY)
 						@cr.line_to(x2 * @tailleCase + paddingX + @tailleCase / 2, y2 * @tailleCase + paddingY + @tailleCase)
-						@cr.stroke()
 					end
 				when false
 					if(x1 < x2)
 						@cr.move_to(x1 * @tailleCase + paddingX + @tailleCase, y1 * @tailleCase + paddingY + @tailleCase / 2)
 						@cr.line_to(x2 * @tailleCase + paddingX, y2 * @tailleCase + paddingY + @tailleCase / 2)
-						@cr.stroke()
 					else
 						@cr.move_to(x1 * @tailleCase + paddingX, y1 * @tailleCase + paddingY + @tailleCase / 2)
 						@cr.line_to(x2 * @tailleCase + paddingX + @tailleCase, y2 * @tailleCase + paddingY + @tailleCase / 2)
-						@cr.stroke()
 					end
 				end
 			else
@@ -913,36 +916,32 @@ class FenetreJeu < Gtk::Box
 					if(y1 < y2)
 						@cr.move_to(x1 * @tailleCase + paddingX + @tailleCase / 2 - decalageDoubleArete, y1 * @tailleCase + paddingY + @tailleCase)
 						@cr.line_to(x2 * @tailleCase + paddingX + @tailleCase / 2 - decalageDoubleArete, y2 * @tailleCase + paddingY)
-						@cr.stroke()
 						@cr.move_to(x1 * @tailleCase + paddingX + @tailleCase / 2 + decalageDoubleArete, y1 * @tailleCase + paddingY + @tailleCase)
 						@cr.line_to(x2 * @tailleCase + paddingX + @tailleCase / 2 + decalageDoubleArete, y2 * @tailleCase + paddingY)
-						@cr.stroke()
 					else
 						@cr.move_to(x1 * @tailleCase + paddingX + @tailleCase / 2 - decalageDoubleArete, y1 * @tailleCase + paddingY)
 						@cr.line_to(x2 * @tailleCase + paddingX + @tailleCase / 2 - decalageDoubleArete, y2 * @tailleCase + paddingY + @tailleCase)
-						@cr.stroke()
 						@cr.move_to(x1 * @tailleCase + paddingX + @tailleCase / 2 + decalageDoubleArete, y1 * @tailleCase + paddingY)
 						@cr.line_to(x2 * @tailleCase + paddingX + @tailleCase / 2 + decalageDoubleArete, y2 * @tailleCase + paddingY + @tailleCase)
-						@cr.stroke()
 					end
 				when false
 					if(x1 < x2)
 						@cr.move_to(x1 * @tailleCase + paddingX + @tailleCase, y1 * @tailleCase + paddingY + @tailleCase / 2 - decalageDoubleArete)
 						@cr.line_to(x2 * @tailleCase + paddingX, y2 * @tailleCase + paddingY + @tailleCase / 2- decalageDoubleArete)
-						@cr.stroke()
 						@cr.move_to(x1 * @tailleCase + paddingX + @tailleCase, y1 * @tailleCase + paddingY + @tailleCase / 2 + decalageDoubleArete)
 						@cr.line_to(x2 * @tailleCase + paddingX, y2 * @tailleCase + paddingY + @tailleCase / 2 + decalageDoubleArete)
-						@cr.stroke()
 					else
 						@cr.move_to(x1 * @tailleCase + paddingX, y1 * @tailleCase + paddingY + @tailleCase / 2 - decalageDoubleArete)
 						@cr.line_to(x2 * @tailleCase + paddingX + @tailleCase, y2 * @tailleCase + paddingY + @tailleCase / 2 - decalageDoubleArete)
-						@cr.stroke()
 						@cr.move_to(x1 * @tailleCase + paddingX, y1 * @tailleCase + paddingY + @tailleCase / 2 + decalageDoubleArete)
 						@cr.line_to(x2 * @tailleCase + paddingX + @tailleCase, y2 * @tailleCase + paddingY + @tailleCase / 2 + decalageDoubleArete)
-						@cr.stroke()
 					end
 				end
 			end
+			activeHypo(a.hypothese)
+			@cr.stroke
+			@cr = @darea.window.create_cairo_context
+
 		}
 	end
 
@@ -1000,7 +999,7 @@ class FenetreJeu < Gtk::Box
 	end
 
 	def initBoutonRetour
-    @boutonRetour = UnBoutonPerso.new("Retour", "BoutonEnJeu")do
+    @boutonRetour = UnBoutonPerso.new("Retour", @style)do
 			if(@tuto)
 					@@fenetre.changerWidget(@fenPre)
 			elsif(!@classe)
@@ -1038,7 +1037,7 @@ class FenetreJeu < Gtk::Box
   end
 
   def initBoutonHypo
-    @boutonHypo = UnBoutonPerso.new("H", "BoutonEnJeu")do
+    @boutonHypo = UnBoutonPerso.new("H", @style)do
       puts "j'ai cliqué sur le bouton Hypo"
 			if(@presser)
 				@presser = false
@@ -1095,7 +1094,7 @@ class FenetreJeu < Gtk::Box
   end
 
 	def initBoutonValidHypo
-    @boutonValidHypo= UnBoutonPerso.new("Valider Hypothèse", "BoutonEnJeuGros")do
+    @boutonValidHypo= UnBoutonPerso.new("Valider Hypothèse", @style)do
 			@presser = false
 
 			Sauvegarde.validerHypothese()
@@ -1119,7 +1118,7 @@ class FenetreJeu < Gtk::Box
   def initBoutonAide
 		@boxMessage = Gtk::Box.new(Gtk::Orientation::VERTICAL)
 		@boxMessage.valign = Gtk::Align::CENTER
-    		@boutonAide = UnBoutonPerso.new("?", "BoutonEnJeu")do
+    		@boutonAide = UnBoutonPerso.new("?", @style)do
 			@erreurs = nil
 			@afficheAide = false
 			@afficherErreur = false
@@ -1209,7 +1208,7 @@ class FenetreJeu < Gtk::Box
 			puts "appuie bouton Erreur Visu"
 			@afficherErreur = true
 			@erreurs = @grilleTest.trouverErreurs(@grilleComplete)
-			
+
 			ajouteMalus(15)
 
 			# retirerContenu(vbox,@boutonErreur)
@@ -1233,7 +1232,7 @@ class FenetreJeu < Gtk::Box
 			afficheEcran()
 			# self.show_all
 			masquerBouton
-			
+
 			ajouteMalus(@aideTxt.penalite)
 			@aideTxt.show
 		end
@@ -1254,7 +1253,7 @@ class FenetreJeu < Gtk::Box
   end
 
   def initBoutonAnnul
-    @boutonAnnul = UnBoutonPerso.new("U", "BoutonEnJeu")do
+    @boutonAnnul = UnBoutonPerso.new("U", @style)do
 			# puts "appuie bouton Annuler"
 			annulerAction()
 
@@ -1263,7 +1262,7 @@ class FenetreJeu < Gtk::Box
   end
 
   def initBoutonRecom
-    @boutonRecom = UnBoutonPerso.new("R", "BoutonEnJeu")do
+    @boutonRecom = UnBoutonPerso.new("R", @style)do
 			# puts "appuie bouton Recommencer"
 			# @grilleTest = @grilleComplete
 			@grilleTest.clearAretes
@@ -1383,7 +1382,7 @@ class FenetreJeu < Gtk::Box
 
 		end
 	end
-	
+
 	def ajouteMalus(penalite)
 		if(@chr != nil)
 			@chr.addMalus(penalite)
