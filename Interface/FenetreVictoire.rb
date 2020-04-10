@@ -12,7 +12,7 @@ class FenetreVictoire < Gtk::Box
     else
         texteVict = UnLabelPerso.new("Félicitations, vous avez terminé cette grille", "lblRegles")
     end
-    texteMalus = UnLabelPerso.new("Vous avez un malus de #{malus} points", "lblRegles")
+    texteMalus = UnLabelPerso.new("Vous avez un malus de #{malus} secondes", "lblRegles")
     scoreHolder = Score.creer("placeholder", temps, difficulte)
     texteScore = UnLabelPerso.new("Votre score est de #{scoreHolder.points}", "lblRegles")
     texteEnt = UnLabelPerso.new("Saisissez votre pseudonyme :", "lblRegles")

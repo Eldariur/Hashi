@@ -36,7 +36,7 @@ class Chrono < Gtk::Label
 	# Accesseur get sur l'attribut temp.
   attr:temp, false
 	# Accesseur get sur l'attribut malus.
-  attr:malus, false
+  attr:malus, true
 	# Accesseur get sur l'attribut th.
 	attr:th, false
 
@@ -56,8 +56,8 @@ class Chrono < Gtk::Label
 	    end
 	    while @stop != 1 do
 	      @total = Time.now - @base
-	      puts `clear`
-	      puts self.to_chrono()
+	      #puts `clear`
+	     # puts self.to_chrono()
 	      sleep(0.01)
 				self.text = self.to_s()
 	    end

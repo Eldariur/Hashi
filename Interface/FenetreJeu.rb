@@ -1173,8 +1173,8 @@ class FenetreJeu < Gtk::Box
 				# tbl.attach(vbox,0,1,2,10)
 				# self.show_all
 				if(@erreurs != nil && @erreurs.size != 0)
-					puts "il y a 1 erreur"
 					@labelMessage = UnLabelPerso.new("Vous avez "+@erreurs.size().to_s+" erreur(s)","UnLabelBlanc")
+					@chr.addMalus(5)
 					retirerContenu(@boxMessage,@labelMessage)
 					@boxMessage.add(@labelMessage)
 					masquerBouton()
@@ -1205,10 +1205,12 @@ class FenetreJeu < Gtk::Box
 
 
 	def initBoutonErreurVisu
-    @boutonErreur = UnBoutonPerso.new("Montrer les erreurs ?", "BoutonEnJeuGros")do
+    			@boutonErreur = UnBoutonPerso.new("Montrer les erreurs ?", "BoutonEnJeuGros")do
 			puts "appuie bouton Erreur Visu"
 			@afficherErreur = true
 			@erreurs = @grilleTest.trouverErreurs(@grilleComplete)
+			@chr.addMalus(15)
+
 			# retirerContenu(vbox,@boutonErreur)
 			# retirerContenu(vbox,messageLabel)
 			afficheEcran
@@ -1226,21 +1228,25 @@ class FenetreJeu < Gtk::Box
 			# retirerContenu(vbox,@boutonAideTxt)
 			# retirerContenu(vbox,@boutonAideVisu)
 			# ajouterContenu(vbox,@boutonAideVisu)
+
 			afficheEcran()
 			# self.show_all
 			masquerBouton
+			
+			ajouteMalus(@aideTxt.penalite)
 			@aideTxt.show
 		end
   end
 
 	def initBoutonAideVisu
-    @boutonAideVisu = UnBoutonPerso.new("Aide Visuelle", "BoutonEnJeuGros")do
+   			@boutonAideVisu = UnBoutonPerso.new("Aide Visuelle", "BoutonEnJeuGros")do
 			@aide = Aide.creer(@grilleTest)
 			@afficheAide = true
-
 			# retirerContenu(vbox,@boutonAideTxt)
 			# retirerContenu(vbox,@boutonAideVisu)
 			@caseAide = @aide.getCaseAide
+			puts("Valeur aide  #{@aide.penalite}")
+			ajouteMalus(@aide.penalite)
 			afficheEcran
 			masquerBouton
     end
@@ -1367,15 +1373,21 @@ class FenetreJeu < Gtk::Box
 			puts "VOUS AVEZ GAGNÉ !!!!"
 			if(@chr != nil)
 				@chr.arreter()
+				puts(@chr.malus)
 				@chr.fin()
-				@@fenetre.changerWidget(FenetreVictoire.new(@@fenetre,@difficulte,@chr.to_chrono))
+				@@fenetre.changerWidget(FenetreVictoire.new(@@fenetre,@difficulte,@chr.to_chrono,@chr.malus))
 			else
 				@@fenetre.changerWidget(FenetreVictoire.new(@@fenetre,@difficulte,nil))
 			end
 
 		end
 	end
-
+	
+	def ajouteMalus(penalite)
+		if(@chr != nil)
+			@chr.addMalus(penalite)
+		end
+	end
 
 
 end
