@@ -9,8 +9,7 @@ class FenetreMenu < Gtk::Box
     bouton1 = UnBoutonPerso.new("Jouer", "BoutonMenu")
     bouton2 = UnBoutonPerso.new("Classement", "BoutonMenu")
     bouton3 = UnBoutonPerso.new("Quitter", "BoutonMenu")
-
-    #image = Gtk::Image.new("img/schema_projet.JPG")
+    
     bouton1.signal_connect('clicked') {
       @@fenetre.changerWidget(FenetreMenuJouer.new(@@fenetre,self))
     }
@@ -20,7 +19,7 @@ class FenetreMenu < Gtk::Box
     }
 
     bouton3.signal_connect('clicked') {
-	@@fenetre.destroy()
+      @@fenetre.destroy()
       Gtk.main_quit
     }
 
