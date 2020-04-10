@@ -23,6 +23,7 @@ class FenetreJeu < Gtk::Box
 	#@classe
 	#@tailleArea
 	#@largeurSurbri
+	#@style
 
 	attr_reader :grilleTest, :longueur, :largeur
 
@@ -31,7 +32,7 @@ class FenetreJeu < Gtk::Box
 		super(Gtk::Orientation::VERTICAL)
 
     @@fenetre = window
-	@fenPre = fenPre;
+		@fenPre = fenPre;
 		@tailleArea = @@fenetre.default_size[1] / 20 * 13
 		@tuto = tuto
     @difficulte = difficulte
@@ -43,6 +44,12 @@ class FenetreJeu < Gtk::Box
 		@listeInter = []
 		x = 5
 		y = 5
+
+		if @@fenetre.default_size[0] > 1500
+			@style = "BoutonEnJeu"
+		else
+			@style = "BoutonEnJeu2"
+		end
 
 		#####################################
 		if(save == nil && tuto == nil )
@@ -1000,7 +1007,7 @@ class FenetreJeu < Gtk::Box
 	end
 
 	def initBoutonRetour
-    @boutonRetour = UnBoutonPerso.new("Retour", "BoutonEnJeu")do
+    @boutonRetour = UnBoutonPerso.new("Retour", @style)do
 			if(@tuto)
 					@@fenetre.changerWidget(@fenPre)
 			elsif(!@classe)
@@ -1038,7 +1045,7 @@ class FenetreJeu < Gtk::Box
   end
 
   def initBoutonHypo
-    @boutonHypo = UnBoutonPerso.new("H", "BoutonEnJeu")do
+    @boutonHypo = UnBoutonPerso.new("H", @style)do
       puts "j'ai cliqué sur le bouton Hypo"
 			if(@presser)
 				@presser = false
@@ -1095,7 +1102,7 @@ class FenetreJeu < Gtk::Box
   end
 
 	def initBoutonValidHypo
-    @boutonValidHypo= UnBoutonPerso.new("Valider Hypothèse", "BoutonEnJeuGros")do
+    @boutonValidHypo= UnBoutonPerso.new("Valider Hypothèse", @style)do
 			@presser = false
 
 			Sauvegarde.validerHypothese()
@@ -1119,7 +1126,7 @@ class FenetreJeu < Gtk::Box
   def initBoutonAide
 		@boxMessage = Gtk::Box.new(Gtk::Orientation::VERTICAL)
 		@boxMessage.valign = Gtk::Align::CENTER
-    		@boutonAide = UnBoutonPerso.new("?", "BoutonEnJeu")do
+    		@boutonAide = UnBoutonPerso.new("?", @style)do
 			@erreurs = nil
 			@afficheAide = false
 			@afficherErreur = false
@@ -1209,7 +1216,7 @@ class FenetreJeu < Gtk::Box
 			puts "appuie bouton Erreur Visu"
 			@afficherErreur = true
 			@erreurs = @grilleTest.trouverErreurs(@grilleComplete)
-			
+
 			ajouteMalus(15)
 
 			# retirerContenu(vbox,@boutonErreur)
@@ -1233,7 +1240,7 @@ class FenetreJeu < Gtk::Box
 			afficheEcran()
 			# self.show_all
 			masquerBouton
-			
+
 			ajouteMalus(@aideTxt.penalite)
 			@aideTxt.show
 		end
@@ -1254,7 +1261,7 @@ class FenetreJeu < Gtk::Box
   end
 
   def initBoutonAnnul
-    @boutonAnnul = UnBoutonPerso.new("U", "BoutonEnJeu")do
+    @boutonAnnul = UnBoutonPerso.new("U", @style)do
 			# puts "appuie bouton Annuler"
 			annulerAction()
 
@@ -1263,7 +1270,7 @@ class FenetreJeu < Gtk::Box
   end
 
   def initBoutonRecom
-    @boutonRecom = UnBoutonPerso.new("R", "BoutonEnJeu")do
+    @boutonRecom = UnBoutonPerso.new("R", @style)do
 			# puts "appuie bouton Recommencer"
 			# @grilleTest = @grilleComplete
 			@grilleTest.clearAretes
@@ -1383,7 +1390,7 @@ class FenetreJeu < Gtk::Box
 
 		end
 	end
-	
+
 	def ajouteMalus(penalite)
 		if(@chr != nil)
 			@chr.addMalus(penalite)
