@@ -1376,7 +1376,7 @@ class FenetreJeu < Gtk::Box
 				@chr.arreter()
 				puts(@chr.malus)
 				@chr.fin()
-				@@fenetre.changerWidget(FenetreVictoire.new(@@fenetre,@difficulte,@chr.to_chrono,@chr.malus))
+				@@fenetre.changerWidget(FenetreVictoire.new(@@fenetre,@difficulte,@chr,@chr.malus))
 			else
 				@@fenetre.changerWidget(FenetreVictoire.new(@@fenetre,@difficulte,nil))
 			end
