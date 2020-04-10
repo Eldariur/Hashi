@@ -33,7 +33,7 @@ class FenetreJeu < Gtk::Box
 
     @@fenetre = window
 		@fenPre = fenPre;
-		@tailleArea = @@fenetre.default_size[1] / 4 * 3
+		@tailleArea = @@fenetre.default_size[1] / 20 * 13
 		@tuto = tuto
     @difficulte = difficulte
 		@classe = classe
@@ -1377,7 +1377,7 @@ class FenetreJeu < Gtk::Box
 				@chr.arreter()
 				puts(@chr.malus)
 				@chr.fin()
-				@@fenetre.changerWidget(FenetreVictoire.new(@@fenetre,@difficulte,@chr,@chr.malus))
+				@@fenetre.changerWidget(FenetreVictoire.new(@@fenetre,@difficulte,@chr.to_chrono,@chr.malus))
 			else
 				@@fenetre.changerWidget(FenetreVictoire.new(@@fenetre,@difficulte,nil))
 			end
