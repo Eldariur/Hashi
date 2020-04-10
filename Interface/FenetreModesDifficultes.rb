@@ -77,7 +77,6 @@ class FenetreModesDifficultes < Gtk::Box
       end
     else
       if(response == :yes)
-        puts "je suis ici"
         save = Sauvegarde.nouvelle(nil, nil, nil, difficulte)
         partie = save.charger()
         popup.destroy()
