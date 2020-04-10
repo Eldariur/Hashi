@@ -11,7 +11,7 @@ class FenetreVictoire < Gtk::Box
         texteVict = UnLabelPerso.new("Félicitations, vous avez terminé cette grille en #{chr.to_s}", "lblRegles")
 	texteMalus = UnLabelPerso.new("Vous avez un malus de #{chr.malus} secondes", "lblRegles")
 	scoreHolder = Score.creer("placeholder",chr.resultat, difficulte)
-	texteScore = UnLabelPerso.new("Votre score est de #{scoreHolder.calculScore.to_s}", "lblRegles")
+	texteScore = UnLabelPerso.new("Votre score est de #{scoreHolder.calculScore.round.to_s}", "lblRegles")
 	texteEnt = UnLabelPerso.new("Saisissez votre pseudonyme :", "lblRegles")
     else
         texteVict = UnLabelPerso.new("Félicitations, vous avez terminé cette grille", "lblRegles")
@@ -34,6 +34,7 @@ class FenetreVictoire < Gtk::Box
     boutonValider.signal_connect('clicked'){
         if(ent.text() != nil && ent.text().strip != "")
             score = Score.creer(ent.text(), chr.resultat, difficulte)
+            score.calculScore()
             score.sauvegarder()
             boutonValider.verrouiller()
             boutonValider.label = "Score enregistré"
