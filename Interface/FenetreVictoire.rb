@@ -2,19 +2,19 @@ require_relative "../Classement/Score.rb"
 
 class FenetreVictoire < Gtk::Box
 
-  def initialize(window, difficulte, temps="00:00", malus=0)
+  def initialize(window, difficulte, chr, malus=0)
     @@fenetre = window
     size = @@fenetre.default_size()
     super(Gtk::Orientation::VERTICAL)
 
-    if(temps != nil && temps != "00:00")
-        texteVict = UnLabelPerso.new("Félicitations, vous avez terminé cette grille en #{temps}", "lblRegles")
+    if(chr != nil && chr.to_s != "00:00")
+        texteVict = UnLabelPerso.new("Félicitations, vous avez terminé cette grille en #{chr.to_s}", "lblRegles")
     else
         texteVict = UnLabelPerso.new("Félicitations, vous avez terminé cette grille", "lblRegles")
     end
     texteMalus = UnLabelPerso.new("Vous avez un malus de #{malus} secondes", "lblRegles")
-    scoreHolder = Score.creer("placeholder", temps, difficulte)
-    texteScore = UnLabelPerso.new("Votre score est de #{scoreHolder.points}", "lblRegles")
+    scoreHolder = Score.creer("placeholder", chr.resultat, difficulte)
+    texteScore = UnLabelPerso.new("Votre score est de #{scoreHolder.calculScore.to_s}", "lblRegles")
     texteEnt = UnLabelPerso.new("Saisissez votre pseudonyme :", "lblRegles")
 
     tbl = Gtk::Table.new(1,1)
@@ -33,7 +33,7 @@ class FenetreVictoire < Gtk::Box
 
     boutonValider.signal_connect('clicked'){
         if(ent.text() != nil && ent.text().strip != "")
-            score = Score.creer(ent.text(), temps, difficulte)
+            score = Score.creer(ent.text(), chr.resultat, difficulte)
             score.sauvegarder()
             boutonValider.verrouiller()
             boutonValider.label = "Score enregistré"
@@ -55,13 +55,13 @@ class FenetreVictoire < Gtk::Box
     vbox = Gtk::Box.new(Gtk::Orientation::VERTICAL, 5)
     vbox2 = Gtk::Box.new(Gtk::Orientation::VERTICAL, 0)
     vbox2.add(texteVict)
-    if(temps != nil && temps != "00:00")
+    if(chr != nil && chr.to_s != "00:00")
         vbox2.add(texteMalus)
         vbox2.add(texteScore)
         vbox2.add(texteEnt)
     end
     vbox.add(vbox2)
-    if(temps != nil && temps != "00:00")
+    if(chr != nil && chr.to_s != "00:00")
         vbox.add(ent)
         vbox.add(boutonValider)
     end
