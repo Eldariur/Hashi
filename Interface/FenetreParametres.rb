@@ -83,6 +83,7 @@ class FenetreParametres < Gtk::Box
       lengthScale.setValue(7);
       heightScale.setValue(7);
       densScale.setValue(19);
+      actualise([lengthScale,heightScale,densScale])
     }
 
   end
