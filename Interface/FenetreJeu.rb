@@ -45,6 +45,8 @@ class FenetreJeu < Gtk::Box
 		x = 5
 		y = 5
 
+		puts "LARGEUR ECRAN : " + @@fenetre.default_size[0].to_s
+
 		if @@fenetre.default_size[0] > 1500
 			@style = "BoutonEnJeu"
 		else
