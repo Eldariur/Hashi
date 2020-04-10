@@ -1174,7 +1174,7 @@ class FenetreJeu < Gtk::Box
 				# self.show_all
 				if(@erreurs != nil && @erreurs.size != 0)
 					@labelMessage = UnLabelPerso.new("Vous avez "+@erreurs.size().to_s+" erreur(s)","UnLabelBlanc")
-					@chr.ajouteMalus(5)
+					ajouteMalus(5)
 					retirerContenu(@boxMessage,@labelMessage)
 					@boxMessage.add(@labelMessage)
 					masquerBouton()
@@ -1210,7 +1210,7 @@ class FenetreJeu < Gtk::Box
 			@afficherErreur = true
 			@erreurs = @grilleTest.trouverErreurs(@grilleComplete)
 			
-			@chr.ajouteMalus(15)
+			ajouteMalus(15)
 
 			# retirerContenu(vbox,@boutonErreur)
 			# retirerContenu(vbox,messageLabel)
