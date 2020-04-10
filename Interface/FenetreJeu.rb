@@ -601,8 +601,8 @@ class FenetreJeu < Gtk::Box
 		end
 	end
 
-	def dimImage(str)
-		image = Gtk::Image.new(str)
+	def dimImage(file)
+		image = Gtk::Image.new(:file => file)
 		image.pixbuf = image.pixbuf.scale(35,35) if image.pixbuf!=nil
 		return image
 	end
