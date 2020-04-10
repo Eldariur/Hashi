@@ -34,7 +34,6 @@ class Aide < Gtk::Label
     @nb_voisins = Array.new(@grille.sommets.size())
     @id = definirCas()
     @penalite = 0
-    puts @id.to_s
     super(self.getMessageAide())
   end
 
@@ -57,7 +56,9 @@ class Aide < Gtk::Label
   #
   # L'aide textuelle correspondant à l'id de l'aide appelante
   def getMessageAide()
-    @penalite = 10
+    if @id != 0
+      @penalite = 10
+    end
    	file_data = File.read("#{$cheminRacineHashi}/Code/TexteAide.txt").split("/").join(":").split(":")
   	#puts file_data
   	affiche = false
@@ -76,7 +77,9 @@ class Aide < Gtk::Label
   #
   # L'aide visuelle correspondant à l'id de l'aide appelante
   def getCaseAide()
-    @penalite = 20
+    if @id != 0
+      @penalite = 20
+    end
    	return @position
   end
 
@@ -459,10 +462,20 @@ class Aide < Gtk::Label
             if(x.donneAreteAvec(x).estDouble)
               compteur += 0
             else
-              compteur += 1
+              if v.connexionsRestantes() > 0
+                compteur += 1
+              else
+                compteur += 0
+              end
             end
           else
-            compteur += 2
+            if v.connexionsRestantes() > 1
+              compteur += 2
+            elsif v.connexionsRestantes > 0
+              compteur += 1
+            else
+              compteur += 0
+            end
           end
         end
         if compteur == x.connexionsRestantes()
