@@ -10,6 +10,28 @@ threads << Thread.new {stopsaisie(c)}
 
 threads.each { |thr| thr.join }
 
+# Uniquement besoin pour le test pour simuler une partie
+for i in 0..rand(3)
+  c.addMalus(rand(15))
+end
+c.addMalus(30)
+
+s = Score.creer(Score.askName, c.resultat,"normal")
+
+# Uniquement besoin pour le test pour afficher a la fin
+cl =  Classement.creer(s.difficulte)
+
+s.calculScore()
+
+puts "Nouveau : #{s}"
+
+puts "BDD avant :\n#{cl.to_s}"
+
+s.sauvegarder
+
+puts "BDD apres :\n#{cl.to_s}"
+
+=begin
 20.times do
 
   temp = (0...3).map { (65 + rand(26)).chr }.join
@@ -40,7 +62,7 @@ threads.each { |thr| thr.join }
 
   c.resetMalus()
 end
-=begin
+
 puts "BDD avant :\n#{c.to_s}"
 
 if c.isHighScore(s) then s.sauvegarder() end

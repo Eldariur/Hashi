@@ -92,8 +92,6 @@ class Aide < Gtk::Label
 
     if estCas1()
       return 1
-    elsif estCas1Bis()
-      return 111
     elsif estCas2()
       return 2
     elsif estCas3()
@@ -126,6 +124,8 @@ class Aide < Gtk::Label
       return 16
     elsif estCas17()
       return 17
+    elsif estCas18()
+      return 18
     else
       return 0
     end
@@ -148,13 +148,13 @@ class Aide < Gtk::Label
   end
 
 
-  ## Méthode testant si un cas 1 bis est présent dans la grille
-  # Cas 1 bis : île avec une seule île voisine restante dans la grille
+  ## Méthode testant si un cas 2 est présent dans la grille
+  # Cas 2 : île avec une seule île voisine restante dans la grille
   #
   # === Return
   #
   # true si le cas est vérifié pour un des sommets de la grille, false sinon
-  def estCas1Bis()
+  def estCas2()
     @grille.sommets.each_with_index do |x, i|
       if x.compterVoisinsNonComplets() == 1 && x.compterArete() != x.valeur
         @position = @grille.getCase(x.position.x, x.position.y)
@@ -164,13 +164,13 @@ class Aide < Gtk::Label
     return false
   end
 
-  ## Méthode testant si un cas 2 est présent dans la grille
-  # Cas 2 : île à 8 restante dans la grille
+  ## Méthode testant si un cas 3 est présent dans la grille
+  # Cas 3 : île à 8 restante dans la grille
   #
   # === Return
   #
   # true si le cas est vérifié pour un des sommets de la grille, false sinon
-  def estCas2()
+  def estCas3()
     @grille.sommets.each_with_index do |x, i|
       if x.valeur == 8 && x.compterArete() != x.valeur
         @position = @grille.getCase(x.position.x, x.position.y)
@@ -180,13 +180,13 @@ class Aide < Gtk::Label
     return false
   end
 
-  ## Méthode testant si un cas 3 est présent dans la grille
-  # Cas 3 : île à 6 avec 3 îles voisines restante dans la grille
+  ## Méthode testant si un cas 4 est présent dans la grille
+  # Cas 4 : île à 6 avec 3 îles voisines restante dans la grille
   #
   # === Return
   #
   # true si le cas est vérifié pour un des sommets de la grille, false sinon
-  def estCas3()
+  def estCas4()
     @grille.sommets.each_with_index do |x, i|
       if x.valeur == 6 && @nb_voisins[i] == 3 && x.compterArete() != x.valeur
         @position = @grille.getCase(x.position.x, x.position.y)
@@ -196,13 +196,13 @@ class Aide < Gtk::Label
     return false
   end
 
-  ## Méthode testant si un cas 4 est présent dans la grille
-  # Cas 4 : île à 4 avec 2 îles voisines restante dans la grille
+  ## Méthode testant si un cas 5 est présent dans la grille
+  # Cas 5 : île à 4 avec 2 îles voisines restante dans la grille
   #
   # === Return
   #
   # true si le cas est vérifié pour un des sommets de la grille, false sinon
-  def estCas4()
+  def estCas5()
     @grille.sommets.each_with_index do |x, i|
       if x.valeur == 4 && @nb_voisins[i] == 2 && x.compterArete() != x.valeur
         @position = @grille.getCase(x.position.x, x.position.y)
@@ -212,13 +212,13 @@ class Aide < Gtk::Label
     return false
   end
 
-  ## Méthode testant si un cas 5 est présent dans la grille
-  # Cas 5 : île à 7 avec une île voisine à 1 restante dans la grille
+  ## Méthode testant si un cas 6 est présent dans la grille
+  # Cas 6 : île à 7 avec une île voisine à 1 restante dans la grille
   #
   # === Return
   #
   # true si le cas est vérifié pour un des sommets de la grille, false sinon
-  def estCas5()
+  def estCas6()
     compteur = 0
     @grille.sommets.each_with_index do |x, i|
       if x.valeur == 7 && x.compterArete() != x.valeur
@@ -236,13 +236,13 @@ class Aide < Gtk::Label
     return false
   end
 
-  ## Méthode testant si un cas 6 est présent dans la grille
-  # Cas 6 : île à 5 avec trois îles voisines dont une à 1 restante dans la grille
+  ## Méthode testant si un cas 7 est présent dans la grille
+  # Cas 7 : île à 5 avec trois îles voisines dont une à 1 restante dans la grille
   #
   # === Return
   #
   # true si le cas est vérifié pour un des sommets de la grille, false sinon
-  def estCas6()
+  def estCas7()
     compteur = 0
     @grille.sommets.each_with_index do |x, i|
       if x.valeur == 5 && @nb_voisins[i] == 3 && x.compterArete() != x.valeur
@@ -261,13 +261,13 @@ class Aide < Gtk::Label
     return false
   end
 
-  ## Méthode testant si un cas 7 est présent dans la grille
-  # Cas 7 : île à 3 avec deux îles voisines dont une à 1 restante dans la grille
+  ## Méthode testant si un cas 8 est présent dans la grille
+  # Cas 8 : île à 3 avec deux îles voisines dont une à 1 restante dans la grille
   #
   # === Return
   #
   # true si le cas est vérifié pour un des sommets de la grille, false sinon
-  def estCas7()
+  def estCas8()
     compteur = 0
     @grille.sommets.each_with_index do |x, i|
       if x.valeur == 3 && @nb_voisins[i] == 2 && x.compterArete() != x.valeur
@@ -285,13 +285,13 @@ class Aide < Gtk::Label
     return false
   end
 
-  ## Méthode testant si un cas 8 est présent dans la grille
-  # Cas 8 : île à 7 restante dans la grille
+  ## Méthode testant si un cas 9 est présent dans la grille
+  # Cas 9 : île à 7 restante dans la grille
   #
   # === Return
   #
   # true si le cas est vérifié pour un des sommets de la grille, false sinon
-  def estCas8()
+  def estCas9()
     @grille.sommets.each_with_index do |x, i|
       if x.valeur == 7 && !x.areteAvecChaqueVoisin()
         @position = @grille.getCase(x.position.x, x.position.y)
@@ -301,13 +301,13 @@ class Aide < Gtk::Label
     return false
   end
 
-  ## Méthode testant si un cas 9 est présent dans la grille
-  # Cas 9 : île à 5 avec trois îles voisines restante dans la grille
+  ## Méthode testant si un cas 10 est présent dans la grille
+  # Cas 10 : île à 5 avec trois îles voisines restante dans la grille
   #
   # === Return
   #
   # true si le cas est vérifié pour un des sommets de la grille, false sinon
-  def estCas9()
+  def estCas10()
     @grille.sommets.each_with_index do |x, i|
       if x.valeur == 5 && @nb_voisins[i] == 3 && !x.areteAvecChaqueVoisin()
         @position = @grille.getCase(x.position.x, x.position.y)
@@ -317,13 +317,13 @@ class Aide < Gtk::Label
     return false
   end
 
-  ## Méthode testant si un cas 10 est présent dans la grille
-  # Cas 10 : île à 3 avec deux îles voisines restante dans la grille
+  ## Méthode testant si un cas 11 est présent dans la grille
+  # Cas 11 : île à 3 avec deux îles voisines restante dans la grille
   #
   # === Return
   #
   # true si le cas est vérifié pour un des sommets de la grille, false sinon
-  def estCas10()
+  def estCas11()
     @grille.sommets.each_with_index do |x, i|
       if x.valeur == 3 && @nb_voisins[i] == 2 && !x.areteAvecChaqueVoisin()
         @position = @grille.getCase(x.position.x, x.position.y)
@@ -333,13 +333,13 @@ class Aide < Gtk::Label
     return false
   end
 
-  ## Méthode testant si un cas 11 est présent dans la grille
-  # Cas 11 : île à 6 avec deux des îles voisines à 1
+  ## Méthode testant si un cas 12 est présent dans la grille
+  # Cas 12 : île à 6 avec deux des îles voisines à 1
   #
   # === Return
   #
   # true si le cas est vérifié pour un des sommets de la grille, false sinon
-  def estCas11()
+  def estCas12()
     compteur = 0
     @grille.sommets.each_with_index do |x, i|
       if x.valeur == 6 &&  x.compterArete() != x.valeur
@@ -358,13 +358,13 @@ class Aide < Gtk::Label
     return false
   end
 
-  ## Méthode testant si un cas 12 est présent dans la grille
-  # Cas 12 : île à 4 avec deux des îles voisines à 1
+  ## Méthode testant si un cas 13 est présent dans la grille
+  # Cas 13 : île à 4 avec deux des îles voisines à 1
   #
   # === Return
   #
   # true si le cas est vérifié pour un des sommets de la grille, false sinon
-  def estCas12()
+  def estCas13()
     compteur = 0
     @grille.sommets.each_with_index do |x, i|
       if x.valeur == 4 && @nb_voisins[i] == 3 && x.compterArete() != x.valeur
@@ -382,87 +382,6 @@ class Aide < Gtk::Label
     end
     return false
   end
-
-  # Méthode testant si un cas 13 est présent dans la grille
-  # Cas 13 : île à 1 avec n îles voisines dont n-1 îles à 1 restante
-  #
-  # === Return
-  #
-  # true si le cas est vérifié pour un des sommets de la grille, false sinon
-  def estCas13()
-    compteur = 0
-    @grille.sommets.each_with_index do |x, i|
-      if x.valeur == 1 && x.compterArete() != x.valeur
-        compteur = 0
-        x.getListeVoisins().each do |v, j|
-          if v.valeur == 1
-            compteur += 1
-          end
-        end
-        if compteur == @nb_voisins[i] - 1 && compteur != 0
-          @position = @grille.getCase(x.position.x, x.position.y)
-          return true
-        end
-      end
-    end
-    return false
-  end
-
-
-
-  ## Version isolation
-
-  # def estCas13()
-  #   nb_reliable = 0
-  #   traitement = Array.new()
-  #   traites = Array.new()
-  #   @grille.sommets.each_with_index do |x, i|
-  #     if x.connexionsRestantes() == 1
-  #       x.getListeVoisinsNonComplets().each do |v|
-  #         reliable = false
-  #         if v.connexionsRestantes > 1
-  #           nb_reliable += 1
-  #           if nb_reliable > 1
-  #             return false
-  #           end
-  #         end
-  #         if v.connexionsRestantes() == 1
-  #           x.getListeVoisins().each do |c|
-  #             if(!traites.include?())
-  #               traitement.push(c)
-  #             end
-  #           end
-  #           v.getListeVoisins().each do |c|
-  #             if(!traites.include?())
-  #               traitement.push(c)
-  #             end
-  #           end
-  #           traitement.each do |s|
-  #             if s.complet
-  #               traitement.remove(s)
-  #               traites.push(s)
-  #             else
-  #               reliable = true
-  #             end
-  #           end
-  #         end
-  #         if reliable
-  #           nb_reliable += 1
-  #           if nb_reliable > 1
-  #             return false
-  #           end
-  #         end
-  #       end
-  #       if(nb_reliable = 1)
-  #         @position = @grille.getCase(x.position.x, x.position.y)
-  #         return true
-  #       end
-  #     end
-  #   end
-  #   return false
-  # end
-
-
 
   ## Méthode testant si un cas 14 est présent dans la grille
   # Cas 14 : île à 2 avec deux îles voisines dont une île à 2 restante
@@ -547,6 +466,93 @@ class Aide < Gtk::Label
           end
         end
         if compteur == x.connexionsRestantes()
+          @position = @grille.getCase(x.position.x, x.position.y)
+          return true
+        end
+      end
+    end
+    return false
+  end
+
+  ## ANCIENNE METHODE 18
+
+  # Méthode testant si un cas 13 est présent dans la grille
+  # Cas 13 : île à 1 avec n îles voisines dont n-1 îles à 1 restante
+  #
+  # === Return
+  #
+  # true si le cas est vérifié pour un des sommets de la grille, false sinon
+  # def estCas13()
+  #   compteur = 0
+  #   @grille.sommets.each_with_index do |x, i|
+  #     if x.valeur == 1 && x.compterArete() != x.valeur
+  #       compteur = 0
+  #       x.getListeVoisins().each do |v, j|
+  #         if v.valeur == 1
+  #           compteur += 1
+  #         end
+  #       end
+  #       if compteur == @nb_voisins[i] - 1 && compteur != 0
+  #         @position = @grille.getCase(x.position.x, x.position.y)
+  #         return true
+  #       end
+  #     end
+  #   end
+  #   return false
+  # end
+
+  ## Méthode testant si un cas 18 est présent dans la grille
+  # Cas 18 : île avec une seule possibilité de connexion sans isolation restante dans la grille
+  #
+  # === Return
+  #
+  # true si le cas est vérifié pour un des sommets de la grille, false sinon
+  def estCas18()
+    @grille.sommets.each_with_index do |x, i|
+      if x.connexionsRestantes() == 1
+        nb_reliable = 0
+        x.getListeVoisinsNonComplets().each do |v|
+          reliable = false
+          puts v.valeur.to_s
+          if v.connexionsRestantes() > 1
+            nb_reliable += 1
+          end
+          if v.connexionsRestantes() == 1
+            traitement = Array.new()
+            traites = Array.new()
+            x.getVoisins().each do |c|
+              if(c != v)
+                traitement.push(c)
+              end
+            end
+            v.getVoisins().each do |c|
+              if(c != x)
+                traitement.push(c)
+              end
+            end
+            traites.push(x)
+            traites.push(v)
+            until traitement.empty?() || reliable == true
+              traitement.each do |s|
+                s.getVoisins().each do |c|
+                  if(!traites.include?(c) && !traitement.include?(c))
+                    traitement.push(c)
+                  end
+                end
+                if s.complet
+                  traitement.delete(s)
+                  traites.push(s)
+                else
+                  reliable = true
+                end
+              end
+            end
+          end
+          if reliable
+            nb_reliable += 1
+          end
+        end
+        if nb_reliable == 1
           @position = @grille.getCase(x.position.x, x.position.y)
           return true
         end

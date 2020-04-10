@@ -1,4 +1,5 @@
 require_relative "../Classement/Highscore.rb"
+require_relative "../Classement/Classement.rb"
 
 # Cette classe represente un score.
 class Score
@@ -49,8 +50,16 @@ class Score
 
 	# Cette methode calcul un score.
 	# === Parametre
-	# * +tMax+ : tMax La valeur en secondes maximal pour résoudre un puzzle.
-	def calculScore(tMax)
+	def calculScore()
+		tMax = 0
+		case @difficulte
+			when "easy"
+				tMax = 60
+			when "normal"
+				tMax = 90
+			when "hard"
+				tMax = 120
+		end
 		temp = (tMax / @temps) *100
 		if(temp < 0) then temp = 0 end
 		@points = (temp*temp)%1000000
@@ -58,8 +67,9 @@ class Score
 
 	# Cette methode sauvegarde un score dans la base de donnees.
 	def sauvegarder()
-		temp = Highscore.creer()
-		temp.sauvegarder(@pseudo, @points, @difficulte)
+		classementTemp =  Classement.creer(@difficulte)
+		highscoreTemp = Highscore.creer()
+		if classementTemp.isHighScore(self) then highscoreTemp.sauvegarder(@pseudo, @points, @difficulte) end
 	end
 
 	# Cette methode redefini to_s pour afficher un score.

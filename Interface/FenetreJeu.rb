@@ -28,7 +28,6 @@ class FenetreJeu < Gtk::Box
 
 	def initialize(window,fenPre ,difficulte, classe, save = nil, long=nil, larg=nil, dens=nil, tuto = nil)
 		#vbox = Gtk::Box.new(:VERTICAL)
-
 		super(Gtk::Orientation::VERTICAL)
 
     @@fenetre = window
@@ -533,7 +532,7 @@ class FenetreJeu < Gtk::Box
 		}
 		@cr.fill
 		@cr.set_source_rgb 0,0,0
-		@cr.stroke_preserve
+		@cr.stroke
 
 	end
 
@@ -799,15 +798,6 @@ class FenetreJeu < Gtk::Box
 	end
 
 
-	# def init_ui
-	#
-	# 		@darea = Gtk::DrawingArea.new
-	#
-	# 		@darea.signal_connect "draw" do
-	# 				on_draw
-	# 		end
-	# 		add @darea
-	# end
 
 	def on_draw
 			@cr = @darea.window.create_cairo_context
@@ -815,23 +805,6 @@ class FenetreJeu < Gtk::Box
 	end
 
 	attr_accessor :cr
-
-	def draw_colors
-
-			@cr.set_source_rgb 0.2, 0.23, 0.9
-			@cr.move_to 10, 10
-			@cr.line_to 150, 15
-			@cr.move_to 150, 30
-			@cr.stroke
-
-			@cr.set_source_rgb 0.9, 0.1, 0.1
-			@cr.rectangle 130, 15, 90, 60
-			@cr.fill
-
-			@cr.set_source_rgb 0.4, 0.9, 0.4
-			@cr.rectangle 250, 15, 90, 60
-			@cr.fill
-	end
 
 	def drawSommets()
 		# copie de tracerGrille
@@ -842,33 +815,15 @@ class FenetreJeu < Gtk::Box
 		#@cr = @darea.window.create_cairo_context
 
 			@cr.set_font_size(@fontSize)
-			@cr.set_source_rgb 0,0,0
+
 			i = 0
 			j = 0
 			taillePix = 25
 			padding = 20
 		@grilleTest.sommets.each{ |s|
-			@cr.save()
 			x = s.position.x
 			y = s.position.y
-			if(s.complet)
-				# case @difficulte
-				# 	when "easy"
-				# 		draw_maLigne(x*@tailleCase+paddingX-6 ,y*@tailleCase+paddingY+2,x*@tailleCase+paddingX+20 ,y*@tailleCase+paddingY-25)
-				# 	when "normal"
-				# 		draw_maLigne(x*@tailleCase+paddingX-7 ,y*@tailleCase+paddingY-2,x*@tailleCase+paddingX+16 ,y*@tailleCase+paddingY-27)
-				# 	when "hard"
-				# 		draw_maLigne(x*@tailleCase+paddingX-8 ,y*@tailleCase+paddingY-5,x*@tailleCase+paddingX+15 ,y*@tailleCase+paddingY-25)
-				# 	else
-				#
-				# end
-				draw_maLigne((x * @tailleCase + paddingX) + @tailleCercle * Math::cos(3 * Math::PI / 4),
-										 (y * @tailleCase + paddingY) + @tailleCercle * Math::sin(3 * Math::PI / 4),
-										 (x * @tailleCase + paddingX) + @tailleCercle * Math::cos(7 * Math::PI / 4),
-										 (y * @tailleCase + paddingY) + @tailleCercle * Math::sin(7 * Math::PI / 4))
-				Math::PI
 
-			end
 			if(@afficherErreur)
 				@erreurs.each do |e|
 					if(e == s)
@@ -884,14 +839,26 @@ class FenetreJeu < Gtk::Box
 			@cr.move_to(x * @tailleCase + (paddingX + ajustementChiffreAxeX) - @tailleCercle / 2, y * @tailleCase + paddingY + @tailleCercle / 2)
 
 			@cr.show_text(s.valeur.to_s)
+			@cr.stroke
 
-			@cr.stroke_preserve
+			if(s.complet)
+								draw_maLigne((x * @tailleCase + paddingX) + @tailleCercle * Math::cos(3 * Math::PI / 4),
+										 (y * @tailleCase + paddingY) + @tailleCercle * Math::sin(3 * Math::PI / 4),
+										 (x * @tailleCase + paddingX) + @tailleCercle * Math::cos(7 * Math::PI / 4),
+										 (y * @tailleCase + paddingY) + @tailleCercle * Math::sin(7 * Math::PI / 4))
+				Math::PI
+
+			end
+
+
 			@cr.set_source_rgb 0,0,0
+			@cr.stroke
 
 			i+=1
 			j+=1
 
 		}
+		@cr.set_source_rgb 0,0,0
 	end
 
 	def drawAretes()
@@ -982,15 +949,12 @@ class FenetreJeu < Gtk::Box
 	def draw_maLigne(x1,y1,x2,y2)
 		@cr.move_to x1, y1
 		@cr.line_to x2,y2
-		@cr.stroke_preserve
+		@cr.stroke
 	end
 
 	def activeHypo(condition = false)
 		if(condition)
 			@cr.set_dash(5, 15)
-			#@cr.set_source_rgb 1,0,0
-		else
-			@cr.restore()
 		end
 	end
 

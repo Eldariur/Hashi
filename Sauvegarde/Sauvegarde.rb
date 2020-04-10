@@ -68,16 +68,16 @@ class Sauvegarde
       file = File.open(File.path("#{$cheminRacineHashi}/Sauvegarde/Save/temp.sav"), 'w')
     else
       case @difficulte
-      when "easy"
-        puts "test easy"
-        file = File.open(File.path("#{$cheminRacineHashi}/Sauvegarde/Save/easy/save.sav"), 'w')
-      when "normal"
-        file = File.open(File.path("#{$cheminRacineHashi}/Sauvegarde/Save/normal/save.sav"), 'w')
-      when "hard"
-        file = File.open(File.path("#{$cheminRacineHashi}/Sauvegarde/Save/hard/save.sav"), 'w')
-      when "custom"
-        puts "test"
-        file = File.open(File.path("#{$cheminRacineHashi}/Sauvegarde/Save/custom/save.sav"), 'w')
+        when "easy"
+          puts "test easy"
+          file = File.open(File.path("#{$cheminRacineHashi}/Sauvegarde/Save/easy/save.sav"), 'w')
+        when "normal"
+          file = File.open(File.path("#{$cheminRacineHashi}/Sauvegarde/Save/normal/save.sav"), 'w')
+        when "hard"
+          file = File.open(File.path("#{$cheminRacineHashi}/Sauvegarde/Save/hard/save.sav"), 'w')
+        when "custom"
+          puts "test"
+          file = File.open(File.path("#{$cheminRacineHashi}/Sauvegarde/Save/custom/save.sav"), 'w')
       end
     end
     file.write dump
