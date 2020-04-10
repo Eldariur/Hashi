@@ -60,7 +60,6 @@ class Aide < Gtk::Label
       @penalite = 10
     end
    	file_data = File.read("#{$cheminRacineHashi}/Code/TexteAide.txt").split("/").join(":").split(":")
-  	#puts file_data
   	affiche = false
   	file_data.each do |x|
   		if affiche
@@ -249,7 +248,6 @@ class Aide < Gtk::Label
     compteur = 0
     @grille.sommets.each_with_index do |x, i|
       if x.valeur == 5 && @nb_voisins[i] == 3 && x.compterArete() != x.valeur
-        puts "test"
         x.getListeVoisins().each do |v|
           if v.valeur == 1
             compteur += 1
@@ -526,7 +524,6 @@ class Aide < Gtk::Label
         nb_reliable = 0
         x.getListeVoisinsNonComplets().each do |v|
           reliable = false
-          puts v.valeur.to_s
           if v.connexionsRestantes() > 1
             nb_reliable += 1
           end

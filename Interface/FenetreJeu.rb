@@ -45,8 +45,6 @@ class FenetreJeu < Gtk::Box
 		x = 5
 		y = 5
 
-		puts "LARGEUR ECRAN : " + @@fenetre.default_size[0].to_s
-
 		if @@fenetre.default_size[0] > 1500
 			@style = "BoutonEnJeu"
 		else
@@ -1005,7 +1003,7 @@ class FenetreJeu < Gtk::Box
 			if(@tuto)
 					@@fenetre.changerWidget(@fenPre)
 			elsif(!@classe)
-				popup = Gtk::MessageDialog.new(@@fenetre, :modal, :question, :none, "Souhaitez-vous sauvegarder la partie ? La sauvegarde précédente sera écrasée.")
+				popup = Gtk::MessageDialog.new(:parent => @@fenetre, :flags => :modal, :type => :question, :buttons => :none, :message => "Souhaitez-vous sauvegarder la partie ? La sauvegarde précédente sera écrasée.")
 				popup.add_buttons(["Sauvegarder", :yes], ["Quitter", :no], [Gtk::Stock::CANCEL, :reject])
 
 				response = popup.run()
@@ -1020,7 +1018,7 @@ class FenetreJeu < Gtk::Box
 
 				popup.destroy()
 			else
-				popup = Gtk::MessageDialog.new(@@fenetre, :modal, :question, :none, "Voulez vous quitter la partie classée ? Vous ne pouvez pas sauvegarder une partie classée")
+				popup = Gtk::MessageDialog.new(:parent => @@fenetre, :flags => :modal, :type => :question, :buttons => :none, :message => "Voulez vous quitter la partie classée ? Vous ne pouvez pas sauvegarder une partie classée")
 				popup.add_buttons(["Continuer", :yes], ["Quitter", :no])
 
 				@chr.arreter()
