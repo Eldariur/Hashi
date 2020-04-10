@@ -110,9 +110,7 @@ class Sauvegarde
           save = (File.exist?("#{$cheminRacineHashi}/Sauvegarde/Save/custom/save.sav"))? YAML.load(File.read("#{$cheminRacineHashi}/Sauvegarde/Save/custom/save.sav")) : nil
       end
     end
-    if(save != nil)
-      return save
-    end
+    return save
   end
 
   # Charge une sauvegarde depuis un fichier en fonction du nom passé en parametre.
