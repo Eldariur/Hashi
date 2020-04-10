@@ -451,8 +451,8 @@ class Aide < Gtk::Label
   # true si le cas est vérifié pour un des sommets de la grille, false sinon
   def estCas17()
     @grille.sommets.each_with_index do |x, i|
-      compteur = 0
       if x.connexionsRestantes() > 0
+        compteur = 0
         x.getListeVoisinsNonComplets().each do |v|
           if x.possedeAreteAvec(v)
             if(x.donneAreteAvec(x).estDouble)
