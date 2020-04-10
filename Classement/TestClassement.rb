@@ -16,12 +16,10 @@ for i in 0..rand(3)
 end
 c.addMalus(30)
 
-s = Score.creer(Score.askName, c.resultat,"normal")
+s = Score.creer(Score.askName, c.resultat, "normal")
 
 # Uniquement besoin pour le test pour afficher a la fin
 cl =  Classement.creer(s.difficulte)
-
-s.calculScore()
 
 puts "Nouveau : #{s}"
 

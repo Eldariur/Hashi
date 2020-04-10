@@ -67,6 +67,7 @@ class Score
 
 	# Cette methode sauvegarde un score dans la base de donnees.
 	def sauvegarder()
+		self.calculScore()
 		classementTemp =  Classement.creer(@difficulte)
 		highscoreTemp = Highscore.creer()
 		if classementTemp.isHighScore(self) then highscoreTemp.sauvegarder(@pseudo, @points, @difficulte) end
