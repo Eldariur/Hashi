@@ -100,7 +100,6 @@ class FenetreClassement < Gtk::Box
 
   def initBoutonRetour
     @boutonRetour = UnBoutonPerso.new("Retour","BoutonClassement")do
-      puts "j'ai cliqué sur le bouton retour"
       @@fenetre.changerWidget(@@fenPre);
     end
   end

@@ -34,7 +34,7 @@ class Chrono < Gtk::Label
 	# Accesseur get sur l'attribut base.
   attr:base, false
 	# Accesseur get sur l'attribut temp.
-  attr:temp, false
+  attr:temp, true
 	# Accesseur get sur l'attribut malus.
   attr:malus, true
 	# Accesseur get sur l'attribut th.

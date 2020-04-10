@@ -28,24 +28,20 @@ class FenetreJeu < Gtk::Box
 	attr_reader :grilleTest, :longueur, :largeur
 
 	def initialize(window,fenPre ,difficulte, classe, save = nil, long=nil, larg=nil, dens=nil, tuto = nil)
-		#vbox = Gtk::Box.new(:VERTICAL)
 		super(Gtk::Orientation::VERTICAL)
 
     @@fenetre = window
 		@fenPre = fenPre;
-		@tailleArea = @@fenetre.default_size[1] / 4 * 3
+		@tailleArea = @@fenetre.default_size[1] / 20 * 13
 		@tuto = tuto
     @difficulte = difficulte
 		@classe = classe
 
 		@presse = false
 		@hypothese = false
-		#self.updateData
 		@listeInter = []
 		x = 5
 		y = 5
-
-		puts "LARGEUR ECRAN : " + @@fenetre.default_size[0].to_s
 
 		if @@fenetre.default_size[0] > 1500
 			@style = "BoutonEnJeu"
@@ -54,17 +50,13 @@ class FenetreJeu < Gtk::Box
 		end
 
 		#####################################
-		if(save == nil && tuto == nil )
+		if(save == nil && tuto == nil)
 			@gene = Generateur.new(@difficulte, long, larg, dens)
 			@grilleTest = @gene.creeUneGrille()
-			#@grilleComplete = @grilleTest
 			@grilleComplete = @gene.getGrilleAvecArete()
 		elsif(tuto != nil)
 			@grilleTest = tuto.lancerTuto.grille
 			@grilleComplete = tuto.lancerTuto.grilleComplete
-
-			# @longueur = @grilleTest.longueur
-			# @largeur = @grilleTest.largeur
 		else
 			@grilleComplete = save.grilleComplete
 			@grilleTest = save.grille
@@ -115,7 +107,6 @@ class FenetreJeu < Gtk::Box
 
 	    hboxBoutonRetour = Gtk::Box.new(Gtk::Orientation::HORIZONTAL)
 				hboxBoutonRetour.halign = Gtk::Align::START
-				#hboxBoutonRetour.homogeneous = true
 	        hboxBoutonRetour.add(@boutonRetour)
 
 	    hboxBoutonJeu = Gtk::Box.new(Gtk::Orientation::HORIZONTAL)
@@ -128,7 +119,6 @@ class FenetreJeu < Gtk::Box
 
 			vboxBoutonJeu = Gtk::Box.new(Gtk::Orientation::VERTICAL)
 				vboxBoutonJeu.valign = Gtk::Align::START
-				#vboxGauche.homogeneous = true
 	        vboxBoutonJeu.add(@boutonAnnulHypo)
 					vboxBoutonJeu.add(@boutonValidHypo)
 					vboxBoutonJeu.add(@boxMessage)
@@ -138,70 +128,34 @@ class FenetreJeu < Gtk::Box
 
 	    vboxGauche = Gtk::Box.new(Gtk::Orientation::VERTICAL)
 				vboxGauche.valign = Gtk::Align::START
-				#vboxGauche.homogeneous = true
 	        vboxGauche.add(hboxBoutonRetour)
 	        vboxGauche.add(hboxBoutonJeu)
-					#vboxGauche.add(vboxBoutonJeu)
 
 	    hboxChrono = Gtk::Box.new(Gtk::Orientation::HORIZONTAL)
 				hboxChrono.halign = Gtk::Align::CENTER
-				#hboxChrono.homogeneous = true
 	        hboxChrono.add(@boxChrono)
 
 	    hpaned = Gtk::Paned.new(Gtk::Orientation::HORIZONTAL)
 	    hboxJeu = Gtk::Box.new(Gtk::Orientation::HORIZONTAL)
 				hboxJeu.halign = Gtk::Align::FILL
-				#hboxJeu.homogeneous = true
-	        # hboxJeu.add(@boxJeu) #<=======
 
 	        hpaned.add(@darea) #<=======
 	        hpaned.signal_connect("button-press-event") { |widget, event| mouseClick(event) }
 
-	        #hboxJeu.add(hpaned)
-
-
-	    # vboxDroite = Gtk::Box.new(Gtk::Orientation::VERTICAL)
-			# 	vboxDroite.valign = Gtk::Align::FILL
-			# 	#vboxDroite.homogeneous = true
-	    #     vboxDroite.add(hboxChrono)
-
 	    hboxPrincipale = Gtk::Box.new(Gtk::Orientation::HORIZONTAL)
 				hboxPrincipale.halign = Gtk::Align::START
 				hboxPrincipale.homogeneous = false
-	    # @boutonRetour.width_request = 150
-	        # hboxPrincipale.add(vboxGauche)
-	        # hboxPrincipale.add(vboxDroite)
 					boxVide = Gtk::Box.new(Gtk::Orientation::VERTICAL)
 						boxVide.valign = Gtk::Align::START
 						boxVide.homogeneous = false
-
-						puts @longueur.to_s
 
 	    tbl = Gtk::Table.new(20, 20)
 	    tbl.attach(vboxGauche, 0, 5, 0, 5, Gtk::AttachOptions::SHRINK)
 			tbl.attach(vboxBoutonJeu, 0, 5, 6, 20, Gtk::AttachOptions::EXPAND)
 			tbl.attach(hboxChrono, 6, 20, 0, 1, Gtk::AttachOptions::SHRINK)
 	    tbl.attach(hpaned, 6, 20, 1, 20)
-			#tbl.attach(boxVide,@longueur,@longueur+2,0,20)
-
-			# @@fenetre.remove(@@fenetre.child)
-			# @@fenetre.add(tbl)
 
 			@@fenetre.changerWidget(tbl)
-
-			#hpaned.signal_connect("button-press-event") { |widget, event| mouseClick(event) }
-			#self.add(vbox)
-			#@@fenetre.add(hpaned)
-
-			#
-			# # boxTest = Gtk::Box.new(Gtk::Orientation::VERTICAL)
-			# # boxTest.add(tbl)
-			# # self.add(boxTest)
-			# #self.add(hboxPrincipale)
-			#
-
-
-			#self.add(vbox)
 
 			@@fenetre.show_all
 
@@ -235,7 +189,6 @@ class FenetreJeu < Gtk::Box
 			if(x > paddingX && x < paddingX+@tailleCase*@longueur && y > paddingY && y < paddingY+@tailleCase*@largeur) #si dans la grille
 				caseX = (x - paddingX).to_i/@tailleCase
 				caseY = (y -paddingY).to_i/@tailleCase
-				#puts "vous avez cliqué sur la case ["+caseX.to_s+"]["+caseY.to_s+"]"
 
 				caseTest = @grilleTest.getCase(caseX,caseY)
 
@@ -244,8 +197,6 @@ class FenetreJeu < Gtk::Box
 				caseTest = @grilleTest.getCase(caseX,caseY)
 				caseSom = nil
 				if(estSommet?(caseTest))
-					puts "nb voisins du sommet : " + caseTest.contenu.compterVoisins().to_s()
-					#puts "C'est un sommet"
 					#afficheSurbri
 					videSurbri
 					@caseSom = @grilleTest.getCase(caseX,caseY)
@@ -261,111 +212,56 @@ class FenetreJeu < Gtk::Box
 							@listeInter.push("|")
 						end
 					}
-					# @listeInter += getlisteInterCase(caseTest,v)
-					# @listeInter.push("|")
-					#puts "AFFICHAGE DE LA LISTE:"
-					#afficheSurbri()
 
 					@listeInter.each { |c|
-						#puts c.to_s
 						if(c != "|" && c.class != Sommet) #<==== FAUX
 							c.surbrillance = true
-							#puts "\t CASE "+c.to_s+" mis en surbrillance :"+c.surbrillance.to_s
 						end
 					}
 				end
 
 				if(caseTest.surbrillance && caseTest.class != Sommet) # si la case est en surbrillance
-					# puts "La case est en SURBRILLANCE"
 					if(caseTest.contenu.class == Arete)
 						s1 = caseTest.contenu.sommet1
 						s2 = caseTest.contenu.sommet2
-
-						# puts "s1=>"+s1.to_s
-						# puts "s2=>"+s2.to_s
-
 						if(event.button == 1)
 							creationArete(s1,s2,caseTest.contenu)
-						# testAffichageGrille
-
 						elsif (event.button == 3)
-							#puts "click droit "+event.button.to_s
-							#puts "SUPPRESSION ARETE"
 							suppressionArete(caseTest.contenu)
-
-						else
-							#puts "click :"+event.button.to_s
 						end
 					else
-						#puts "la case est une case vide"
-
-
 						if(event.button == 1 && caseTest.contenu.class != Sommet && caseTest.contenu.class != Arete)
-							# puts "la case n'est pas un sommet"
 							s1 = nil
 							s2 = nil
 							trouve1 = false
 							@listeInter.each_with_index do |c,i|
-								#puts "==tour de boucle 1==="
 								if(c == caseTest)
-									#puts "\tTROUVE !!!"+i.to_s+" ici"
 									s1 = @listeInter[0]
 									i.upto(@listeInter.length-1) do |y|
-										#puts "====recherche s2 ... ===="+@listeInter[y].to_s
-
-
 										if(@listeInter[y] != "|")
 											if(@listeInter[y].contenu.class == Sommet)
-
 												if(!trouve1)
-													#puts "T1"
 													s2 = @listeInter[y]
 													trouve1 = true
 												end
-
 											end
 										end
 									end
-									if(s1 != nil && s2 != nil)
-										#puts "---"+s1.to_s
-										#puts "valeur "+s1.contenu.valeur.to_s
-										#puts "---"+s2.to_s
-										#puts "valeur "+s2.contenu.valeur.to_s
-									end
-
-
-
-
-
 								end
 							end
-
 							caseTest = @grilleTest.getCase(caseX,caseY)
-							# puts "case=>"+caseTest.contenu.class.to_s
-							# puts "s1=>"+s1.contenu.to_s
-							# puts "s2=>"+s2.contenu.to_s
-
 							if(s1 != nil && caseTest.contenu.class != Sommet)
-								# puts "je rentre dans la condition"
 								creationArete(s1.contenu,s2.contenu,caseTest.contenu)
 							end
-								#puts "je sort de la condition"
-						#puts "FIN @crEATION ARETE..."
 						end
 					end
 				else
-
-					#puts "LA CASE N'EST PAS SURBRI"
-					videSurbri
-
+					videSurbri()
 				end
-
 				afficheEcran()
-
 			end
 		end
 		conditionGagnante()
-
 	end
 
 	def retirerContenu(box,contenu)
@@ -420,27 +316,11 @@ class FenetreJeu < Gtk::Box
 			end
 		end
 		if(s1.valeur == s1.compterArete)
-			#puts "SOMMET S1 COMPLET !"
 			s1.complet = true
-			#puts "le sommet s1"+s1.to_s+" est complet"
 		end
 		if(s2.valeur == s2.compterArete)
-			#puts "SOMMET S2 COMPLET !"
 			s2.complet = true
-			#puts "le sommet s2"+s1.to_s+" est complet"
 		end
-
-		# puts "Affichage Hypo"
-		# @pileUndo.tabAction.each do |a|
-		# 	puts a.to_s
-		# end
-		# puts "===="
-
-		# if(grilleGagnante && !@hypothese)
-    #   puts "vous avez gagné"
-		# 	@@fenetre.changerWidget(FenetreVictoire.new(@@fenetre))
-		# end
-
 	end
 
 	def suppressionArete(arete, actionAnnule = false)
@@ -466,7 +346,6 @@ class FenetreJeu < Gtk::Box
 		# exemple 5 5
 		paddingX = 25
 		paddingY = 25
-		#@cr = @darea.window.create_cairo_context
 
 		x1 = nil
 		x2 = nil
@@ -477,55 +356,16 @@ class FenetreJeu < Gtk::Box
 
 		@listeInter.each { |c|
 			if(c == "|")
-
-				#puts "\tX1 = "+x1.to_s+" Y1 = "+y1.to_s+" X2 = "+x2.to_s+" Y2 = "+y2.to_s
 				if(x1 < x2 || caseSom.x < x1)
-					# case @difficulte
-					# 	when "easy"
-					# 		@cr.rectangle x1*@tailleCase+paddingX-3+@tailleCase, y1*@tailleCase+paddingY+13, (x2-x1)*@tailleCase-@tailleCase+8, (y2-y1)*@tailleCase+22
-					# 	when "normal"
-					# 		@cr.rectangle x1*@tailleCase+paddingX-3+@tailleCase, y1*@tailleCase+paddingY+11, (x2-x1)*@tailleCase-@tailleCase+8, (y2-y1)*@tailleCase+22
-					# 	when "hard"
-					# 		@cr.rectangle x1*@tailleCase+paddingX-3+@tailleCase, y1*@tailleCase+paddingY+8, (x2-x1)*@tailleCase-@tailleCase+8, (y2-y1)*@tailleCase+22
-					# 	else
-					# end
 					@cr.rectangle(x1 * @tailleCase + paddingX + @tailleCase, y1 * @tailleCase + paddingY + (@tailleCase / 2) - @largeurSurbri / 2, (x2 - x1) * @tailleCase - @tailleCase, (y2 - y1) * @tailleCase + @largeurSurbri)
 
 				elsif(x1 > x2 || caseSom.x > x1)
-					# case @difficulte
-					# 	when "easy"
-					# 		@cr.rectangle x1*@tailleCase+paddingX+5, y1*@tailleCase+paddingY+13, (x2-x1)*@tailleCase-8+@tailleCase, (y2-y1)*@tailleCase+22
-					# 	when "normal"
-					# 		@cr.rectangle x1*@tailleCase+paddingX+5, y1*@tailleCase+paddingY+11, (x2-x1)*@tailleCase-8+@tailleCase, (y2-y1)*@tailleCase+22
-					# 	when "hard"
-					# 		@cr.rectangle x1*@tailleCase+paddingX+5, y1*@tailleCase+paddingY+8, (x2-x1)*@tailleCase-8+@tailleCase, (y2-y1)*@tailleCase+22
-					# 	else
-					# end
 					@cr.rectangle(x1 * @tailleCase + paddingX, y1 * @tailleCase + paddingY + (@tailleCase / 2) - @largeurSurbri / 2, (x2 - x1) * @tailleCase + @tailleCase, (y2 - y1) * @tailleCase + @largeurSurbri)
 				elsif(y1 < y2 || caseSom.y < y1)
-					# case @difficulte
-					# 	when "easy"
-					# 		@cr.rectangle x1*@tailleCase+paddingX+15, y1*@tailleCase+paddingY-5+@tailleCase, (x2-x1)*@tailleCase+22, (y2-y1)*@tailleCase-@tailleCase+8
-					# 	when "normal"
-					# 		@cr.rectangle x1*@tailleCase+paddingX+11, y1*@tailleCase+paddingY-5+@tailleCase, (x2-x1)*@tailleCase+22, (y2-y1)*@tailleCase-@tailleCase+8
-					# 	when "hard"
-					# 		@cr.rectangle x1*@tailleCase+paddingX+9, y1*@tailleCase+paddingY-5+@tailleCase, (x2-x1)*@tailleCase+22, (y2-y1)*@tailleCase-@tailleCase+8
-					# 	else
-					# end
 					@cr.rectangle(x1 * @tailleCase + paddingX + (@tailleCase / 2) - @largeurSurbri / 2, y1 * @tailleCase + paddingY + @tailleCase, (x2 - x1) * @tailleCase + @largeurSurbri, (y2 - y1) * @tailleCase - @tailleCase)
 				else
-					# case @difficulte
-					# 	when "easy"
-					# 		@cr.rectangle x1*@tailleCase+paddingX+15, y1*@tailleCase+paddingY+5, (x2-x1)*@tailleCase+22, (y2-y1)*@tailleCase-8+@tailleCase
-					# 	when "normal"
-					# 		@cr.rectangle x1*@tailleCase+paddingX+11, y1*@tailleCase+paddingY+5, (x2-x1)*@tailleCase+22, (y2-y1)*@tailleCase-8+@tailleCase
-					# 	when "hard"
-					# 		@cr.rectangle x1*@tailleCase+paddingX+9, y1*@tailleCase+paddingY+5, (x2-x1)*@tailleCase+22, (y2-y1)*@tailleCase-8+@tailleCase
-					# 	else
-					# end
 					@cr.rectangle(x1 * @tailleCase + paddingX + (@tailleCase / 2) - @largeurSurbri / 2, y1 * @tailleCase + paddingY, (x2 - x1) * @tailleCase + @largeurSurbri, (y2 - y1) * @tailleCase + @tailleCase)
 				end
-				#puts "+ ==== +"
 				x1 = nil
 				y1 = nil
 			else
@@ -568,35 +408,26 @@ class FenetreJeu < Gtk::Box
 	end
 
 	def rechercherVoisins(c)
-		#puts "recherche des voisins ..."
 		paddingX = 50
 		paddingY = 25
 		j = 0
 		listeVoisin = []
 		selfArete = false
 		listeA = c.contenu.listeArete
-		#puts c.contenu.class
-		#listeA.each {|a| puts "arete ===> "+a.to_s}
-
 		# OUEST
 		(c.x-1).downto 0 do |i|
 			j+=1
-			#puts "test de la case ["+(c.x-j).to_s+"]["+c.y.to_s+"] i = "+j.to_s
 			caseTest = @grilleTest.getCase(c.x-j,c.y)
 			if(caseTest.contenu.class == Arete)
 				listeA.each do |a|
-					#puts "1111111111111111111"
 					if(a == caseTest.contenu)
-						#puts "1 - selfArete !!!!! "
 						selfArete = true
 					end
 				end
 				if(!selfArete)
-					#puts "INTERSECTION"
 					break
 				end
 			elsif(estSommet?(caseTest))
-				#puts "voisin trouvé à gauche"
 				listeVoisin.push(caseTest)
 				break
 			end
@@ -607,23 +438,18 @@ class FenetreJeu < Gtk::Box
 		# EST
 		(c.x+1).upto @longueur-1 do |i|
 			j+=1
-			#puts "test de la case ["+(c.x+j).to_s+"]["+c.y.to_s+"] i = "+j.to_s
 			caseTest = @grilleTest.getCase(c.x+j,c.y)
 			if(caseTest.contenu.class == Arete)
 				listeA.each do |a|
-					#puts "22222222222222"
 					if(a == caseTest.contenu)
-						#puts "2 - selfArete !!!!! "
 						selfArete = true
 					end
 				end
 				if(!selfArete)
-					#puts "INTERSECTION"
 					break
 
 				end
 			elsif(estSommet?(caseTest))
-				#puts "voisin trouvé à droite"
 				listeVoisin.push(caseTest)
 				break
 			end
@@ -633,24 +459,19 @@ class FenetreJeu < Gtk::Box
 		# NORD
 		(c.y-1).downto 0 do |i|
 			j+=1
-			#puts "test de la case ["+c.x.to_s+"]["+(c.y-j).to_s+"] i = "+j.to_s
 			caseTest = @grilleTest.getCase(c.x,c.y-j)
 			if(caseTest.contenu.class == Arete)
 				listeA.each do |a|
-					#puts "3333333333333333333"
 					if(a == caseTest.contenu)
-						#puts "3 - selfArete !!!!! "
 						selfArete = true
 					end
 				end
 				if(!selfArete)
-					#puts "INTERSECTION"
 					selfArete = false
 					break
 
 				end
 			elsif(estSommet?(caseTest))
-				#puts "voisin trouvé en haut"
 				listeVoisin.push(caseTest)
 				break
 			end
@@ -660,23 +481,17 @@ class FenetreJeu < Gtk::Box
 		# # SUD
 		(c.y+1).upto @largeur-1 do |i|
 			j+=1
-			#puts "test de la case ["+c.x.to_s+"]["+(c.y+j).to_s+"] i = "+j.to_s
 			caseTest = @grilleTest.getCase(c.x,c.y+j)
 			if(caseTest.contenu.class == Arete)
 				listeA.each do |a|
-					#puts "4444444444444444444444"
 					if(a == caseTest.contenu)
-						#puts "4 - selfArete !!!!! "
 						selfArete = true
 					end
 				end
 				if(!selfArete)
-					#puts "INTERSECTION"
 					break
-
 				end
 			elsif(estSommet?(caseTest))
-				#puts "voisin trouvé en bas"
 				listeVoisin.push(caseTest)
 				break
 			end
@@ -698,33 +513,23 @@ class FenetreJeu < Gtk::Box
 		# testAffichageCoord(s2)
 		ecart = 0
 		if(x1 < x2)
-			#puts "x1<x2"
 			ecart = x2-(x1)
-			#puts ecart.to_s
 			(x1+1).upto(x2-1) {|i|
 				listeDeCase.push(@grilleTest.getCase(i,y1))
 			}
 		elsif(x2 < x1)
-			#puts "x1>x2"
 			(x1-1).downto(x2+1) {|i|
 				listeDeCase.push(@grilleTest.getCase(i,y1))
 			}
 		elsif( y1 < y2)
-			#puts "y1<y2"
 			(y1+1).upto(y2-1) {|i|
 				listeDeCase.push(@grilleTest.getCase(x1,i))
 			}
 		else
-
-			#puts "y1>y2"
 			(y1-1).downto(y2+1) {|i|
 				listeDeCase.push(@grilleTest.getCase(x1,i))
 			}
 		end
-
-		#puts "la liste des cases en surbrillance est"
-		#listeDeCase.each {|c| #puts c.x.to_s + " "+c.y.to_s}
-		#puts "======"
 		listeDeCase.push(s2)
 		return listeDeCase
 	end
@@ -732,15 +537,11 @@ class FenetreJeu < Gtk::Box
 	def videSurbri
 		#afficheSurbri
 		@listeInter.each {|c|
-			#print "Une case=>"
 			if(c.class == Case)
 				c.surbrillance = false
-				#puts "\t CASE "+c.to_s+" mis en desurbrillance :"+c.surbrillance.to_s+"==="
 			end
-			#@listeInter.delete_at(@listeInter.index(c))
 		}
 		@listeInter = []
-		#puts "===FINTER====="
 	end
 
 	def grilleGagnante
@@ -806,8 +607,6 @@ class FenetreJeu < Gtk::Box
 		return image
 	end
 
-
-
 	def on_draw
 			@cr = @darea.window.create_cairo_context
 			afficheEcran()
@@ -821,7 +620,6 @@ class FenetreJeu < Gtk::Box
 		paddingX = 25 + @tailleCase / 2#25+17
 		paddingY = 25 + @tailleCase / 2#25+35
 		ajustementChiffreAxeX = 3
-		#@cr = @darea.window.create_cairo_context
 
 			@cr.set_font_size(@fontSize)
 
@@ -856,9 +654,7 @@ class FenetreJeu < Gtk::Box
 										 (x * @tailleCase + paddingX) + @tailleCercle * Math::cos(7 * Math::PI / 4),
 										 (y * @tailleCase + paddingY) + @tailleCercle * Math::sin(7 * Math::PI / 4))
 				Math::PI
-
 			end
-
 
 			@cr.set_source_rgb 0,0,0
 			@cr.stroke
@@ -959,29 +755,9 @@ class FenetreJeu < Gtk::Box
 		end
 	end
 
-	def testAffichageGrille
-		puts "=====TEST====="
-		@grilleTest.aretes.each {|a|
-			puts a.to_s
-		}
-		@grilleTest.sommets.each {|s|
-			puts s.to_s
-		}
-		puts "=====FTEST====="
-
-	end
-
-	def testAffichageCoord(c)
-		puts "=====TEST COORD====="
-		puts "La Case est en\t x="+c.x.to_s+" y="+c.y.to_s
-		puts "=====FTEST====="
-
-	end
-
 	def clearEcran()
 		@cr = @darea.window.create_cairo_context
 		@cr.set_source_rgb 0.96, 0.96, 0.96
-		###@@fenetre.default_size == [x,y]
 		if(@longueur > @largeur)
 			@cr.rectangle 0, 0, @tailleArea, (((@tailleArea - 50) / @longueur) * @largeur) + 50 #<== Changer aux dimensions de la fenentre
 		else
@@ -1005,7 +781,7 @@ class FenetreJeu < Gtk::Box
 			if(@tuto)
 					@@fenetre.changerWidget(@fenPre)
 			elsif(!@classe)
-				popup = Gtk::MessageDialog.new(@@fenetre, :modal, :question, :none, "Souhaitez-vous sauvegarder la partie ? La sauvegarde précédente sera écrasée.")
+				popup = Gtk::MessageDialog.new(:parent => @@fenetre, :flags => :modal, :type => :question, :buttons => :none, :message => "Souhaitez-vous sauvegarder la partie ? La sauvegarde précédente sera écrasée.")
 				popup.add_buttons(["Sauvegarder", :yes], ["Quitter", :no], [Gtk::Stock::CANCEL, :reject])
 
 				response = popup.run()
@@ -1020,7 +796,7 @@ class FenetreJeu < Gtk::Box
 
 				popup.destroy()
 			else
-				popup = Gtk::MessageDialog.new(@@fenetre, :modal, :question, :none, "Voulez vous quitter la partie classée ? Vous ne pouvez pas sauvegarder une partie classée")
+				popup = Gtk::MessageDialog.new(:parent => @@fenetre, :flags => :modal, :type => :question, :buttons => :none, :message => "Voulez vous quitter la partie classée ? Vous ne pouvez pas sauvegarder une partie classée")
 				popup.add_buttons(["Continuer", :yes], ["Quitter", :no])
 
 				@chr.arreter()
@@ -1040,7 +816,6 @@ class FenetreJeu < Gtk::Box
 
   def initBoutonHypo
     @boutonHypo = UnBoutonPerso.new("H", @style)do
-      puts "j'ai cliqué sur le bouton Hypo"
 			if(@presser)
 				@presser = false
 				@boutonAide.deverrouiller()
@@ -1057,17 +832,11 @@ class FenetreJeu < Gtk::Box
 				@boutonAnnul.verrouiller()
 
 				@presser = true
-				puts "appuie bouton Hypothèse"
 				@hypothese = true
 
 				@boutonValidHypo.show
 
 				Sauvegarde.nouvelleHypothese(@grilleTest)
-				# ajouterContenu(vbox,@boutonAnnulHypo)
-				# ajouterContenu(vbox,@boutonValidHypo)
-
-				# tbl.attach(vbox,0,1,2,10)
-				#self.show_all
 				@boutonAnnulHypo.show
 				@boutonValidHypo.show
 			end
@@ -1085,20 +854,14 @@ class FenetreJeu < Gtk::Box
 			@boutonAide.deverrouiller()
 			@boutonRecom.deverrouiller()
 			@boutonAnnul.deverrouiller()
-
-			# retirerContenu(vbox,@boutonAnnulHypo)
-			# retirerContenu(vbox,@boutonValidHypo)
-
 			afficheEcran
 			masquerBouton
-			# self.show_all
     end
   end
 
 	def initBoutonValidHypo
     @boutonValidHypo= UnBoutonPerso.new("Valider Hypothèse", @style)do
 			@presser = false
-
 			Sauvegarde.validerHypothese()
 			@hypothese = false
 			@grilleTest.aretes.each do |a|
@@ -1108,14 +871,10 @@ class FenetreJeu < Gtk::Box
 			@boutonRecom.deverrouiller()
 			@boutonAnnul.deverrouiller()
 			masquerBouton
-
-			puts "il a gagné ?"
 			conditionGagnante
     end
 			@boutonValidHypo.hide
   end
-
-
 
   def initBoutonAide
 		@boxMessage = Gtk::Box.new(Gtk::Orientation::VERTICAL)
@@ -1125,54 +884,19 @@ class FenetreJeu < Gtk::Box
 			@afficheAide = false
 			@afficherErreur = false
 			@erreurs = @grilleTest.trouverErreurs(@grilleComplete)
-
-			# retirerContenu(vbox,@boutonAideVisu)
-
-
-
 			if(@presser)
 				@afficheAide = false
-
-				# if(@erreurs != nil && @erreurs.size != 0)
-				# 	@labelMessage = UnLabelPerso.new("Vous avez "+@erreurs.size().to_s+" erreur(s)")
-				#
-				# 	masquerBouton()
-				# 	@labelMessage.show
-				# 	# ajouterMessage(vbox,messageLabel)
-				# 	# ajouterContenu(vbox,btnErreurVisu)
-				# else
-				#
-				# 	@afficherErreur = false
-				#
-				# 	# ajouterContenu(vbox,@boutonAideTxt)
-				# 	# ajouterContenu(vbox,@boutonAideVisu)
-				# end
-
-				# @aide = Aide.creer(@grilleTest)
-
-
 				@presser = false
 				@boutonHypo.deverrouiller()
 				@boutonRecom.deverrouiller()
 				@boutonAnnul.deverrouiller()
 				masquerBouton
 				afficheEcran
-				# retirerContenu(vbox,messageLabel)
-				#retirerContenu(@boxMessage,@aideTxt)
-				# retirerContenu(vbox,@boutonAideVisu)
-
 			else
-
-
 				@presser = true
-				# if(@aide == nil)
-				# 	@aide = Aide.creer(@grilleTest)
-				# end
 				@boutonHypo.verrouiller()
 				@boutonRecom.verrouiller()
 				@boutonAnnul.verrouiller()
-				# tbl.attach(vbox,0,1,2,10)
-				# self.show_all
 				if(@erreurs != nil && @erreurs.size != 0)
 					@labelMessage = UnLabelPerso.new("Vous avez "+@erreurs.size().to_s+" erreur(s)","UnLabelBlanc")
 					ajouteMalus(5)
@@ -1181,19 +905,11 @@ class FenetreJeu < Gtk::Box
 					masquerBouton()
 					@labelMessage.show
 					@boutonErreur.show
-					# ajouterMessage(vbox,messageLabel)
-					# ajouterContenu(vbox,btnErreurVisu)
 				else
-
 					@afficherErreur = false
-
 					@boutonAideTxt.show
 					@boutonAideVisu.show
-
-					# ajouterContenu(vbox,@boutonAideTxt)
-					# ajouterContenu(vbox,@boutonAideVisu)
 				end
-
 			end
     end
 		ajouterImage(@boutonAide,"#{$cheminRacineHashi}/Interface/img/help_icon.png")
@@ -1207,14 +923,10 @@ class FenetreJeu < Gtk::Box
 
 	def initBoutonErreurVisu
     			@boutonErreur = UnBoutonPerso.new("Montrer les erreurs ?", "BoutonEnJeuGros")do
-			puts "appuie bouton Erreur Visu"
 			@afficherErreur = true
 			@erreurs = @grilleTest.trouverErreurs(@grilleComplete)
 
 			ajouteMalus(15)
-
-			# retirerContenu(vbox,@boutonErreur)
-			# retirerContenu(vbox,messageLabel)
 			afficheEcran
 			masquerBouton
 		end
@@ -1227,12 +939,7 @@ class FenetreJeu < Gtk::Box
 			@aideTxt.set_name("UnLabelBlanc")
 			retirerContenu(@boxMessage,@aideTxt)
 			@boxMessage.add(@aideTxt)
-			# retirerContenu(vbox,@boutonAideTxt)
-			# retirerContenu(vbox,@boutonAideVisu)
-			# ajouterContenu(vbox,@boutonAideVisu)
-
 			afficheEcran()
-			# self.show_all
 			masquerBouton
 
 			ajouteMalus(@aideTxt.penalite)
@@ -1244,10 +951,7 @@ class FenetreJeu < Gtk::Box
    			@boutonAideVisu = UnBoutonPerso.new("Aide Visuelle", "BoutonEnJeuGros")do
 			@aide = Aide.creer(@grilleTest)
 			@afficheAide = true
-			# retirerContenu(vbox,@boutonAideTxt)
-			# retirerContenu(vbox,@boutonAideVisu)
 			@caseAide = @aide.getCaseAide
-			puts("Valeur aide  #{@aide.penalite}")
 			ajouteMalus(@aide.penalite)
 			afficheEcran
 			masquerBouton
@@ -1256,17 +960,13 @@ class FenetreJeu < Gtk::Box
 
   def initBoutonAnnul
     @boutonAnnul = UnBoutonPerso.new("U", @style)do
-			# puts "appuie bouton Annuler"
 			annulerAction()
-
     end
 		ajouterImage(@boutonAnnul,"#{$cheminRacineHashi}/Interface/img/undo_icon2.png")
   end
 
   def initBoutonRecom
     @boutonRecom = UnBoutonPerso.new("R", @style)do
-			# puts "appuie bouton Recommencer"
-			# @grilleTest = @grilleComplete
 			@grilleTest.clearAretes
 			@grilleTest.clearSommets
 			@listeInter = []
@@ -1282,7 +982,6 @@ class FenetreJeu < Gtk::Box
 
 		if(@classe)
 			@chr = Chrono.nouveau()
-			# tbl.attach(chronoHbox,1,3,2,4)
 			@boutonSablier.show
 			@boxChrono.show
 			@chr.set_name("LabelChrono")
@@ -1321,24 +1020,6 @@ class FenetreJeu < Gtk::Box
 	end
 
 	def initTailleCase
-		# case @difficulte
-		# 	when "easy"
-		# 		@tailleCase = 50
-		# 		@fontSize = 25
-		# 		@tailleCercle = 20
-		# 	when "normal"
-		# 		@tailleCase = 45
-		# 		@fontSize = 22
-		# 		@tailleCercle = 18
-		# 	when "hard"
-		# 		@tailleCase = 40
-		# 		@fontSize = 18
-		# 		@tailleCercle = 15
-		# 	else
-		# 		@tailleCase = 60
-		# 		@fontSize = 30
-		# 		@tailleCercle = 20
-		# end
 		@tailleCase = (@tailleArea - 50) / (@longueur > @largeur ? @longueur : @largeur)
 		@fontSize = @tailleCase / 2
 		@tailleCercle = @tailleCase / 5 * 2
@@ -1355,7 +1036,6 @@ class FenetreJeu < Gtk::Box
 	def initBoutonTuto(numNiveau)
 		case(numNiveau)
 		when "D1"
-
 		when "D2"
 			@boutonAnnul.show
 		when "D3"
@@ -1372,16 +1052,13 @@ class FenetreJeu < Gtk::Box
 
 	def conditionGagnante()
 		if(grilleGagnante && !@hypothese && @tuto == nil)
-			puts "VOUS AVEZ GAGNÉ !!!!"
 			if(@chr != nil)
 				@chr.arreter()
-				puts(@chr.malus)
 				@chr.fin()
-				@@fenetre.changerWidget(FenetreVictoire.new(@@fenetre,@difficulte,@chr,@chr.malus))
+				@@fenetre.changerWidget(FenetreVictoire.new(@@fenetre,@difficulte,@chr.to_chrono,@chr.malus))
 			else
 				@@fenetre.changerWidget(FenetreVictoire.new(@@fenetre,@difficulte,nil))
 			end
-
 		end
 	end
 
@@ -1390,6 +1067,4 @@ class FenetreJeu < Gtk::Box
 			@chr.addMalus(penalite)
 		end
 	end
-
-
 end

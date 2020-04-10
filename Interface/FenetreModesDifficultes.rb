@@ -1,5 +1,3 @@
-require_relative 'FenetreModeChrono.rb'
-
 class FenetreModesDifficultes < Gtk::Box
 
   #@classe
@@ -56,13 +54,13 @@ class FenetreModesDifficultes < Gtk::Box
   def affichePopup(difficulte)
     case difficulte
       when "easy"
-        popup = Gtk::MessageDialog.new(@@fenetre, :modal, :question, :none, "Souhaitez-vous charger la dernière sauvegarde facile ?")
+        popup = Gtk::MessageDialog.new(:parent => @@fenetre, :flags => :modal, :type => :question, :buttons => :none, :message => "Souhaitez-vous charger la dernière sauvegarde facile ?")
       when "normal"
-        popup = Gtk::MessageDialog.new(@@fenetre, :modal, :question, :none, "Souhaitez-vous charger la dernière sauvegarde normale ?")
+        popup = Gtk::MessageDialog.new(:parent => @@fenetre, :flags => :modal, :type => :question, :buttons => :none, :message => "Souhaitez-vous charger la dernière sauvegarde normale ?")
       when "hard"
-        popup = Gtk::MessageDialog.new(@@fenetre, :modal, :question, :none, "Souhaitez-vous charger la dernière sauvegarde difficile ?")
+        popup = Gtk::MessageDialog.new(:parent => @@fenetre, :flags => :modal, :type => :question, :buttons => :none, :message => "Souhaitez-vous charger la dernière sauvegarde difficile ?")
       when "custom"
-        popup = Gtk::MessageDialog.new(@@fenetre, :modal, :question, :none, "Souhaitez-vous charger la dernière sauvegarde personnalisée ?")
+        popup = Gtk::MessageDialog.new(:parent => @@fenetre, :flags => :modal, :type => :question, :buttons => :none, :message => "Souhaitez-vous charger la dernière sauvegarde personnalisée ?")
     end
     popup.add_buttons(["Charger la sauvegarde", :yes], ["Nouvelle Partie", :no], [Gtk::Stock::CANCEL, :reject])
 
@@ -79,7 +77,6 @@ class FenetreModesDifficultes < Gtk::Box
       end
     else
       if(response == :yes)
-        puts "je suis ici"
         save = Sauvegarde.nouvelle(nil, nil, nil, difficulte)
         partie = save.charger()
         popup.destroy()
