@@ -872,7 +872,7 @@ class FenetreJeu < Gtk::Box
 		@cr.set_source_rgb 0,0,0
 
 		@grilleTest.aretes.each{ |a|
-			activeHypo(a.hypothese)
+
 
 			x1 = a.sommet1.position.x
 			y1 = a.sommet1.position.y
@@ -890,21 +890,17 @@ class FenetreJeu < Gtk::Box
 					if(y1 < y2)
 						@cr.move_to(x1 * @tailleCase + paddingX + @tailleCase / 2, y1 * @tailleCase + paddingY + @tailleCase)
 						@cr.line_to(x2 * @tailleCase + paddingX + @tailleCase / 2, y2 * @tailleCase + paddingY)
-						@cr.stroke()
 					else
 						@cr.move_to(x1 * @tailleCase + paddingX + @tailleCase / 2, y1 * @tailleCase + paddingY)
 						@cr.line_to(x2 * @tailleCase + paddingX + @tailleCase / 2, y2 * @tailleCase + paddingY + @tailleCase)
-						@cr.stroke()
 					end
 				when false
 					if(x1 < x2)
 						@cr.move_to(x1 * @tailleCase + paddingX + @tailleCase, y1 * @tailleCase + paddingY + @tailleCase / 2)
 						@cr.line_to(x2 * @tailleCase + paddingX, y2 * @tailleCase + paddingY + @tailleCase / 2)
-						@cr.stroke()
 					else
 						@cr.move_to(x1 * @tailleCase + paddingX, y1 * @tailleCase + paddingY + @tailleCase / 2)
 						@cr.line_to(x2 * @tailleCase + paddingX + @tailleCase, y2 * @tailleCase + paddingY + @tailleCase / 2)
-						@cr.stroke()
 					end
 				end
 			else
@@ -913,36 +909,32 @@ class FenetreJeu < Gtk::Box
 					if(y1 < y2)
 						@cr.move_to(x1 * @tailleCase + paddingX + @tailleCase / 2 - decalageDoubleArete, y1 * @tailleCase + paddingY + @tailleCase)
 						@cr.line_to(x2 * @tailleCase + paddingX + @tailleCase / 2 - decalageDoubleArete, y2 * @tailleCase + paddingY)
-						@cr.stroke()
 						@cr.move_to(x1 * @tailleCase + paddingX + @tailleCase / 2 + decalageDoubleArete, y1 * @tailleCase + paddingY + @tailleCase)
 						@cr.line_to(x2 * @tailleCase + paddingX + @tailleCase / 2 + decalageDoubleArete, y2 * @tailleCase + paddingY)
-						@cr.stroke()
 					else
 						@cr.move_to(x1 * @tailleCase + paddingX + @tailleCase / 2 - decalageDoubleArete, y1 * @tailleCase + paddingY)
 						@cr.line_to(x2 * @tailleCase + paddingX + @tailleCase / 2 - decalageDoubleArete, y2 * @tailleCase + paddingY + @tailleCase)
-						@cr.stroke()
 						@cr.move_to(x1 * @tailleCase + paddingX + @tailleCase / 2 + decalageDoubleArete, y1 * @tailleCase + paddingY)
 						@cr.line_to(x2 * @tailleCase + paddingX + @tailleCase / 2 + decalageDoubleArete, y2 * @tailleCase + paddingY + @tailleCase)
-						@cr.stroke()
 					end
 				when false
 					if(x1 < x2)
 						@cr.move_to(x1 * @tailleCase + paddingX + @tailleCase, y1 * @tailleCase + paddingY + @tailleCase / 2 - decalageDoubleArete)
 						@cr.line_to(x2 * @tailleCase + paddingX, y2 * @tailleCase + paddingY + @tailleCase / 2- decalageDoubleArete)
-						@cr.stroke()
 						@cr.move_to(x1 * @tailleCase + paddingX + @tailleCase, y1 * @tailleCase + paddingY + @tailleCase / 2 + decalageDoubleArete)
 						@cr.line_to(x2 * @tailleCase + paddingX, y2 * @tailleCase + paddingY + @tailleCase / 2 + decalageDoubleArete)
-						@cr.stroke()
 					else
 						@cr.move_to(x1 * @tailleCase + paddingX, y1 * @tailleCase + paddingY + @tailleCase / 2 - decalageDoubleArete)
 						@cr.line_to(x2 * @tailleCase + paddingX + @tailleCase, y2 * @tailleCase + paddingY + @tailleCase / 2 - decalageDoubleArete)
-						@cr.stroke()
 						@cr.move_to(x1 * @tailleCase + paddingX, y1 * @tailleCase + paddingY + @tailleCase / 2 + decalageDoubleArete)
 						@cr.line_to(x2 * @tailleCase + paddingX + @tailleCase, y2 * @tailleCase + paddingY + @tailleCase / 2 + decalageDoubleArete)
-						@cr.stroke()
 					end
 				end
 			end
+			activeHypo(a.hypothese)
+			@cr.stroke
+			@cr = @darea.window.create_cairo_context
+
 		}
 	end
 
@@ -1209,7 +1201,7 @@ class FenetreJeu < Gtk::Box
 			puts "appuie bouton Erreur Visu"
 			@afficherErreur = true
 			@erreurs = @grilleTest.trouverErreurs(@grilleComplete)
-			
+
 			ajouteMalus(15)
 
 			# retirerContenu(vbox,@boutonErreur)
@@ -1233,7 +1225,7 @@ class FenetreJeu < Gtk::Box
 			afficheEcran()
 			# self.show_all
 			masquerBouton
-			
+
 			ajouteMalus(@aideTxt.penalite)
 			@aideTxt.show
 		end
@@ -1383,7 +1375,7 @@ class FenetreJeu < Gtk::Box
 
 		end
 	end
-	
+
 	def ajouteMalus(penalite)
 		if(@chr != nil)
 			@chr.addMalus(penalite)
