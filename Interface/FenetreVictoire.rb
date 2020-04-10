@@ -9,13 +9,13 @@ class FenetreVictoire < Gtk::Box
 
     if(chr != nil && chr.to_s != "00:00")
         texteVict = UnLabelPerso.new("Félicitations, vous avez terminé cette grille en #{chr.to_s}", "lblRegles")
+	texteMalus = UnLabelPerso.new("Vous avez un malus de #{chr.malus} secondes", "lblRegles")
+	scoreHolder = Score.creer("placeholder",chr.resultat, difficulte)
+	texteScore = UnLabelPerso.new("Votre score est de #{scoreHolder.calculScore.to_s}", "lblRegles")
+	texteEnt = UnLabelPerso.new("Saisissez votre pseudonyme :", "lblRegles")
     else
         texteVict = UnLabelPerso.new("Félicitations, vous avez terminé cette grille", "lblRegles")
     end
-    texteMalus = UnLabelPerso.new("Vous avez un malus de #{chr.malus} secondes", "lblRegles")
-    scoreHolder = Score.creer("placeholder",chr.resultat, difficulte)
-    texteScore = UnLabelPerso.new("Votre score est de #{scoreHolder.calculScore.to_s}", "lblRegles")
-    texteEnt = UnLabelPerso.new("Saisissez votre pseudonyme :", "lblRegles")
 
     tbl = Gtk::Table.new(1,1)
 
