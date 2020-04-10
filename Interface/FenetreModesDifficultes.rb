@@ -71,6 +71,11 @@ class FenetreModesDifficultes < Gtk::Box
         save = Sauvegarde.nouvelle(nil, nil, nil, difficulte)
         partie = save.charger()
         popup.destroy()
+        if(partie == nil)
+          popup = Gtk::MessageDialog.new(:parent => @@fenetre, :flags => :modal, :type => :info, :buttons => :ok, :message => "Aucune sauvegarde, création d'une nouvelle partie")
+          popup.run()
+          popup.destroy()
+        end
         @@fenetre.changerWidget(FenetreJeu.new(@@fenetre, self, difficulte, @classe, partie))
       elsif(response == :no)
         @@fenetre.changerWidget(FenetreParametres.new(@@fenetre, self))
@@ -80,6 +85,11 @@ class FenetreModesDifficultes < Gtk::Box
         save = Sauvegarde.nouvelle(nil, nil, nil, difficulte)
         partie = save.charger()
         popup.destroy()
+        if(partie == nil)
+          popup = Gtk::MessageDialog.new(:parent => @@fenetre, :flags => :modal, :type => :info, :buttons => :ok, :message => "Aucune sauvegarde, création d'une nouvelle partie")
+          popup.run()
+          popup.destroy()
+        end
         @@fenetre.changerWidget(FenetreJeu.new(@@fenetre, self, difficulte, @classe, partie))
       elsif(response == :no)
         popup.destroy()
