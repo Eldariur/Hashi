@@ -2,7 +2,7 @@ require_relative "../Classement/Score.rb"
 
 class FenetreVictoire < Gtk::Box
 
-  def initialize(window, difficulte, chr, malus=0)
+  def initialize(window, difficulte, chr)
     @@fenetre = window
     size = @@fenetre.default_size()
     super(Gtk::Orientation::VERTICAL)
@@ -12,8 +12,8 @@ class FenetreVictoire < Gtk::Box
     else
         texteVict = UnLabelPerso.new("Félicitations, vous avez terminé cette grille", "lblRegles")
     end
-    texteMalus = UnLabelPerso.new("Vous avez un malus de #{malus} secondes", "lblRegles")
-    scoreHolder = Score.creer("placeholder", chr.resultat, difficulte)
+    texteMalus = UnLabelPerso.new("Vous avez un malus de #{chr.malus} secondes", "lblRegles")
+    scoreHolder = Score.creer("placeholder",chr.resultat, difficulte)
     texteScore = UnLabelPerso.new("Votre score est de #{scoreHolder.calculScore.to_s}", "lblRegles")
     texteEnt = UnLabelPerso.new("Saisissez votre pseudonyme :", "lblRegles")
 
