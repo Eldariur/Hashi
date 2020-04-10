@@ -10,8 +10,6 @@ class BoutonTuto < Gtk::Button
     tuto = Tutoriel.new(niveau)
 
 		signal_connect("clicked") {
-			puts("lancer tuto :"+niveau.to_s)
-      puts tuto.getMessageTuto()+"======"
       #tuto.lancerTuto()
 
       # (window, difficulte, classe, save = nil, long=nil, larg=nil, dens=nil, tuto = nil)

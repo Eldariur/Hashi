@@ -2,7 +2,6 @@ class FenetreTuto < Gtk::Box
 
   def initialize(window,fenPre)
     @@fenetre = window
-    puts window.to_s
     super(Gtk::Orientation::VERTICAL)
 
 
