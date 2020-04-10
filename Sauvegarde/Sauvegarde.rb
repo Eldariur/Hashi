@@ -101,16 +101,18 @@ class Sauvegarde
     else
       case @difficulte
         when "easy"
-          save = YAML.load(File.read("#{$cheminRacineHashi}/Sauvegarde/Save/easy/save.sav"))
+          save = (File.exist?("#{$cheminRacineHashi}/Sauvegarde/Save/easy/save.sav"))? YAML.load(File.read("#{$cheminRacineHashi}/Sauvegarde/Save/easy/save.sav")) : nil
         when "normal"
-          save = YAML.load(File.read("#{$cheminRacineHashi}/Sauvegarde/Save/normal/save.sav"))
+          save = (File.exist?("#{$cheminRacineHashi}/Sauvegarde/Save/normal/save.sav"))? YAML.load(File.read("#{$cheminRacineHashi}/Sauvegarde/Save/normal/save.sav")) : nil
         when "hard"
-          save = YAML.load(File.read("#{$cheminRacineHashi}/Sauvegarde/Save/hard/save.sav"))
+          save = (File.exist?("#{$cheminRacineHashi}/Sauvegarde/Save/hard/save.sav"))? YAML.load(File.read("#{$cheminRacineHashi}/Sauvegarde/Save/hard/save.sav")) : nil
         when "custom"
-          save = YAML.load(File.read("#{$cheminRacineHashi}/Sauvegarde/Save/custom/save.sav"))
+          save = (File.exist?("#{$cheminRacineHashi}/Sauvegarde/Save/custom/save.sav"))? YAML.load(File.read("#{$cheminRacineHashi}/Sauvegarde/Save/custom/save.sav")) : nil
       end
     end
-    return save
+    if(save != nil)
+      return save
+    end
   end
 
   # Charge une sauvegarde depuis un fichier en fonction du nom passé en parametre.
