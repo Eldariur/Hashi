@@ -575,7 +575,7 @@ class FenetreJeu < Gtk::Box
 
 	def grilleGagnante
 		complet = true
-		if(@grilleTest.testHamilton)
+		if(@grilleTest.testHamilton?)
 			@grilleTest.sommets.each do |s|
 				if(!s.complet)
 					complet = false

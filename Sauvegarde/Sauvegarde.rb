@@ -3,10 +3,21 @@ require 'yaml'
 # Cette classe représente une sauvegarde.
 class Sauvegarde
   #@grille -> La grille sauvegardé.
-  #@grilleComplete -> La grille de départ de la grille sauvegardé
+  #@grilleComplete -> La grille complète de la grille sauvegardé.
   #@chronometre -> Le chronomètre sauvegardé.
   #@estHypothese -> Si la sauvegarde est une hypothèse ou non.
   #@difficulte -> La difficulte de la sauvegarde.
+
+  # Accesseur get sur l'attribut grille.
+  attr:grille, false
+  # Accesseur get sur l'attribut grilleComplete.
+  attr:grilleComplete, false
+  # Accesseur get et set sur l'attribut chronometre.
+  attr:chronometre, false
+  # Accesseur get sur l'attribut estHypothese.
+  attr:estHypothese, false
+  # Accesseur get sur l'attribut estHypothese.
+  attr:difficulte, false
 
   # Privatise le new.
   private_class_method :new
@@ -14,7 +25,7 @@ class Sauvegarde
   # Initialisation de la class Sauvegarde.
   # === Parametre
   # * +grille+ : grille La grille à sauvegarder.
-  # * +grilleComplete+ : grilleComplete La grille de départ de la grille à sauvegarder.
+  # * +grilleComplete+ : grilleComplete La grille complète  de la grille à sauvegarder.
   # * +chrono+ : chrono Le chronomètre à sauvegarder.
   # * +difficulte+ : difficulte La difficulte de la grille.
   # * +hypothese+ : hypothese Le choix d'une sauvegarde pour une hypothèse ou non.
@@ -34,30 +45,12 @@ class Sauvegarde
   # Créer un nouveau chronomètre.
   # === Parametre
   # * +grille+ : grille La grille à sauvegarder.
-  # * +grilleComplete+ : grilleComplete La grille de départ de la grille à sauvegarder.
+  # * +grilleComplete+ : grilleComplete La grille complète de la grille à sauvegarder.
   # * +chrono+ : chrono Le chronomètre à sauvegarder.
   # * +difficulte+ : difficulte La difficulte de la grille.
   # * +hypothese+ : hypothese Le choix d'une sauvegarde pour une hypothèse ou non.
   def Sauvegarde.nouvelle(grille, grilleComplete, chrono, difficulte, hypothese = false)
     new(grille, grilleComplete, chrono, difficulte, hypothese)
-  end
-
-  # Accesseur get sur l'attribut grille.
-  attr:grille, false
-  # Accesseur get sur l'attribut grilleComplete.
-  attr:grilleComplete, false
-  # Accesseur get et set sur l'attribut chronometre.
-  attr:chronometre, true
-  # Accesseur get sur l'attribut estHypothese.
-  attr:estHypothese, false
-  # Accesseur get sur l'attribut estHypothese.
-  attr:difficulte, false
-
-  # Renvoie le chronomètre de la sauvegarde.
-  # === Return
-  # * +@chronometre+ : @chronometre Le chronomètre de la sauvegarde.
-  def getChrono()
-    return @chronometre
   end
 
   # Effectue les opérations de sauvegarde sur une sauvegarde.
@@ -69,14 +62,12 @@ class Sauvegarde
     else
       case @difficulte
         when "easy"
-          puts "test easy"
           file = File.open(File.path("#{$cheminRacineHashi}/Sauvegarde/Save/easy/save.sav"), 'w')
         when "normal"
           file = File.open(File.path("#{$cheminRacineHashi}/Sauvegarde/Save/normal/save.sav"), 'w')
         when "hard"
           file = File.open(File.path("#{$cheminRacineHashi}/Sauvegarde/Save/hard/save.sav"), 'w')
         when "custom"
-          puts "test"
           file = File.open(File.path("#{$cheminRacineHashi}/Sauvegarde/Save/custom/save.sav"), 'w')
       end
     end
@@ -85,6 +76,8 @@ class Sauvegarde
   end
 
   # Permet de sauvegarder avec un nom spécifique.
+  # === Parametre
+  # * +nom+ : nom Le nom de la sauvegarde.
   def sauvegarderAvecNom(nom)
     dump = YAML::dump(self)
     file = File.open(File.path(nom), 'w')
@@ -101,19 +94,19 @@ class Sauvegarde
     else
       case @difficulte
         when "easy"
-          save = (File.exist?("#{$cheminRacineHashi}/Sauvegarde/Save/easy/save.sav"))? YAML.load(File.read("#{$cheminRacineHashi}/Sauvegarde/Save/easy/save.sav")) : nil
+          save = (File.exist?("#{$cheminRacineHashi}/Sauvegarde/Save/easy/save.sav")) ? YAML.load(File.read("#{$cheminRacineHashi}/Sauvegarde/Save/easy/save.sav")) : nil
         when "normal"
-          save = (File.exist?("#{$cheminRacineHashi}/Sauvegarde/Save/normal/save.sav"))? YAML.load(File.read("#{$cheminRacineHashi}/Sauvegarde/Save/normal/save.sav")) : nil
+          save = (File.exist?("#{$cheminRacineHashi}/Sauvegarde/Save/normal/save.sav")) ? YAML.load(File.read("#{$cheminRacineHashi}/Sauvegarde/Save/normal/save.sav")) : nil
         when "hard"
-          save = (File.exist?("#{$cheminRacineHashi}/Sauvegarde/Save/hard/save.sav"))? YAML.load(File.read("#{$cheminRacineHashi}/Sauvegarde/Save/hard/save.sav")) : nil
+          save = (File.exist?("#{$cheminRacineHashi}/Sauvegarde/Save/hard/save.sav")) ? YAML.load(File.read("#{$cheminRacineHashi}/Sauvegarde/Save/hard/save.sav")) : nil
         when "custom"
-          save = (File.exist?("#{$cheminRacineHashi}/Sauvegarde/Save/custom/save.sav"))? YAML.load(File.read("#{$cheminRacineHashi}/Sauvegarde/Save/custom/save.sav")) : nil
+          save = (File.exist?("#{$cheminRacineHashi}/Sauvegarde/Save/custom/save.sav")) ? YAML.load(File.read("#{$cheminRacineHashi}/Sauvegarde/Save/custom/save.sav")) : nil
       end
     end
     return save
   end
 
-  # Charge une sauvegarde depuis un fichier en fonction du nom passé en parametre.
+  # Charge une sauvegarde depuis un fichier en fonction du nom passé en paramètre.
   # === Parametre
   # * +nom+ : nom Le nom de la sauvegarde.
   # === Return
@@ -177,9 +170,9 @@ class Sauvegarde
   # Cette méthode redefini to_s pour afficher une sauvegarde.
   def to_s
     if(@estHypothese) then
-      "Sauvegarde : \n-Grille :\n#{@grille}-estHypo = #{@estHypothese}\n---------------------------------------------------\n"
+      "Sauvegarde : \n-Grille :\n\n#{@grille}-estHypo = #{@estHypothese}\n---------------------------------------------------\n"
     else
-      "Sauvegarde : \n-Grille :\n#{@grille}-Grille de depart :\n#{@grilleComplete}-estHypo = #{@estHypothese}\n-Chrono = #{@chronometre} \n-Difficulte = #{@difficulte}\n---------------------------------------------------\n"
+      "Sauvegarde : \n-Grille :\n\n#{@grille}-Grille de depart :\n#{@grilleComplete}-estHypo = #{@estHypothese}\n-Chrono = #{@chronometre} \n-Difficulte = #{@difficulte}\n---------------------------------------------------\n"
     end
   end
 

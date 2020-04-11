@@ -38,8 +38,8 @@ arete11 = Arete.creer(sommet10, sommet11)
 #Affichage des grilles
 grille.afficher()
 
-# Sauvegarde.genenerDossier();
-
+=begin
+# Test des hypothèse.
 
 while(gets == nil) do end
 
@@ -64,12 +64,15 @@ grille.afficher()
 puts "Validation hypothese"
 Sauvegarde.validerHypothese()
 grille.afficher()
+=end
 
+=begin
+#Test creation puis chargement puis affichage de sauvegarde.
 
 c = Chrono.nouveau()
 
 threads = []
-threads << Thread.new {c.chronometrer()}
+threads << Thread.new {c.chronometrer(true)}
 threads << Thread.new {stopsaisie(c)}
 #threads << Thread.new {stoptemps(2,c)}
 
@@ -89,13 +92,15 @@ save2.sauvegarder()
 save3.sauvegarder()
 save4.sauvegarder()
 
-saveres = Sauvegarde.nouvelle(nil,nil,nil,1,false).charger()
+saveres = Sauvegarde.nouvelle(nil,nil,nil,"easy",false).charger()
+puts saveres.to_s
+saveres = Sauvegarde.nouvelle(nil,nil,nil,"normal",false).charger()
 puts saveres
-saveres = Sauvegarde.nouvelle(nil,nil,nil,2,false).charger()
+saveres = Sauvegarde.nouvelle(nil,nil,nil,"hard",false).charger()
 puts saveres
-saveres = Sauvegarde.nouvelle(nil,nil,nil,3,false).charger()
+saveres = Sauvegarde.nouvelle(nil,nil,nil,"hard",true).charger()
 puts saveres
-saveres = Sauvegarde.nouvelle(nil,nil,nil,3,true).charger()
-puts saveres
+
+=end
 
 #Sauvegarde.deleteAllSave()
