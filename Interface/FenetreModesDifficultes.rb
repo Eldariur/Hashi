@@ -48,9 +48,9 @@ class FenetreModesDifficultes < Gtk::Box
 
   ## Méthode permettant d'afficher un popup en fonction de la difficulté choisie par l'utilisateur
   #
-  # === Return
+  # === Paramètres
   #
-	# * +id+ : Id de l'aide
+	# * +difficulte+ : La difficulté correspondant au bouton cliqué
   def affichePopup(difficulte)
     case difficulte
       when "easy"
