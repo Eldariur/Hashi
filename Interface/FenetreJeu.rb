@@ -13,20 +13,49 @@ require_relative '../Sauvegarde/Sauvegarde.rb'
 
 require_relative "../Chrono/Chronometre.rb"
 
-
-
+# Classe représentant la fenêtre de jeu
 class FenetreJeu < Gtk::Box
 
-  #@@fenetre
 
-  #@difficulte
-	#@classe
-	#@tailleArea
-	#@largeurSurbri
-	#@style
 
+	## Partie variables de classe
+
+  #@@fenetre			-> Fenetre principale
+
+
+
+	## Partie variables d'instance
+
+  #@difficulte		-> difficulté de la grille de jeu
+	#@classe				-> booléen indiquant si la partie est classée
+	#@tailleArea		-> taille de la zone de dessin
+	#@largeurSurbri	-> largeur des traits de surbrillance
+	#@style					-> style css à appliquer
+
+
+
+	## Partie accesseurs
+
+	# Accesseur get sur les attributs grilleTest, longueur et largeur
 	attr_reader :grilleTest, :longueur, :largeur
 
+
+
+	## Partie initialize
+
+	# Initialisation de la class FenetreJeu
+	#
+	# === Paramètres
+	#
+	# * +window+ :			param1 petite définition(Son nom,une date ...)
+	# * +fenPre+ :			param2 idem
+	# * +difficulte+ :	param2 idem
+	# * +classe+ :			param2 idem
+	# * +save+ :				param2 idem
+	# * +long+ :				param2 idem
+	# * +larg+ :				param2 idem
+	# * +dens+ :				param2 idem
+	# * +tuto+ :				param2 idem
 	def initialize(window,fenPre ,difficulte, classe, save = nil, long=nil, larg=nil, dens=nil, tuto = nil)
 		super(Gtk::Orientation::VERTICAL)
 

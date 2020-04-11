@@ -12,6 +12,8 @@ class Aide < Gtk::Label
   # @nb_voisins -> Nombre de voisins de chaque sommet de la grille
   # @position   -> Case concernée par l'aide
 
+  
+
   def Aide.creer(grille)
     new(grille)
   end
@@ -19,16 +21,22 @@ class Aide < Gtk::Label
   # privatise le new
   private_class_method :new
 
-	#Autorise les autres classe a lire la variable penalite
+
+
+  ## Partie accesseurs
+
+	# Accesseur get sur l'attribut penalite
 	attr_reader :penalite
+
+
 
   ## Partie initialize
 
 	# Initialisation de la classe Aide
 	#
-	# === Parametre
+	# === Paramètres
 	#
-	# * +id+ : Représente l'id correspondant à l'aide
+	# * +grille+ : La grille sur laquelle identifier l'aide
   def initialize(grille)
     @grille = grille
     @nb_voisins = Array.new(@grille.sommets.size())
@@ -50,7 +58,7 @@ class Aide < Gtk::Label
     puts @id
   end
 
-  ## Méthode permettant
+  ## Méthode retournant le texte lié à l'aide identifiée
   #
   # === Return
   #
@@ -70,7 +78,7 @@ class Aide < Gtk::Label
     end
   end
 
-  ## Méthode permettant
+  ## Méthode retournant la case du sommet que l'aide concerne
   #
   # === Return
   #
