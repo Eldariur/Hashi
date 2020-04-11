@@ -1,6 +1,19 @@
+# Classe permettant d'afficher les différentes modes de difficultés du jeu
 class FenetreModesDifficultes < Gtk::Box
+  ## Partie variables d'instance
 
-  #@classe
+  # @@fenetre -> la fenêtre principale du programme
+  # @classe -> booléen indiquant quand la fenêtre de jeu est en mode Contre-la-montre
+
+
+  ## Partie initialize
+
+  # Initialisation de la classe FenetreClassement
+  #
+  # === Paramètres
+  #
+  # * +window+ : window la fenêtre principale du programme
+  # * +fenetrePre+ : fenetrePre la fenêtre précédente
 
   def initialize(window,fenetrePre)
     @@fenetre = window
