@@ -1,3 +1,6 @@
+# Ce fichier sert à generer tout les fichiers de sauvegarde des tutoriels.
+# À n'éxécuter qu'une seule fois !
+
 require_relative "../Code/Grille.rb"
 require_relative "../Code/Case.rb"
 require_relative "../Code/Sommet.rb"

@@ -693,7 +693,7 @@ class Fenetre < Gtk::Window
 
 	def grilleGagnante
 		complet = true
-		if(@grilleTest.testHamilton)
+		if(@grilleTest.testHamilton?)
 			@grilleTest.sommets.each do |s|
 				if(!s.complet)
 					complet = false

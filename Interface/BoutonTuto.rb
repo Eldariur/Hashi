@@ -7,7 +7,7 @@ class BoutonTuto < Gtk::Button
     @@fenetre = window
     self.add(UnLabelPerso.new(str))
     self.set_name("BoutonTuto")
-    tuto = Tutoriel.new(niveau)
+    tuto = Tutoriel.nouveau(niveau)
 
 		signal_connect("clicked") {
       #tuto.lancerTuto()
