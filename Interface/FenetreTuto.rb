@@ -20,7 +20,7 @@ class FenetreTuto < Gtk::Box
     initBoxTutoAvance
     tbl = Gtk::Table.new(20, 20)
 
-    boutonRegle = UnBoutonPerso.new("Regle","BoutonTuto")
+    boutonRegle = UnBoutonPerso.new("Règles","BoutonTuto")
     boutonRegle.signal_connect('clicked'){
       @@fenetre.changerWidget(FenetreRegle.new(@@fenetre,self));
     }
