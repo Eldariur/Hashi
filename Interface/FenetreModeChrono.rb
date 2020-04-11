@@ -1,7 +1,18 @@
 class FenetreModeChrono < Gtk::Box
+  ## Partie variables d'instance
 
-  #@classe
+  # @@fenetre -> la fenêtre principale du programme
+  # @classe -> booléen indiquant quand la fenêtre de jeu est en mode Contre-la-montre
 
+
+  ## Partie initialize
+
+  # Initialisation de la classe FenetreClassement
+  #
+  # === Paramètres
+  #
+  # * +window+ : window la fenetre principale du programme
+  # * +fenetrePre+ : fenetrePre la fenetre précédente
   def initialize(window,fenetrePre)
     @@fenetre = window
     super(Gtk::Orientation::VERTICAL)
