@@ -1,10 +1,13 @@
 
-# Cette classe represente un tutoriel.
+# Cette classe représente un tutoriel.
 class Tutoriel
 	#@niveau -> Represente le numero du tutoriel.
 	#@txtTuto -> Contient le texte associé au tutoriel.
 
 	attr_reader :txtTuto, :niveau
+
+	# Privatise le new.
+	private_class_method :new
 
 	# Initialisation de la class Tutoriel.
 	# === Parametre
@@ -14,14 +17,20 @@ class Tutoriel
 		@txtTuto = nil
 	end
 
-	# Cette methode retourne le texte associé à un tutoriel.
+  # Créer un nouveau tutoriel.
+	# === Parametre
+	# * +numeroNiveau+ : numeroNiveau Le numero du niveau.
+	def Tutoriel.nouveau(numeroNiveau)
+		new(numeroNiveau)
+	end
+
+	# Cette méthode retourne le texte associé à un tutoriel.
 	# === Return
 	# * +x+ : x Le texte du tutoriel.
 	def getMessageTuto()
-		file_data = File.read("#{$cheminRacineHashi}/Tutoriel//TextTuto.txt").split("/").join(":").split(":")
+		file_data = File.read("#{$cheminRacineHashi}/Tutoriel/TextTuto.txt").split("/").join(":").split(":")
 		@txtTuto = file_data
 		#self.set_text(@txtTuto)
-		#puts file_data
 		affiche = false
 
 		file_data.each do |x|
@@ -33,7 +42,7 @@ class Tutoriel
 		end
 	end
 
-	# Cette methode permet de charger le fichier de sauvegarde d'un tutoriel.
+	# Cette méthode permet de charger le fichier de sauvegarde d'un tutoriel.
 	# === Return
 	# * +tuto+ : tuto Le tutoriel chargé.
 	def lancerTuto()

@@ -5,7 +5,7 @@ require_relative "../Classement/ConnectSqlite3.rb"
 c = Chrono.nouveau()
 
 threads = []
-threads << Thread.new {c.chronometrer()}
+threads << Thread.new {c.chronometrer(true)}
 threads << Thread.new {stopsaisie(c)}
 
 threads.each { |thr| thr.join }
@@ -30,6 +30,7 @@ s.sauvegarder
 puts "BDD apres :\n#{cl.to_s}"
 
 =begin
+# Permet de remplir la base de données de valeurs aléatoires pour le test.
 20.times do
 
   temp = (0...3).map { (65 + rand(26)).chr }.join
@@ -63,7 +64,7 @@ end
 
 puts "BDD avant :\n#{c.to_s}"
 
-if c.isHighScore(s) then s.sauvegarder() end
+if c.isHighScore?(s) then s.sauvegarder() end
 
 puts "BDD apres :\n#{c.to_s}"
 =end

@@ -1,6 +1,6 @@
 require 'gtk3'
 
-# Cette classe represente un chronomètre.
+# Cette classe représente un chronomètre.
 class Chrono < Gtk::Label
   #@stop -> Permet de stopper le chronomètre.
   #@total -> Contient le total de secondes écoulées.
@@ -8,6 +8,19 @@ class Chrono < Gtk::Label
   #@temp -> Permet de pouvoir relancer le chronomètre avec une valeur déjà existante.
   #@malus -> Le malus en secondes du chronomètre.
   #@th -> Le Thread du chronomètre.
+
+	# Accesseur get sur l'attribut stop.
+	attr:stop, false
+	# Accesseur get sur l'attribut total.
+	attr:total, false
+	# Accesseur get sur l'attribut base.
+	attr:base, false
+	# Accesseur get sur l'attribut temp.
+	attr:temp, false
+	# Accesseur get sur l'attribut malus.
+	attr:malus, false
+	# Accesseur get sur l'attribut th.
+	attr:th, false
 
   # Privatise le new.
 	private_class_method :new
@@ -22,23 +35,10 @@ class Chrono < Gtk::Label
 		super(self.to_s)
   end
 
-  # Créer un nouveau chronomètre.
+  # Créer un nouveau Chronometre.
   def Chrono.nouveau()
     new()
   end
-
-	# Accesseur get sur l'attribut stop.
-  attr:stop, false
-	# Accesseur get sur l'attribut total.
-  attr:total, false
-	# Accesseur get sur l'attribut base.
-  attr:base, false
-	# Accesseur get sur l'attribut temp.
-  attr:temp, true
-	# Accesseur get sur l'attribut malus.
-  attr:malus, true
-	# Accesseur get sur l'attribut th.
-	attr:th, false
 
   # Remet à 0 le chronomètre.
   def reset()
@@ -48,7 +48,7 @@ class Chrono < Gtk::Label
   end
 
   # Lance le chronométrage.
-  def chronometrer()
+  def chronometrer(affichage = false)
 		@th = Thread.new {
 	    self.reset()
 	    if(@total != 0) then
@@ -56,8 +56,10 @@ class Chrono < Gtk::Label
 	    end
 	    while @stop != 1 do
 	      @total = Time.now - @base
-	      #puts `clear`
-	     # puts self.to_chrono()
+				if(affichage) then
+		     puts `clear`
+		     puts self.to_chrono()
+				end
 	      sleep(0.01)
 				self.text = self.to_s()
 	    end
@@ -76,14 +78,14 @@ class Chrono < Gtk::Label
     return @total + @temp + @malus
   end
 
-	# Cette methode ajoute du malus dans un chrono.
+	# Cette méthode ajoute du malus dans un chronomètre.
 	# === Parametre
 	# * +val+ : val La valeur de malus.
 	def addMalus(val)
 		@malus += val
 	end
 
-	# Cette methode remet à zéro le  malus dans un chrono.
+	# Cette méthode remet à zéro le  malus dans un chrono.
 	def resetMalus()
 		@malus = 0
 	end
@@ -124,7 +126,7 @@ class Chrono < Gtk::Label
 	end
 
 	# Cette méthode retourne si le thread du chronomètre est en cours d'éxécution.
-	# === return
+	# === Return
 	# * +@th.alive?+ : @th.alive?() Un boolean représentant le résultat.
 	def vivant?()
 		return @th.alive?()
@@ -140,7 +142,6 @@ def stoptemps(t,c)
   t.times do
     sleep(1)
   end
-	#c.addMalus(10)
   c.arreter()
 end
 
@@ -152,6 +153,5 @@ def stopsaisie(c)
   while(test == nil) do
     test = gets
   end
-	#c.addMalus(10)
   c.arreter()
 end
