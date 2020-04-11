@@ -192,7 +192,8 @@ button {
 }
 
 #UnLabelClassement {
-	background-color: rgba(256,256,256,0.90);
+	background-color: rgba(10,10,10,0.90);
+	color: white;
 	/* border-radius: 5px; */
 	/* color: white; */
 	font-weight: bold;
