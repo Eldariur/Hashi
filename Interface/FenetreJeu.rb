@@ -39,6 +39,8 @@ class FenetreJeu < Gtk::Box
 	# Accesseur get sur les attributs grilleTest, longueur et largeur
 	attr_reader :grilleTest, :longueur, :largeur
 
+	# Accesseur get et set sur les attributs nbClick, listeInter, caseSom et cr
+	attr_accessor :nbClick, :listeInter, :caseSom, :cr
 
 
 	## Partie initialize
@@ -47,15 +49,15 @@ class FenetreJeu < Gtk::Box
 	#
 	# === Paramètres
 	#
-	# * +window+ :			param1 petite définition(Son nom,une date ...)
-	# * +fenPre+ :			param2 idem
-	# * +difficulte+ :	param2 idem
-	# * +classe+ :			param2 idem
-	# * +save+ :				param2 idem
-	# * +long+ :				param2 idem
-	# * +larg+ :				param2 idem
-	# * +dens+ :				param2 idem
-	# * +tuto+ :				param2 idem
+	# * +window+ :			La fenêtre principale
+	# * +fenPre+ :			La fenêtre précédente (depuis laquelle on est arrivé sur celle-ci)
+	# * +difficulte+ :	La difficulté de la grille de la partie
+	# * +classe+ :			Booléen indiquant si la partie est classée
+	# * +save+ :				Grille de la dernière partie sauvegardée de la difficulté correspondante. Vaut nil par défaut si c'est une nouvelle partie
+	# * +long+ :				Longueur d'une grille personnalisée. Vaut nil par défaut si la grille n'est pas une grille personnalisée
+	# * +larg+ :				Largeur d'une grille personnalisée. Vaut nil par défaut si la grille n'est pas une grille personnalisée
+	# * +dens+ :				Densité d'une grille personnalisée. Vaut nil par défaut si la grille n'est pas une grille personnalisée
+	# * +tuto+ :				Booléen indiquant si la grille à charger est une grille de tutoriel. Vaut nil par défaut
 	def initialize(window,fenPre ,difficulte, classe, save = nil, long=nil, larg=nil, dens=nil, tuto = nil)
 		super(Gtk::Orientation::VERTICAL)
 
@@ -205,6 +207,11 @@ class FenetreJeu < Gtk::Box
 
 	end
 
+	# Méthode permettant d'effectuer des actions lorsque l'utilisateur clique sur la zone de dessin
+	#
+	# === Paramètres
+	#
+	# * +event+ : L'évènement engendré par l'utilisateur
 	def mouseClick(event)
 		# copie tracerGrille
 		paddingX = 25
@@ -293,22 +300,47 @@ class FenetreJeu < Gtk::Box
 		conditionGagnante()
 	end
 
+	# Méthode permettant de retirer un contenu d'une box
+	#
+	# === Paramètres
+	#
+	# * +box+ :			La box depuis laquelle retirer le contenu
+	# * +contenu+ : Le contenu à retirer de la box
 	def retirerContenu(box,contenu)
 		if(contenu != nil)
 			box.remove(contenu)
 		end
 	end
 
+	# Méthode permettant d'ajouter un contenu à une box
+	#
+	# === Paramètres
+	#
+	# * +box+ :			La box dans laquelle ajouter le contenu
+	# * +contenu+ : Le contenu à ajouter à la box
 	def ajouterContenu(box,contenu)
 		box.add(contenu)
 	end
 
+	# Méthode permettant d'associer une image à un bouton
+	#
+	# === Paramètres
+	#
+	# * +contenu+ :	Le bouton auquel ajouter l'image
+	# * +image+ : 	L'image à associer au bouton
 	def ajouterImage(contenu,image)
 		image = dimImage(image)
 		contenu.image=(image)
 	end
 
-	#créé une arete si les sommets ne sont pas complet
+	# Méthode permettant de créer des arêtes entre les sommets si ils ne sont pas complets
+	#
+	# === Paramètres
+	#
+	# * +s1+ :						Le premier sommet de l'arête
+	# * +s2+ : 						Le second sommet de l'arête
+	# * +caseT+ : 				Case sur laquelle l'utilisateur a cliqué afin de créer l'arête
+	# * +actionAnnule+ :	Booléen permettant de savoir si on empile l'action de la création de l'arête ou pas
 	def creationArete(s1,s2,caseT, actionAnnule = false)
 
 		if(s1.valeur > s1.compterArete && s2.valeur > s2.compterArete)#le sommet est complet
@@ -352,6 +384,12 @@ class FenetreJeu < Gtk::Box
 		end
 	end
 
+	# Méthode permettant de créer des arêtes entre les sommets si ils ne sont pas complets
+	#
+	# === Paramètres
+	#
+	# * +arete+ :					L'arête à supprimer de la grille
+	# * +actionAnnule+ :	Booléen permettant de savoir si on empile l'action de la suppression de l'arête ou pas
 	def suppressionArete(arete, actionAnnule = false)
 		if(!actionAnnule)
 			@grilleTest.undo.empile(arete)
@@ -369,8 +407,7 @@ class FenetreJeu < Gtk::Box
 		end
 	end
 
-	attr_accessor :nbClick, :listeInter, :caseSom
-
+	# Méthode permettant de dessiner les surbrillances
 	def drawSurbri()
 		# exemple 5 5
 		paddingX = 25
@@ -414,6 +451,7 @@ class FenetreJeu < Gtk::Box
 
 	end
 
+	# Méthode permettant d'afficher les surbrillances dans la console
 	def afficheSurbri()
 		@listeInter.each do |c|
 			print "LISTE INTER : "+c.to_s
@@ -424,6 +462,15 @@ class FenetreJeu < Gtk::Box
 		end
 	end
 
+	# Méthode retournant le nombre d'arêtes que possède un sommet
+	#
+	# === Paramètres
+	#
+	# * +s+ :	Le sommet sur lequel compter les arêtes
+	#
+	# === Return
+	#
+	# Le nombre d'arêtesque possède le sommet s
 	def nbAretesSommet(s)
 		i = 0
 		s.listeArete.each {|a|
@@ -436,6 +483,15 @@ class FenetreJeu < Gtk::Box
 		return i
 	end
 
+	# Méthode retournant la liste des sommets voisins à la case passée en paramètre
+	#
+	# === Paramètres
+	#
+	# * +c+ : La case dont on veut retourner les voisins
+	#
+	# === Return
+	#
+	# La liste des sommets voisins à la case c
 	def rechercherVoisins(c)
 		paddingX = 50
 		paddingY = 25
@@ -530,7 +586,16 @@ class FenetreJeu < Gtk::Box
 
 	end
 
-	# retourne la liste des cases comprises entre deux voisins
+	# Méthode retournant la liste des cases comprises entre deux voisins
+	#
+	# === Paramètres
+	#
+	# * +s1+ : Le premier sommet
+	# * +s2+ : Le second sommet
+	#
+	# === Return
+	#
+	# La liste des cases comprises entre les sommets s1 et s2
 	def getlisteInterCase(s1, s2)
 		x1 = s1.x
 		y1 = s1.y
@@ -538,8 +603,6 @@ class FenetreJeu < Gtk::Box
 		y2 = s2.y
 		listeDeCase = []
 		listeDeCase.push(s1)
-		# testAffichageCoord(s1)
-		# testAffichageCoord(s2)
 		ecart = 0
 		if(x1 < x2)
 			ecart = x2-(x1)
@@ -563,8 +626,8 @@ class FenetreJeu < Gtk::Box
 		return listeDeCase
 	end
 
+	# Méthode vidant la liste des cases entre deux sommets
 	def videSurbri
-		#afficheSurbri
 		@listeInter.each {|c|
 			if(c.class == Case)
 				c.surbrillance = false
@@ -573,6 +636,11 @@ class FenetreJeu < Gtk::Box
 		@listeInter = []
 	end
 
+	# Méthode permettant de savoir si la grille est terminée
+	#
+	# === Return
+	#
+	# Vrai si la grille est terminée, faux sinon
 	def grilleGagnante
 		complet = true
 		if(@grilleTest.testHamilton?)
@@ -587,7 +655,15 @@ class FenetreJeu < Gtk::Box
 		return complet
 	end
 
-
+	# Méthode permettant de savoir si la case passée en paramètre contient un sommet
+	#
+	# === Paramètres
+	#
+	# * +c+ : La case qu'on veut tester
+	#
+	# === Return
+	#
+	# Vrai si la case est un sommet, faux sinon
 	def estSommet?(c)
 		@grilleTest.sommets.each do |s|
 			if(s.position.x == c.x && s.position.y == c.y)
@@ -597,6 +673,11 @@ class FenetreJeu < Gtk::Box
 		return false
 	end
 
+	# Méthode permettant de tracer la grille sur la zone de dessin
+	#
+	# === Paramètres
+	#
+	# * +tracer+ : Booléen permettant d'effectuer la fonction ou non
 	def tracerGrille(tracer=false)
 		# exemple 5 5
 		paddingX = 25
@@ -612,6 +693,7 @@ class FenetreJeu < Gtk::Box
 		end
 	end
 
+	# Méthode permettant de revenir d'une action en arrière dans la partie
 	def annulerAction()
 
 		action = @grilleTest.undo.depile
@@ -630,19 +712,24 @@ class FenetreJeu < Gtk::Box
 		end
 	end
 
+	# Méthode permettant de redimensionner une image
+	#
+	# === Return
+	#
+	# L'image redimensionnée
 	def dimImage(file)
 		image = Gtk::Image.new(:file => file)
 		image.pixbuf = image.pixbuf.scale(35,35) if image.pixbuf!=nil
 		return image
 	end
 
+	# Méthode permettant de dessiner la grille initiale
 	def on_draw
 			@cr = @darea.window.create_cairo_context
 			afficheEcran()
 	end
 
-	attr_accessor :cr
-
+	# Méthode permettant de dessiner les sommets sur la surface de dessin
 	def drawSommets()
 		# copie de tracerGrille
 
@@ -695,6 +782,7 @@ class FenetreJeu < Gtk::Box
 		@cr.set_source_rgb 0,0,0
 	end
 
+	# Méthode permettant de dessiner les arêtes sur la surface de dessin
 	def drawAretes()
 		# copie de tracerGrille
 		paddingX = 25
@@ -772,18 +860,25 @@ class FenetreJeu < Gtk::Box
 		}
 	end
 
+	# Méthode permettant de dessiner les lignes de la grille sur la surface de dessin
 	def draw_maLigne(x1,y1,x2,y2)
 		@cr.move_to x1, y1
 		@cr.line_to x2,y2
 		@cr.stroke
 	end
 
+	# Méthode permettant d'activer les hypothèses
+	#
+	# === Paramètres
+	#
+	# * +tracer+ : Booléen permettant d'effectuer la fonction ou non
 	def activeHypo(condition = false)
 		if(condition)
 			@cr.set_dash(5, 15)
 		end
 	end
 
+	# Méthode permettant d'effacer la zone de dessin
 	def clearEcran()
 		@cr = @darea.window.create_cairo_context
 		@cr.set_source_rgb 0.96, 0.96, 0.96
@@ -796,15 +891,16 @@ class FenetreJeu < Gtk::Box
 		@cr.set_source_rgb 0, 0, 0
 	end
 
+	# Méthode permettant d'afficher la zone de dessin
 	def afficheEcran()
 		clearEcran()
 		drawSurbri()
 		tracerGrille(true) #<== AIDE VISUEL TEMPO
 		drawSommets()
 		drawAretes()
-
 	end
 
+	# Méthode permettant d'initialiser le bouton retour
 	def initBoutonRetour
     @boutonRetour = UnBoutonPerso.new("Retour", @style)do
 			if(@tuto)
@@ -843,6 +939,7 @@ class FenetreJeu < Gtk::Box
     end
   end
 
+	# Méthode permettant d'initialiser le bouton des hypothèses
   def initBoutonHypo
     @boutonHypo = UnBoutonPerso.new("H", @style)do
 			if(@presser)
@@ -873,6 +970,7 @@ class FenetreJeu < Gtk::Box
 		ajouterImage(@boutonHypo,"#{$cheminRacineHashi}/Interface/img/cloud_icon.png")
   end
 
+	# Méthode permettant d'initialiser le bouton d'annulation des hypothèses
 	def initBoutonAnnulHypo
     @boutonAnnulHypo = UnBoutonPerso.new("Annuler Hypothèse", "BoutonEnJeuGros")do
 			@presser = false
@@ -888,6 +986,7 @@ class FenetreJeu < Gtk::Box
     end
   end
 
+	# Méthode permettant d'initialiser le bouton de validation des hypothèses
 	def initBoutonValidHypo
     @boutonValidHypo= UnBoutonPerso.new("Valider Hypothèse", @style)do
 			@presser = false
@@ -905,6 +1004,7 @@ class FenetreJeu < Gtk::Box
 			@boutonValidHypo.hide
   end
 
+	# Méthode permettant d'initialiser le bouton des aides
   def initBoutonAide
 		@boxMessage = Gtk::Box.new(Gtk::Orientation::VERTICAL)
 		@boxMessage.valign = Gtk::Align::CENTER
@@ -944,12 +1044,12 @@ class FenetreJeu < Gtk::Box
 		ajouterImage(@boutonAide,"#{$cheminRacineHashi}/Interface/img/help_icon.png")
   end
 
-
+	# Méthode permettant d'initialiser le label des messages des aides et des erreurs
 	def initLabelMessage
     @labelMessage = UnLabelPerso.new("", "UnLabelBlanc")
   end
 
-
+	# Méthode permettant d'initialiser le bouton de visualisation des erreurs
 	def initBoutonErreurVisu
     			@boutonErreur = UnBoutonPerso.new("Montrer les erreurs ?", "BoutonEnJeuGros")do
 			@afficherErreur = true
@@ -961,6 +1061,7 @@ class FenetreJeu < Gtk::Box
 		end
   end
 
+	# Méthode permettant d'initialiser le bouton de visualisation des aides textuelles
 	def initBoutonAideTxt
 			@boutonAideTxt = UnBoutonPerso.new("Aide Textuelle", "BoutonEnJeuGros")do
 			@caseA = nil
@@ -976,6 +1077,7 @@ class FenetreJeu < Gtk::Box
 		end
   end
 
+	# Méthode permettant d'initialiser le bouton de visualisation des aides visuelles
 	def initBoutonAideVisu
    			@boutonAideVisu = UnBoutonPerso.new("Aide Visuelle", "BoutonEnJeuGros")do
 			@aide = Aide.creer(@grilleTest)
@@ -987,6 +1089,7 @@ class FenetreJeu < Gtk::Box
     end
   end
 
+	# Méthode permettant d'initialiser le bouton d'annulation de la dernière action
   def initBoutonAnnul
     @boutonAnnul = UnBoutonPerso.new("U", @style)do
 			annulerAction()
@@ -994,6 +1097,7 @@ class FenetreJeu < Gtk::Box
 		ajouterImage(@boutonAnnul,"#{$cheminRacineHashi}/Interface/img/undo_icon2.png")
   end
 
+	# Méthode permettant d'initialiser le bouton de remise à zéro de la grille
   def initBoutonRecom
     @boutonRecom = UnBoutonPerso.new("R", @style)do
 			@grilleTest.clearAretes
@@ -1004,6 +1108,7 @@ class FenetreJeu < Gtk::Box
 		ajouterImage(@boutonRecom,"#{$cheminRacineHashi}/Interface/img/restart_icon.png")
   end
 
+	# Méthode permettant d'initialiser le chrono
   def initChrono
 		@boxChrono = Gtk::Box.new(Gtk::Orientation::HORIZONTAL)
 		@boutonSablier = UnBoutonPerso.new("test","Chrono")
@@ -1025,12 +1130,14 @@ class FenetreJeu < Gtk::Box
 
   end
 
+	# Méthode permettant d'initialiser la fenêtre de jeu
   def initBoxJeu
     @boxJeu = UnBoutonPerso.new("ceci est ma grille de Jeu")do
       @boxJeu.set_sensitive(false)
     end
   end
 
+	# Méthode permettant de masquer le bouton retour
 	def masquerBouton
 		@boutonAnnulHypo.hide
 		@boutonValidHypo.hide
@@ -1048,6 +1155,7 @@ class FenetreJeu < Gtk::Box
 		@boutonAideVisu.hide
 	end
 
+	# Méthode permettant de déterminer la taille des cases dans la zone de dessin
 	def initTailleCase
 		@tailleCase = (@tailleArea - 50) / (@longueur > @largeur ? @longueur : @largeur)
 		@fontSize = @tailleCase / 2
@@ -1055,6 +1163,7 @@ class FenetreJeu < Gtk::Box
 		@largeurSurbri = @tailleCase / 4
 	end
 
+	# Méthode permettant de masquer tout les boutons de la fenêtre de jeu
 	def masquerAllBouton
 		@boutonHypo.hide
 		@boutonAide.hide
@@ -1062,6 +1171,11 @@ class FenetreJeu < Gtk::Box
 		@boutonRecom.hide
 	end
 
+	# Méthode permettant d'initialiser les boutons de la fenêtre de jeu dans le mode tutoriel
+	#
+	# === Paramètres
+	#
+	# * +numNiveau+ : Le numéro du tutoriel
 	def initBoutonTuto(numNiveau)
 		case(numNiveau)
 		when "D1"
@@ -1079,6 +1193,7 @@ class FenetreJeu < Gtk::Box
 		end
 	end
 
+	# Méthode permettant de déterminer si la grille est terminée et de passer à la fenêtre de victoire si c'est le cas
 	def conditionGagnante()
 		if(grilleGagnante && !@hypothese && @tuto == nil)
 			if(@chr != nil)
@@ -1091,6 +1206,9 @@ class FenetreJeu < Gtk::Box
 		end
 	end
 
+	# Méthode permettant d'ajouter un temps malus au chrono
+	#
+	# * +penalite+ : La pénalité à ajouter au chrono en secondes
 	def ajouteMalus(penalite)
 		if(@chr != nil)
 			@chr.addMalus(penalite)
