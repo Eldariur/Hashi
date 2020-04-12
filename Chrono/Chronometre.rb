@@ -85,7 +85,7 @@ class Chrono < Gtk::Label
 		@malus += val
 	end
 
-	# Cette méthode remet à zéro le  malus dans un chrono.
+	# Cette méthode remet à zéro le malus dans un chrono.
 	def resetMalus()
 		@malus = 0
 	end
@@ -114,7 +114,7 @@ class Chrono < Gtk::Label
     return res
   end
 
-	# Cette méthode redéfini to_s pour afficher un chronometre.
+	# Cette méthode redéfini to_s pour afficher un chronomètre.
 	def to_s()
 		self.to_chrono()
 	end

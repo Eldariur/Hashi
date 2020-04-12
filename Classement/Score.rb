@@ -1,12 +1,12 @@
 require_relative "../Classement/Highscore.rb"
 require_relative "../Classement/Classement.rb"
 
-# Cette classe represente un score.
+# Cette classe représente un score.
 class Score
 	#@pseudo -> Le pseudo associé au score.
 	#@temps -> Le temps associé au score.
 	#@points -> La valeur du score.
-	#@difficulte -> La difficulte liée au score.
+	#@difficulte -> La difficulté liée au score.
 
 	# Accesseur get sur l'attribut pseudo.
 	attr:pseudo, false
@@ -24,7 +24,7 @@ class Score
 	# === Parametre
 	# * +nom+ : nom Le pseudo associé au highscore.
 	# * +time+ : time Le temps associé au highscore.
-	# * +difficulte+ : difficulte La difficulte associée au score.
+	# * +difficulte+ : difficulte La difficulté associée au score.
 	def initialize(nom, time, difficulte)
 		@pseudo = nom
 		@points = 0
@@ -36,18 +36,12 @@ class Score
 	# === Parametre
 	# * +nom+ : nom Le pseudo associé au highscore.
 	# * +time+ : time Le temps associé au highscore.
-	# * +difficulte+ : difficulte La difficulte associée au score.
+	# * +difficulte+ : difficulte La difficulté associée au score.
 	def Score.creer(nom, time, difficulte)
 		new(nom, time, difficulte)
 	end
 
-	# Cette méthode demande à l'utilisateur de saisir un nom.
-	def Score.askName()
-		print "Veuillez saisir un nom : "
-		return gets.chomp
-	end
-
-	# Cette méthode calcul le nombre de points d'un score.
+	# Cette méthode calcule le nombre de points d'un score.
 	def calculScore()
 		tMax = 0
 		case @difficulte
@@ -63,7 +57,7 @@ class Score
 		@points = (temp*temp)%1000000
 	end
 
-	# Cette méthode sauvegarde un score dans la base de donnees.
+	# Cette méthode sauvegarde un score dans la base de données.
 	def sauvegarder()
 		self.calculScore()
 		classementTemp =  Classement.creer(@difficulte)
@@ -71,12 +65,12 @@ class Score
 		if classementTemp.isHighScore?(self) then highscoreTemp.sauvegarder(@pseudo, @points, @difficulte) end
 	end
 
-	# Cette méthode redefini to_s pour afficher un score.
+	# Cette méthode redéfinit to_s pour afficher un score.
 	def to_s
 		"Score : Pseudo = #{@pseudo}, Points = #{@points}, Temps = #{@temps}, Difficulte = #{@difficulte}\n"
 	end
 
-	# Cette méthode redefini to_i pour les scores.
+	# Cette méthode redéfinit to_i pour les scores.
 	def to_i
 		return @points
 	end
