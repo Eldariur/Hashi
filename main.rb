@@ -13,11 +13,8 @@ require_relative './Interface/FenetreClassement.rb'
 require_relative './Interface/FenetreTuto.rb'
 require_relative './Interface/FenetreJeu.rb'
 require_relative './Interface/FenetreJeuTuto.rb'
-require_relative './Interface/FenetreTest.rb'
 require_relative './Tutoriel/Tutoriel.rb'
 require_relative './Interface/BoutonTuto.rb'
-
-# require_relative 'Fenetre1.rb'
 
 
 

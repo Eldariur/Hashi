@@ -6,11 +6,9 @@ require_relative '../Code/Sommet.rb'
 require_relative '../Code/Arete.rb'
 require_relative 'UnBoutonPerso.rb'
 require_relative 'UnLabelPerso.rb'
-require_relative 'UneCasePerso.rb'
 require_relative '../Code/Generateur.rb'
 require_relative '../Code/Undo.rb'
 require_relative '../Sauvegarde/Sauvegarde.rb'
-
 require_relative "../Chrono/Chronometre.rb"
 
 # Classe représentant la fenêtre de jeu
