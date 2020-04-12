@@ -51,6 +51,10 @@ class Classement
   end
 
 	# Cette méthode redéfinit to_s pour afficher un classement.
+	#
+	# === Return
+	#
+	# Une chaîne de caractère contenant des infos sur le classement
   def to_s
     self.recupererDonnees()
     res = ""
