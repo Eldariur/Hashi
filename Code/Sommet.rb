@@ -3,20 +3,21 @@ class Sommet
 
 	## Partie variables d'instance
 
-    #@listeArete	-> Liste des Aretes du Sommet
-    #@position		-> Case dans laquelle le sommet est placé
-    #@valeur		-> Entier représentant la valeur du Sommet (nombre d'arete total)
-    #@complet		-> Booleen qui défini si un sommet est complet ou non (toutes les aretes occupées)
-    #@estErreur     -> Booleen définissant si le sommet est une erreur ou non
+  #@listeArete	-> Liste des Aretes du Sommet
+  #@position		-> Case dans laquelle le sommet est placé
+  #@valeur		-> Entier représentant la valeur du Sommet (nombre d'arete total)
+  #@complet		-> Booleen qui défini si un sommet est complet ou non (toutes les aretes occupées)
+  #@estErreur     -> Booleen définissant si le sommet est une erreur ou non
 
-    #creer un Sommet proprement
-    def self.creer(valeur, position, complet = false)
-        objet = new(valeur, position, complet)
-        objet.completerInitialize()
-        return objet
-    end
+  #creer un Sommet proprement
+  def self.creer(valeur, position, complet = false)
+      objet = new(valeur, position, complet)
+      objet.completerInitialize()
+      return objet
+  end
 
-    private_class_method :new
+  # Privatise le new
+  private_class_method :new
 
     ## Partie initialize
 
@@ -26,15 +27,15 @@ class Sommet
 	#
 	# * +valeur+ : Valeur du sommet (en général initialisé a 0)
 	# * +position+ : Case ou est placé le sommet
-    def initialize(valeur, position, complet)
-        @valeur = valeur
-        @position = position #la case dans lequel est le sommet
-        @listeArete = Array.new()
-        @complet = complet
-        @estErreur = false
-    end
+  def initialize(valeur, position, complet)
+      @valeur = valeur
+      @position = position #la case dans lequel est le sommet
+      @listeArete = Array.new()
+      @complet = complet
+      @estErreur = false
+  end
 
-    ## Partie accesseurs
+  ## Partie accesseurs
 
 	#Accesseur en get et en set sur la position, le booleen complet et la valeur
 	attr_accessor :position, :complet, :valeur, :estErreur
@@ -64,12 +65,12 @@ class Sommet
         return total
     end
 
-    ##ajoute une arrete a la liste de ses arrete
+    ##ajoute une arête a la liste de ses arrete
     def ajouterArete(arete)
         @listeArete << (arete)
     end
 
-    ##retire une arrete de la liste de ses arrete
+    ##retire une arête de la liste de ses arrete
     def retirerArete(arete)
         @listeArete.delete(arete)
     end
@@ -120,7 +121,6 @@ class Sommet
     #
     # Une Array contenant la liste des voisins du sommet
     def getListeVoisins()
-      #puts "valeur = " + @valeur.to_s()
       voisins = Array.new()
 
       (@position.x - 1).downto(0) do |i|
@@ -211,12 +211,6 @@ class Sommet
         return array
       end
 
-      #puts "Nouveau sommet : "
-      #puts "valeur : " + self.valeur.to_s()
-      #voisins.each do |x|
-      #  puts "voisin : " + x.valeur.to_s()
-      #end
-
       return voisins
     end
 
@@ -275,6 +269,7 @@ class Sommet
       end
     end
 
+    ## Méthode permettant d'afficher la valeur d'un sommet
     def afficher()
         print(@valeur)
     end
