@@ -3,13 +3,16 @@ require_relative 'Arete.rb'
 #Class undo, permet de stocker les actions du joueurs
 class Undo
 
-	attr_reader :tabAction
 	# @tabAction -> Stocke les arretes qu'il a jouer
 
+	# Creer un objet Undo
 	def Undo.creer()
 		new()
 	end
 
+	## Partie accesseurs
+
+	# Accesseur get sur l'attribut tabAction
 	attr_reader :tabAction
 
 	#Privatise le new
@@ -39,6 +42,11 @@ class Undo
 	end
 
 	@Override
+	# Méthode permettant de retourner une chaîne de caractère contenant la pile des actions
+	#
+	# === Return
+	#
+	# La liste des actions dans une chaîne de caractère
 	def to_s()
 		return "Array Undo : " +  @tabAction.to_s()
 	end
