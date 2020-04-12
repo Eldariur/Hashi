@@ -56,6 +56,7 @@ class FenetreClassement < Gtk::Box
 
       @boutonFacile.signal_connect('clicked'){
         @diff = "easy"
+        puts "teeeeeessssstttt"
         afficherBdd()
       }
 
@@ -68,6 +69,8 @@ class FenetreClassement < Gtk::Box
         @diff = "hard"
         afficherBdd()
       }
+
+      @boutonFacile.clicked()
 
   end
 
