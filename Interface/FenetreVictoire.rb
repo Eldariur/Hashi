@@ -1,7 +1,21 @@
 require_relative "../Classement/Score.rb"
 
+# Classe permettant d'afficher la fenêtre de l'écran de victoire du jeu
 class FenetreVictoire < Gtk::Box
+  ## Partie variables d'instance
 
+  # @@fenetre -> la fenêtre principale du programme
+
+
+  ## Partie initialize
+
+  # Initialisation de la classe FenetreClassement
+  #
+  # === Paramètres
+  #
+  # * +window+ : window la fenetre principale du programme
+  # * +difficulte+ : difficulte la difficulte de la grille de jeu précédemment effectuée
+  # * +chr+ : chr le temps effectué pour faire la grille précédemment jouée
   def initialize(window, difficulte, chr)
     @@fenetre = window
     size = @@fenetre.default_size()
