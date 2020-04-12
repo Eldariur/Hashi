@@ -1,3 +1,4 @@
+# Classe permettant d'afficher la fenêtre de menu du mode Contre-la-montre
 class FenetreModeChrono < Gtk::Box
   ## Partie variables d'instance
 
