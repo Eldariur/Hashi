@@ -1,5 +1,17 @@
+# Classe permettant d'afficher la fenêtre des règles du jeu
 class FenetreRegle < Gtk::Box
+  ## Partie variables d'instance
 
+  # @@fenetre -> la fenêtre principale du programme
+
+  ## Partie initialize
+
+  # Initialisation de la classe FenetreRegle
+  #
+  # === Paramètres
+  #
+  # * +window+ : window la fenetre principale du programme
+  # * +fenpre+ : fenpre la fenetre précédente
   def initialize(window,fenpre)
     @@fenetre = window
     super(Gtk::Orientation::VERTICAL)

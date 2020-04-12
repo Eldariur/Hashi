@@ -1,4 +1,4 @@
-# classe représentant un Bouton du tutoriel
+# Classe représentant un bouton du tutoriel, permet de charger une grille de jeu du tutoriel, herite de la classe Gtk::Button
 class BoutonTuto < Gtk::Button
 
   ## Partie variables d'instance
@@ -13,7 +13,7 @@ class BoutonTuto < Gtk::Button
 	#
 	# * +window+ : window la fenêtre principale du programme
 	# * +fenPre+ : fenPre la fenêtre précédente
-  # * +str+ : str la chaîne de carcatère affichée sur le bouton
+  # * +str+ : str la chaîne de caractère affichée sur le bouton
   # * +niveau+ : niveau le nom du niveau du tutoriel
   # * +labelNom+ : labelNom la classe du label du bouton
   def initialize(window, fenPre, str="", niveau = nil, labelNom="UnLabelPerso")
@@ -23,7 +23,7 @@ class BoutonTuto < Gtk::Button
     @@fenetre = window
     self.add(UnLabelPerso.new(str))
     self.set_name("BoutonTuto")
-    tuto = Tutoriel.nouveau(niveau)
+    tuto = Tutoriel.new(niveau)
 
 		signal_connect("clicked") {
       @@fenetre.changerWidget(FenetreJeu.new(@@fenetre,fenPre,'easy', false, nil, nil, nil, nil, tuto))
