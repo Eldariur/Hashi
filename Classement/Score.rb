@@ -66,11 +66,19 @@ class Score
 	end
 
 	# Cette méthode redéfinit to_s pour afficher un score.
+	#
+	# === Return
+	#
+	# Une chaîne de caractère contenant des infos sur un score
 	def to_s
 		"Score : Pseudo = #{@pseudo}, Points = #{@points}, Temps = #{@temps}, Difficulte = #{@difficulte}\n"
 	end
 
 	# Cette méthode redéfinit to_i pour les scores.
+	#
+	# === Return
+	#
+	# Le nombre de point d'un score
 	def to_i
 		return @points
 	end
