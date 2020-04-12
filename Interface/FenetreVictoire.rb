@@ -55,11 +55,7 @@ class FenetreVictoire < Gtk::Box
     }
 
     boutonRejouer.signal_connect('clicked') {
-        if(chr != nil)
-            @@fenetre.changerWidget(FenetreJeu.new(@@fenetre, fenPre, difficulte, false, nil))
-        else
-            @@fenetre.changerWidget(FenetreJeu.new(@@fenetre, fenPre, difficulte, false, nil))
-        end
+            @@fenetre.changerWidget(fenPre)
     }
 
     boutonQuitter.signal_connect('clicked') {
