@@ -50,8 +50,7 @@ class FenetreVictoire < Gtk::Box
             score = Score.creer(ent.text(), chr.resultat, difficulte)
             score.calculScore()
             score.sauvegarder()
-            boutonValider.verrouiller()
-            boutonValider.label = "Score enregistré"
+            @@fenetre.changerWidget(FenetreClassement.new(@@fenetre, FenetreMenu.new(@@fenetre)))
         end
     }
 
