@@ -56,7 +56,6 @@ class FenetreClassement < Gtk::Box
 
       @boutonFacile.signal_connect('clicked'){
         @diff = "easy"
-        puts "teeeeeessssstttt"
         afficherBdd()
       }
 
