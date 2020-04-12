@@ -6,8 +6,8 @@ class Highscore < ActiveRecord::Base
 	#Privatise le new.
 	private_class_method :new
 
-	# Initialisation de la class Highscore.
-	# === Parametre
+	# Initialisation de la classe Highscore.
+	# === Paramètres
 	# * +temp+ : temp Utilisé pour ActiveRecord.
 	def initialize(temp)
 		super(:name => "", :score => 0, :difficulty => "")
@@ -49,6 +49,7 @@ class Highscore < ActiveRecord::Base
 	# === Return
 	#
 	# Une chaîne de caractère contenant des infos sur un score du classement
+	@Override
 	def to_s
 		"Highscore : Pseudo = #{self.name}, Points = #{self.score}, Difficulte = #{self.difficulty}\n"
 	end

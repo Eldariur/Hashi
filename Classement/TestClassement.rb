@@ -18,7 +18,7 @@ c.addMalus(30)
 
 s = Score.creer(Score.askName, c.resultat, "normal")
 
-# Uniquement besoin pour le test pour afficher a la fin
+# Uniquement besoin pour le test pour afficher à la fin
 cl =  Classement.creer(s.difficulte)
 
 puts "Nouveau : #{s}"
