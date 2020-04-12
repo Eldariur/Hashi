@@ -1,7 +1,7 @@
 require_relative "../Classement/Score.rb"
 require_relative "../Classement/Highscore.rb"
 
-# Cette classe represente un classement.
+# Cette classe représente un classement.
 class Classement
   #@liste -> La liste de highscore.
   #@difficulte -> La difficulté associée au classement.
@@ -26,7 +26,7 @@ class Classement
 		new(difficulty)
 	end
 
-	# Cette méthode verifie si un nouveau score doit être enregistré.
+	# Cette méthode vérifie si un nouveau score doit être enregistré.
   # === Parametre
   # * +score+ : score Le score à vérifier.
   # === Return
@@ -50,7 +50,7 @@ class Classement
     @liste = Highscore.where(:difficulty => @difficulte).order(:score).take(20).reverse
   end
 
-	# Cette méthode redefini to_s pour afficher un classement.
+	# Cette méthode redéfinit to_s pour afficher un classement.
   def to_s
     self.recupererDonnees()
     res = ""

@@ -117,6 +117,8 @@ class Sauvegarde
   end
 
   # Permet de créer une hypothèse.
+  # === Parametre
+  # * +grille+ : grille La grille à sauvegarder pour l'hypothèse.
   def Sauvegarde.nouvelleHypothese(grille)
     save = Sauvegarde.nouvelle(grille,nil,nil,nil,true)
     save.sauvegarder()
@@ -128,6 +130,8 @@ class Sauvegarde
   end
 
   # Annule une hypothèse en cours et retourne l'ancienne grille pre-hypothèse.
+  # === Parametre
+  # * +mode+ : mode Permet d'exploiter la méthode en ajoutant une fonctionnalité qui ne supprime pas le fichier.
   # === Return
   # * +save.grille+ : save.grille La grille de la sauvegarde.
   def Sauvegarde.annulerHypothese(mode = true)

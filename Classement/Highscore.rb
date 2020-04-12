@@ -1,12 +1,12 @@
 require "active_record"
 
-# Cette classe represente un highscore.
+# Cette classe représente un highscore.
 class Highscore < ActiveRecord::Base
 
 	#Privatise le new.
 	private_class_method :new
 
-	# Initialisation de la classe Highscore.
+	# Initialisation de la class Highscore.
 	# === Parametre
 	# * +temp+ : temp Utilisé pour ActiveRecord.
 	def initialize(temp)
@@ -44,7 +44,7 @@ class Highscore < ActiveRecord::Base
 		return self.score.to_s
 	end
 
-	# Cette méthode redefini to_s pour afficher un highscore.
+	# Cette méthode redéfinit to_s pour afficher un highscore.
 	def to_s
 		"Highscore : Pseudo = #{self.name}, Points = #{self.score}, Difficulte = #{self.difficulty}\n"
 	end
