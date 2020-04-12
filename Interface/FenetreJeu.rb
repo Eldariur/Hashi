@@ -753,6 +753,8 @@ class FenetreJeu < Gtk::Box
 				end
 			elsif(@caseAide != nil && s.position == @aide.getCaseAide && @afficheAide)
 				@cr.set_source_rgb 0,1,0
+			elsif(s.complet)
+				@cr.set_source_rgb 0.4, 0.4, 0.4
 			end
 
 			@cr.move_to(x * @tailleCase + paddingX + @tailleCercle, y * @tailleCase + paddingY)
@@ -760,7 +762,6 @@ class FenetreJeu < Gtk::Box
 			@cr.move_to(x * @tailleCase + (paddingX + ajustementChiffreAxeX) - @tailleCercle / 2, y * @tailleCase + paddingY + @tailleCercle / 2)
 
 			@cr.show_text(s.valeur.to_s)
-			@cr.stroke
 
 			if(s.complet)
 								draw_maLigne((x * @tailleCase + paddingX) + @tailleCercle * Math::cos(3 * Math::PI / 4),
