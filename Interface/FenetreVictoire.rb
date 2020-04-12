@@ -16,7 +16,7 @@ class FenetreVictoire < Gtk::Box
   # * +window+ : window la fenetre principale du programme
   # * +difficulte+ : difficulte la difficulte de la grille de jeu précédemment effectuée
   # * +chr+ : chr le temps effectué pour faire la grille précédemment jouée
-  def initialize(window, difficulte, chr)
+  def initialize(window, fenPre, difficulte, chr)
     @@fenetre = window
     size = @@fenetre.default_size()
     super(Gtk::Orientation::VERTICAL)
@@ -56,9 +56,9 @@ class FenetreVictoire < Gtk::Box
 
     boutonRejouer.signal_connect('clicked') {
         if(chr != nil)
-            @@fenetre.changerWidget(FenetreModeChrono.new(@@fenetre, FenetreMenuJouer.new(@@fenetre, FenetreMenu.new(@@fenetre))))
+            @@fenetre.changerWidget(FenetreJeu.new(@@fenetre, fenPre, difficulte, false, nil))
         else
-            @@fenetre.changerWidget(FenetreModesDifficultes.new(@@fenetre, FenetreMenuJouer.new(@@fenetre, FenetreMenu.new(@@fenetre))))
+            @@fenetre.changerWidget(FenetreJeu.new(@@fenetre, fenPre, difficulte, false, nil))
         end
     }
 

@@ -1197,9 +1197,9 @@ class FenetreJeu < Gtk::Box
 			if(@chr != nil)
 				@chr.arreter()
 				@chr.fin()
-				@@fenetre.changerWidget(FenetreVictoire.new(@@fenetre,@difficulte,@chr))
+				@@fenetre.changerWidget(FenetreVictoire.new(@@fenetre,self,@difficulte,@chr))
 			else
-				@@fenetre.changerWidget(FenetreVictoire.new(@@fenetre,@difficulte,nil))
+				@@fenetre.changerWidget(FenetreVictoire.new(@@fenetre,self,@difficulte,nil))
 			end
 		end
 	end
