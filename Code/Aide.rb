@@ -12,8 +12,12 @@ class Aide < Gtk::Label
   # @nb_voisins -> Nombre de voisins de chaque sommet de la grille
   # @position   -> Case concernée par l'aide
 
-  
 
+  ## Méthode permettant de créer une aide
+  #
+  # === Paramètres
+  #
+  # * +grille+ : La grille sur laquelle identifier l'aide
   def Aide.creer(grille)
     new(grille)
   end
@@ -32,7 +36,7 @@ class Aide < Gtk::Label
 
   ## Partie initialize
 
-	# Initialisation de la classe Aide
+	## Initialisation de la classe Aide
 	#
 	# === Paramètres
 	#

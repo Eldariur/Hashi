@@ -17,10 +17,13 @@ require_relative './Tutoriel/Tutoriel.rb'
 require_relative './Interface/BoutonTuto.rb'
 
 
-
+# Classe principale du programme
 class Main < Gtk::Window
     $cheminRacineHashi = __dir__
 
+    ## Partie initialize
+
+    # Initialisation de la classe principale
     def initialize
         super()
         self.name="WindowPrincipale"
@@ -51,6 +54,11 @@ class Main < Gtk::Window
             Gtk.main
     end
 
+    ## Méthode permettant de changer de fenêtre
+    #
+    # === Paramètres
+    #
+    # * +nouveau+ : La nouvelle fenêtre à afficher
     def changerWidget(nouveau)
         self.remove(self.child).add(nouveau)
         self.show_all
