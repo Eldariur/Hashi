@@ -1,4 +1,4 @@
-# Classe permettant d'afficher la fenetre de menu des tutoriels
+# Classe permettant d'afficher la fenetre de jeu des tutoriels
 class FenetreJeuTuto < FenetreJeu
   ## Partie variables d'instance
 
@@ -19,5 +19,5 @@ class FenetreJeuTuto < FenetreJeu
     @@fenetre = window
     super(window,fenPre,"easy",nil,tuto)
   end
-  
+
 end

@@ -1,5 +1,19 @@
+# Classe permettant d'afficher la fenêtre de menu des tutoriels
 class FenetreTuto < Gtk::Box
+  ## Partie variables d'instance
 
+  # @@fenetre -> la fenêtre principale du programme
+  # @boxTutoBasique -> la box dans lequel sera mis les boutons des tutoriels Basiques
+  # @boxTutoAvance -> la box dans lequel sera mis les boutons des tutoriels Avancés
+
+  ## Partie initialize
+
+  # Initialisation de la classe FenetreClassement
+  #
+  # === Paramètres
+  #
+  # * +window+ : window la fenetre principale du programme
+  # * +fenPre+ : fenPre la fenetre précédente
   def initialize(window,fenPre)
     @@fenetre = window
     super(Gtk::Orientation::VERTICAL)
@@ -47,6 +61,9 @@ class FenetreTuto < Gtk::Box
 
   end
 
+  ## Partie méthodes
+
+  ## Méthode sans paramètres permettant d'initialiser la box des tutos Basiques
   def initBoxTutoBasique
     @boxTutoBasique = Gtk::Box.new(Gtk::Orientation::VERTICAL)
     @boxTutoBasique.halign = Gtk::Align::CENTER
@@ -69,6 +86,7 @@ class FenetreTuto < Gtk::Box
 
   end
 
+  ## Méthode sans paramètres permettant d'initialiser la box des tutos Avancés
   def initBoxTutoAvance
     @boxTutoAvance = Gtk::Box.new(Gtk::Orientation::VERTICAL)
     @boxTutoAvance.halign = Gtk::Align::CENTER
