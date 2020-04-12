@@ -14,7 +14,7 @@ class Classement
 	# Privatise le new.
 	private_class_method :new
 
-	# Initialisation de la class Classement.
+	# Initialisation de la classe Classement.
 	def initialize(difficulty)
 		@liste = Array.new
 		@difficulte = difficulty
@@ -27,7 +27,7 @@ class Classement
 	end
 
 	# Cette méthode vérifie si un nouveau score doit être enregistré.
-  # === Parametre
+  # === Paramètres
   # * +score+ : score Le score à vérifier.
   # === Return
   # * +boolean+ : boolean Un boolean qui indique si un score doit être enregistré.
@@ -55,6 +55,7 @@ class Classement
 	# === Return
 	#
 	# Une chaîne de caractère contenant des infos sur le classement
+	@Override
   def to_s
     self.recupererDonnees()
     res = ""
