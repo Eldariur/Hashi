@@ -44,14 +44,20 @@ class FenetreClassement < Gtk::Box
       initBoutonDifficile
       initBoutonRetour
 
+      boxMenuRetour = Gtk::Box.new(Gtk::Orientation::HORIZONTAL)
+      boxMenuRetour.halign = Gtk::Align::START
+
+      boxMenuRetour.add(@boutonRetour)
+
       boxMenuClassement = Gtk::Box.new(Gtk::Orientation::HORIZONTAL)
       boxMenuClassement.halign = Gtk::Align::CENTER
+
 
       boxMenuClassement.add(@boutonFacile)
       boxMenuClassement.add(@boutonNormal)
       boxMenuClassement.add(@boutonDifficile)
-      boxMenuClassement.add(@boutonRetour)
 
+      self.add(boxMenuRetour)
       self.add(boxMenuClassement)
 
       @boutonFacile.signal_connect('clicked'){
