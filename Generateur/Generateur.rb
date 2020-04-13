@@ -1,48 +1,48 @@
 require "matrix"
 
-#Classe permttant la manipulation d'un Generateur de grille
+#Classe permettant la manipulation d'un générateur de grille
 class Generateur
 
-    ## Partie cariable d'instance
+    ## Partie variable d'instance
 
-    #@difficulty    -> Une chaine de charactere contenant le preset de difficulté a utiliser
-    #@longueur      -> La longueur de la grille a générer (initialisé a nil de base)
-    #@largeur       -> La largeur de la grille a générer (initialisé a nil de base)
-    #densite        -> La densité de sommet par rapport a la taille de la grille
+    #@difficulty    -> Une chaine de caractère contenant le preset de difficulté à utiliser
+    #@longueur      -> La longueur de la grille à générer (initialisée à nil de base)
+    #@largeur       -> La largeur de la grille a générer (initialisée à nil de base)
+    #densite        -> La densité de sommet par rapport à la taille de la grille
     #@sommets       -> Liste des sommets générés
-    #@nbSommet      -> Nombre de sommet a placer dans la grille
-    #@grille        -> Grille crée
-    #@estGenere     -> Booleen qui défini si la grille a été générée ou non (bloque des methodes nécessitant une grille généré)
+    #@nbSommet      -> Nombre de sommet à placer dans la grille
+    #@grille        -> Grille créée
+    #@estGenere     -> Booleen qui défini si la grille a été générée ou non (bloque des methodes nécessitant une grille générée)
 
     #Accesseur get
     attr_reader :grille
 
     ## Partie initialize
-    #Initialisation du generateur
+    #Initialisation du générateur
     #
     # === Paramètres
     #
-    # * +difficulty+ : La difficulté de la grille a générer
-    # * +longueur+ : La longueur de la grille a générer (initialisé a nil)
-    # * +largeur+ : La largeur de la grille a générer (initialisé a nil)
-    # * +densite+ : La densite de la grille a générer (initialisé a nil)
+    # * +difficulty+ : La difficulté de la grille à générer
+    # * +longueur+ : La longueur de la grille à générer (initialisée à nil)
+    # * +largeur+ : La largeur de la grille à générer (initialisée à nil)
+    # * +densite+ : La densite de la grille à générer (initialisée à nil)
     def initialize(difficulty, longueur=nil, largeur=nil, densite=nil)
         @estGenere = false
         @chanceDeDouble = 38+rand(0..6)
         case difficulty
           when "easy"
-            #Taille 6x6 à 9x10, densite 35 à 41
+            #Taille 6x6 à 9x10, densité 35 à 41
             @longueur = 6+rand(0..3)
             @largeur = 6+rand(0..4)
             @densite = 35+rand(0..6)
           when "normal"
-            #Taille 7x9 à 9x12, densite 32 à 39
+            #Taille 7x9 à 9x12, densité 32 à 39
             @longueur = 7+rand(0..2)
             @largeur = 9+rand(0..3)
             @densite = 32+rand(0..7)
             @chanceDeDouble = 25+rand(0..9)
           when "hard"
-            #Taille 9x13 à 10x14, densite 32 à 38
+            #Taille 9x13 à 10x14, densité 32 à 38
             @longueur = 9+rand(0..1)
             @largeur = 13+rand(0..1)
             @densite = 32+rand(0..6)
@@ -59,18 +59,18 @@ class Generateur
         ##puts "densite : " + @densite.to_s
         ##puts "longueur*largeur.ceil : " + (((@longueur * @largeur).to_f / 100).ceil).to_s
         @nbSommet = (((@longueur * @largeur).to_f  / 100) * @densite).ceil
-        ##puts "Dimensions : "+@longueur.to_s+"x"+@largeur.to_s+"("+(@largeur*@longueur).to_s+"cases). Nb sommets attendus "+@nbSommet.to_s+" pour une densite de "+@densite.to_s
+        ##puts "Dimensions : "+@longueur.to_s+"x"+@largeur.to_s+"("+(@largeur*@longueur).to_s+"cases). Nb sommets attendus "+@nbSommet.to_s+" pour une densité de "+@densite.to_s
         @grille = Grille.creer(@longueur, @largeur)
     end
 
     ##Partie méthodes
 
-    ##Methode qui récupère la case demandé de la grille générée
+    ##Methode qui récupère la case demandée de la grille générée
     #
     # === Paramètres
     #
-    # * +x+ : la coordoné x de la case
-    # * +y+ : la coordoné y de la case
+    # * +x+ : la coordonnée x de la case
+    # * +y+ : la coordonnée y de la case
     #
     # === Return
     #
@@ -89,11 +89,11 @@ class Generateur
         @estGenere = false
     end
 
-    ##Récupère une copie de la grille générée sans les aretes
+    ##Récupère une copie de la grille générée sans les arêtes
     #
     # === Return
     #
-    # Une copie de la grille sans arete
+    # Une copie de la grille sans arêtes
     def getGrilleSansArete()
         if @estGenere
             cloneGrille = Marshal.load(Marshal.dump(@grille))
@@ -103,7 +103,7 @@ class Generateur
         return nil
     end
 
-    ##Récupère la grille générée avec les aretes
+    ##Récupère la grille générée avec les arêtes
     #
     # === Return
     #
@@ -124,13 +124,13 @@ class Generateur
         end
     end
 
-    ##Vérifie si la case passé en parametre plus les ajouts passé en paramètres sont dans la grille
+    ##Vérifie si la case passée en paramètre plus les ajouts passés en paramètres sont dans la grille
     #
     #
     # === Paramètres
     #
-    # * +caseDeDepart+ : la case d'ou partir
-    # * +lesAdds+ : tableau de 2 case contenant la valeur a ajouter aux x et y de la caseDeDepart
+    # * +caseDeDepart+ : la case d'où partir
+    # * +lesAdds+ : tableau de 2 cases contenant la valeur à ajouter aux x et y de la caseDeDepart
     #
     # === Return
     #
@@ -141,11 +141,11 @@ class Generateur
         return (xDuSommet + lesAdds[0] < @longueur) && (xDuSommet + lesAdds[0] >= 0) && (yDuSommet + lesAdds[1] < @largeur) && (yDuSommet + lesAdds[1] >= 0)
     end
 
-    ##Vérifie si la grille passée en parametre correspond a la grille générée (artes exclues)
+    ##Vérifie si la grille passée en paramètre correspond à la grille générée (arêtes exclues)
     #
     # === Paramètres
     #
-    # * +grille+ : la grille a vérifier
+    # * +grille+ : la grille à vérifier
     #
     # === Return
     #
@@ -166,11 +166,11 @@ class Generateur
         return false
     end
 
-    ##Génère une grille du nombre de sommet calculé ou passé en paramètre
+    ##Génère une grille du nombre de sommet calculés ou passés en paramètre
     #
     # === Paramètres
     #
-    # * +nbSommet+ : le nombre de sommet a placer (initialisé a nil)
+    # * +nbSommet+ : le nombre de sommet à placer (initialisé à nil)
     #
     # === Return
     #
@@ -208,7 +208,7 @@ class Generateur
             #puts "on part du sommet " + indiceSommetChoisi.to_s + " en " + sommetChoisi.position.x.to_s + ":" + sommetChoisi.position.y.to_s
 
             #on choisi une direction
-            #tant que la direction marche pas on continu d'en choisir une
+            #tant que la direction ne marche pas on continu d'en choisir une
             lesAdds = nil
             loop {
                 indiceDirectionChoisie = rand(0...tableauDeAdd.size())
@@ -224,11 +224,11 @@ class Generateur
             caseOuPlacer = @grille.getCase(xDuSommet + 2*lesAdds[0], yDuSommet + 2*lesAdds[1])
             #puts "on part de " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
             #puts "contenu de la case de depart : " + caseOuPlacer.contenu.class.to_s
-            #on garde la case juste devant (celle entre sommetChoisi.position et caseOuPlacer) pour tester histoire de pas passer par desuus quelque chose
+            #on garde la case juste devant (celle entre sommetChoisi.position et caseOuPlacer) pour tester histoire de pas passer par dessus quelque chose
             caseEntreLesDeux = @grille.getCase(xDuSommet + lesAdds[0], yDuSommet + lesAdds[1])
 
-            #si la case est vide alors on commence a essayer de placer
-            #puts "Case Ou Placer avant if: " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
+            #si la case est vide alors on commence à essayer de placer
+            #puts "Case Où Placer avant if: " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
             if caseOuPlacer.estVide() && caseEntreLesDeux.estVide()
                 #puts "Case Ou Placer après if: " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
                 sommetAEtePlace = false
@@ -245,19 +245,19 @@ class Generateur
                     boolAreteJusteDevant = estDansMatrice(caseOuPlacer, lesAdds) && @grille.caseSuivante(caseOuPlacer, lesAdds[0], lesAdds[1]).contenu.class == Arete
                     boolBordDuTableau = !(estDansMatrice(caseOuPlacer, lesAdds))
 
-                    #si un seul des booleen est vrai
+                    #si un seul des booléen est vrai
                     if boolArretViaRand || boolSommetJusteDevant || boolAreteJusteDevant || boolBordDuTableau
                         #on test les bool un par un
 
                         if boolSommetJusteDevant
                             #puts "Arret via sommet devant en " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
-                            #on recule jusqu'a trouver une case bien
+                            #on recule jusqu'à trouver une case bien
                             while caseOuPlacer.aSommetVoisin()
                                 caseOuPlacer = @grille.getCase(caseOuPlacer.x - lesAdds[0], caseOuPlacer.y - lesAdds[1])
                                 break if caseOuPlacer == sommetChoisi.position || caseOuPlacer.estVoisin(sommetChoisi.position)
                             end
 
-                            #on teste pourquoi on s'est arrete
+                            #on test pourquoi on s'est arreté
                             if caseOuPlacer == sommetChoisi.position || caseOuPlacer.estVoisin(sommetChoisi.position)
                                 aEteCancel = true
                             else
@@ -270,8 +270,8 @@ class Generateur
                                 sommetAEtePlace = true
                             end
                         elsif boolAreteJusteDevant
-                            #puts "Arret via areteDevant en " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
-                            #si on peut placer sur l'arete on le fait, sinon on recul
+                            #puts "Arrêt via areteDevant en " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
+                            #si on peut placer sur l'arete on le fait, sinon on recule
                             caseDArete = @grille.getCase(caseOuPlacer.x + lesAdds[0], caseOuPlacer.y + lesAdds[1])
                             if !(caseDArete.aSommetVoisin()) && caseDArete.contenu.getTaille() >= 3
                                 sommet1 = caseDArete.contenu.sommet1
@@ -289,13 +289,13 @@ class Generateur
                                 nouvelleArete1 = Arete.creer(sommet1, nouveauSommet, rand(1..100) < @chanceDeDouble)
                                 nouvelleArete2 = Arete.creer(sommet2, nouveauSommet, rand(1..100) < @chanceDeDouble)
                             else
-                                #sinon on recule jusqu'a trouver un truc bien
+                                #sinon on recule jusqu'à trouver un truc bien
                                 while caseOuPlacer.aSommetVoisin()
                                     caseOuPlacer = @grille.getCase(caseOuPlacer.x - lesAdds[0], caseOuPlacer.y - lesAdds[1])
                                     break if caseOuPlacer == sommetChoisi.position || caseOuPlacer.estVoisin(sommetChoisi.position)
                                 end
 
-                                #on teste pourquoi on s'est arrete
+                                #on test pourquoi on s'est arreté
                                 if caseOuPlacer == sommetChoisi.position || caseOuPlacer.estVoisin(sommetChoisi.position)
                                     aEteCancel = true
                                 else
@@ -309,7 +309,7 @@ class Generateur
                                 end
                             end
                         elsif boolBordDuTableau
-                            #puts "Arret via bord " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
+                            #puts "Arrêt via bord " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
                             if !(caseOuPlacer.aSommetVoisin())
                                 nouveauSommet = Sommet.creer(0, caseOuPlacer)
                                 #puts "sommet crée"
@@ -320,18 +320,18 @@ class Generateur
 
                                 sommetAEtePlace = true
                             else
-                                #sinon, on recule jusqu'a trouver un endroit bien
+                                #sinon, on recule jusqu'à trouver un endroit bien
                                 while caseOuPlacer.aSommetVoisin()
                                     caseOuPlacer = @grille.getCase(caseOuPlacer.x - lesAdds[0], caseOuPlacer.y - lesAdds[1])
                                     break if caseOuPlacer == sommetChoisi.position || caseOuPlacer.estVoisin(sommetChoisi.position)
                                 end
 
-                                #on teste pourquoi on s'est arrete
+                                #on test pourquoi on s'est arreté
                                 if caseOuPlacer == sommetChoisi.position || caseOuPlacer.estVoisin(sommetChoisi.position)
                                     aEteCancel = true
                                 else
                                     nouveauSommet = Sommet.creer(0, caseOuPlacer)
-                                    #puts "sommet crée après recul en " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
+                                    #puts "sommet créé après recul en " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
                                     @sommets.push(nouveauSommet)
                                     sommetPlaces += 1
 
@@ -341,8 +341,8 @@ class Generateur
                                 end
                             end
                         elsif boolArretViaRand
-                            #puts "Arret via rand en " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
-                            #on verifie qu'il n'y a rien autour
+                            #puts "Arrêt via rand en " + caseOuPlacer.x.to_s + ":" + caseOuPlacer.y.to_s
+                            #on vérifie qu'il n'y a rien autour
                             if !(caseOuPlacer.aSommetVoisin())
                                 nouveauSommet = Sommet.creer(0, caseOuPlacer)
                                 @sommets.push(nouveauSommet)
@@ -352,13 +352,13 @@ class Generateur
 
                                 sommetAEtePlace = true
                             else
-                                #sinon, on recule jusqu'a trouver un endroit bien
+                                #sinon, on recule jusqu'à trouver un endroit bien
                                 while caseOuPlacer.aSommetVoisin()
                                     caseOuPlacer = @grille.getCase(caseOuPlacer.x - lesAdds[0], caseOuPlacer.y - lesAdds[1])
                                     break if caseOuPlacer == sommetChoisi.position || caseOuPlacer.estVoisin(sommetChoisi.position)
                                 end
 
-                                #on teste pourquoi on s'est arrete
+                                #on test pourquoi on s'est arreté
                                 if caseOuPlacer == sommetChoisi.position || caseOuPlacer.estVoisin(sommetChoisi.position)
                                     aEteCancel = true
                                 else
@@ -373,7 +373,7 @@ class Generateur
                             end
                         end
                     else
-                        #si aucun arret est lancé, on avance juste
+                        #si aucun arrêt est lancé, on avance juste
                         caseOuPlacer = @grille.caseSuivante(caseOuPlacer, lesAdds[0], lesAdds[1])
                         #puts "on a avancé"
                     end

@@ -10,7 +10,7 @@ class Tutoriel
 	private_class_method :new
 
 	# Initialisation de la class Tutoriel.
-	# === Parametre
+	# === Paramètres
 	# * +numeroNiveau+ : numeroNiveau Le numero du niveau.
 	def initialize(numeroNiveau)
 		@niveau = numeroNiveau
@@ -18,7 +18,7 @@ class Tutoriel
 	end
 
   # Créer un nouveau tutoriel.
-	# === Parametre
+	# === Paramètres
 	# * +numeroNiveau+ : numeroNiveau Le numero du niveau.
 	def Tutoriel.nouveau(numeroNiveau)
 		new(numeroNiveau)

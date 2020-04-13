@@ -20,8 +20,8 @@ class Score
 	#Privatise le new.
 	private_class_method :new
 
-	# Initialisation de la class Score.
-	# === Parametre
+	# Initialisation de la classe Score.
+	# === Paramètres
 	# * +nom+ : nom Le pseudo associé au highscore.
 	# * +time+ : time Le temps associé au highscore.
 	# * +difficulte+ : difficulte La difficulté associée au score.
@@ -33,7 +33,7 @@ class Score
 	end
 
 	# Créer un nouveau score.
-	# === Parametre
+	# === Paramètres
 	# * +nom+ : nom Le pseudo associé au highscore.
 	# * +time+ : time Le temps associé au highscore.
 	# * +difficulte+ : difficulte La difficulté associée au score.

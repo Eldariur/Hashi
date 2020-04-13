@@ -135,7 +135,7 @@ class Chrono < Gtk::Label
 
 end
 
-# Méthode de test pour arrêter le chronomètre en fonction d'un temps en secondes données.
+# Méthode de test pour arrêter le chronomètre en fonction d'un temps en secondes donné.
 # === Paramètres
 # * +t+ : t Le temps pour temporiser.
 # * +c+ : c Le chronomètre.
