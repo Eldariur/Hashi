@@ -1,6 +1,6 @@
-require_relative "../Classement/Classement.rb"
+require_relative "Classement.rb"
 require_relative "../Chrono/Chronometre.rb"
-require_relative "../Classement/ConnectSqlite3.rb"
+require_relative "ConnectSqlite3.rb"
 
 c = Chrono.nouveau()
 

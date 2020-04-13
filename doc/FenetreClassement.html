@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class FenetreClassement - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/navigation.js" defer></script>
+<script src="./js/search.js" defer></script>
+<script src="./js/search_index.js" defer></script>
+<script src="./js/searcher.js" defer></script>
+<script src="./js/darkfish.js" defer></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link">Gtk::Box
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li class="calls-super" ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-afficherBdd">#afficherBdd</a>
+    
+    <li ><a href="#method-i-ajouterLig">#ajouterLig</a>
+    
+    <li ><a href="#method-i-initBoutonDifficile">#initBoutonDifficile</a>
+    
+    <li ><a href="#method-i-initBoutonFacile">#initBoutonFacile</a>
+    
+    <li ><a href="#method-i-initBoutonNormal">#initBoutonNormal</a>
+    
+    <li ><a href="#method-i-initBoutonRetour">#initBoutonRetour</a>
+    
+    <li ><a href="#method-i-initClassement">#initClassement</a>
+    
+    <li ><a href="#method-i-resetAffichage">#resetAffichage</a>
+    
+    <li ><a href="#method-i-verrouilleToi">#verrouilleToi</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-FenetreClassement">
+  <h1 id="class-FenetreClassement" class="class">
+    class FenetreClassement
+  </h1>
+
+  <section class="description">
+    
+<p>Classe permettant d&#39;afficher le classement des scores</p>
+
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(window, fenPrev)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Initialisation de la classe <a href="FenetreClassement.html"><code>FenetreClassement</code></a></p>
+
+<h3 id="method-c-new-label-Param-C3-A8tres">Paramètres<span><a href="#method-c-new-label-Param-C3-A8tres">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p><code>window</code> : window la fenetre principale du programme</p>
+</li><li>
+<p><code>fenPre</code> : fenPre la fenetre précédente</p>
+</li></ul>
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              
+            </div>
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File Interface/FenetreClassement.rb, line 29</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">window</span>, <span class="ruby-identifier">fenPrev</span>)
+  <span class="ruby-identifier">@@fenetre</span> = <span class="ruby-identifier">window</span>
+  <span class="ruby-ivar">@nbCol</span> = <span class="ruby-value">4</span>
+  <span class="ruby-ivar">@nbLig</span> = <span class="ruby-value">0</span>
+  <span class="ruby-ivar">@rang</span> = <span class="ruby-value">0</span>
+
+  <span class="ruby-ivar">@diff</span> = <span class="ruby-string">&quot;&quot;</span>
+
+  <span class="ruby-identifier">@@fenPre</span> = <span class="ruby-identifier">fenPrev</span>
+
+  <span class="ruby-keyword">super</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Orientation</span><span class="ruby-operator">::</span><span class="ruby-constant">VERTICAL</span>)
+
+    <span class="ruby-identifier">initClassement</span>
+    <span class="ruby-identifier">initBoutonFacile</span>
+    <span class="ruby-identifier">initBoutonNormal</span>
+    <span class="ruby-identifier">initBoutonDifficile</span>
+    <span class="ruby-identifier">initBoutonRetour</span>
+
+    <span class="ruby-identifier">boxMenuClassement</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Orientation</span><span class="ruby-operator">::</span><span class="ruby-constant">HORIZONTAL</span>)
+    <span class="ruby-identifier">boxMenuClassement</span>.<span class="ruby-identifier">halign</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Align</span><span class="ruby-operator">::</span><span class="ruby-constant">CENTER</span>
+
+    <span class="ruby-identifier">boxMenuClassement</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@boutonFacile</span>)
+    <span class="ruby-identifier">boxMenuClassement</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@boutonNormal</span>)
+    <span class="ruby-identifier">boxMenuClassement</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@boutonDifficile</span>)
+    <span class="ruby-identifier">boxMenuClassement</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@boutonRetour</span>)
+
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">boxMenuClassement</span>)
+
+    <span class="ruby-ivar">@boutonFacile</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){
+      <span class="ruby-ivar">@diff</span> = <span class="ruby-string">&quot;easy&quot;</span>
+      <span class="ruby-identifier">afficherBdd</span>()
+    }
+
+    <span class="ruby-ivar">@boutonNormal</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){
+      <span class="ruby-ivar">@diff</span> = <span class="ruby-string">&quot;normal&quot;</span>
+      <span class="ruby-identifier">afficherBdd</span>()
+    }
+
+    <span class="ruby-ivar">@boutonDifficile</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){
+      <span class="ruby-ivar">@diff</span> = <span class="ruby-string">&quot;hard&quot;</span>
+      <span class="ruby-identifier">afficherBdd</span>()
+    }
+
+    <span class="ruby-ivar">@boutonFacile</span>.<span class="ruby-identifier">clicked</span>()
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-afficherBdd" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">afficherBdd</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode sans paramètres permettant d&#39;afficher la base de donner</p>
+          
+          
+
+          
+          <div class="method-source-code" id="afficherBdd-source">
+            <pre><span class="ruby-comment"># File Interface/FenetreClassement.rb, line 156</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">afficherBdd</span>()
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">remove</span>(<span class="ruby-ivar">@tbl</span>)
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">initClassement</span>()
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">resetAffichage</span>()
+  <span class="ruby-identifier">c</span> = <span class="ruby-constant">Classement</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-ivar">@diff</span>)
+  <span class="ruby-identifier">c</span>.<span class="ruby-identifier">recupererDonnees</span>()
+  <span class="ruby-identifier">c</span>.<span class="ruby-identifier">liste</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">s</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">ajouterLig</span>(<span class="ruby-identifier">s</span>.<span class="ruby-identifier">getNom</span>, <span class="ruby-identifier">s</span>.<span class="ruby-identifier">getScore</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-ajouterLig" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">ajouterLig</span><span
+            class="method-args">(pseudo = &quot;&quot;,scr = &quot;0&quot;)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <pre>Méthode avec paramètres permettant d&#39;ajouter une ligne au classement</pre>
+
+<h3 id="method-i-ajouterLig-label-Param-C3-A8tres">Paramètres<span><a href="#method-i-ajouterLig-label-Param-C3-A8tres">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p><code>pseudo</code> : pseudo Pseudo de a personne inscrite sur le classement</p>
+</li><li>
+<p><code>scr</code> : scr score de la personne inscrite sur le classement</p>
+</li></ul>
+          
+          
+
+          
+          <div class="method-source-code" id="ajouterLig-source">
+            <pre><span class="ruby-comment"># File Interface/FenetreClassement.rb, line 84</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ajouterLig</span>(<span class="ruby-identifier">pseudo</span> = <span class="ruby-string">&quot;&quot;</span>,<span class="ruby-identifier">scr</span> = <span class="ruby-string">&quot;0&quot;</span>)
+  <span class="ruby-ivar">@nbLig</span> <span class="ruby-operator">+=</span><span class="ruby-value">1</span>
+  <span class="ruby-ivar">@rang</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+  <span class="ruby-ivar">@tbl</span>.<span class="ruby-identifier">resize</span>(<span class="ruby-ivar">@nbCol</span>,<span class="ruby-ivar">@nbLig</span>)
+  <span class="ruby-ivar">@tbl</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-constant">UnLabelPerso</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@rang</span>.<span class="ruby-identifier">to_s</span>,<span class="ruby-string">&quot;UnLabelClassement&quot;</span>),<span class="ruby-value">0</span>,<span class="ruby-value">1</span>,<span class="ruby-ivar">@nbLig</span>,<span class="ruby-ivar">@nbLig</span><span class="ruby-value">+1</span>)
+  <span class="ruby-ivar">@tbl</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-constant">UnLabelPerso</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">pseudo</span>,<span class="ruby-string">&quot;UnLabelClassement&quot;</span>),<span class="ruby-value">1</span>,<span class="ruby-value">3</span>,<span class="ruby-ivar">@nbLig</span>,<span class="ruby-ivar">@nbLig</span><span class="ruby-value">+1</span>)
+  <span class="ruby-ivar">@tbl</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-constant">UnLabelPerso</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">scr</span>,<span class="ruby-string">&quot;UnLabelClassement&quot;</span>),<span class="ruby-value">3</span>,<span class="ruby-value">4</span>,<span class="ruby-ivar">@nbLig</span>,<span class="ruby-ivar">@nbLig</span><span class="ruby-value">+1</span>)
+
+  <span class="ruby-identifier">@@fenetre</span>.<span class="ruby-identifier">changerWidget</span>(<span class="ruby-keyword">self</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-initBoutonDifficile" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">initBoutonDifficile</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode sans paramètres permettant d&#39;initialiser le bouton du menu difficile du tableau du classement</p>
+          
+          
+
+          
+          <div class="method-source-code" id="initBoutonDifficile-source">
+            <pre><span class="ruby-comment"># File Interface/FenetreClassement.rb, line 133</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initBoutonDifficile</span>
+  <span class="ruby-ivar">@boutonDifficile</span> = <span class="ruby-constant">UnBoutonPerso</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Difficile&quot;</span>,<span class="ruby-string">&quot;BoutonClassement&quot;</span>)<span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">verrouilleToi</span>(<span class="ruby-ivar">@boutonDifficile</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-initBoutonFacile" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">initBoutonFacile</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode sans paramètres permettant d&#39;initialiser le bouton du menu facile du tableau du classement</p>
+          
+          
+
+          
+          <div class="method-source-code" id="initBoutonFacile-source">
+            <pre><span class="ruby-comment"># File Interface/FenetreClassement.rb, line 119</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initBoutonFacile</span>
+  <span class="ruby-ivar">@boutonFacile</span> = <span class="ruby-constant">UnBoutonPerso</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Facile&quot;</span>,<span class="ruby-string">&quot;BoutonClassement&quot;</span>)<span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">verrouilleToi</span>(<span class="ruby-ivar">@boutonFacile</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-initBoutonNormal" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">initBoutonNormal</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode sans paramètres permettant d&#39;initialiser le bouton du menu normal du tableau du classement</p>
+          
+          
+
+          
+          <div class="method-source-code" id="initBoutonNormal-source">
+            <pre><span class="ruby-comment"># File Interface/FenetreClassement.rb, line 126</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initBoutonNormal</span>
+  <span class="ruby-ivar">@boutonNormal</span> = <span class="ruby-constant">UnBoutonPerso</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Normal&quot;</span>,<span class="ruby-string">&quot;BoutonClassement&quot;</span>)<span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">verrouilleToi</span>(<span class="ruby-ivar">@boutonNormal</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-initBoutonRetour" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">initBoutonRetour</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode sans paramètres permettant d&#39;initialiser le bouton pour revenir au menu précédent</p>
+          
+          
+
+          
+          <div class="method-source-code" id="initBoutonRetour-source">
+            <pre><span class="ruby-comment"># File Interface/FenetreClassement.rb, line 140</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initBoutonRetour</span>
+  <span class="ruby-ivar">@boutonRetour</span> = <span class="ruby-constant">UnBoutonPerso</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Retour&quot;</span>,<span class="ruby-string">&quot;BoutonClassement&quot;</span>)<span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">@@fenetre</span>.<span class="ruby-identifier">changerWidget</span>(<span class="ruby-identifier">@@fenPre</span>);
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-initClassement" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">initClassement</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <pre>Méthode sans paramètres permettant d&#39;initialiser le classement</pre>
+
+<p>et de l&#39;ajouter à la fenêtre de jeu</p>
+          
+          
+
+          
+          <div class="method-source-code" id="initClassement-source">
+            <pre><span class="ruby-comment"># File Interface/FenetreClassement.rb, line 97</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initClassement</span>()
+  <span class="ruby-ivar">@tbl</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Table</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@nbCol</span>,<span class="ruby-ivar">@nbLig</span>)
+  <span class="ruby-ivar">@tbl</span>.<span class="ruby-identifier">set_name</span>(<span class="ruby-string">&quot;TableDesScores&quot;</span>)
+  <span class="ruby-identifier">lbl1</span> = <span class="ruby-constant">UnLabelPerso</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;RANG&quot;</span>,<span class="ruby-string">&quot;UnLabelClassement&quot;</span>)
+  <span class="ruby-identifier">lbl2</span> = <span class="ruby-constant">UnLabelPerso</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Pseudo&quot;</span>,<span class="ruby-string">&quot;UnLabelClassement&quot;</span>)
+  <span class="ruby-identifier">lbl3</span> = <span class="ruby-constant">UnLabelPerso</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Score&quot;</span>,<span class="ruby-string">&quot;UnLabelClassement&quot;</span>)
+
+  <span class="ruby-ivar">@tbl</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-identifier">lbl2</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>)
+  <span class="ruby-ivar">@tbl</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-identifier">lbl1</span>,<span class="ruby-value">1</span>,<span class="ruby-value">3</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>)
+  <span class="ruby-ivar">@tbl</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-identifier">lbl3</span>,<span class="ruby-value">3</span>,<span class="ruby-value">4</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>)
+
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@tbl</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-resetAffichage" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">resetAffichage</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode sans paramètres permettant de redimensionner le tableau du classement</p>
+          
+          
+
+          
+          <div class="method-source-code" id="resetAffichage-source">
+            <pre><span class="ruby-comment"># File Interface/FenetreClassement.rb, line 112</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">resetAffichage</span>()
+  <span class="ruby-ivar">@nbLig</span> = <span class="ruby-value">0</span>
+  <span class="ruby-ivar">@rang</span> = <span class="ruby-value">0</span>
+  <span class="ruby-ivar">@tbl</span>.<span class="ruby-identifier">resize</span>(<span class="ruby-ivar">@nbCol</span>,<span class="ruby-ivar">@nbLig</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-verrouilleToi" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">verrouilleToi</span><span
+            class="method-args">(bouton)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <pre class="ruby"><span class="ruby-constant">Méthode</span> <span class="ruby-identifier">avec</span> <span class="ruby-identifier">paramètres</span> <span class="ruby-identifier">permettant</span> <span class="ruby-identifier">de</span> <span class="ruby-identifier">verrouiller</span> <span class="ruby-identifier">un</span> <span class="ruby-identifier">bouton</span>
+</pre>
+
+<p>déverouille également tous les autres boutons</p>
+          
+          
+
+          
+          <div class="method-source-code" id="verrouilleToi-source">
+            <pre><span class="ruby-comment"># File Interface/FenetreClassement.rb, line 148</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">verrouilleToi</span>(<span class="ruby-identifier">bouton</span>)
+  <span class="ruby-ivar">@boutonFacile</span>.<span class="ruby-identifier">deverrouiller</span>()
+  <span class="ruby-ivar">@boutonNormal</span>.<span class="ruby-identifier">deverrouiller</span>()
+  <span class="ruby-ivar">@boutonDifficile</span>.<span class="ruby-identifier">deverrouiller</span>()
+  <span class="ruby-identifier">bouton</span>.<span class="ruby-identifier">verrouiller</span>()
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

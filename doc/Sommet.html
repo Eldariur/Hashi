@@ -1,0 +1,1333 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Sommet - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/navigation.js" defer></script>
+<script src="./js/search.js" defer></script>
+<script src="./js/search_index.js" defer></script>
+<script src="./js/searcher.js" defer></script>
+<script src="./js/darkfish.js" defer></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="Object.html">Object</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-creer">::creer</a>
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-afficher">#afficher</a>
+    
+    <li ><a href="#method-i-ajouterArete">#ajouterArete</a>
+    
+    <li ><a href="#method-i-areteAvecChaqueVoisin">#areteAvecChaqueVoisin</a>
+    
+    <li ><a href="#method-i-autreSommet">#autreSommet</a>
+    
+    <li ><a href="#method-i-completerInitialize">#completerInitialize</a>
+    
+    <li ><a href="#method-i-compterArete">#compterArete</a>
+    
+    <li ><a href="#method-i-compterVoisins">#compterVoisins</a>
+    
+    <li ><a href="#method-i-compterVoisinsComplets">#compterVoisinsComplets</a>
+    
+    <li ><a href="#method-i-compterVoisinsNonComplets">#compterVoisinsNonComplets</a>
+    
+    <li ><a href="#method-i-compterVoisinsNonRelies">#compterVoisinsNonRelies</a>
+    
+    <li ><a href="#method-i-connexionsRestantes">#connexionsRestantes</a>
+    
+    <li ><a href="#method-i-donneAreteAvec">#donneAreteAvec</a>
+    
+    <li ><a href="#method-i-getListeVoisins">#getListeVoisins</a>
+    
+    <li ><a href="#method-i-getListeVoisinsComplets">#getListeVoisinsComplets</a>
+    
+    <li ><a href="#method-i-getListeVoisinsNonComplets">#getListeVoisinsNonComplets</a>
+    
+    <li ><a href="#method-i-getVoisins">#getVoisins</a>
+    
+    <li ><a href="#method-i-getVoisinsNonRelies">#getVoisinsNonRelies</a>
+    
+    <li ><a href="#method-i-hasArete">#hasArete</a>
+    
+    <li ><a href="#method-i-hasSommet">#hasSommet</a>
+    
+    <li ><a href="#method-i-nbArete">#nbArete</a>
+    
+    <li ><a href="#method-i-possedeAreteAvec">#possedeAreteAvec</a>
+    
+    <li ><a href="#method-i-retirerArete">#retirerArete</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Sommet">
+  <h1 id="class-Sommet" class="class">
+    class Sommet
+  </h1>
+
+  <section class="description">
+    
+<p>Class représentant un <a href="Sommet.html"><code>Sommet</code></a></p>
+
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-complet" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">complet</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Accesseur en get et en set sur la position, le booleen complet et la valeur</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-estErreur" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">estErreur</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Accesseur en get et en set sur la position, le booleen complet et la valeur</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-listeArete" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">listeArete</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Accesseur en get sur la liste d&#39;arete</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-position" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">position</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Accesseur en get et en set sur la position, le booleen complet et la valeur</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-valeur" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">valeur</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Accesseur en get et en set sur la position, le booleen complet et la valeur</p>
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-creer" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">creer</span><span
+            class="method-args">(valeur, position, complet = false)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>creer un <a href="Sommet.html"><code>Sommet</code></a> proprement</p>
+          
+          
+
+          
+          <div class="method-source-code" id="creer-source">
+            <pre><span class="ruby-comment"># File Plateau/Sommet.rb, line 13</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">creer</span>(<span class="ruby-identifier">valeur</span>, <span class="ruby-identifier">position</span>, <span class="ruby-identifier">complet</span> = <span class="ruby-keyword">false</span>)
+    <span class="ruby-identifier">objet</span> = <span class="ruby-identifier">new</span>(<span class="ruby-identifier">valeur</span>, <span class="ruby-identifier">position</span>, <span class="ruby-identifier">complet</span>)
+    <span class="ruby-identifier">objet</span>.<span class="ruby-identifier">completerInitialize</span>()
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">objet</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(valeur, position, complet)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Initialisation de la classe <a href="Sommet.html"><code>Sommet</code></a></p>
+
+<h3 id="method-c-new-label-Param-C3-A8tres">Paramètres<span><a href="#method-c-new-label-Param-C3-A8tres">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p><code>valeur</code> : Valeur du sommet (en général initialisé a 0)</p>
+</li><li>
+<p><code>position</code> : <a href="Case.html"><code>Case</code></a> ou est placé le sommet</p>
+</li></ul>
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File Plateau/Sommet.rb, line 30</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">valeur</span>, <span class="ruby-identifier">position</span>, <span class="ruby-identifier">complet</span>)
+    <span class="ruby-ivar">@valeur</span> = <span class="ruby-identifier">valeur</span>
+    <span class="ruby-ivar">@position</span> = <span class="ruby-identifier">position</span> <span class="ruby-comment">#la case dans lequel est le sommet</span>
+    <span class="ruby-ivar">@listeArete</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>()
+    <span class="ruby-ivar">@complet</span> = <span class="ruby-identifier">complet</span>
+    <span class="ruby-ivar">@estErreur</span> = <span class="ruby-keyword">false</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-afficher" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">afficher</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Méthode permettant d&#39;afficher la valeur d&#39;un sommet</p>
+          
+          
+
+          
+          <div class="method-source-code" id="afficher-source">
+            <pre><span class="ruby-comment"># File Plateau/Sommet.rb, line 273</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">afficher</span>()
+    <span class="ruby-identifier">print</span>(<span class="ruby-ivar">@valeur</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-ajouterArete" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">ajouterArete</span><span
+            class="method-args">(arete)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>ajoute une arête a la liste de ses arrete</p>
+          
+          
+
+          
+          <div class="method-source-code" id="ajouterArete-source">
+            <pre><span class="ruby-comment"># File Plateau/Sommet.rb, line 69</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ajouterArete</span>(<span class="ruby-identifier">arete</span>)
+    <span class="ruby-ivar">@listeArete</span> <span class="ruby-operator">&lt;&lt;</span> (<span class="ruby-identifier">arete</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-areteAvecChaqueVoisin" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">areteAvecChaqueVoisin</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <pre class="ruby"><span class="ruby-constant">Méthode</span> <span class="ruby-identifier">permettant</span> <span class="ruby-identifier">de</span> <span class="ruby-identifier">vérifier</span> <span class="ruby-identifier">si</span> <span class="ruby-identifier">un</span> <span class="ruby-identifier">sommet</span> <span class="ruby-identifier">possède</span> <span class="ruby-identifier">au</span> <span class="ruby-identifier">moins</span> <span class="ruby-identifier">une</span> <span class="ruby-identifier">arête</span> <span class="ruby-identifier">commune</span> <span class="ruby-identifier">avec</span> <span class="ruby-identifier">chacun</span> <span class="ruby-identifier">de</span> <span class="ruby-identifier">ses</span> <span class="ruby-identifier">voisins</span>
+</pre>
+
+<h3 id="method-i-areteAvecChaqueVoisin-label-Return">Return<span><a href="#method-i-areteAvecChaqueVoisin-label-Return">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>Retourne vrai si un sommet possède au moins une arête avec chacun de ses voisins, faux sinon</p>
+          
+          
+
+          
+          <div class="method-source-code" id="areteAvecChaqueVoisin-source">
+            <pre><span class="ruby-comment"># File Plateau/Sommet.rb, line 299</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">areteAvecChaqueVoisin</span>()
+  <span class="ruby-identifier">voisinsAreteCommune</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>()
+
+  <span class="ruby-ivar">@listeArete</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span>(<span class="ruby-keyword">self</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">sommet1</span>)
+      <span class="ruby-identifier">voisinsAreteCommune</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">x</span>.<span class="ruby-identifier">sommet1</span>)
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">voisinsAreteCommune</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">x</span>.<span class="ruby-identifier">sommet2</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">voisinsAreteCommune</span>.<span class="ruby-identifier">uniq</span>().<span class="ruby-identifier">size</span>() <span class="ruby-operator">==</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">compterVoisins</span>()
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-autreSommet" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">autreSommet</span><span
+            class="method-args">(arete)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <pre>Méthode permettant de récupérer le sommet de l&#39;autre coté d&#39;une arete</pre>
+
+<h3 id="method-i-autreSommet-label-Param-C3-A8tres">Paramètres<span><a href="#method-i-autreSommet-label-Param-C3-A8tres">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p><code>arete</code> : l&#39;arete dont on doit trouver l&#39;autre sommet</p>
+</li></ul>
+
+<h3 id="method-i-autreSommet-label-Return">Return<span><a href="#method-i-autreSommet-label-Return">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>L&#39;autre sommet relié par l&#39;arete</p>
+          
+          
+
+          
+          <div class="method-source-code" id="autreSommet-source">
+            <pre><span class="ruby-comment"># File Plateau/Sommet.rb, line 359</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">autreSommet</span>(<span class="ruby-identifier">arete</span>)
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@listeArete</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">arete</span>)
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">arete</span>.<span class="ruby-identifier">sommet1</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">self</span>
+            <span class="ruby-keyword">return</span> <span class="ruby-identifier">arete</span>.<span class="ruby-identifier">sommet2</span>
+        <span class="ruby-keyword">else</span>
+            <span class="ruby-keyword">return</span> <span class="ruby-identifier">arete</span>.<span class="ruby-identifier">sommet1</span>
+        <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-completerInitialize" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">completerInitialize</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <pre class="ruby"><span class="ruby-constant">Complete</span> <span class="ruby-identifier">le</span> <span class="ruby-identifier">initialize</span>
+</pre>
+
+<p>s&#39;ajoute comme contenu de la case dans laquelle il est et a la liste de sommet de la grille</p>
+          
+          
+
+          
+          <div class="method-source-code" id="completerInitialize-source">
+            <pre><span class="ruby-comment"># File Plateau/Sommet.rb, line 49</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">completerInitialize</span>()
+    <span class="ruby-ivar">@position</span>.<span class="ruby-identifier">contenu</span> = <span class="ruby-keyword">self</span>
+    <span class="ruby-ivar">@position</span>.<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">addSommet</span>(<span class="ruby-keyword">self</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-compterArete" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">compterArete</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <pre>Compte le nombre d&#39;arete</pre>
+
+<p>parcours toute les arete pour compter le nombre d&#39;arete</p>
+
+<pre>=== Return
+
+* +total+ : Le nombre total d&#39;arete liés au Sommet</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="compterArete-source">
+            <pre><span class="ruby-comment"># File Plateau/Sommet.rb, line 60</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">compterArete</span>()
+    <span class="ruby-identifier">total</span> = <span class="ruby-value">0</span>
+    <span class="ruby-ivar">@listeArete</span>.<span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">arete</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">total</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">arete</span>.<span class="ruby-identifier">estDouble</span> <span class="ruby-operator">?</span> <span class="ruby-value">2</span> <span class="ruby-operator">:</span> <span class="ruby-value">1</span>
+    }
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">total</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-compterVoisins" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">compterVoisins</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <pre>Méthode retournant le nombre de voisins d&#39;un sommet</pre>
+
+<h3 id="method-i-compterVoisins-label-Return">Return<span><a href="#method-i-compterVoisins-label-Return">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p><code>nb_voisins</code> : Nombre de voisins du sommet</p>
+</li></ul>
+          
+          
+
+          
+          <div class="method-source-code" id="compterVoisins-source">
+            <pre><span class="ruby-comment"># File Plateau/Sommet.rb, line 83</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">compterVoisins</span>()
+  <span class="ruby-identifier">voisins</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">getListeVoisins</span>()
+
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">voisins</span>.<span class="ruby-identifier">size</span>()
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-compterVoisinsComplets" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">compterVoisinsComplets</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <pre>Méthode retournant le nombre de voisins complets d&#39;un sommet</pre>
+
+<h3 id="method-i-compterVoisinsComplets-label-Return">Return<span><a href="#method-i-compterVoisinsComplets-label-Return">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p><code>nb_voisins</code> : Nombre de voisins complets du sommet</p>
+</li></ul>
+          
+          
+
+          
+          <div class="method-source-code" id="compterVoisinsComplets-source">
+            <pre><span class="ruby-comment"># File Plateau/Sommet.rb, line 114</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">compterVoisinsComplets</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">getListeVoisinsComplets</span>.<span class="ruby-identifier">size</span>()
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-compterVoisinsNonComplets" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">compterVoisinsNonComplets</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <pre>Méthode retournant le nombre de voisins non complets d&#39;un sommet</pre>
+
+<h3 id="method-i-compterVoisinsNonComplets-label-Return">Return<span><a href="#method-i-compterVoisinsNonComplets-label-Return">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p><code>nb_voisins</code> : Nombre de voisins non complets du sommet</p>
+</li></ul>
+          
+          
+
+          
+          <div class="method-source-code" id="compterVoisinsNonComplets-source">
+            <pre><span class="ruby-comment"># File Plateau/Sommet.rb, line 105</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">compterVoisinsNonComplets</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">getListeVoisinsNonComplets</span>.<span class="ruby-identifier">size</span>()
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-compterVoisinsNonRelies" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">compterVoisinsNonRelies</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <pre>Méthode retournant le nombre de voisins d&#39;un sommet auquel il n&#39;est pas relié</pre>
+
+<h3 id="method-i-compterVoisinsNonRelies-label-Return">Return<span><a href="#method-i-compterVoisinsNonRelies-label-Return">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p><code>nb_voisins</code> : Nombre de voisins du sommet auquel il n&#39;est pas relié</p>
+</li></ul>
+          
+          
+
+          
+          <div class="method-source-code" id="compterVoisinsNonRelies-source">
+            <pre><span class="ruby-comment"># File Plateau/Sommet.rb, line 94</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">compterVoisinsNonRelies</span>()
+  <span class="ruby-identifier">voisins</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">getVoisinsNonRelies</span>()
+
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">voisins</span>.<span class="ruby-identifier">size</span>()
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-connexionsRestantes" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">connexionsRestantes</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <pre>Méthode calculant le nombre d&#39;arêtes restantes dont un sommet a besoin afin d&#39;être complet</pre>
+
+<h3 id="method-i-connexionsRestantes-label-Return">Return<span><a href="#method-i-connexionsRestantes-label-Return">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>Le nombre d&#39;arêtes restantes</p>
+          
+          
+
+          
+          <div class="method-source-code" id="connexionsRestantes-source">
+            <pre><span class="ruby-comment"># File Plateau/Sommet.rb, line 282</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">connexionsRestantes</span>()
+  <span class="ruby-identifier">compteur</span> = <span class="ruby-value">0</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">listeArete</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span>(<span class="ruby-identifier">a</span>.<span class="ruby-identifier">estDouble</span>)
+      <span class="ruby-identifier">compteur</span> <span class="ruby-operator">+=</span> <span class="ruby-value">2</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">compteur</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@valeur</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">compteur</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-donneAreteAvec" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">donneAreteAvec</span><span
+            class="method-args">(sommet)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <pre>Méthode qui permet de récupérer l&#39;arete avec un tel autre sommet si elle existe</pre>
+
+<h3 id="method-i-donneAreteAvec-label-Param-C3-A8tres">Paramètres<span><a href="#method-i-donneAreteAvec-label-Param-C3-A8tres">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p><code>sommet</code> : les sommet de destination de l&#39;arete</p>
+</li></ul>
+
+<h3 id="method-i-donneAreteAvec-label-Return">Return<span><a href="#method-i-donneAreteAvec-label-Return">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>L&#39;arete entre ces sommets si elle existe, nil sinon</p>
+          
+          
+
+          
+          <div class="method-source-code" id="donneAreteAvec-source">
+            <pre><span class="ruby-comment"># File Plateau/Sommet.rb, line 340</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">donneAreteAvec</span>(<span class="ruby-identifier">sommet</span>)
+    <span class="ruby-keyword">if</span>(<span class="ruby-identifier">possedeAreteAvec</span>(<span class="ruby-identifier">sommet</span>))
+        <span class="ruby-ivar">@listeArete</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">arete</span><span class="ruby-operator">|</span>
+            <span class="ruby-keyword">if</span> <span class="ruby-identifier">arete</span>.<span class="ruby-identifier">sommet1</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">sommet</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">arete</span>.<span class="ruby-identifier">sommet2</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">sommet</span>
+                <span class="ruby-keyword">return</span> <span class="ruby-identifier">arete</span>
+            <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-getListeVoisins" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getListeVoisins</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <pre>Méthode retournant la liste des voisins d&#39;un sommet</pre>
+
+<h3 id="method-i-getListeVoisins-label-Return">Return<span><a href="#method-i-getListeVoisins-label-Return">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>Une Array contenant la liste des voisins du sommet</p>
+          
+          
+
+          
+          <div class="method-source-code" id="getListeVoisins-source">
+            <pre><span class="ruby-comment"># File Plateau/Sommet.rb, line 123</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getListeVoisins</span>()
+  <span class="ruby-identifier">voisins</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>()
+
+  (<span class="ruby-ivar">@position</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>).<span class="ruby-identifier">downto</span>(<span class="ruby-value">0</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">caseCourante</span> = <span class="ruby-ivar">@position</span>.<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">getCase</span>(<span class="ruby-identifier">i</span>, <span class="ruby-ivar">@position</span>.<span class="ruby-identifier">y</span>)
+    <span class="ruby-keyword">if</span>(<span class="ruby-identifier">hasSommet</span>(<span class="ruby-identifier">caseCourante</span>))
+      <span class="ruby-identifier">voisins</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">caseCourante</span>.<span class="ruby-identifier">contenu</span>)
+      <span class="ruby-keyword">break</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">if</span>(<span class="ruby-identifier">hasArete</span>(<span class="ruby-identifier">caseCourante</span>))
+      <span class="ruby-keyword">if</span>(<span class="ruby-identifier">caseCourante</span>.<span class="ruby-identifier">contenu</span>.<span class="ruby-identifier">sommet1</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">self</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">caseCourante</span>.<span class="ruby-identifier">contenu</span>.<span class="ruby-identifier">sommet2</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">self</span>)
+        <span class="ruby-keyword">break</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  (<span class="ruby-ivar">@position</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>).<span class="ruby-identifier">downto</span>(<span class="ruby-value">0</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">caseCourante</span> = <span class="ruby-ivar">@position</span>.<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">getCase</span>(<span class="ruby-ivar">@position</span>.<span class="ruby-identifier">x</span>, <span class="ruby-identifier">i</span>)
+    <span class="ruby-keyword">if</span>(<span class="ruby-identifier">hasSommet</span>(<span class="ruby-identifier">caseCourante</span>))
+      <span class="ruby-identifier">voisins</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">caseCourante</span>.<span class="ruby-identifier">contenu</span>)
+      <span class="ruby-keyword">break</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">if</span>(<span class="ruby-identifier">hasArete</span>(<span class="ruby-identifier">caseCourante</span>))
+      <span class="ruby-keyword">if</span>(<span class="ruby-identifier">caseCourante</span>.<span class="ruby-identifier">contenu</span>.<span class="ruby-identifier">sommet1</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">self</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">caseCourante</span>.<span class="ruby-identifier">contenu</span>.<span class="ruby-identifier">sommet2</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">self</span>)
+        <span class="ruby-keyword">break</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  (<span class="ruby-ivar">@position</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>).<span class="ruby-identifier">upto</span>(<span class="ruby-ivar">@position</span>.<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">longueur</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">caseCourante</span> = <span class="ruby-ivar">@position</span>.<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">getCase</span>(<span class="ruby-identifier">i</span>, <span class="ruby-ivar">@position</span>.<span class="ruby-identifier">y</span>)
+    <span class="ruby-keyword">if</span>(<span class="ruby-identifier">hasSommet</span>(<span class="ruby-identifier">caseCourante</span>))
+      <span class="ruby-identifier">voisins</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">caseCourante</span>.<span class="ruby-identifier">contenu</span>)
+      <span class="ruby-keyword">break</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">if</span>(<span class="ruby-identifier">hasArete</span>(<span class="ruby-identifier">caseCourante</span>))
+      <span class="ruby-keyword">if</span>(<span class="ruby-identifier">caseCourante</span>.<span class="ruby-identifier">contenu</span>.<span class="ruby-identifier">sommet1</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">self</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">caseCourante</span>.<span class="ruby-identifier">contenu</span>.<span class="ruby-identifier">sommet2</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">self</span>)
+        <span class="ruby-keyword">break</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  (<span class="ruby-ivar">@position</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>).<span class="ruby-identifier">upto</span>(<span class="ruby-ivar">@position</span>.<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">largeur</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">caseCourante</span> = <span class="ruby-ivar">@position</span>.<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">getCase</span>(<span class="ruby-ivar">@position</span>.<span class="ruby-identifier">x</span>, <span class="ruby-identifier">i</span>)
+    <span class="ruby-keyword">if</span>(<span class="ruby-identifier">hasSommet</span>(<span class="ruby-identifier">caseCourante</span>))
+      <span class="ruby-identifier">voisins</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">caseCourante</span>.<span class="ruby-identifier">contenu</span>)
+      <span class="ruby-keyword">break</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">if</span>(<span class="ruby-identifier">hasArete</span>(<span class="ruby-identifier">caseCourante</span>))
+      <span class="ruby-keyword">if</span>(<span class="ruby-identifier">caseCourante</span>.<span class="ruby-identifier">contenu</span>.<span class="ruby-identifier">sommet1</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">self</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">caseCourante</span>.<span class="ruby-identifier">contenu</span>.<span class="ruby-identifier">sommet2</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">self</span>)
+        <span class="ruby-keyword">break</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment">## Méthode retournant la liste des voisins non complets d&#39;un sommet</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-comment"># === Return</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-comment"># Une Array contenant la liste des voisins non complets du sommet</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getListeVoisinsNonComplets</span>()
+    <span class="ruby-identifier">voisins</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">getListeVoisins</span>()
+    <span class="ruby-identifier">array</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>()
+
+    <span class="ruby-identifier">voisins</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">connexionsRestantes</span> <span class="ruby-operator">!=</span> <span class="ruby-value">0</span>
+        <span class="ruby-identifier">array</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">x</span>)
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">array</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment">## Méthode retournant la liste des voisins complets d&#39;un sommet</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-comment"># === Return</span>
+  <span class="ruby-comment">#</span>
+  <span class="ruby-comment"># Une Array contenant la liste des voisins complets du sommet</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getListeVoisinsComplets</span>()
+    <span class="ruby-identifier">voisins</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">getListeVoisins</span>()
+    <span class="ruby-identifier">array</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>()
+
+    <span class="ruby-identifier">voisins</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">connexionsRestantes</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+        <span class="ruby-identifier">array</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">x</span>)
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">array</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">voisins</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-getListeVoisinsComplets" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getListeVoisinsComplets</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <pre>Méthode retournant la liste des voisins complets d&#39;un sommet</pre>
+
+<h3 id="method-i-getListeVoisinsComplets-label-Return">Return<span><a href="#method-i-getListeVoisinsComplets-label-Return">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>Une Array contenant la liste des voisins complets du sommet</p>
+          
+          
+
+          
+          <div class="method-source-code" id="getListeVoisinsComplets-source">
+            <pre><span class="ruby-comment"># File Plateau/Sommet.rb, line 201</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getListeVoisinsComplets</span>()
+  <span class="ruby-identifier">voisins</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">getListeVoisins</span>()
+  <span class="ruby-identifier">array</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>()
+
+  <span class="ruby-identifier">voisins</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">connexionsRestantes</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+      <span class="ruby-identifier">array</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">x</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">array</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-getListeVoisinsNonComplets" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getListeVoisinsNonComplets</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <pre>Méthode retournant la liste des voisins non complets d&#39;un sommet</pre>
+
+<h3 id="method-i-getListeVoisinsNonComplets-label-Return">Return<span><a href="#method-i-getListeVoisinsNonComplets-label-Return">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>Une Array contenant la liste des voisins non complets du sommet</p>
+          
+          
+
+          
+          <div class="method-source-code" id="getListeVoisinsNonComplets-source">
+            <pre><span class="ruby-comment"># File Plateau/Sommet.rb, line 183</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getListeVoisinsNonComplets</span>()
+  <span class="ruby-identifier">voisins</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">getListeVoisins</span>()
+  <span class="ruby-identifier">array</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>()
+
+  <span class="ruby-identifier">voisins</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">connexionsRestantes</span> <span class="ruby-operator">!=</span> <span class="ruby-value">0</span>
+      <span class="ruby-identifier">array</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">x</span>)
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">array</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-getVoisins" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getVoisins</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Retourne les sommets reliés au sommet.</p>
+
+<h3 id="method-i-getVoisins-label-Return">Return<span><a href="#method-i-getVoisins-label-Return">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p><code>res</code> : res la liste des sommets reliés au sommet.</p>
+</li></ul>
+          
+          
+
+          
+          <div class="method-source-code" id="getVoisins-source">
+            <pre><span class="ruby-comment"># File Plateau/Sommet.rb, line 220</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getVoisins</span>()
+  <span class="ruby-identifier">res</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>()
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">listeArete</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span>(<span class="ruby-identifier">a</span>.<span class="ruby-identifier">sommet1</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">self</span>) <span class="ruby-keyword">then</span> <span class="ruby-identifier">res</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">a</span>.<span class="ruby-identifier">sommet1</span>) <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">if</span>(<span class="ruby-identifier">a</span>.<span class="ruby-identifier">sommet2</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">self</span>) <span class="ruby-keyword">then</span> <span class="ruby-identifier">res</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">a</span>.<span class="ruby-identifier">sommet2</span>) <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">res</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-getVoisinsNonRelies" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getVoisinsNonRelies</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Retourne les sommets non reliés au sommet.</p>
+
+<h3 id="method-i-getVoisinsNonRelies-label-Return">Return<span><a href="#method-i-getVoisinsNonRelies-label-Return">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p><code>res</code> : res la liste des sommets non reliés au sommet.</p>
+</li></ul>
+          
+          
+
+          
+          <div class="method-source-code" id="getVoisinsNonRelies-source">
+            <pre><span class="ruby-comment"># File Plateau/Sommet.rb, line 232</span>
+  <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getVoisinsNonRelies</span>()
+    <span class="ruby-identifier">voisins</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">getListeVoisins</span>()
+<span class="ruby-identifier">relies</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">getVoisins</span>()
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">voisins</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">relies</span>
+  <span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-hasArete" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">hasArete</span><span
+            class="method-args">(uneCase)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <pre>Méthode testant si une case possède une arête</pre>
+
+<h3 id="method-i-hasArete-label-Param-C3-A8tres">Paramètres<span><a href="#method-i-hasArete-label-Param-C3-A8tres">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p><code>uneCase</code> : <a href="Case.html"><code>Case</code></a> à tester</p>
+</li></ul>
+
+<h3 id="method-i-hasArete-label-Return">Return<span><a href="#method-i-hasArete-label-Return">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>true si la case possède une arête, false sinon</p>
+          
+          
+
+          
+          <div class="method-source-code" id="hasArete-source">
+            <pre><span class="ruby-comment"># File Plateau/Sommet.rb, line 264</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">hasArete</span>(<span class="ruby-identifier">uneCase</span>)
+  <span class="ruby-keyword">if</span>(<span class="ruby-identifier">uneCase</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>)
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">uneCase</span>.<span class="ruby-identifier">contenu</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Arete</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-hasSommet" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">hasSommet</span><span
+            class="method-args">(uneCase)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <pre>Méthode testant si une case possède un sommet</pre>
+
+<h3 id="method-i-hasSommet-label-Param-C3-A8tres">Paramètres<span><a href="#method-i-hasSommet-label-Param-C3-A8tres">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p><code>uneCase</code> : <a href="Case.html"><code>Case</code></a> à tester</p>
+</li></ul>
+
+<h3 id="method-i-hasSommet-label-Return">Return<span><a href="#method-i-hasSommet-label-Return">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>true si la case possède un sommet, false sinon</p>
+          
+          
+
+          
+          <div class="method-source-code" id="hasSommet-source">
+            <pre><span class="ruby-comment"># File Plateau/Sommet.rb, line 247</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">hasSommet</span>(<span class="ruby-identifier">uneCase</span>)
+  <span class="ruby-keyword">if</span>(<span class="ruby-identifier">uneCase</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>)
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">uneCase</span>.<span class="ruby-identifier">contenu</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Sommet</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-nbArete" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">nbArete</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <pre>Méthode permettant de connaitre le nombre d&#39;arete que posède le sommet</pre>
+
+<h3 id="method-i-nbArete-label-Return">Return<span><a href="#method-i-nbArete-label-Return">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>La taille du tableau d&#39;arete</p>
+          
+          
+
+          
+          <div class="method-source-code" id="nbArete-source">
+            <pre><span class="ruby-comment"># File Plateau/Sommet.rb, line 374</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">nbArete</span>()
+    <span class="ruby-keyword">return</span> <span class="ruby-ivar">@listeArete</span>.<span class="ruby-identifier">length</span>()
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-possedeAreteAvec" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">possedeAreteAvec</span><span
+            class="method-args">(sommet)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <pre class="ruby"><span class="ruby-constant">Méthode</span> <span class="ruby-identifier">vérifiant</span> <span class="ruby-identifier">si</span> <span class="ruby-identifier">le</span> <span class="ruby-identifier">sommet</span> <span class="ruby-identifier">possède</span> <span class="ruby-identifier">une</span> <span class="ruby-identifier">arete</span> <span class="ruby-identifier">vers</span> <span class="ruby-identifier">tel</span> <span class="ruby-identifier">autre</span> <span class="ruby-identifier">sommet</span>
+</pre>
+
+<h3 id="method-i-possedeAreteAvec-label-Param-C3-A8tres">Paramètres<span><a href="#method-i-possedeAreteAvec-label-Param-C3-A8tres">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p><code>sommet</code> : les sommet de destination de l&#39;arete</p>
+</li></ul>
+
+<h3 id="method-i-possedeAreteAvec-label-Return">Return<span><a href="#method-i-possedeAreteAvec-label-Return">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>True si le sommet a une arete vers le sommet, false sinon</p>
+          
+          
+
+          
+          <div class="method-source-code" id="possedeAreteAvec-source">
+            <pre><span class="ruby-comment"># File Plateau/Sommet.rb, line 321</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">possedeAreteAvec</span>(<span class="ruby-identifier">sommet</span>)
+    <span class="ruby-identifier">aArete</span> = <span class="ruby-keyword">false</span>
+    <span class="ruby-ivar">@listeArete</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">arete</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">arete</span>.<span class="ruby-identifier">sommet1</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">sommet</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">arete</span>.<span class="ruby-identifier">sommet2</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">sommet</span>
+            <span class="ruby-identifier">aArete</span> = <span class="ruby-keyword">true</span>
+        <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">aArete</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-retirerArete" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">retirerArete</span><span
+            class="method-args">(arete)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>retire une arête de la liste de ses arrete</p>
+          
+          
+
+          
+          <div class="method-source-code" id="retirerArete-source">
+            <pre><span class="ruby-comment"># File Plateau/Sommet.rb, line 74</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">retirerArete</span>(<span class="ruby-identifier">arete</span>)
+    <span class="ruby-ivar">@listeArete</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">arete</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

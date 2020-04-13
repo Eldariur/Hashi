@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Grille - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/navigation.js" defer></script>
+<script src="./js/search.js" defer></script>
+<script src="./js/search_index.js" defer></script>
+<script src="./js/searcher.js" defer></script>
+<script src="./js/darkfish.js" defer></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="Object.html">Object</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-creer">::creer</a>
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-addArete">#addArete</a>
+    
+    <li ><a href="#method-i-addSommet">#addSommet</a>
+    
+    <li ><a href="#method-i-afficher">#afficher</a>
+    
+    <li ><a href="#method-i-afficherProportionsAretes">#afficherProportionsAretes</a>
+    
+    <li ><a href="#method-i-caseSuivante">#caseSuivante</a>
+    
+    <li ><a href="#method-i-clearAretes">#clearAretes</a>
+    
+    <li ><a href="#method-i-clearSommets">#clearSommets</a>
+    
+    <li ><a href="#method-i-completerInitialize">#completerInitialize</a>
+    
+    <li ><a href="#method-i-estArete">#estArete</a>
+    
+    <li ><a href="#method-i-getCase">#getCase</a>
+    
+    <li ><a href="#method-i-nbAreteDouble">#nbAreteDouble</a>
+    
+    <li ><a href="#method-i-nbAreteSimple">#nbAreteSimple</a>
+    
+    <li ><a href="#method-i-nbSommets">#nbSommets</a>
+    
+    <li ><a href="#method-i-retirerArete">#retirerArete</a>
+    
+    <li ><a href="#method-i-retirerSommet">#retirerSommet</a>
+    
+    <li ><a href="#method-i-testHamilton-3F">#testHamilton?</a>
+    
+    <li ><a href="#method-i-to_s">#to_s</a>
+    
+    <li ><a href="#method-i-trouverErreurs">#trouverErreurs</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Grille">
+  <h1 id="class-Grille" class="class">
+    class Grille
+  </h1>
+
+  <section class="description">
+    
+<p>Classe permettant de définir une <a href="Grille.html"><code>Grille</code></a></p>
+
+  </section>
+
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-aretes" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">aretes</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Accesseur get et set sur l&#39;attribut table</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-largeur" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">largeur</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Accesseur get et set sur l&#39;attribut table</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-longueur" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">longueur</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Accesseur get et set sur l&#39;attribut table</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-sommets" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">sommets</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Accesseur get et set sur l&#39;attribut table</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-table" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">table</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Accesseur get et set sur l&#39;attribut table</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-undo" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">undo</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Accesseur get et set sur l&#39;attribut table</p>
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-creer" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">creer</span><span
+            class="method-args">(longueur, largeur)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Creer un objet <a href="Grille.html"><code>Grille</code></a> proprement</p>
+          
+          
+
+          
+          <div class="method-source-code" id="creer-source">
+            <pre><span class="ruby-comment"># File Plateau/Grille.rb, line 16</span>
+<span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">creer</span>(<span class="ruby-identifier">longueur</span>, <span class="ruby-identifier">largeur</span>)
+    <span class="ruby-identifier">objet</span> = <span class="ruby-identifier">new</span>(<span class="ruby-identifier">longueur</span>, <span class="ruby-identifier">largeur</span>)
+    <span class="ruby-identifier">objet</span>.<span class="ruby-identifier">completerInitialize</span>()
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">objet</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(longueur, largeur)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Initialisation de la classe <a href="Grille.html"><code>Grille</code></a></p>
+
+<h3 id="method-c-new-label-Parametre">Parametre<span><a href="#method-c-new-label-Parametre">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p><code>longueur</code> : Longueur de la grille (nombre de case)</p>
+</li><li>
+<p><code>largeur</code> : Largeur de la grille (nombre de case)</p>
+</li></ul>
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File Plateau/Grille.rb, line 33</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">longueur</span>, <span class="ruby-identifier">largeur</span>)
+  <span class="ruby-ivar">@longueur</span> = <span class="ruby-identifier">longueur</span>
+  <span class="ruby-ivar">@largeur</span> = <span class="ruby-identifier">largeur</span>
+  <span class="ruby-ivar">@table</span> = <span class="ruby-constant">Matrix</span>.<span class="ruby-identifier">build</span>(<span class="ruby-ivar">@longueur</span>, <span class="ruby-ivar">@largeur</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">row</span>, <span class="ruby-identifier">col</span><span class="ruby-operator">|</span> <span class="ruby-constant">Case</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">row</span>, <span class="ruby-identifier">col</span>)}
+  <span class="ruby-ivar">@sommets</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>()
+  <span class="ruby-ivar">@aretes</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>()
+  <span class="ruby-ivar">@undo</span> = <span class="ruby-constant">Undo</span>.<span class="ruby-identifier">creer</span>()
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-addArete" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">addArete</span><span
+            class="method-args">(arete)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Ajoute une arete a la liste des sommets</p>
+
+<h3 id="method-i-addArete-label-Parametre">Parametre<span><a href="#method-i-addArete-label-Parametre">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p><code>arete</code> : L&#39;arete a ajouter</p>
+</li></ul>
+          
+          
+
+          
+          <div class="method-source-code" id="addArete-source">
+            <pre><span class="ruby-comment"># File Plateau/Grille.rb, line 87</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">addArete</span>(<span class="ruby-identifier">arete</span>)
+    <span class="ruby-ivar">@aretes</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">arete</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-addSommet" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">addSommet</span><span
+            class="method-args">(sommet)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Ajoute un sommet a la liste des sommets</p>
+
+<h3 id="method-i-addSommet-label-Parametre">Parametre<span><a href="#method-i-addSommet-label-Parametre">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p><code>sommet</code> : Le sommet a ajouter</p>
+</li></ul>
+          
+          
+
+          
+          <div class="method-source-code" id="addSommet-source">
+            <pre><span class="ruby-comment"># File Plateau/Grille.rb, line 78</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">addSommet</span>(<span class="ruby-identifier">sommet</span>)
+    <span class="ruby-ivar">@sommets</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">sommet</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-afficher" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">afficher</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Affiche la grille, case par case</p>
+          
+          
+
+          
+          <div class="method-source-code" id="afficher-source">
+            <pre><span class="ruby-comment"># File Plateau/Grille.rb, line 208</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">afficher</span>()
+   <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-ivar">@largeur</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>) <span class="ruby-keyword">do</span>
+     <span class="ruby-identifier">print</span>(<span class="ruby-string">&quot;$&quot;</span>)
+   <span class="ruby-keyword">end</span>
+   <span class="ruby-identifier">print</span>(<span class="ruby-string">&quot;\n$&quot;</span>)
+   <span class="ruby-ivar">@table</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span>
+       <span class="ruby-keyword">if</span>((<span class="ruby-identifier">c</span>.<span class="ruby-identifier">y</span>)<span class="ruby-value">+1</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-ivar">@largeur</span>)
+           <span class="ruby-identifier">c</span>.<span class="ruby-identifier">afficher</span>
+           <span class="ruby-identifier">print</span>(<span class="ruby-string">&quot;$\n$&quot;</span>)
+       <span class="ruby-keyword">else</span>
+           <span class="ruby-identifier">c</span>.<span class="ruby-identifier">afficher</span>
+       <span class="ruby-keyword">end</span>
+   }
+   <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-ivar">@largeur</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>) <span class="ruby-keyword">do</span>
+     <span class="ruby-identifier">print</span>(<span class="ruby-string">&quot;$&quot;</span>)
+   <span class="ruby-keyword">end</span>
+   <span class="ruby-identifier">puts</span>(<span class="ruby-string">&quot;$&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-afficherProportionsAretes" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">afficherProportionsAretes</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Affiche la proportion d&#39;arete simple et double par rapport au nombre d&#39;arete</p>
+          
+          
+
+          
+          <div class="method-source-code" id="afficherProportionsAretes-source">
+            <pre><span class="ruby-comment"># File Plateau/Grille.rb, line 228</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">afficherProportionsAretes</span>
+  <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Nombre d&#39;arêtes : &quot;</span><span class="ruby-operator">+</span><span class="ruby-ivar">@aretes</span>.<span class="ruby-identifier">size</span>().<span class="ruby-identifier">to_s</span><span class="ruby-string">+&quot;.\nArêtes simples : &quot;</span><span class="ruby-operator">+</span><span class="ruby-keyword">self</span>.<span class="ruby-identifier">nbAreteSimple</span>().<span class="ruby-identifier">to_s</span><span class="ruby-string">+&quot;.\nArêtes double : &quot;</span><span class="ruby-operator">+</span><span class="ruby-keyword">self</span>.<span class="ruby-identifier">nbAreteDouble</span>().<span class="ruby-identifier">to_s</span><span class="ruby-string">+&quot;\nPorpotions : &quot;</span><span class="ruby-operator">+</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">nbAreteSimple</span>().<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> (<span class="ruby-keyword">self</span>.<span class="ruby-identifier">nbAreteSimple</span>() <span class="ruby-operator">+</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">nbAreteDouble</span>()) <span class="ruby-operator">*</span> <span class="ruby-value">100</span>).<span class="ruby-identifier">round</span>(<span class="ruby-value">2</span>).<span class="ruby-identifier">to_s</span><span class="ruby-string">+&quot;% d&#39;aretes simple.&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-caseSuivante" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">caseSuivante</span><span
+            class="method-args">(lacase, addX, addY)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Donne la case suivante dans la direction donné</p>
+
+<pre>=== Paramètres
+
+* +lacase+ : La case d&#39;ou partir
+* +addX+ : la valeur a ajouter aux X
+* +addY+ : la valeur a ajouter aux Y
+
+=== Return
+
+La case suivante en partant de la case donné dans la direction donné</pre>
+          
+          
+
+          
+          <div class="method-source-code" id="caseSuivante-source">
+            <pre><span class="ruby-comment"># File Plateau/Grille.rb, line 136</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">caseSuivante</span>(<span class="ruby-identifier">lacase</span>, <span class="ruby-identifier">addX</span>, <span class="ruby-identifier">addY</span>)
+        <span class="ruby-identifier">leX</span> = <span class="ruby-identifier">lacase</span>.<span class="ruby-identifier">x</span>
+        <span class="ruby-identifier">leY</span> = <span class="ruby-identifier">lacase</span>.<span class="ruby-identifier">y</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">leX</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">addX</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-ivar">@longueur</span><span class="ruby-operator">||</span> <span class="ruby-identifier">leY</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">addY</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-ivar">@largeur</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">leX</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">addX</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">0</span><span class="ruby-operator">||</span> <span class="ruby-identifier">leY</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">addY</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">0</span>
+            <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">getCase</span>(<span class="ruby-identifier">leX</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">addX</span>, <span class="ruby-identifier">leY</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">addY</span>)
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-clearAretes" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">clearAretes</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <pre class="ruby"><span class="ruby-constant">Supprime</span> <span class="ruby-identifier">toute</span> <span class="ruby-identifier">les</span> <span class="ruby-identifier">arete</span> <span class="ruby-identifier">de</span> <span class="ruby-identifier">la</span> <span class="ruby-identifier">grille</span>
+</pre>
+
+<p>Appele la methode supprimer() de chaque arete</p>
+          
+          
+
+          
+          <div class="method-source-code" id="clearAretes-source">
+            <pre><span class="ruby-comment"># File Plateau/Grille.rb, line 111</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">clearAretes</span>()
+    <span class="ruby-identifier">laTaille</span> = <span class="ruby-ivar">@aretes</span>.<span class="ruby-identifier">size</span>()
+    <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-identifier">laTaille</span> <span class="ruby-keyword">do</span>
+        <span class="ruby-ivar">@aretes</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">supprimer</span>()
+    <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-clearSommets" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">clearSommets</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Réinistialise tous les sommets de la grille</p>
+          
+          
+
+          
+          <div class="method-source-code" id="clearSommets-source">
+            <pre><span class="ruby-comment"># File Plateau/Grille.rb, line 119</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">clearSommets</span>()
+  <span class="ruby-ivar">@sommets</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">s</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">s</span>.<span class="ruby-identifier">complet</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-completerInitialize" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">completerInitialize</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Complete le initialize ajoute self comme grille des cases de la matrice</p>
+          
+          
+
+          
+          <div class="method-source-code" id="completerInitialize-source">
+            <pre><span class="ruby-comment"># File Plateau/Grille.rb, line 51</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">completerInitialize</span>()
+  <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-ivar">@longueur</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-keyword">for</span> <span class="ruby-identifier">j</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-ivar">@largeur</span> <span class="ruby-keyword">do</span>
+      <span class="ruby-ivar">@table</span>[<span class="ruby-identifier">i</span>, <span class="ruby-identifier">j</span>].<span class="ruby-identifier">grille</span> = <span class="ruby-keyword">self</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-estArete" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">estArete</span><span
+            class="method-args">(s1,s2)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Cette methode calcule si deux sommets sont une arete de la grille.</p>
+
+<h3 id="method-i-estArete-label-Return">Return<span><a href="#method-i-estArete-label-Return">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p><code>boolean</code> : boolean Le resultat de l&#39;evaluation.</p>
+</li></ul>
+          
+          
+
+          
+          <div class="method-source-code" id="estArete-source">
+            <pre><span class="ruby-comment"># File Plateau/Grille.rb, line 261</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">estArete</span>(<span class="ruby-identifier">s1</span>,<span class="ruby-identifier">s2</span>)
+  <span class="ruby-ivar">@aretes</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">if</span>((<span class="ruby-identifier">a</span>.<span class="ruby-identifier">sommet1</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">s1</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">a</span>.<span class="ruby-identifier">sommet2</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">s2</span>) <span class="ruby-operator">||</span> (<span class="ruby-identifier">a</span>.<span class="ruby-identifier">sommet1</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">s2</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">a</span>.<span class="ruby-identifier">sommet2</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">s1</span>))
+      <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-getCase" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">getCase</span><span
+            class="method-args">(x, y)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Donne la case en x, y</p>
+
+<h3 id="method-i-getCase-label-Param-C3-A8tre">Paramètre<span><a href="#method-i-getCase-label-Param-C3-A8tre">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p><code>x</code> : Le x de la case a obtenir</p>
+</li><li>
+<p><code>y</code> : Le y de la case a obtenir</p>
+</li></ul>
+
+<h3 id="method-i-getCase-label-Return">Return<span><a href="#method-i-getCase-label-Return">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>La case en (x, y)</p>
+          
+          
+
+          
+          <div class="method-source-code" id="getCase-source">
+            <pre><span class="ruby-comment"># File Plateau/Grille.rb, line 69</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getCase</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>)
+    <span class="ruby-keyword">return</span> <span class="ruby-ivar">@table</span>[<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-nbAreteDouble" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">nbAreteDouble</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Compte le nombre d&#39;arete double</p>
+
+<h3 id="method-i-nbAreteDouble-label-Return">Return<span><a href="#method-i-nbAreteDouble-label-Return">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p><code>nbSimple</code> : Le nombre d&#39;arete double</p>
+</li></ul>
+          
+          
+
+          
+          <div class="method-source-code" id="nbAreteDouble-source">
+            <pre><span class="ruby-comment"># File Plateau/Grille.rb, line 164</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">nbAreteDouble</span>
+        <span class="ruby-identifier">nbDouble</span> = <span class="ruby-value">0</span>
+        <span class="ruby-ivar">@aretes</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">x</span>.<span class="ruby-identifier">estDouble</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">nbDouble</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">false</span>
+        }
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">nbDouble</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-nbAreteSimple" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">nbAreteSimple</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Compte le nombre d&#39;arete simple</p>
+
+<h3 id="method-i-nbAreteSimple-label-Return">Return<span><a href="#method-i-nbAreteSimple-label-Return">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p><code>nbSimple</code> : Le nombre d&#39;arete simple</p>
+</li></ul>
+          
+          
+
+          
+          <div class="method-source-code" id="nbAreteSimple-source">
+            <pre><span class="ruby-comment"># File Plateau/Grille.rb, line 151</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">nbAreteSimple</span>
+        <span class="ruby-identifier">nbSimple</span> = <span class="ruby-value">0</span>
+        <span class="ruby-ivar">@aretes</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">x</span>.<span class="ruby-identifier">estDouble</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">nbSimple</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> <span class="ruby-operator">:</span> <span class="ruby-keyword">false</span>
+        }
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">nbSimple</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-nbSommets" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">nbSommets</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Renvoie le nombre de sommets dans la grille.</p>
+
+<h3 id="method-i-nbSommets-label-Return">Return<span><a href="#method-i-nbSommets-label-Return">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p>+@sommets.count()+ : @sommets.count() Le nombre de sommets dans la grille.</p>
+</li></ul>
+          
+          
+
+          
+          <div class="method-source-code" id="nbSommets-source">
+            <pre><span class="ruby-comment"># File Plateau/Grille.rb, line 254</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">nbSommets</span>()
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@sommets</span>.<span class="ruby-identifier">count</span>()
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-retirerArete" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">retirerArete</span><span
+            class="method-args">(arete)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Retire une arete a la liste des sommets</p>
+
+<h3 id="method-i-retirerArete-label-Parametre">Parametre<span><a href="#method-i-retirerArete-label-Parametre">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p><code>sommet</code> : L&#39;arete a retirer</p>
+</li></ul>
+          
+          
+
+          
+          <div class="method-source-code" id="retirerArete-source">
+            <pre><span class="ruby-comment"># File Plateau/Grille.rb, line 105</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">retirerArete</span>(<span class="ruby-identifier">arete</span>)
+    <span class="ruby-ivar">@aretes</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">arete</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-retirerSommet" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">retirerSommet</span><span
+            class="method-args">(sommet)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Retire un sommet a la liste des sommets</p>
+
+<h3 id="method-i-retirerSommet-label-Parametre">Parametre<span><a href="#method-i-retirerSommet-label-Parametre">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p><code>sommet</code> : Le sommet a retirer</p>
+</li></ul>
+          
+          
+
+          
+          <div class="method-source-code" id="retirerSommet-source">
+            <pre><span class="ruby-comment"># File Plateau/Grille.rb, line 96</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">retirerSommet</span>(<span class="ruby-identifier">sommet</span>)
+    <span class="ruby-ivar">@sommets</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">sommet</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-testHamilton-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">testHamilton?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Cette methode calcule si il y a un chemin hamiltonien dans la grille.</p>
+
+<h3 id="method-i-testHamilton-3F-label-Return">Return<span><a href="#method-i-testHamilton-3F-label-Return">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p><code>boolean</code> : boolean Le resultat de l&#39;evaluation.</p>
+</li></ul>
+          
+          
+
+          
+          <div class="method-source-code" id="testHamilton-3F-source">
+            <pre><span class="ruby-comment"># File Plateau/Grille.rb, line 235</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">testHamilton?</span>()
+  <span class="ruby-identifier">marque</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword">false</span>)
+  <span class="ruby-identifier">stack</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>()
+
+  <span class="ruby-identifier">stack</span>.<span class="ruby-identifier">push</span>(<span class="ruby-ivar">@sommets</span>.<span class="ruby-identifier">first</span>)
+  <span class="ruby-keyword">while</span> <span class="ruby-operator">!</span><span class="ruby-identifier">stack</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">temp</span> = <span class="ruby-identifier">stack</span>.<span class="ruby-identifier">shift</span>
+    <span class="ruby-identifier">temp</span>.<span class="ruby-identifier">getVoisins</span>().<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword">if</span>(<span class="ruby-identifier">marque</span>[<span class="ruby-identifier">v</span>] <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>) <span class="ruby-keyword">then</span> <span class="ruby-identifier">stack</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">v</span>) <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">marque</span>[<span class="ruby-identifier">temp</span>] = <span class="ruby-keyword">true</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">if</span>(<span class="ruby-identifier">marque</span>.<span class="ruby-identifier">count</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">nbSommets</span>()) <span class="ruby-keyword">then</span> <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+  <span class="ruby-keyword">else</span> <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span> <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-to_s" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">to_s</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Converti la <a href="Grille.html"><code>Grille</code></a> en chaine de charactere</p>
+
+<h3 id="method-i-to_s-label-Return">Return<span><a href="#method-i-to_s-label-Return">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p><code>s</code> : La chaine de charactere correspondant a la grille</p>
+</li></ul>
+          
+          
+
+          
+          <div class="method-source-code" id="to_s-source">
+            <pre><span class="ruby-comment"># File Plateau/Grille.rb, line 177</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>()
+  <span class="ruby-identifier">s</span> = <span class="ruby-string">&quot;&quot;</span>
+  <span class="ruby-identifier">ajout</span> = <span class="ruby-keyword">false</span>
+  <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-ivar">@longueur</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+    <span class="ruby-value">0</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-ivar">@largeur</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">j</span><span class="ruby-operator">|</span>
+      <span class="ruby-ivar">@sommets</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword">if</span>(<span class="ruby-identifier">x</span>.<span class="ruby-identifier">position</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">i</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">position</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">j</span>)
+           <span class="ruby-identifier">s</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">valeur</span>.<span class="ruby-identifier">to_s</span>()
+           <span class="ruby-identifier">ajout</span> = <span class="ruby-keyword">true</span>
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-ivar">@aretes</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
+        <span class="ruby-comment">#p x.getListeCase()</span>
+        <span class="ruby-identifier">x</span>.<span class="ruby-identifier">getListeCase</span>().<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">y</span><span class="ruby-operator">|</span>
+          <span class="ruby-keyword">if</span>(<span class="ruby-identifier">y</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">i</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">y</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">j</span>)
+            <span class="ruby-identifier">s</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;|&quot;</span>
+            <span class="ruby-identifier">ajout</span> = <span class="ruby-keyword">true</span>
+          <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">if</span>(<span class="ruby-identifier">ajout</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">false</span>)
+        <span class="ruby-identifier">s</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;X&quot;</span>
+      <span class="ruby-keyword">end</span>
+      <span class="ruby-identifier">ajout</span> = <span class="ruby-keyword">false</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">s</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;\n&quot;</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">s</span> <span class="ruby-operator">+</span> <span class="ruby-string">&quot;\n&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-trouverErreurs" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">trouverErreurs</span><span
+            class="method-args">(grille)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Vérifie si la grille passée en parametre possède des erreurs par rapport a la grille générée et compte les erreurs</p>
+
+<h3 id="method-i-trouverErreurs-label-Param-C3-A8tres">Paramètres<span><a href="#method-i-trouverErreurs-label-Param-C3-A8tres">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p><code>grille</code> : la grille a vérifier</p>
+</li></ul>
+
+<h3 id="method-i-trouverErreurs-label-Return">Return<span><a href="#method-i-trouverErreurs-label-Return">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p><code>nbErreur</code> : le nombre d&#39;erreur</p>
+</li></ul>
+          
+          
+
+          
+          <div class="method-source-code" id="trouverErreurs-source">
+            <pre><span class="ruby-comment"># File Plateau/Grille.rb, line 279</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">trouverErreurs</span>(<span class="ruby-identifier">grille</span>)
+    <span class="ruby-identifier">objErreurs</span> = []
+    <span class="ruby-comment"># if @estGenere &amp;&amp; grilleIdentique(grille)</span>
+        <span class="ruby-keyword">for</span> <span class="ruby-identifier">i</span> <span class="ruby-keyword">in</span> <span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-identifier">grille</span>.<span class="ruby-identifier">sommets</span>.<span class="ruby-identifier">size</span>()
+            <span class="ruby-keyword">if</span> <span class="ruby-ivar">@sommets</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">nbArete</span> <span class="ruby-operator">&gt;=</span> <span class="ruby-value">1</span>
+                <span class="ruby-ivar">@sommets</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">listeArete</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">areteJeu</span><span class="ruby-operator">|</span>
+                    <span class="ruby-comment">#on récupere l&#39;autre sommet de l&#39;arete</span>
+                    <span class="ruby-identifier">autreSommet</span> = <span class="ruby-ivar">@sommets</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">autreSommet</span>(<span class="ruby-identifier">areteJeu</span>)
+                    <span class="ruby-comment">#on recupere son index dans la liste des sommets de la grille</span>
+                    <span class="ruby-identifier">index</span> = <span class="ruby-ivar">@sommets</span>.<span class="ruby-identifier">find_index</span>(<span class="ruby-identifier">autreSommet</span>)
+                    <span class="ruby-identifier">index</span> = <span class="ruby-identifier">index</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">?</span> <span class="ruby-value">0</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">index</span>
+                    <span class="ruby-identifier">areteGene</span> = <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">sommets</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">donneAreteAvec</span>(<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">sommets</span>[<span class="ruby-identifier">index</span>])
+                    <span class="ruby-keyword">if</span> (<span class="ruby-identifier">areteGene</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>)
+                        <span class="ruby-keyword">if</span> (<span class="ruby-identifier">areteJeu</span>.<span class="ruby-identifier">estDouble</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">areteGene</span>.<span class="ruby-identifier">estDouble</span>)
+                            <span class="ruby-ivar">@sommets</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">estErreur</span> = <span class="ruby-keyword">true</span>
+                            <span class="ruby-identifier">areteJeu</span>.<span class="ruby-identifier">estErreur</span> = <span class="ruby-keyword">true</span>
+                            <span class="ruby-identifier">objErreurs</span>.<span class="ruby-identifier">push</span>(<span class="ruby-ivar">@sommets</span>[<span class="ruby-identifier">i</span>])
+                        <span class="ruby-keyword">end</span>
+                    <span class="ruby-keyword">end</span>
+                    <span class="ruby-comment">#on regarde si cette arete existe dans le grille originale</span>
+                    <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span>(<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">sommets</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">possedeAreteAvec</span>(<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">sommets</span>[<span class="ruby-identifier">index</span>]))
+                        <span class="ruby-ivar">@sommets</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">estErreur</span> = <span class="ruby-keyword">true</span>
+                        <span class="ruby-identifier">areteJeu</span>.<span class="ruby-identifier">estErreur</span> = <span class="ruby-keyword">true</span>
+                        <span class="ruby-identifier">objErreurs</span>.<span class="ruby-identifier">push</span>(<span class="ruby-ivar">@sommets</span>[<span class="ruby-identifier">i</span>])
+                    <span class="ruby-keyword">end</span>
+                <span class="ruby-keyword">end</span>
+            <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+    <span class="ruby-comment"># end</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">objErreurs</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.2.1.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

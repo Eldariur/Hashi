@@ -1,4 +1,4 @@
-require_relative "../Chrono/Chronometre.rb"
+require_relative "Chronometre.rb"
 
 c = Chrono.nouveau()
 

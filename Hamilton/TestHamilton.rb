@@ -1,8 +1,8 @@
-require_relative "../Code/Grille.rb"
-require_relative "../Code/Case.rb"
-require_relative "../Code/Sommet.rb"
-require_relative "../Code/Arete.rb"
-require_relative "../Code/Undo.rb"
+require_relative "../Plateau/Grille.rb"
+require_relative "../Plateau/Case.rb"
+require_relative "../Plateau/Sommet.rb"
+require_relative "../Plateau/Arete.rb"
+require_relative "../Undo/Undo.rb"
 
 #Création d'une première grille.
 grille = Grille.creer(7, 7)

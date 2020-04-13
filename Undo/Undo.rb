@@ -1,4 +1,4 @@
-require_relative 'Arete.rb'
+require_relative '../Plateau/Arete.rb'
 
 #Class undo, permet de stocker les actions du joueurs
 class Undo
@@ -6,7 +6,8 @@ class Undo
 	##Partie variables d'instance
 
 	# @tabAction -> Stocke les arretes qu'il a jouer
-	
+
+	# Creer un objet Undo
 	def Undo.creer()
 		new()
 	end
@@ -18,7 +19,7 @@ class Undo
 
 	#Privatise le new
 	private_class_method :new
-	
+
 
 	##Partie initialize
 
@@ -28,7 +29,7 @@ class Undo
 	def initialize()
 		@tabAction = Array.new
 	end
-	
+
 	# empile la dernière Arete ajouter dans la grile
 	#
 	# ===Paramètres

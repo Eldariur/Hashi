@@ -1,12 +1,12 @@
-# Ce fichier sert à generer tout les fichiers de sauvegarde des tutoriels.
+# Ce fichier sert à générer tous les fichiers de sauvegarde des tutoriels.
 # À n'éxécuter qu'une seule fois !
 
-require_relative "../Code/Grille.rb"
-require_relative "../Code/Case.rb"
-require_relative "../Code/Sommet.rb"
-require_relative "../Code/Arete.rb"
+require_relative "../Plateau/Grille.rb"
+require_relative "../Plateau/Case.rb"
+require_relative "../Plateau/Sommet.rb"
+require_relative "../Plateau/Arete.rb"
 require_relative "../Sauvegarde/Sauvegarde.rb"
-require_relative "../Code/Undo.rb"
+require_relative "../Undo/Undo.rb"
 
 if(!Dir.exist?("#{$cheminRacineHashi}/Tutoriel/Niveaux")) then
   Dir::mkdir("#{$cheminRacineHashi}/Tutoriel/Niveaux", 0777)
