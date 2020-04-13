@@ -1,4 +1,4 @@
-# Classe représentant un bouton du tutoriel, permet de charger une grille de jeu du tutoriel, herite de la classe Gtk::Button
+# Classe représentant un bouton du tutoriel, permet de charger une grille de jeu du tutoriel, hérite de la classe Gtk::Button
 class BoutonTuto < Gtk::Button
 
   ## Partie variables d'instance

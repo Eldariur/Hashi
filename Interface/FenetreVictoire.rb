@@ -13,8 +13,8 @@ class FenetreVictoire < Gtk::Box
   #
   # === Paramètres
   #
-  # * +window+ : window la fenetre principale du programme
-  # * +difficulte+ : difficulte la difficulte de la grille de jeu précédemment effectuée
+  # * +window+ : window la fenêtre principale du programme
+  # * +difficulte+ : difficulte la difficulté de la grille de jeu précédemment effectuée
   # * +chr+ : chr le temps effectué pour faire la grille précédemment jouée
   def initialize(window, fenPre, difficulte, chr)
     @@fenetre = window

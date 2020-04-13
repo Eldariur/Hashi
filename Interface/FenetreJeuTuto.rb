@@ -10,8 +10,8 @@ class FenetreJeuTuto < FenetreJeu
 	#
 	# === Paramètres
 	#
-  # * +window+ : window la fenetre principale du programme
-  # * +fenPre+ : fenPre la fenetre précédente
+  # * +window+ : window la fenêtre principale du programme
+  # * +fenPre+ : fenPre la fenêtre précédente
   # * +diff+ : la difficulté de la grille de jeu à créer
   # * +tuto+ : un objet de la classe Tutoriel
 

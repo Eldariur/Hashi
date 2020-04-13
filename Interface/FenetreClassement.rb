@@ -8,14 +8,14 @@ class FenetreClassement < Gtk::Box
   # @@fenetre -> la fenêtre principale du programme
   # @@fenPrev -> la fenêtre précédente
   # @nbCol -> le nombre de colonne du classement
-  # @nbLig -> le nombre de ligne du Classement
+  # @nbLig -> le nombre de ligne du classement
   # @rang -> le rang du pseudo dans le classement
   # @diff -> la difficulté dans lequel les scores sont enregistrés
   # @boutonFacile -> le bouton du menu du classement du mode facile
   # @boutonNormal -> le bouton du menu du classement du mode normal
   # @boutonDifficile -> le bouton du menu du classement du mode difficile
   # @boutonRetour -> le bouton permettant de revenir à la fenêtre précédente
-  # @tbl -> tableau du classsement
+  # @tbl -> tableau du classement
 
 
   ## Partie initialize
@@ -24,8 +24,8 @@ class FenetreClassement < Gtk::Box
   #
   # === Paramètres
   #
-  # * +window+ : window la fenetre principale du programme
-  # * +fenPre+ : fenPre la fenetre précédente
+  # * +window+ : window la fenêtre principale du programme
+  # * +fenPre+ : fenPre la fenêtre précédente
   def initialize(window, fenPrev)
     @@fenetre = window
     @nbCol = 4
@@ -85,7 +85,7 @@ class FenetreClassement < Gtk::Box
   #
   # === Paramètres
   #
-  # * +pseudo+ : pseudo Pseudo de a personne inscrite sur le classement
+  # * +pseudo+ : pseudo Pseudo de la personne inscrite sur le classement
   # * +scr+ : scr score de la personne inscrite sur le classement
   def ajouterLig(pseudo = "",scr = "0")
     @nbLig +=1

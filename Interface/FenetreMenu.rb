@@ -12,7 +12,7 @@ class FenetreMenu < Gtk::Box
   #
   # === Paramètres
   #
-  # * +window+ : window la fenetre principale du programme
+  # * +window+ : window la fenêtre principale du programme
   def initialize(window)
     super(Gtk::Orientation::VERTICAL)
     @@fenetre = window
@@ -41,8 +41,6 @@ class FenetreMenu < Gtk::Box
     vBox.add(bouton3)
     tbl.attach(vBox,0,1,0,1, Gtk::AttachOptions::EXPAND, Gtk::AttachOptions::EXPAND, 0, @@fenetre.default_size[1] / 3)
     self.add(tbl)
-
-    #@@fenetre.add(self)
 
   end
 end

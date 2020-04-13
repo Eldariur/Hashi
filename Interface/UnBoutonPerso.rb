@@ -1,14 +1,14 @@
-#Class UnBoutonPerso, permet de modifier les boutons et de leur ajouter des méthodes, herite de la classe Gtk::Button
+#Class UnBoutonPerso, permet de modifier les boutons et de leurs ajouter des méthodes, hérite de la classe Gtk::Button
 class UnBoutonPerso < Gtk::Button
 	@Override
 	##Partie initialize
 	#Initialisation de la classe UnBoutonPerso
 	#
 	# === Paramètres
-	# 
-	# * +str+ : Défini le message à afficher sûr le bouton.
+	#
+	# * +str+ : Défini le message à afficher sur le bouton.
 	# * +nom+ : Défini un nom au bouton pour le css
-	# * +labelNom+ : Défini un label en plus. 
+	# * +labelNom+ : Défini un label en plus.
   def initialize(str="", nom="UnBoutonPerso", labelNom="UnLabelPerso")
 		super()
 
@@ -21,15 +21,15 @@ class UnBoutonPerso < Gtk::Button
 		}
 	end
   end
-	
+
 	# Partie méthodes
 
-	#Permet d'empecher l'utilisateur de cliquer sûr le bouton.
+	#Permet d'empêcher l'utilisateur de cliquer sur le bouton.
 	def verrouiller()
 		self.set_sensitive(false)
 	end
 
-	#Permet d'autoriser l'utilisateur de cliquer sûr le bouton.
+	#Permet d'autoriser l'utilisateur de cliquer sur le bouton.
 	def deverrouiller()
 		self.set_sensitive(true)
 	end
