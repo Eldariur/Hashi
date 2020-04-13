@@ -79,7 +79,7 @@ class Chrono < Gtk::Label
   end
 
 	# Cette méthode ajoute du malus dans un chronomètre.
-	# === Parametre
+	# === Paramètres
 	# * +val+ : val La valeur de malus.
 	def addMalus(val)
 		@malus += val
@@ -135,7 +135,7 @@ class Chrono < Gtk::Label
 end
 
 # Méthode de test pour arrêter le chronomètre en fonction d'un temps en secondes donné.
-# === Parametre
+# === Paramètres
 # * +t+ : t Le temps pour temporiser.
 # * +c+ : c Le chronomètre.
 def stoptemps(t,c)
@@ -146,7 +146,7 @@ def stoptemps(t,c)
 end
 
 # Méthode de test pour arrêter le chronomètre en fonction de l'appuie sur une touche.
-# === Parametre
+# === Paramètres
 # * +c+ : c Le chronomètre.
 def stopsaisie(c)
   test = nil

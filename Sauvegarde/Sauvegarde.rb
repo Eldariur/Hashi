@@ -23,7 +23,7 @@ class Sauvegarde
   private_class_method :new
 
   # Initialisation de la class Sauvegarde.
-  # === Parametre
+  # === Paramètres
   # * +grille+ : grille La grille à sauvegarder.
   # * +grilleComplete+ : grilleComplete La grille complète  de la grille à sauvegarder.
   # * +chrono+ : chrono Le chronomètre à sauvegarder.
@@ -43,7 +43,7 @@ class Sauvegarde
   end
 
   # Créer un nouveau chronomètre.
-  # === Parametre
+  # === Paramètres
   # * +grille+ : grille La grille à sauvegarder.
   # * +grilleComplete+ : grilleComplete La grille complète de la grille à sauvegarder.
   # * +chrono+ : chrono Le chronomètre à sauvegarder.
@@ -76,7 +76,7 @@ class Sauvegarde
   end
 
   # Permet de sauvegarder avec un nom spécifique.
-  # === Parametre
+  # === Paramètres
   # * +nom+ : nom Le nom de la sauvegarde.
   def sauvegarderAvecNom(nom)
     dump = YAML::dump(self)
@@ -107,7 +107,7 @@ class Sauvegarde
   end
 
   # Charge une sauvegarde depuis un fichier en fonction du nom passé en paramètre.
-  # === Parametre
+  # === Paramètres
   # * +nom+ : nom Le nom de la sauvegarde.
   # === Return
   # * +save+ : save La sauvegarde chargée.
@@ -117,7 +117,7 @@ class Sauvegarde
   end
 
   # Permet de créer une hypothèse.
-  # === Parametre
+  # === Paramètres
   # * +grille+ : grille La grille à sauvegarder pour l'hypothèse.
   def Sauvegarde.nouvelleHypothese(grille)
     save = Sauvegarde.nouvelle(grille,nil,nil,nil,true)
@@ -130,7 +130,7 @@ class Sauvegarde
   end
 
   # Annule une hypothèse en cours et retourne l'ancienne grille pre-hypothèse.
-  # === Parametre
+  # === Paramètres
   # * +mode+ : mode Permet d'exploiter la méthode en ajoutant une fonctionnalité qui ne supprime pas le fichier.
   # === Return
   # * +save.grille+ : save.grille La grille de la sauvegarde.

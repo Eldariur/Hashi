@@ -19,7 +19,7 @@ class Highscore < ActiveRecord::Base
 	end
 
 	# Cette méthode sauvegarde un highscore dans la base de données.
-	# === Parametre
+	# === Paramètres
 	# * +pseudo+ : pseudo Le pseudo associé au highscore.
 	# * +points+ : points Les points associés au highscore.
 	# * +difficulte+ : difficulte La difficulté associée au highscore.
