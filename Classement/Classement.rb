@@ -33,7 +33,10 @@ class Classement
   # * +boolean+ : boolean Un boolean qui indique si un score doit être enregistré.
   def isHighScore?(score)
     self.recupererDonnees()
+    puts(score.difficulte)
     if(score.difficulte == @difficulte) then
+	puts(@liste.last.score.to_i)
+	puts(@score.to_i)
       if(@liste.empty? || @liste.count < 20 || @liste.last.score.to_i < score.to_i ) then
         if(@liste.count >= 20) then
           puts "    Sortie de -> #{@liste.last}"

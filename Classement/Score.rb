@@ -9,7 +9,7 @@ class Score
 	#@difficulte -> La difficulté liée au score.
 
 	# Accesseur get sur l'attribut pseudo.
-	attr:pseudo, false
+	attr:pseudo, true
 	# Accesseur get sur l'attribut score.
 	attr:points, false
 	# Accesseur get sur l'attribut time.
@@ -30,6 +30,7 @@ class Score
 		@points = 0
 		@temps = time
 		@difficulte = difficulte
+		self.calculScore()
 	end
 
 	# Créer un nouveau score.
@@ -59,7 +60,6 @@ class Score
 
 	# Cette méthode sauvegarde un score dans la base de données.
 	def sauvegarder()
-		self.calculScore()
 		classementTemp =  Classement.creer(@difficulte)
 		highscoreTemp = Highscore.creer()
 		if classementTemp.isHighScore?(self) then highscoreTemp.sauvegarder(@pseudo, @points, @difficulte) end
