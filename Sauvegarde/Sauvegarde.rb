@@ -2,8 +2,8 @@ require 'yaml'
 
 # Cette classe représente une sauvegarde.
 class Sauvegarde
-  #@grille -> La grille sauvegardé.
-  #@grilleComplete -> La grille complète de la grille sauvegardé.
+  #@grille -> La grille sauvegardée.
+  #@grilleComplete -> La grille complète de la grille sauvegardée.
   #@chronometre -> Le chronomètre sauvegardé.
   #@estHypothese -> Si la sauvegarde est une hypothèse ou non.
   #@difficulte -> La difficulte de la sauvegarde.
@@ -22,7 +22,7 @@ class Sauvegarde
   # Privatise le new.
   private_class_method :new
 
-  # Initialisation de la class Sauvegarde.
+  # Initialisation de la classe Sauvegarde.
   # === Paramètres
   # * +grille+ : grille La grille à sauvegarder.
   # * +grilleComplete+ : grilleComplete La grille complète  de la grille à sauvegarder.
@@ -47,7 +47,7 @@ class Sauvegarde
   # * +grille+ : grille La grille à sauvegarder.
   # * +grilleComplete+ : grilleComplete La grille complète de la grille à sauvegarder.
   # * +chrono+ : chrono Le chronomètre à sauvegarder.
-  # * +difficulte+ : difficulte La difficulte de la grille.
+  # * +difficulte+ : difficulte La difficulté de la grille.
   # * +hypothese+ : hypothese Le choix d'une sauvegarde pour une hypothèse ou non.
   def Sauvegarde.nouvelle(grille, grilleComplete, chrono, difficulte, hypothese = false)
     new(grille, grilleComplete, chrono, difficulte, hypothese)
@@ -171,7 +171,8 @@ class Sauvegarde
     end
   end
 
-  # Cette méthode redefini to_s pour afficher une sauvegarde.
+  # Cette méthode redéfinit to_s pour afficher une sauvegarde.
+  @Override
   def to_s
     if(@estHypothese) then
       "Sauvegarde : \n-Grille :\n\n#{@grille}-estHypo = #{@estHypothese}\n---------------------------------------------------\n"

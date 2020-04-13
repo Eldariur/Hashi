@@ -1,7 +1,7 @@
 
 # Cette classe représente un tutoriel.
 class Tutoriel
-	#@niveau -> Represente le numero du tutoriel.
+	#@niveau -> Représente le numéro du tutoriel.
 	#@txtTuto -> Contient le texte associé au tutoriel.
 
 	attr_reader :txtTuto, :niveau
@@ -9,9 +9,9 @@ class Tutoriel
 	# Privatise le new.
 	private_class_method :new
 
-	# Initialisation de la class Tutoriel.
+	# Initialisation de la classe Tutoriel.
 	# === Paramètres
-	# * +numeroNiveau+ : numeroNiveau Le numero du niveau.
+	# * +numeroNiveau+ : numeroNiveau Le numéro du niveau.
 	def initialize(numeroNiveau)
 		@niveau = numeroNiveau
 		@txtTuto = nil
@@ -19,7 +19,7 @@ class Tutoriel
 
   # Créer un nouveau tutoriel.
 	# === Paramètres
-	# * +numeroNiveau+ : numeroNiveau Le numero du niveau.
+	# * +numeroNiveau+ : numeroNiveau Le numéro du niveau.
 	def Tutoriel.nouveau(numeroNiveau)
 		new(numeroNiveau)
 	end

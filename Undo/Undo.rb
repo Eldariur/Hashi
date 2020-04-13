@@ -1,13 +1,13 @@
 require_relative '../Plateau/Arete.rb'
 
-#Class undo, permet de stocker les actions du joueurs
+#Class Undo, permet de stocker les actions du joueurs
 class Undo
 
 	##Partie variables d'instance
 
-	# @tabAction -> Stocke les arretes qu'il a jouer
+	# @tabAction -> Stocke les arêtes qu'il a joué
 
-	# Creer un objet Undo
+	# Créer un objet Undo
 	def Undo.creer()
 		new()
 	end
@@ -30,26 +30,27 @@ class Undo
 		@tabAction = Array.new
 	end
 
-	# empile la dernière Arete ajouter dans la grile
+	# empile la dernière Arete ajoutée dans la grille
 	#
 	# ===Paramètres
-	# * +arete+ : Ajout de la dernière arete jouer par le joueur
+	# * +arete+ : Ajout de la dernière arête jouée par le joueur
 	def empile(arete)
 		@tabAction.push(arete)
 	end
 
-	# empile la dernière Arete ajouter dans la grile
+	# empile la dernière Arete ajoutée dans la grille
 	#
 	# ===Returne
-	# * +arete+ : depile la dernière arete jouer par le joueur
+	# * +arete+ : dépile la dernière arête jouée par le joueur
 	def depile()
 		return @tabAction.pop()
 	end
 
-	#Redefinition de la méthode to_s pour l'affichage de undo
+	#Redéfinition de la méthode to_s pour l'affichage de undo
 	#
 	# ===Return
 	# * +string+ * : renvoie une version en string de la pile
+	@Override
 	def to_s()
 		return "Array Undo : " +  @tabAction.to_s()
 	end
