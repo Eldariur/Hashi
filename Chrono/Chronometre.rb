@@ -4,7 +4,7 @@ require 'gtk3'
 class Chrono < Gtk::Label
   #@stop -> Permet de stopper le chronomètre.
   #@total -> Contient le total de secondes écoulées.
-  #@base -> Permet de sauvegarder le temps à partir du quel on chronomètre.
+  #@base -> Permet de sauvegarder le temps à partir duquel on chronomètre.
   #@temp -> Permet de pouvoir relancer le chronomètre avec une valeur déjà existante.
   #@malus -> Le malus en secondes du chronomètre.
   #@th -> Le Thread du chronomètre.
@@ -79,7 +79,7 @@ class Chrono < Gtk::Label
   end
 
 	# Cette méthode ajoute du malus dans un chronomètre.
-	# === Parametre
+	# === Paramètres
 	# * +val+ : val La valeur de malus.
 	def addMalus(val)
 		@malus += val
@@ -115,6 +115,7 @@ class Chrono < Gtk::Label
   end
 
 	# Cette méthode redéfini to_s pour afficher un chronomètre.
+	@Override
 	def to_s()
 		self.to_chrono()
 	end
@@ -134,8 +135,8 @@ class Chrono < Gtk::Label
 
 end
 
-# Méthode de test pour arrêter le chronomètre en fonction d'un temps en secondes donné.
-# === Parametre
+# Méthode de test pour arrêter le chronomètre en fonction d'un temps en secondes données.
+# === Paramètres
 # * +t+ : t Le temps pour temporiser.
 # * +c+ : c Le chronomètre.
 def stoptemps(t,c)
@@ -146,7 +147,7 @@ def stoptemps(t,c)
 end
 
 # Méthode de test pour arrêter le chronomètre en fonction de l'appuie sur une touche.
-# === Parametre
+# === Paramètres
 # * +c+ : c Le chronomètre.
 def stopsaisie(c)
   test = nil
