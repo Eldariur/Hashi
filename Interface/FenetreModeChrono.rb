@@ -12,7 +12,7 @@ class FenetreModeChrono < Gtk::Box
   #
   # === Paramètres
   #
-  # * +window+ : window la fenetre principale du programme
+  # * +window+ : window la fenêtre principale du programme
   # * +fenetrePre+ : fenetrePre la fenêtre précédente
   def initialize(window,fenetrePre)
     @@fenetre = window

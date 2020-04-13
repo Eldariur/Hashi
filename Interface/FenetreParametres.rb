@@ -12,8 +12,8 @@ class FenetreParametres < Gtk::Box
   #
   # === Paramètres
   #
-  # * +window+ : window la fenetre principale du programme
-  # * +fenPre+ : fenPre la fenetre précédente
+  # * +window+ : window la fenêtre principale du programme
+  # * +fenPre+ : fenPre la fenêtre précédente
   def initialize(window,fenPre)
     @@fenetre = window
     super(Gtk::Orientation::VERTICAL)
@@ -111,11 +111,11 @@ class FenetreParametres < Gtk::Box
 
 end
 
-# Classe représentant un curseur personnalisé pour la définir la taille de la grille de jeu
+# Classe représentant un curseur personnalisé pour définir la taille de la grille de jeu
 class UneScaleTaille < Gtk::Scale
   ## Partie variables d'instance
 
-  # @cur_value -> la valeur à laquel est positionné le curseur
+  # @cur_value -> la valeur à laquelle est positionné le curseur
 
   ## Partie initialize
 
@@ -165,12 +165,12 @@ class UneScaleTaille < Gtk::Scale
   end
 end
 
-# Classe représentant un curseur personnalisé pour la définir la densité de la grille de jeu
+# Classe représentant un curseur personnalisé pour définir la densité de la grille de jeu
 class UneScaleDensite < Gtk::Scale
 
   ## Partie variables d'instance
 
-  # @cur_value -> la valeur à laquel est positionné le curseur
+  # @cur_value -> la valeur à laquelle est positionné le curseur
 
   ## Partie initialize
 

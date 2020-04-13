@@ -10,8 +10,8 @@ class FenetreRegle < Gtk::Box
   #
   # === Paramètres
   #
-  # * +window+ : window la fenetre principale du programme
-  # * +fenpre+ : fenpre la fenetre précédente
+  # * +window+ : window la fenêtre principale du programme
+  # * +fenpre+ : fenpre la fenêtre précédente
   def initialize(window,fenpre)
     @@fenetre = window
     super(Gtk::Orientation::VERTICAL)

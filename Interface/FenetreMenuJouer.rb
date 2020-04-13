@@ -1,4 +1,4 @@
-# Classe permettant d'afficher la fenêtre des menus après avoir cliquer sur le bouton jouer
+# Classe permettant d'afficher la fenêtre des menus après avoir cliqué sur le bouton jouer
 class	 FenetreMenuJouer < Gtk::Box
   ## Partie variables d'instance
 
@@ -11,8 +11,8 @@ class	 FenetreMenuJouer < Gtk::Box
   #
   # === Paramètres
   #
-  # * +window+ : window la fenetre principale du programme
-  # * +fenPre+ : fenPre la fenetre précédente
+  # * +window+ : window la fenêtre principale du programme
+  # * +fenPre+ : fenPre la fenêtre précédente
   def initialize(window,fenPre)
     super(Gtk::Orientation::VERTICAL)
     @@fenetre = window

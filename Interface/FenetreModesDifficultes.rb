@@ -1,4 +1,4 @@
-# Classe permettant d'afficher les différentes modes de difficultés du jeu
+# Classe permettant d'afficher le menu des différents modes de difficultés du jeu
 class FenetreModesDifficultes < Gtk::Box
   ## Partie variables d'instance
 

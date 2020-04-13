@@ -3,8 +3,8 @@ class FenetreTuto < Gtk::Box
   ## Partie variables d'instance
 
   # @@fenetre -> la fenêtre principale du programme
-  # @boxTutoBasique -> la box dans lequel sera mis les boutons des tutoriels Basiques
-  # @boxTutoAvance -> la box dans lequel sera mis les boutons des tutoriels Avancés
+  # @boxTutoBasique -> la box dans laquelle sera mis les boutons des tutoriels Basiques
+  # @boxTutoAvance -> la box dans laquelle sera mis les boutons des tutoriels Avancés
 
   ## Partie initialize
 
@@ -12,8 +12,8 @@ class FenetreTuto < Gtk::Box
   #
   # === Paramètres
   #
-  # * +window+ : window la fenetre principale du programme
-  # * +fenPre+ : fenPre la fenetre précédente
+  # * +window+ : window la fenêtre principale du programme
+  # * +fenPre+ : fenPre la fenêtre précédente
   def initialize(window,fenPre)
     @@fenetre = window
     super(Gtk::Orientation::VERTICAL)
