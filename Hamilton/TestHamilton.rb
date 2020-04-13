@@ -35,4 +35,4 @@ arete11 = Arete.creer(sommet10, sommet11)
 grille.afficher()
 
 #Résultat parcours hamiltonien possible :
-puts 'Il y a un parcours hamiltonien : '+grille.testHamilton?().to_s
+puts 'Il y a un parcours hamiltonien : '+grille.estHamilton?().to_s

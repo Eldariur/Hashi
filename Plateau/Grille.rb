@@ -232,7 +232,7 @@ class Grille
   # Cette methode calcule si il y a un chemin hamiltonien dans la grille.
   # === Return
   # * +boolean+ : boolean Le resultat de l'evaluation.
-  def testHamilton?()
+  def estHamilton?()
     marque = Hash.new(false)
     stack = Array.new()
 
