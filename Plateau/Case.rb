@@ -3,11 +3,11 @@ class Case
 
 	## Partie variables d'instance
 
-	# @x -> Coordonée X de la case
-	# @y -> Coordonée Y de la case
+	# @x -> Coordonnée X de la case
+	# @y -> Coordonnée Y de la case
 	# @grille -> La grille dans laquelle la case se trouve
 	# @contenu -> Le contenu de la case
-	# @surbrillance -> Booleen qui defini si la case est en surbrillance ou non
+	# @surbrillance -> Booléen qui definit si la case est en surbrillance ou non
 
   ## Partie accesseurs
 
@@ -19,12 +19,12 @@ class Case
 
   ## Partie initialize
 
-	# Initialisation de la class Case
+	# Initialisation de la classe Case
 	#
 	# === Paramètres
 	#
-	# * +x+ : Coordonée X de la case
-	# * +y+ : Coordonée Y de la case
+	# * +x+ : Coordonnée X de la case
+	# * +y+ : Coordonnée Y de la case
     def initialize(x, y)
         @x = x
         @y = y
@@ -37,7 +37,7 @@ class Case
     #
     # === Return
     #
-    # True si a la case a au moins 1 voisin, false sinon
+    # True si la case a au moins 1 voisin, false sinon
     def aSommetVoisin()
         if(@grille != nil)
             #puts "dimension de la grille : " + @grille.longueur.to_s + ":" + @grille.largeur.to_s
@@ -55,11 +55,11 @@ class Case
         end
     end
 
-	##Teste si la case est une case voisine
+	##Test si la case est une case voisine
 	#
 	# === Paramètre
 	#
-	# * +caseTest+ : la case a tester
+	# * +caseTest+ : la case à tester
 	#
 	# === Return
 	#
@@ -80,11 +80,11 @@ class Case
       return @contenu==nil
     end
 
-    ##Teste si la case contient une arete
+    ##Test si la case contient une arête
     #
     # === Return
     #
-    # True si la case contient une arete, false dans tout les autres cas
+    # True si la case contient une arête, false dans tous les autres cas
     def aArete()
         if !estVide()
             return contenu.class == Arete
@@ -92,11 +92,11 @@ class Case
         return false
     end
 
-    ##Teste si la case contient un sommet
+    ##Test si la case contient un sommet
     #
     # === Return
     #
-    # True si la case contient un sommet, false dans tout les autres cas
+    # True si la case contient un sommet, false dans tous les autres cas
     def aSommet()
         if !estVide()
             return contenu.class == Sommet

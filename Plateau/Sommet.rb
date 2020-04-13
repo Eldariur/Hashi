@@ -1,15 +1,15 @@
-#Class représentant un Sommet
+#Classe représentant un Sommet
 class Sommet
 
 	## Partie variables d'instance
 
   #@listeArete	-> Liste des Aretes du Sommet
   #@position		-> Case dans laquelle le sommet est placé
-  #@valeur		-> Entier représentant la valeur du Sommet (nombre d'arete total)
-  #@complet		-> Booleen qui défini si un sommet est complet ou non (toutes les aretes occupées)
-  #@estErreur     -> Booleen définissant si le sommet est une erreur ou non
+  #@valeur		-> Entier représentant la valeur du Sommet (nombre d'arête total)
+  #@complet		-> Booléen qui définit si un sommet est complet ou non (toutes les aretes occupées)
+  #@estErreur     -> Booléen définissant si le sommet est une erreur ou non
 
-  #creer un Sommet proprement
+  #créer un Sommet proprement
   def self.creer(valeur, position, complet = false)
       objet = new(valeur, position, complet)
       objet.completerInitialize()
@@ -44,19 +44,19 @@ class Sommet
 
 	## Partie méthodes
 
-	##Complete le initialize
-    #s'ajoute comme contenu de la case dans laquelle il est et a la liste de sommet de la grille
+	##Complète le initialize
+    #s'ajoute comme contenu de la case dans laquelle il est et à la liste de sommet de la grille
     def completerInitialize()
         @position.contenu = self
         @position.grille.addSommet(self)
     end
 
-    ##Compte le nombre d'arete
-    #parcours toute les arete pour compter le nombre d'arete
+    ##Compte le nombre d'arête
+    #parcours toutes les arête pour compter le nombre d'arête
     #
     # === Return
     #
-    # * +total+ : Le nombre total d'arete liés au Sommet
+    # * +total+ : Le nombre total d'arête liées au Sommet
     def compterArete()
         total = 0
         @listeArete.each{ |arete|
@@ -65,12 +65,12 @@ class Sommet
         return total
     end
 
-    ##ajoute une arête a la liste de ses arrete
+    ##ajoute une arête à la liste de ses arêtes
     def ajouterArete(arete)
         @listeArete << (arete)
     end
 
-    ##retire une arête de la liste de ses arrete
+    ##retire une arête de la liste de ses arêtes
     def retirerArete(arete)
         @listeArete.delete(arete)
     end
@@ -309,15 +309,15 @@ class Sommet
       return voisinsAreteCommune.uniq().size() == self.compterVoisins()
     end
 
-    ## Méthode vérifiant si le sommet possède une arete vers tel autre sommet
+    ## Méthode vérifiant si le sommet possède une arête vers tel autre sommet
     #
     # === Paramètres
     #
-    # * +sommet+ : les sommet de destination de l'arete
+    # * +sommet+ : les sommets de destination de l'arête
     #
     # === Return
     #
-    # True si le sommet a une arete vers le sommet, false sinon
+    # True si le sommet a une arête vers le sommet, false sinon
     def possedeAreteAvec(sommet)
         aArete = false
         @listeArete.each do |arete|
@@ -328,15 +328,15 @@ class Sommet
         return aArete
     end
 
-    ## Méthode qui permet de récupérer l'arete avec un tel autre sommet si elle existe
+    ## Méthode qui permet de récupérer l'arête avec un tel autre sommet si elle existe
     #
     # === Paramètres
     #
-    # * +sommet+ : les sommet de destination de l'arete
+    # * +sommet+ : les sommets de destination de l'arête
     #
     # === Return
     #
-    # L'arete entre ces sommets si elle existe, nil sinon
+    # L'arête entre ces sommets si elle existe, nil sinon
     def donneAreteAvec(sommet)
         if(possedeAreteAvec(sommet))
             @listeArete.each do |arete|
@@ -347,15 +347,15 @@ class Sommet
         end
     end
 
-    ## Méthode permettant de récupérer le sommet de l'autre coté d'une arete
+    ## Méthode permettant de récupérer le sommet de l'autre coté d'une arête
     #
     # === Paramètres
     #
-    # * +arete+ : l'arete dont on doit trouver l'autre sommet
+    # * +arete+ : l'arête dont on doit trouver l'autre sommet
     #
     # === Return
     #
-    # L'autre sommet relié par l'arete
+    # L'autre sommet relié par l'arête
     def autreSommet(arete)
         if @listeArete.include?(arete)
             if arete.sommet1 == self
@@ -366,11 +366,11 @@ class Sommet
         end
     end
 
-    ## Méthode permettant de connaitre le nombre d'arete que posède le sommet
+    ## Méthode permettant de connaître le nombre d'arête que possède le sommet
     #
     # === Return
     #
-    # La taille du tableau d'arete
+    # La taille du tableau d'arête
     def nbArete()
         return @listeArete.length()
     end

@@ -9,10 +9,10 @@ class Grille
   #@largeur		-> Largeur de la grille (0vY)
   #@table		-> La matrice des Case de la grille
   #@sommets		-> Le Tableau des sommets de la grille
-  #@aretes		-> Le Tableau des aretes de la grille
+  #@aretes		-> Le Tableau des arêtes de la grille
   #@undo -> Pile de mouvement.
 
-  #Creer un objet Grille proprement
+  #Créer un objet Grille proprement
   def self.creer(longueur, largeur)
       objet = new(longueur, largeur)
       objet.completerInitialize()
@@ -46,7 +46,7 @@ class Grille
 
   ## Partie méthodes
 
-  #Complete le initialize
+  #Complète le initialize
   #ajoute self comme grille des cases de la matrice
   def completerInitialize()
     for i in 0...@longueur do
@@ -60,8 +60,8 @@ class Grille
   #
   # === Paramètre
   #
-  # * +x+ : Le x de la case a obtenir
-  # * +y+ : Le y de la case a obtenir
+  # * +x+ : Le x de la case à obtenir
+  # * +y+ : Le y de la case à obtenir
   #
   # === Return
   #
@@ -70,44 +70,44 @@ class Grille
       return @table[x, y]
   end
 
-  ##Ajoute un sommet a la liste des sommets
+  ##Ajoute un sommet à la liste des sommets
   #
   # === Parametre
   #
-  # * +sommet+ : Le sommet a ajouter
+  # * +sommet+ : Le sommet à ajouter
   def addSommet(sommet)
       @sommets.push(sommet)
   end
 
-  ##Ajoute une arete a la liste des sommets
+  ##Ajoute une arête à la liste des sommets
   #
-  # === Parametre
+  # === Paramètres
   #
-  # * +arete+ : L'arete a ajouter
+  # * +arete+ : L'arête à ajouter
   def addArete(arete)
       @aretes.push(arete)
   end
 
-  ##Retire un sommet a la liste des sommets
+  ##Retire un sommet à la liste des sommets
   #
-  # === Parametre
+  # === Paramètres
   #
-  # * +sommet+ : Le sommet a retirer
+  # * +sommet+ : Le sommet à retirer
   def retirerSommet(sommet)
       @sommets.delete(sommet)
   end
 
-  ##Retire une arete a la liste des sommets
+  ##Retire une arête à la liste des sommets
   #
-  # === Parametre
+  # === Paramètres
   #
-  # * +sommet+ : L'arete a retirer
+  # * +sommet+ : L'arête à retirer
   def retirerArete(arete)
       @aretes.delete(arete)
   end
 
-  ##Supprime toute les arete de la grille
-  #Appele la methode supprimer() de chaque arete
+  ##Supprime toutes les arêtes de la grille
+  #Appel la méthode supprimer() de chaque arête
   def clearAretes()
       laTaille = @aretes.size()
       for i in 0...laTaille do
@@ -122,17 +122,17 @@ class Grille
     end
   end
 
-	#Donne la case suivante dans la direction donné
+	#Donne la case suivante dans la direction donnée
 	#
 	# === Paramètres
 	#
-	# * +lacase+ : La case d'ou partir
-	# * +addX+ : la valeur a ajouter aux X
-	# * +addY+ : la valeur a ajouter aux Y
+	# * +lacase+ : La case d'où partir
+	# * +addX+ : la valeur à ajouter aux X
+	# * +addY+ : la valeur à ajouter aux Y
 	#
 	# === Return
 	#
-	# La case suivante en partant de la case donné dans la direction donné
+	# La case suivante en partant de la case donnée dans la direction donnée
 	def caseSuivante(lacase, addX, addY)
 		leX = lacase.x
 		leY = lacase.y
@@ -143,11 +143,11 @@ class Grille
 
 	end
 
-	##Compte le nombre d'arete simple
+	##Compte le nombre d'arête simple
 	#
 	# === Return
 	#
-	# * +nbSimple+ : Le nombre d'arete simple
+	# * +nbSimple+ : Le nombre d'arête simple
 	def nbAreteSimple
 		nbSimple = 0
 		@aretes.each { |x|
@@ -156,11 +156,11 @@ class Grille
 		return nbSimple
 	end
 
-	##Compte le nombre d'arete double
+	##Compte le nombre d'arête double
 	#
 	# === Return
 	#
-	# * +nbSimple+ : Le nombre d'arete double
+	# * +nbSimple+ : Le nombre d'arête double
 	def nbAreteDouble
 		nbDouble = 0
 		@aretes.each { |x|
@@ -169,11 +169,11 @@ class Grille
 		return nbDouble
 	end
 
-	##Converti la Grille en chaine de charactere
+	##Convertit la Grille en chaîne de caractère
 	#
 	# === Return
 	#
-	# * +s+ : La chaine de charactere correspondant a la grille
+	# * +s+ : La chaîne de caractère correspondant à la grille
   def to_s()
     s = ""
     ajout = false
@@ -224,14 +224,14 @@ class Grille
      puts("$")
   end
 
-	##Affiche la proportion d'arete simple et double par rapport au nombre d'arete
+	##Affiche la proportion d'arête simple et double par rapport au nombre d'arête
   def afficherProportionsAretes
     puts "Nombre d'arêtes : "+@aretes.size().to_s+".\nArêtes simples : "+self.nbAreteSimple().to_s+".\nArêtes double : "+self.nbAreteDouble().to_s+"\nPorpotions : "+(self.nbAreteSimple().to_f / (self.nbAreteSimple() + self.nbAreteDouble()) * 100).round(2).to_s+"% d'aretes simple."
   end
 
-  # Cette methode calcule si il y a un chemin hamiltonien dans la grille.
+  # Cette méthode calcule si il y a un chemin hamiltonien dans la grille.
   # === Return
-  # * +boolean+ : boolean Le resultat de l'evaluation.
+  # * +boolean+ : boolean Le résultat de l'evaluation.
   def estHamilton?()
     marque = Hash.new(false)
     stack = Array.new()
@@ -255,9 +255,9 @@ class Grille
     return @sommets.count()
   end
 
-  # Cette methode calcule si deux sommets sont une arete de la grille.
+  # Cette méthode calcule si deux sommets sont une arête de la grille.
   # === Return
-  # * +boolean+ : boolean Le resultat de l'evaluation.
+  # * +boolean+ : boolean Le résultat de l'évaluation.
   def estArete(s1,s2)
     @aretes.each do |a|
       if((a.sommet1 == s1 && a.sommet2 == s2) || (a.sommet1 == s2 && a.sommet2 == s1))
@@ -267,11 +267,11 @@ class Grille
     return false
   end
 
-  ##Vérifie si la grille passée en parametre possède des erreurs par rapport a la grille générée et compte les erreurs
+  ##Vérifie si la grille passée en paramètre possède des erreurs par rapport à la grille générée et compte les erreurs
   #
   # === Paramètres
   #
-  # * +grille+ : la grille a vérifier
+  # * +grille+ : la grille à vérifier
   #
   # === Return
   #
@@ -282,9 +282,9 @@ class Grille
           for i in 0...grille.sommets.size()
               if @sommets[i].nbArete >= 1
                   @sommets[i].listeArete.each do |areteJeu|
-                      #on récupere l'autre sommet de l'arete
+                      #on récupère l'autre sommet de l'arête
                       autreSommet = @sommets[i].autreSommet(areteJeu)
-                      #on recupere son index dans la liste des sommets de la grille
+                      #on récupère son index dans la liste des sommets de la grille
                       index = @sommets.find_index(autreSommet)
                       index = index == nil ? 0 : index
                       areteGene = grille.sommets[i].donneAreteAvec(grille.sommets[index])
@@ -295,7 +295,7 @@ class Grille
                               objErreurs.push(@sommets[i])
                           end
                       end
-                      #on regarde si cette arete existe dans le grille originale
+                      #on regarde si cette arête existe dans le grille originale
                       if !(grille.sommets[i].possedeAreteAvec(grille.sommets[index]))
                           @sommets[i].estErreur = true
                           areteJeu.estErreur = true

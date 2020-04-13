@@ -3,11 +3,11 @@ class Arete
 
     ## Partie variables d'instance
 
-    # @sommet1 -> Sommet d'ou part l'arete
-    # @sommet2 -> Sommet ou arrive l'arete
-    # @estDouble -> Booleen définissant si une arete est double ou non
-    # @listeCase -> Liste des case par lesquelles passe l'arete
-    # @estErreur -> Booleen définissant si l'arete est une erreur ou non
+    # @sommet1 -> Sommet d'où part l'arête
+    # @sommet2 -> Sommet où arrive l'arête
+    # @estDouble -> Booléen définissant si une arête est double ou non
+    # @listeCase -> Liste des cases par lesquelles passe l'arete
+    # @estErreur -> Booléen définissant si l'arête est une erreur ou non
 
     def self.creer(sommet1, sommet2, estDouble=false)
         objet = new(sommet1, sommet2, estDouble)
@@ -23,9 +23,9 @@ class Arete
 	#
 	# === Paramètres
 	#
-	# * +sommet1+ : Sommet d'ou part l'arete
-	# * +sommet2+ : Sommet ou s'arrete l'arete
-    # * +estDouble+ : Booleen qui definie si l'arete est double (de base a false)
+	# * +sommet1+ : Sommet d'où part l'arête
+	# * +sommet2+ : Sommet où s'arrête l'arête
+    # * +estDouble+ : Booléen qui definit si l'arête est double (de base à false)
     def initialize(sommet1, sommet2, estDouble=false)
         @sommet1 = sommet1
         @sommet2 = sommet2
@@ -34,7 +34,7 @@ class Arete
         @estErreur = false
         @hypothese = false
 
-        #vérifie si le sommet1 est bien le plus en haut/a gauche, si c'est pas le cas, on échange les sommet1 et 2
+        #vérifie si le sommet1 est bien le plus en haut/à gauche, si c'est pas le cas, on échange les sommets 1 et 2
         if(sommet1.position.x > sommet2.position.x || sommet1.position.y > sommet2.position.y)
             sommetMem = @sommet1
             @sommet1 = sommet2
@@ -44,16 +44,16 @@ class Arete
 
     ## Partie accesseurs
 
-    # Accesseur get sur les sommet, la liste des case
+    # Accesseur get sur les sommets, la liste des cases
     attr_reader :sommet1, :sommet2, :listeCase
 
-    # Accesseur get et set sur le booleen de l'arete
+    # Accesseur get et set sur le booléen de l'arête
     attr_accessor :estDouble, :estErreur, :hypothese
 
     ## Partie méthodes
 
-    ##Methode qui termine la creation d'une arete
-    # complete son tableau de case et s'ajoute aux sommet, a la grille, et aux case par lesquelles elle passe
+    ##Methode qui termine la création d'une arête
+    # complète son tableau de case et s'ajoute aux sommets, à la grille, et aux cases par lesquelles elle passe
     def completerInitialize()
         plusX = @sommet1.position.x - @sommet2.position.x == 0 ? 0 : 1
         plusY = @sommet1.position.y - @sommet2.position.y == 0 ? 0 : 1
@@ -71,7 +71,7 @@ class Arete
         @sommet1.position.grille.addArete(self)
     end
 
-    ##Donne la taille de l'arete
+    ##Donne la taille de l'arête
     #Donne la longueur du tableau de case
     #
     # === Return
@@ -81,15 +81,15 @@ class Arete
         return @listeCase.length()
     end
 
-    # Donne la liste de case de l'arete.
+    # Donne la liste de case de l'arête.
     # === Return
     # * +@listeCase+ : @listeCase La liste de case.
     def getListeCase()
       return @listeCase
     end
 
-    ##Supprime l'arete
-    #Retire toute les references a l'arette dans les sommets, la grille et les case par lesquelles elle passe
+    ##Supprime l'arête
+    #Retire toutes les références à l'arête dans les sommets, la grille et les cases par lesquelles elle passe
     def supprimer()
         loop do
             break if @listeCase.length == 0
@@ -101,7 +101,7 @@ class Arete
         @sommet2.retirerArete(self)
     end
 
-    ##Affiche l'arete dans le terminal
+    ##Affiche l'arête dans le terminal
     def afficher()
       if(@sommet1.position.x==@sommet2.position.x)
         if(@estDouble)
