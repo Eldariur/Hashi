@@ -69,8 +69,6 @@ class FenetreJeu < Gtk::Box
 		@presse = false
 		@hypothese = false
 		@listeInter = []
-		x = 5
-		y = 5
 
 		if @fenetre.default_size[0] > 1500
 			@style = "BoutonEnJeu"
@@ -107,8 +105,6 @@ class FenetreJeu < Gtk::Box
 			end
 
 			# on_draw
-			x=10
-			y=10
 
 			@@x1=0
 			@@y1=0
@@ -222,14 +218,13 @@ class FenetreJeu < Gtk::Box
 		if(!grilleGagnante)
 			if(x > paddingX && x < paddingX+@tailleCase*@longueur && y > paddingY && y < paddingY+@tailleCase*@largeur) #si dans la grille
 				caseX = (x - paddingX).to_i/@tailleCase
-				caseY = (y -paddingY).to_i/@tailleCase
+				caseY = (y - paddingY).to_i/@tailleCase
 
 				caseTest = @grilleTest.getCase(caseX,caseY)
 
 
 				# sensé regarder le contenu de la case mais PROBLEME car toutes les cases sont des sommets !
 				caseTest = @grilleTest.getCase(caseX,caseY)
-				caseSom = nil
 				if(estSommet?(caseTest))
 					#afficheSurbri
 					videSurbri
@@ -271,11 +266,11 @@ class FenetreJeu < Gtk::Box
 							@listeInter.each_with_index do |c,i|
 								if(c == caseTest)
 									s1 = @listeInter[0]
-									i.upto(@listeInter.length-1) do |y|
-										if(@listeInter[y] != "|")
-											if(@listeInter[y].contenu.class == Sommet)
+									i.upto(@listeInter.length-1) do |indiceListe|
+										if(@listeInter[indiceListe] != "|")
+											if(@listeInter[indiceListe].contenu.class == Sommet)
 												if(!trouve1)
-													s2 = @listeInter[y]
+													s2 = @listeInter[indiceListe]
 													trouve1 = true
 												end
 											end
@@ -491,8 +486,6 @@ class FenetreJeu < Gtk::Box
 	#
 	# La liste des sommets voisins à la case c
 	def rechercherVoisins(c)
-		paddingX = 50
-		paddingY = 25
 		j = 0
 		listeVoisin = []
 		selfArete = false
@@ -601,9 +594,7 @@ class FenetreJeu < Gtk::Box
 		y2 = s2.y
 		listeDeCase = []
 		listeDeCase.push(s1)
-		ecart = 0
 		if(x1 < x2)
-			ecart = x2-(x1)
 			(x1+1).upto(x2-1) {|i|
 				listeDeCase.push(@grilleTest.getCase(i,y1))
 			}
@@ -739,8 +730,6 @@ class FenetreJeu < Gtk::Box
 
 			i = 0
 			j = 0
-			taillePix = 25
-			padding = 20
 		@grilleTest.sommets.each{ |s|
 			x = s.position.x
 			y = s.position.y
@@ -935,8 +924,8 @@ class FenetreJeu < Gtk::Box
 					@chr.chronometrer()
 				end
 			end
-    end
-  end
+    	end
+	end
 
 	# Méthode permettant d'initialiser le bouton des hypothèses
   def initBoutonHypo
@@ -971,37 +960,37 @@ class FenetreJeu < Gtk::Box
 
 	# Méthode permettant d'initialiser le bouton d'annulation des hypothèses
 	def initBoutonAnnulHypo
-    @boutonAnnulHypo = UnBoutonPerso.new("Annuler Hypothèse", "BoutonEnJeuGros")do
-			@presser = false
+		@boutonAnnulHypo = UnBoutonPerso.new("Annuler Hypothèse", "BoutonEnJeuGros")do
+				@presser = false
 
-			@grilleTest = Sauvegarde.annulerHypothese()
-			@hypothese = false
+				@grilleTest = Sauvegarde.annulerHypothese()
+				@hypothese = false
 
-			@boutonAide.deverrouiller()
-			@boutonRecom.deverrouiller()
-			@boutonAnnul.deverrouiller()
-			afficheEcran
-			masquerBouton
-    end
-  end
+				@boutonAide.deverrouiller()
+				@boutonRecom.deverrouiller()
+				@boutonAnnul.deverrouiller()
+				afficheEcran
+				masquerBouton
+		end
+	end
 
 	# Méthode permettant d'initialiser le bouton de validation des hypothèses
 	def initBoutonValidHypo
-    @boutonValidHypo= UnBoutonPerso.new("Valider Hypothèse", @style)do
-			@presser = false
-			Sauvegarde.validerHypothese()
-			@hypothese = false
-			@grilleTest.aretes.each do |a|
-				a.hypothese = @hypothese
-			end
-			@boutonAide.deverrouiller()
-			@boutonRecom.deverrouiller()
-			@boutonAnnul.deverrouiller()
-			masquerBouton
-			conditionGagnante
-    end
-			@boutonValidHypo.hide
-  end
+		@boutonValidHypo= UnBoutonPerso.new("Valider Hypothèse", @style)do
+				@presser = false
+				Sauvegarde.validerHypothese()
+				@hypothese = false
+				@grilleTest.aretes.each do |a|
+					a.hypothese = @hypothese
+				end
+				@boutonAide.deverrouiller()
+				@boutonRecom.deverrouiller()
+				@boutonAnnul.deverrouiller()
+				masquerBouton
+				conditionGagnante
+		end
+		@boutonValidHypo.hide
+	end
 
 	# Méthode permettant d'initialiser le bouton des aides
   def initBoutonAide
@@ -1045,12 +1034,12 @@ class FenetreJeu < Gtk::Box
 
 	# Méthode permettant d'initialiser le label des messages des aides et des erreurs
 	def initLabelMessage
-    @labelMessage = UnLabelPerso.new("", "UnLabelBlanc")
-  end
+		@labelMessage = UnLabelPerso.new("", "UnLabelBlanc")
+	end
 
 	# Méthode permettant d'initialiser le bouton de visualisation des erreurs
 	def initBoutonErreurVisu
-    			@boutonErreur = UnBoutonPerso.new("Montrer les erreurs ?", "BoutonEnJeuGros")do
+    	@boutonErreur = UnBoutonPerso.new("Montrer les erreurs ?", "BoutonEnJeuGros")do
 			@afficherErreur = true
 			@erreurs = @grilleTest.trouverErreurs(@grilleComplete)
 
@@ -1058,11 +1047,11 @@ class FenetreJeu < Gtk::Box
 			afficheEcran
 			masquerBouton
 		end
-  end
+  	end
 
 	# Méthode permettant d'initialiser le bouton de visualisation des aides textuelles
 	def initBoutonAideTxt
-			@boutonAideTxt = UnBoutonPerso.new("Aide Textuelle", "BoutonEnJeuGros")do
+		@boutonAideTxt = UnBoutonPerso.new("Aide Textuelle", "BoutonEnJeuGros")do
 			@caseA = nil
 			@aideTxt = Aide.creer(@grilleTest)
 			@aideTxt.set_name("UnLabelBlanc")
@@ -1074,19 +1063,19 @@ class FenetreJeu < Gtk::Box
 			ajouteMalus(@aideTxt.penalite)
 			@aideTxt.show
 		end
-  end
+  	end
 
 	# Méthode permettant d'initialiser le bouton de visualisation des aides visuelles
 	def initBoutonAideVisu
-   			@boutonAideVisu = UnBoutonPerso.new("Aide Visuelle", "BoutonEnJeuGros")do
+   		@boutonAideVisu = UnBoutonPerso.new("Aide Visuelle", "BoutonEnJeuGros")do
 			@aide = Aide.creer(@grilleTest)
 			@afficheAide = true
 			@caseAide = @aide.getCaseAide
 			ajouteMalus(@aide.penalite)
 			afficheEcran
 			masquerBouton
-    end
-  end
+    	end
+  	end
 
 	# Méthode permettant d'initialiser le bouton d'annulation de la dernière action
   def initBoutonAnnul
