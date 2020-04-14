@@ -94,13 +94,13 @@ class Sauvegarde
     else
       case @difficulte
         when "easy"
-          save = (File.exist?("#{$cheminRacineHashi}/src/Sauvegarde/Save/easy/save.sav")) ? YAML.load(File.read("#{$cheminRacineHashi}/Sauvegarde/Save/easy/save.sav")) : nil
+          save = (File.exist?("#{$cheminRacineHashi}/src/Sauvegarde/Save/easy/save.sav")) ? YAML.load(File.read("#{$cheminRacineHashi}/src/Sauvegarde/Save/easy/save.sav")) : nil
         when "normal"
-          save = (File.exist?("#{$cheminRacineHashi}/src/Sauvegarde/Save/normal/save.sav")) ? YAML.load(File.read("#{$cheminRacineHashi}/Sauvegarde/Save/normal/save.sav")) : nil
+          save = (File.exist?("#{$cheminRacineHashi}/src/Sauvegarde/Save/normal/save.sav")) ? YAML.load(File.read("#{$cheminRacineHashi}/src/Sauvegarde/Save/normal/save.sav")) : nil
         when "hard"
-          save = (File.exist?("#{$cheminRacineHashi}/src/Sauvegarde/Save/hard/save.sav")) ? YAML.load(File.read("#{$cheminRacineHashi}/Sauvegarde/Save/hard/save.sav")) : nil
+          save = (File.exist?("#{$cheminRacineHashi}/src/Sauvegarde/Save/hard/save.sav")) ? YAML.load(File.read("#{$cheminRacineHashi}/src/Sauvegarde/Save/hard/save.sav")) : nil
         when "custom"
-          save = (File.exist?("#{$cheminRacineHashi}/src/Sauvegarde/Save/custom/save.sav")) ? YAML.load(File.read("#{$cheminRacineHashi}/Sauvegarde/Save/custom/save.sav")) : nil
+          save = (File.exist?("#{$cheminRacineHashi}/src/Sauvegarde/Save/custom/save.sav")) ? YAML.load(File.read("#{$cheminRacineHashi}/src/Sauvegarde/Save/custom/save.sav")) : nil
       end
     end
     return save
