@@ -43,7 +43,6 @@ class Fenetre < Gtk::Window
 		super()
 		self.name="mainWindow2"
 		self.set_default_size(900,600)
-		vbox = Gtk::Box.new(:VERTICAL)
 		self.window_position=Gtk::WindowPosition::CENTER
 		css=Gtk::CssProvider.new
 		css.load(path: "../Interface/css/style.css")
@@ -121,7 +120,6 @@ class Fenetre < Gtk::Window
 
 
 			hpaned = Gtk::HPaned.new
-			hpaned2 = Gtk::HPaned.new
 
 
 			# hpaned = Gtk::Paned.new(:Horizontal)
@@ -195,14 +193,13 @@ class Fenetre < Gtk::Window
 
 		if(x > paddingX && x < paddingX+tailleCase*nbCase && y > paddingY && y < paddingY+tailleCase*nbCase) #si dans la grille
 			caseX = (x - paddingX).to_i/tailleCase
-			caseY = (y -paddingY).to_i/tailleCase
+			caseY = (y - paddingY).to_i/tailleCase
 
 			caseTest = @grilleTest.getCase(caseX,caseY)
 
 
 			# sensé regarder le contenu de la case mais PROBLEME car toutes les cases sont des sommets !
 			caseTest = @grilleTest.getCase(caseX,caseY)
-			caseSom = nil
 			if(estSommet?(caseTest))
 				afficheSurbri
 				videSurbri
@@ -255,14 +252,12 @@ class Fenetre < Gtk::Window
 						@listeInter.each_with_index do |c,i|
 							if(c == caseTest)
 								s1 = @listeInter[0]
-								i.upto(@listeInter.length-1) do |y|
-
-
-									if(@listeInter[y] != "|")
-										if(@listeInter[y].contenu.class == Sommet)
+								i.upto(@listeInter.length-1) do |indiceListe|
+									if(@listeInter[indiceListe] != "|")
+										if(@listeInter[indiceListe].contenu.class == Sommet)
 
 											if(!trouve1)
-												s2 = @listeInter[y]
+												s2 = @listeInter[indiceListe]
 												trouve1 = true
 											end
 
@@ -282,7 +277,7 @@ class Fenetre < Gtk::Window
 
 						if(s1 != nil && caseTest.contenu.class != Sommet)
 							if(s1.contenu.valeur > s1.contenu.compterArete && s2.contenu.valeur > s2.contenu.compterArete)#le sommet est complet
-								newA = Arete.creer(s1.contenu,s2.contenu) #<================ a voir
+								Arete.creer(s1.contenu,s2.contenu) #<================ a voir
 							elsif(s1.contenu.valeur == s1.contenu.compterArete)
 								s1.contenu.setComplet(true)
 							elsif(s2.contenu.valeur == s2.contenu.compterArete)
@@ -306,7 +301,6 @@ class Fenetre < Gtk::Window
 	def drawSurbri(cr)
 		# exemple 5 5
 		tailleCase = 50
-		nbCase = @largeur
 		paddingX = 50
 		paddingY = 25
 
@@ -385,10 +379,7 @@ class Fenetre < Gtk::Window
 	#
 	# La liste des sommets voisins à la case c
 	def rechercherVoisins(c)
-		tailleCase = 50
 		nbCase = @largeur
-		paddingX = 50
-		paddingY = 25
 		j = 0
 		listeVoisin = []
 		selfArete = false
@@ -501,9 +492,7 @@ class Fenetre < Gtk::Window
 		listeDeCase.push(s1)
 		testAffichageCoord(s1)
 		testAffichageCoord(s2)
-		ecart = 0
 		if(x1 < x2)
-			ecart = x2-(x1)
 			(x1+1).upto(x2-1) {|i|
 				listeDeCase.push(@grilleTest.getCase(i,y1))
 			}
@@ -621,7 +610,6 @@ class Fenetre < Gtk::Window
 	def drawSommets(cr)
 		# copie de tracerGrille
 		tailleCase = 50
-		nbCase = @largeur
 		paddingX = 50+17
 		paddingY = 25+35
 
@@ -630,8 +618,6 @@ class Fenetre < Gtk::Window
 
 			i = 0
 			j = 0
-			taillePix = 25
-			padding = 20
 		@grilleTest.sommets.each{ |s|
 			x = s.position.x
 			y = s.position.y
@@ -656,11 +642,9 @@ class Fenetre < Gtk::Window
 	def drawAretes(cr)
 		# copie de tracerGrille
 		tailleCase = 50
-		nbCase = @largeur
 		paddingX = 50+15
 		paddingY = 25+35
 		verti = false
-		hori = false
 		varX = 0
 		varY = 0
 		minX = 0
@@ -670,19 +654,15 @@ class Fenetre < Gtk::Window
 
 			i = 0
 			j = 0
-			taillePix = 25
-			padding = 20
 		@grilleTest.aretes.each{ |a|
 			x1 = a.sommet1.position.x
 			y1 = a.sommet1.position.y
 			x2 = a.sommet2.position.x
 			y2 = a.sommet2.position.y
 			if(x1 == x2)
-				hori = false
 				verti = true
 			else
 				verti = false
-				hori = true
 			end
 			#puts "tracer l'arete entre x1 = "+x1.to_s+" y1 = "+y1.to_s+" x2 = "+x2.to_s+" y2 = "+y2.to_s+" vertical = "+verti.to_s
 			if(verti==true)
@@ -764,4 +744,4 @@ class Fenetre < Gtk::Window
 
 end
 
- f = Fenetre.new()
+Fenetre.new()

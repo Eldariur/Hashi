@@ -96,23 +96,23 @@ class Chrono < Gtk::Label
 	def to_chrono()
 		minZero = ""
 		secZero = ""
-    s = self.resultat()
+		s = self.resultat()
 
-    sec = s.to_i%60
-    #ms = (((s-sec)*1000)%1000).to_i
-    min = (s.to_i/60)%60
-    tmin = (s.to_i/60)
-    hr = tmin.to_i/60
+		sec = s.to_i%60
+		#ms = (((s-sec)*1000)%1000).to_i
+		min = (s.to_i/60)%60
+		#tmin = (s.to_i/60)
+		#hr = tmin.to_i/60
 		if(min.to_s.size == 1)
 			minZero = "0"
 		end
 		if(sec.to_s.size == 1)
 			secZero = "0"
 		end
-    res = minZero + min.to_s + ':' + secZero + sec.to_s
+		res = minZero + min.to_s + ':' + secZero + sec.to_s
 
-    return res
-  end
+		return res
+	end
 
 	@Override
 	# Cette méthode redéfinit to_s pour afficher un chronomètre.

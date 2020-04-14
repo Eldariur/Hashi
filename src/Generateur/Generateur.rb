@@ -265,7 +265,7 @@ class Generateur
                                 @sommets.push(nouveauSommet)
                                 sommetPlaces += 1
 
-                                nouvelleArete = Arete.creer(nouveauSommet, sommetChoisi, rand(1..100) < @chanceDeDouble)
+                                Arete.creer(nouveauSommet, sommetChoisi, rand(1..100) < @chanceDeDouble)
 
                                 sommetAEtePlace = true
                             end
@@ -282,12 +282,12 @@ class Generateur
                                 @sommets.push(nouveauSommet)
                                 sommetPlaces += 1
 
-                                nouvelleArete = Arete.creer(nouveauSommet, sommetChoisi, rand(1..100) < @chanceDeDouble)
+                                Arete.creer(nouveauSommet, sommetChoisi, rand(1..100) < @chanceDeDouble)
 
                                 sommetAEtePlace = true
 
-                                nouvelleArete1 = Arete.creer(sommet1, nouveauSommet, rand(1..100) < @chanceDeDouble)
-                                nouvelleArete2 = Arete.creer(sommet2, nouveauSommet, rand(1..100) < @chanceDeDouble)
+                                Arete.creer(sommet1, nouveauSommet, rand(1..100) < @chanceDeDouble)
+                                Arete.creer(sommet2, nouveauSommet, rand(1..100) < @chanceDeDouble)
                             else
                                 #sinon on recule jusqu'à trouver un truc bien
                                 while caseOuPlacer.aSommetVoisin()
@@ -303,7 +303,7 @@ class Generateur
                                     @sommets.push(nouveauSommet)
                                     sommetPlaces += 1
 
-                                    nouvelleArete = Arete.creer(nouveauSommet, sommetChoisi, rand(1..100) < @chanceDeDouble)
+                                    Arete.creer(nouveauSommet, sommetChoisi, rand(1..100) < @chanceDeDouble)
 
                                     sommetAEtePlace = true
                                 end
@@ -316,7 +316,7 @@ class Generateur
                                 @sommets.push(nouveauSommet)
                                 sommetPlaces += 1
 
-                                nouvelleArete = Arete.creer(nouveauSommet, sommetChoisi, rand(1..100) < @chanceDeDouble)
+                                Arete.creer(nouveauSommet, sommetChoisi, rand(1..100) < @chanceDeDouble)
 
                                 sommetAEtePlace = true
                             else
@@ -335,7 +335,7 @@ class Generateur
                                     @sommets.push(nouveauSommet)
                                     sommetPlaces += 1
 
-                                    nouvelleArete = Arete.creer(nouveauSommet, sommetChoisi, rand(1..100) < @chanceDeDouble)
+                                    Arete.creer(nouveauSommet, sommetChoisi, rand(1..100) < @chanceDeDouble)
 
                                     sommetAEtePlace = true
                                 end
@@ -348,7 +348,7 @@ class Generateur
                                 @sommets.push(nouveauSommet)
                                 sommetPlaces += 1
 
-                                nouvelleArete = Arete.creer(nouveauSommet, sommetChoisi, rand(1..100) < @chanceDeDouble)
+                                Arete.creer(nouveauSommet, sommetChoisi, rand(1..100) < @chanceDeDouble)
 
                                 sommetAEtePlace = true
                             else
@@ -366,7 +366,7 @@ class Generateur
                                     @sommets.push(nouveauSommet)
                                     sommetPlaces += 1
 
-                                    nouvelleArete = Arete.creer(nouveauSommet, sommetChoisi, rand(1..100) < @chanceDeDouble)
+                                    Arete.creer(nouveauSommet, sommetChoisi, rand(1..100) < @chanceDeDouble)
 
                                     sommetAEtePlace = true
                                 end

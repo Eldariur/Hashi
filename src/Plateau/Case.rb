@@ -111,5 +111,5 @@ class Case
        else
            @contenu.afficher()
        end
-   end
+    end
 end

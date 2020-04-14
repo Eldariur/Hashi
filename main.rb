@@ -68,5 +68,4 @@ class Main < Gtk::Window
 
 end
 
-puts $cheminRacineHashi
 Main.new
