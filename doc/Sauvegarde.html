@@ -220,7 +220,7 @@
           
           <p>Annule une hypothèse en cours et retourne l&#39;ancienne grille pre-hypothèse.</p>
 
-<h3 id="method-c-annulerHypothese-label-Parametre">Parametre<span><a href="#method-c-annulerHypothese-label-Parametre">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="method-c-annulerHypothese-label-Param-C3-A8tres">Paramètres<span><a href="#method-c-annulerHypothese-label-Param-C3-A8tres">&para;</a> <a href="#top">&uarr;</a></span></h3>
 <ul><li>
 <p><code>mode</code> : mode Permet d&#39;exploiter la méthode en ajoutant une fonctionnalité qui ne supprime pas le fichier.</p>
 </li></ul>
@@ -234,11 +234,11 @@
 
           
           <div class="method-source-code" id="annulerHypothese-source">
-            <pre><span class="ruby-comment"># File Sauvegarde/Sauvegarde.rb, line 137</span>
+            <pre><span class="ruby-comment"># File src/Sauvegarde/Sauvegarde.rb, line 137</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Sauvegarde</span>.<span class="ruby-identifier ruby-title">annulerHypothese</span>(<span class="ruby-identifier">mode</span> = <span class="ruby-keyword">true</span>)
   <span class="ruby-identifier">save</span> = <span class="ruby-constant">Sauvegarde</span>.<span class="ruby-identifier">nouvelle</span>(<span class="ruby-keyword">nil</span>,<span class="ruby-keyword">nil</span>,<span class="ruby-keyword">nil</span>,<span class="ruby-keyword">nil</span>,<span class="ruby-keyword">true</span>).<span class="ruby-identifier">charger</span>()
   <span class="ruby-keyword">if</span>(<span class="ruby-identifier">mode</span>) <span class="ruby-keyword">then</span>
-    <span class="ruby-constant">File</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/Sauvegarde/Save/temp.sav&quot;</span>)
+    <span class="ruby-constant">File</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/src/Sauvegarde/Save/temp.sav&quot;</span>)
   <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">save</span>.<span class="ruby-identifier">grille</span>
 <span class="ruby-keyword">end</span></pre>
@@ -271,7 +271,7 @@
 
           
           <div class="method-source-code" id="deleteAllSave-source">
-            <pre><span class="ruby-comment"># File Sauvegarde/Sauvegarde.rb, line 165</span>
+            <pre><span class="ruby-comment"># File src/Sauvegarde/Sauvegarde.rb, line 165</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Sauvegarde</span>.<span class="ruby-identifier ruby-title">deleteAllSave</span>()
   <span class="ruby-constant">Dir</span>.<span class="ruby-identifier">glob</span>(<span class="ruby-string">&#39;**/*.sav&#39;</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">e</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Removed : &quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">e</span>.<span class="ruby-identifier">to_s</span>
@@ -303,28 +303,28 @@
 
         <div class="method-description">
           
-          <p>Génére les dossiers nécessaires au fonctionnement des sauvegardes.</p>
+          <p>Génère les dossiers nécessaires au fonctionnement des sauvegardes.</p>
           
           
 
           
           <div class="method-source-code" id="genenerDossier-source">
-            <pre><span class="ruby-comment"># File Sauvegarde/Sauvegarde.rb, line 146</span>
+            <pre><span class="ruby-comment"># File src/Sauvegarde/Sauvegarde.rb, line 146</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Sauvegarde</span>.<span class="ruby-identifier ruby-title">genenerDossier</span>()
-  <span class="ruby-keyword">if</span>(<span class="ruby-operator">!</span><span class="ruby-constant">Dir</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/Sauvegarde/Save&quot;</span>)) <span class="ruby-keyword">then</span>
-    <span class="ruby-constant">Dir</span><span class="ruby-operator">::</span><span class="ruby-identifier">mkdir</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/Sauvegarde/Save&quot;</span>, <span class="ruby-value">0777</span>)
+  <span class="ruby-keyword">if</span>(<span class="ruby-operator">!</span><span class="ruby-constant">Dir</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/src/Sauvegarde/Save&quot;</span>)) <span class="ruby-keyword">then</span>
+    <span class="ruby-constant">Dir</span><span class="ruby-operator">::</span><span class="ruby-identifier">mkdir</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/src/Sauvegarde/Save&quot;</span>, <span class="ruby-value">0777</span>)
   <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">if</span>(<span class="ruby-operator">!</span><span class="ruby-constant">Dir</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/Sauvegarde/Save/easy&quot;</span>)) <span class="ruby-keyword">then</span>
-    <span class="ruby-constant">Dir</span><span class="ruby-operator">::</span><span class="ruby-identifier">mkdir</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/Sauvegarde/Save/easy&quot;</span>, <span class="ruby-value">0777</span>)
+  <span class="ruby-keyword">if</span>(<span class="ruby-operator">!</span><span class="ruby-constant">Dir</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/src/Sauvegarde/Save/easy&quot;</span>)) <span class="ruby-keyword">then</span>
+    <span class="ruby-constant">Dir</span><span class="ruby-operator">::</span><span class="ruby-identifier">mkdir</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/src/Sauvegarde/Save/easy&quot;</span>, <span class="ruby-value">0777</span>)
   <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">if</span>(<span class="ruby-operator">!</span><span class="ruby-constant">Dir</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/Sauvegarde/Save/normal&quot;</span>)) <span class="ruby-keyword">then</span>
-    <span class="ruby-constant">Dir</span><span class="ruby-operator">::</span><span class="ruby-identifier">mkdir</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/Sauvegarde/Save/normal&quot;</span>, <span class="ruby-value">0777</span>)
+  <span class="ruby-keyword">if</span>(<span class="ruby-operator">!</span><span class="ruby-constant">Dir</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/src/Sauvegarde/Save/normal&quot;</span>)) <span class="ruby-keyword">then</span>
+    <span class="ruby-constant">Dir</span><span class="ruby-operator">::</span><span class="ruby-identifier">mkdir</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/src/Sauvegarde/Save/normal&quot;</span>, <span class="ruby-value">0777</span>)
   <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">if</span>(<span class="ruby-operator">!</span><span class="ruby-constant">Dir</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/Sauvegarde/Save/hard&quot;</span>)) <span class="ruby-keyword">then</span>
-    <span class="ruby-constant">Dir</span><span class="ruby-operator">::</span><span class="ruby-identifier">mkdir</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/Sauvegarde/Save/hard&quot;</span>, <span class="ruby-value">0777</span>)
+  <span class="ruby-keyword">if</span>(<span class="ruby-operator">!</span><span class="ruby-constant">Dir</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/src/Sauvegarde/Save/hard&quot;</span>)) <span class="ruby-keyword">then</span>
+    <span class="ruby-constant">Dir</span><span class="ruby-operator">::</span><span class="ruby-identifier">mkdir</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/src/Sauvegarde/Save/hard&quot;</span>, <span class="ruby-value">0777</span>)
   <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">if</span>(<span class="ruby-operator">!</span><span class="ruby-constant">Dir</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/Sauvegarde/Save/custom&quot;</span>)) <span class="ruby-keyword">then</span>
-    <span class="ruby-constant">Dir</span><span class="ruby-operator">::</span><span class="ruby-identifier">mkdir</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/Sauvegarde/Save/custom&quot;</span>, <span class="ruby-value">0777</span>)
+  <span class="ruby-keyword">if</span>(<span class="ruby-operator">!</span><span class="ruby-constant">Dir</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/src/Sauvegarde/Save/custom&quot;</span>)) <span class="ruby-keyword">then</span>
+    <span class="ruby-constant">Dir</span><span class="ruby-operator">::</span><span class="ruby-identifier">mkdir</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/src/Sauvegarde/Save/custom&quot;</span>, <span class="ruby-value">0777</span>)
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -350,9 +350,9 @@
 
         <div class="method-description">
           
-          <p>Initialisation de la class <a href="Sauvegarde.html"><code>Sauvegarde</code></a>.</p>
+          <p>Initialisation de la classe <a href="Sauvegarde.html"><code>Sauvegarde</code></a>.</p>
 
-<h3 id="method-c-new-label-Parametre">Parametre<span><a href="#method-c-new-label-Parametre">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="method-c-new-label-Param-C3-A8tres">Paramètres<span><a href="#method-c-new-label-Param-C3-A8tres">&para;</a> <a href="#top">&uarr;</a></span></h3>
 <ul><li>
 <p><code>grille</code> : grille La grille à sauvegarder.</p>
 </li><li>
@@ -369,7 +369,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Sauvegarde/Sauvegarde.rb, line 32</span>
+            <pre><span class="ruby-comment"># File src/Sauvegarde/Sauvegarde.rb, line 32</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">grille</span>, <span class="ruby-identifier">grilleComplete</span>, <span class="ruby-identifier">chrono</span>, <span class="ruby-identifier">difficulte</span>, <span class="ruby-identifier">hypothese</span> = <span class="ruby-keyword">false</span>)
   <span class="ruby-ivar">@grille</span> = <span class="ruby-identifier">grille</span>
   <span class="ruby-ivar">@grilleComplete</span> = <span class="ruby-identifier">grilleComplete</span>
@@ -407,7 +407,7 @@
           
           <p>Créer un nouveau chronomètre.</p>
 
-<h3 id="method-c-nouvelle-label-Parametre">Parametre<span><a href="#method-c-nouvelle-label-Parametre">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="method-c-nouvelle-label-Param-C3-A8tres">Paramètres<span><a href="#method-c-nouvelle-label-Param-C3-A8tres">&para;</a> <a href="#top">&uarr;</a></span></h3>
 <ul><li>
 <p><code>grille</code> : grille La grille à sauvegarder.</p>
 </li><li>
@@ -415,7 +415,7 @@
 </li><li>
 <p><code>chrono</code> : chrono Le chronomètre à sauvegarder.</p>
 </li><li>
-<p><code>difficulte</code> : difficulte La difficulte de la grille.</p>
+<p><code>difficulte</code> : difficulte La difficulté de la grille.</p>
 </li><li>
 <p><code>hypothese</code> : hypothese Le choix d&#39;une sauvegarde pour une hypothèse ou non.</p>
 </li></ul>
@@ -424,7 +424,7 @@
 
           
           <div class="method-source-code" id="nouvelle-source">
-            <pre><span class="ruby-comment"># File Sauvegarde/Sauvegarde.rb, line 52</span>
+            <pre><span class="ruby-comment"># File src/Sauvegarde/Sauvegarde.rb, line 52</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Sauvegarde</span>.<span class="ruby-identifier ruby-title">nouvelle</span>(<span class="ruby-identifier">grille</span>, <span class="ruby-identifier">grilleComplete</span>, <span class="ruby-identifier">chrono</span>, <span class="ruby-identifier">difficulte</span>, <span class="ruby-identifier">hypothese</span> = <span class="ruby-keyword">false</span>)
   <span class="ruby-identifier">new</span>(<span class="ruby-identifier">grille</span>, <span class="ruby-identifier">grilleComplete</span>, <span class="ruby-identifier">chrono</span>, <span class="ruby-identifier">difficulte</span>, <span class="ruby-identifier">hypothese</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -453,7 +453,7 @@
           
           <p>Permet de créer une hypothèse.</p>
 
-<h3 id="method-c-nouvelleHypothese-label-Parametre">Parametre<span><a href="#method-c-nouvelleHypothese-label-Parametre">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="method-c-nouvelleHypothese-label-Param-C3-A8tres">Paramètres<span><a href="#method-c-nouvelleHypothese-label-Param-C3-A8tres">&para;</a> <a href="#top">&uarr;</a></span></h3>
 <ul><li>
 <p><code>grille</code> : grille La grille à sauvegarder pour l&#39;hypothèse.</p>
 </li></ul>
@@ -462,7 +462,7 @@
 
           
           <div class="method-source-code" id="nouvelleHypothese-source">
-            <pre><span class="ruby-comment"># File Sauvegarde/Sauvegarde.rb, line 122</span>
+            <pre><span class="ruby-comment"># File src/Sauvegarde/Sauvegarde.rb, line 122</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Sauvegarde</span>.<span class="ruby-identifier ruby-title">nouvelleHypothese</span>(<span class="ruby-identifier">grille</span>)
   <span class="ruby-identifier">save</span> = <span class="ruby-constant">Sauvegarde</span>.<span class="ruby-identifier">nouvelle</span>(<span class="ruby-identifier">grille</span>,<span class="ruby-keyword">nil</span>,<span class="ruby-keyword">nil</span>,<span class="ruby-keyword">nil</span>,<span class="ruby-keyword">true</span>)
   <span class="ruby-identifier">save</span>.<span class="ruby-identifier">sauvegarder</span>()
@@ -496,9 +496,9 @@
 
           
           <div class="method-source-code" id="validerHypothese-source">
-            <pre><span class="ruby-comment"># File Sauvegarde/Sauvegarde.rb, line 128</span>
+            <pre><span class="ruby-comment"># File src/Sauvegarde/Sauvegarde.rb, line 128</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Sauvegarde</span>.<span class="ruby-identifier ruby-title">validerHypothese</span>()
-  <span class="ruby-constant">File</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/Sauvegarde/Save/temp.sav&quot;</span>)
+  <span class="ruby-constant">File</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/src/Sauvegarde/Save/temp.sav&quot;</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -542,20 +542,20 @@
 
           
           <div class="method-source-code" id="charger-source">
-            <pre><span class="ruby-comment"># File Sauvegarde/Sauvegarde.rb, line 91</span>
+            <pre><span class="ruby-comment"># File src/Sauvegarde/Sauvegarde.rb, line 91</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">charger</span>()
   <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@estHypothese</span>) <span class="ruby-keyword">then</span>
-    <span class="ruby-identifier">save</span> = <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/Sauvegarde/Save/temp.sav&quot;</span>))
+    <span class="ruby-identifier">save</span> = <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/src/Sauvegarde/Save/temp.sav&quot;</span>))
   <span class="ruby-keyword">else</span>
     <span class="ruby-keyword">case</span> <span class="ruby-ivar">@difficulte</span>
       <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;easy&quot;</span>
-        <span class="ruby-identifier">save</span> = (<span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/Sauvegarde/Save/easy/save.sav&quot;</span>)) <span class="ruby-operator">?</span> <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/Sauvegarde/Save/easy/save.sav&quot;</span>)) <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
+        <span class="ruby-identifier">save</span> = (<span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/src/Sauvegarde/Save/easy/save.sav&quot;</span>)) <span class="ruby-operator">?</span> <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/src/Sauvegarde/Save/easy/save.sav&quot;</span>)) <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
       <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;normal&quot;</span>
-        <span class="ruby-identifier">save</span> = (<span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/Sauvegarde/Save/normal/save.sav&quot;</span>)) <span class="ruby-operator">?</span> <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/Sauvegarde/Save/normal/save.sav&quot;</span>)) <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
+        <span class="ruby-identifier">save</span> = (<span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/src/Sauvegarde/Save/normal/save.sav&quot;</span>)) <span class="ruby-operator">?</span> <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/src/Sauvegarde/Save/normal/save.sav&quot;</span>)) <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
       <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;hard&quot;</span>
-        <span class="ruby-identifier">save</span> = (<span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/Sauvegarde/Save/hard/save.sav&quot;</span>)) <span class="ruby-operator">?</span> <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/Sauvegarde/Save/hard/save.sav&quot;</span>)) <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
+        <span class="ruby-identifier">save</span> = (<span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/src/Sauvegarde/Save/hard/save.sav&quot;</span>)) <span class="ruby-operator">?</span> <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/src/Sauvegarde/Save/hard/save.sav&quot;</span>)) <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
       <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;custom&quot;</span>
-        <span class="ruby-identifier">save</span> = (<span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/Sauvegarde/Save/custom/save.sav&quot;</span>)) <span class="ruby-operator">?</span> <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/Sauvegarde/Save/custom/save.sav&quot;</span>)) <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
+        <span class="ruby-identifier">save</span> = (<span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/src/Sauvegarde/Save/custom/save.sav&quot;</span>)) <span class="ruby-operator">?</span> <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/src/Sauvegarde/Save/custom/save.sav&quot;</span>)) <span class="ruby-operator">:</span> <span class="ruby-keyword">nil</span>
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">save</span>
@@ -585,7 +585,7 @@
           
           <p>Charge une sauvegarde depuis un fichier en fonction du nom passé en paramètre.</p>
 
-<h3 id="method-i-chargerAvecNom-label-Parametre">Parametre<span><a href="#method-i-chargerAvecNom-label-Parametre">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="method-i-chargerAvecNom-label-Param-C3-A8tres">Paramètres<span><a href="#method-i-chargerAvecNom-label-Param-C3-A8tres">&para;</a> <a href="#top">&uarr;</a></span></h3>
 <ul><li>
 <p><code>nom</code> : nom Le nom de la sauvegarde.</p>
 </li></ul>
@@ -599,7 +599,7 @@
 
           
           <div class="method-source-code" id="chargerAvecNom-source">
-            <pre><span class="ruby-comment"># File Sauvegarde/Sauvegarde.rb, line 114</span>
+            <pre><span class="ruby-comment"># File src/Sauvegarde/Sauvegarde.rb, line 114</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">chargerAvecNom</span>(<span class="ruby-identifier">nom</span>)
   <span class="ruby-identifier">save</span> = <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">nom</span>))
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">save</span>
@@ -633,22 +633,22 @@
 
           
           <div class="method-source-code" id="sauvegarder-source">
-            <pre><span class="ruby-comment"># File Sauvegarde/Sauvegarde.rb, line 57</span>
+            <pre><span class="ruby-comment"># File src/Sauvegarde/Sauvegarde.rb, line 57</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">sauvegarder</span>()
   <span class="ruby-constant">Sauvegarde</span>.<span class="ruby-identifier">genenerDossier</span>();
   <span class="ruby-identifier">dump</span> = <span class="ruby-constant">YAML</span><span class="ruby-operator">::</span><span class="ruby-identifier">dump</span>(<span class="ruby-keyword">self</span>)
   <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@estHypothese</span>) <span class="ruby-keyword">then</span>
-    <span class="ruby-identifier">file</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">path</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/Sauvegarde/Save/temp.sav&quot;</span>), <span class="ruby-string">&#39;w&#39;</span>)
+    <span class="ruby-identifier">file</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">path</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/src/Sauvegarde/Save/temp.sav&quot;</span>), <span class="ruby-string">&#39;w&#39;</span>)
   <span class="ruby-keyword">else</span>
     <span class="ruby-keyword">case</span> <span class="ruby-ivar">@difficulte</span>
       <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;easy&quot;</span>
-        <span class="ruby-identifier">file</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">path</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/Sauvegarde/Save/easy/save.sav&quot;</span>), <span class="ruby-string">&#39;w&#39;</span>)
+        <span class="ruby-identifier">file</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">path</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/src/Sauvegarde/Save/easy/save.sav&quot;</span>), <span class="ruby-string">&#39;w&#39;</span>)
       <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;normal&quot;</span>
-        <span class="ruby-identifier">file</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">path</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/Sauvegarde/Save/normal/save.sav&quot;</span>), <span class="ruby-string">&#39;w&#39;</span>)
+        <span class="ruby-identifier">file</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">path</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/src/Sauvegarde/Save/normal/save.sav&quot;</span>), <span class="ruby-string">&#39;w&#39;</span>)
       <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;hard&quot;</span>
-        <span class="ruby-identifier">file</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">path</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/Sauvegarde/Save/hard/save.sav&quot;</span>), <span class="ruby-string">&#39;w&#39;</span>)
+        <span class="ruby-identifier">file</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">path</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/src/Sauvegarde/Save/hard/save.sav&quot;</span>), <span class="ruby-string">&#39;w&#39;</span>)
       <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;custom&quot;</span>
-        <span class="ruby-identifier">file</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">path</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/Sauvegarde/Save/custom/save.sav&quot;</span>), <span class="ruby-string">&#39;w&#39;</span>)
+        <span class="ruby-identifier">file</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">path</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/src/Sauvegarde/Save/custom/save.sav&quot;</span>), <span class="ruby-string">&#39;w&#39;</span>)
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">end</span>
   <span class="ruby-identifier">file</span>.<span class="ruby-identifier">write</span> <span class="ruby-identifier">dump</span>
@@ -679,7 +679,7 @@
           
           <p>Permet de sauvegarder avec un nom spécifique.</p>
 
-<h3 id="method-i-sauvegarderAvecNom-label-Parametre">Parametre<span><a href="#method-i-sauvegarderAvecNom-label-Parametre">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="method-i-sauvegarderAvecNom-label-Param-C3-A8tres">Paramètres<span><a href="#method-i-sauvegarderAvecNom-label-Param-C3-A8tres">&para;</a> <a href="#top">&uarr;</a></span></h3>
 <ul><li>
 <p><code>nom</code> : nom Le nom de la sauvegarde.</p>
 </li></ul>
@@ -688,7 +688,7 @@
 
           
           <div class="method-source-code" id="sauvegarderAvecNom-source">
-            <pre><span class="ruby-comment"># File Sauvegarde/Sauvegarde.rb, line 81</span>
+            <pre><span class="ruby-comment"># File src/Sauvegarde/Sauvegarde.rb, line 81</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">sauvegarderAvecNom</span>(<span class="ruby-identifier">nom</span>)
   <span class="ruby-identifier">dump</span> = <span class="ruby-constant">YAML</span><span class="ruby-operator">::</span><span class="ruby-identifier">dump</span>(<span class="ruby-keyword">self</span>)
   <span class="ruby-identifier">file</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">path</span>(<span class="ruby-identifier">nom</span>), <span class="ruby-string">&#39;w&#39;</span>)
@@ -718,13 +718,13 @@
 
         <div class="method-description">
           
-          <p>Cette méthode redefini <a href="Sauvegarde.html#method-i-to_s"><code>to_s</code></a> pour afficher une sauvegarde.</p>
+          <p>Cette méthode redéfinit <a href="Sauvegarde.html#method-i-to_s"><code>to_s</code></a> pour afficher une sauvegarde.</p>
           
           
 
           
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File Sauvegarde/Sauvegarde.rb, line 175</span>
+            <pre><span class="ruby-comment"># File src/Sauvegarde/Sauvegarde.rb, line 176</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>
   <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@estHypothese</span>) <span class="ruby-keyword">then</span>
     <span class="ruby-node">&quot;Sauvegarde : \n-Grille :\n\n#{@grille}-estHypo = #{@estHypothese}\n---------------------------------------------------\n&quot;</span>

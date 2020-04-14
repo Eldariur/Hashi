@@ -131,9 +131,9 @@
 
 <h3 id="method-c-new-label-Param-C3-A8tres">Paramètres<span><a href="#method-c-new-label-Param-C3-A8tres">&para;</a> <a href="#top">&uarr;</a></span></h3>
 <ul><li>
-<p><code>window</code> : window la fenetre principale du programme</p>
+<p><code>window</code> : window la fenêtre principale du programme</p>
 </li><li>
-<p><code>fenPre</code> : fenPre la fenetre précédente</p>
+<p><code>fenPre</code> : fenPre la fenêtre précédente</p>
 </li></ul>
           
           
@@ -145,9 +145,9 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreTuto.rb, line 17</span>
+            <pre><span class="ruby-comment"># File src/Interface/FenetreTuto.rb, line 17</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">window</span>,<span class="ruby-identifier">fenPre</span>)
-  <span class="ruby-identifier">@@fenetre</span> = <span class="ruby-identifier">window</span>
+  <span class="ruby-ivar">@fenetre</span> = <span class="ruby-identifier">window</span>
   <span class="ruby-keyword">super</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Orientation</span><span class="ruby-operator">::</span><span class="ruby-constant">VERTICAL</span>)
 
 
@@ -168,7 +168,7 @@
 
   <span class="ruby-identifier">boutonRegle</span> = <span class="ruby-constant">UnBoutonPerso</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Règles&quot;</span>,<span class="ruby-string">&quot;BoutonTuto&quot;</span>)
   <span class="ruby-identifier">boutonRegle</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){
-    <span class="ruby-identifier">@@fenetre</span>.<span class="ruby-identifier">changerWidget</span>(<span class="ruby-constant">FenetreRegle</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">@@fenetre</span>,<span class="ruby-keyword">self</span>));
+    <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">changerWidget</span>(<span class="ruby-constant">FenetreRegle</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@fenetre</span>,<span class="ruby-keyword">self</span>));
   }
   <span class="ruby-identifier">hboxBoutonRegle</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Orientation</span><span class="ruby-operator">::</span><span class="ruby-constant">HORIZONTAL</span>)
   <span class="ruby-identifier">hboxBoutonRegle</span>.<span class="ruby-identifier">halign</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Align</span><span class="ruby-operator">::</span><span class="ruby-constant">START</span>
@@ -178,7 +178,7 @@
 
   <span class="ruby-identifier">boutonRetour</span> = <span class="ruby-constant">UnBoutonPerso</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Retour&quot;</span>,<span class="ruby-string">&quot;btnQuit&quot;</span>)
   <span class="ruby-identifier">boutonRetour</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){
-    <span class="ruby-identifier">@@fenetre</span>.<span class="ruby-identifier">changerWidget</span>(<span class="ruby-identifier">fenPre</span>);
+    <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">changerWidget</span>(<span class="ruby-identifier">fenPre</span>);
   }
   <span class="ruby-identifier">hboxBoutonRetour</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Orientation</span><span class="ruby-operator">::</span><span class="ruby-constant">HORIZONTAL</span>)
   <span class="ruby-identifier">hboxBoutonRetour</span>.<span class="ruby-identifier">halign</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Align</span><span class="ruby-operator">::</span><span class="ruby-constant">START</span>
@@ -229,25 +229,25 @@
 
           
           <div class="method-source-code" id="initBoxTutoAvance-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreTuto.rb, line 90</span>
+            <pre><span class="ruby-comment"># File src/Interface/FenetreTuto.rb, line 90</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initBoxTutoAvance</span>
   <span class="ruby-ivar">@boxTutoAvance</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Orientation</span><span class="ruby-operator">::</span><span class="ruby-constant">VERTICAL</span>)
   <span class="ruby-ivar">@boxTutoAvance</span>.<span class="ruby-identifier">halign</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Align</span><span class="ruby-operator">::</span><span class="ruby-constant">CENTER</span>
 
   <span class="ruby-identifier">labelAvance</span> = <span class="ruby-constant">UnLabelPerso</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Avancé&quot;</span>,<span class="ruby-string">&quot;LabelTitre2&quot;</span>)
 
-  <span class="ruby-identifier">boutonTutoA1</span> = <span class="ruby-constant">BoutonTuto</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">@@fenetre</span>,<span class="ruby-keyword">self</span>,<span class="ruby-string">&quot;1&quot;</span>,<span class="ruby-string">&quot;A1&quot;</span>)
-  <span class="ruby-identifier">boutonTutoA2</span> = <span class="ruby-constant">BoutonTuto</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">@@fenetre</span>,<span class="ruby-keyword">self</span>,<span class="ruby-string">&quot;2&quot;</span>,<span class="ruby-string">&quot;A2&quot;</span>)
-  <span class="ruby-identifier">boutonTutoA3</span> = <span class="ruby-constant">BoutonTuto</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">@@fenetre</span>,<span class="ruby-keyword">self</span>,<span class="ruby-string">&quot;3&quot;</span>,<span class="ruby-string">&quot;A3&quot;</span>)
-  <span class="ruby-identifier">boutonTutoA4</span> = <span class="ruby-constant">BoutonTuto</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">@@fenetre</span>,<span class="ruby-keyword">self</span>,<span class="ruby-string">&quot;4&quot;</span>,<span class="ruby-string">&quot;A4&quot;</span>)
-  <span class="ruby-identifier">boutonTutoA5</span> = <span class="ruby-constant">BoutonTuto</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">@@fenetre</span>,<span class="ruby-keyword">self</span>,<span class="ruby-string">&quot;5&quot;</span>,<span class="ruby-string">&quot;A5&quot;</span>)
-  <span class="ruby-identifier">boutonTutoA6</span> = <span class="ruby-constant">BoutonTuto</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">@@fenetre</span>,<span class="ruby-keyword">self</span>,<span class="ruby-string">&quot;6&quot;</span>,<span class="ruby-string">&quot;A6&quot;</span>)
-  <span class="ruby-identifier">boutonTutoA7</span> = <span class="ruby-constant">BoutonTuto</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">@@fenetre</span>,<span class="ruby-keyword">self</span>,<span class="ruby-string">&quot;7&quot;</span>,<span class="ruby-string">&quot;A7&quot;</span>)
-  <span class="ruby-identifier">boutonTutoA8</span> = <span class="ruby-constant">BoutonTuto</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">@@fenetre</span>,<span class="ruby-keyword">self</span>,<span class="ruby-string">&quot;8&quot;</span>,<span class="ruby-string">&quot;A8&quot;</span>)
-  <span class="ruby-identifier">boutonTutoA9</span> = <span class="ruby-constant">BoutonTuto</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">@@fenetre</span>,<span class="ruby-keyword">self</span>,<span class="ruby-string">&quot;9&quot;</span>,<span class="ruby-string">&quot;A9&quot;</span>)
-  <span class="ruby-identifier">boutonTutoA10</span> = <span class="ruby-constant">BoutonTuto</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">@@fenetre</span>,<span class="ruby-keyword">self</span>,<span class="ruby-string">&quot;10&quot;</span>,<span class="ruby-string">&quot;A10&quot;</span>)
-  <span class="ruby-identifier">boutonTutoA11</span> = <span class="ruby-constant">BoutonTuto</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">@@fenetre</span>,<span class="ruby-keyword">self</span>,<span class="ruby-string">&quot;11&quot;</span>,<span class="ruby-string">&quot;A11&quot;</span>)
-  <span class="ruby-identifier">boutonTutoA12</span> = <span class="ruby-constant">BoutonTuto</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">@@fenetre</span>,<span class="ruby-keyword">self</span>,<span class="ruby-string">&quot;12&quot;</span>,<span class="ruby-string">&quot;A12&quot;</span>)
+  <span class="ruby-identifier">boutonTutoA1</span> = <span class="ruby-constant">BoutonTuto</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@fenetre</span>,<span class="ruby-keyword">self</span>,<span class="ruby-string">&quot;1&quot;</span>,<span class="ruby-string">&quot;A1&quot;</span>)
+  <span class="ruby-identifier">boutonTutoA2</span> = <span class="ruby-constant">BoutonTuto</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@fenetre</span>,<span class="ruby-keyword">self</span>,<span class="ruby-string">&quot;2&quot;</span>,<span class="ruby-string">&quot;A2&quot;</span>)
+  <span class="ruby-identifier">boutonTutoA3</span> = <span class="ruby-constant">BoutonTuto</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@fenetre</span>,<span class="ruby-keyword">self</span>,<span class="ruby-string">&quot;3&quot;</span>,<span class="ruby-string">&quot;A3&quot;</span>)
+  <span class="ruby-identifier">boutonTutoA4</span> = <span class="ruby-constant">BoutonTuto</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@fenetre</span>,<span class="ruby-keyword">self</span>,<span class="ruby-string">&quot;4&quot;</span>,<span class="ruby-string">&quot;A4&quot;</span>)
+  <span class="ruby-identifier">boutonTutoA5</span> = <span class="ruby-constant">BoutonTuto</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@fenetre</span>,<span class="ruby-keyword">self</span>,<span class="ruby-string">&quot;5&quot;</span>,<span class="ruby-string">&quot;A5&quot;</span>)
+  <span class="ruby-identifier">boutonTutoA6</span> = <span class="ruby-constant">BoutonTuto</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@fenetre</span>,<span class="ruby-keyword">self</span>,<span class="ruby-string">&quot;6&quot;</span>,<span class="ruby-string">&quot;A6&quot;</span>)
+  <span class="ruby-identifier">boutonTutoA7</span> = <span class="ruby-constant">BoutonTuto</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@fenetre</span>,<span class="ruby-keyword">self</span>,<span class="ruby-string">&quot;7&quot;</span>,<span class="ruby-string">&quot;A7&quot;</span>)
+  <span class="ruby-identifier">boutonTutoA8</span> = <span class="ruby-constant">BoutonTuto</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@fenetre</span>,<span class="ruby-keyword">self</span>,<span class="ruby-string">&quot;8&quot;</span>,<span class="ruby-string">&quot;A8&quot;</span>)
+  <span class="ruby-identifier">boutonTutoA9</span> = <span class="ruby-constant">BoutonTuto</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@fenetre</span>,<span class="ruby-keyword">self</span>,<span class="ruby-string">&quot;9&quot;</span>,<span class="ruby-string">&quot;A9&quot;</span>)
+  <span class="ruby-identifier">boutonTutoA10</span> = <span class="ruby-constant">BoutonTuto</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@fenetre</span>,<span class="ruby-keyword">self</span>,<span class="ruby-string">&quot;10&quot;</span>,<span class="ruby-string">&quot;A10&quot;</span>)
+  <span class="ruby-identifier">boutonTutoA11</span> = <span class="ruby-constant">BoutonTuto</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@fenetre</span>,<span class="ruby-keyword">self</span>,<span class="ruby-string">&quot;11&quot;</span>,<span class="ruby-string">&quot;A11&quot;</span>)
+  <span class="ruby-identifier">boutonTutoA12</span> = <span class="ruby-constant">BoutonTuto</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@fenetre</span>,<span class="ruby-keyword">self</span>,<span class="ruby-string">&quot;12&quot;</span>,<span class="ruby-string">&quot;A12&quot;</span>)
 
 
   <span class="ruby-identifier">boxBoutonTutoAL1</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Orientation</span><span class="ruby-operator">::</span><span class="ruby-constant">HORIZONTAL</span>)
@@ -301,17 +301,17 @@
 
           
           <div class="method-source-code" id="initBoxTutoBasique-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreTuto.rb, line 67</span>
+            <pre><span class="ruby-comment"># File src/Interface/FenetreTuto.rb, line 67</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initBoxTutoBasique</span>
   <span class="ruby-ivar">@boxTutoBasique</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Orientation</span><span class="ruby-operator">::</span><span class="ruby-constant">VERTICAL</span>)
   <span class="ruby-ivar">@boxTutoBasique</span>.<span class="ruby-identifier">halign</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Align</span><span class="ruby-operator">::</span><span class="ruby-constant">CENTER</span>
 
   <span class="ruby-identifier">labelBasique</span> = <span class="ruby-constant">UnLabelPerso</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Débutant&quot;</span>,<span class="ruby-string">&quot;LabelTitre2&quot;</span>)
 
-  <span class="ruby-identifier">boutonTutoB1</span> = <span class="ruby-constant">BoutonTuto</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">@@fenetre</span>,<span class="ruby-keyword">self</span>,<span class="ruby-string">&quot;1&quot;</span>,<span class="ruby-string">&quot;D1&quot;</span>)
-  <span class="ruby-identifier">boutonTutoB2</span> = <span class="ruby-constant">BoutonTuto</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">@@fenetre</span>,<span class="ruby-keyword">self</span>,<span class="ruby-string">&quot;2&quot;</span>,<span class="ruby-string">&quot;D2&quot;</span>)
-  <span class="ruby-identifier">boutonTutoB3</span> = <span class="ruby-constant">BoutonTuto</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">@@fenetre</span>,<span class="ruby-keyword">self</span>,<span class="ruby-string">&quot;3&quot;</span>,<span class="ruby-string">&quot;D3&quot;</span>)
-  <span class="ruby-identifier">boutonTutoB4</span> = <span class="ruby-constant">BoutonTuto</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">@@fenetre</span>,<span class="ruby-keyword">self</span>,<span class="ruby-string">&quot;4&quot;</span>,<span class="ruby-string">&quot;D4&quot;</span>)
+  <span class="ruby-identifier">boutonTutoB1</span> = <span class="ruby-constant">BoutonTuto</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@fenetre</span>,<span class="ruby-keyword">self</span>,<span class="ruby-string">&quot;1&quot;</span>,<span class="ruby-string">&quot;D1&quot;</span>)
+  <span class="ruby-identifier">boutonTutoB2</span> = <span class="ruby-constant">BoutonTuto</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@fenetre</span>,<span class="ruby-keyword">self</span>,<span class="ruby-string">&quot;2&quot;</span>,<span class="ruby-string">&quot;D2&quot;</span>)
+  <span class="ruby-identifier">boutonTutoB3</span> = <span class="ruby-constant">BoutonTuto</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@fenetre</span>,<span class="ruby-keyword">self</span>,<span class="ruby-string">&quot;3&quot;</span>,<span class="ruby-string">&quot;D3&quot;</span>)
+  <span class="ruby-identifier">boutonTutoB4</span> = <span class="ruby-constant">BoutonTuto</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@fenetre</span>,<span class="ruby-keyword">self</span>,<span class="ruby-string">&quot;4&quot;</span>,<span class="ruby-string">&quot;D4&quot;</span>)
 
   <span class="ruby-identifier">boxBoutonTutoB</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Orientation</span><span class="ruby-operator">::</span><span class="ruby-constant">HORIZONTAL</span>)
   <span class="ruby-identifier">boxBoutonTutoB</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">boutonTutoB1</span>)

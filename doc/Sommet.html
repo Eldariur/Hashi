@@ -135,7 +135,7 @@
 
   <section class="description">
     
-<p>Class représentant un <a href="Sommet.html"><code>Sommet</code></a></p>
+<p>Classe représentant un <a href="Sommet.html"><code>Sommet</code></a></p>
 
   </section>
 
@@ -242,13 +242,13 @@
 
         <div class="method-description">
           
-          <p>creer un <a href="Sommet.html"><code>Sommet</code></a> proprement</p>
+          <p>créer un <a href="Sommet.html"><code>Sommet</code></a> proprement</p>
           
           
 
           
           <div class="method-source-code" id="creer-source">
-            <pre><span class="ruby-comment"># File Plateau/Sommet.rb, line 13</span>
+            <pre><span class="ruby-comment"># File src/Plateau/Sommet.rb, line 13</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">creer</span>(<span class="ruby-identifier">valeur</span>, <span class="ruby-identifier">position</span>, <span class="ruby-identifier">complet</span> = <span class="ruby-keyword">false</span>)
     <span class="ruby-identifier">objet</span> = <span class="ruby-identifier">new</span>(<span class="ruby-identifier">valeur</span>, <span class="ruby-identifier">position</span>, <span class="ruby-identifier">complet</span>)
     <span class="ruby-identifier">objet</span>.<span class="ruby-identifier">completerInitialize</span>()
@@ -290,7 +290,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Plateau/Sommet.rb, line 30</span>
+            <pre><span class="ruby-comment"># File src/Plateau/Sommet.rb, line 30</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">valeur</span>, <span class="ruby-identifier">position</span>, <span class="ruby-identifier">complet</span>)
     <span class="ruby-ivar">@valeur</span> = <span class="ruby-identifier">valeur</span>
     <span class="ruby-ivar">@position</span> = <span class="ruby-identifier">position</span> <span class="ruby-comment">#la case dans lequel est le sommet</span>
@@ -335,7 +335,7 @@
 
           
           <div class="method-source-code" id="afficher-source">
-            <pre><span class="ruby-comment"># File Plateau/Sommet.rb, line 273</span>
+            <pre><span class="ruby-comment"># File src/Plateau/Sommet.rb, line 273</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">afficher</span>()
     <span class="ruby-identifier">print</span>(<span class="ruby-ivar">@valeur</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -362,13 +362,13 @@
 
         <div class="method-description">
           
-          <p>ajoute une arête a la liste de ses arrete</p>
+          <p>ajoute une arête à la liste de ses arêtes</p>
           
           
 
           
           <div class="method-source-code" id="ajouterArete-source">
-            <pre><span class="ruby-comment"># File Plateau/Sommet.rb, line 69</span>
+            <pre><span class="ruby-comment"># File src/Plateau/Sommet.rb, line 69</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ajouterArete</span>(<span class="ruby-identifier">arete</span>)
     <span class="ruby-ivar">@listeArete</span> <span class="ruby-operator">&lt;&lt;</span> (<span class="ruby-identifier">arete</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -406,7 +406,7 @@
 
           
           <div class="method-source-code" id="areteAvecChaqueVoisin-source">
-            <pre><span class="ruby-comment"># File Plateau/Sommet.rb, line 299</span>
+            <pre><span class="ruby-comment"># File src/Plateau/Sommet.rb, line 299</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">areteAvecChaqueVoisin</span>()
   <span class="ruby-identifier">voisinsAreteCommune</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>()
 
@@ -442,22 +442,22 @@
 
         <div class="method-description">
           
-          <pre>Méthode permettant de récupérer le sommet de l&#39;autre coté d&#39;une arete</pre>
+          <pre>Méthode permettant de récupérer le sommet de l&#39;autre coté d&#39;une arête</pre>
 
 <h3 id="method-i-autreSommet-label-Param-C3-A8tres">Paramètres<span><a href="#method-i-autreSommet-label-Param-C3-A8tres">&para;</a> <a href="#top">&uarr;</a></span></h3>
 <ul><li>
-<p><code>arete</code> : l&#39;arete dont on doit trouver l&#39;autre sommet</p>
+<p><code>arete</code> : l&#39;arête dont on doit trouver l&#39;autre sommet</p>
 </li></ul>
 
 <h3 id="method-i-autreSommet-label-Return">Return<span><a href="#method-i-autreSommet-label-Return">&para;</a> <a href="#top">&uarr;</a></span></h3>
 
-<p>L&#39;autre sommet relié par l&#39;arete</p>
+<p>L&#39;autre sommet relié par l&#39;arête</p>
           
           
 
           
           <div class="method-source-code" id="autreSommet-source">
-            <pre><span class="ruby-comment"># File Plateau/Sommet.rb, line 359</span>
+            <pre><span class="ruby-comment"># File src/Plateau/Sommet.rb, line 359</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">autreSommet</span>(<span class="ruby-identifier">arete</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@listeArete</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">arete</span>)
         <span class="ruby-keyword">if</span> <span class="ruby-identifier">arete</span>.<span class="ruby-identifier">sommet1</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">self</span>
@@ -490,16 +490,16 @@
 
         <div class="method-description">
           
-          <pre class="ruby"><span class="ruby-constant">Complete</span> <span class="ruby-identifier">le</span> <span class="ruby-identifier">initialize</span>
+          <pre class="ruby"><span class="ruby-constant">Complète</span> <span class="ruby-identifier">le</span> <span class="ruby-identifier">initialize</span>
 </pre>
 
-<p>s&#39;ajoute comme contenu de la case dans laquelle il est et a la liste de sommet de la grille</p>
+<p>s&#39;ajoute comme contenu de la case dans laquelle il est et à la liste de sommet de la grille</p>
           
           
 
           
           <div class="method-source-code" id="completerInitialize-source">
-            <pre><span class="ruby-comment"># File Plateau/Sommet.rb, line 49</span>
+            <pre><span class="ruby-comment"># File src/Plateau/Sommet.rb, line 49</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">completerInitialize</span>()
     <span class="ruby-ivar">@position</span>.<span class="ruby-identifier">contenu</span> = <span class="ruby-keyword">self</span>
     <span class="ruby-ivar">@position</span>.<span class="ruby-identifier">grille</span>.<span class="ruby-identifier">addSommet</span>(<span class="ruby-keyword">self</span>)
@@ -527,19 +527,19 @@
 
         <div class="method-description">
           
-          <pre>Compte le nombre d&#39;arete</pre>
+          <pre>Compte le nombre d&#39;arête</pre>
 
-<p>parcours toute les arete pour compter le nombre d&#39;arete</p>
+<p>parcours toutes les arête pour compter le nombre d&#39;arête</p>
 
 <pre>=== Return
 
-* +total+ : Le nombre total d&#39;arete liés au Sommet</pre>
+* +total+ : Le nombre total d&#39;arête liées au Sommet</pre>
           
           
 
           
           <div class="method-source-code" id="compterArete-source">
-            <pre><span class="ruby-comment"># File Plateau/Sommet.rb, line 60</span>
+            <pre><span class="ruby-comment"># File src/Plateau/Sommet.rb, line 60</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">compterArete</span>()
     <span class="ruby-identifier">total</span> = <span class="ruby-value">0</span>
     <span class="ruby-ivar">@listeArete</span>.<span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">arete</span><span class="ruby-operator">|</span>
@@ -581,7 +581,7 @@
 
           
           <div class="method-source-code" id="compterVoisins-source">
-            <pre><span class="ruby-comment"># File Plateau/Sommet.rb, line 83</span>
+            <pre><span class="ruby-comment"># File src/Plateau/Sommet.rb, line 83</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">compterVoisins</span>()
   <span class="ruby-identifier">voisins</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">getListeVoisins</span>()
 
@@ -621,7 +621,7 @@
 
           
           <div class="method-source-code" id="compterVoisinsComplets-source">
-            <pre><span class="ruby-comment"># File Plateau/Sommet.rb, line 114</span>
+            <pre><span class="ruby-comment"># File src/Plateau/Sommet.rb, line 114</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">compterVoisinsComplets</span>()
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">getListeVoisinsComplets</span>.<span class="ruby-identifier">size</span>()
 <span class="ruby-keyword">end</span></pre>
@@ -659,7 +659,7 @@
 
           
           <div class="method-source-code" id="compterVoisinsNonComplets-source">
-            <pre><span class="ruby-comment"># File Plateau/Sommet.rb, line 105</span>
+            <pre><span class="ruby-comment"># File src/Plateau/Sommet.rb, line 105</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">compterVoisinsNonComplets</span>()
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">getListeVoisinsNonComplets</span>.<span class="ruby-identifier">size</span>()
 <span class="ruby-keyword">end</span></pre>
@@ -697,7 +697,7 @@
 
           
           <div class="method-source-code" id="compterVoisinsNonRelies-source">
-            <pre><span class="ruby-comment"># File Plateau/Sommet.rb, line 94</span>
+            <pre><span class="ruby-comment"># File src/Plateau/Sommet.rb, line 94</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">compterVoisinsNonRelies</span>()
   <span class="ruby-identifier">voisins</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">getVoisinsNonRelies</span>()
 
@@ -736,7 +736,7 @@
 
           
           <div class="method-source-code" id="connexionsRestantes-source">
-            <pre><span class="ruby-comment"># File Plateau/Sommet.rb, line 282</span>
+            <pre><span class="ruby-comment"># File src/Plateau/Sommet.rb, line 282</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">connexionsRestantes</span>()
   <span class="ruby-identifier">compteur</span> = <span class="ruby-value">0</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">listeArete</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span>
@@ -771,22 +771,22 @@
 
         <div class="method-description">
           
-          <pre>Méthode qui permet de récupérer l&#39;arete avec un tel autre sommet si elle existe</pre>
+          <pre>Méthode qui permet de récupérer l&#39;arête avec un tel autre sommet si elle existe</pre>
 
 <h3 id="method-i-donneAreteAvec-label-Param-C3-A8tres">Paramètres<span><a href="#method-i-donneAreteAvec-label-Param-C3-A8tres">&para;</a> <a href="#top">&uarr;</a></span></h3>
 <ul><li>
-<p><code>sommet</code> : les sommet de destination de l&#39;arete</p>
+<p><code>sommet</code> : les sommets de destination de l&#39;arête</p>
 </li></ul>
 
 <h3 id="method-i-donneAreteAvec-label-Return">Return<span><a href="#method-i-donneAreteAvec-label-Return">&para;</a> <a href="#top">&uarr;</a></span></h3>
 
-<p>L&#39;arete entre ces sommets si elle existe, nil sinon</p>
+<p>L&#39;arête entre ces sommets si elle existe, nil sinon</p>
           
           
 
           
           <div class="method-source-code" id="donneAreteAvec-source">
-            <pre><span class="ruby-comment"># File Plateau/Sommet.rb, line 340</span>
+            <pre><span class="ruby-comment"># File src/Plateau/Sommet.rb, line 340</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">donneAreteAvec</span>(<span class="ruby-identifier">sommet</span>)
     <span class="ruby-keyword">if</span>(<span class="ruby-identifier">possedeAreteAvec</span>(<span class="ruby-identifier">sommet</span>))
         <span class="ruby-ivar">@listeArete</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">arete</span><span class="ruby-operator">|</span>
@@ -829,7 +829,7 @@
 
           
           <div class="method-source-code" id="getListeVoisins-source">
-            <pre><span class="ruby-comment"># File Plateau/Sommet.rb, line 123</span>
+            <pre><span class="ruby-comment"># File src/Plateau/Sommet.rb, line 123</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getListeVoisins</span>()
   <span class="ruby-identifier">voisins</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>()
 
@@ -956,7 +956,7 @@
 
           
           <div class="method-source-code" id="getListeVoisinsComplets-source">
-            <pre><span class="ruby-comment"># File Plateau/Sommet.rb, line 201</span>
+            <pre><span class="ruby-comment"># File src/Plateau/Sommet.rb, line 201</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getListeVoisinsComplets</span>()
   <span class="ruby-identifier">voisins</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">getListeVoisins</span>()
   <span class="ruby-identifier">array</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>()
@@ -1002,7 +1002,7 @@
 
           
           <div class="method-source-code" id="getListeVoisinsNonComplets-source">
-            <pre><span class="ruby-comment"># File Plateau/Sommet.rb, line 183</span>
+            <pre><span class="ruby-comment"># File src/Plateau/Sommet.rb, line 183</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getListeVoisinsNonComplets</span>()
   <span class="ruby-identifier">voisins</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">getListeVoisins</span>()
   <span class="ruby-identifier">array</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>()
@@ -1049,7 +1049,7 @@
 
           
           <div class="method-source-code" id="getVoisins-source">
-            <pre><span class="ruby-comment"># File Plateau/Sommet.rb, line 220</span>
+            <pre><span class="ruby-comment"># File src/Plateau/Sommet.rb, line 220</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getVoisins</span>()
   <span class="ruby-identifier">res</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>()
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">listeArete</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span>
@@ -1092,7 +1092,7 @@
 
           
           <div class="method-source-code" id="getVoisinsNonRelies-source">
-            <pre><span class="ruby-comment"># File Plateau/Sommet.rb, line 232</span>
+            <pre><span class="ruby-comment"># File src/Plateau/Sommet.rb, line 232</span>
   <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getVoisinsNonRelies</span>()
     <span class="ruby-identifier">voisins</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">getListeVoisins</span>()
 <span class="ruby-identifier">relies</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">getVoisins</span>()
@@ -1136,7 +1136,7 @@
 
           
           <div class="method-source-code" id="hasArete-source">
-            <pre><span class="ruby-comment"># File Plateau/Sommet.rb, line 264</span>
+            <pre><span class="ruby-comment"># File src/Plateau/Sommet.rb, line 264</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">hasArete</span>(<span class="ruby-identifier">uneCase</span>)
   <span class="ruby-keyword">if</span>(<span class="ruby-identifier">uneCase</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>)
     <span class="ruby-keyword">return</span> <span class="ruby-identifier">uneCase</span>.<span class="ruby-identifier">contenu</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Arete</span>
@@ -1182,7 +1182,7 @@
 
           
           <div class="method-source-code" id="hasSommet-source">
-            <pre><span class="ruby-comment"># File Plateau/Sommet.rb, line 247</span>
+            <pre><span class="ruby-comment"># File src/Plateau/Sommet.rb, line 247</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">hasSommet</span>(<span class="ruby-identifier">uneCase</span>)
   <span class="ruby-keyword">if</span>(<span class="ruby-identifier">uneCase</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>)
     <span class="ruby-keyword">return</span> <span class="ruby-identifier">uneCase</span>.<span class="ruby-identifier">contenu</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Sommet</span>
@@ -1213,17 +1213,17 @@
 
         <div class="method-description">
           
-          <pre>Méthode permettant de connaitre le nombre d&#39;arete que posède le sommet</pre>
+          <pre>Méthode permettant de connaître le nombre d&#39;arête que possède le sommet</pre>
 
 <h3 id="method-i-nbArete-label-Return">Return<span><a href="#method-i-nbArete-label-Return">&para;</a> <a href="#top">&uarr;</a></span></h3>
 
-<p>La taille du tableau d&#39;arete</p>
+<p>La taille du tableau d&#39;arête</p>
           
           
 
           
           <div class="method-source-code" id="nbArete-source">
-            <pre><span class="ruby-comment"># File Plateau/Sommet.rb, line 374</span>
+            <pre><span class="ruby-comment"># File src/Plateau/Sommet.rb, line 374</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">nbArete</span>()
     <span class="ruby-keyword">return</span> <span class="ruby-ivar">@listeArete</span>.<span class="ruby-identifier">length</span>()
 <span class="ruby-keyword">end</span></pre>
@@ -1250,23 +1250,23 @@
 
         <div class="method-description">
           
-          <pre class="ruby"><span class="ruby-constant">Méthode</span> <span class="ruby-identifier">vérifiant</span> <span class="ruby-identifier">si</span> <span class="ruby-identifier">le</span> <span class="ruby-identifier">sommet</span> <span class="ruby-identifier">possède</span> <span class="ruby-identifier">une</span> <span class="ruby-identifier">arete</span> <span class="ruby-identifier">vers</span> <span class="ruby-identifier">tel</span> <span class="ruby-identifier">autre</span> <span class="ruby-identifier">sommet</span>
+          <pre class="ruby"><span class="ruby-constant">Méthode</span> <span class="ruby-identifier">vérifiant</span> <span class="ruby-identifier">si</span> <span class="ruby-identifier">le</span> <span class="ruby-identifier">sommet</span> <span class="ruby-identifier">possède</span> <span class="ruby-identifier">une</span> <span class="ruby-identifier">arête</span> <span class="ruby-identifier">vers</span> <span class="ruby-identifier">tel</span> <span class="ruby-identifier">autre</span> <span class="ruby-identifier">sommet</span>
 </pre>
 
 <h3 id="method-i-possedeAreteAvec-label-Param-C3-A8tres">Paramètres<span><a href="#method-i-possedeAreteAvec-label-Param-C3-A8tres">&para;</a> <a href="#top">&uarr;</a></span></h3>
 <ul><li>
-<p><code>sommet</code> : les sommet de destination de l&#39;arete</p>
+<p><code>sommet</code> : les sommets de destination de l&#39;arête</p>
 </li></ul>
 
 <h3 id="method-i-possedeAreteAvec-label-Return">Return<span><a href="#method-i-possedeAreteAvec-label-Return">&para;</a> <a href="#top">&uarr;</a></span></h3>
 
-<p>True si le sommet a une arete vers le sommet, false sinon</p>
+<p>True si le sommet a une arête vers le sommet, false sinon</p>
           
           
 
           
           <div class="method-source-code" id="possedeAreteAvec-source">
-            <pre><span class="ruby-comment"># File Plateau/Sommet.rb, line 321</span>
+            <pre><span class="ruby-comment"># File src/Plateau/Sommet.rb, line 321</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">possedeAreteAvec</span>(<span class="ruby-identifier">sommet</span>)
     <span class="ruby-identifier">aArete</span> = <span class="ruby-keyword">false</span>
     <span class="ruby-ivar">@listeArete</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">arete</span><span class="ruby-operator">|</span>
@@ -1299,13 +1299,13 @@
 
         <div class="method-description">
           
-          <p>retire une arête de la liste de ses arrete</p>
+          <p>retire une arête de la liste de ses arêtes</p>
           
           
 
           
           <div class="method-source-code" id="retirerArete-source">
-            <pre><span class="ruby-comment"># File Plateau/Sommet.rb, line 74</span>
+            <pre><span class="ruby-comment"># File src/Plateau/Sommet.rb, line 74</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">retirerArete</span>(<span class="ruby-identifier">arete</span>)
     <span class="ruby-ivar">@listeArete</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">arete</span>)
 <span class="ruby-keyword">end</span></pre>

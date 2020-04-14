@@ -147,7 +147,7 @@
       <div id="attribute-i-pseudo" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">pseudo</span><span
-            class="attribute-access-type">[R]</span>
+            class="attribute-access-type">[RW]</span>
         </div>
 
         <div class="method-description">
@@ -195,7 +195,7 @@
           
           <p>Créer un nouveau score.</p>
 
-<h3 id="method-c-creer-label-Parametre">Parametre<span><a href="#method-c-creer-label-Parametre">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="method-c-creer-label-Param-C3-A8tres">Paramètres<span><a href="#method-c-creer-label-Param-C3-A8tres">&para;</a> <a href="#top">&uarr;</a></span></h3>
 <ul><li>
 <p><code>nom</code> : nom Le pseudo associé au highscore.</p>
 </li><li>
@@ -208,7 +208,7 @@
 
           
           <div class="method-source-code" id="creer-source">
-            <pre><span class="ruby-comment"># File Classement/Score.rb, line 40</span>
+            <pre><span class="ruby-comment"># File src/Classement/Score.rb, line 41</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Score</span>.<span class="ruby-identifier ruby-title">creer</span>(<span class="ruby-identifier">nom</span>, <span class="ruby-identifier">time</span>, <span class="ruby-identifier">difficulte</span>)
         <span class="ruby-identifier">new</span>(<span class="ruby-identifier">nom</span>, <span class="ruby-identifier">time</span>, <span class="ruby-identifier">difficulte</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -235,9 +235,9 @@
 
         <div class="method-description">
           
-          <p>Initialisation de la class <a href="Score.html"><code>Score</code></a>.</p>
+          <p>Initialisation de la classe <a href="Score.html"><code>Score</code></a>.</p>
 
-<h3 id="method-c-new-label-Parametre">Parametre<span><a href="#method-c-new-label-Parametre">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="method-c-new-label-Param-C3-A8tres">Paramètres<span><a href="#method-c-new-label-Param-C3-A8tres">&para;</a> <a href="#top">&uarr;</a></span></h3>
 <ul><li>
 <p><code>nom</code> : nom Le pseudo associé au highscore.</p>
 </li><li>
@@ -250,12 +250,13 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Classement/Score.rb, line 28</span>
+            <pre><span class="ruby-comment"># File src/Classement/Score.rb, line 28</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">nom</span>, <span class="ruby-identifier">time</span>, <span class="ruby-identifier">difficulte</span>)
         <span class="ruby-ivar">@pseudo</span> = <span class="ruby-identifier">nom</span>
         <span class="ruby-ivar">@points</span> = <span class="ruby-value">0</span>
         <span class="ruby-ivar">@temps</span> = <span class="ruby-identifier">time</span>
         <span class="ruby-ivar">@difficulte</span> = <span class="ruby-identifier">difficulte</span>
+        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">calculScore</span>()
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -294,7 +295,7 @@
 
           
           <div class="method-source-code" id="calculScore-source">
-            <pre><span class="ruby-comment"># File Classement/Score.rb, line 45</span>
+            <pre><span class="ruby-comment"># File src/Classement/Score.rb, line 46</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">calculScore</span>()
         <span class="ruby-identifier">tMax</span> = <span class="ruby-value">0</span>
         <span class="ruby-keyword">case</span> <span class="ruby-ivar">@difficulte</span>
@@ -338,9 +339,8 @@
 
           
           <div class="method-source-code" id="sauvegarder-source">
-            <pre><span class="ruby-comment"># File Classement/Score.rb, line 61</span>
+            <pre><span class="ruby-comment"># File src/Classement/Score.rb, line 62</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">sauvegarder</span>()
-        <span class="ruby-keyword">self</span>.<span class="ruby-identifier">calculScore</span>()
         <span class="ruby-identifier">classementTemp</span> =  <span class="ruby-constant">Classement</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-ivar">@difficulte</span>)
         <span class="ruby-identifier">highscoreTemp</span> = <span class="ruby-constant">Highscore</span>.<span class="ruby-identifier">creer</span>()
         <span class="ruby-keyword">if</span> <span class="ruby-identifier">classementTemp</span>.<span class="ruby-identifier">isHighScore?</span>(<span class="ruby-keyword">self</span>) <span class="ruby-keyword">then</span> <span class="ruby-identifier">highscoreTemp</span>.<span class="ruby-identifier">sauvegarder</span>(<span class="ruby-ivar">@pseudo</span>, <span class="ruby-ivar">@points</span>, <span class="ruby-ivar">@difficulte</span>) <span class="ruby-keyword">end</span>
@@ -368,13 +368,17 @@
 
         <div class="method-description">
           
-          
+          <p>Cette méthode redéfinit <a href="Score.html#method-i-to_i"><code>to_i</code></a> pour les scores.</p>
+
+<h3 id="method-i-to_i-label-Return">Return<span><a href="#method-i-to_i-label-Return">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>Le nombre de point d&#39;un score</p>
           
           
 
           
           <div class="method-source-code" id="to_i-source">
-            <pre><span class="ruby-comment"># File Classement/Score.rb, line 84</span>
+            <pre><span class="ruby-comment"># File src/Classement/Score.rb, line 84</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_i</span>
         <span class="ruby-keyword">return</span> <span class="ruby-ivar">@points</span>
 <span class="ruby-keyword">end</span></pre>
@@ -401,13 +405,17 @@
 
         <div class="method-description">
           
-          
+          <p>Cette méthode redéfinit <a href="Score.html#method-i-to_s"><code>to_s</code></a> pour afficher un score.</p>
+
+<h3 id="method-i-to_s-label-Return">Return<span><a href="#method-i-to_s-label-Return">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>Une chaîne de caractère contenant des infos sur un score</p>
           
           
 
           
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File Classement/Score.rb, line 74</span>
+            <pre><span class="ruby-comment"># File src/Classement/Score.rb, line 74</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>
         <span class="ruby-node">&quot;Score : Pseudo = #{@pseudo}, Points = #{@points}, Temps = #{@temps}, Difficulte = #{@difficulte}\n&quot;</span>
 <span class="ruby-keyword">end</span></pre>

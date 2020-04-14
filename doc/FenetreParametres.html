@@ -129,9 +129,9 @@
 
 <h3 id="method-c-new-label-Param-C3-A8tres">Paramètres<span><a href="#method-c-new-label-Param-C3-A8tres">&para;</a> <a href="#top">&uarr;</a></span></h3>
 <ul><li>
-<p><code>window</code> : window la fenetre principale du programme</p>
+<p><code>window</code> : window la fenêtre principale du programme</p>
 </li><li>
-<p><code>fenPre</code> : fenPre la fenetre précédente</p>
+<p><code>fenPre</code> : fenPre la fenêtre précédente</p>
 </li></ul>
           
           
@@ -143,9 +143,9 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreParametres.rb, line 17</span>
+            <pre><span class="ruby-comment"># File src/Interface/FenetreParametres.rb, line 17</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">window</span>,<span class="ruby-identifier">fenPre</span>)
-  <span class="ruby-identifier">@@fenetre</span> = <span class="ruby-identifier">window</span>
+  <span class="ruby-ivar">@fenetre</span> = <span class="ruby-identifier">window</span>
   <span class="ruby-keyword">super</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Orientation</span><span class="ruby-operator">::</span><span class="ruby-constant">VERTICAL</span>)
   <span class="ruby-identifier">lbl1</span> = <span class="ruby-constant">UnLabelPerso</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Longueur de la grille: &quot;</span>, <span class="ruby-string">&quot;UnLabelBlanc&quot;</span>)
   <span class="ruby-identifier">lbl2</span> = <span class="ruby-constant">UnLabelPerso</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Largeur de la grille: &quot;</span>, <span class="ruby-string">&quot;UnLabelBlanc&quot;</span>)
@@ -210,12 +210,12 @@
   }
 
       <span class="ruby-identifier">boutonRetour</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){
-              <span class="ruby-identifier">@@fenetre</span>.<span class="ruby-identifier">changerWidget</span>(<span class="ruby-identifier">fenPre</span>)
+              <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">changerWidget</span>(<span class="ruby-identifier">fenPre</span>)
       }
 
 
   <span class="ruby-identifier">boutonVal</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {
-    <span class="ruby-identifier">@@fenetre</span>.<span class="ruby-identifier">changerWidget</span>(<span class="ruby-constant">FenetreJeu</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">@@fenetre</span>, <span class="ruby-identifier">fenPre</span>, <span class="ruby-string">&quot;custom&quot;</span>, <span class="ruby-keyword">false</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">lengthScale</span>.<span class="ruby-identifier">getValue</span>().<span class="ruby-identifier">round</span>(), <span class="ruby-identifier">heightScale</span>.<span class="ruby-identifier">getValue</span>().<span class="ruby-identifier">round</span>(), <span class="ruby-identifier">densScale</span>.<span class="ruby-identifier">getValue</span>().<span class="ruby-identifier">round</span>()))
+    <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">changerWidget</span>(<span class="ruby-constant">FenetreJeu</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@fenetre</span>, <span class="ruby-identifier">fenPre</span>, <span class="ruby-string">&quot;custom&quot;</span>, <span class="ruby-keyword">false</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">lengthScale</span>.<span class="ruby-identifier">getValue</span>().<span class="ruby-identifier">round</span>(), <span class="ruby-identifier">heightScale</span>.<span class="ruby-identifier">getValue</span>().<span class="ruby-identifier">round</span>(), <span class="ruby-identifier">densScale</span>.<span class="ruby-identifier">getValue</span>().<span class="ruby-identifier">round</span>()))
   }
 
   <span class="ruby-identifier">boutonRes</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {
@@ -268,7 +268,7 @@
 
           
           <div class="method-source-code" id="actualise-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreParametres.rb, line 105</span>
+            <pre><span class="ruby-comment"># File src/Interface/FenetreParametres.rb, line 105</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">actualise</span>(<span class="ruby-identifier">scale</span>)
   <span class="ruby-identifier">scale</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span><span class="ruby-operator">|</span><span class="ruby-identifier">s</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">s</span>.<span class="ruby-identifier">adjustment</span>=(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Adjustment</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">s</span>.<span class="ruby-identifier">getValue</span>(), <span class="ruby-identifier">s</span>.<span class="ruby-identifier">adjustment</span>.<span class="ruby-identifier">lower</span>, <span class="ruby-identifier">s</span>.<span class="ruby-identifier">adjustment</span>.<span class="ruby-identifier">upper</span>, <span class="ruby-value">1</span>, <span class="ruby-value">1</span>, <span class="ruby-value">1</span>))

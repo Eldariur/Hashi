@@ -105,7 +105,7 @@
 
   <section class="description">
     
-<p>Classe permttant la manipulation d&#39;un <a href="Generateur.html"><code>Generateur</code></a> de grille</p>
+<p>Classe permettant la manipulation d&#39;un générateur de grille</p>
 
   </section>
 
@@ -163,37 +163,37 @@
           <pre class="ruby"><span class="ruby-constant">Partie</span> <span class="ruby-identifier">initialize</span>
 </pre>
 
-<p>Initialisation du generateur</p>
+<p>Initialisation du générateur</p>
 
 <pre>=== Paramètres
 
-* +difficulty+ : La difficulté de la grille a générer
-* +longueur+ : La longueur de la grille a générer (initialisé a nil)
-* +largeur+ : La largeur de la grille a générer (initialisé a nil)
-* +densite+ : La densite de la grille a générer (initialisé a nil)</pre>
+* +difficulty+ : La difficulté de la grille à générer
+* +longueur+ : La longueur de la grille à générer (initialisée à nil)
+* +largeur+ : La largeur de la grille à générer (initialisée à nil)
+* +densite+ : La densite de la grille à générer (initialisée à nil)</pre>
           
           
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Generateur/Generateur.rb, line 29</span>
+            <pre><span class="ruby-comment"># File src/Generateur/Generateur.rb, line 29</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">difficulty</span>, <span class="ruby-identifier">longueur</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">largeur</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">densite</span>=<span class="ruby-keyword">nil</span>)
     <span class="ruby-ivar">@estGenere</span> = <span class="ruby-keyword">false</span>
     <span class="ruby-ivar">@chanceDeDouble</span> = <span class="ruby-value">38</span><span class="ruby-operator">+</span><span class="ruby-identifier">rand</span>(<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">6</span>)
     <span class="ruby-keyword">case</span> <span class="ruby-identifier">difficulty</span>
       <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;easy&quot;</span>
-        <span class="ruby-comment">#Taille 6x6 à 9x10, densite 35 à 41</span>
+        <span class="ruby-comment">#Taille 6x6 à 9x10, densité 35 à 41</span>
         <span class="ruby-ivar">@longueur</span> = <span class="ruby-value">6</span><span class="ruby-operator">+</span><span class="ruby-identifier">rand</span>(<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">3</span>)
         <span class="ruby-ivar">@largeur</span> = <span class="ruby-value">6</span><span class="ruby-operator">+</span><span class="ruby-identifier">rand</span>(<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">4</span>)
         <span class="ruby-ivar">@densite</span> = <span class="ruby-value">35</span><span class="ruby-operator">+</span><span class="ruby-identifier">rand</span>(<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">6</span>)
       <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;normal&quot;</span>
-        <span class="ruby-comment">#Taille 7x9 à 9x12, densite 32 à 39</span>
+        <span class="ruby-comment">#Taille 7x9 à 9x12, densité 32 à 39</span>
         <span class="ruby-ivar">@longueur</span> = <span class="ruby-value">7</span><span class="ruby-operator">+</span><span class="ruby-identifier">rand</span>(<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">2</span>)
         <span class="ruby-ivar">@largeur</span> = <span class="ruby-value">9</span><span class="ruby-operator">+</span><span class="ruby-identifier">rand</span>(<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">3</span>)
         <span class="ruby-ivar">@densite</span> = <span class="ruby-value">32</span><span class="ruby-operator">+</span><span class="ruby-identifier">rand</span>(<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">7</span>)
         <span class="ruby-ivar">@chanceDeDouble</span> = <span class="ruby-value">25</span><span class="ruby-operator">+</span><span class="ruby-identifier">rand</span>(<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">9</span>)
       <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;hard&quot;</span>
-        <span class="ruby-comment">#Taille 9x13 à 10x14, densite 32 à 38</span>
+        <span class="ruby-comment">#Taille 9x13 à 10x14, densité 32 à 38</span>
         <span class="ruby-ivar">@longueur</span> = <span class="ruby-value">9</span><span class="ruby-operator">+</span><span class="ruby-identifier">rand</span>(<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">1</span>)
         <span class="ruby-ivar">@largeur</span> = <span class="ruby-value">13</span><span class="ruby-operator">+</span><span class="ruby-identifier">rand</span>(<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">1</span>)
         <span class="ruby-ivar">@densite</span> = <span class="ruby-value">32</span><span class="ruby-operator">+</span><span class="ruby-identifier">rand</span>(<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">6</span>)
@@ -210,7 +210,7 @@
     <span class="ruby-comment">##puts &quot;densite : &quot; + @densite.to_s</span>
     <span class="ruby-comment">##puts &quot;longueur*largeur.ceil : &quot; + (((@longueur * @largeur).to_f / 100).ceil).to_s</span>
     <span class="ruby-ivar">@nbSommet</span> = (((<span class="ruby-ivar">@longueur</span> <span class="ruby-operator">*</span> <span class="ruby-ivar">@largeur</span>).<span class="ruby-identifier">to_f</span>  <span class="ruby-operator">/</span> <span class="ruby-value">100</span>) <span class="ruby-operator">*</span> <span class="ruby-ivar">@densite</span>).<span class="ruby-identifier">ceil</span>
-    <span class="ruby-comment">##puts &quot;Dimensions : &quot;+@longueur.to_s+&quot;x&quot;+@largeur.to_s+&quot;(&quot;+(@largeur*@longueur).to_s+&quot;cases). Nb sommets attendus &quot;+@nbSommet.to_s+&quot; pour une densite de &quot;+@densite.to_s</span>
+    <span class="ruby-comment">##puts &quot;Dimensions : &quot;+@longueur.to_s+&quot;x&quot;+@largeur.to_s+&quot;(&quot;+(@largeur*@longueur).to_s+&quot;cases). Nb sommets attendus &quot;+@nbSommet.to_s+&quot; pour une densité de &quot;+@densite.to_s</span>
     <span class="ruby-ivar">@grille</span> = <span class="ruby-constant">Grille</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-ivar">@longueur</span>, <span class="ruby-ivar">@largeur</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -244,11 +244,11 @@
 
         <div class="method-description">
           
-          <p>Génère une grille du nombre de sommet calculé ou passé en paramètre</p>
+          <p>Génère une grille du nombre de sommet calculés ou passés en paramètre</p>
 
 <h3 id="method-i-creeUneGrille-label-Param-C3-A8tres">Paramètres<span><a href="#method-i-creeUneGrille-label-Param-C3-A8tres">&para;</a> <a href="#top">&uarr;</a></span></h3>
 <ul><li>
-<p><code>nbSommet</code> : le nombre de sommet a placer (initialisé a nil)</p>
+<p><code>nbSommet</code> : le nombre de sommet à placer (initialisé à nil)</p>
 </li></ul>
 
 <h3 id="method-i-creeUneGrille-label-Return">Return<span><a href="#method-i-creeUneGrille-label-Return">&para;</a> <a href="#top">&uarr;</a></span></h3>
@@ -259,7 +259,7 @@
 
           
           <div class="method-source-code" id="creeUneGrille-source">
-            <pre><span class="ruby-comment"># File Generateur/Generateur.rb, line 178</span>
+            <pre><span class="ruby-comment"># File src/Generateur/Generateur.rb, line 178</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">creeUneGrille</span>(<span class="ruby-identifier">nbSommet</span>=<span class="ruby-keyword">nil</span>)
     <span class="ruby-keyword">if</span>(<span class="ruby-identifier">nbSommet</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>)
       <span class="ruby-ivar">@nbSommet</span> = <span class="ruby-identifier">nbSommet</span>
@@ -293,7 +293,7 @@
         <span class="ruby-comment">#puts &quot;on part du sommet &quot; + indiceSommetChoisi.to_s + &quot; en &quot; + sommetChoisi.position.x.to_s + &quot;:&quot; + sommetChoisi.position.y.to_s</span>
 
         <span class="ruby-comment">#on choisi une direction</span>
-        <span class="ruby-comment">#tant que la direction marche pas on continu d&#39;en choisir une</span>
+        <span class="ruby-comment">#tant que la direction ne marche pas on continu d&#39;en choisir une</span>
         <span class="ruby-identifier">lesAdds</span> = <span class="ruby-keyword">nil</span>
         <span class="ruby-identifier">loop</span> {
             <span class="ruby-identifier">indiceDirectionChoisie</span> = <span class="ruby-identifier">rand</span>(<span class="ruby-value">0</span><span class="ruby-operator">...</span><span class="ruby-identifier">tableauDeAdd</span>.<span class="ruby-identifier">size</span>())
@@ -309,11 +309,11 @@
         <span class="ruby-identifier">caseOuPlacer</span> = <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">getCase</span>(<span class="ruby-identifier">xDuSommet</span> <span class="ruby-operator">+</span> <span class="ruby-value">2</span><span class="ruby-operator">*</span><span class="ruby-identifier">lesAdds</span>[<span class="ruby-value">0</span>], <span class="ruby-identifier">yDuSommet</span> <span class="ruby-operator">+</span> <span class="ruby-value">2</span><span class="ruby-operator">*</span><span class="ruby-identifier">lesAdds</span>[<span class="ruby-value">1</span>])
         <span class="ruby-comment">#puts &quot;on part de &quot; + caseOuPlacer.x.to_s + &quot;:&quot; + caseOuPlacer.y.to_s</span>
         <span class="ruby-comment">#puts &quot;contenu de la case de depart : &quot; + caseOuPlacer.contenu.class.to_s</span>
-        <span class="ruby-comment">#on garde la case juste devant (celle entre sommetChoisi.position et caseOuPlacer) pour tester histoire de pas passer par desuus quelque chose</span>
+        <span class="ruby-comment">#on garde la case juste devant (celle entre sommetChoisi.position et caseOuPlacer) pour tester histoire de pas passer par dessus quelque chose</span>
         <span class="ruby-identifier">caseEntreLesDeux</span> = <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">getCase</span>(<span class="ruby-identifier">xDuSommet</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">lesAdds</span>[<span class="ruby-value">0</span>], <span class="ruby-identifier">yDuSommet</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">lesAdds</span>[<span class="ruby-value">1</span>])
 
-        <span class="ruby-comment">#si la case est vide alors on commence a essayer de placer</span>
-        <span class="ruby-comment">#puts &quot;Case Ou Placer avant if: &quot; + caseOuPlacer.x.to_s + &quot;:&quot; + caseOuPlacer.y.to_s</span>
+        <span class="ruby-comment">#si la case est vide alors on commence à essayer de placer</span>
+        <span class="ruby-comment">#puts &quot;Case Où Placer avant if: &quot; + caseOuPlacer.x.to_s + &quot;:&quot; + caseOuPlacer.y.to_s</span>
         <span class="ruby-keyword">if</span> <span class="ruby-identifier">caseOuPlacer</span>.<span class="ruby-identifier">estVide</span>() <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">caseEntreLesDeux</span>.<span class="ruby-identifier">estVide</span>()
             <span class="ruby-comment">#puts &quot;Case Ou Placer après if: &quot; + caseOuPlacer.x.to_s + &quot;:&quot; + caseOuPlacer.y.to_s</span>
             <span class="ruby-identifier">sommetAEtePlace</span> = <span class="ruby-keyword">false</span>
@@ -330,19 +330,19 @@
                 <span class="ruby-identifier">boolAreteJusteDevant</span> = <span class="ruby-identifier">estDansMatrice</span>(<span class="ruby-identifier">caseOuPlacer</span>, <span class="ruby-identifier">lesAdds</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">caseSuivante</span>(<span class="ruby-identifier">caseOuPlacer</span>, <span class="ruby-identifier">lesAdds</span>[<span class="ruby-value">0</span>], <span class="ruby-identifier">lesAdds</span>[<span class="ruby-value">1</span>]).<span class="ruby-identifier">contenu</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Arete</span>
                 <span class="ruby-identifier">boolBordDuTableau</span> = <span class="ruby-operator">!</span>(<span class="ruby-identifier">estDansMatrice</span>(<span class="ruby-identifier">caseOuPlacer</span>, <span class="ruby-identifier">lesAdds</span>))
 
-                <span class="ruby-comment">#si un seul des booleen est vrai</span>
+                <span class="ruby-comment">#si un seul des booléen est vrai</span>
                 <span class="ruby-keyword">if</span> <span class="ruby-identifier">boolArretViaRand</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">boolSommetJusteDevant</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">boolAreteJusteDevant</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">boolBordDuTableau</span>
                     <span class="ruby-comment">#on test les bool un par un</span>
 
                     <span class="ruby-keyword">if</span> <span class="ruby-identifier">boolSommetJusteDevant</span>
                         <span class="ruby-comment">#puts &quot;Arret via sommet devant en &quot; + caseOuPlacer.x.to_s + &quot;:&quot; + caseOuPlacer.y.to_s</span>
-                        <span class="ruby-comment">#on recule jusqu&#39;a trouver une case bien</span>
+                        <span class="ruby-comment">#on recule jusqu&#39;à trouver une case bien</span>
                         <span class="ruby-keyword">while</span> <span class="ruby-identifier">caseOuPlacer</span>.<span class="ruby-identifier">aSommetVoisin</span>()
                             <span class="ruby-identifier">caseOuPlacer</span> = <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">getCase</span>(<span class="ruby-identifier">caseOuPlacer</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">lesAdds</span>[<span class="ruby-value">0</span>], <span class="ruby-identifier">caseOuPlacer</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">lesAdds</span>[<span class="ruby-value">1</span>])
                             <span class="ruby-keyword">break</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">caseOuPlacer</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">sommetChoisi</span>.<span class="ruby-identifier">position</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">caseOuPlacer</span>.<span class="ruby-identifier">estVoisin</span>(<span class="ruby-identifier">sommetChoisi</span>.<span class="ruby-identifier">position</span>)
                         <span class="ruby-keyword">end</span>
 
-                        <span class="ruby-comment">#on teste pourquoi on s&#39;est arrete</span>
+                        <span class="ruby-comment">#on test pourquoi on s&#39;est arreté</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-identifier">caseOuPlacer</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">sommetChoisi</span>.<span class="ruby-identifier">position</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">caseOuPlacer</span>.<span class="ruby-identifier">estVoisin</span>(<span class="ruby-identifier">sommetChoisi</span>.<span class="ruby-identifier">position</span>)
                             <span class="ruby-identifier">aEteCancel</span> = <span class="ruby-keyword">true</span>
                         <span class="ruby-keyword">else</span>
@@ -350,13 +350,13 @@
                             <span class="ruby-ivar">@sommets</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">nouveauSommet</span>)
                             <span class="ruby-identifier">sommetPlaces</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
 
-                            <span class="ruby-identifier">nouvelleArete</span> = <span class="ruby-constant">Arete</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">nouveauSommet</span>, <span class="ruby-identifier">sommetChoisi</span>, <span class="ruby-identifier">rand</span>(<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">100</span>) <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@chanceDeDouble</span>)
+                            <span class="ruby-constant">Arete</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">nouveauSommet</span>, <span class="ruby-identifier">sommetChoisi</span>, <span class="ruby-identifier">rand</span>(<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">100</span>) <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@chanceDeDouble</span>)
 
                             <span class="ruby-identifier">sommetAEtePlace</span> = <span class="ruby-keyword">true</span>
                         <span class="ruby-keyword">end</span>
                     <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">boolAreteJusteDevant</span>
-                        <span class="ruby-comment">#puts &quot;Arret via areteDevant en &quot; + caseOuPlacer.x.to_s + &quot;:&quot; + caseOuPlacer.y.to_s</span>
-                        <span class="ruby-comment">#si on peut placer sur l&#39;arete on le fait, sinon on recul</span>
+                        <span class="ruby-comment">#puts &quot;Arrêt via areteDevant en &quot; + caseOuPlacer.x.to_s + &quot;:&quot; + caseOuPlacer.y.to_s</span>
+                        <span class="ruby-comment">#si on peut placer sur l&#39;arete on le fait, sinon on recule</span>
                         <span class="ruby-identifier">caseDArete</span> = <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">getCase</span>(<span class="ruby-identifier">caseOuPlacer</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">lesAdds</span>[<span class="ruby-value">0</span>], <span class="ruby-identifier">caseOuPlacer</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">lesAdds</span>[<span class="ruby-value">1</span>])
                         <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span>(<span class="ruby-identifier">caseDArete</span>.<span class="ruby-identifier">aSommetVoisin</span>()) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">caseDArete</span>.<span class="ruby-identifier">contenu</span>.<span class="ruby-identifier">getTaille</span>() <span class="ruby-operator">&gt;=</span> <span class="ruby-value">3</span>
                             <span class="ruby-identifier">sommet1</span> = <span class="ruby-identifier">caseDArete</span>.<span class="ruby-identifier">contenu</span>.<span class="ruby-identifier">sommet1</span>
@@ -367,20 +367,20 @@
                             <span class="ruby-ivar">@sommets</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">nouveauSommet</span>)
                             <span class="ruby-identifier">sommetPlaces</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
 
-                            <span class="ruby-identifier">nouvelleArete</span> = <span class="ruby-constant">Arete</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">nouveauSommet</span>, <span class="ruby-identifier">sommetChoisi</span>, <span class="ruby-identifier">rand</span>(<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">100</span>) <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@chanceDeDouble</span>)
+                            <span class="ruby-constant">Arete</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">nouveauSommet</span>, <span class="ruby-identifier">sommetChoisi</span>, <span class="ruby-identifier">rand</span>(<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">100</span>) <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@chanceDeDouble</span>)
 
                             <span class="ruby-identifier">sommetAEtePlace</span> = <span class="ruby-keyword">true</span>
 
-                            <span class="ruby-identifier">nouvelleArete1</span> = <span class="ruby-constant">Arete</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">sommet1</span>, <span class="ruby-identifier">nouveauSommet</span>, <span class="ruby-identifier">rand</span>(<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">100</span>) <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@chanceDeDouble</span>)
-                            <span class="ruby-identifier">nouvelleArete2</span> = <span class="ruby-constant">Arete</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">sommet2</span>, <span class="ruby-identifier">nouveauSommet</span>, <span class="ruby-identifier">rand</span>(<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">100</span>) <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@chanceDeDouble</span>)
+                            <span class="ruby-constant">Arete</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">sommet1</span>, <span class="ruby-identifier">nouveauSommet</span>, <span class="ruby-identifier">rand</span>(<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">100</span>) <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@chanceDeDouble</span>)
+                            <span class="ruby-constant">Arete</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">sommet2</span>, <span class="ruby-identifier">nouveauSommet</span>, <span class="ruby-identifier">rand</span>(<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">100</span>) <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@chanceDeDouble</span>)
                         <span class="ruby-keyword">else</span>
-                            <span class="ruby-comment">#sinon on recule jusqu&#39;a trouver un truc bien</span>
+                            <span class="ruby-comment">#sinon on recule jusqu&#39;à trouver un truc bien</span>
                             <span class="ruby-keyword">while</span> <span class="ruby-identifier">caseOuPlacer</span>.<span class="ruby-identifier">aSommetVoisin</span>()
                                 <span class="ruby-identifier">caseOuPlacer</span> = <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">getCase</span>(<span class="ruby-identifier">caseOuPlacer</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">lesAdds</span>[<span class="ruby-value">0</span>], <span class="ruby-identifier">caseOuPlacer</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">lesAdds</span>[<span class="ruby-value">1</span>])
                                 <span class="ruby-keyword">break</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">caseOuPlacer</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">sommetChoisi</span>.<span class="ruby-identifier">position</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">caseOuPlacer</span>.<span class="ruby-identifier">estVoisin</span>(<span class="ruby-identifier">sommetChoisi</span>.<span class="ruby-identifier">position</span>)
                             <span class="ruby-keyword">end</span>
 
-                            <span class="ruby-comment">#on teste pourquoi on s&#39;est arrete</span>
+                            <span class="ruby-comment">#on test pourquoi on s&#39;est arreté</span>
                             <span class="ruby-keyword">if</span> <span class="ruby-identifier">caseOuPlacer</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">sommetChoisi</span>.<span class="ruby-identifier">position</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">caseOuPlacer</span>.<span class="ruby-identifier">estVoisin</span>(<span class="ruby-identifier">sommetChoisi</span>.<span class="ruby-identifier">position</span>)
                                 <span class="ruby-identifier">aEteCancel</span> = <span class="ruby-keyword">true</span>
                             <span class="ruby-keyword">else</span>
@@ -388,62 +388,62 @@
                                 <span class="ruby-ivar">@sommets</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">nouveauSommet</span>)
                                 <span class="ruby-identifier">sommetPlaces</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
 
-                                <span class="ruby-identifier">nouvelleArete</span> = <span class="ruby-constant">Arete</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">nouveauSommet</span>, <span class="ruby-identifier">sommetChoisi</span>, <span class="ruby-identifier">rand</span>(<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">100</span>) <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@chanceDeDouble</span>)
+                                <span class="ruby-constant">Arete</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">nouveauSommet</span>, <span class="ruby-identifier">sommetChoisi</span>, <span class="ruby-identifier">rand</span>(<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">100</span>) <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@chanceDeDouble</span>)
 
                                 <span class="ruby-identifier">sommetAEtePlace</span> = <span class="ruby-keyword">true</span>
                             <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">end</span>
                     <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">boolBordDuTableau</span>
-                        <span class="ruby-comment">#puts &quot;Arret via bord &quot; + caseOuPlacer.x.to_s + &quot;:&quot; + caseOuPlacer.y.to_s</span>
+                        <span class="ruby-comment">#puts &quot;Arrêt via bord &quot; + caseOuPlacer.x.to_s + &quot;:&quot; + caseOuPlacer.y.to_s</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span>(<span class="ruby-identifier">caseOuPlacer</span>.<span class="ruby-identifier">aSommetVoisin</span>())
                             <span class="ruby-identifier">nouveauSommet</span> = <span class="ruby-constant">Sommet</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-value">0</span>, <span class="ruby-identifier">caseOuPlacer</span>)
                             <span class="ruby-comment">#puts &quot;sommet crée&quot;</span>
                             <span class="ruby-ivar">@sommets</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">nouveauSommet</span>)
                             <span class="ruby-identifier">sommetPlaces</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
 
-                            <span class="ruby-identifier">nouvelleArete</span> = <span class="ruby-constant">Arete</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">nouveauSommet</span>, <span class="ruby-identifier">sommetChoisi</span>, <span class="ruby-identifier">rand</span>(<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">100</span>) <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@chanceDeDouble</span>)
+                            <span class="ruby-constant">Arete</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">nouveauSommet</span>, <span class="ruby-identifier">sommetChoisi</span>, <span class="ruby-identifier">rand</span>(<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">100</span>) <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@chanceDeDouble</span>)
 
                             <span class="ruby-identifier">sommetAEtePlace</span> = <span class="ruby-keyword">true</span>
                         <span class="ruby-keyword">else</span>
-                            <span class="ruby-comment">#sinon, on recule jusqu&#39;a trouver un endroit bien</span>
+                            <span class="ruby-comment">#sinon, on recule jusqu&#39;à trouver un endroit bien</span>
                             <span class="ruby-keyword">while</span> <span class="ruby-identifier">caseOuPlacer</span>.<span class="ruby-identifier">aSommetVoisin</span>()
                                 <span class="ruby-identifier">caseOuPlacer</span> = <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">getCase</span>(<span class="ruby-identifier">caseOuPlacer</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">lesAdds</span>[<span class="ruby-value">0</span>], <span class="ruby-identifier">caseOuPlacer</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">lesAdds</span>[<span class="ruby-value">1</span>])
                                 <span class="ruby-keyword">break</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">caseOuPlacer</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">sommetChoisi</span>.<span class="ruby-identifier">position</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">caseOuPlacer</span>.<span class="ruby-identifier">estVoisin</span>(<span class="ruby-identifier">sommetChoisi</span>.<span class="ruby-identifier">position</span>)
                             <span class="ruby-keyword">end</span>
 
-                            <span class="ruby-comment">#on teste pourquoi on s&#39;est arrete</span>
+                            <span class="ruby-comment">#on test pourquoi on s&#39;est arreté</span>
                             <span class="ruby-keyword">if</span> <span class="ruby-identifier">caseOuPlacer</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">sommetChoisi</span>.<span class="ruby-identifier">position</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">caseOuPlacer</span>.<span class="ruby-identifier">estVoisin</span>(<span class="ruby-identifier">sommetChoisi</span>.<span class="ruby-identifier">position</span>)
                                 <span class="ruby-identifier">aEteCancel</span> = <span class="ruby-keyword">true</span>
                             <span class="ruby-keyword">else</span>
                                 <span class="ruby-identifier">nouveauSommet</span> = <span class="ruby-constant">Sommet</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-value">0</span>, <span class="ruby-identifier">caseOuPlacer</span>)
-                                <span class="ruby-comment">#puts &quot;sommet crée après recul en &quot; + caseOuPlacer.x.to_s + &quot;:&quot; + caseOuPlacer.y.to_s</span>
+                                <span class="ruby-comment">#puts &quot;sommet créé après recul en &quot; + caseOuPlacer.x.to_s + &quot;:&quot; + caseOuPlacer.y.to_s</span>
                                 <span class="ruby-ivar">@sommets</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">nouveauSommet</span>)
                                 <span class="ruby-identifier">sommetPlaces</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
 
-                                <span class="ruby-identifier">nouvelleArete</span> = <span class="ruby-constant">Arete</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">nouveauSommet</span>, <span class="ruby-identifier">sommetChoisi</span>, <span class="ruby-identifier">rand</span>(<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">100</span>) <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@chanceDeDouble</span>)
+                                <span class="ruby-constant">Arete</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">nouveauSommet</span>, <span class="ruby-identifier">sommetChoisi</span>, <span class="ruby-identifier">rand</span>(<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">100</span>) <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@chanceDeDouble</span>)
 
                                 <span class="ruby-identifier">sommetAEtePlace</span> = <span class="ruby-keyword">true</span>
                             <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">end</span>
                     <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">boolArretViaRand</span>
-                        <span class="ruby-comment">#puts &quot;Arret via rand en &quot; + caseOuPlacer.x.to_s + &quot;:&quot; + caseOuPlacer.y.to_s</span>
-                        <span class="ruby-comment">#on verifie qu&#39;il n&#39;y a rien autour</span>
+                        <span class="ruby-comment">#puts &quot;Arrêt via rand en &quot; + caseOuPlacer.x.to_s + &quot;:&quot; + caseOuPlacer.y.to_s</span>
+                        <span class="ruby-comment">#on vérifie qu&#39;il n&#39;y a rien autour</span>
                         <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span>(<span class="ruby-identifier">caseOuPlacer</span>.<span class="ruby-identifier">aSommetVoisin</span>())
                             <span class="ruby-identifier">nouveauSommet</span> = <span class="ruby-constant">Sommet</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-value">0</span>, <span class="ruby-identifier">caseOuPlacer</span>)
                             <span class="ruby-ivar">@sommets</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">nouveauSommet</span>)
                             <span class="ruby-identifier">sommetPlaces</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
 
-                            <span class="ruby-identifier">nouvelleArete</span> = <span class="ruby-constant">Arete</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">nouveauSommet</span>, <span class="ruby-identifier">sommetChoisi</span>, <span class="ruby-identifier">rand</span>(<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">100</span>) <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@chanceDeDouble</span>)
+                            <span class="ruby-constant">Arete</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">nouveauSommet</span>, <span class="ruby-identifier">sommetChoisi</span>, <span class="ruby-identifier">rand</span>(<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">100</span>) <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@chanceDeDouble</span>)
 
                             <span class="ruby-identifier">sommetAEtePlace</span> = <span class="ruby-keyword">true</span>
                         <span class="ruby-keyword">else</span>
-                            <span class="ruby-comment">#sinon, on recule jusqu&#39;a trouver un endroit bien</span>
+                            <span class="ruby-comment">#sinon, on recule jusqu&#39;à trouver un endroit bien</span>
                             <span class="ruby-keyword">while</span> <span class="ruby-identifier">caseOuPlacer</span>.<span class="ruby-identifier">aSommetVoisin</span>()
                                 <span class="ruby-identifier">caseOuPlacer</span> = <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">getCase</span>(<span class="ruby-identifier">caseOuPlacer</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">lesAdds</span>[<span class="ruby-value">0</span>], <span class="ruby-identifier">caseOuPlacer</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">lesAdds</span>[<span class="ruby-value">1</span>])
                                 <span class="ruby-keyword">break</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">caseOuPlacer</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">sommetChoisi</span>.<span class="ruby-identifier">position</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">caseOuPlacer</span>.<span class="ruby-identifier">estVoisin</span>(<span class="ruby-identifier">sommetChoisi</span>.<span class="ruby-identifier">position</span>)
                             <span class="ruby-keyword">end</span>
 
-                            <span class="ruby-comment">#on teste pourquoi on s&#39;est arrete</span>
+                            <span class="ruby-comment">#on test pourquoi on s&#39;est arreté</span>
                             <span class="ruby-keyword">if</span> <span class="ruby-identifier">caseOuPlacer</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">sommetChoisi</span>.<span class="ruby-identifier">position</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">caseOuPlacer</span>.<span class="ruby-identifier">estVoisin</span>(<span class="ruby-identifier">sommetChoisi</span>.<span class="ruby-identifier">position</span>)
                                 <span class="ruby-identifier">aEteCancel</span> = <span class="ruby-keyword">true</span>
                             <span class="ruby-keyword">else</span>
@@ -451,14 +451,14 @@
                                 <span class="ruby-ivar">@sommets</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">nouveauSommet</span>)
                                 <span class="ruby-identifier">sommetPlaces</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
 
-                                <span class="ruby-identifier">nouvelleArete</span> = <span class="ruby-constant">Arete</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">nouveauSommet</span>, <span class="ruby-identifier">sommetChoisi</span>, <span class="ruby-identifier">rand</span>(<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">100</span>) <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@chanceDeDouble</span>)
+                                <span class="ruby-constant">Arete</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">nouveauSommet</span>, <span class="ruby-identifier">sommetChoisi</span>, <span class="ruby-identifier">rand</span>(<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">100</span>) <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@chanceDeDouble</span>)
 
                                 <span class="ruby-identifier">sommetAEtePlace</span> = <span class="ruby-keyword">true</span>
                             <span class="ruby-keyword">end</span>
                         <span class="ruby-keyword">end</span>
                     <span class="ruby-keyword">end</span>
                 <span class="ruby-keyword">else</span>
-                    <span class="ruby-comment">#si aucun arret est lancé, on avance juste</span>
+                    <span class="ruby-comment">#si aucun arrêt est lancé, on avance juste</span>
                     <span class="ruby-identifier">caseOuPlacer</span> = <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">caseSuivante</span>(<span class="ruby-identifier">caseOuPlacer</span>, <span class="ruby-identifier">lesAdds</span>[<span class="ruby-value">0</span>], <span class="ruby-identifier">lesAdds</span>[<span class="ruby-value">1</span>])
                     <span class="ruby-comment">#puts &quot;on a avancé&quot;</span>
                 <span class="ruby-keyword">end</span>
@@ -502,13 +502,13 @@
 
         <div class="method-description">
           
-          <p>Vérifie si la case passé en parametre plus les ajouts passé en paramètres sont dans la grille</p>
+          <p>Vérifie si la case passée en paramètre plus les ajouts passés en paramètres sont dans la grille</p>
 
 <h3 id="method-i-estDansMatrice-label-Param-C3-A8tres">Paramètres<span><a href="#method-i-estDansMatrice-label-Param-C3-A8tres">&para;</a> <a href="#top">&uarr;</a></span></h3>
 <ul><li>
-<p><code>caseDeDepart</code> : la case d&#39;ou partir</p>
+<p><code>caseDeDepart</code> : la case d&#39;où partir</p>
 </li><li>
-<p><code>lesAdds</code> : tableau de 2 case contenant la valeur a ajouter aux x et y de la caseDeDepart</p>
+<p><code>lesAdds</code> : tableau de 2 cases contenant la valeur à ajouter aux x et y de la caseDeDepart</p>
 </li></ul>
 
 <h3 id="method-i-estDansMatrice-label-Return">Return<span><a href="#method-i-estDansMatrice-label-Return">&para;</a> <a href="#top">&uarr;</a></span></h3>
@@ -519,7 +519,7 @@
 
           
           <div class="method-source-code" id="estDansMatrice-source">
-            <pre><span class="ruby-comment"># File Generateur/Generateur.rb, line 138</span>
+            <pre><span class="ruby-comment"># File src/Generateur/Generateur.rb, line 138</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">estDansMatrice</span>(<span class="ruby-identifier">caseDeDepart</span>, <span class="ruby-identifier">lesAdds</span>)
     <span class="ruby-identifier">xDuSommet</span> = <span class="ruby-identifier">caseDeDepart</span>.<span class="ruby-identifier">x</span>
     <span class="ruby-identifier">yDuSommet</span> = <span class="ruby-identifier">caseDeDepart</span>.<span class="ruby-identifier">y</span>
@@ -548,13 +548,13 @@
 
         <div class="method-description">
           
-          <p>Methode qui récupère la case demandé de la grille générée</p>
+          <p>Methode qui récupère la case demandée de la grille générée</p>
 
 <h3 id="method-i-getCase-label-Param-C3-A8tres">Paramètres<span><a href="#method-i-getCase-label-Param-C3-A8tres">&para;</a> <a href="#top">&uarr;</a></span></h3>
 <ul><li>
-<p><code>x</code> : la coordoné x de la case</p>
+<p><code>x</code> : la coordonnée x de la case</p>
 </li><li>
-<p><code>y</code> : la coordoné y de la case</p>
+<p><code>y</code> : la coordonnée y de la case</p>
 </li></ul>
 
 <h3 id="method-i-getCase-label-Return">Return<span><a href="#method-i-getCase-label-Return">&para;</a> <a href="#top">&uarr;</a></span></h3>
@@ -565,7 +565,7 @@
 
           
           <div class="method-source-code" id="getCase-source">
-            <pre><span class="ruby-comment"># File Generateur/Generateur.rb, line 78</span>
+            <pre><span class="ruby-comment"># File src/Generateur/Generateur.rb, line 78</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getCase</span>(<span class="ruby-identifier">x</span>, <span class="ruby-identifier">y</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@estGenere</span>
         <span class="ruby-keyword">return</span> <span class="ruby-ivar">@grille</span>[<span class="ruby-identifier">x</span>][<span class="ruby-identifier">y</span>]
@@ -595,7 +595,7 @@
 
         <div class="method-description">
           
-          <p>Récupère la grille générée avec les aretes</p>
+          <p>Récupère la grille générée avec les arêtes</p>
 
 <h3 id="method-i-getGrilleAvecArete-label-Return">Return<span><a href="#method-i-getGrilleAvecArete-label-Return">&para;</a> <a href="#top">&uarr;</a></span></h3>
 
@@ -605,7 +605,7 @@
 
           
           <div class="method-source-code" id="getGrilleAvecArete-source">
-            <pre><span class="ruby-comment"># File Generateur/Generateur.rb, line 111</span>
+            <pre><span class="ruby-comment"># File src/Generateur/Generateur.rb, line 111</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getGrilleAvecArete</span>()
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@estGenere</span>
         <span class="ruby-keyword">return</span> <span class="ruby-ivar">@grille</span>
@@ -635,17 +635,17 @@
 
         <div class="method-description">
           
-          <p>Récupère une copie de la grille générée sans les aretes</p>
+          <p>Récupère une copie de la grille générée sans les arêtes</p>
 
 <h3 id="method-i-getGrilleSansArete-label-Return">Return<span><a href="#method-i-getGrilleSansArete-label-Return">&para;</a> <a href="#top">&uarr;</a></span></h3>
 
-<p>Une copie de la grille sans arete</p>
+<p>Une copie de la grille sans arêtes</p>
           
           
 
           
           <div class="method-source-code" id="getGrilleSansArete-source">
-            <pre><span class="ruby-comment"># File Generateur/Generateur.rb, line 97</span>
+            <pre><span class="ruby-comment"># File src/Generateur/Generateur.rb, line 97</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getGrilleSansArete</span>()
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@estGenere</span>
         <span class="ruby-identifier">cloneGrille</span> = <span class="ruby-constant">Marshal</span>.<span class="ruby-identifier">load</span>(<span class="ruby-constant">Marshal</span>.<span class="ruby-identifier">dump</span>(<span class="ruby-ivar">@grille</span>))
@@ -677,11 +677,11 @@
 
         <div class="method-description">
           
-          <p>Vérifie si la grille passée en parametre correspond a la grille générée (artes exclues)</p>
+          <p>Vérifie si la grille passée en paramètre correspond à la grille générée (arêtes exclues)</p>
 
 <h3 id="method-i-grilleIdentique-label-Param-C3-A8tres">Paramètres<span><a href="#method-i-grilleIdentique-label-Param-C3-A8tres">&para;</a> <a href="#top">&uarr;</a></span></h3>
 <ul><li>
-<p><code>grille</code> : la grille a vérifier</p>
+<p><code>grille</code> : la grille à vérifier</p>
 </li></ul>
 
 <h3 id="method-i-grilleIdentique-label-Return">Return<span><a href="#method-i-grilleIdentique-label-Return">&para;</a> <a href="#top">&uarr;</a></span></h3>
@@ -692,7 +692,7 @@
 
           
           <div class="method-source-code" id="grilleIdentique-source">
-            <pre><span class="ruby-comment"># File Generateur/Generateur.rb, line 153</span>
+            <pre><span class="ruby-comment"># File src/Generateur/Generateur.rb, line 153</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">grilleIdentique</span>(<span class="ruby-identifier">grille</span>)
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@estGenere</span>
         <span class="ruby-keyword">if</span> <span class="ruby-ivar">@sommets</span>.<span class="ruby-identifier">size</span>() <span class="ruby-operator">==</span> <span class="ruby-identifier">grille</span>.<span class="ruby-identifier">sommets</span>.<span class="ruby-identifier">size</span>()
@@ -737,7 +737,7 @@
 
           
           <div class="method-source-code" id="placerLabelSommet-source">
-            <pre><span class="ruby-comment"># File Generateur/Generateur.rb, line 119</span>
+            <pre><span class="ruby-comment"># File src/Generateur/Generateur.rb, line 119</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">placerLabelSommet</span>()
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@estGenere</span>
         <span class="ruby-ivar">@sommets</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">sommet</span><span class="ruby-operator">|</span>
@@ -777,7 +777,7 @@
 
           
           <div class="method-source-code" id="vider-source">
-            <pre><span class="ruby-comment"># File Generateur/Generateur.rb, line 87</span>
+            <pre><span class="ruby-comment"># File src/Generateur/Generateur.rb, line 87</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">vider</span>()
     <span class="ruby-ivar">@grille</span> = <span class="ruby-constant">Grille</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-ivar">@longueur</span>, <span class="ruby-ivar">@largeur</span>)
     <span class="ruby-ivar">@estGenere</span> = <span class="ruby-keyword">false</span>

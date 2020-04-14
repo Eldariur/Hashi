@@ -97,7 +97,7 @@
 
   <section class="description">
     
-<p>Class undo, permet de stocker les actions du joueurs</p>
+<p>Class <a href="Undo.html"><code>Undo</code></a>, permet de stocker les actions du joueurs</p>
 
   </section>
 
@@ -152,13 +152,13 @@
 
         <div class="method-description">
           
-          <p>Creer un objet <a href="Undo.html"><code>Undo</code></a></p>
+          <p>Créer un objet <a href="Undo.html"><code>Undo</code></a></p>
           
           
 
           
           <div class="method-source-code" id="creer-source">
-            <pre><span class="ruby-comment"># File Undo/Undo.rb, line 11</span>
+            <pre><span class="ruby-comment"># File src/Undo/Undo.rb, line 11</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Undo</span>.<span class="ruby-identifier ruby-title">creer</span>()
         <span class="ruby-identifier">new</span>()
 <span class="ruby-keyword">end</span></pre>
@@ -193,7 +193,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Undo/Undo.rb, line 29</span>
+            <pre><span class="ruby-comment"># File src/Undo/Undo.rb, line 29</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>()
         <span class="ruby-ivar">@tabAction</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
 <span class="ruby-keyword">end</span></pre>
@@ -228,18 +228,18 @@
 
         <div class="method-description">
           
-          <p>empile la dernière <a href="Arete.html"><code>Arete</code></a> ajouter dans la grile</p>
+          <p>empile la dernière <a href="Arete.html"><code>Arete</code></a> ajoutée dans la grille</p>
 
 <h3 id="method-i-depile-label-Returne">Returne<span><a href="#method-i-depile-label-Returne">&para;</a> <a href="#top">&uarr;</a></span></h3>
 <ul><li>
-<p><code>arete</code> : depile la dernière arete jouer par le joueur</p>
+<p><code>arete</code> : dépile la dernière arête jouée par le joueur</p>
 </li></ul>
           
           
 
           
           <div class="method-source-code" id="depile-source">
-            <pre><span class="ruby-comment"># File Undo/Undo.rb, line 45</span>
+            <pre><span class="ruby-comment"># File src/Undo/Undo.rb, line 45</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">depile</span>()
         <span class="ruby-keyword">return</span> <span class="ruby-ivar">@tabAction</span>.<span class="ruby-identifier">pop</span>()
 <span class="ruby-keyword">end</span></pre>
@@ -266,18 +266,18 @@
 
         <div class="method-description">
           
-          <p>empile la dernière <a href="Arete.html"><code>Arete</code></a> ajouter dans la grile</p>
+          <p>empile la dernière <a href="Arete.html"><code>Arete</code></a> ajoutée dans la grille</p>
 
 <h3 id="method-i-empile-label-Param-C3-A8tres">Paramètres<span><a href="#method-i-empile-label-Param-C3-A8tres">&para;</a> <a href="#top">&uarr;</a></span></h3>
 <ul><li>
-<p><code>arete</code> : Ajout de la dernière arete jouer par le joueur</p>
+<p><code>arete</code> : Ajout de la dernière arête jouée par le joueur</p>
 </li></ul>
           
           
 
           
           <div class="method-source-code" id="empile-source">
-            <pre><span class="ruby-comment"># File Undo/Undo.rb, line 37</span>
+            <pre><span class="ruby-comment"># File src/Undo/Undo.rb, line 37</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">empile</span>(<span class="ruby-identifier">arete</span>)
         <span class="ruby-ivar">@tabAction</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">arete</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -304,7 +304,7 @@
 
         <div class="method-description">
           
-          <p>Redefinition de la méthode <a href="Undo.html#method-i-to_s"><code>to_s</code></a> pour l&#39;affichage de undo</p>
+          <p>Redéfinition de la méthode <a href="Undo.html#method-i-to_s"><code>to_s</code></a> pour l&#39;affichage de undo</p>
 
 <pre>===Return
 * +string+ * : renvoie une version en string de la pile</pre>
@@ -313,7 +313,7 @@
 
           
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File Undo/Undo.rb, line 53</span>
+            <pre><span class="ruby-comment"># File src/Undo/Undo.rb, line 54</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>()
         <span class="ruby-keyword">return</span> <span class="ruby-string">&quot;Array Undo : &quot;</span> <span class="ruby-operator">+</span>  <span class="ruby-ivar">@tabAction</span>.<span class="ruby-identifier">to_s</span>()
 <span class="ruby-keyword">end</span></pre>

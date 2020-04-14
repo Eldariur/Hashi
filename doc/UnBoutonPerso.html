@@ -93,7 +93,7 @@
 
   <section class="description">
     
-<p>Class <a href="UnBoutonPerso.html"><code>UnBoutonPerso</code></a>, permet de modifier les boutons et de leur ajouter des méthodes, herite de la classe Gtk::Button</p>
+<p>Class <a href="UnBoutonPerso.html"><code>UnBoutonPerso</code></a>, permet de modifier les boutons et de leurs ajouter des méthodes, hérite de la classe Gtk::Button</p>
 
   </section>
 
@@ -134,7 +134,7 @@
 
 <pre>=== Paramètres
 
-* +str+ : Défini le message à afficher sûr le bouton.
+* +str+ : Défini le message à afficher sur le bouton.
 * +nom+ : Défini un nom au bouton pour le css
 * +labelNom+ : Défini un label en plus.</pre>
           
@@ -147,7 +147,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Interface/UnBoutonPerso.rb, line 12</span>
+            <pre><span class="ruby-comment"># File src/Interface/UnBoutonPerso.rb, line 11</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">str</span>=<span class="ruby-string">&quot;&quot;</span>, <span class="ruby-identifier">nom</span>=<span class="ruby-string">&quot;UnBoutonPerso&quot;</span>, <span class="ruby-identifier">labelNom</span>=<span class="ruby-string">&quot;UnLabelPerso&quot;</span>)
               <span class="ruby-keyword">super</span>()
 
@@ -191,13 +191,13 @@
 
         <div class="method-description">
           
-          <p>Permet d&#39;autoriser l&#39;utilisateur de cliquer sûr le bouton.</p>
+          <p>Permet d&#39;autoriser l&#39;utilisateur de cliquer sur le bouton.</p>
           
           
 
           
           <div class="method-source-code" id="deverrouiller-source">
-            <pre><span class="ruby-comment"># File Interface/UnBoutonPerso.rb, line 33</span>
+            <pre><span class="ruby-comment"># File src/Interface/UnBoutonPerso.rb, line 32</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">deverrouiller</span>()
         <span class="ruby-keyword">self</span>.<span class="ruby-identifier">set_sensitive</span>(<span class="ruby-keyword">true</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -224,13 +224,13 @@
 
         <div class="method-description">
           
-          <p>Permet d&#39;empecher l&#39;utilisateur de cliquer sûr le bouton.</p>
+          <p>Permet d&#39;empêcher l&#39;utilisateur de cliquer sur le bouton.</p>
           
           
 
           
           <div class="method-source-code" id="verrouiller-source">
-            <pre><span class="ruby-comment"># File Interface/UnBoutonPerso.rb, line 28</span>
+            <pre><span class="ruby-comment"># File src/Interface/UnBoutonPerso.rb, line 27</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">verrouiller</span>()
         <span class="ruby-keyword">self</span>.<span class="ruby-identifier">set_sensitive</span>(<span class="ruby-keyword">false</span>)
 <span class="ruby-keyword">end</span></pre>

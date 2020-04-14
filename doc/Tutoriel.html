@@ -122,7 +122,7 @@
 
         <div class="method-description">
         
-        <p>@niveau -&gt; Represente le numero du tutoriel. @txtTuto -&gt; Contient le texte associé au tutoriel.</p>
+        <p>@niveau -&gt; Représente le numéro du tutoriel. @txtTuto -&gt; Contient le texte associé au tutoriel.</p>
         
         </div>
       </div>
@@ -135,7 +135,7 @@
 
         <div class="method-description">
         
-        <p>@niveau -&gt; Represente le numero du tutoriel. @txtTuto -&gt; Contient le texte associé au tutoriel.</p>
+        <p>@niveau -&gt; Représente le numéro du tutoriel. @txtTuto -&gt; Contient le texte associé au tutoriel.</p>
         
         </div>
       </div>
@@ -163,18 +163,18 @@
 
         <div class="method-description">
           
-          <p>Initialisation de la class <a href="Tutoriel.html"><code>Tutoriel</code></a>.</p>
+          <p>Initialisation de la classe <a href="Tutoriel.html"><code>Tutoriel</code></a>.</p>
 
-<h3 id="method-c-new-label-Parametre">Parametre<span><a href="#method-c-new-label-Parametre">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="method-c-new-label-Param-C3-A8tres">Paramètres<span><a href="#method-c-new-label-Param-C3-A8tres">&para;</a> <a href="#top">&uarr;</a></span></h3>
 <ul><li>
-<p><code>numeroNiveau</code> : numeroNiveau Le numero du niveau.</p>
+<p><code>numeroNiveau</code> : numeroNiveau Le numéro du niveau.</p>
 </li></ul>
           
           
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Tutoriel/Tutoriel.rb, line 15</span>
+            <pre><span class="ruby-comment"># File src/Tutoriel/Tutoriel.rb, line 15</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">numeroNiveau</span>)
         <span class="ruby-ivar">@niveau</span> = <span class="ruby-identifier">numeroNiveau</span>
         <span class="ruby-ivar">@txtTuto</span> = <span class="ruby-keyword">nil</span>
@@ -204,16 +204,16 @@
           
           <p>Créer un nouveau tutoriel.</p>
 
-<h3 id="method-c-nouveau-label-Parametre">Parametre<span><a href="#method-c-nouveau-label-Parametre">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="method-c-nouveau-label-Param-C3-A8tres">Paramètres<span><a href="#method-c-nouveau-label-Param-C3-A8tres">&para;</a> <a href="#top">&uarr;</a></span></h3>
 <ul><li>
-<p><code>numeroNiveau</code> : numeroNiveau Le numero du niveau.</p>
+<p><code>numeroNiveau</code> : numeroNiveau Le numéro du niveau.</p>
 </li></ul>
           
           
 
           
           <div class="method-source-code" id="nouveau-source">
-            <pre><span class="ruby-comment"># File Tutoriel/Tutoriel.rb, line 23</span>
+            <pre><span class="ruby-comment"># File src/Tutoriel/Tutoriel.rb, line 23</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Tutoriel</span>.<span class="ruby-identifier ruby-title">nouveau</span>(<span class="ruby-identifier">numeroNiveau</span>)
         <span class="ruby-identifier">new</span>(<span class="ruby-identifier">numeroNiveau</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -259,15 +259,15 @@
 
           
           <div class="method-source-code" id="getMessageTuto-source">
-            <pre><span class="ruby-comment"># File Tutoriel/Tutoriel.rb, line 30</span>
+            <pre><span class="ruby-comment"># File src/Tutoriel/Tutoriel.rb, line 30</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getMessageTuto</span>()
-        <span class="ruby-identifier">file_data</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/Tutoriel/TextTuto.txt&quot;</span>).<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;/&quot;</span>).<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot;:&quot;</span>).<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;:&quot;</span>)
+        <span class="ruby-identifier">file_data</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/src/Tutoriel/TextTuto.txt&quot;</span>).<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;/&quot;</span>).<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot;:&quot;</span>).<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;:&quot;</span>)
         <span class="ruby-ivar">@txtTuto</span> = <span class="ruby-identifier">file_data</span>
         <span class="ruby-comment">#self.set_text(@txtTuto)</span>
         <span class="ruby-identifier">affiche</span> = <span class="ruby-keyword">false</span>
 
         <span class="ruby-identifier">file_data</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
-<span class="ruby-keyword">if</span>( <span class="ruby-identifier">affiche</span> )
+       <span class="ruby-keyword">if</span>(<span class="ruby-identifier">affiche</span>)
                         <span class="ruby-keyword">return</span> <span class="ruby-identifier">x</span>
                 <span class="ruby-keyword">elsif</span>( <span class="ruby-identifier">x</span> <span class="ruby-operator">==</span> <span class="ruby-string">&quot;\n&quot;</span><span class="ruby-operator">+</span><span class="ruby-ivar">@niveau</span>.<span class="ruby-identifier">to_s</span>)
                         <span class="ruby-identifier">affiche</span> = <span class="ruby-keyword">true</span>
@@ -308,9 +308,9 @@
 
           
           <div class="method-source-code" id="lancerTuto-source">
-            <pre><span class="ruby-comment"># File Tutoriel/Tutoriel.rb, line 48</span>
+            <pre><span class="ruby-comment"># File src/Tutoriel/Tutoriel.rb, line 48</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">lancerTuto</span>()
-        <span class="ruby-identifier">tuto</span> = <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/Tutoriel/Niveaux/&quot;</span><span class="ruby-operator">+</span><span class="ruby-ivar">@niveau</span>.<span class="ruby-identifier">to_s</span><span class="ruby-string">+&quot;.sav&quot;</span>))
+        <span class="ruby-identifier">tuto</span> = <span class="ruby-constant">YAML</span>.<span class="ruby-identifier">load</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/src/Tutoriel/Niveaux/&quot;</span><span class="ruby-operator">+</span><span class="ruby-ivar">@niveau</span>.<span class="ruby-identifier">to_s</span><span class="ruby-string">+&quot;.sav&quot;</span>))
         <span class="ruby-keyword">return</span> <span class="ruby-identifier">tuto</span>
 <span class="ruby-keyword">end</span></pre>
           </div>

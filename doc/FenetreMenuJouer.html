@@ -89,7 +89,7 @@
 
   <section class="description">
     
-<p>Classe permettant d&#39;afficher la fenêtre des menus après avoir cliquer sur le bouton jouer</p>
+<p>Classe permettant d&#39;afficher la fenêtre des menus après avoir cliqué sur le bouton jouer</p>
 
   </section>
 
@@ -127,9 +127,9 @@
 
 <h3 id="method-c-new-label-Param-C3-A8tres">Paramètres<span><a href="#method-c-new-label-Param-C3-A8tres">&para;</a> <a href="#top">&uarr;</a></span></h3>
 <ul><li>
-<p><code>window</code> : window la fenetre principale du programme</p>
+<p><code>window</code> : window la fenêtre principale du programme</p>
 </li><li>
-<p><code>fenPre</code> : fenPre la fenetre précédente</p>
+<p><code>fenPre</code> : fenPre la fenêtre précédente</p>
 </li></ul>
           
           
@@ -141,10 +141,10 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreMenuJouer.rb, line 16</span>
+            <pre><span class="ruby-comment"># File src/Interface/FenetreMenuJouer.rb, line 16</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">window</span>,<span class="ruby-identifier">fenPre</span>)
   <span class="ruby-keyword">super</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Orientation</span><span class="ruby-operator">::</span><span class="ruby-constant">VERTICAL</span>)
-  <span class="ruby-identifier">@@fenetre</span> = <span class="ruby-identifier">window</span>
+  <span class="ruby-ivar">@fenetre</span> = <span class="ruby-identifier">window</span>
   <span class="ruby-identifier">tbl</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Table</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">1</span>,<span class="ruby-value">1</span>)
   <span class="ruby-identifier">vBox</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Orientation</span><span class="ruby-operator">::</span><span class="ruby-constant">VERTICAL</span>)
   <span class="ruby-identifier">bouton1</span> = <span class="ruby-constant">UnBoutonPerso</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Tutoriel&quot;</span>, <span class="ruby-string">&quot;BoutonMenu&quot;</span>)
@@ -152,26 +152,26 @@
   <span class="ruby-identifier">bouton3</span> = <span class="ruby-constant">UnBoutonPerso</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Contre-la-montre&quot;</span>, <span class="ruby-string">&quot;BoutonMenu&quot;</span>)
       <span class="ruby-identifier">boutonRetour</span> = <span class="ruby-constant">UnBoutonPerso</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Retour&quot;</span>,<span class="ruby-string">&quot;BoutonMenu&quot;</span>)
   <span class="ruby-identifier">bouton1</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {
-    <span class="ruby-identifier">@@fenetre</span>.<span class="ruby-identifier">changerWidget</span>(<span class="ruby-constant">FenetreTuto</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">@@fenetre</span>,<span class="ruby-keyword">self</span>))
+    <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">changerWidget</span>(<span class="ruby-constant">FenetreTuto</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@fenetre</span>,<span class="ruby-keyword">self</span>))
   }
 
   <span class="ruby-identifier">bouton2</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {
-    <span class="ruby-identifier">@@fenetre</span>.<span class="ruby-identifier">changerWidget</span>(<span class="ruby-constant">FenetreModesDifficultes</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">@@fenetre</span>,<span class="ruby-keyword">self</span>))
+    <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">changerWidget</span>(<span class="ruby-constant">FenetreModesDifficultes</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@fenetre</span>,<span class="ruby-keyword">self</span>))
   }
 
   <span class="ruby-identifier">bouton3</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {
-    <span class="ruby-identifier">@@fenetre</span>.<span class="ruby-identifier">changerWidget</span>(<span class="ruby-constant">FenetreModeChrono</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">@@fenetre</span>,<span class="ruby-keyword">self</span>))
+    <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">changerWidget</span>(<span class="ruby-constant">FenetreModeChrono</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@fenetre</span>,<span class="ruby-keyword">self</span>))
   }
 
       <span class="ruby-identifier">boutonRetour</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){
-              <span class="ruby-identifier">@@fenetre</span>.<span class="ruby-identifier">changerWidget</span>(<span class="ruby-identifier">fenPre</span>);
+              <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">changerWidget</span>(<span class="ruby-identifier">fenPre</span>);
       }
 
   <span class="ruby-identifier">vBox</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">bouton1</span>)
   <span class="ruby-identifier">vBox</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">bouton2</span>)
   <span class="ruby-identifier">vBox</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">bouton3</span>)
   <span class="ruby-identifier">vBox</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">boutonRetour</span>)
-  <span class="ruby-identifier">tbl</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-identifier">vBox</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>, <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">AttachOptions</span><span class="ruby-operator">::</span><span class="ruby-constant">EXPAND</span>, <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">AttachOptions</span><span class="ruby-operator">::</span><span class="ruby-constant">EXPAND</span>, <span class="ruby-value">0</span>, <span class="ruby-identifier">@@fenetre</span>.<span class="ruby-identifier">default_size</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">/</span> <span class="ruby-value">3</span>)
+  <span class="ruby-identifier">tbl</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-identifier">vBox</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>, <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">AttachOptions</span><span class="ruby-operator">::</span><span class="ruby-constant">EXPAND</span>, <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">AttachOptions</span><span class="ruby-operator">::</span><span class="ruby-constant">EXPAND</span>, <span class="ruby-value">0</span>, <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">default_size</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">/</span> <span class="ruby-value">3</span>)
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">tbl</span>)
 
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">show_all</span>

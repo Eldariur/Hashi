@@ -171,7 +171,7 @@
 
           
           <div class="method-source-code" id="creer-source">
-            <pre><span class="ruby-comment"># File Classement/Classement.rb, line 25</span>
+            <pre><span class="ruby-comment"># File src/Classement/Classement.rb, line 25</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Classement</span>.<span class="ruby-identifier ruby-title">creer</span>(<span class="ruby-identifier">difficulty</span>)
         <span class="ruby-identifier">new</span>(<span class="ruby-identifier">difficulty</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -204,7 +204,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Classement/Classement.rb, line 18</span>
+            <pre><span class="ruby-comment"># File src/Classement/Classement.rb, line 18</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">difficulty</span>)
         <span class="ruby-ivar">@liste</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>
         <span class="ruby-ivar">@difficulte</span> = <span class="ruby-identifier">difficulty</span>
@@ -257,7 +257,7 @@
 
           
           <div class="method-source-code" id="isHighScore-3F-source">
-            <pre><span class="ruby-comment"># File Classement/Classement.rb, line 34</span>
+            <pre><span class="ruby-comment"># File src/Classement/Classement.rb, line 34</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">isHighScore?</span>(<span class="ruby-identifier">score</span>)
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">recupererDonnees</span>()
   <span class="ruby-keyword">if</span>(<span class="ruby-identifier">score</span>.<span class="ruby-identifier">difficulte</span> <span class="ruby-operator">==</span> <span class="ruby-ivar">@difficulte</span>) <span class="ruby-keyword">then</span>
@@ -300,7 +300,7 @@
 
           
           <div class="method-source-code" id="recupererDonnees-source">
-            <pre><span class="ruby-comment"># File Classement/Classement.rb, line 49</span>
+            <pre><span class="ruby-comment"># File src/Classement/Classement.rb, line 49</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">recupererDonnees</span>()
   <span class="ruby-ivar">@liste</span> = <span class="ruby-constant">Highscore</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:difficulty</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-ivar">@difficulte</span>).<span class="ruby-identifier">order</span>(<span class="ruby-value">:score</span>).<span class="ruby-identifier">take</span>(<span class="ruby-value">20</span>).<span class="ruby-identifier">reverse</span>
 <span class="ruby-keyword">end</span></pre>
@@ -327,13 +327,17 @@
 
         <div class="method-description">
           
-          
+          <p>Cette méthode redéfinit <a href="Classement.html#method-i-to_s"><code>to_s</code></a> pour afficher un classement.</p>
+
+<h3 id="method-i-to_s-label-Return">Return<span><a href="#method-i-to_s-label-Return">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>Une chaîne de caractère contenant des infos sur le classement</p>
           
           
 
           
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File Classement/Classement.rb, line 59</span>
+            <pre><span class="ruby-comment"># File src/Classement/Classement.rb, line 59</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">recupererDonnees</span>()
   <span class="ruby-identifier">res</span> = <span class="ruby-string">&quot;&quot;</span>

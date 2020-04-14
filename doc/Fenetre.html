@@ -92,8 +92,6 @@
     
     <li ><a href="#method-i-drawSurbri">#drawSurbri</a>
     
-    <li ><a href="#method-i-draw_colors">#draw_colors</a>
-    
     <li ><a href="#method-i-draw_maLigne">#draw_maLigne</a>
     
     <li ><a href="#method-i-estSommet-3F">#estSommet?</a>
@@ -107,10 +105,6 @@
     <li ><a href="#method-i-on_draw">#on_draw</a>
     
     <li ><a href="#method-i-rechercherVoisins">#rechercherVoisins</a>
-    
-    <li ><a href="#method-i-testAffichageCoord">#testAffichageCoord</a>
-    
-    <li ><a href="#method-i-testAffichageGrille">#testAffichageGrille</a>
     
     <li ><a href="#method-i-tracerGrille">#tracerGrille</a>
     
@@ -129,6 +123,8 @@
 
   <section class="description">
     
+<p>Classe servant à tester les aides du programme</p>
+
   </section>
 
   
@@ -154,7 +150,7 @@
 
         <div class="method-description">
         
-        
+        <p>Accesseur get et set sur les attributs nbClick, listeInter, caseSom et cr</p>
         
         </div>
       </div>
@@ -167,7 +163,7 @@
 
         <div class="method-description">
         
-        
+        <p>Accesseur get et set sur les attributs nbClick, listeInter, caseSom et cr</p>
         
         </div>
       </div>
@@ -180,7 +176,7 @@
 
         <div class="method-description">
         
-        
+        <p>Accesseur get sur les attributs grilleTest, longueur et largeur</p>
         
         </div>
       </div>
@@ -193,7 +189,7 @@
 
         <div class="method-description">
         
-        
+        <p>Accesseur get sur les attributs grilleTest, longueur et largeur</p>
         
         </div>
       </div>
@@ -206,7 +202,7 @@
 
         <div class="method-description">
         
-        
+        <p>Accesseur get et set sur les attributs nbClick, listeInter, caseSom et cr</p>
         
         </div>
       </div>
@@ -219,7 +215,7 @@
 
         <div class="method-description">
         
-        
+        <p>Accesseur get sur les attributs grilleTest, longueur et largeur</p>
         
         </div>
       </div>
@@ -232,7 +228,7 @@
 
         <div class="method-description">
         
-        
+        <p>Accesseur get et set sur les attributs nbClick, listeInter, caseSom et cr</p>
         
         </div>
       </div>
@@ -260,7 +256,7 @@
 
         <div class="method-description">
           
-          
+          <p>Partie initialize</p>
           
           
             <div class="method-calls-super">
@@ -271,14 +267,13 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Aide/TestAide.rb, line 17</span>
+            <pre><span class="ruby-comment"># File src/Aide/TestAide.rb, line 40</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>()
 
 
         <span class="ruby-keyword">super</span>()
         <span class="ruby-keyword">self</span>.<span class="ruby-identifier">name</span>=<span class="ruby-string">&quot;mainWindow2&quot;</span>
         <span class="ruby-keyword">self</span>.<span class="ruby-identifier">set_default_size</span>(<span class="ruby-value">900</span>,<span class="ruby-value">600</span>)
-        <span class="ruby-identifier">vbox</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:VERTICAL</span>)
         <span class="ruby-keyword">self</span>.<span class="ruby-identifier">window_position</span>=<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">WindowPosition</span><span class="ruby-operator">::</span><span class="ruby-constant">CENTER</span>
         <span class="ruby-identifier">css</span>=<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">CssProvider</span>.<span class="ruby-identifier">new</span>
         <span class="ruby-identifier">css</span>.<span class="ruby-identifier">load</span>(<span class="ruby-value">path:</span> <span class="ruby-string">&quot;../Interface/css/style.css&quot;</span>)
@@ -354,14 +349,8 @@
                 <span class="ruby-identifier">x</span>=<span class="ruby-value">10</span>
                 <span class="ruby-identifier">y</span>=<span class="ruby-value">10</span>
 
-                <span class="ruby-identifier">@@x1</span>=<span class="ruby-value">0</span>
-                <span class="ruby-identifier">@@y1</span>=<span class="ruby-value">0</span>
-                <span class="ruby-identifier">@@x2</span>=<span class="ruby-value">0</span>
-                <span class="ruby-identifier">@@y2</span>=<span class="ruby-value">0</span>
-
 
                 <span class="ruby-identifier">hpaned</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">HPaned</span>.<span class="ruby-identifier">new</span>
-                <span class="ruby-identifier">hpaned2</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">HPaned</span>.<span class="ruby-identifier">new</span>
 
 
                 <span class="ruby-comment"># hpaned = Gtk::Paned.new(:Horizontal)</span>
@@ -430,13 +419,13 @@
 
         <div class="method-description">
           
-          
+          <p>Méthode permettant d&#39;afficher la zone de dessin</p>
           
           
 
           
           <div class="method-source-code" id="afficheEcran-source">
-            <pre><span class="ruby-comment"># File Aide/TestAide.rb, line 716</span>
+            <pre><span class="ruby-comment"># File src/Aide/TestAide.rb, line 738</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">afficheEcran</span>(<span class="ruby-identifier">cr</span>)
         <span class="ruby-identifier">clearEcran</span>(<span class="ruby-identifier">cr</span>)
         <span class="ruby-identifier">drawSurbri</span>(<span class="ruby-identifier">cr</span>)
@@ -466,13 +455,13 @@
 
         <div class="method-description">
           
-          
+          <p>Méthode permettant d&#39;afficher les surbrillances dans la console</p>
           
           
 
           
           <div class="method-source-code" id="afficheSurbri-source">
-            <pre><span class="ruby-comment"># File Aide/TestAide.rb, line 328</span>
+            <pre><span class="ruby-comment"># File src/Aide/TestAide.rb, line 344</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">afficheSurbri</span>()
         <span class="ruby-ivar">@listeInter</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span>
                 <span class="ruby-keyword">if</span>(<span class="ruby-identifier">c</span> <span class="ruby-operator">!=</span> <span class="ruby-string">&quot;|&quot;</span>)
@@ -502,13 +491,19 @@
 
         <div class="method-description">
           
-          
+          <pre class="ruby"><span class="ruby-constant">Méthode</span> <span class="ruby-identifier">permettant</span> <span class="ruby-identifier">de</span> <span class="ruby-identifier">changer</span> <span class="ruby-identifier">de</span> <span class="ruby-identifier">fenêtre</span>
+</pre>
+
+<h3 id="method-i-changerWidget-label-Param-C3-A8tres">Paramètres<span><a href="#method-i-changerWidget-label-Param-C3-A8tres">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p><code>nouveau</code> : La nouvelle fenêtre à afficher</p>
+</li></ul>
           
           
 
           
           <div class="method-source-code" id="changerWidget-source">
-            <pre><span class="ruby-comment"># File Aide/TestAide.rb, line 521</span>
+            <pre><span class="ruby-comment"># File src/Aide/TestAide.rb, line 578</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">changerWidget</span>(<span class="ruby-identifier">nouveau</span>)
         <span class="ruby-keyword">self</span>.<span class="ruby-identifier">remove</span>(<span class="ruby-keyword">self</span>.<span class="ruby-identifier">child</span>).<span class="ruby-identifier">add</span>(<span class="ruby-identifier">nouveau</span>)
         <span class="ruby-keyword">self</span>.<span class="ruby-identifier">show_all</span>
@@ -537,13 +532,13 @@
 
         <div class="method-description">
           
-          
+          <p>Méthode permettant d&#39;effacer la zone de dessin</p>
           
           
 
           
           <div class="method-source-code" id="clearEcran-source">
-            <pre><span class="ruby-comment"># File Aide/TestAide.rb, line 709</span>
+            <pre><span class="ruby-comment"># File src/Aide/TestAide.rb, line 730</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">clearEcran</span>(<span class="ruby-identifier">cr</span>)
         <span class="ruby-identifier">cr</span>.<span class="ruby-identifier">set_source_rgb</span> <span class="ruby-value">0.96</span>, <span class="ruby-value">0.96</span>, <span class="ruby-value">0.96</span>
         <span class="ruby-identifier">cr</span>.<span class="ruby-identifier">rectangle</span> <span class="ruby-value">0</span>, <span class="ruby-value">0</span>, <span class="ruby-value">700</span>, <span class="ruby-value">700</span>
@@ -573,13 +568,17 @@
 
         <div class="method-description">
           
-          
+          <p>Méthode permettant de redimensionner une image</p>
+
+<h3 id="method-i-dimImage-label-Return">Return<span><a href="#method-i-dimImage-label-Return">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>L&#39;image redimensionnée</p>
           
           
 
           
           <div class="method-source-code" id="dimImage-source">
-            <pre><span class="ruby-comment"># File Aide/TestAide.rb, line 528</span>
+            <pre><span class="ruby-comment"># File src/Aide/TestAide.rb, line 589</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">dimImage</span>(<span class="ruby-identifier">str</span>)
         <span class="ruby-identifier">image</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">str</span>)
         <span class="ruby-identifier">image</span>.<span class="ruby-identifier">pixbuf</span> = <span class="ruby-identifier">image</span>.<span class="ruby-identifier">pixbuf</span>.<span class="ruby-identifier">scale</span>(<span class="ruby-value">28</span>,<span class="ruby-value">28</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">image</span>.<span class="ruby-identifier">pixbuf</span><span class="ruby-operator">!=</span><span class="ruby-keyword">nil</span>
@@ -608,21 +607,19 @@
 
         <div class="method-description">
           
-          
+          <p>Méthode permettant de dessiner les arêtes sur la surface de dessin</p>
           
           
 
           
           <div class="method-source-code" id="drawAretes-source">
-            <pre><span class="ruby-comment"># File Aide/TestAide.rb, line 610</span>
+            <pre><span class="ruby-comment"># File src/Aide/TestAide.rb, line 642</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">drawAretes</span>(<span class="ruby-identifier">cr</span>)
         <span class="ruby-comment"># copie de tracerGrille</span>
         <span class="ruby-identifier">tailleCase</span> = <span class="ruby-value">50</span>
-        <span class="ruby-identifier">nbCase</span> = <span class="ruby-ivar">@largeur</span>
         <span class="ruby-identifier">paddingX</span> = <span class="ruby-value">50</span><span class="ruby-value">+15</span>
         <span class="ruby-identifier">paddingY</span> = <span class="ruby-value">25</span><span class="ruby-value">+35</span>
         <span class="ruby-identifier">verti</span> = <span class="ruby-keyword">false</span>
-        <span class="ruby-identifier">hori</span> = <span class="ruby-keyword">false</span>
         <span class="ruby-identifier">varX</span> = <span class="ruby-value">0</span>
         <span class="ruby-identifier">varY</span> = <span class="ruby-value">0</span>
         <span class="ruby-identifier">minX</span> = <span class="ruby-value">0</span>
@@ -632,19 +629,15 @@
 
                 <span class="ruby-identifier">i</span> = <span class="ruby-value">0</span>
                 <span class="ruby-identifier">j</span> = <span class="ruby-value">0</span>
-                <span class="ruby-identifier">taillePix</span> = <span class="ruby-value">25</span>
-                <span class="ruby-identifier">padding</span> = <span class="ruby-value">20</span>
         <span class="ruby-ivar">@grilleTest</span>.<span class="ruby-identifier">aretes</span>.<span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span>
                 <span class="ruby-identifier">x1</span> = <span class="ruby-identifier">a</span>.<span class="ruby-identifier">sommet1</span>.<span class="ruby-identifier">position</span>.<span class="ruby-identifier">x</span>
                 <span class="ruby-identifier">y1</span> = <span class="ruby-identifier">a</span>.<span class="ruby-identifier">sommet1</span>.<span class="ruby-identifier">position</span>.<span class="ruby-identifier">y</span>
                 <span class="ruby-identifier">x2</span> = <span class="ruby-identifier">a</span>.<span class="ruby-identifier">sommet2</span>.<span class="ruby-identifier">position</span>.<span class="ruby-identifier">x</span>
                 <span class="ruby-identifier">y2</span> = <span class="ruby-identifier">a</span>.<span class="ruby-identifier">sommet2</span>.<span class="ruby-identifier">position</span>.<span class="ruby-identifier">y</span>
                 <span class="ruby-keyword">if</span>(<span class="ruby-identifier">x1</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">x2</span>)
-                        <span class="ruby-identifier">hori</span> = <span class="ruby-keyword">false</span>
                         <span class="ruby-identifier">verti</span> = <span class="ruby-keyword">true</span>
                 <span class="ruby-keyword">else</span>
                         <span class="ruby-identifier">verti</span> = <span class="ruby-keyword">false</span>
-                        <span class="ruby-identifier">hori</span> = <span class="ruby-keyword">true</span>
                 <span class="ruby-keyword">end</span>
                 <span class="ruby-comment">#puts &quot;tracer l&#39;arete entre x1 = &quot;+x1.to_s+&quot; y1 = &quot;+y1.to_s+&quot; x2 = &quot;+x2.to_s+&quot; y2 = &quot;+y2.to_s+&quot; vertical = &quot;+verti.to_s</span>
                 <span class="ruby-keyword">if</span>(<span class="ruby-identifier">verti</span><span class="ruby-operator">==</span><span class="ruby-keyword">true</span>)
@@ -721,17 +714,16 @@
 
         <div class="method-description">
           
-          
+          <p>Méthode permettant de dessiner les sommets sur la surface de dessin</p>
           
           
 
           
           <div class="method-source-code" id="drawSommets-source">
-            <pre><span class="ruby-comment"># File Aide/TestAide.rb, line 576</span>
+            <pre><span class="ruby-comment"># File src/Aide/TestAide.rb, line 610</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">drawSommets</span>(<span class="ruby-identifier">cr</span>)
         <span class="ruby-comment"># copie de tracerGrille</span>
         <span class="ruby-identifier">tailleCase</span> = <span class="ruby-value">50</span>
-        <span class="ruby-identifier">nbCase</span> = <span class="ruby-ivar">@largeur</span>
         <span class="ruby-identifier">paddingX</span> = <span class="ruby-value">50</span><span class="ruby-value">+17</span>
         <span class="ruby-identifier">paddingY</span> = <span class="ruby-value">25</span><span class="ruby-value">+35</span>
 
@@ -740,8 +732,6 @@
 
                 <span class="ruby-identifier">i</span> = <span class="ruby-value">0</span>
                 <span class="ruby-identifier">j</span> = <span class="ruby-value">0</span>
-                <span class="ruby-identifier">taillePix</span> = <span class="ruby-value">25</span>
-                <span class="ruby-identifier">padding</span> = <span class="ruby-value">20</span>
         <span class="ruby-ivar">@grilleTest</span>.<span class="ruby-identifier">sommets</span>.<span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">s</span><span class="ruby-operator">|</span>
                 <span class="ruby-identifier">x</span> = <span class="ruby-identifier">s</span>.<span class="ruby-identifier">position</span>.<span class="ruby-identifier">x</span>
                 <span class="ruby-identifier">y</span> = <span class="ruby-identifier">s</span>.<span class="ruby-identifier">position</span>.<span class="ruby-identifier">y</span>
@@ -784,17 +774,16 @@
 
         <div class="method-description">
           
-          
+          <p>Méthode permettant de dessiner les surbrillances</p>
           
           
 
           
           <div class="method-source-code" id="drawSurbri-source">
-            <pre><span class="ruby-comment"># File Aide/TestAide.rb, line 284</span>
+            <pre><span class="ruby-comment"># File src/Aide/TestAide.rb, line 301</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">drawSurbri</span>(<span class="ruby-identifier">cr</span>)
         <span class="ruby-comment"># exemple 5 5</span>
         <span class="ruby-identifier">tailleCase</span> = <span class="ruby-value">50</span>
-        <span class="ruby-identifier">nbCase</span> = <span class="ruby-ivar">@largeur</span>
         <span class="ruby-identifier">paddingX</span> = <span class="ruby-value">50</span>
         <span class="ruby-identifier">paddingY</span> = <span class="ruby-value">25</span>
 
@@ -844,52 +833,6 @@
       </div>
 
     
-      <div id="method-i-draw_colors" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">draw_colors</span><span
-            class="method-args">(cr)</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-          <div class="method-source-code" id="draw_colors-source">
-            <pre><span class="ruby-comment"># File Aide/TestAide.rb, line 559</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">draw_colors</span> <span class="ruby-identifier">cr</span>
-
-                <span class="ruby-identifier">cr</span>.<span class="ruby-identifier">set_source_rgb</span> <span class="ruby-value">0.2</span>, <span class="ruby-value">0.23</span>, <span class="ruby-value">0.9</span>
-                <span class="ruby-identifier">cr</span>.<span class="ruby-identifier">move_to</span> <span class="ruby-value">10</span>, <span class="ruby-value">10</span>
-                <span class="ruby-identifier">cr</span>.<span class="ruby-identifier">line_to</span> <span class="ruby-value">150</span>, <span class="ruby-value">15</span>
-                <span class="ruby-identifier">cr</span>.<span class="ruby-identifier">move_to</span> <span class="ruby-value">150</span>, <span class="ruby-value">30</span>
-                <span class="ruby-identifier">cr</span>.<span class="ruby-identifier">stroke</span>
-
-                <span class="ruby-identifier">cr</span>.<span class="ruby-identifier">set_source_rgb</span> <span class="ruby-value">0.9</span>, <span class="ruby-value">0.1</span>, <span class="ruby-value">0.1</span>
-                <span class="ruby-identifier">cr</span>.<span class="ruby-identifier">rectangle</span> <span class="ruby-value">130</span>, <span class="ruby-value">15</span>, <span class="ruby-value">90</span>, <span class="ruby-value">60</span>
-                <span class="ruby-identifier">cr</span>.<span class="ruby-identifier">fill</span>
-
-                <span class="ruby-identifier">cr</span>.<span class="ruby-identifier">set_source_rgb</span> <span class="ruby-value">0.4</span>, <span class="ruby-value">0.9</span>, <span class="ruby-value">0.4</span>
-                <span class="ruby-identifier">cr</span>.<span class="ruby-identifier">rectangle</span> <span class="ruby-value">250</span>, <span class="ruby-value">15</span>, <span class="ruby-value">90</span>, <span class="ruby-value">60</span>
-                <span class="ruby-identifier">cr</span>.<span class="ruby-identifier">fill</span>
-<span class="ruby-keyword">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-
-        
-      </div>
-
-    
       <div id="method-i-draw_maLigne" class="method-detail ">
         
         <div class="method-heading">
@@ -903,13 +846,13 @@
 
         <div class="method-description">
           
-          
+          <p>Méthode permettant de dessiner les lignes de la grille sur la surface de dessin</p>
           
           
 
           
           <div class="method-source-code" id="draw_maLigne-source">
-            <pre><span class="ruby-comment"># File Aide/TestAide.rb, line 694</span>
+            <pre><span class="ruby-comment"># File src/Aide/TestAide.rb, line 721</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">draw_maLigne</span>(<span class="ruby-identifier">cr</span>,<span class="ruby-identifier">x1</span>,<span class="ruby-identifier">y1</span>,<span class="ruby-identifier">x2</span>,<span class="ruby-identifier">y2</span>)
         <span class="ruby-identifier">cr</span>.<span class="ruby-identifier">move_to</span> <span class="ruby-identifier">x1</span>, <span class="ruby-identifier">y1</span>
         <span class="ruby-identifier">cr</span>.<span class="ruby-identifier">line_to</span> <span class="ruby-identifier">x2</span>,<span class="ruby-identifier">y2</span>
@@ -939,13 +882,22 @@
 
         <div class="method-description">
           
-          
+          <p>Méthode permettant de savoir si la case passée en paramètre contient un sommet</p>
+
+<h3 id="method-i-estSommet-3F-label-Param-C3-A8tres">Paramètres<span><a href="#method-i-estSommet-3F-label-Param-C3-A8tres">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p><code>c</code> : La case qu&#39;on veut tester</p>
+</li></ul>
+
+<h3 id="method-i-estSommet-3F-label-Return">Return<span><a href="#method-i-estSommet-3F-label-Return">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>Vrai si la case est un sommet, faux sinon</p>
           
           
 
           
           <div class="method-source-code" id="estSommet-3F-source">
-            <pre><span class="ruby-comment"># File Aide/TestAide.rb, line 492</span>
+            <pre><span class="ruby-comment"># File src/Aide/TestAide.rb, line 539</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">estSommet?</span>(<span class="ruby-identifier">c</span>)
         <span class="ruby-ivar">@grilleTest</span>.<span class="ruby-identifier">sommets</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">s</span><span class="ruby-operator">|</span>
                 <span class="ruby-keyword">if</span>(<span class="ruby-identifier">s</span>.<span class="ruby-identifier">position</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">position</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">y</span>)
@@ -977,13 +929,24 @@
 
         <div class="method-description">
           
-          <p>retourne la liste des cases comprises entre deux voisins</p>
+          <p>Méthode retournant la liste des cases comprises entre deux voisins</p>
+
+<h3 id="method-i-getlisteInterCase-label-Param-C3-A8tres">Paramètres<span><a href="#method-i-getlisteInterCase-label-Param-C3-A8tres">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p><code>s1</code> : Le premier sommet</p>
+</li><li>
+<p><code>s2</code> : Le second sommet</p>
+</li></ul>
+
+<h3 id="method-i-getlisteInterCase-label-Return">Return<span><a href="#method-i-getlisteInterCase-label-Return">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>La liste des cases comprises entre les sommets s1 et s2</p>
           
           
 
           
           <div class="method-source-code" id="getlisteInterCase-source">
-            <pre><span class="ruby-comment"># File Aide/TestAide.rb, line 446</span>
+            <pre><span class="ruby-comment"># File src/Aide/TestAide.rb, line 486</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getlisteInterCase</span>(<span class="ruby-identifier">s1</span>, <span class="ruby-identifier">s2</span>)
         <span class="ruby-identifier">x1</span> = <span class="ruby-identifier">s1</span>.<span class="ruby-identifier">x</span>
         <span class="ruby-identifier">y1</span> = <span class="ruby-identifier">s1</span>.<span class="ruby-identifier">y</span>
@@ -993,9 +956,7 @@
         <span class="ruby-identifier">listeDeCase</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">s1</span>)
         <span class="ruby-identifier">testAffichageCoord</span>(<span class="ruby-identifier">s1</span>)
         <span class="ruby-identifier">testAffichageCoord</span>(<span class="ruby-identifier">s2</span>)
-        <span class="ruby-identifier">ecart</span> = <span class="ruby-value">0</span>
         <span class="ruby-keyword">if</span>(<span class="ruby-identifier">x1</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">x2</span>)
-                <span class="ruby-identifier">ecart</span> = <span class="ruby-identifier">x2</span><span class="ruby-operator">-</span>(<span class="ruby-identifier">x1</span>)
                 (<span class="ruby-identifier">x1</span><span class="ruby-value">+1</span>).<span class="ruby-identifier">upto</span>(<span class="ruby-identifier">x2</span><span class="ruby-value">-1</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
                         <span class="ruby-identifier">listeDeCase</span>.<span class="ruby-identifier">push</span>(<span class="ruby-ivar">@grilleTest</span>.<span class="ruby-identifier">getCase</span>(<span class="ruby-identifier">i</span>,<span class="ruby-identifier">y1</span>))
                 }
@@ -1040,13 +1001,18 @@
 
         <div class="method-description">
           
-          
+          <p>Méthode permettant d&#39;effectuer des actions lorsque l&#39;utilisateur clique sur la zone de dessin</p>
+
+<h3 id="method-i-mouseClick-label-Param-C3-A8tres">Paramètres<span><a href="#method-i-mouseClick-label-Param-C3-A8tres">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p><code>event</code> : L&#39;évènement engendré par l&#39;utilisateur</p>
+</li></ul>
           
           
 
           
           <div class="method-source-code" id="mouseClick-source">
-            <pre><span class="ruby-comment"># File Aide/TestAide.rb, line 145</span>
+            <pre><span class="ruby-comment"># File src/Aide/TestAide.rb, line 166</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">mouseClick</span>(<span class="ruby-identifier">event</span>)
         <span class="ruby-comment"># copie tracerGrille</span>
         <span class="ruby-identifier">tailleCase</span> = <span class="ruby-value">50</span>
@@ -1077,14 +1043,13 @@
 
         <span class="ruby-keyword">if</span>(<span class="ruby-identifier">x</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">paddingX</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">x</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">paddingX</span><span class="ruby-operator">+</span><span class="ruby-identifier">tailleCase</span><span class="ruby-operator">*</span><span class="ruby-identifier">nbCase</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">y</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">paddingY</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">y</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">paddingY</span><span class="ruby-operator">+</span><span class="ruby-identifier">tailleCase</span><span class="ruby-operator">*</span><span class="ruby-identifier">nbCase</span>) <span class="ruby-comment">#si dans la grille</span>
                 <span class="ruby-identifier">caseX</span> = (<span class="ruby-identifier">x</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">paddingX</span>).<span class="ruby-identifier">to_i</span><span class="ruby-operator">/</span><span class="ruby-identifier">tailleCase</span>
-                <span class="ruby-identifier">caseY</span> = (<span class="ruby-identifier">y</span> <span class="ruby-operator">-</span><span class="ruby-identifier">paddingY</span>).<span class="ruby-identifier">to_i</span><span class="ruby-operator">/</span><span class="ruby-identifier">tailleCase</span>
+                <span class="ruby-identifier">caseY</span> = (<span class="ruby-identifier">y</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">paddingY</span>).<span class="ruby-identifier">to_i</span><span class="ruby-operator">/</span><span class="ruby-identifier">tailleCase</span>
 
                 <span class="ruby-identifier">caseTest</span> = <span class="ruby-ivar">@grilleTest</span>.<span class="ruby-identifier">getCase</span>(<span class="ruby-identifier">caseX</span>,<span class="ruby-identifier">caseY</span>)
 
 
                 <span class="ruby-comment"># sensé regarder le contenu de la case mais PROBLEME car toutes les cases sont des sommets !</span>
                 <span class="ruby-identifier">caseTest</span> = <span class="ruby-ivar">@grilleTest</span>.<span class="ruby-identifier">getCase</span>(<span class="ruby-identifier">caseX</span>,<span class="ruby-identifier">caseY</span>)
-                <span class="ruby-identifier">caseSom</span> = <span class="ruby-keyword">nil</span>
                 <span class="ruby-keyword">if</span>(<span class="ruby-identifier">estSommet?</span>(<span class="ruby-identifier">caseTest</span>))
                         <span class="ruby-identifier">afficheSurbri</span>
                         <span class="ruby-identifier">videSurbri</span>
@@ -1100,7 +1065,7 @@
 
                         <span class="ruby-ivar">@listeInter</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span>
                                 <span class="ruby-keyword">if</span>(<span class="ruby-identifier">c</span> <span class="ruby-operator">!=</span> <span class="ruby-string">&quot;|&quot;</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">!=</span> <span class="ruby-constant">Sommet</span>) <span class="ruby-comment">#&lt;==== FAUX</span>
-                                        <span class="ruby-identifier">c</span>.<span class="ruby-identifier">setSurbri</span>(<span class="ruby-keyword">true</span>)
+                                        <span class="ruby-identifier">c</span>.<span class="ruby-identifier">surbrillance</span> = <span class="ruby-keyword">true</span>
                                 <span class="ruby-keyword">end</span>
                         }
                 <span class="ruby-keyword">end</span>
@@ -1137,14 +1102,12 @@
                                         <span class="ruby-ivar">@listeInter</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span>,<span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
                                                 <span class="ruby-keyword">if</span>(<span class="ruby-identifier">c</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">caseTest</span>)
                                                         <span class="ruby-identifier">s1</span> = <span class="ruby-ivar">@listeInter</span>[<span class="ruby-value">0</span>]
-                                                        <span class="ruby-identifier">i</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-ivar">@listeInter</span>.<span class="ruby-identifier">length</span><span class="ruby-value">-1</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">y</span><span class="ruby-operator">|</span>
-
-
-                                                                <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@listeInter</span>[<span class="ruby-identifier">y</span>] <span class="ruby-operator">!=</span> <span class="ruby-string">&quot;|&quot;</span>)
-                                                                        <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@listeInter</span>[<span class="ruby-identifier">y</span>].<span class="ruby-identifier">contenu</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Sommet</span>)
+                                                        <span class="ruby-identifier">i</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-ivar">@listeInter</span>.<span class="ruby-identifier">length</span><span class="ruby-value">-1</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">indiceListe</span><span class="ruby-operator">|</span>
+                                                                <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@listeInter</span>[<span class="ruby-identifier">indiceListe</span>] <span class="ruby-operator">!=</span> <span class="ruby-string">&quot;|&quot;</span>)
+                                                                        <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@listeInter</span>[<span class="ruby-identifier">indiceListe</span>].<span class="ruby-identifier">contenu</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Sommet</span>)
 
                                                                                 <span class="ruby-keyword">if</span>(<span class="ruby-operator">!</span><span class="ruby-identifier">trouve1</span>)
-                                                                                        <span class="ruby-identifier">s2</span> = <span class="ruby-ivar">@listeInter</span>[<span class="ruby-identifier">y</span>]
+                                                                                        <span class="ruby-identifier">s2</span> = <span class="ruby-ivar">@listeInter</span>[<span class="ruby-identifier">indiceListe</span>]
                                                                                         <span class="ruby-identifier">trouve1</span> = <span class="ruby-keyword">true</span>
                                                                                 <span class="ruby-keyword">end</span>
 
@@ -1164,7 +1127,7 @@
 
                                         <span class="ruby-keyword">if</span>(<span class="ruby-identifier">s1</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">caseTest</span>.<span class="ruby-identifier">contenu</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">!=</span> <span class="ruby-constant">Sommet</span>)
                                                 <span class="ruby-keyword">if</span>(<span class="ruby-identifier">s1</span>.<span class="ruby-identifier">contenu</span>.<span class="ruby-identifier">valeur</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">s1</span>.<span class="ruby-identifier">contenu</span>.<span class="ruby-identifier">compterArete</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">s2</span>.<span class="ruby-identifier">contenu</span>.<span class="ruby-identifier">valeur</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">s2</span>.<span class="ruby-identifier">contenu</span>.<span class="ruby-identifier">compterArete</span>)<span class="ruby-comment">#le sommet est complet</span>
-                                                        <span class="ruby-identifier">newA</span> = <span class="ruby-constant">Arete</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">s1</span>.<span class="ruby-identifier">contenu</span>,<span class="ruby-identifier">s2</span>.<span class="ruby-identifier">contenu</span>) <span class="ruby-comment">#&lt;================ a voir</span>
+                                                        <span class="ruby-constant">Arete</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">s1</span>.<span class="ruby-identifier">contenu</span>,<span class="ruby-identifier">s2</span>.<span class="ruby-identifier">contenu</span>) <span class="ruby-comment">#&lt;================ a voir</span>
                                                 <span class="ruby-keyword">elsif</span>(<span class="ruby-identifier">s1</span>.<span class="ruby-identifier">contenu</span>.<span class="ruby-identifier">valeur</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">s1</span>.<span class="ruby-identifier">contenu</span>.<span class="ruby-identifier">compterArete</span>)
                                                         <span class="ruby-identifier">s1</span>.<span class="ruby-identifier">contenu</span>.<span class="ruby-identifier">setComplet</span>(<span class="ruby-keyword">true</span>)
                                                 <span class="ruby-keyword">elsif</span>(<span class="ruby-identifier">s2</span>.<span class="ruby-identifier">contenu</span>.<span class="ruby-identifier">valeur</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">s2</span>.<span class="ruby-identifier">contenu</span>.<span class="ruby-identifier">compterArete</span>)
@@ -1206,13 +1169,22 @@
 
         <div class="method-description">
           
-          
+          <p>Méthode retournant le nombre d&#39;arêtes que possède un sommet</p>
+
+<h3 id="method-i-nbAretesSommet-label-Param-C3-A8tres">Paramètres<span><a href="#method-i-nbAretesSommet-label-Param-C3-A8tres">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p><code>s</code> :      Le sommet sur lequel compter les arêtes</p>
+</li></ul>
+
+<h3 id="method-i-nbAretesSommet-label-Return">Return<span><a href="#method-i-nbAretesSommet-label-Return">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>Le nombre d&#39;arêtesque possède le sommet s</p>
           
           
 
           
           <div class="method-source-code" id="nbAretesSommet-source">
-            <pre><span class="ruby-comment"># File Aide/TestAide.rb, line 335</span>
+            <pre><span class="ruby-comment"># File src/Aide/TestAide.rb, line 360</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">nbAretesSommet</span>(<span class="ruby-identifier">s</span>)
         <span class="ruby-identifier">i</span> = <span class="ruby-value">0</span>
         <span class="ruby-identifier">s</span>.<span class="ruby-identifier">listeArete</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span>
@@ -1247,23 +1219,13 @@
 
         <div class="method-description">
           
-          <p>def init_ui</p>
-
-<pre class="ruby"><span class="ruby-ivar">@darea</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">DrawingArea</span>.<span class="ruby-identifier">new</span>
-
-<span class="ruby-ivar">@darea</span>.<span class="ruby-identifier">signal_connect</span> <span class="ruby-string">&quot;draw&quot;</span> <span class="ruby-keyword">do</span>
-                <span class="ruby-identifier">on_draw</span>
-<span class="ruby-keyword">end</span>
-<span class="ruby-identifier">add</span> <span class="ruby-ivar">@darea</span>
-</pre>
-
-<p>end</p>
+          <p>Méthode permettant de dessiner la grille initiale</p>
           
           
 
           
           <div class="method-source-code" id="on_draw-source">
-            <pre><span class="ruby-comment"># File Aide/TestAide.rb, line 545</span>
+            <pre><span class="ruby-comment"># File src/Aide/TestAide.rb, line 596</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">on_draw</span>
 
                 <span class="ruby-identifier">cr</span> = <span class="ruby-ivar">@darea</span>.<span class="ruby-identifier">window</span>.<span class="ruby-identifier">create_cairo_context</span>
@@ -1299,18 +1261,24 @@
 
         <div class="method-description">
           
-          
+          <p>Méthode retournant la liste des sommets voisins à la case passée en paramètre</p>
+
+<h3 id="method-i-rechercherVoisins-label-Param-C3-A8tres">Paramètres<span><a href="#method-i-rechercherVoisins-label-Param-C3-A8tres">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p><code>c</code> : La case dont on veut retourner les voisins</p>
+</li></ul>
+
+<h3 id="method-i-rechercherVoisins-label-Return">Return<span><a href="#method-i-rechercherVoisins-label-Return">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>La liste des sommets voisins à la case c</p>
           
           
 
           
           <div class="method-source-code" id="rechercherVoisins-source">
-            <pre><span class="ruby-comment"># File Aide/TestAide.rb, line 347</span>
+            <pre><span class="ruby-comment"># File src/Aide/TestAide.rb, line 381</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">rechercherVoisins</span>(<span class="ruby-identifier">c</span>)
-        <span class="ruby-identifier">tailleCase</span> = <span class="ruby-value">50</span>
         <span class="ruby-identifier">nbCase</span> = <span class="ruby-ivar">@largeur</span>
-        <span class="ruby-identifier">paddingX</span> = <span class="ruby-value">50</span>
-        <span class="ruby-identifier">paddingY</span> = <span class="ruby-value">25</span>
         <span class="ruby-identifier">j</span> = <span class="ruby-value">0</span>
         <span class="ruby-identifier">listeVoisin</span> = []
         <span class="ruby-identifier">selfArete</span> = <span class="ruby-keyword">false</span>
@@ -1413,72 +1381,6 @@
       </div>
 
     
-      <div id="method-i-testAffichageCoord" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">testAffichageCoord</span><span
-            class="method-args">(c)</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-          <div class="method-source-code" id="testAffichageCoord-source">
-            <pre><span class="ruby-comment"># File Aide/TestAide.rb, line 705</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">testAffichageCoord</span>(<span class="ruby-identifier">c</span>)
-
-<span class="ruby-keyword">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-
-        
-      </div>
-
-    
-      <div id="method-i-testAffichageGrille" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">testAffichageGrille</span><span
-            class="method-args">()</span>
-          
-          <span class="method-click-advice">click to toggle source</span>
-          
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-          
-
-          
-          <div class="method-source-code" id="testAffichageGrille-source">
-            <pre><span class="ruby-comment"># File Aide/TestAide.rb, line 701</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">testAffichageGrille</span>
-
-<span class="ruby-keyword">end</span></pre>
-          </div>
-          
-        </div>
-
-        
-
-        
-      </div>
-
-    
       <div id="method-i-tracerGrille" class="method-detail ">
         
         <div class="method-heading">
@@ -1492,13 +1394,18 @@
 
         <div class="method-description">
           
-          
+          <p>Méthode permettant de tracer la grille sur la zone de dessin</p>
+
+<h3 id="method-i-tracerGrille-label-Param-C3-A8tres">Paramètres<span><a href="#method-i-tracerGrille-label-Param-C3-A8tres">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p><code>tracer</code> : Booléen permettant d&#39;effectuer la fonction ou non</p>
+</li></ul>
           
           
 
           
           <div class="method-source-code" id="tracerGrille-source">
-            <pre><span class="ruby-comment"># File Aide/TestAide.rb, line 501</span>
+            <pre><span class="ruby-comment"># File src/Aide/TestAide.rb, line 553</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">tracerGrille</span>(<span class="ruby-identifier">grille</span>)
         <span class="ruby-comment"># exemple 5 5</span>
         <span class="ruby-identifier">tailleCase</span> = <span class="ruby-value">50</span>
@@ -1541,13 +1448,13 @@
 
         <div class="method-description">
           
-          
+          <p>Méthode vidant la liste des cases entre deux sommets</p>
           
           
 
           
           <div class="method-source-code" id="videSurbri-source">
-            <pre><span class="ruby-comment"># File Aide/TestAide.rb, line 480</span>
+            <pre><span class="ruby-comment"># File src/Aide/TestAide.rb, line 519</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">videSurbri</span>
         <span class="ruby-identifier">afficheSurbri</span>
         <span class="ruby-ivar">@listeInter</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span>

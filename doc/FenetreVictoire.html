@@ -127,9 +127,9 @@
 
 <h3 id="method-c-new-label-Param-C3-A8tres">Paramètres<span><a href="#method-c-new-label-Param-C3-A8tres">&para;</a> <a href="#top">&uarr;</a></span></h3>
 <ul><li>
-<p><code>window</code> : window la fenetre principale du programme</p>
+<p><code>window</code> : window la fenêtre principale du programme</p>
 </li><li>
-<p><code>difficulte</code> : difficulte la difficulte de la grille de jeu précédemment effectuée</p>
+<p><code>difficulte</code> : difficulte la difficulté de la grille de jeu précédemment effectuée</p>
 </li><li>
 <p><code>chr</code> : chr le temps effectué pour faire la grille précédemment jouée</p>
 </li></ul>
@@ -143,51 +143,55 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreVictoire.rb, line 19</span>
+            <pre><span class="ruby-comment"># File src/Interface/FenetreVictoire.rb, line 19</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">window</span>, <span class="ruby-identifier">fenPre</span>, <span class="ruby-identifier">difficulte</span>, <span class="ruby-identifier">chr</span>)
-  <span class="ruby-identifier">@@fenetre</span> = <span class="ruby-identifier">window</span>
-  <span class="ruby-identifier">size</span> = <span class="ruby-identifier">@@fenetre</span>.<span class="ruby-identifier">default_size</span>()
+  <span class="ruby-ivar">@fenetre</span> = <span class="ruby-identifier">window</span>
+  
+  <span class="ruby-identifier">size</span> = <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">default_size</span>()
   <span class="ruby-keyword">super</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Orientation</span><span class="ruby-operator">::</span><span class="ruby-constant">VERTICAL</span>)
 
   <span class="ruby-keyword">if</span>(<span class="ruby-identifier">chr</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">chr</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">!=</span> <span class="ruby-string">&quot;00:00&quot;</span>)
       <span class="ruby-identifier">texteVict</span> = <span class="ruby-constant">UnLabelPerso</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;Félicitations, vous avez terminé cette grille en #{chr.to_s}&quot;</span>, <span class="ruby-string">&quot;lblRegles&quot;</span>)
       <span class="ruby-identifier">texteMalus</span> = <span class="ruby-constant">UnLabelPerso</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;Vous avez un malus de #{chr.malus} secondes&quot;</span>, <span class="ruby-string">&quot;lblRegles&quot;</span>)
       <span class="ruby-identifier">scoreHolder</span> = <span class="ruby-constant">Score</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-string">&quot;placeholder&quot;</span>,<span class="ruby-identifier">chr</span>.<span class="ruby-identifier">resultat</span>, <span class="ruby-identifier">difficulte</span>)
+      <span class="ruby-identifier">newScore</span> = <span class="ruby-constant">Classement</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">difficulte</span>).<span class="ruby-identifier">isHighScore?</span>(<span class="ruby-identifier">scoreHolder</span>)
       <span class="ruby-identifier">texteScore</span> = <span class="ruby-constant">UnLabelPerso</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;Votre score est de #{scoreHolder.calculScore.round.to_s}&quot;</span>, <span class="ruby-string">&quot;lblRegles&quot;</span>)
-      <span class="ruby-identifier">texteEnt</span> = <span class="ruby-constant">UnLabelPerso</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Saisissez votre pseudonyme :&quot;</span>, <span class="ruby-string">&quot;lblRegles&quot;</span>)
+      <span class="ruby-keyword">if</span>(<span class="ruby-identifier">newScore</span>)
+              <span class="ruby-identifier">texteEnt</span> = <span class="ruby-constant">UnLabelPerso</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;C&#39;est un nouveau record ! Saisissez votre pseudonyme :&quot;</span>, <span class="ruby-string">&quot;lblRegles&quot;</span>)
+      <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">else</span>
       <span class="ruby-identifier">texteVict</span> = <span class="ruby-constant">UnLabelPerso</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Félicitations, vous avez terminé cette grille&quot;</span>, <span class="ruby-string">&quot;lblRegles&quot;</span>)
   <span class="ruby-keyword">end</span>
 
   <span class="ruby-identifier">tbl</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Table</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">1</span>,<span class="ruby-value">1</span>)
-
-  <span class="ruby-identifier">ent</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Entry</span>.<span class="ruby-identifier">new</span>()
-  <span class="ruby-identifier">ent</span>.<span class="ruby-identifier">set_placeholder_text</span>(<span class="ruby-string">&quot;Votre Pseudo ici&quot;</span>)
-  <span class="ruby-identifier">ent</span>.<span class="ruby-identifier">set_size_request</span>(<span class="ruby-identifier">size</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">/</span> <span class="ruby-value">5</span>, <span class="ruby-value">-1</span>)
-
-  <span class="ruby-identifier">boutonValider</span> = <span class="ruby-constant">UnBoutonPerso</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Enregistrer le score&quot;</span>)
+  <span class="ruby-keyword">if</span>(<span class="ruby-identifier">newScore</span>)
+      <span class="ruby-identifier">ent</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Entry</span>.<span class="ruby-identifier">new</span>()
+      <span class="ruby-identifier">ent</span>.<span class="ruby-identifier">set_placeholder_text</span>(<span class="ruby-string">&quot;Votre Pseudo ici&quot;</span>)
+      <span class="ruby-identifier">ent</span>.<span class="ruby-identifier">set_size_request</span>(<span class="ruby-identifier">size</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">/</span> <span class="ruby-value">5</span>, <span class="ruby-value">-1</span>)
+      <span class="ruby-identifier">boutonValider</span> = <span class="ruby-constant">UnBoutonPerso</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Enregistrer le score&quot;</span>)
+      <span class="ruby-identifier">boutonValider</span>.<span class="ruby-identifier">set_size_request</span>(<span class="ruby-identifier">size</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">/</span> <span class="ruby-value">5</span>, <span class="ruby-value">-1</span>)
+      <span class="ruby-identifier">boutonValider</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){
+      <span class="ruby-keyword">if</span>(<span class="ruby-identifier">ent</span>.<span class="ruby-identifier">text</span>() <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">ent</span>.<span class="ruby-identifier">text</span>().<span class="ruby-identifier">strip</span> <span class="ruby-operator">!=</span> <span class="ruby-string">&quot;&quot;</span>)
+          <span class="ruby-identifier">scoreHolder</span>.<span class="ruby-identifier">pseudo</span> = <span class="ruby-identifier">ent</span>.<span class="ruby-identifier">text</span>
+          <span class="ruby-identifier">scoreHolder</span>.<span class="ruby-identifier">sauvegarder</span>()
+          <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">changerWidget</span>(<span class="ruby-constant">FenetreClassement</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@fenetre</span>, <span class="ruby-constant">FenetreMenu</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@fenetre</span>)))
+      <span class="ruby-keyword">end</span>
+      }
+  <span class="ruby-keyword">end</span>
+  
   <span class="ruby-identifier">boutonRejouer</span> = <span class="ruby-constant">UnBoutonPerso</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Rejouer&quot;</span>)
   <span class="ruby-identifier">boutonQuitter</span> = <span class="ruby-constant">UnBoutonPerso</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Menu&quot;</span>)
 
-  <span class="ruby-identifier">boutonValider</span>.<span class="ruby-identifier">set_size_request</span>(<span class="ruby-identifier">size</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">/</span> <span class="ruby-value">5</span>, <span class="ruby-value">-1</span>)
   <span class="ruby-identifier">boutonRejouer</span>.<span class="ruby-identifier">set_size_request</span>(<span class="ruby-identifier">size</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">/</span> <span class="ruby-value">5</span>, <span class="ruby-value">-1</span>)
   <span class="ruby-identifier">boutonQuitter</span>.<span class="ruby-identifier">set_size_request</span>(<span class="ruby-identifier">size</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">/</span> <span class="ruby-value">5</span>, <span class="ruby-value">-1</span>)
 
-  <span class="ruby-identifier">boutonValider</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>){
-      <span class="ruby-keyword">if</span>(<span class="ruby-identifier">ent</span>.<span class="ruby-identifier">text</span>() <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">ent</span>.<span class="ruby-identifier">text</span>().<span class="ruby-identifier">strip</span> <span class="ruby-operator">!=</span> <span class="ruby-string">&quot;&quot;</span>)
-          <span class="ruby-identifier">score</span> = <span class="ruby-constant">Score</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-identifier">ent</span>.<span class="ruby-identifier">text</span>(), <span class="ruby-identifier">chr</span>.<span class="ruby-identifier">resultat</span>, <span class="ruby-identifier">difficulte</span>)
-          <span class="ruby-identifier">score</span>.<span class="ruby-identifier">calculScore</span>()
-          <span class="ruby-identifier">score</span>.<span class="ruby-identifier">sauvegarder</span>()
-          <span class="ruby-identifier">@@fenetre</span>.<span class="ruby-identifier">changerWidget</span>(<span class="ruby-constant">FenetreClassement</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">@@fenetre</span>, <span class="ruby-constant">FenetreMenu</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">@@fenetre</span>)))
-      <span class="ruby-keyword">end</span>
-  }
 
   <span class="ruby-identifier">boutonRejouer</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {
-          <span class="ruby-identifier">@@fenetre</span>.<span class="ruby-identifier">changerWidget</span>(<span class="ruby-identifier">fenPre</span>)
+          <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">changerWidget</span>(<span class="ruby-identifier">fenPre</span>)
   }
 
   <span class="ruby-identifier">boutonQuitter</span>.<span class="ruby-identifier">signal_connect</span>(<span class="ruby-string">&#39;clicked&#39;</span>) {
-    <span class="ruby-identifier">@@fenetre</span>.<span class="ruby-identifier">changerWidget</span>(<span class="ruby-constant">FenetreMenu</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">@@fenetre</span>))
+    <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">changerWidget</span>(<span class="ruby-constant">FenetreMenu</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@fenetre</span>))
   }
 
   <span class="ruby-identifier">vbox</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Orientation</span><span class="ruby-operator">::</span><span class="ruby-constant">VERTICAL</span>, <span class="ruby-value">5</span>)
@@ -196,16 +200,18 @@
   <span class="ruby-keyword">if</span>(<span class="ruby-identifier">chr</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">chr</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">!=</span> <span class="ruby-string">&quot;00:00&quot;</span>)
       <span class="ruby-identifier">vbox2</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">texteMalus</span>)
       <span class="ruby-identifier">vbox2</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">texteScore</span>)
-      <span class="ruby-identifier">vbox2</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">texteEnt</span>)
+      <span class="ruby-keyword">if</span>(<span class="ruby-identifier">newScore</span>)
+              <span class="ruby-identifier">vbox2</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">texteEnt</span>)
+      <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">end</span>
   <span class="ruby-identifier">vbox</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">vbox2</span>)
-  <span class="ruby-keyword">if</span>(<span class="ruby-identifier">chr</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">chr</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">!=</span> <span class="ruby-string">&quot;00:00&quot;</span>)
+  <span class="ruby-keyword">if</span>(<span class="ruby-identifier">chr</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">chr</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">!=</span> <span class="ruby-string">&quot;00:00&quot;</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">newScore</span>)
       <span class="ruby-identifier">vbox</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">ent</span>)
       <span class="ruby-identifier">vbox</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">boutonValider</span>)
   <span class="ruby-keyword">end</span>
   <span class="ruby-identifier">vbox</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">boutonRejouer</span>)
   <span class="ruby-identifier">vbox</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">boutonQuitter</span>)
-  <span class="ruby-identifier">tbl</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-identifier">vbox</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>, <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">AttachOptions</span><span class="ruby-operator">::</span><span class="ruby-constant">EXPAND</span>, <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">AttachOptions</span><span class="ruby-operator">::</span><span class="ruby-constant">EXPAND</span>, <span class="ruby-value">0</span>, <span class="ruby-identifier">@@fenetre</span>.<span class="ruby-identifier">default_size</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">/</span> <span class="ruby-value">3</span>)
+  <span class="ruby-identifier">tbl</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-identifier">vbox</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>,<span class="ruby-value">0</span>,<span class="ruby-value">1</span>, <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">AttachOptions</span><span class="ruby-operator">::</span><span class="ruby-constant">EXPAND</span>, <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">AttachOptions</span><span class="ruby-operator">::</span><span class="ruby-constant">EXPAND</span>, <span class="ruby-value">0</span>, <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">default_size</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">/</span> <span class="ruby-value">3</span>)
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">tbl</span>)
 
 <span class="ruby-keyword">end</span></pre>

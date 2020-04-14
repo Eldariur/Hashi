@@ -340,13 +340,13 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreJeu.rb, line 59</span>
+            <pre><span class="ruby-comment"># File src/Interface/FenetreJeu.rb, line 59</span>
     <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">window</span>,<span class="ruby-identifier">fenPre</span> ,<span class="ruby-identifier">difficulte</span>, <span class="ruby-identifier">classe</span>, <span class="ruby-identifier">save</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">long</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">larg</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">dens</span>=<span class="ruby-keyword">nil</span>, <span class="ruby-identifier">tuto</span> = <span class="ruby-keyword">nil</span>)
             <span class="ruby-keyword">super</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Orientation</span><span class="ruby-operator">::</span><span class="ruby-constant">VERTICAL</span>)
 
-<span class="ruby-identifier">@@fenetre</span> = <span class="ruby-identifier">window</span>
+<span class="ruby-ivar">@fenetre</span> = <span class="ruby-identifier">window</span>
             <span class="ruby-ivar">@fenPre</span> = <span class="ruby-identifier">fenPre</span>;
-            <span class="ruby-ivar">@tailleArea</span> = <span class="ruby-identifier">@@fenetre</span>.<span class="ruby-identifier">default_size</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">/</span> <span class="ruby-value">20</span> <span class="ruby-operator">*</span> <span class="ruby-value">13</span>
+            <span class="ruby-ivar">@tailleArea</span> = <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">default_size</span>[<span class="ruby-value">1</span>] <span class="ruby-operator">/</span> <span class="ruby-value">20</span> <span class="ruby-operator">*</span> <span class="ruby-value">13</span>
             <span class="ruby-ivar">@tuto</span> = <span class="ruby-identifier">tuto</span>
 <span class="ruby-ivar">@difficulte</span> = <span class="ruby-identifier">difficulte</span>
             <span class="ruby-ivar">@classe</span> = <span class="ruby-identifier">classe</span>
@@ -354,10 +354,8 @@
             <span class="ruby-ivar">@presse</span> = <span class="ruby-keyword">false</span>
             <span class="ruby-ivar">@hypothese</span> = <span class="ruby-keyword">false</span>
             <span class="ruby-ivar">@listeInter</span> = []
-            <span class="ruby-identifier">x</span> = <span class="ruby-value">5</span>
-            <span class="ruby-identifier">y</span> = <span class="ruby-value">5</span>
 
-            <span class="ruby-keyword">if</span> <span class="ruby-identifier">@@fenetre</span>.<span class="ruby-identifier">default_size</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">&gt;</span> <span class="ruby-value">1500</span>
+            <span class="ruby-keyword">if</span> <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">default_size</span>[<span class="ruby-value">0</span>] <span class="ruby-operator">&gt;</span> <span class="ruby-value">1500</span>
                     <span class="ruby-ivar">@style</span> = <span class="ruby-string">&quot;BoutonEnJeu&quot;</span>
             <span class="ruby-keyword">else</span>
                     <span class="ruby-ivar">@style</span> = <span class="ruby-string">&quot;BoutonEnJeu2&quot;</span>
@@ -392,8 +390,6 @@
                     <span class="ruby-keyword">end</span>
 
                     <span class="ruby-comment"># on_draw</span>
-                    <span class="ruby-identifier">x</span>=<span class="ruby-value">10</span>
-                    <span class="ruby-identifier">y</span>=<span class="ruby-value">10</span>
 
                     <span class="ruby-identifier">@@x1</span>=<span class="ruby-value">0</span>
                     <span class="ruby-identifier">@@y1</span>=<span class="ruby-value">0</span>
@@ -469,12 +465,12 @@
                     <span class="ruby-identifier">tbl</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-identifier">hboxChrono</span>, <span class="ruby-value">6</span>, <span class="ruby-value">20</span>, <span class="ruby-value">0</span>, <span class="ruby-value">1</span>, <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">AttachOptions</span><span class="ruby-operator">::</span><span class="ruby-constant">SHRINK</span>)
         <span class="ruby-identifier">tbl</span>.<span class="ruby-identifier">attach</span>(<span class="ruby-identifier">hpaned</span>, <span class="ruby-value">6</span>, <span class="ruby-value">20</span>, <span class="ruby-value">1</span>, <span class="ruby-value">20</span>)
 
-                    <span class="ruby-identifier">@@fenetre</span>.<span class="ruby-identifier">changerWidget</span>(<span class="ruby-identifier">tbl</span>)
+                    <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">changerWidget</span>(<span class="ruby-identifier">tbl</span>)
 
-                    <span class="ruby-identifier">@@fenetre</span>.<span class="ruby-identifier">show_all</span>
+                    <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">show_all</span>
 
             <span class="ruby-keyword">self</span>.<span class="ruby-identifier">show_all</span>
-            <span class="ruby-identifier">@@fenetre</span>.<span class="ruby-identifier">show_all</span>
+            <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">show_all</span>
             <span class="ruby-identifier">masquerBouton</span>
             <span class="ruby-keyword">if</span>(<span class="ruby-identifier">tuto</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>)
                     <span class="ruby-identifier">masquerAllBouton</span>
@@ -531,7 +527,7 @@
 
           
           <div class="method-source-code" id="activeHypo-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreJeu.rb, line 874</span>
+            <pre><span class="ruby-comment"># File src/Interface/FenetreJeu.rb, line 863</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">activeHypo</span>(<span class="ruby-identifier">condition</span> = <span class="ruby-keyword">false</span>)
         <span class="ruby-keyword">if</span>(<span class="ruby-identifier">condition</span>)
                 <span class="ruby-ivar">@cr</span>.<span class="ruby-identifier">set_dash</span>(<span class="ruby-value">5</span>, <span class="ruby-value">15</span>)
@@ -566,7 +562,7 @@
 
           
           <div class="method-source-code" id="afficheEcran-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreJeu.rb, line 894</span>
+            <pre><span class="ruby-comment"># File src/Interface/FenetreJeu.rb, line 883</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">afficheEcran</span>()
         <span class="ruby-identifier">clearEcran</span>()
         <span class="ruby-identifier">drawSurbri</span>()
@@ -603,7 +599,7 @@
 
           
           <div class="method-source-code" id="afficheSurbri-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreJeu.rb, line 453</span>
+            <pre><span class="ruby-comment"># File src/Interface/FenetreJeu.rb, line 448</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">afficheSurbri</span>()
         <span class="ruby-ivar">@listeInter</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span>
                 <span class="ruby-identifier">print</span> <span class="ruby-string">&quot;LISTE INTER : &quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">c</span>.<span class="ruby-identifier">to_s</span>
@@ -645,7 +641,7 @@
 
           
           <div class="method-source-code" id="ajouteMalus-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreJeu.rb, line 1211</span>
+            <pre><span class="ruby-comment"># File src/Interface/FenetreJeu.rb, line 1200</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ajouteMalus</span>(<span class="ruby-identifier">penalite</span>)
         <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@chr</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>)
                 <span class="ruby-ivar">@chr</span>.<span class="ruby-identifier">addMalus</span>(<span class="ruby-identifier">penalite</span>)
@@ -687,7 +683,7 @@
 
           
           <div class="method-source-code" id="ajouterContenu-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreJeu.rb, line 319</span>
+            <pre><span class="ruby-comment"># File src/Interface/FenetreJeu.rb, line 314</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ajouterContenu</span>(<span class="ruby-identifier">box</span>,<span class="ruby-identifier">contenu</span>)
         <span class="ruby-identifier">box</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">contenu</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -727,7 +723,7 @@
 
           
           <div class="method-source-code" id="ajouterImage-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreJeu.rb, line 329</span>
+            <pre><span class="ruby-comment"># File src/Interface/FenetreJeu.rb, line 324</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">ajouterImage</span>(<span class="ruby-identifier">contenu</span>,<span class="ruby-identifier">image</span>)
         <span class="ruby-identifier">image</span> = <span class="ruby-identifier">dimImage</span>(<span class="ruby-identifier">image</span>)
         <span class="ruby-identifier">contenu</span>.<span class="ruby-identifier">image</span>=(<span class="ruby-identifier">image</span>)
@@ -761,7 +757,7 @@
 
           
           <div class="method-source-code" id="annulerAction-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreJeu.rb, line 695</span>
+            <pre><span class="ruby-comment"># File src/Interface/FenetreJeu.rb, line 686</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">annulerAction</span>()
 
         <span class="ruby-identifier">action</span> = <span class="ruby-ivar">@grilleTest</span>.<span class="ruby-identifier">undo</span>.<span class="ruby-identifier">depile</span>
@@ -808,7 +804,7 @@
 
           
           <div class="method-source-code" id="clearEcran-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreJeu.rb, line 881</span>
+            <pre><span class="ruby-comment"># File src/Interface/FenetreJeu.rb, line 870</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">clearEcran</span>()
         <span class="ruby-ivar">@cr</span> = <span class="ruby-ivar">@darea</span>.<span class="ruby-identifier">window</span>.<span class="ruby-identifier">create_cairo_context</span>
         <span class="ruby-ivar">@cr</span>.<span class="ruby-identifier">set_source_rgb</span> <span class="ruby-value">0.96</span>, <span class="ruby-value">0.96</span>, <span class="ruby-value">0.96</span>
@@ -849,15 +845,15 @@
 
           
           <div class="method-source-code" id="conditionGagnante-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreJeu.rb, line 1196</span>
+            <pre><span class="ruby-comment"># File src/Interface/FenetreJeu.rb, line 1185</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">conditionGagnante</span>()
         <span class="ruby-keyword">if</span>(<span class="ruby-identifier">grilleGagnante</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@hypothese</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@tuto</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>)
                 <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@chr</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>)
                         <span class="ruby-ivar">@chr</span>.<span class="ruby-identifier">arreter</span>()
                         <span class="ruby-ivar">@chr</span>.<span class="ruby-identifier">fin</span>()
-                        <span class="ruby-identifier">@@fenetre</span>.<span class="ruby-identifier">changerWidget</span>(<span class="ruby-constant">FenetreVictoire</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">@@fenetre</span>,<span class="ruby-ivar">@fenPre</span>,<span class="ruby-ivar">@difficulte</span>,<span class="ruby-ivar">@chr</span>))
+                        <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">changerWidget</span>(<span class="ruby-constant">FenetreVictoire</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@fenetre</span>,<span class="ruby-ivar">@fenPre</span>,<span class="ruby-ivar">@difficulte</span>,<span class="ruby-ivar">@chr</span>))
                 <span class="ruby-keyword">else</span>
-                        <span class="ruby-identifier">@@fenetre</span>.<span class="ruby-identifier">changerWidget</span>(<span class="ruby-constant">FenetreVictoire</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">@@fenetre</span>,<span class="ruby-ivar">@fenPre</span>,<span class="ruby-ivar">@difficulte</span>,<span class="ruby-keyword">nil</span>))
+                        <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">changerWidget</span>(<span class="ruby-constant">FenetreVictoire</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@fenetre</span>,<span class="ruby-ivar">@fenPre</span>,<span class="ruby-ivar">@difficulte</span>,<span class="ruby-keyword">nil</span>))
                 <span class="ruby-keyword">end</span>
         <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
@@ -901,7 +897,7 @@
 
           
           <div class="method-source-code" id="creationArete-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreJeu.rb, line 342</span>
+            <pre><span class="ruby-comment"># File src/Interface/FenetreJeu.rb, line 337</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">creationArete</span>(<span class="ruby-identifier">s1</span>,<span class="ruby-identifier">s2</span>,<span class="ruby-identifier">caseT</span>, <span class="ruby-identifier">actionAnnule</span> = <span class="ruby-keyword">false</span>)
 
         <span class="ruby-keyword">if</span>(<span class="ruby-identifier">s1</span>.<span class="ruby-identifier">valeur</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">s1</span>.<span class="ruby-identifier">compterArete</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">s2</span>.<span class="ruby-identifier">valeur</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">s2</span>.<span class="ruby-identifier">compterArete</span>)<span class="ruby-comment">#le sommet est complet</span>
@@ -977,7 +973,7 @@
 
           
           <div class="method-source-code" id="dimImage-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreJeu.rb, line 718</span>
+            <pre><span class="ruby-comment"># File src/Interface/FenetreJeu.rb, line 709</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">dimImage</span>(<span class="ruby-identifier">file</span>)
         <span class="ruby-identifier">image</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:file</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">file</span>)
         <span class="ruby-identifier">image</span>.<span class="ruby-identifier">pixbuf</span> = <span class="ruby-identifier">image</span>.<span class="ruby-identifier">pixbuf</span>.<span class="ruby-identifier">scale</span>(<span class="ruby-value">35</span>,<span class="ruby-value">35</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">image</span>.<span class="ruby-identifier">pixbuf</span><span class="ruby-operator">!=</span><span class="ruby-keyword">nil</span>
@@ -1012,7 +1008,7 @@
 
           
           <div class="method-source-code" id="drawAretes-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreJeu.rb, line 785</span>
+            <pre><span class="ruby-comment"># File src/Interface/FenetreJeu.rb, line 774</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">drawAretes</span>()
         <span class="ruby-comment"># copie de tracerGrille</span>
         <span class="ruby-identifier">paddingX</span> = <span class="ruby-value">25</span>
@@ -1118,7 +1114,7 @@
 
           
           <div class="method-source-code" id="drawSommets-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreJeu.rb, line 731</span>
+            <pre><span class="ruby-comment"># File src/Interface/FenetreJeu.rb, line 722</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">drawSommets</span>()
         <span class="ruby-comment"># copie de tracerGrille</span>
 
@@ -1130,8 +1126,6 @@
 
                 <span class="ruby-identifier">i</span> = <span class="ruby-value">0</span>
                 <span class="ruby-identifier">j</span> = <span class="ruby-value">0</span>
-                <span class="ruby-identifier">taillePix</span> = <span class="ruby-value">25</span>
-                <span class="ruby-identifier">padding</span> = <span class="ruby-value">20</span>
         <span class="ruby-ivar">@grilleTest</span>.<span class="ruby-identifier">sommets</span>.<span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">s</span><span class="ruby-operator">|</span>
                 <span class="ruby-identifier">x</span> = <span class="ruby-identifier">s</span>.<span class="ruby-identifier">position</span>.<span class="ruby-identifier">x</span>
                 <span class="ruby-identifier">y</span> = <span class="ruby-identifier">s</span>.<span class="ruby-identifier">position</span>.<span class="ruby-identifier">y</span>
@@ -1200,7 +1194,7 @@
 
           
           <div class="method-source-code" id="drawSurbri-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreJeu.rb, line 409</span>
+            <pre><span class="ruby-comment"># File src/Interface/FenetreJeu.rb, line 404</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">drawSurbri</span>()
         <span class="ruby-comment"># exemple 5 5</span>
         <span class="ruby-identifier">paddingX</span> = <span class="ruby-value">25</span>
@@ -1272,7 +1266,7 @@
 
           
           <div class="method-source-code" id="draw_maLigne-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreJeu.rb, line 863</span>
+            <pre><span class="ruby-comment"># File src/Interface/FenetreJeu.rb, line 852</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">draw_maLigne</span>(<span class="ruby-identifier">x1</span>,<span class="ruby-identifier">y1</span>,<span class="ruby-identifier">x2</span>,<span class="ruby-identifier">y2</span>)
         <span class="ruby-ivar">@cr</span>.<span class="ruby-identifier">move_to</span> <span class="ruby-identifier">x1</span>, <span class="ruby-identifier">y1</span>
         <span class="ruby-ivar">@cr</span>.<span class="ruby-identifier">line_to</span> <span class="ruby-identifier">x2</span>,<span class="ruby-identifier">y2</span>
@@ -1316,7 +1310,7 @@
 
           
           <div class="method-source-code" id="estSommet-3F-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreJeu.rb, line 665</span>
+            <pre><span class="ruby-comment"># File src/Interface/FenetreJeu.rb, line 656</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">estSommet?</span>(<span class="ruby-identifier">c</span>)
         <span class="ruby-ivar">@grilleTest</span>.<span class="ruby-identifier">sommets</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">s</span><span class="ruby-operator">|</span>
                 <span class="ruby-keyword">if</span>(<span class="ruby-identifier">s</span>.<span class="ruby-identifier">position</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">position</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">c</span>.<span class="ruby-identifier">y</span>)
@@ -1365,7 +1359,7 @@
 
           
           <div class="method-source-code" id="getlisteInterCase-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreJeu.rb, line 597</span>
+            <pre><span class="ruby-comment"># File src/Interface/FenetreJeu.rb, line 590</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getlisteInterCase</span>(<span class="ruby-identifier">s1</span>, <span class="ruby-identifier">s2</span>)
         <span class="ruby-identifier">x1</span> = <span class="ruby-identifier">s1</span>.<span class="ruby-identifier">x</span>
         <span class="ruby-identifier">y1</span> = <span class="ruby-identifier">s1</span>.<span class="ruby-identifier">y</span>
@@ -1373,9 +1367,7 @@
         <span class="ruby-identifier">y2</span> = <span class="ruby-identifier">s2</span>.<span class="ruby-identifier">y</span>
         <span class="ruby-identifier">listeDeCase</span> = []
         <span class="ruby-identifier">listeDeCase</span>.<span class="ruby-identifier">push</span>(<span class="ruby-identifier">s1</span>)
-        <span class="ruby-identifier">ecart</span> = <span class="ruby-value">0</span>
         <span class="ruby-keyword">if</span>(<span class="ruby-identifier">x1</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">x2</span>)
-                <span class="ruby-identifier">ecart</span> = <span class="ruby-identifier">x2</span><span class="ruby-operator">-</span>(<span class="ruby-identifier">x1</span>)
                 (<span class="ruby-identifier">x1</span><span class="ruby-value">+1</span>).<span class="ruby-identifier">upto</span>(<span class="ruby-identifier">x2</span><span class="ruby-value">-1</span>) {<span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
                         <span class="ruby-identifier">listeDeCase</span>.<span class="ruby-identifier">push</span>(<span class="ruby-ivar">@grilleTest</span>.<span class="ruby-identifier">getCase</span>(<span class="ruby-identifier">i</span>,<span class="ruby-identifier">y1</span>))
                 }
@@ -1428,10 +1420,10 @@
 
           
           <div class="method-source-code" id="grilleGagnante-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreJeu.rb, line 642</span>
+            <pre><span class="ruby-comment"># File src/Interface/FenetreJeu.rb, line 633</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">grilleGagnante</span>
         <span class="ruby-identifier">complet</span> = <span class="ruby-keyword">true</span>
-        <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@grilleTest</span>.<span class="ruby-identifier">testHamilton?</span>)
+        <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@grilleTest</span>.<span class="ruby-identifier">estHamilton?</span>)
                 <span class="ruby-ivar">@grilleTest</span>.<span class="ruby-identifier">sommets</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">s</span><span class="ruby-operator">|</span>
                         <span class="ruby-keyword">if</span>(<span class="ruby-operator">!</span><span class="ruby-identifier">s</span>.<span class="ruby-identifier">complet</span>)
                                 <span class="ruby-identifier">complet</span> = <span class="ruby-keyword">false</span>
@@ -1471,7 +1463,7 @@
 
           
           <div class="method-source-code" id="initBoutonAide-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreJeu.rb, line 1007</span>
+            <pre><span class="ruby-comment"># File src/Interface/FenetreJeu.rb, line 996</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initBoutonAide</span>
               <span class="ruby-ivar">@boxMessage</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Orientation</span><span class="ruby-operator">::</span><span class="ruby-constant">VERTICAL</span>)
               <span class="ruby-ivar">@boxMessage</span>.<span class="ruby-identifier">valign</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Align</span><span class="ruby-operator">::</span><span class="ruby-constant">CENTER</span>
@@ -1508,7 +1500,7 @@
                               <span class="ruby-keyword">end</span>
                       <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">end</span>
-              <span class="ruby-identifier">ajouterImage</span>(<span class="ruby-ivar">@boutonAide</span>,<span class="ruby-node">&quot;#{$cheminRacineHashi}/Interface/img/help_icon.png&quot;</span>)
+              <span class="ruby-identifier">ajouterImage</span>(<span class="ruby-ivar">@boutonAide</span>,<span class="ruby-node">&quot;#{$cheminRacineHashi}/src/Interface/img/help_icon.png&quot;</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -1539,20 +1531,20 @@
 
           
           <div class="method-source-code" id="initBoutonAideTxt-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreJeu.rb, line 1064</span>
-      <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initBoutonAideTxt</span>
-                      <span class="ruby-ivar">@boutonAideTxt</span> = <span class="ruby-constant">UnBoutonPerso</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Aide Textuelle&quot;</span>, <span class="ruby-string">&quot;BoutonEnJeuGros&quot;</span>)<span class="ruby-keyword">do</span>
-                      <span class="ruby-ivar">@caseA</span> = <span class="ruby-keyword">nil</span>
-                      <span class="ruby-ivar">@aideTxt</span> = <span class="ruby-constant">Aide</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-ivar">@grilleTest</span>)
-                      <span class="ruby-ivar">@aideTxt</span>.<span class="ruby-identifier">set_name</span>(<span class="ruby-string">&quot;UnLabelBlanc&quot;</span>)
-                      <span class="ruby-identifier">retirerContenu</span>(<span class="ruby-ivar">@boxMessage</span>,<span class="ruby-ivar">@aideTxt</span>)
-                      <span class="ruby-ivar">@boxMessage</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@aideTxt</span>)
-                      <span class="ruby-identifier">afficheEcran</span>()
-                      <span class="ruby-identifier">masquerBouton</span>
+            <pre><span class="ruby-comment"># File src/Interface/FenetreJeu.rb, line 1053</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initBoutonAideTxt</span>
+        <span class="ruby-ivar">@boutonAideTxt</span> = <span class="ruby-constant">UnBoutonPerso</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Aide Textuelle&quot;</span>, <span class="ruby-string">&quot;BoutonEnJeuGros&quot;</span>)<span class="ruby-keyword">do</span>
+                <span class="ruby-ivar">@caseA</span> = <span class="ruby-keyword">nil</span>
+                <span class="ruby-ivar">@aideTxt</span> = <span class="ruby-constant">Aide</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-ivar">@grilleTest</span>)
+                <span class="ruby-ivar">@aideTxt</span>.<span class="ruby-identifier">set_name</span>(<span class="ruby-string">&quot;UnLabelBlanc&quot;</span>)
+                <span class="ruby-identifier">retirerContenu</span>(<span class="ruby-ivar">@boxMessage</span>,<span class="ruby-ivar">@aideTxt</span>)
+                <span class="ruby-ivar">@boxMessage</span>.<span class="ruby-identifier">add</span>(<span class="ruby-ivar">@aideTxt</span>)
+                <span class="ruby-identifier">afficheEcran</span>()
+                <span class="ruby-identifier">masquerBouton</span>
 
-                      <span class="ruby-identifier">ajouteMalus</span>(<span class="ruby-ivar">@aideTxt</span>.<span class="ruby-identifier">penalite</span>)
-                      <span class="ruby-ivar">@aideTxt</span>.<span class="ruby-identifier">show</span>
-              <span class="ruby-keyword">end</span>
+                <span class="ruby-identifier">ajouteMalus</span>(<span class="ruby-ivar">@aideTxt</span>.<span class="ruby-identifier">penalite</span>)
+                <span class="ruby-ivar">@aideTxt</span>.<span class="ruby-identifier">show</span>
+        <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -1583,16 +1575,16 @@
 
           
           <div class="method-source-code" id="initBoutonAideVisu-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreJeu.rb, line 1080</span>
-      <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initBoutonAideVisu</span>
-                      <span class="ruby-ivar">@boutonAideVisu</span> = <span class="ruby-constant">UnBoutonPerso</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Aide Visuelle&quot;</span>, <span class="ruby-string">&quot;BoutonEnJeuGros&quot;</span>)<span class="ruby-keyword">do</span>
-                      <span class="ruby-ivar">@aide</span> = <span class="ruby-constant">Aide</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-ivar">@grilleTest</span>)
-                      <span class="ruby-ivar">@afficheAide</span> = <span class="ruby-keyword">true</span>
-                      <span class="ruby-ivar">@caseAide</span> = <span class="ruby-ivar">@aide</span>.<span class="ruby-identifier">getCaseAide</span>
-                      <span class="ruby-identifier">ajouteMalus</span>(<span class="ruby-ivar">@aide</span>.<span class="ruby-identifier">penalite</span>)
-                      <span class="ruby-identifier">afficheEcran</span>
-                      <span class="ruby-identifier">masquerBouton</span>
-  <span class="ruby-keyword">end</span>
+            <pre><span class="ruby-comment"># File src/Interface/FenetreJeu.rb, line 1069</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initBoutonAideVisu</span>
+        <span class="ruby-ivar">@boutonAideVisu</span> = <span class="ruby-constant">UnBoutonPerso</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Aide Visuelle&quot;</span>, <span class="ruby-string">&quot;BoutonEnJeuGros&quot;</span>)<span class="ruby-keyword">do</span>
+                <span class="ruby-ivar">@aide</span> = <span class="ruby-constant">Aide</span>.<span class="ruby-identifier">creer</span>(<span class="ruby-ivar">@grilleTest</span>)
+                <span class="ruby-ivar">@afficheAide</span> = <span class="ruby-keyword">true</span>
+                <span class="ruby-ivar">@caseAide</span> = <span class="ruby-ivar">@aide</span>.<span class="ruby-identifier">getCaseAide</span>
+                <span class="ruby-identifier">ajouteMalus</span>(<span class="ruby-ivar">@aide</span>.<span class="ruby-identifier">penalite</span>)
+                <span class="ruby-identifier">afficheEcran</span>
+                <span class="ruby-identifier">masquerBouton</span>
+<span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -1623,12 +1615,12 @@
 
           
           <div class="method-source-code" id="initBoutonAnnul-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreJeu.rb, line 1092</span>
+            <pre><span class="ruby-comment"># File src/Interface/FenetreJeu.rb, line 1081</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initBoutonAnnul</span>
   <span class="ruby-ivar">@boutonAnnul</span> = <span class="ruby-constant">UnBoutonPerso</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;U&quot;</span>, <span class="ruby-ivar">@style</span>)<span class="ruby-keyword">do</span>
                       <span class="ruby-identifier">annulerAction</span>()
   <span class="ruby-keyword">end</span>
-              <span class="ruby-identifier">ajouterImage</span>(<span class="ruby-ivar">@boutonAnnul</span>,<span class="ruby-node">&quot;#{$cheminRacineHashi}/Interface/img/undo_icon2.png&quot;</span>)
+              <span class="ruby-identifier">ajouterImage</span>(<span class="ruby-ivar">@boutonAnnul</span>,<span class="ruby-node">&quot;#{$cheminRacineHashi}/src/Interface/img/undo_icon2.png&quot;</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -1659,20 +1651,20 @@
 
           
           <div class="method-source-code" id="initBoutonAnnulHypo-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreJeu.rb, line 973</span>
-      <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initBoutonAnnulHypo</span>
-  <span class="ruby-ivar">@boutonAnnulHypo</span> = <span class="ruby-constant">UnBoutonPerso</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Annuler Hypothèse&quot;</span>, <span class="ruby-string">&quot;BoutonEnJeuGros&quot;</span>)<span class="ruby-keyword">do</span>
-                      <span class="ruby-ivar">@presser</span> = <span class="ruby-keyword">false</span>
+            <pre><span class="ruby-comment"># File src/Interface/FenetreJeu.rb, line 962</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initBoutonAnnulHypo</span>
+        <span class="ruby-ivar">@boutonAnnulHypo</span> = <span class="ruby-constant">UnBoutonPerso</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Annuler Hypothèse&quot;</span>, <span class="ruby-string">&quot;BoutonEnJeuGros&quot;</span>)<span class="ruby-keyword">do</span>
+                        <span class="ruby-ivar">@presser</span> = <span class="ruby-keyword">false</span>
 
-                      <span class="ruby-ivar">@grilleTest</span> = <span class="ruby-constant">Sauvegarde</span>.<span class="ruby-identifier">annulerHypothese</span>()
-                      <span class="ruby-ivar">@hypothese</span> = <span class="ruby-keyword">false</span>
+                        <span class="ruby-ivar">@grilleTest</span> = <span class="ruby-constant">Sauvegarde</span>.<span class="ruby-identifier">annulerHypothese</span>()
+                        <span class="ruby-ivar">@hypothese</span> = <span class="ruby-keyword">false</span>
 
-                      <span class="ruby-ivar">@boutonAide</span>.<span class="ruby-identifier">deverrouiller</span>()
-                      <span class="ruby-ivar">@boutonRecom</span>.<span class="ruby-identifier">deverrouiller</span>()
-                      <span class="ruby-ivar">@boutonAnnul</span>.<span class="ruby-identifier">deverrouiller</span>()
-                      <span class="ruby-identifier">afficheEcran</span>
-                      <span class="ruby-identifier">masquerBouton</span>
-  <span class="ruby-keyword">end</span>
+                        <span class="ruby-ivar">@boutonAide</span>.<span class="ruby-identifier">deverrouiller</span>()
+                        <span class="ruby-ivar">@boutonRecom</span>.<span class="ruby-identifier">deverrouiller</span>()
+                        <span class="ruby-ivar">@boutonAnnul</span>.<span class="ruby-identifier">deverrouiller</span>()
+                        <span class="ruby-identifier">afficheEcran</span>
+                        <span class="ruby-identifier">masquerBouton</span>
+        <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -1703,16 +1695,16 @@
 
           
           <div class="method-source-code" id="initBoutonErreurVisu-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreJeu.rb, line 1052</span>
-      <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initBoutonErreurVisu</span>
-                      <span class="ruby-ivar">@boutonErreur</span> = <span class="ruby-constant">UnBoutonPerso</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Montrer les erreurs ?&quot;</span>, <span class="ruby-string">&quot;BoutonEnJeuGros&quot;</span>)<span class="ruby-keyword">do</span>
-                      <span class="ruby-ivar">@afficherErreur</span> = <span class="ruby-keyword">true</span>
-                      <span class="ruby-ivar">@erreurs</span> = <span class="ruby-ivar">@grilleTest</span>.<span class="ruby-identifier">trouverErreurs</span>(<span class="ruby-ivar">@grilleComplete</span>)
+            <pre><span class="ruby-comment"># File src/Interface/FenetreJeu.rb, line 1041</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initBoutonErreurVisu</span>
+<span class="ruby-ivar">@boutonErreur</span> = <span class="ruby-constant">UnBoutonPerso</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Montrer les erreurs ?&quot;</span>, <span class="ruby-string">&quot;BoutonEnJeuGros&quot;</span>)<span class="ruby-keyword">do</span>
+                <span class="ruby-ivar">@afficherErreur</span> = <span class="ruby-keyword">true</span>
+                <span class="ruby-ivar">@erreurs</span> = <span class="ruby-ivar">@grilleTest</span>.<span class="ruby-identifier">trouverErreurs</span>(<span class="ruby-ivar">@grilleComplete</span>)
 
-                      <span class="ruby-identifier">ajouteMalus</span>(<span class="ruby-value">15</span>)
-                      <span class="ruby-identifier">afficheEcran</span>
-                      <span class="ruby-identifier">masquerBouton</span>
-              <span class="ruby-keyword">end</span>
+                <span class="ruby-identifier">ajouteMalus</span>(<span class="ruby-value">15</span>)
+                <span class="ruby-identifier">afficheEcran</span>
+                <span class="ruby-identifier">masquerBouton</span>
+        <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -1743,7 +1735,7 @@
 
           
           <div class="method-source-code" id="initBoutonHypo-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreJeu.rb, line 942</span>
+            <pre><span class="ruby-comment"># File src/Interface/FenetreJeu.rb, line 931</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initBoutonHypo</span>
   <span class="ruby-ivar">@boutonHypo</span> = <span class="ruby-constant">UnBoutonPerso</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;H&quot;</span>, <span class="ruby-ivar">@style</span>)<span class="ruby-keyword">do</span>
                       <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@presser</span>)
@@ -1771,7 +1763,7 @@
                               <span class="ruby-ivar">@boutonValidHypo</span>.<span class="ruby-identifier">show</span>
                       <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">end</span>
-              <span class="ruby-identifier">ajouterImage</span>(<span class="ruby-ivar">@boutonHypo</span>,<span class="ruby-node">&quot;#{$cheminRacineHashi}/Interface/img/cloud_icon.png&quot;</span>)
+              <span class="ruby-identifier">ajouterImage</span>(<span class="ruby-ivar">@boutonHypo</span>,<span class="ruby-node">&quot;#{$cheminRacineHashi}/src/Interface/img/cloud_icon.png&quot;</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -1802,7 +1794,7 @@
 
           
           <div class="method-source-code" id="initBoutonRecom-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreJeu.rb, line 1100</span>
+            <pre><span class="ruby-comment"># File src/Interface/FenetreJeu.rb, line 1089</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initBoutonRecom</span>
   <span class="ruby-ivar">@boutonRecom</span> = <span class="ruby-constant">UnBoutonPerso</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;R&quot;</span>, <span class="ruby-ivar">@style</span>)<span class="ruby-keyword">do</span>
                       <span class="ruby-ivar">@grilleTest</span>.<span class="ruby-identifier">clearAretes</span>
@@ -1810,7 +1802,7 @@
                       <span class="ruby-ivar">@listeInter</span> = []
                       <span class="ruby-identifier">afficheEcran</span>
   <span class="ruby-keyword">end</span>
-              <span class="ruby-identifier">ajouterImage</span>(<span class="ruby-ivar">@boutonRecom</span>,<span class="ruby-node">&quot;#{$cheminRacineHashi}/Interface/img/restart_icon.png&quot;</span>)
+              <span class="ruby-identifier">ajouterImage</span>(<span class="ruby-ivar">@boutonRecom</span>,<span class="ruby-node">&quot;#{$cheminRacineHashi}/src/Interface/img/restart_icon.png&quot;</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -1841,44 +1833,44 @@
 
           
           <div class="method-source-code" id="initBoutonRetour-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreJeu.rb, line 903</span>
-      <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initBoutonRetour</span>
-  <span class="ruby-ivar">@boutonRetour</span> = <span class="ruby-constant">UnBoutonPerso</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Retour&quot;</span>, <span class="ruby-ivar">@style</span>)<span class="ruby-keyword">do</span>
-                      <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@tuto</span>)
-                                      <span class="ruby-identifier">@@fenetre</span>.<span class="ruby-identifier">changerWidget</span>(<span class="ruby-ivar">@fenPre</span>)
-                      <span class="ruby-keyword">elsif</span>(<span class="ruby-operator">!</span><span class="ruby-ivar">@classe</span>)
-                              <span class="ruby-identifier">popup</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">MessageDialog</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:parent</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">@@fenetre</span>, <span class="ruby-value">:flags</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">:modal</span>, <span class="ruby-value">:type</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">:question</span>, <span class="ruby-value">:buttons</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">:none</span>, <span class="ruby-value">:message</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&quot;Souhaitez-vous sauvegarder la partie ? La sauvegarde précédente sera écrasée.&quot;</span>)
-                              <span class="ruby-identifier">popup</span>.<span class="ruby-identifier">add_buttons</span>([<span class="ruby-string">&quot;Sauvegarder&quot;</span>, <span class="ruby-value">:yes</span>], [<span class="ruby-string">&quot;Quitter&quot;</span>, <span class="ruby-value">:no</span>], [<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Stock</span><span class="ruby-operator">::</span><span class="ruby-constant">CANCEL</span>, <span class="ruby-value">:reject</span>])
+            <pre><span class="ruby-comment"># File src/Interface/FenetreJeu.rb, line 892</span>
+    <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initBoutonRetour</span>
+<span class="ruby-ivar">@boutonRetour</span> = <span class="ruby-constant">UnBoutonPerso</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Retour&quot;</span>, <span class="ruby-ivar">@style</span>)<span class="ruby-keyword">do</span>
+                    <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@tuto</span>)
+                                    <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">changerWidget</span>(<span class="ruby-ivar">@fenPre</span>)
+                    <span class="ruby-keyword">elsif</span>(<span class="ruby-operator">!</span><span class="ruby-ivar">@classe</span>)
+                            <span class="ruby-identifier">popup</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">MessageDialog</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:parent</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-ivar">@fenetre</span>, <span class="ruby-value">:flags</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">:modal</span>, <span class="ruby-value">:type</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">:question</span>, <span class="ruby-value">:buttons</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">:none</span>, <span class="ruby-value">:message</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&quot;Souhaitez-vous sauvegarder la partie ? La sauvegarde précédente sera écrasée.&quot;</span>)
+                            <span class="ruby-identifier">popup</span>.<span class="ruby-identifier">add_buttons</span>([<span class="ruby-string">&quot;Sauvegarder&quot;</span>, <span class="ruby-value">:yes</span>], [<span class="ruby-string">&quot;Quitter&quot;</span>, <span class="ruby-value">:no</span>], [<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Stock</span><span class="ruby-operator">::</span><span class="ruby-constant">CANCEL</span>, <span class="ruby-value">:reject</span>])
 
-                              <span class="ruby-identifier">response</span> = <span class="ruby-identifier">popup</span>.<span class="ruby-identifier">run</span>()
+                            <span class="ruby-identifier">response</span> = <span class="ruby-identifier">popup</span>.<span class="ruby-identifier">run</span>()
 
-                              <span class="ruby-keyword">if</span>(<span class="ruby-identifier">response</span> <span class="ruby-operator">==</span> <span class="ruby-value">:yes</span>)
-                                      <span class="ruby-identifier">save</span> = <span class="ruby-constant">Sauvegarde</span>.<span class="ruby-identifier">nouvelle</span>(<span class="ruby-ivar">@grilleTest</span>, <span class="ruby-ivar">@grilleComplete</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-ivar">@difficulte</span>)
-                                      <span class="ruby-identifier">save</span>.<span class="ruby-identifier">sauvegarder</span>()
-                                      <span class="ruby-identifier">@@fenetre</span>.<span class="ruby-identifier">changerWidget</span>(<span class="ruby-ivar">@fenPre</span>)
-                              <span class="ruby-keyword">elsif</span>(<span class="ruby-identifier">response</span> <span class="ruby-operator">==</span> <span class="ruby-value">:no</span>)
-                                      <span class="ruby-identifier">@@fenetre</span>.<span class="ruby-identifier">changerWidget</span>(<span class="ruby-ivar">@fenPre</span>)
-                              <span class="ruby-keyword">end</span>
+                            <span class="ruby-keyword">if</span>(<span class="ruby-identifier">response</span> <span class="ruby-operator">==</span> <span class="ruby-value">:yes</span>)
+                                    <span class="ruby-identifier">save</span> = <span class="ruby-constant">Sauvegarde</span>.<span class="ruby-identifier">nouvelle</span>(<span class="ruby-ivar">@grilleTest</span>, <span class="ruby-ivar">@grilleComplete</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-ivar">@difficulte</span>)
+                                    <span class="ruby-identifier">save</span>.<span class="ruby-identifier">sauvegarder</span>()
+                                    <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">changerWidget</span>(<span class="ruby-ivar">@fenPre</span>)
+                            <span class="ruby-keyword">elsif</span>(<span class="ruby-identifier">response</span> <span class="ruby-operator">==</span> <span class="ruby-value">:no</span>)
+                                    <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">changerWidget</span>(<span class="ruby-ivar">@fenPre</span>)
+                            <span class="ruby-keyword">end</span>
 
-                              <span class="ruby-identifier">popup</span>.<span class="ruby-identifier">destroy</span>()
-                      <span class="ruby-keyword">else</span>
-                              <span class="ruby-identifier">popup</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">MessageDialog</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:parent</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-identifier">@@fenetre</span>, <span class="ruby-value">:flags</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">:modal</span>, <span class="ruby-value">:type</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">:question</span>, <span class="ruby-value">:buttons</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">:none</span>, <span class="ruby-value">:message</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&quot;Voulez vous quitter la partie classée ? Vous ne pouvez pas sauvegarder une partie classée&quot;</span>)
-                              <span class="ruby-identifier">popup</span>.<span class="ruby-identifier">add_buttons</span>([<span class="ruby-string">&quot;Continuer&quot;</span>, <span class="ruby-value">:yes</span>], [<span class="ruby-string">&quot;Quitter&quot;</span>, <span class="ruby-value">:no</span>])
+                            <span class="ruby-identifier">popup</span>.<span class="ruby-identifier">destroy</span>()
+                    <span class="ruby-keyword">else</span>
+                            <span class="ruby-identifier">popup</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">MessageDialog</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:parent</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-ivar">@fenetre</span>, <span class="ruby-value">:flags</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">:modal</span>, <span class="ruby-value">:type</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">:question</span>, <span class="ruby-value">:buttons</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">:none</span>, <span class="ruby-value">:message</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&quot;Voulez vous quitter la partie classée ? Vous ne pouvez pas sauvegarder une partie classée&quot;</span>)
+                            <span class="ruby-identifier">popup</span>.<span class="ruby-identifier">add_buttons</span>([<span class="ruby-string">&quot;Continuer&quot;</span>, <span class="ruby-value">:yes</span>], [<span class="ruby-string">&quot;Quitter&quot;</span>, <span class="ruby-value">:no</span>])
 
-                              <span class="ruby-ivar">@chr</span>.<span class="ruby-identifier">arreter</span>()
-                              <span class="ruby-identifier">response</span> = <span class="ruby-identifier">popup</span>.<span class="ruby-identifier">run</span>()
+                            <span class="ruby-ivar">@chr</span>.<span class="ruby-identifier">arreter</span>()
+                            <span class="ruby-identifier">response</span> = <span class="ruby-identifier">popup</span>.<span class="ruby-identifier">run</span>()
 
-                              <span class="ruby-keyword">if</span>(<span class="ruby-identifier">response</span> <span class="ruby-operator">==</span> <span class="ruby-value">:no</span>)
-                                      <span class="ruby-ivar">@chr</span>.<span class="ruby-identifier">fin</span>()
-                                      <span class="ruby-identifier">popup</span>.<span class="ruby-identifier">destroy</span>()
-                                      <span class="ruby-identifier">@@fenetre</span>.<span class="ruby-identifier">changerWidget</span>(<span class="ruby-ivar">@fenPre</span>)
-                              <span class="ruby-keyword">else</span>
-                                      <span class="ruby-identifier">popup</span>.<span class="ruby-identifier">destroy</span>()
-                                      <span class="ruby-ivar">@chr</span>.<span class="ruby-identifier">chronometrer</span>()
-                              <span class="ruby-keyword">end</span>
-                      <span class="ruby-keyword">end</span>
-  <span class="ruby-keyword">end</span>
-<span class="ruby-keyword">end</span></pre>
+                            <span class="ruby-keyword">if</span>(<span class="ruby-identifier">response</span> <span class="ruby-operator">==</span> <span class="ruby-value">:no</span>)
+                                    <span class="ruby-ivar">@chr</span>.<span class="ruby-identifier">fin</span>()
+                                    <span class="ruby-identifier">popup</span>.<span class="ruby-identifier">destroy</span>()
+                                    <span class="ruby-ivar">@fenetre</span>.<span class="ruby-identifier">changerWidget</span>(<span class="ruby-ivar">@fenPre</span>)
+                            <span class="ruby-keyword">else</span>
+                                    <span class="ruby-identifier">popup</span>.<span class="ruby-identifier">destroy</span>()
+                                    <span class="ruby-ivar">@chr</span>.<span class="ruby-identifier">chronometrer</span>()
+                            <span class="ruby-keyword">end</span>
+                    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span></pre>
           </div>
           
         </div>
@@ -1913,7 +1905,7 @@
 
           
           <div class="method-source-code" id="initBoutonTuto-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreJeu.rb, line 1178</span>
+            <pre><span class="ruby-comment"># File src/Interface/FenetreJeu.rb, line 1167</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initBoutonTuto</span>(<span class="ruby-identifier">numNiveau</span>)
         <span class="ruby-keyword">case</span>(<span class="ruby-identifier">numNiveau</span>)
         <span class="ruby-keyword">when</span> <span class="ruby-string">&quot;D1&quot;</span>
@@ -1959,22 +1951,22 @@
 
           
           <div class="method-source-code" id="initBoutonValidHypo-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreJeu.rb, line 989</span>
-      <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initBoutonValidHypo</span>
-  <span class="ruby-ivar">@boutonValidHypo</span>= <span class="ruby-constant">UnBoutonPerso</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Valider Hypothèse&quot;</span>, <span class="ruby-ivar">@style</span>)<span class="ruby-keyword">do</span>
-                      <span class="ruby-ivar">@presser</span> = <span class="ruby-keyword">false</span>
-                      <span class="ruby-constant">Sauvegarde</span>.<span class="ruby-identifier">validerHypothese</span>()
-                      <span class="ruby-ivar">@hypothese</span> = <span class="ruby-keyword">false</span>
-                      <span class="ruby-ivar">@grilleTest</span>.<span class="ruby-identifier">aretes</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span>
-                              <span class="ruby-identifier">a</span>.<span class="ruby-identifier">hypothese</span> = <span class="ruby-ivar">@hypothese</span>
-                      <span class="ruby-keyword">end</span>
-                      <span class="ruby-ivar">@boutonAide</span>.<span class="ruby-identifier">deverrouiller</span>()
-                      <span class="ruby-ivar">@boutonRecom</span>.<span class="ruby-identifier">deverrouiller</span>()
-                      <span class="ruby-ivar">@boutonAnnul</span>.<span class="ruby-identifier">deverrouiller</span>()
-                      <span class="ruby-identifier">masquerBouton</span>
-                      <span class="ruby-identifier">conditionGagnante</span>
-  <span class="ruby-keyword">end</span>
-                      <span class="ruby-ivar">@boutonValidHypo</span>.<span class="ruby-identifier">hide</span>
+            <pre><span class="ruby-comment"># File src/Interface/FenetreJeu.rb, line 978</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initBoutonValidHypo</span>
+        <span class="ruby-ivar">@boutonValidHypo</span>= <span class="ruby-constant">UnBoutonPerso</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Valider Hypothèse&quot;</span>, <span class="ruby-ivar">@style</span>)<span class="ruby-keyword">do</span>
+                        <span class="ruby-ivar">@presser</span> = <span class="ruby-keyword">false</span>
+                        <span class="ruby-constant">Sauvegarde</span>.<span class="ruby-identifier">validerHypothese</span>()
+                        <span class="ruby-ivar">@hypothese</span> = <span class="ruby-keyword">false</span>
+                        <span class="ruby-ivar">@grilleTest</span>.<span class="ruby-identifier">aretes</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span>
+                                <span class="ruby-identifier">a</span>.<span class="ruby-identifier">hypothese</span> = <span class="ruby-ivar">@hypothese</span>
+                        <span class="ruby-keyword">end</span>
+                        <span class="ruby-ivar">@boutonAide</span>.<span class="ruby-identifier">deverrouiller</span>()
+                        <span class="ruby-ivar">@boutonRecom</span>.<span class="ruby-identifier">deverrouiller</span>()
+                        <span class="ruby-ivar">@boutonAnnul</span>.<span class="ruby-identifier">deverrouiller</span>()
+                        <span class="ruby-identifier">masquerBouton</span>
+                        <span class="ruby-identifier">conditionGagnante</span>
+        <span class="ruby-keyword">end</span>
+        <span class="ruby-ivar">@boutonValidHypo</span>.<span class="ruby-identifier">hide</span>
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -2005,7 +1997,7 @@
 
           
           <div class="method-source-code" id="initBoxJeu-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreJeu.rb, line 1133</span>
+            <pre><span class="ruby-comment"># File src/Interface/FenetreJeu.rb, line 1122</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initBoxJeu</span>
   <span class="ruby-ivar">@boxJeu</span> = <span class="ruby-constant">UnBoutonPerso</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;ceci est ma grille de Jeu&quot;</span>)<span class="ruby-keyword">do</span>
     <span class="ruby-ivar">@boxJeu</span>.<span class="ruby-identifier">set_sensitive</span>(<span class="ruby-keyword">false</span>)
@@ -2040,7 +2032,7 @@
 
           
           <div class="method-source-code" id="initChrono-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreJeu.rb, line 1111</span>
+            <pre><span class="ruby-comment"># File src/Interface/FenetreJeu.rb, line 1100</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initChrono</span>
               <span class="ruby-ivar">@boxChrono</span> = <span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Box</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">Gtk</span><span class="ruby-operator">::</span><span class="ruby-constant">Orientation</span><span class="ruby-operator">::</span><span class="ruby-constant">HORIZONTAL</span>)
               <span class="ruby-ivar">@boutonSablier</span> = <span class="ruby-constant">UnBoutonPerso</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;test&quot;</span>,<span class="ruby-string">&quot;Chrono&quot;</span>)
@@ -2058,7 +2050,7 @@
                       <span class="ruby-ivar">@chr</span>.<span class="ruby-identifier">chronometrer</span>()
 
               <span class="ruby-keyword">end</span>
-              <span class="ruby-identifier">ajouterImage</span>(<span class="ruby-ivar">@boutonSablier</span>,<span class="ruby-node">&quot;#{$cheminRacineHashi}/Interface/img/hourglass_icon.png&quot;</span>)
+              <span class="ruby-identifier">ajouterImage</span>(<span class="ruby-ivar">@boutonSablier</span>,<span class="ruby-node">&quot;#{$cheminRacineHashi}/src/Interface/img/hourglass_icon.png&quot;</span>)
 
 <span class="ruby-keyword">end</span></pre>
           </div>
@@ -2090,9 +2082,9 @@
 
           
           <div class="method-source-code" id="initLabelMessage-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreJeu.rb, line 1047</span>
-      <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initLabelMessage</span>
-  <span class="ruby-ivar">@labelMessage</span> = <span class="ruby-constant">UnLabelPerso</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;&quot;</span>, <span class="ruby-string">&quot;UnLabelBlanc&quot;</span>)
+            <pre><span class="ruby-comment"># File src/Interface/FenetreJeu.rb, line 1036</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initLabelMessage</span>
+        <span class="ruby-ivar">@labelMessage</span> = <span class="ruby-constant">UnLabelPerso</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;&quot;</span>, <span class="ruby-string">&quot;UnLabelBlanc&quot;</span>)
 <span class="ruby-keyword">end</span></pre>
           </div>
           
@@ -2123,7 +2115,7 @@
 
           
           <div class="method-source-code" id="initTailleCase-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreJeu.rb, line 1158</span>
+            <pre><span class="ruby-comment"># File src/Interface/FenetreJeu.rb, line 1147</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initTailleCase</span>
         <span class="ruby-ivar">@tailleCase</span> = (<span class="ruby-ivar">@tailleArea</span> <span class="ruby-operator">-</span> <span class="ruby-value">50</span>) <span class="ruby-operator">/</span> (<span class="ruby-ivar">@longueur</span> <span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@largeur</span> <span class="ruby-operator">?</span> <span class="ruby-ivar">@longueur</span> <span class="ruby-operator">:</span> <span class="ruby-ivar">@largeur</span>)
         <span class="ruby-ivar">@fontSize</span> = <span class="ruby-ivar">@tailleCase</span> <span class="ruby-operator">/</span> <span class="ruby-value">2</span>
@@ -2159,7 +2151,7 @@
 
           
           <div class="method-source-code" id="masquerAllBouton-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreJeu.rb, line 1166</span>
+            <pre><span class="ruby-comment"># File src/Interface/FenetreJeu.rb, line 1155</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">masquerAllBouton</span>
         <span class="ruby-ivar">@boutonHypo</span>.<span class="ruby-identifier">hide</span>
         <span class="ruby-ivar">@boutonAide</span>.<span class="ruby-identifier">hide</span>
@@ -2195,7 +2187,7 @@
 
           
           <div class="method-source-code" id="masquerBouton-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreJeu.rb, line 1140</span>
+            <pre><span class="ruby-comment"># File src/Interface/FenetreJeu.rb, line 1129</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">masquerBouton</span>
         <span class="ruby-ivar">@boutonAnnulHypo</span>.<span class="ruby-identifier">hide</span>
         <span class="ruby-ivar">@boutonValidHypo</span>.<span class="ruby-identifier">hide</span>
@@ -2246,7 +2238,7 @@
 
           
           <div class="method-source-code" id="mouseClick-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreJeu.rb, line 213</span>
+            <pre><span class="ruby-comment"># File src/Interface/FenetreJeu.rb, line 209</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">mouseClick</span>(<span class="ruby-identifier">event</span>)
         <span class="ruby-comment"># copie tracerGrille</span>
         <span class="ruby-identifier">paddingX</span> = <span class="ruby-value">25</span>
@@ -2259,14 +2251,13 @@
         <span class="ruby-keyword">if</span>(<span class="ruby-operator">!</span><span class="ruby-identifier">grilleGagnante</span>)
                 <span class="ruby-keyword">if</span>(<span class="ruby-identifier">x</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">paddingX</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">x</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">paddingX</span><span class="ruby-operator">+</span><span class="ruby-ivar">@tailleCase</span><span class="ruby-operator">*</span><span class="ruby-ivar">@longueur</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">y</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">paddingY</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">y</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">paddingY</span><span class="ruby-operator">+</span><span class="ruby-ivar">@tailleCase</span><span class="ruby-operator">*</span><span class="ruby-ivar">@largeur</span>) <span class="ruby-comment">#si dans la grille</span>
                         <span class="ruby-identifier">caseX</span> = (<span class="ruby-identifier">x</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">paddingX</span>).<span class="ruby-identifier">to_i</span><span class="ruby-operator">/</span><span class="ruby-ivar">@tailleCase</span>
-                        <span class="ruby-identifier">caseY</span> = (<span class="ruby-identifier">y</span> <span class="ruby-operator">-</span><span class="ruby-identifier">paddingY</span>).<span class="ruby-identifier">to_i</span><span class="ruby-operator">/</span><span class="ruby-ivar">@tailleCase</span>
+                        <span class="ruby-identifier">caseY</span> = (<span class="ruby-identifier">y</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">paddingY</span>).<span class="ruby-identifier">to_i</span><span class="ruby-operator">/</span><span class="ruby-ivar">@tailleCase</span>
 
                         <span class="ruby-identifier">caseTest</span> = <span class="ruby-ivar">@grilleTest</span>.<span class="ruby-identifier">getCase</span>(<span class="ruby-identifier">caseX</span>,<span class="ruby-identifier">caseY</span>)
 
 
                         <span class="ruby-comment"># sensé regarder le contenu de la case mais PROBLEME car toutes les cases sont des sommets !</span>
                         <span class="ruby-identifier">caseTest</span> = <span class="ruby-ivar">@grilleTest</span>.<span class="ruby-identifier">getCase</span>(<span class="ruby-identifier">caseX</span>,<span class="ruby-identifier">caseY</span>)
-                        <span class="ruby-identifier">caseSom</span> = <span class="ruby-keyword">nil</span>
                         <span class="ruby-keyword">if</span>(<span class="ruby-identifier">estSommet?</span>(<span class="ruby-identifier">caseTest</span>))
                                 <span class="ruby-comment">#afficheSurbri</span>
                                 <span class="ruby-identifier">videSurbri</span>
@@ -2308,11 +2299,11 @@
                                                 <span class="ruby-ivar">@listeInter</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">c</span>,<span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
                                                         <span class="ruby-keyword">if</span>(<span class="ruby-identifier">c</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">caseTest</span>)
                                                                 <span class="ruby-identifier">s1</span> = <span class="ruby-ivar">@listeInter</span>[<span class="ruby-value">0</span>]
-                                                                <span class="ruby-identifier">i</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-ivar">@listeInter</span>.<span class="ruby-identifier">length</span><span class="ruby-value">-1</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">y</span><span class="ruby-operator">|</span>
-                                                                        <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@listeInter</span>[<span class="ruby-identifier">y</span>] <span class="ruby-operator">!=</span> <span class="ruby-string">&quot;|&quot;</span>)
-                                                                                <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@listeInter</span>[<span class="ruby-identifier">y</span>].<span class="ruby-identifier">contenu</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Sommet</span>)
+                                                                <span class="ruby-identifier">i</span>.<span class="ruby-identifier">upto</span>(<span class="ruby-ivar">@listeInter</span>.<span class="ruby-identifier">length</span><span class="ruby-value">-1</span>) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">indiceListe</span><span class="ruby-operator">|</span>
+                                                                        <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@listeInter</span>[<span class="ruby-identifier">indiceListe</span>] <span class="ruby-operator">!=</span> <span class="ruby-string">&quot;|&quot;</span>)
+                                                                                <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@listeInter</span>[<span class="ruby-identifier">indiceListe</span>].<span class="ruby-identifier">contenu</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Sommet</span>)
                                                                                         <span class="ruby-keyword">if</span>(<span class="ruby-operator">!</span><span class="ruby-identifier">trouve1</span>)
-                                                                                                <span class="ruby-identifier">s2</span> = <span class="ruby-ivar">@listeInter</span>[<span class="ruby-identifier">y</span>]
+                                                                                                <span class="ruby-identifier">s2</span> = <span class="ruby-ivar">@listeInter</span>[<span class="ruby-identifier">indiceListe</span>]
                                                                                                 <span class="ruby-identifier">trouve1</span> = <span class="ruby-keyword">true</span>
                                                                                         <span class="ruby-keyword">end</span>
                                                                                 <span class="ruby-keyword">end</span>
@@ -2372,7 +2363,7 @@
 
           
           <div class="method-source-code" id="nbAretesSommet-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreJeu.rb, line 472</span>
+            <pre><span class="ruby-comment"># File src/Interface/FenetreJeu.rb, line 467</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">nbAretesSommet</span>(<span class="ruby-identifier">s</span>)
         <span class="ruby-identifier">i</span> = <span class="ruby-value">0</span>
         <span class="ruby-identifier">s</span>.<span class="ruby-identifier">listeArete</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span>
@@ -2413,7 +2404,7 @@
 
           
           <div class="method-source-code" id="on_draw-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreJeu.rb, line 725</span>
+            <pre><span class="ruby-comment"># File src/Interface/FenetreJeu.rb, line 716</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">on_draw</span>
                 <span class="ruby-ivar">@cr</span> = <span class="ruby-ivar">@darea</span>.<span class="ruby-identifier">window</span>.<span class="ruby-identifier">create_cairo_context</span>
                 <span class="ruby-identifier">afficheEcran</span>()
@@ -2456,10 +2447,8 @@
 
           
           <div class="method-source-code" id="rechercherVoisins-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreJeu.rb, line 493</span>
+            <pre><span class="ruby-comment"># File src/Interface/FenetreJeu.rb, line 488</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">rechercherVoisins</span>(<span class="ruby-identifier">c</span>)
-        <span class="ruby-identifier">paddingX</span> = <span class="ruby-value">50</span>
-        <span class="ruby-identifier">paddingY</span> = <span class="ruby-value">25</span>
         <span class="ruby-identifier">j</span> = <span class="ruby-value">0</span>
         <span class="ruby-identifier">listeVoisin</span> = []
         <span class="ruby-identifier">selfArete</span> = <span class="ruby-keyword">false</span>
@@ -2586,7 +2575,7 @@
 
           
           <div class="method-source-code" id="retirerContenu-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreJeu.rb, line 307</span>
+            <pre><span class="ruby-comment"># File src/Interface/FenetreJeu.rb, line 302</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">retirerContenu</span>(<span class="ruby-identifier">box</span>,<span class="ruby-identifier">contenu</span>)
         <span class="ruby-keyword">if</span>(<span class="ruby-identifier">contenu</span> <span class="ruby-operator">!=</span> <span class="ruby-keyword">nil</span>)
                 <span class="ruby-identifier">box</span>.<span class="ruby-identifier">remove</span>(<span class="ruby-identifier">contenu</span>)
@@ -2628,7 +2617,7 @@
 
           
           <div class="method-source-code" id="suppressionArete-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreJeu.rb, line 391</span>
+            <pre><span class="ruby-comment"># File src/Interface/FenetreJeu.rb, line 386</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">suppressionArete</span>(<span class="ruby-identifier">arete</span>, <span class="ruby-identifier">actionAnnule</span> = <span class="ruby-keyword">false</span>)
         <span class="ruby-keyword">if</span>(<span class="ruby-operator">!</span><span class="ruby-identifier">actionAnnule</span>)
                 <span class="ruby-ivar">@grilleTest</span>.<span class="ruby-identifier">undo</span>.<span class="ruby-identifier">empile</span>(<span class="ruby-identifier">arete</span>)
@@ -2679,7 +2668,7 @@
 
           
           <div class="method-source-code" id="tracerGrille-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreJeu.rb, line 679</span>
+            <pre><span class="ruby-comment"># File src/Interface/FenetreJeu.rb, line 670</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">tracerGrille</span>(<span class="ruby-identifier">tracer</span>=<span class="ruby-keyword">false</span>)
         <span class="ruby-comment"># exemple 5 5</span>
         <span class="ruby-identifier">paddingX</span> = <span class="ruby-value">25</span>
@@ -2723,7 +2712,7 @@
 
           
           <div class="method-source-code" id="videSurbri-source">
-            <pre><span class="ruby-comment"># File Interface/FenetreJeu.rb, line 628</span>
+            <pre><span class="ruby-comment"># File src/Interface/FenetreJeu.rb, line 619</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">videSurbri</span>
         <span class="ruby-ivar">@listeInter</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">c</span><span class="ruby-operator">|</span>
                 <span class="ruby-keyword">if</span>(<span class="ruby-identifier">c</span>.<span class="ruby-identifier">class</span> <span class="ruby-operator">==</span> <span class="ruby-constant">Case</span>)

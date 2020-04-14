@@ -128,7 +128,7 @@
 
         <div class="method-description">
         
-        <p>Accesseur get et set sur le booleen de l&#39;arete</p>
+        <p>Accesseur get et set sur le booléen de l&#39;arête</p>
         
         </div>
       </div>
@@ -141,7 +141,7 @@
 
         <div class="method-description">
         
-        <p>Accesseur get et set sur le booleen de l&#39;arete</p>
+        <p>Accesseur get et set sur le booléen de l&#39;arête</p>
         
         </div>
       </div>
@@ -154,7 +154,7 @@
 
         <div class="method-description">
         
-        <p>Accesseur get et set sur le booleen de l&#39;arete</p>
+        <p>Accesseur get et set sur le booléen de l&#39;arête</p>
         
         </div>
       </div>
@@ -167,7 +167,7 @@
 
         <div class="method-description">
         
-        <p>Accesseur get sur les sommet, la liste des case</p>
+        <p>Accesseur get sur les sommets, la liste des cases</p>
         
         </div>
       </div>
@@ -180,7 +180,7 @@
 
         <div class="method-description">
         
-        <p>Accesseur get sur les sommet, la liste des case</p>
+        <p>Accesseur get sur les sommets, la liste des cases</p>
         
         </div>
       </div>
@@ -193,7 +193,7 @@
 
         <div class="method-description">
         
-        <p>Accesseur get sur les sommet, la liste des case</p>
+        <p>Accesseur get sur les sommets, la liste des cases</p>
         
         </div>
       </div>
@@ -221,13 +221,13 @@
 
         <div class="method-description">
           
-          <p>@sommet1 -&gt; <a href="Sommet.html"><code>Sommet</code></a> d&#39;ou part l&#39;arete @sommet2 -&gt; <a href="Sommet.html"><code>Sommet</code></a> ou arrive l&#39;arete @estDouble -&gt; Booleen définissant si une arete est double ou non @listeCase -&gt; Liste des case par lesquelles passe l&#39;arete @estErreur -&gt; Booleen définissant si l&#39;arete est une erreur ou non</p>
+          <p>@sommet1 -&gt; <a href="Sommet.html"><code>Sommet</code></a> d&#39;où part l&#39;arête @sommet2 -&gt; <a href="Sommet.html"><code>Sommet</code></a> où arrive l&#39;arête @estDouble -&gt; Booléen définissant si une arête est double ou non @listeCase -&gt; Liste des cases par lesquelles passe l&#39;arete @estErreur -&gt; Booléen définissant si l&#39;arête est une erreur ou non</p>
           
           
 
           
           <div class="method-source-code" id="creer-source">
-            <pre><span class="ruby-comment"># File Plateau/Arete.rb, line 12</span>
+            <pre><span class="ruby-comment"># File src/Plateau/Arete.rb, line 12</span>
 <span class="ruby-keyword">def</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier ruby-title">creer</span>(<span class="ruby-identifier">sommet1</span>, <span class="ruby-identifier">sommet2</span>, <span class="ruby-identifier">estDouble</span>=<span class="ruby-keyword">false</span>)
     <span class="ruby-identifier">objet</span> = <span class="ruby-identifier">new</span>(<span class="ruby-identifier">sommet1</span>, <span class="ruby-identifier">sommet2</span>, <span class="ruby-identifier">estDouble</span>)
     <span class="ruby-identifier">objet</span>.<span class="ruby-identifier">completerInitialize</span>()
@@ -260,18 +260,18 @@
 
 <h3 id="method-c-new-label-Param-C3-A8tres">Paramètres<span><a href="#method-c-new-label-Param-C3-A8tres">&para;</a> <a href="#top">&uarr;</a></span></h3>
 <ul><li>
-<p><code>sommet1</code> : <a href="Sommet.html"><code>Sommet</code></a> d&#39;ou part l&#39;arete</p>
+<p><code>sommet1</code> : <a href="Sommet.html"><code>Sommet</code></a> d&#39;où part l&#39;arête</p>
 </li><li>
-<p><code>sommet2</code> : <a href="Sommet.html"><code>Sommet</code></a> ou s&#39;arrete l&#39;arete</p>
+<p><code>sommet2</code> : <a href="Sommet.html"><code>Sommet</code></a> où s&#39;arrête l&#39;arête</p>
 </li><li>
-<p><code>estDouble</code> : Booleen qui definie si l&#39;arete est double (de base a false)</p>
+<p><code>estDouble</code> : Booléen qui definit si l&#39;arête est double (de base à false)</p>
 </li></ul>
           
           
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Plateau/Arete.rb, line 29</span>
+            <pre><span class="ruby-comment"># File src/Plateau/Arete.rb, line 29</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">sommet1</span>, <span class="ruby-identifier">sommet2</span>, <span class="ruby-identifier">estDouble</span>=<span class="ruby-keyword">false</span>)
     <span class="ruby-ivar">@sommet1</span> = <span class="ruby-identifier">sommet1</span>
     <span class="ruby-ivar">@sommet2</span> = <span class="ruby-identifier">sommet2</span>
@@ -280,7 +280,7 @@
     <span class="ruby-ivar">@estErreur</span> = <span class="ruby-keyword">false</span>
     <span class="ruby-ivar">@hypothese</span> = <span class="ruby-keyword">false</span>
 
-    <span class="ruby-comment">#vérifie si le sommet1 est bien le plus en haut/a gauche, si c&#39;est pas le cas, on échange les sommet1 et 2</span>
+    <span class="ruby-comment">#vérifie si le sommet1 est bien le plus en haut/à gauche, si c&#39;est pas le cas, on échange les sommets 1 et 2</span>
     <span class="ruby-keyword">if</span>(<span class="ruby-identifier">sommet1</span>.<span class="ruby-identifier">position</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">sommet2</span>.<span class="ruby-identifier">position</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">sommet1</span>.<span class="ruby-identifier">position</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">sommet2</span>.<span class="ruby-identifier">position</span>.<span class="ruby-identifier">y</span>)
         <span class="ruby-identifier">sommetMem</span> = <span class="ruby-ivar">@sommet1</span>
         <span class="ruby-ivar">@sommet1</span> = <span class="ruby-identifier">sommet2</span>
@@ -318,13 +318,13 @@
 
         <div class="method-description">
           
-          <p>Affiche l&#39;arete dans le terminal</p>
+          <p>Affiche l&#39;arête dans le terminal</p>
           
           
 
           
           <div class="method-source-code" id="afficher-source">
-            <pre><span class="ruby-comment"># File Plateau/Arete.rb, line 105</span>
+            <pre><span class="ruby-comment"># File src/Plateau/Arete.rb, line 105</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">afficher</span>()
   <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@sommet1</span>.<span class="ruby-identifier">position</span>.<span class="ruby-identifier">x</span><span class="ruby-operator">==</span><span class="ruby-ivar">@sommet2</span>.<span class="ruby-identifier">position</span>.<span class="ruby-identifier">x</span>)
     <span class="ruby-keyword">if</span>(<span class="ruby-ivar">@estDouble</span>)
@@ -363,13 +363,13 @@
 
         <div class="method-description">
           
-          <p>Methode qui termine la creation d&#39;une arete complete son tableau de case et s&#39;ajoute aux sommet, a la grille, et aux case par lesquelles elle passe</p>
+          <p>Methode qui termine la création d&#39;une arête complète son tableau de case et s&#39;ajoute aux sommets, à la grille, et aux cases par lesquelles elle passe</p>
           
           
 
           
           <div class="method-source-code" id="completerInitialize-source">
-            <pre><span class="ruby-comment"># File Plateau/Arete.rb, line 57</span>
+            <pre><span class="ruby-comment"># File src/Plateau/Arete.rb, line 57</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">completerInitialize</span>()
     <span class="ruby-identifier">plusX</span> = <span class="ruby-ivar">@sommet1</span>.<span class="ruby-identifier">position</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@sommet2</span>.<span class="ruby-identifier">position</span>.<span class="ruby-identifier">x</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-operator">?</span> <span class="ruby-value">0</span> <span class="ruby-operator">:</span> <span class="ruby-value">1</span>
     <span class="ruby-identifier">plusY</span> = <span class="ruby-ivar">@sommet1</span>.<span class="ruby-identifier">position</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">-</span> <span class="ruby-ivar">@sommet2</span>.<span class="ruby-identifier">position</span>.<span class="ruby-identifier">y</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span> <span class="ruby-operator">?</span> <span class="ruby-value">0</span> <span class="ruby-operator">:</span> <span class="ruby-value">1</span>
@@ -409,7 +409,7 @@
 
         <div class="method-description">
           
-          <p>Donne la liste de case de l&#39;arete.</p>
+          <p>Donne la liste de case de l&#39;arête.</p>
 
 <h3 id="method-i-getListeCase-label-Return">Return<span><a href="#method-i-getListeCase-label-Return">&para;</a> <a href="#top">&uarr;</a></span></h3>
 <ul><li>
@@ -420,7 +420,7 @@
 
           
           <div class="method-source-code" id="getListeCase-source">
-            <pre><span class="ruby-comment"># File Plateau/Arete.rb, line 87</span>
+            <pre><span class="ruby-comment"># File src/Plateau/Arete.rb, line 87</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getListeCase</span>()
   <span class="ruby-keyword">return</span> <span class="ruby-ivar">@listeCase</span>
 <span class="ruby-keyword">end</span></pre>
@@ -447,7 +447,7 @@
 
         <div class="method-description">
           
-          <pre>Donne la taille de l&#39;arete</pre>
+          <pre>Donne la taille de l&#39;arête</pre>
 
 <p>Donne la longueur du tableau de case</p>
 
@@ -459,7 +459,7 @@ retourne la taille de la liste des cases</pre>
 
           
           <div class="method-source-code" id="getTaille-source">
-            <pre><span class="ruby-comment"># File Plateau/Arete.rb, line 80</span>
+            <pre><span class="ruby-comment"># File src/Plateau/Arete.rb, line 80</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getTaille</span>()
     <span class="ruby-keyword">return</span> <span class="ruby-ivar">@listeCase</span>.<span class="ruby-identifier">length</span>()
 <span class="ruby-keyword">end</span></pre>
@@ -486,15 +486,15 @@ retourne la taille de la liste des cases</pre>
 
         <div class="method-description">
           
-          <pre>Supprime l&#39;arete</pre>
+          <pre>Supprime l&#39;arête</pre>
 
-<p>Retire toute les references a l&#39;arette dans les sommets, la grille et les case par lesquelles elle passe</p>
+<p>Retire toutes les références à l&#39;arête dans les sommets, la grille et les cases par lesquelles elle passe</p>
           
           
 
           
           <div class="method-source-code" id="supprimer-source">
-            <pre><span class="ruby-comment"># File Plateau/Arete.rb, line 93</span>
+            <pre><span class="ruby-comment"># File src/Plateau/Arete.rb, line 93</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">supprimer</span>()
     <span class="ruby-identifier">loop</span> <span class="ruby-keyword">do</span>
         <span class="ruby-keyword">break</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@listeCase</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>

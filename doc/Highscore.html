@@ -139,7 +139,7 @@
 
           
           <div class="method-source-code" id="creer-source">
-            <pre><span class="ruby-comment"># File Classement/Highscore.rb, line 17</span>
+            <pre><span class="ruby-comment"># File src/Classement/Highscore.rb, line 17</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Highscore</span>.<span class="ruby-identifier ruby-title">creer</span>()
         <span class="ruby-identifier">new</span>()
 <span class="ruby-keyword">end</span></pre>
@@ -182,7 +182,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Classement/Highscore.rb, line 12</span>
+            <pre><span class="ruby-comment"># File src/Classement/Highscore.rb, line 12</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">temp</span>)
         <span class="ruby-keyword">super</span>(<span class="ruby-value">:name</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&quot;&quot;</span>, <span class="ruby-value">:score</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-value">0</span>, <span class="ruby-value">:difficulty</span> <span class="ruby-operator">=&gt;</span> <span class="ruby-string">&quot;&quot;</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -228,7 +228,7 @@
 
           
           <div class="method-source-code" id="getNom-source">
-            <pre><span class="ruby-comment"># File Classement/Highscore.rb, line 36</span>
+            <pre><span class="ruby-comment"># File src/Classement/Highscore.rb, line 36</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getNom</span>()
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>
 <span class="ruby-keyword">end</span></pre>
@@ -266,7 +266,7 @@
 
           
           <div class="method-source-code" id="getScore-source">
-            <pre><span class="ruby-comment"># File Classement/Highscore.rb, line 43</span>
+            <pre><span class="ruby-comment"># File src/Classement/Highscore.rb, line 43</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getScore</span>()
         <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">score</span>.<span class="ruby-identifier">to_s</span>
 <span class="ruby-keyword">end</span></pre>
@@ -295,7 +295,7 @@
           
           <p>Cette méthode sauvegarde un highscore dans la base de données.</p>
 
-<h3 id="method-i-sauvegarder-label-Parametre">Parametre<span><a href="#method-i-sauvegarder-label-Parametre">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<h3 id="method-i-sauvegarder-label-Param-C3-A8tres">Paramètres<span><a href="#method-i-sauvegarder-label-Param-C3-A8tres">&para;</a> <a href="#top">&uarr;</a></span></h3>
 <ul><li>
 <p><code>pseudo</code> : pseudo Le pseudo associé au highscore.</p>
 </li><li>
@@ -308,7 +308,7 @@
 
           
           <div class="method-source-code" id="sauvegarder-source">
-            <pre><span class="ruby-comment"># File Classement/Highscore.rb, line 26</span>
+            <pre><span class="ruby-comment"># File src/Classement/Highscore.rb, line 26</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">sauvegarder</span>(<span class="ruby-identifier">pseudo</span>, <span class="ruby-identifier">points</span>, <span class="ruby-identifier">difficulte</span>)
         <span class="ruby-keyword">self</span>.<span class="ruby-identifier">name</span> = <span class="ruby-identifier">pseudo</span>
         <span class="ruby-keyword">self</span>.<span class="ruby-identifier">score</span> = <span class="ruby-identifier">points</span>
@@ -338,13 +338,17 @@
 
         <div class="method-description">
           
-          
+          <p>Cette méthode redéfinit <a href="Highscore.html#method-i-to_s"><code>to_s</code></a> pour afficher un highscore.</p>
+
+<h3 id="method-i-to_s-label-Return">Return<span><a href="#method-i-to_s-label-Return">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>Une chaîne de caractère contenant des infos sur un score du classement</p>
           
           
 
           
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File Classement/Highscore.rb, line 53</span>
+            <pre><span class="ruby-comment"># File src/Classement/Highscore.rb, line 53</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">to_s</span>
         <span class="ruby-node">&quot;Highscore : Pseudo = #{self.name}, Points = #{self.score}, Difficulte = #{self.difficulty}\n&quot;</span>
 <span class="ruby-keyword">end</span></pre>

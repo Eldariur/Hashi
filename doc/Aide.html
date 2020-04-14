@@ -202,7 +202,7 @@
 
           
           <div class="method-source-code" id="creer-source">
-            <pre><span class="ruby-comment"># File Aide/Aide.rb, line 21</span>
+            <pre><span class="ruby-comment"># File src/Aide/Aide.rb, line 21</span>
 <span class="ruby-keyword">def</span> <span class="ruby-constant">Aide</span>.<span class="ruby-identifier ruby-title">creer</span>(<span class="ruby-identifier">grille</span>)
   <span class="ruby-identifier">new</span>(<span class="ruby-identifier">grille</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -246,7 +246,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File Aide/Aide.rb, line 44</span>
+            <pre><span class="ruby-comment"># File src/Aide/Aide.rb, line 44</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">initialize</span>(<span class="ruby-identifier">grille</span>)
   <span class="ruby-ivar">@grille</span> = <span class="ruby-identifier">grille</span>
   <span class="ruby-ivar">@nb_voisins</span> = <span class="ruby-constant">Array</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">sommets</span>.<span class="ruby-identifier">size</span>())
@@ -296,7 +296,7 @@
 
           
           <div class="method-source-code" id="afficherId-source">
-            <pre><span class="ruby-comment"># File Aide/Aide.rb, line 61</span>
+            <pre><span class="ruby-comment"># File src/Aide/Aide.rb, line 61</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">afficherId</span>()
   <span class="ruby-identifier">puts</span> <span class="ruby-ivar">@id</span>
 <span class="ruby-keyword">end</span></pre>
@@ -334,7 +334,7 @@
 
           
           <div class="method-source-code" id="definirCas-source">
-            <pre><span class="ruby-comment"># File Aide/Aide.rb, line 102</span>
+            <pre><span class="ruby-comment"># File src/Aide/Aide.rb, line 102</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">definirCas</span>()
   <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">sommets</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">x</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
     <span class="ruby-ivar">@nb_voisins</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-identifier">x</span>.<span class="ruby-identifier">compterVoisins</span>()
@@ -415,7 +415,7 @@
 
           
           <div class="method-source-code" id="estCas10-3F-source">
-            <pre><span class="ruby-comment"># File Aide/Aide.rb, line 323</span>
+            <pre><span class="ruby-comment"># File src/Aide/Aide.rb, line 323</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">estCas10?</span>()
   <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">sommets</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">x</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">valeur</span> <span class="ruby-operator">==</span> <span class="ruby-value">5</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@nb_voisins</span>[<span class="ruby-identifier">i</span>] <span class="ruby-operator">==</span> <span class="ruby-value">3</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">x</span>.<span class="ruby-identifier">areteAvecChaqueVoisin</span>()
@@ -460,7 +460,7 @@
 
           
           <div class="method-source-code" id="estCas11-3F-source">
-            <pre><span class="ruby-comment"># File Aide/Aide.rb, line 339</span>
+            <pre><span class="ruby-comment"># File src/Aide/Aide.rb, line 339</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">estCas11?</span>()
   <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">sommets</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">x</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">valeur</span> <span class="ruby-operator">==</span> <span class="ruby-value">3</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@nb_voisins</span>[<span class="ruby-identifier">i</span>] <span class="ruby-operator">==</span> <span class="ruby-value">2</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">x</span>.<span class="ruby-identifier">areteAvecChaqueVoisin</span>()
@@ -505,7 +505,7 @@
 
           
           <div class="method-source-code" id="estCas12-3F-source">
-            <pre><span class="ruby-comment"># File Aide/Aide.rb, line 355</span>
+            <pre><span class="ruby-comment"># File src/Aide/Aide.rb, line 355</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">estCas12?</span>()
   <span class="ruby-identifier">compteur</span> = <span class="ruby-value">0</span>
   <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">sommets</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">x</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
@@ -559,7 +559,7 @@
 
           
           <div class="method-source-code" id="estCas13-3F-source">
-            <pre><span class="ruby-comment"># File Aide/Aide.rb, line 380</span>
+            <pre><span class="ruby-comment"># File src/Aide/Aide.rb, line 380</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">estCas13?</span>()
   <span class="ruby-identifier">compteur</span> = <span class="ruby-value">0</span>
   <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">sommets</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">x</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
@@ -613,7 +613,7 @@
 
           
           <div class="method-source-code" id="estCas14-3F-source">
-            <pre><span class="ruby-comment"># File Aide/Aide.rb, line 405</span>
+            <pre><span class="ruby-comment"># File src/Aide/Aide.rb, line 405</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">estCas14?</span>()
   <span class="ruby-identifier">voisinDeux</span> = <span class="ruby-keyword">false</span>
   <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">sommets</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">x</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
@@ -663,7 +663,7 @@
 
           
           <div class="method-source-code" id="estCas15-3F-source">
-            <pre><span class="ruby-comment"># File Aide/Aide.rb, line 427</span>
+            <pre><span class="ruby-comment"># File src/Aide/Aide.rb, line 427</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">estCas15?</span>()
   <span class="ruby-identifier">voisinUn</span> = <span class="ruby-keyword">false</span>
   <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">sommets</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">x</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
@@ -713,7 +713,7 @@
 
           
           <div class="method-source-code" id="estCas16-3F-source">
-            <pre><span class="ruby-comment"># File Aide/Aide.rb, line 448</span>
+            <pre><span class="ruby-comment"># File src/Aide/Aide.rb, line 448</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">estCas16?</span>()
   <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">sommets</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">x</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
     <span class="ruby-keyword">if</span> (<span class="ruby-identifier">x</span>.<span class="ruby-identifier">compterVoisinsNonComplets</span>() <span class="ruby-operator">*</span> <span class="ruby-value">2</span>) <span class="ruby-operator">-</span> <span class="ruby-value">1</span> <span class="ruby-operator">&lt;=</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">connexionsRestantes</span>() <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">connexionsRestantes</span>() <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
@@ -760,7 +760,7 @@
 
           
           <div class="method-source-code" id="estCas17-3F-source">
-            <pre><span class="ruby-comment"># File Aide/Aide.rb, line 466</span>
+            <pre><span class="ruby-comment"># File src/Aide/Aide.rb, line 466</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">estCas17?</span>()
   <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">sommets</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">x</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">connexionsRestantes</span>() <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
@@ -829,7 +829,7 @@
 
           
           <div class="method-source-code" id="estCas18-3F-source">
-            <pre><span class="ruby-comment"># File Aide/Aide.rb, line 506</span>
+            <pre><span class="ruby-comment"># File src/Aide/Aide.rb, line 506</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">estCas18?</span>()
   <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">sommets</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">x</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">connexionsRestantes</span>() <span class="ruby-operator">==</span> <span class="ruby-value">1</span>
@@ -917,7 +917,7 @@
 
           
           <div class="method-source-code" id="estCas1-3F-source">
-            <pre><span class="ruby-comment"># File Aide/Aide.rb, line 154</span>
+            <pre><span class="ruby-comment"># File src/Aide/Aide.rb, line 154</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">estCas1?</span>()
   <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">sommets</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">x</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@nb_voisins</span>[<span class="ruby-identifier">i</span>] <span class="ruby-operator">==</span> <span class="ruby-value">1</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">compterArete</span>() <span class="ruby-operator">!=</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">valeur</span>
@@ -962,7 +962,7 @@
 
           
           <div class="method-source-code" id="estCas2-3F-source">
-            <pre><span class="ruby-comment"># File Aide/Aide.rb, line 171</span>
+            <pre><span class="ruby-comment"># File src/Aide/Aide.rb, line 171</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">estCas2?</span>()
   <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">sommets</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">x</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">compterVoisinsNonComplets</span>() <span class="ruby-operator">==</span> <span class="ruby-value">1</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">compterArete</span>() <span class="ruby-operator">!=</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">valeur</span>
@@ -1007,7 +1007,7 @@
 
           
           <div class="method-source-code" id="estCas3-3F-source">
-            <pre><span class="ruby-comment"># File Aide/Aide.rb, line 187</span>
+            <pre><span class="ruby-comment"># File src/Aide/Aide.rb, line 187</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">estCas3?</span>()
   <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">sommets</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">x</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">valeur</span> <span class="ruby-operator">==</span> <span class="ruby-value">8</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">compterArete</span>() <span class="ruby-operator">!=</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">valeur</span>
@@ -1052,7 +1052,7 @@
 
           
           <div class="method-source-code" id="estCas4-3F-source">
-            <pre><span class="ruby-comment"># File Aide/Aide.rb, line 203</span>
+            <pre><span class="ruby-comment"># File src/Aide/Aide.rb, line 203</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">estCas4?</span>()
   <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">sommets</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">x</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">valeur</span> <span class="ruby-operator">==</span> <span class="ruby-value">6</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@nb_voisins</span>[<span class="ruby-identifier">i</span>] <span class="ruby-operator">==</span> <span class="ruby-value">3</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">compterArete</span>() <span class="ruby-operator">!=</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">valeur</span>
@@ -1097,7 +1097,7 @@
 
           
           <div class="method-source-code" id="estCas5-3F-source">
-            <pre><span class="ruby-comment"># File Aide/Aide.rb, line 219</span>
+            <pre><span class="ruby-comment"># File src/Aide/Aide.rb, line 219</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">estCas5?</span>()
   <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">sommets</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">x</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">valeur</span> <span class="ruby-operator">==</span> <span class="ruby-value">4</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@nb_voisins</span>[<span class="ruby-identifier">i</span>] <span class="ruby-operator">==</span> <span class="ruby-value">2</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">compterArete</span>() <span class="ruby-operator">!=</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">valeur</span>
@@ -1142,7 +1142,7 @@
 
           
           <div class="method-source-code" id="estCas6-3F-source">
-            <pre><span class="ruby-comment"># File Aide/Aide.rb, line 235</span>
+            <pre><span class="ruby-comment"># File src/Aide/Aide.rb, line 235</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">estCas6?</span>()
   <span class="ruby-identifier">compteur</span> = <span class="ruby-value">0</span>
   <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">sommets</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">x</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
@@ -1195,7 +1195,7 @@
 
           
           <div class="method-source-code" id="estCas7-3F-source">
-            <pre><span class="ruby-comment"># File Aide/Aide.rb, line 259</span>
+            <pre><span class="ruby-comment"># File src/Aide/Aide.rb, line 259</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">estCas7?</span>()
   <span class="ruby-identifier">compteur</span> = <span class="ruby-value">0</span>
   <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">sommets</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">x</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
@@ -1248,7 +1248,7 @@
 
           
           <div class="method-source-code" id="estCas8-3F-source">
-            <pre><span class="ruby-comment"># File Aide/Aide.rb, line 283</span>
+            <pre><span class="ruby-comment"># File src/Aide/Aide.rb, line 283</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">estCas8?</span>()
   <span class="ruby-identifier">compteur</span> = <span class="ruby-value">0</span>
   <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">sommets</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">x</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
@@ -1301,7 +1301,7 @@
 
           
           <div class="method-source-code" id="estCas9-3F-source">
-            <pre><span class="ruby-comment"># File Aide/Aide.rb, line 307</span>
+            <pre><span class="ruby-comment"># File src/Aide/Aide.rb, line 307</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">estCas9?</span>()
   <span class="ruby-ivar">@grille</span>.<span class="ruby-identifier">sommets</span>.<span class="ruby-identifier">each_with_index</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">x</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">x</span>.<span class="ruby-identifier">valeur</span> <span class="ruby-operator">==</span> <span class="ruby-value">7</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">x</span>.<span class="ruby-identifier">areteAvecChaqueVoisin</span>()
@@ -1344,7 +1344,7 @@
 
           
           <div class="method-source-code" id="getCaseAide-source">
-            <pre><span class="ruby-comment"># File Aide/Aide.rb, line 90</span>
+            <pre><span class="ruby-comment"># File src/Aide/Aide.rb, line 90</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getCaseAide</span>()
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@id</span> <span class="ruby-operator">!=</span> <span class="ruby-value">0</span>
     <span class="ruby-ivar">@penalite</span> = <span class="ruby-value">20</span>
@@ -1384,12 +1384,12 @@
 
           
           <div class="method-source-code" id="getMessageAide-source">
-            <pre><span class="ruby-comment"># File Aide/Aide.rb, line 70</span>
+            <pre><span class="ruby-comment"># File src/Aide/Aide.rb, line 70</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier ruby-title">getMessageAide</span>()
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@id</span> <span class="ruby-operator">!=</span> <span class="ruby-value">0</span>
     <span class="ruby-ivar">@penalite</span> = <span class="ruby-value">10</span>
   <span class="ruby-keyword">end</span>
-      <span class="ruby-identifier">file_data</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/Aide/TexteAide.txt&quot;</span>).<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;/&quot;</span>).<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot;:&quot;</span>).<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;:&quot;</span>)
+      <span class="ruby-identifier">file_data</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-node">&quot;#{$cheminRacineHashi}/src/Aide/TexteAide.txt&quot;</span>).<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;/&quot;</span>).<span class="ruby-identifier">join</span>(<span class="ruby-string">&quot;:&quot;</span>).<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;:&quot;</span>)
       <span class="ruby-identifier">affiche</span> = <span class="ruby-keyword">false</span>
       <span class="ruby-identifier">file_data</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span>
               <span class="ruby-keyword">if</span> <span class="ruby-identifier">affiche</span>
