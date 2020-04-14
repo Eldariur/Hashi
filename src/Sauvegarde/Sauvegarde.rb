@@ -58,17 +58,17 @@ class Sauvegarde
     Sauvegarde.genenerDossier();
     dump = YAML::dump(self)
     if(@estHypothese) then
-      file = File.open(File.path("#{$cheminRacineHashi}/Sauvegarde/Save/temp.sav"), 'w')
+      file = File.open(File.path("#{$cheminRacineHashi}/src/Sauvegarde/Save/temp.sav"), 'w')
     else
       case @difficulte
         when "easy"
-          file = File.open(File.path("#{$cheminRacineHashi}/Sauvegarde/Save/easy/save.sav"), 'w')
+          file = File.open(File.path("#{$cheminRacineHashi}/src/Sauvegarde/Save/easy/save.sav"), 'w')
         when "normal"
-          file = File.open(File.path("#{$cheminRacineHashi}/Sauvegarde/Save/normal/save.sav"), 'w')
+          file = File.open(File.path("#{$cheminRacineHashi}/src/Sauvegarde/Save/normal/save.sav"), 'w')
         when "hard"
-          file = File.open(File.path("#{$cheminRacineHashi}/Sauvegarde/Save/hard/save.sav"), 'w')
+          file = File.open(File.path("#{$cheminRacineHashi}/src/Sauvegarde/Save/hard/save.sav"), 'w')
         when "custom"
-          file = File.open(File.path("#{$cheminRacineHashi}/Sauvegarde/Save/custom/save.sav"), 'w')
+          file = File.open(File.path("#{$cheminRacineHashi}/src/Sauvegarde/Save/custom/save.sav"), 'w')
       end
     end
     file.write dump
@@ -90,17 +90,17 @@ class Sauvegarde
   # * +save+ : save La sauvegarde chargée.
   def charger()
     if(@estHypothese) then
-      save = YAML.load(File.read("#{$cheminRacineHashi}/Sauvegarde/Save/temp.sav"))
+      save = YAML.load(File.read("#{$cheminRacineHashi}/src/Sauvegarde/Save/temp.sav"))
     else
       case @difficulte
         when "easy"
-          save = (File.exist?("#{$cheminRacineHashi}/Sauvegarde/Save/easy/save.sav")) ? YAML.load(File.read("#{$cheminRacineHashi}/Sauvegarde/Save/easy/save.sav")) : nil
+          save = (File.exist?("#{$cheminRacineHashi}/src/Sauvegarde/Save/easy/save.sav")) ? YAML.load(File.read("#{$cheminRacineHashi}/Sauvegarde/Save/easy/save.sav")) : nil
         when "normal"
-          save = (File.exist?("#{$cheminRacineHashi}/Sauvegarde/Save/normal/save.sav")) ? YAML.load(File.read("#{$cheminRacineHashi}/Sauvegarde/Save/normal/save.sav")) : nil
+          save = (File.exist?("#{$cheminRacineHashi}/src/Sauvegarde/Save/normal/save.sav")) ? YAML.load(File.read("#{$cheminRacineHashi}/Sauvegarde/Save/normal/save.sav")) : nil
         when "hard"
-          save = (File.exist?("#{$cheminRacineHashi}/Sauvegarde/Save/hard/save.sav")) ? YAML.load(File.read("#{$cheminRacineHashi}/Sauvegarde/Save/hard/save.sav")) : nil
+          save = (File.exist?("#{$cheminRacineHashi}/src/Sauvegarde/Save/hard/save.sav")) ? YAML.load(File.read("#{$cheminRacineHashi}/Sauvegarde/Save/hard/save.sav")) : nil
         when "custom"
-          save = (File.exist?("#{$cheminRacineHashi}/Sauvegarde/Save/custom/save.sav")) ? YAML.load(File.read("#{$cheminRacineHashi}/Sauvegarde/Save/custom/save.sav")) : nil
+          save = (File.exist?("#{$cheminRacineHashi}/src/Sauvegarde/Save/custom/save.sav")) ? YAML.load(File.read("#{$cheminRacineHashi}/Sauvegarde/Save/custom/save.sav")) : nil
       end
     end
     return save
@@ -126,7 +126,7 @@ class Sauvegarde
 
   # Permet de valider une hypothèse.
   def Sauvegarde.validerHypothese()
-    File.delete("#{$cheminRacineHashi}/Sauvegarde/Save/temp.sav")
+    File.delete("#{$cheminRacineHashi}/src/Sauvegarde/Save/temp.sav")
   end
 
   # Annule une hypothèse en cours et retourne l'ancienne grille pre-hypothèse.

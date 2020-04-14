@@ -955,7 +955,7 @@ class FenetreJeu < Gtk::Box
 				@boutonValidHypo.show
 			end
     end
-		ajouterImage(@boutonHypo,"#{$cheminRacineHashi}/Interface/img/cloud_icon.png")
+		ajouterImage(@boutonHypo,"#{$cheminRacineHashi}/src/Interface/img/cloud_icon.png")
   end
 
 	# Méthode permettant d'initialiser le bouton d'annulation des hypothèses
@@ -1029,7 +1029,7 @@ class FenetreJeu < Gtk::Box
 				end
 			end
     end
-		ajouterImage(@boutonAide,"#{$cheminRacineHashi}/Interface/img/help_icon.png")
+		ajouterImage(@boutonAide,"#{$cheminRacineHashi}/src/Interface/img/help_icon.png")
   end
 
 	# Méthode permettant d'initialiser le label des messages des aides et des erreurs
@@ -1082,7 +1082,7 @@ class FenetreJeu < Gtk::Box
     @boutonAnnul = UnBoutonPerso.new("U", @style)do
 			annulerAction()
     end
-		ajouterImage(@boutonAnnul,"#{$cheminRacineHashi}/Interface/img/undo_icon2.png")
+		ajouterImage(@boutonAnnul,"#{$cheminRacineHashi}/src/Interface/img/undo_icon2.png")
   end
 
 	# Méthode permettant d'initialiser le bouton de remise à zéro de la grille
@@ -1093,7 +1093,7 @@ class FenetreJeu < Gtk::Box
 			@listeInter = []
 			afficheEcran
     end
-		ajouterImage(@boutonRecom,"#{$cheminRacineHashi}/Interface/img/restart_icon.png")
+		ajouterImage(@boutonRecom,"#{$cheminRacineHashi}/src/Interface/img/restart_icon.png")
   end
 
 	# Méthode permettant d'initialiser le chrono
@@ -1114,7 +1114,7 @@ class FenetreJeu < Gtk::Box
 			@chr.chronometrer()
 
 		end
-		ajouterImage(@boutonSablier,"#{$cheminRacineHashi}/Interface/img/hourglass_icon.png")
+		ajouterImage(@boutonSablier,"#{$cheminRacineHashi}/src/Interface/img/hourglass_icon.png")
 
   end
 

@@ -8,8 +8,8 @@ require_relative "../Plateau/Arete.rb"
 require_relative "../Sauvegarde/Sauvegarde.rb"
 require_relative "../Undo/Undo.rb"
 
-if(!Dir.exist?("#{$cheminRacineHashi}/Tutoriel/Niveaux")) then
-  Dir::mkdir("#{$cheminRacineHashi}/Tutoriel/Niveaux", 0777)
+if(!Dir.exist?("#{$cheminRacineHashi}/src/Tutoriel/Niveaux")) then
+  Dir::mkdir("#{$cheminRacineHashi}/src/Tutoriel/Niveaux", 0777)
 end
 
 count = 0
@@ -29,8 +29,8 @@ Sommet.creer(1, grille.getCase(0, 2))
 grille.afficher
 
 save = Sauvegarde.nouvelle(grille,nil,nil,0)
-save.sauvegarderAvecNom("#{$cheminRacineHashi}/Tutoriel/temp.sav")
-temp = save.chargerAvecNom("#{$cheminRacineHashi}/Tutoriel/temp.sav").grille
+save.sauvegarderAvecNom("#{$cheminRacineHashi}/src/Tutoriel/temp.sav")
+temp = save.chargerAvecNom("#{$cheminRacineHashi}/src/Tutoriel/temp.sav").grille
 
 puts "Complet :"
 
@@ -43,7 +43,7 @@ grille.afficher
 while(gets == nil) do end
 
 save = Sauvegarde.nouvelle(temp,grille,nil,0)
-save.sauvegarderAvecNom("#{$cheminRacineHashi}/Tutoriel/Niveaux/D1.sav")
+save.sauvegarderAvecNom("#{$cheminRacineHashi}/src/Tutoriel/Niveaux/D1.sav")
 #
 
 #2
@@ -58,8 +58,8 @@ Sommet.creer(1, grille.getCase(2, 0))
 grille.afficher
 
 save = Sauvegarde.nouvelle(grille,nil,nil,0)
-save.sauvegarderAvecNom("#{$cheminRacineHashi}/Tutoriel/temp.sav")
-temp = save.chargerAvecNom("#{$cheminRacineHashi}/Tutoriel/temp.sav").grille
+save.sauvegarderAvecNom("#{$cheminRacineHashi}/src/Tutoriel/temp.sav")
+temp = save.chargerAvecNom("#{$cheminRacineHashi}/src/Tutoriel/temp.sav").grille
 
 puts "Complet :"
 
@@ -73,8 +73,8 @@ grille.afficher
 while(gets == nil) do end
 
 save = Sauvegarde.nouvelle(temp,grille,nil,0)
-save.sauvegarderAvecNom("#{$cheminRacineHashi}/Tutoriel/Niveaux/D2.sav")
-save.sauvegarderAvecNom("#{$cheminRacineHashi}/Tutoriel/Niveaux/A1.sav")
+save.sauvegarderAvecNom("#{$cheminRacineHashi}/src/Tutoriel/Niveaux/D2.sav")
+save.sauvegarderAvecNom("#{$cheminRacineHashi}/src/Tutoriel/Niveaux/A1.sav")
 #
 
 #3
@@ -94,8 +94,8 @@ Arete.creer(grille.getCase(0,2).contenu, grille.getCase(4,2).contenu)
 grille.afficher
 
 save = Sauvegarde.nouvelle(grille,nil,nil,0)
-save.sauvegarderAvecNom("#{$cheminRacineHashi}/Tutoriel/temp.sav")
-temp = save.chargerAvecNom("#{$cheminRacineHashi}/Tutoriel/temp.sav").grille
+save.sauvegarderAvecNom("#{$cheminRacineHashi}/src/Tutoriel/temp.sav")
+temp = save.chargerAvecNom("#{$cheminRacineHashi}/src/Tutoriel/temp.sav").grille
 
 puts "Complet :"
 
@@ -112,7 +112,7 @@ grille.afficher
 while(gets == nil) do end
 
 save = Sauvegarde.nouvelle(temp,grille,nil,0)
-save.sauvegarderAvecNom("#{$cheminRacineHashi}/Tutoriel/Niveaux/D3.sav")
+save.sauvegarderAvecNom("#{$cheminRacineHashi}/src/Tutoriel/Niveaux/D3.sav")
 #
 
 #4
@@ -134,8 +134,8 @@ Sommet.creer(2, grille.getCase(6, 5))
 grille.afficher
 
 save = Sauvegarde.nouvelle(grille,nil,nil,0)
-save.sauvegarderAvecNom("#{$cheminRacineHashi}/Tutoriel/temp.sav")
-temp = save.chargerAvecNom("#{$cheminRacineHashi}/Tutoriel/temp.sav").grille
+save.sauvegarderAvecNom("#{$cheminRacineHashi}/src/Tutoriel/temp.sav")
+temp = save.chargerAvecNom("#{$cheminRacineHashi}/src/Tutoriel/temp.sav").grille
 
 puts "Complet :"
 
@@ -158,7 +158,7 @@ grille.afficher
 while(gets == nil) do end
 
 save = Sauvegarde.nouvelle(temp,grille,nil,0)
-save.sauvegarderAvecNom("#{$cheminRacineHashi}/Tutoriel/Niveaux/D4.sav")
+save.sauvegarderAvecNom("#{$cheminRacineHashi}/src/Tutoriel/Niveaux/D4.sav")
 #
 
 count = 0
@@ -186,8 +186,8 @@ Sommet.creer(2, grille.getCase(4, 2))
 grille.afficher
 
 save = Sauvegarde.nouvelle(grille,nil,nil,0)
-save.sauvegarderAvecNom("#{$cheminRacineHashi}/Tutoriel/temp.sav")
-temp = save.chargerAvecNom("#{$cheminRacineHashi}/Tutoriel/temp.sav").grille
+save.sauvegarderAvecNom("#{$cheminRacineHashi}/src/Tutoriel/temp.sav")
+temp = save.chargerAvecNom("#{$cheminRacineHashi}/src/Tutoriel/temp.sav").grille
 
 puts "Complet :"
 
@@ -203,7 +203,7 @@ grille.afficher
 while(gets == nil) do end
 
 save = Sauvegarde.nouvelle(temp,grille,nil,0)
-save.sauvegarderAvecNom("#{$cheminRacineHashi}/Tutoriel/Niveaux/A2.sav")
+save.sauvegarderAvecNom("#{$cheminRacineHashi}/src/Tutoriel/Niveaux/A2.sav")
 #
 
 #3
@@ -219,8 +219,8 @@ Sommet.creer(6, grille.getCase(2, 2))
 grille.afficher
 
 save = Sauvegarde.nouvelle(grille,nil,nil,0)
-save.sauvegarderAvecNom("#{$cheminRacineHashi}/Tutoriel/temp.sav")
-temp = save.chargerAvecNom("#{$cheminRacineHashi}/Tutoriel/temp.sav").grille
+save.sauvegarderAvecNom("#{$cheminRacineHashi}/src/Tutoriel/temp.sav")
+temp = save.chargerAvecNom("#{$cheminRacineHashi}/src/Tutoriel/temp.sav").grille
 
 puts "Complet :"
 
@@ -235,7 +235,7 @@ grille.afficher
 while(gets == nil) do end
 
 save = Sauvegarde.nouvelle(temp,grille,nil,0)
-save.sauvegarderAvecNom("#{$cheminRacineHashi}/Tutoriel/Niveaux/A3.sav")
+save.sauvegarderAvecNom("#{$cheminRacineHashi}/src/Tutoriel/Niveaux/A3.sav")
 #
 
 #4
@@ -250,8 +250,8 @@ Sommet.creer(4, grille.getCase(0, 2))
 grille.afficher
 
 save = Sauvegarde.nouvelle(grille,nil,nil,0)
-save.sauvegarderAvecNom("#{$cheminRacineHashi}/Tutoriel/temp.sav")
-temp = save.chargerAvecNom("#{$cheminRacineHashi}/Tutoriel/temp.sav").grille
+save.sauvegarderAvecNom("#{$cheminRacineHashi}/src/Tutoriel/temp.sav")
+temp = save.chargerAvecNom("#{$cheminRacineHashi}/src/Tutoriel/temp.sav").grille
 
 puts "Complet :"
 
@@ -265,7 +265,7 @@ grille.afficher
 while(gets == nil) do end
 
 save = Sauvegarde.nouvelle(temp,grille,nil,0)
-save.sauvegarderAvecNom("#{$cheminRacineHashi}/Tutoriel/Niveaux/A4.sav")
+save.sauvegarderAvecNom("#{$cheminRacineHashi}/src/Tutoriel/Niveaux/A4.sav")
 #
 
 #5
@@ -285,8 +285,8 @@ Arete.creer(grille.getCase(4,2).contenu, grille.getCase(2,2).contenu)
 grille.afficher
 
 save = Sauvegarde.nouvelle(grille,nil,nil,0)
-save.sauvegarderAvecNom("#{$cheminRacineHashi}/Tutoriel/temp.sav")
-temp = save.chargerAvecNom("#{$cheminRacineHashi}/Tutoriel/temp.sav").grille
+save.sauvegarderAvecNom("#{$cheminRacineHashi}/src/Tutoriel/temp.sav")
+temp = save.chargerAvecNom("#{$cheminRacineHashi}/src/Tutoriel/temp.sav").grille
 
 puts "Complet :"
 
@@ -300,7 +300,7 @@ grille.afficher
 while(gets == nil) do end
 
 save = Sauvegarde.nouvelle(temp,grille,nil,0)
-save.sauvegarderAvecNom("#{$cheminRacineHashi}/Tutoriel/Niveaux/A5.sav")
+save.sauvegarderAvecNom("#{$cheminRacineHashi}/src/Tutoriel/Niveaux/A5.sav")
 #
 
 #6
@@ -322,8 +322,8 @@ Arete.creer(grille.getCase(4,2).contenu, grille.getCase(2,2).contenu)
 grille.afficher
 
 save = Sauvegarde.nouvelle(grille,nil,nil,0)
-save.sauvegarderAvecNom("#{$cheminRacineHashi}/Tutoriel/temp.sav")
-temp = save.chargerAvecNom("#{$cheminRacineHashi}/Tutoriel/temp.sav").grille
+save.sauvegarderAvecNom("#{$cheminRacineHashi}/src/Tutoriel/temp.sav")
+temp = save.chargerAvecNom("#{$cheminRacineHashi}/src/Tutoriel/temp.sav").grille
 
 puts "Complet :"
 
@@ -338,7 +338,7 @@ grille.afficher
 while(gets == nil) do end
 
 save = Sauvegarde.nouvelle(temp,grille,nil,0)
-save.sauvegarderAvecNom("#{$cheminRacineHashi}/Tutoriel/Niveaux/A6.sav")
+save.sauvegarderAvecNom("#{$cheminRacineHashi}/src/Tutoriel/Niveaux/A6.sav")
 #
 
 #7
@@ -358,8 +358,8 @@ Arete.creer(grille.getCase(2,2).contenu, grille.getCase(0,2).contenu)
 grille.afficher
 
 save = Sauvegarde.nouvelle(grille,nil,nil,0)
-save.sauvegarderAvecNom("#{$cheminRacineHashi}/Tutoriel/temp.sav")
-temp = save.chargerAvecNom("#{$cheminRacineHashi}/Tutoriel/temp.sav").grille
+save.sauvegarderAvecNom("#{$cheminRacineHashi}/src/Tutoriel/temp.sav")
+temp = save.chargerAvecNom("#{$cheminRacineHashi}/src/Tutoriel/temp.sav").grille
 
 puts "Complet :"
 
@@ -373,7 +373,7 @@ grille.afficher
 while(gets == nil) do end
 
 save = Sauvegarde.nouvelle(temp,grille,nil,0)
-save.sauvegarderAvecNom("#{$cheminRacineHashi}/Tutoriel/Niveaux/A7.sav")
+save.sauvegarderAvecNom("#{$cheminRacineHashi}/src/Tutoriel/Niveaux/A7.sav")
 #
 
 #8
@@ -393,8 +393,8 @@ Arete.creer(grille.getCase(1,0).contenu, grille.getCase(1,4).contenu)
 grille.afficher
 
 save = Sauvegarde.nouvelle(grille,nil,nil,0)
-save.sauvegarderAvecNom("#{$cheminRacineHashi}/Tutoriel/temp.sav")
-temp = save.chargerAvecNom("#{$cheminRacineHashi}/Tutoriel/temp.sav").grille
+save.sauvegarderAvecNom("#{$cheminRacineHashi}/src/Tutoriel/temp.sav")
+temp = save.chargerAvecNom("#{$cheminRacineHashi}/src/Tutoriel/temp.sav").grille
 
 puts "Complet :"
 
@@ -410,7 +410,7 @@ grille.afficher
 while(gets == nil) do end
 
 save = Sauvegarde.nouvelle(temp,grille,nil,0)
-save.sauvegarderAvecNom("#{$cheminRacineHashi}/Tutoriel/Niveaux/A8.sav")
+save.sauvegarderAvecNom("#{$cheminRacineHashi}/src/Tutoriel/Niveaux/A8.sav")
 #
 
 #9
@@ -433,8 +433,8 @@ Arete.creer(grille.getCase(2,2).contenu, grille.getCase(4,2).contenu)
 grille.afficher
 
 save = Sauvegarde.nouvelle(grille,nil,nil,0)
-save.sauvegarderAvecNom("#{$cheminRacineHashi}/Tutoriel/temp.sav")
-temp = save.chargerAvecNom("#{$cheminRacineHashi}/Tutoriel/temp.sav").grille
+save.sauvegarderAvecNom("#{$cheminRacineHashi}/src/Tutoriel/temp.sav")
+temp = save.chargerAvecNom("#{$cheminRacineHashi}/src/Tutoriel/temp.sav").grille
 
 puts "Complet :"
 
@@ -452,7 +452,7 @@ grille.afficher
 while(gets == nil) do end
 
 save = Sauvegarde.nouvelle(temp,grille,nil,0)
-save.sauvegarderAvecNom("#{$cheminRacineHashi}/Tutoriel/Niveaux/A9.sav")
+save.sauvegarderAvecNom("#{$cheminRacineHashi}/src/Tutoriel/Niveaux/A9.sav")
 #
 
 #10
@@ -471,8 +471,8 @@ Arete.creer(grille.getCase(2,2).contenu, grille.getCase(0,2).contenu)
 grille.afficher
 
 save = Sauvegarde.nouvelle(grille,nil,nil,0)
-save.sauvegarderAvecNom("#{$cheminRacineHashi}/Tutoriel/temp.sav")
-temp = save.chargerAvecNom("#{$cheminRacineHashi}/Tutoriel/temp.sav").grille
+save.sauvegarderAvecNom("#{$cheminRacineHashi}/src/Tutoriel/temp.sav")
+temp = save.chargerAvecNom("#{$cheminRacineHashi}/src/Tutoriel/temp.sav").grille
 
 puts "Complet :"
 
@@ -487,7 +487,7 @@ grille.afficher
 while(gets == nil) do end
 
 save = Sauvegarde.nouvelle(temp,grille,nil,0)
-save.sauvegarderAvecNom("#{$cheminRacineHashi}/Tutoriel/Niveaux/A10.sav")
+save.sauvegarderAvecNom("#{$cheminRacineHashi}/src/Tutoriel/Niveaux/A10.sav")
 #
 
 #11
@@ -508,8 +508,8 @@ Arete.creer(grille.getCase(2,2).contenu, grille.getCase(4,2).contenu,true)
 grille.afficher
 
 save = Sauvegarde.nouvelle(grille,nil,nil,0)
-save.sauvegarderAvecNom("#{$cheminRacineHashi}/Tutoriel/temp.sav")
-temp = save.chargerAvecNom("#{$cheminRacineHashi}/Tutoriel/temp.sav").grille
+save.sauvegarderAvecNom("#{$cheminRacineHashi}/src/Tutoriel/temp.sav")
+temp = save.chargerAvecNom("#{$cheminRacineHashi}/src/Tutoriel/temp.sav").grille
 
 puts "Complet :"
 
@@ -525,7 +525,7 @@ grille.afficher
 while(gets == nil) do end
 
 save = Sauvegarde.nouvelle(temp,grille,nil,0)
-save.sauvegarderAvecNom("#{$cheminRacineHashi}/Tutoriel/Niveaux/A11.sav")
+save.sauvegarderAvecNom("#{$cheminRacineHashi}/src/Tutoriel/Niveaux/A11.sav")
 #
 
 #12
@@ -548,8 +548,8 @@ Arete.creer(grille.getCase(4,4).contenu, grille.getCase(2,4).contenu,true)
 grille.afficher
 
 save = Sauvegarde.nouvelle(grille,nil,nil,0)
-save.sauvegarderAvecNom("#{$cheminRacineHashi}/Tutoriel/temp.sav")
-temp = save.chargerAvecNom("#{$cheminRacineHashi}/Tutoriel/temp.sav").grille
+save.sauvegarderAvecNom("#{$cheminRacineHashi}/src/Tutoriel/temp.sav")
+temp = save.chargerAvecNom("#{$cheminRacineHashi}/src/Tutoriel/temp.sav").grille
 
 puts "Complet :"
 
@@ -568,7 +568,7 @@ grille.afficher
 while(gets == nil) do end
 
 save = Sauvegarde.nouvelle(temp,grille,nil,0)
-save.sauvegarderAvecNom("#{$cheminRacineHashi}/Tutoriel/Niveaux/A12.sav")
+save.sauvegarderAvecNom("#{$cheminRacineHashi}/src/Tutoriel/Niveaux/A12.sav")
 #
 
-File.delete("#{$cheminRacineHashi}/Tutoriel/temp.sav")
+File.delete("#{$cheminRacineHashi}/src/Tutoriel/temp.sav")

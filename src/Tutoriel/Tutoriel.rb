@@ -28,16 +28,16 @@ class Tutoriel
 	# === Return
 	# * +x+ : x Le texte du tutoriel.
 	def getMessageTuto()
-		file_data = File.read("#{$cheminRacineHashi}/Tutoriel/TextTuto.txt").split("/").join(":").split(":")
+		file_data = File.read("#{$cheminRacineHashi}/src/Tutoriel/TextTuto.txt").split("/").join(":").split(":")
 		@txtTuto = file_data
 		#self.set_text(@txtTuto)
 		affiche = false
 
 		file_data.each do |x|
-    	if( affiche )
-				return x
+	    	if( affiche )
+					return x
 			elsif( x == "\n"+@niveau.to_s)
-				affiche = true
+					affiche = true
 			end
 		end
 	end
@@ -46,7 +46,7 @@ class Tutoriel
 	# === Return
 	# * +tuto+ : tuto Le tutoriel chargé.
 	def lancerTuto()
-		tuto = YAML.load(File.read("#{$cheminRacineHashi}/Tutoriel/Niveaux/"+@niveau.to_s+".sav"))
+		tuto = YAML.load(File.read("#{$cheminRacineHashi}/src/Tutoriel/Niveaux/"+@niveau.to_s+".sav"))
 		return tuto
 	end
 end

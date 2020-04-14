@@ -71,7 +71,7 @@ class Aide < Gtk::Label
     if @id != 0
       @penalite = 10
     end
-   	file_data = File.read("#{$cheminRacineHashi}/Aide/TexteAide.txt").split("/").join(":").split(":")
+   	file_data = File.read("#{$cheminRacineHashi}/src/Aide/TexteAide.txt").split("/").join(":").split(":")
   	affiche = false
   	file_data.each do |x|
   		if affiche
