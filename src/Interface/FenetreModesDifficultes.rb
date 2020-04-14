@@ -94,6 +94,9 @@ class FenetreModesDifficultes < Gtk::Box
         end
       elsif(response == :no)
         @fenetre.changerWidget(FenetreParametres.new(@fenetre, self))
+        popup.destroy()
+      else
+        popup.destroy()
       end
     else
       if(response == :yes)
