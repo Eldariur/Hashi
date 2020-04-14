@@ -142,7 +142,7 @@ class Sauvegarde
     return save.grille
   end
 
-  # Génére les dossiers nécessaires au fonctionnement des sauvegardes.
+  # Génère les dossiers nécessaires au fonctionnement des sauvegardes.
   def Sauvegarde.genenerDossier()
     if(!Dir.exist?("#{$cheminRacineHashi}/Sauvegarde/Save")) then
       Dir::mkdir("#{$cheminRacineHashi}/Sauvegarde/Save", 0777)
@@ -171,8 +171,8 @@ class Sauvegarde
     end
   end
 
-  # Cette méthode redéfinit to_s pour afficher une sauvegarde.
   @Override
+  # Cette méthode redéfinit to_s pour afficher une sauvegarde.
   def to_s
     if(@estHypothese) then
       "Sauvegarde : \n-Grille :\n\n#{@grille}-estHypo = #{@estHypothese}\n---------------------------------------------------\n"

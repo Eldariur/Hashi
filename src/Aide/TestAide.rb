@@ -3,17 +3,40 @@ require_relative '../Plateau/Grille.rb'
 require_relative '../Plateau/Case.rb'
 require_relative '../Plateau/Sommet.rb'
 require_relative '../Plateau/Arete.rb'
-require_relative '../Iade/Aide.rb'
+require_relative 'Aide.rb'
+# require_relative 'TexteAide.txt'
 require_relative '../Interface/UnBoutonPerso.rb'
 require_relative '../Interface/UnLabelPerso.rb'
-require_relative '../Interface/UneCasePerso.rb'
 require_relative '../Generateur/Generateur.rb'
+require_relative '../Undo/Undo.rb'
 
 
-
+# Classe servant à tester les aides du programme
 class Fenetre < Gtk::Window
+	## Partie variables de classe
 
+  #@fenetre			-> Fenetre principale
+
+
+
+	## Partie variables d'instance
+
+	#@listeInter		-> difficulté de la grille de jeu
+	#@grilleTest 		->	la grille de jeu
+	#@longueur 			-> la longueur de la grille de jeu
+	#@largeur 				-> la largeur de la grille de jeu
+	#@darea 					-> la zone de dessin où la grille apparaît
+	#@nbClick 				-> le nombre de clique de l'utilisateur
+
+	## Partie accesseurs
+
+	# Accesseur get sur les attributs grilleTest, longueur et largeur
 	attr_reader :grilleTest, :longueur, :largeur
+
+	# Accesseur get et set sur les attributs nbClick, listeInter, caseSom et cr
+	attr_accessor :nbClick, :listeInter, :caseSom, :cr
+
+	## Partie initialize
 	def initialize()
 
 
@@ -96,11 +119,6 @@ class Fenetre < Gtk::Window
 			x=10
 			y=10
 
-			@@x1=0
-			@@y1=0
-			@@x2=0
-			@@y2=0
-
 
 			hpaned = Gtk::HPaned.new
 			hpaned2 = Gtk::HPaned.new
@@ -142,6 +160,11 @@ class Fenetre < Gtk::Window
 
 	end
 
+	# Méthode permettant d'effectuer des actions lorsque l'utilisateur clique sur la zone de dessin
+	#
+	# === Paramètres
+	#
+	# * +event+ : L'évènement engendré par l'utilisateur
 	def mouseClick(event)
 		# copie tracerGrille
 		tailleCase = 50
@@ -195,7 +218,7 @@ class Fenetre < Gtk::Window
 
 				@listeInter.each { |c|
 					if(c != "|" && c.class != Sommet) #<==== FAUX
-						c.setSurbri(true)
+						c.surbrillance = true
 					end
 				}
 			end
@@ -279,8 +302,7 @@ class Fenetre < Gtk::Window
 		end
 	end
 
-	attr_accessor :nbClick, :listeInter, :caseSom
-
+	# Méthode permettant de dessiner les surbrillances
 	def drawSurbri(cr)
 		# exemple 5 5
 		tailleCase = 50
@@ -324,7 +346,7 @@ class Fenetre < Gtk::Window
 		cr.set_source_rgb 0,0,0
 
 	end
-
+	# Méthode permettant d'afficher les surbrillances dans la console
 	def afficheSurbri()
 		@listeInter.each do |c|
 			if(c != "|")
@@ -332,6 +354,15 @@ class Fenetre < Gtk::Window
 		end
 	end
 
+	# Méthode retournant le nombre d'arêtes que possède un sommet
+	#
+	# === Paramètres
+	#
+	# * +s+ :	Le sommet sur lequel compter les arêtes
+	#
+	# === Return
+	#
+	# Le nombre d'arêtesque possède le sommet s
 	def nbAretesSommet(s)
 		i = 0
 		s.listeArete.each {|a|
@@ -344,6 +375,15 @@ class Fenetre < Gtk::Window
 		return i
 	end
 
+	# Méthode retournant la liste des sommets voisins à la case passée en paramètre
+	#
+	# === Paramètres
+	#
+	# * +c+ : La case dont on veut retourner les voisins
+	#
+	# === Return
+	#
+	# La liste des sommets voisins à la case c
 	def rechercherVoisins(c)
 		tailleCase = 50
 		nbCase = @largeur
@@ -442,7 +482,16 @@ class Fenetre < Gtk::Window
 
 	end
 
-	# retourne la liste des cases comprises entre deux voisins
+	# Méthode retournant la liste des cases comprises entre deux voisins
+	#
+	# === Paramètres
+	#
+	# * +s1+ : Le premier sommet
+	# * +s2+ : Le second sommet
+	#
+	# === Return
+	#
+	# La liste des cases comprises entre les sommets s1 et s2
 	def getlisteInterCase(s1, s2)
 		x1 = s1.x
 		y1 = s1.y
@@ -477,6 +526,7 @@ class Fenetre < Gtk::Window
 		return listeDeCase
 	end
 
+	# Méthode vidant la liste des cases entre deux sommets
 	def videSurbri
 		afficheSurbri
 		@listeInter.each {|c|
@@ -488,7 +538,15 @@ class Fenetre < Gtk::Window
 		@listeInter = []
 	end
 
-
+	# Méthode permettant de savoir si la case passée en paramètre contient un sommet
+	#
+	# === Paramètres
+	#
+	# * +c+ : La case qu'on veut tester
+	#
+	# === Return
+	#
+	# Vrai si la case est un sommet, faux sinon
 	def estSommet?(c)
 		@grilleTest.sommets.each do |s|
 			if(s.position.x == c.x && s.position.y == c.y)
@@ -498,6 +556,11 @@ class Fenetre < Gtk::Window
 		return false
 	end
 
+	# Méthode permettant de tracer la grille sur la zone de dessin
+	#
+	# === Paramètres
+	#
+	# * +tracer+ : Booléen permettant d'effectuer la fonction ou non
 	def tracerGrille(grille)
 		# exemple 5 5
 		tailleCase = 50
@@ -518,30 +581,29 @@ class Fenetre < Gtk::Window
 
 	end
 
+	## Méthode permettant de changer de fenêtre
+	#
+	# === Paramètres
+	#
+	# * +nouveau+ : La nouvelle fenêtre à afficher
 	def changerWidget(nouveau)
 		self.remove(self.child).add(nouveau)
 		self.show_all
 		self
 	end
 
-
+	# Méthode permettant de redimensionner une image
+	#
+	# === Return
+	#
+	# L'image redimensionnée
 	def dimImage(str)
 		image = Gtk::Image.new(str)
 		image.pixbuf = image.pixbuf.scale(28,28) if image.pixbuf!=nil
 		return image
 	end
 
-
-	# def init_ui
-	#
-	# 		@darea = Gtk::DrawingArea.new
-	#
-	# 		@darea.signal_connect "draw" do
-	# 				on_draw
-	# 		end
-	# 		add @darea
-	# end
-
+	# Méthode permettant de dessiner la grille initiale
 	def on_draw
 
 			cr = @darea.window.create_cairo_context
@@ -554,25 +616,8 @@ class Fenetre < Gtk::Window
 			#cairo_line_to(cr, 10, 15)
 
 	end
-	attr_accessor :cr
 
-	def draw_colors cr
-
-			cr.set_source_rgb 0.2, 0.23, 0.9
-			cr.move_to 10, 10
-			cr.line_to 150, 15
-			cr.move_to 150, 30
-			cr.stroke
-
-			cr.set_source_rgb 0.9, 0.1, 0.1
-			cr.rectangle 130, 15, 90, 60
-			cr.fill
-
-			cr.set_source_rgb 0.4, 0.9, 0.4
-			cr.rectangle 250, 15, 90, 60
-			cr.fill
-	end
-
+	# Méthode permettant de dessiner les sommets sur la surface de dessin
 	def drawSommets(cr)
 		# copie de tracerGrille
 		tailleCase = 50
@@ -607,6 +652,7 @@ class Fenetre < Gtk::Window
 		}
 	end
 
+	# Méthode permettant de dessiner les arêtes sur la surface de dessin
 	def drawAretes(cr)
 		# copie de tracerGrille
 		tailleCase = 50
@@ -691,6 +737,7 @@ class Fenetre < Gtk::Window
 		}
 	end
 
+	# Méthode permettant de dessiner les lignes de la grille sur la surface de dessin
 	def draw_maLigne(cr,x1,y1,x2,y2)
 		cr.move_to x1, y1
 		cr.line_to x2,y2
@@ -698,14 +745,8 @@ class Fenetre < Gtk::Window
 
 	end
 
-	def testAffichageGrille
 
-	end
-
-	def testAffichageCoord(c)
-
-	end
-
+	# Méthode permettant d'effacer la zone de dessin
 	def clearEcran(cr)
 		cr.set_source_rgb 0.96, 0.96, 0.96
 		cr.rectangle 0, 0, 700, 700
@@ -713,6 +754,7 @@ class Fenetre < Gtk::Window
 		cr.set_source_rgb 0, 0, 0
 	end
 
+	# Méthode permettant d'afficher la zone de dessin
 	def afficheEcran(cr)
 		clearEcran(cr)
 		drawSurbri(cr)

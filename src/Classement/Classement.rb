@@ -50,12 +50,12 @@ class Classement
     @liste = Highscore.where(:difficulty => @difficulte).order(:score).take(20).reverse
   end
 
+	@Override
 	# Cette méthode redéfinit to_s pour afficher un classement.
 	#
 	# === Return
 	#
 	# Une chaîne de caractère contenant des infos sur le classement
-	@Override
   def to_s
     self.recupererDonnees()
     res = ""

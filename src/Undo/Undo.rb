@@ -46,11 +46,11 @@ class Undo
 		return @tabAction.pop()
 	end
 
+	@Override
 	#Redéfinition de la méthode to_s pour l'affichage de undo
 	#
 	# ===Return
 	# * +string+ * : renvoie une version en string de la pile
-	@Override
 	def to_s()
 		return "Array Undo : " +  @tabAction.to_s()
 	end

@@ -44,12 +44,12 @@ class Highscore < ActiveRecord::Base
 		return self.score.to_s
 	end
 
+	@Override
 	# Cette méthode redéfinit to_s pour afficher un highscore.
 	#
 	# === Return
 	#
 	# Une chaîne de caractère contenant des infos sur un score du classement
-	@Override
 	def to_s
 		"Highscore : Pseudo = #{self.name}, Points = #{self.score}, Difficulte = #{self.difficulty}\n"
 	end

@@ -114,8 +114,8 @@ class Chrono < Gtk::Label
     return res
   end
 
-	# Cette méthode redéfini to_s pour afficher un chronomètre.
 	@Override
+	# Cette méthode redéfinit to_s pour afficher un chronomètre.
 	def to_s()
 		self.to_chrono()
 	end
