@@ -8,10 +8,10 @@ class UnLabelPerso < Gtk::Label
   #
   # * +str+ : str la chaîne de caractère comprise dans le label
   # * +nom+ : nom le nom donné au label afin de pouvoir le modifier par la suite
-  def initialize(str="", nom="UnLabelPerso")
-		super(str)
+    def initialize(str="", nom="UnLabelPerso")
+    	super(str)
 
-		self.name=nom
-	end
+    	self.name=nom
+    end
 
 end

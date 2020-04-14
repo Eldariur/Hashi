@@ -137,7 +137,6 @@ class UneScaleTaille < Gtk::Scale
 
     self.signal_connect "value-changed" do |w|
         on_changed w
-        print @cur_value.to_s+" "
     end
   end
 
@@ -192,7 +191,6 @@ class UneScaleDensite < Gtk::Scale
 
     self.signal_connect "value-changed" do |w|
         on_changed w
-        print @cur_value.to_s+" "
     end
   end
 

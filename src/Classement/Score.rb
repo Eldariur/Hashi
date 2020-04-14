@@ -70,7 +70,6 @@ class Score
 	# === Return
 	#
 	# Une chaîne de caractère contenant des infos sur un score
-	@Override
 	def to_s
 		"Score : Pseudo = #{@pseudo}, Points = #{@points}, Temps = #{@temps}, Difficulte = #{@difficulte}\n"
 	end
@@ -80,7 +79,6 @@ class Score
 	# === Return
 	#
 	# Le nombre de point d'un score
-	@Override
 	def to_i
 		return @points
 	end

@@ -110,7 +110,7 @@ class Grille
   #Appel la méthode supprimer() de chaque arête
   def clearAretes()
       laTaille = @aretes.size()
-      for i in 0...laTaille do
+      0.upto(laTaille - 1) do
           @aretes[0].supprimer()
       end
   end

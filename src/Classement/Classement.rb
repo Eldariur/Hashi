@@ -55,7 +55,6 @@ class Classement
 	# === Return
 	#
 	# Une chaîne de caractère contenant des infos sur le classement
-	@Override
   def to_s
     self.recupererDonnees()
     res = ""

@@ -49,7 +49,6 @@ class Highscore < ActiveRecord::Base
 	# === Return
 	#
 	# Une chaîne de caractère contenant des infos sur un score du classement
-	@Override
 	def to_s
 		"Highscore : Pseudo = #{self.name}, Points = #{self.score}, Difficulte = #{self.difficulty}\n"
 	end

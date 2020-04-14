@@ -1,6 +1,5 @@
 #Class UnBoutonPerso, permet de modifier les boutons et de leurs ajouter des méthodes, hérite de la classe Gtk::Button
 class UnBoutonPerso < Gtk::Button
-	@Override
 	##Partie initialize
 	#Initialisation de la classe UnBoutonPerso
 	#

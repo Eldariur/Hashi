@@ -172,7 +172,6 @@ class Sauvegarde
   end
 
   # Cette méthode redéfinit to_s pour afficher une sauvegarde.
-  @Override
   def to_s
     if(@estHypothese) then
       "Sauvegarde : \n-Grille :\n\n#{@grille}-estHypo = #{@estHypothese}\n---------------------------------------------------\n"
