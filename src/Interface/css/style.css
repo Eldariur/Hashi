@@ -1,0 +1,286 @@
+/* button {
+	background: none;
+	border: none;
+} */
+
+/* #button {
+	border-radius: 0px;
+	border-width: 1px;
+
+	background-color: blue;
+	margin: 5px;
+} */
+
+#Chrono {
+	border:none;
+	background: none;
+	/* margin: 20px; */
+
+}
+
+#UnBoutonPerso {
+	border-radius: 5px;
+	border-width: 2px;
+	margin-right: 25px;
+	margin-top: 20px;
+	margin-left: 25px;
+	/*min-width: 300px;*/
+}
+
+
+#UnBoutonPerso:hover{
+	/* border-radius: 5px; */
+	background-color: rgba(128, 128, 128, 0.7);
+}
+
+#UnBoutonPerso:active{
+	background-color: purple;
+}
+
+#BoutonMenu {
+	border-radius: 5px;
+	border-width: 2px;
+	margin-right: 25px;
+	margin-top: 20px;
+	margin-left: 25px;
+	min-width: 300px;
+}
+
+#BoutonClassement{
+	border-radius: 5px;
+	border-width: 2px;
+	margin-top: 50px;
+}
+
+#BoutonEnJeu{
+	border-radius: 5px;
+	border-width: 2px;
+	margin-right: 25px;
+	margin-top: 20px;
+	margin-left: 25px;
+	min-width: 120px;
+	min-height: 30px;
+}
+
+#BoutonEnJeu2{
+	border-radius: 5px;
+	border-width: 2px;
+	margin-right: 25px;
+	margin-top: 20px;
+	margin-left: 25px;
+	min-width: 90px;
+	min-height: 23px;
+}
+
+#BoutonEnJeuGros{
+	border-radius: 5px;
+	border-width: 2px;
+	margin-right: 25px;
+	margin-top: 20px;
+	margin-left: 25px;
+	min-width: 180px;
+	min-height: 45px;
+}
+
+#BoutonTuto{
+	border-radius: 20px;
+	border-width: 2px;
+	/* background-color: red; */
+	margin :10px;
+	min-width: 100px;
+	/* padding: 10px; */
+}
+/* ========== */
+
+#UnSommetPerso:hover{
+	/* border-radius: 5px; */
+	background-color: rgba(128, 128, 128, 0.7);
+}
+
+#UnSommetPerso:active{
+	background-color: purple;
+}
+/* ========== */
+#UneCasePerso {
+	border-radius: 5px;
+	border-width: 3px;
+	background-color: lime;
+	/* margin: 2px; */
+	background:none;
+}
+
+#UneCasePerso:hover {
+	border-radius: 5px;
+	background-color: green;
+
+}
+
+/* Fenêtre de l'application */
+#WindowPrincipale {
+	background-image: url("../img/pont_rouge_jap.jpg");
+	background-color: yellow;
+	background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+#LabelChrono{
+		color: black;
+		font-weight: bold;
+		font-size: 30px;
+
+}
+
+#UneScalePerso{
+	font-weight: bold;
+	background-color: rgba(10,10,10,0.90);
+	border-radius: 40px;
+	color: white;
+}
+
+/*
+button {
+	background: black;
+	border: none;
+}
+
+
+#button {
+	border-radius: 0px;
+	border-width: 1px;
+
+	background-color: rgba(10,10,10,0.95);
+	margin: 5px;
+}
+#button:hover {
+	background-color: rgba(156, 164, 179, 0.7);
+}
+
+#button:active {
+	background-color: blue;
+	border-radius: 0px;
+	opacity: 0.6;
+	margin: 5px;
+}
+*/
+
+/* Label par défaut */
+/* #label {
+	background-color: rgba(10,10,10,0.90);
+	border-radius: 5px;
+	color: white;
+	font-weight: bold;
+	margin:3px;
+
+} */
+
+#UnLabelPerso {
+	/* background-color: rgba(10,10,10,0.90); */
+	border-radius: 5px;
+	color: black;
+	font-weight: bold;
+	margin:3px;
+}
+
+#UnLabelBlanc {
+	background-color: rgba(10,10,10,0.90);
+	border-radius: 5px;
+	color: white;
+	font-weight: bold;
+	margin:3px;
+	padding:5px;
+}
+
+#UnLabelClassement {
+	background-color: rgba(10,10,10,0.90);
+	color: white;
+	/* border-radius: 5px; */
+	/* color: white; */
+	font-weight: bold;
+}
+
+#LabelTitre{
+	background-color: rgba(10,10,10,0.90);
+	border-radius: 5px;
+	color: white;
+	font-weight: bold;
+	font-size: 50px;
+	margin:30px;
+	margin-bottom: 150px;
+}
+
+#LabelTitre2{
+	background-color: rgba(10,10,10,0.90);
+	border-radius: 5px;
+	color: white;
+	font-weight: bold;
+	font-size: 30px;
+	margin:30px;
+}
+
+
+
+/* Bouton de retour au menu précédent / fermeture de l'app */
+#btnQuit {
+	border: none;
+	background-color: #FFF;
+}
+
+/* Panneau de rappel des règles */
+#lblRegles {
+	color: white;
+	font-weight: bold;
+	background-color: rgba(147, 148, 150, 0.8);
+	  text-shadow: -1px 0px #000, 0px 1px #000, 1px 0px #000, 0px -1px #000;
+}
+/* Affichage des scores - inachevé */
+
+#boxScores {
+	background-color: rgba(68, 71, 76, 0.7);
+	border-radius: 25px;
+}
+
+
+
+#boxUtil {
+	padding:50px;
+}
+
+menubar {
+	background-color: rgba(10,10,10,0.90);
+
+}
+
+/* menus déroulants */
+#dropdown	 {
+	background-color: rgba(10,10,10,0.90);
+	color: white;
+}
+
+
+
+#maBoxScale{
+	margin:100px;
+}
+
+
+
+
+
+
+
+/* scrollbar {
+-GtkScrollbar-has-backward-stepper: 1;
+-GtkScrollbar-has-forward-stepper: 1;
+}
+
+scrollbar slider {
+background-color: blue;
+}
+
+
+
+scrollbar {
+    min-width: 70px;
+    min-height: 70px;
+} */
