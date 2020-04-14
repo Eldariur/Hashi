@@ -44,7 +44,6 @@ class Chrono < Gtk::Label
   def reset()
     @base = Time.now()
     @stop = 0
-    @temp = 0
   end
 
   # Lance le chronométrage.
@@ -52,14 +51,16 @@ class Chrono < Gtk::Label
 		@th = Thread.new {
 	    self.reset()
 	    if(@total != 0) then
-	      @temp = @total
+	      @temp += @total
 	    end
 	    while @stop != 1 do
 	      @total = Time.now - @base
+
 				if(affichage) then
 		     puts `clear`
 		     puts self.to_chrono()
 				end
+
 	      sleep(0.01)
 				self.text = self.to_s()
 	    end

@@ -16,7 +16,7 @@ class Sauvegarde
   attr:chronometre, false
   # Accesseur get sur l'attribut estHypothese.
   attr:estHypothese, false
-  # Accesseur get sur l'attribut estHypothese.
+  # Accesseur get sur l'attribut difficulte.
   attr:difficulte, false
 
   # Privatise le new.
