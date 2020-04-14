@@ -2,7 +2,7 @@
 class FenetreParametres < Gtk::Box
   ## Partie variables d'instance
 
-  # @@fenetre -> la fenêtre principale du programme
+  # @fenetre -> la fenêtre principale du programme
   # @cur_value -> le nombre de colonne du classement
 
 
@@ -15,7 +15,7 @@ class FenetreParametres < Gtk::Box
   # * +window+ : window la fenêtre principale du programme
   # * +fenPre+ : fenPre la fenêtre précédente
   def initialize(window,fenPre)
-    @@fenetre = window
+    @fenetre = window
     super(Gtk::Orientation::VERTICAL)
     lbl1 = UnLabelPerso.new("Longueur de la grille: ", "UnLabelBlanc")
     lbl2 = UnLabelPerso.new("Largeur de la grille: ", "UnLabelBlanc")
@@ -80,12 +80,12 @@ class FenetreParametres < Gtk::Box
     }
 
 	boutonRetour.signal_connect('clicked'){
-		@@fenetre.changerWidget(fenPre)
+		@fenetre.changerWidget(fenPre)
 	}
 
 
     boutonVal.signal_connect('clicked') {
-      @@fenetre.changerWidget(FenetreJeu.new(@@fenetre, fenPre, "custom", false, nil, lengthScale.getValue().round(), heightScale.getValue().round(), densScale.getValue().round()))
+      @fenetre.changerWidget(FenetreJeu.new(@fenetre, fenPre, "custom", false, nil, lengthScale.getValue().round(), heightScale.getValue().round(), densScale.getValue().round()))
     }
 
     boutonRes.signal_connect('clicked') {

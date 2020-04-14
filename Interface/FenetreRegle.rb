@@ -2,7 +2,7 @@
 class FenetreRegle < Gtk::Box
   ## Partie variables d'instance
 
-  # @@fenetre -> la fenêtre principale du programme
+  # @fenetre -> la fenêtre principale du programme
 
   ## Partie initialize
 
@@ -13,7 +13,7 @@ class FenetreRegle < Gtk::Box
   # * +window+ : window la fenêtre principale du programme
   # * +fenpre+ : fenpre la fenêtre précédente
   def initialize(window,fenpre)
-    @@fenetre = window
+    @fenetre = window
     super(Gtk::Orientation::VERTICAL)
 
     tbl = Gtk::Table.new(1,1)
@@ -35,11 +35,11 @@ Résumé des règles :
     boutonRetour = UnBoutonPerso.new("Retour","BoutonMenu")
 
     boutonRetour.signal_connect('clicked'){
-      @@fenetre.changerWidget(fenpre)
+      @fenetre.changerWidget(fenpre)
     }
 
     tbl.attach(boutonRetour, 0, 1, 1, 2, Gtk::AttachOptions::SHRINK)
-    tbl.attach(lbl1,0,1,0,1, Gtk::AttachOptions::EXPAND, Gtk::AttachOptions::EXPAND, 0, @@fenetre.default_size[1] / 4)
+    tbl.attach(lbl1,0,1,0,1, Gtk::AttachOptions::EXPAND, Gtk::AttachOptions::EXPAND, 0, @fenetre.default_size[1] / 4)
     self.add(tbl)
   end
 

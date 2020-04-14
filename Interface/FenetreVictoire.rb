@@ -4,7 +4,7 @@ require_relative "../Classement/Score.rb"
 class FenetreVictoire < Gtk::Box
   ## Partie variables d'instance
 
-  # @@fenetre -> la fenêtre principale du programme
+  # @fenetre -> la fenêtre principale du programme
 
 
   ## Partie initialize
@@ -17,9 +17,9 @@ class FenetreVictoire < Gtk::Box
   # * +difficulte+ : difficulte la difficulté de la grille de jeu précédemment effectuée
   # * +chr+ : chr le temps effectué pour faire la grille précédemment jouée
   def initialize(window, fenPre, difficulte, chr)
-    @@fenetre = window
+    @fenetre = window
     
-    size = @@fenetre.default_size()
+    size = @fenetre.default_size()
     super(Gtk::Orientation::VERTICAL)
 
     if(chr != nil && chr.to_s != "00:00")
@@ -46,7 +46,7 @@ class FenetreVictoire < Gtk::Box
         if(ent.text() != nil && ent.text().strip != "")
 	    scoreHolder.pseudo = ent.text
             scoreHolder.sauvegarder()
-            @@fenetre.changerWidget(FenetreClassement.new(@@fenetre, FenetreMenu.new(@@fenetre)))
+            @fenetre.changerWidget(FenetreClassement.new(@fenetre, FenetreMenu.new(@fenetre)))
         end
     	}
     end
@@ -59,11 +59,11 @@ class FenetreVictoire < Gtk::Box
 
 
     boutonRejouer.signal_connect('clicked') {
-            @@fenetre.changerWidget(fenPre)
+            @fenetre.changerWidget(fenPre)
     }
 
     boutonQuitter.signal_connect('clicked') {
-      @@fenetre.changerWidget(FenetreMenu.new(@@fenetre))
+      @fenetre.changerWidget(FenetreMenu.new(@fenetre))
     }
 
     vbox = Gtk::Box.new(Gtk::Orientation::VERTICAL, 5)
@@ -83,7 +83,7 @@ class FenetreVictoire < Gtk::Box
     end
     vbox.add(boutonRejouer)
     vbox.add(boutonQuitter)
-    tbl.attach(vbox,0,1,0,1, Gtk::AttachOptions::EXPAND, Gtk::AttachOptions::EXPAND, 0, @@fenetre.default_size[1] / 3)
+    tbl.attach(vbox,0,1,0,1, Gtk::AttachOptions::EXPAND, Gtk::AttachOptions::EXPAND, 0, @fenetre.default_size[1] / 3)
     self.add(tbl)
 
   end

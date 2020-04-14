@@ -2,7 +2,7 @@
 class FenetreModesDifficultes < Gtk::Box
   ## Partie variables d'instance
 
-  # @@fenetre -> la fenêtre principale du programme
+  # @fenetre -> la fenêtre principale du programme
   # @classe -> booléen indiquant quand la fenêtre de jeu est en mode Contre-la-montre
 
 
@@ -16,7 +16,7 @@ class FenetreModesDifficultes < Gtk::Box
   # * +fenetrePre+ : fenetrePre la fenêtre précédente
 
   def initialize(window,fenetrePre)
-    @@fenetre = window
+    @fenetre = window
 	    super(Gtk::Orientation::VERTICAL)
 
     @classe = false
@@ -45,14 +45,14 @@ class FenetreModesDifficultes < Gtk::Box
     }
 
    boutonRetour.signal_connect('clicked'){
-	@@fenetre.changerWidget(fenetrePre)
+	@fenetre.changerWidget(fenetrePre)
    }
     vBox.add(bouton1)
     vBox.add(bouton2)
     vBox.add(bouton3)
     vBox.add(bouton4)
     vBox.add(boutonRetour)
-    tbl.attach(vBox,0,1,0,1, Gtk::AttachOptions::EXPAND, Gtk::AttachOptions::EXPAND, 0, @@fenetre.default_size[1] / 3)
+    tbl.attach(vBox,0,1,0,1, Gtk::AttachOptions::EXPAND, Gtk::AttachOptions::EXPAND, 0, @fenetre.default_size[1] / 3)
     self.add(tbl)
 
     self.show_all
@@ -67,13 +67,13 @@ class FenetreModesDifficultes < Gtk::Box
   def affichePopup(difficulte)
     case difficulte
       when "easy"
-        popup = Gtk::MessageDialog.new(:parent => @@fenetre, :flags => :modal, :type => :question, :buttons => :none, :message => "Souhaitez-vous charger la dernière sauvegarde facile ?")
+        popup = Gtk::MessageDialog.new(:parent => @fenetre, :flags => :modal, :type => :question, :buttons => :none, :message => "Souhaitez-vous charger la dernière sauvegarde facile ?")
       when "normal"
-        popup = Gtk::MessageDialog.new(:parent => @@fenetre, :flags => :modal, :type => :question, :buttons => :none, :message => "Souhaitez-vous charger la dernière sauvegarde normale ?")
+        popup = Gtk::MessageDialog.new(:parent => @fenetre, :flags => :modal, :type => :question, :buttons => :none, :message => "Souhaitez-vous charger la dernière sauvegarde normale ?")
       when "hard"
-        popup = Gtk::MessageDialog.new(:parent => @@fenetre, :flags => :modal, :type => :question, :buttons => :none, :message => "Souhaitez-vous charger la dernière sauvegarde difficile ?")
+        popup = Gtk::MessageDialog.new(:parent => @fenetre, :flags => :modal, :type => :question, :buttons => :none, :message => "Souhaitez-vous charger la dernière sauvegarde difficile ?")
       when "custom"
-        popup = Gtk::MessageDialog.new(:parent => @@fenetre, :flags => :modal, :type => :question, :buttons => :none, :message => "Souhaitez-vous charger la dernière sauvegarde personnalisée ?")
+        popup = Gtk::MessageDialog.new(:parent => @fenetre, :flags => :modal, :type => :question, :buttons => :none, :message => "Souhaitez-vous charger la dernière sauvegarde personnalisée ?")
     end
     popup.add_buttons(["Charger la sauvegarde", :yes], ["Nouvelle Partie", :no], [Gtk::Stock::CANCEL, :reject])
 
@@ -85,13 +85,13 @@ class FenetreModesDifficultes < Gtk::Box
         partie = save.charger()
         popup.destroy()
         if(partie == nil)
-          popup = Gtk::MessageDialog.new(:parent => @@fenetre, :flags => :modal, :type => :info, :buttons => :ok, :message => "Aucune sauvegarde, création d'une nouvelle partie")
+          popup = Gtk::MessageDialog.new(:parent => @fenetre, :flags => :modal, :type => :info, :buttons => :ok, :message => "Aucune sauvegarde, création d'une nouvelle partie")
           popup.run()
           popup.destroy()
         end
-        @@fenetre.changerWidget(FenetreJeu.new(@@fenetre, self, difficulte, @classe, partie))
+        @fenetre.changerWidget(FenetreJeu.new(@fenetre, self, difficulte, @classe, partie))
       elsif(response == :no)
-        @@fenetre.changerWidget(FenetreParametres.new(@@fenetre, self))
+        @fenetre.changerWidget(FenetreParametres.new(@fenetre, self))
       end
     else
       if(response == :yes)
@@ -99,14 +99,14 @@ class FenetreModesDifficultes < Gtk::Box
         partie = save.charger()
         popup.destroy()
         if(partie == nil)
-          popup = Gtk::MessageDialog.new(:parent => @@fenetre, :flags => :modal, :type => :info, :buttons => :ok, :message => "Aucune sauvegarde, création d'une nouvelle partie")
+          popup = Gtk::MessageDialog.new(:parent => @fenetre, :flags => :modal, :type => :info, :buttons => :ok, :message => "Aucune sauvegarde, création d'une nouvelle partie")
           popup.run()
           popup.destroy()
         end
-        @@fenetre.changerWidget(FenetreJeu.new(@@fenetre, self, difficulte, @classe, partie))
+        @fenetre.changerWidget(FenetreJeu.new(@fenetre, self, difficulte, @classe, partie))
       elsif(response == :no)
         popup.destroy()
-        @@fenetre.changerWidget(FenetreJeu.new(@@fenetre,self, difficulte, @classe))
+        @fenetre.changerWidget(FenetreJeu.new(@fenetre,self, difficulte, @classe))
       end
     end
 

@@ -2,7 +2,7 @@
 class FenetreJeuTuto < FenetreJeu
   ## Partie variables d'instance
 
-  # @@fenetre -> la fenêtre principale du programme
+  # @fenetre -> la fenêtre principale du programme
 
   ## Partie initialize
 
@@ -16,7 +16,7 @@ class FenetreJeuTuto < FenetreJeu
   # * +tuto+ : un objet de la classe Tutoriel
 
   def initialize(window,fenPre,diff,tuto)
-    @@fenetre = window
+    @fenetre = window
     super(window,fenPre,"easy",nil,tuto)
   end
 

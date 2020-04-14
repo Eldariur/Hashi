@@ -5,8 +5,8 @@ require_relative "../Classement/ConnectSqlite3.rb"
 class FenetreClassement < Gtk::Box
   ## Partie variables d'instance
 
-  # @@fenetre -> la fenêtre principale du programme
-  # @@fenPrev -> la fenêtre précédente
+  # @fenetre -> la fenêtre principale du programme
+  # @fenPrev -> la fenêtre précédente
   # @nbCol -> le nombre de colonne du classement
   # @nbLig -> le nombre de ligne du classement
   # @rang -> le rang du pseudo dans le classement
@@ -27,14 +27,14 @@ class FenetreClassement < Gtk::Box
   # * +window+ : window la fenêtre principale du programme
   # * +fenPre+ : fenPre la fenêtre précédente
   def initialize(window, fenPrev)
-    @@fenetre = window
+    @fenetre = window
     @nbCol = 4
     @nbLig = 0
     @rang = 0
 
     @diff = ""
 
-    @@fenPre = fenPrev
+    @fenPre = fenPrev
 
     super(Gtk::Orientation::VERTICAL)
 
@@ -95,7 +95,7 @@ class FenetreClassement < Gtk::Box
     @tbl.attach(UnLabelPerso.new(pseudo,"UnLabelClassement"),1,3,@nbLig,@nbLig+1)
     @tbl.attach(UnLabelPerso.new(scr,"UnLabelClassement"),3,4,@nbLig,@nbLig+1)
 
-    @@fenetre.changerWidget(self)
+    @fenetre.changerWidget(self)
   end
 
   ## Méthode sans paramètres permettant d'initialiser le classement
@@ -145,7 +145,7 @@ class FenetreClassement < Gtk::Box
   ## Méthode sans paramètres permettant d'initialiser le bouton pour revenir au menu précédent
   def initBoutonRetour
     @boutonRetour = UnBoutonPerso.new("Retour","BoutonClassement")do
-      @@fenetre.changerWidget(@@fenPre);
+      @fenetre.changerWidget(@fenPre);
     end
   end
 
