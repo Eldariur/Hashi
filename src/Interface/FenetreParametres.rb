@@ -19,7 +19,7 @@ class FenetreParametres < Gtk::Box
     super(Gtk::Orientation::VERTICAL)
     lbl1 = UnLabelPerso.new("Longueur de la grille: ", "UnLabelBlanc")
     lbl2 = UnLabelPerso.new("Largeur de la grille: ", "UnLabelBlanc")
-    lbl3 = UnLabelPerso.new("Difficulté: ", "UnLabelBlanc")
+    lbl3 = UnLabelPerso.new("Densité : ", "UnLabelBlanc")
 
     boutonEZ = UnBoutonPerso.new("Easy", "BoutonMenu")
     boutonNO = UnBoutonPerso.new("Normal", "BoutonMenu")
