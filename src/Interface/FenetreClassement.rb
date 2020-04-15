@@ -107,8 +107,8 @@ class FenetreClassement < Gtk::Box
     lbl2 = UnLabelPerso.new("Pseudo","UnLabelClassement")
     lbl3 = UnLabelPerso.new("Score","UnLabelClassement")
 
-    @tbl.attach(lbl2,0,1,0,1)
-    @tbl.attach(lbl1,1,3,0,1)
+    @tbl.attach(lbl1,0,1,0,1)
+    @tbl.attach(lbl2,1,3,0,1)
     @tbl.attach(lbl3,3,4,0,1)
 
     self.add(@tbl)
