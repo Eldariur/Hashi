@@ -12,6 +12,6 @@
       <li> Benjamin Riviere</li> 
     </ul></h3>
     <p>Afin de mettre en place la création et l'aide à la résolution du Puzzle Game du Hashiwokakero, aka les îles et les ponts.</p>
-    <p>Pour plus d'informations, veuillez vous referer au manuel d'utilisation.</p>
+    <p>Pour plus d'informations, veuillez vous referer au manuel d'utilisation dans le dossier livrable.</p>
   </body>
 </html>
